@@ -643,6 +643,10 @@ body *::selection {
   background-color: color-mix(in oklch, oklch(from var(--color) var(--surface-lc-3) h), transparent 50%);
 }
 
+dialog {
+  color: oklch(from var(--color) var(--text-lc-1) h);
+}
+
 a:not([role=button]) {
   --color: var(--accent-color);
   color: oklch(from var(--color) var(--text-lc-4) h);
@@ -783,6 +787,7 @@ label {
   border-radius: var(--border-radius);
   cursor: pointer;
   padding: 0.75rem 1rem;
+  text-align: center;
   background-color: oklch(from var(--color) var(--primary-surface-lc) h);
   color: oklch(from var(--color) var(--primary-text-lc) h);
 }
@@ -867,6 +872,9 @@ dialog {
   border: 0;
   background: 0;
 }
+dialog hr {
+  border-color: oklch(from var(--color) var(--surface-lc-3) h);
+}
 dialog:not([open]), dialog[open=false] {
   display: none;
 }
@@ -875,16 +883,22 @@ dialog::backdrop {
   inset: 0;
   background: rgba(0, 0, 0, 0.1);
 }
-dialog > article {
+dialog > form {
   width: 100%;
-  /* max-height: calc(100vh - 1rem * 2); */
-  max-height: 100lvh;
-  /* margin: 1rem; */
+  max-height: calc(100lvh - 2rem);
+}
+dialog > article,
+dialog > form > article {
+  width: 100%;
+  max-height: calc(100lvh - 2rem);
+  margin: 1rem auto;
   overflow: auto;
   color: oklch(from var(--color) var(--text-lc-1) h);
 }
 dialog > article > footer,
-dialog > article > form > footer {
+dialog > article > form > footer,
+dialog > form > article > footer,
+dialog > form > article > form > footer {
   text-align: right;
   justify-content: end;
 }

@@ -89,6 +89,10 @@ body {
   }
 }
 
+dialog {
+  color: cur-color(var(--text-lc-1));
+}
+
 a:not([role="button"]) {
   --color: var(--accent-color);
   color: cur-color(var(--text-lc-4));
@@ -239,6 +243,7 @@ label {
   border-radius: var(--border-radius);
   cursor: pointer;
   padding: 0.75rem 1rem;
+  text-align: center;
 
   background-color: cur-color(var(--primary-surface-lc));
   color: cur-color(var(--primary-text-lc));
@@ -291,6 +296,10 @@ dialog {
   border: 0;
   background: 0;
 
+  hr {
+    border-color: cur-color(var(--surface-lc-3));
+  }
+
   &:not([open]),
   &[open="false"] {
     display: none;
@@ -302,11 +311,16 @@ dialog {
     background: rgba(0, 0, 0, 0.1);
   }
 
-  > article {
+  > form {
     width: 100%;
-    /* max-height: calc(100vh - 1rem * 2); */
-    max-height: 100lvh;
-    /* margin: 1rem; */
+    max-height: calc(100lvh - 2rem);
+  }
+
+  > article,
+  > form > article {
+    width: 100%;
+    max-height: calc(100lvh - 2rem);
+    margin: 1rem auto;
     overflow: auto;
     color: cur-color(var(--text-lc-1));
 
