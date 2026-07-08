@@ -5,7 +5,11 @@
   "main": "dist/theme.css",
   "style": "dist/theme.css",
   "type": "module",
-  "files": ["dist/", "src/", "README.md"],
+  "files": [
+    "dist/",
+    "src/",
+    "README.md"
+  ],
   "scripts": {
     "dev": "node dev.js",
     "build": "sass src/:dist/ && node build.js",
@@ -38,7 +42,7 @@
     "fast-glob": "^3.3.3",
     "live-server": "^1.2.2",
     "nunjucks": "^3.2.4",
-    "sass": "^1.86.3",
-    "vite": "^6.3.5"
+    "sass": "^1.101.0",
+    "vite": "^8.1.3"
   }
 }

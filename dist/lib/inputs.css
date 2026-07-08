@@ -213,14 +213,16 @@ label.block:has(> input[type=radio]) {
   padding: 2rem;
   border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
   border-radius: var(--border-radius);
-  /* &:has(input[aria-invalid="true"]) { */
-  /* --color: var(--error-color); */
-  /* background-color: cur-color(var(--surface-lc-3)); */
-  /* } */
 }
 label.block:has(> input[type=radio]):has(input:checked) {
   border-color: oklch(from var(--color) var(--surface-lc-4) h);
   background-color: oklch(from var(--color) var(--surface-lc-2) h);
+}
+label.block:has(> input[type=radio]) {
+  /* &:has(input[aria-invalid="true"]) { */
+  /* --color: var(--error-color); */
+  /* background-color: cur-color(var(--surface-lc-3)); */
+  /* } */
 }
 
 input[type=radio],
