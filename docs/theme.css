@@ -406,7 +406,8 @@ input[type=color]::-moz-color-swatch {
   --error-color: maroon;
   --icon-width: 1rem;
   --icon-position: 0.75rem;
-  --box-shadow: 0.0145rem 0.029rem 0.174rem oklch(from #000 l c h / 0.01),
+  --box-shadow:
+    0.0145rem 0.029rem 0.174rem oklch(from #000 l c h / 0.01),
     0.0335rem 0.067rem 0.402rem oklch(from #000 l c h / 0.024),
     0.0625rem 0.125rem 0.75rem oklch(from #000 l c h / 0.03),
     0.1125rem 0.225rem 1.35rem oklch(from #000 l c h / 0.036);
@@ -834,6 +835,10 @@ label {
   border-color: oklch(from var(--color) var(--primary-surface-lc) h);
 }
 
+.secondary {
+  color: oklch(from var(--color) var(--text-lc-3) h);
+}
+
 .disabled,
 *:disabled {
   --swatch-lc-1: var(--grey-swatch-lc-1);
@@ -1008,7 +1013,7 @@ article.card,
   gap: 1rem;
 }
 
-@media only screen and (max-width: 480px) {
+@media only screen and (max-width: 600px) {
   .flex.flip {
     flex-direction: column;
   }
@@ -1034,6 +1039,14 @@ label > :is(input, select, textarea) ~ small {
 small.error {
   --color: var(--error-color);
   color: oklch(from var(--color) var(--text-lc-3) h);
+}
+
+small.chip {
+  border-radius: calc(var(--border-radius) * 2);
+  background-color: oklch(from var(--color) var(--surface-lc-3) h);
+  padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
+  color: oklch(from var(--color) var(--text-lc-3) h);
+  white-space: nowrap;
 }
 
 /*# sourceMappingURL=theme.css.map */
