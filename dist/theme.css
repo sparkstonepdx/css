@@ -339,64 +339,77 @@ input[type=color]::-moz-color-swatch {
 :root {
   --border-radius: 0.25rem;
   --padding: 1rem;
-  --swatch-lc-1: 98.82% 0.017;
+  --swatch-lc-1: 99% 0.018;
   --text-lc-1: var(--swatch-lc-9);
   --surface-lc-1: var(--swatch-lc-1);
-  --grey-swatch-lc-1: 99% 0;
+  --grey-swatch-lc-1: 99%
+    0;
   --grey-text-lc-1: var(--grey-swatch-lc-9);
   --grey-surface-lc-1: var(--grey-swatch-lc-1);
-  --swatch-lc-2: 92.86% 0.039;
+  --swatch-lc-2: 90.5% 0.045;
   --text-lc-2: var(--swatch-lc-8);
   --surface-lc-2: var(--swatch-lc-2);
-  --grey-swatch-lc-2: 90% 0;
+  --grey-swatch-lc-2: 90.5%
+    0;
   --grey-text-lc-2: var(--grey-swatch-lc-8);
   --grey-surface-lc-2: var(--grey-swatch-lc-2);
-  --swatch-lc-3: 70.13% 0.137;
+  --swatch-lc-3: 80.5% 0.125;
   --text-lc-3: var(--swatch-lc-7);
   --surface-lc-3: var(--swatch-lc-3);
-  --grey-swatch-lc-3: 80% 0;
+  --grey-swatch-lc-3: 80.5%
+    0;
   --grey-text-lc-3: var(--grey-swatch-lc-7);
   --grey-surface-lc-3: var(--grey-swatch-lc-3);
-  --swatch-lc-4: 53.07% 0.174;
+  --swatch-lc-4: 69.5% 0.17;
   --text-lc-4: var(--swatch-lc-6);
   --surface-lc-4: var(--swatch-lc-4);
-  --grey-swatch-lc-4: 72% 0;
+  --grey-swatch-lc-4: 69.5%
+    0;
   --grey-text-lc-4: var(--grey-swatch-lc-6);
   --grey-surface-lc-4: var(--grey-swatch-lc-4);
-  --swatch-lc-5: 40.99% 0.188;
+  --swatch-lc-5: 58% 0.185;
   --text-lc-5: var(--swatch-lc-5);
   --surface-lc-5: var(--swatch-lc-5);
-  --grey-swatch-lc-5: 67% 0;
+  --grey-swatch-lc-5: 58%
+    0;
   --grey-text-lc-5: var(--grey-swatch-lc-5);
   --grey-surface-lc-5: var(--grey-swatch-lc-5);
-  --swatch-lc-6: 32.24% 0.174;
+  --swatch-lc-6: 46% 0.17;
   --text-lc-6: var(--swatch-lc-4);
   --surface-lc-6: var(--swatch-lc-6);
-  --grey-swatch-lc-6: 50% 0.05;
+  --grey-swatch-lc-6: 46%
+    0;
   --grey-text-lc-6: var(--grey-swatch-lc-4);
   --grey-surface-lc-6: var(--grey-swatch-lc-6);
-  --swatch-lc-7: 26.34% 0.136;
+  --swatch-lc-7: 34% 0.135;
   --text-lc-7: var(--swatch-lc-3);
   --surface-lc-7: var(--swatch-lc-7);
-  --grey-swatch-lc-7: 35% 0;
+  --grey-swatch-lc-7: 34%
+    0;
   --grey-text-lc-7: var(--grey-swatch-lc-3);
   --grey-surface-lc-7: var(--grey-swatch-lc-7);
-  --swatch-lc-8: 22.1% 0.091;
+  --swatch-lc-8: 24.5% 0.095;
   --text-lc-8: var(--swatch-lc-2);
   --surface-lc-8: var(--swatch-lc-8);
-  --grey-swatch-lc-8: 25% 0;
+  --grey-swatch-lc-8: 24.5%
+    0;
   --grey-text-lc-8: var(--grey-swatch-lc-2);
   --grey-surface-lc-8: var(--grey-swatch-lc-8);
-  --swatch-lc-9: 19.02% 0.052;
+  --swatch-lc-9: 17% 0.055;
   --text-lc-9: var(--swatch-lc-1);
   --surface-lc-9: var(--swatch-lc-9);
-  --grey-swatch-lc-9: 13% 0;
+  --grey-swatch-lc-9: 17%
+    0;
   --grey-text-lc-9: var(--grey-swatch-lc-1);
   --grey-surface-lc-9: var(--grey-swatch-lc-9);
-  --primary-surface-lc: 32.24% 0.174;
-  --primary-text-lc: 98.82% 0.017;
-  --primary-grey-surface-lc: 50% 0.05;
-  --primary-grey-text-lc: 99% 0;
+  --primary-surface-lc: 46%
+    0.17;
+  --primary-text-lc: 99%
+    0.018;
+  --primary-grey-surface-lc: 46%
+    0;
+  --primary-grey-text-lc: 99%
+    0;
   --icon-chevron: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=");
   --icon-calendar: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==");
   --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
@@ -417,64 +430,77 @@ input[type=color]::-moz-color-swatch {
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --swatch-lc-9: 98.82% 0.017;
+    --swatch-lc-9: 99% 0.018;
     --text-lc-1: var(--swatch-lc-9);
     --surface-lc-1: var(--swatch-lc-1);
-    --grey-swatch-lc-9: 99% 0;
+    --grey-swatch-lc-9: 99%
+      0;
     --grey-text-lc-1: var(--grey-swatch-lc-9);
     --grey-surface-lc-1: var(--grey-swatch-lc-1);
-    --swatch-lc-8: 92.86% 0.039;
+    --swatch-lc-8: 90.5% 0.045;
     --text-lc-2: var(--swatch-lc-8);
     --surface-lc-2: var(--swatch-lc-2);
-    --grey-swatch-lc-8: 90% 0;
+    --grey-swatch-lc-8: 90.5%
+      0;
     --grey-text-lc-2: var(--grey-swatch-lc-8);
     --grey-surface-lc-2: var(--grey-swatch-lc-2);
-    --swatch-lc-7: 70.13% 0.137;
+    --swatch-lc-7: 80.5% 0.125;
     --text-lc-3: var(--swatch-lc-7);
     --surface-lc-3: var(--swatch-lc-3);
-    --grey-swatch-lc-7: 80% 0;
+    --grey-swatch-lc-7: 80.5%
+      0;
     --grey-text-lc-3: var(--grey-swatch-lc-7);
     --grey-surface-lc-3: var(--grey-swatch-lc-3);
-    --swatch-lc-6: 53.07% 0.174;
+    --swatch-lc-6: 69.5% 0.17;
     --text-lc-4: var(--swatch-lc-6);
     --surface-lc-4: var(--swatch-lc-4);
-    --grey-swatch-lc-6: 72% 0;
+    --grey-swatch-lc-6: 69.5%
+      0;
     --grey-text-lc-4: var(--grey-swatch-lc-6);
     --grey-surface-lc-4: var(--grey-swatch-lc-4);
-    --swatch-lc-5: 40.99% 0.188;
+    --swatch-lc-5: 58% 0.185;
     --text-lc-5: var(--swatch-lc-5);
     --surface-lc-5: var(--swatch-lc-5);
-    --grey-swatch-lc-5: 67% 0;
+    --grey-swatch-lc-5: 58%
+      0;
     --grey-text-lc-5: var(--grey-swatch-lc-5);
     --grey-surface-lc-5: var(--grey-swatch-lc-5);
-    --swatch-lc-4: 32.24% 0.174;
+    --swatch-lc-4: 46% 0.17;
     --text-lc-6: var(--swatch-lc-4);
     --surface-lc-6: var(--swatch-lc-6);
-    --grey-swatch-lc-4: 50% 0.05;
+    --grey-swatch-lc-4: 46%
+      0;
     --grey-text-lc-6: var(--grey-swatch-lc-4);
     --grey-surface-lc-6: var(--grey-swatch-lc-6);
-    --swatch-lc-3: 26.34% 0.136;
+    --swatch-lc-3: 34% 0.135;
     --text-lc-7: var(--swatch-lc-3);
     --surface-lc-7: var(--swatch-lc-7);
-    --grey-swatch-lc-3: 35% 0;
+    --grey-swatch-lc-3: 34%
+      0;
     --grey-text-lc-7: var(--grey-swatch-lc-3);
     --grey-surface-lc-7: var(--grey-swatch-lc-7);
-    --swatch-lc-2: 22.1% 0.091;
+    --swatch-lc-2: 24.5% 0.095;
     --text-lc-8: var(--swatch-lc-2);
     --surface-lc-8: var(--swatch-lc-8);
-    --grey-swatch-lc-2: 25% 0;
+    --grey-swatch-lc-2: 24.5%
+      0;
     --grey-text-lc-8: var(--grey-swatch-lc-2);
     --grey-surface-lc-8: var(--grey-swatch-lc-8);
-    --swatch-lc-1: 19.02% 0.052;
+    --swatch-lc-1: 17% 0.055;
     --text-lc-9: var(--swatch-lc-1);
     --surface-lc-9: var(--swatch-lc-9);
-    --grey-swatch-lc-1: 13% 0;
+    --grey-swatch-lc-1: 17%
+      0;
     --grey-text-lc-9: var(--grey-swatch-lc-1);
     --grey-surface-lc-9: var(--grey-swatch-lc-9);
-    --primary-surface-lc: 32.24% 0.174;
-    --primary-text-lc: 98.82% 0.017;
-    --primary-grey-surface-lc: 50% 0.05;
-    --primary-grey-text-lc: 99% 0;
+    --primary-surface-lc: 46%
+      0.17;
+    --primary-text-lc: 99%
+      0.018;
+    --primary-grey-surface-lc: 46%
+      0;
+    --primary-grey-text-lc: 99%
+      0;
     --icon-chevron: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=");
     --icon-calendar: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==");
     --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
@@ -496,64 +522,77 @@ html:has(dialog[open]) {
 }
 
 [data-color-scheme=dark] {
-  --swatch-lc-9: 98.82% 0.017;
+  --swatch-lc-9: 99% 0.018;
   --text-lc-1: var(--swatch-lc-9);
   --surface-lc-1: var(--swatch-lc-1);
-  --grey-swatch-lc-9: 99% 0;
+  --grey-swatch-lc-9: 99%
+    0;
   --grey-text-lc-1: var(--grey-swatch-lc-9);
   --grey-surface-lc-1: var(--grey-swatch-lc-1);
-  --swatch-lc-8: 92.86% 0.039;
+  --swatch-lc-8: 90.5% 0.045;
   --text-lc-2: var(--swatch-lc-8);
   --surface-lc-2: var(--swatch-lc-2);
-  --grey-swatch-lc-8: 90% 0;
+  --grey-swatch-lc-8: 90.5%
+    0;
   --grey-text-lc-2: var(--grey-swatch-lc-8);
   --grey-surface-lc-2: var(--grey-swatch-lc-2);
-  --swatch-lc-7: 70.13% 0.137;
+  --swatch-lc-7: 80.5% 0.125;
   --text-lc-3: var(--swatch-lc-7);
   --surface-lc-3: var(--swatch-lc-3);
-  --grey-swatch-lc-7: 80% 0;
+  --grey-swatch-lc-7: 80.5%
+    0;
   --grey-text-lc-3: var(--grey-swatch-lc-7);
   --grey-surface-lc-3: var(--grey-swatch-lc-3);
-  --swatch-lc-6: 53.07% 0.174;
+  --swatch-lc-6: 69.5% 0.17;
   --text-lc-4: var(--swatch-lc-6);
   --surface-lc-4: var(--swatch-lc-4);
-  --grey-swatch-lc-6: 72% 0;
+  --grey-swatch-lc-6: 69.5%
+    0;
   --grey-text-lc-4: var(--grey-swatch-lc-6);
   --grey-surface-lc-4: var(--grey-swatch-lc-4);
-  --swatch-lc-5: 40.99% 0.188;
+  --swatch-lc-5: 58% 0.185;
   --text-lc-5: var(--swatch-lc-5);
   --surface-lc-5: var(--swatch-lc-5);
-  --grey-swatch-lc-5: 67% 0;
+  --grey-swatch-lc-5: 58%
+    0;
   --grey-text-lc-5: var(--grey-swatch-lc-5);
   --grey-surface-lc-5: var(--grey-swatch-lc-5);
-  --swatch-lc-4: 32.24% 0.174;
+  --swatch-lc-4: 46% 0.17;
   --text-lc-6: var(--swatch-lc-4);
   --surface-lc-6: var(--swatch-lc-6);
-  --grey-swatch-lc-4: 50% 0.05;
+  --grey-swatch-lc-4: 46%
+    0;
   --grey-text-lc-6: var(--grey-swatch-lc-4);
   --grey-surface-lc-6: var(--grey-swatch-lc-6);
-  --swatch-lc-3: 26.34% 0.136;
+  --swatch-lc-3: 34% 0.135;
   --text-lc-7: var(--swatch-lc-3);
   --surface-lc-7: var(--swatch-lc-7);
-  --grey-swatch-lc-3: 35% 0;
+  --grey-swatch-lc-3: 34%
+    0;
   --grey-text-lc-7: var(--grey-swatch-lc-3);
   --grey-surface-lc-7: var(--grey-swatch-lc-7);
-  --swatch-lc-2: 22.1% 0.091;
+  --swatch-lc-2: 24.5% 0.095;
   --text-lc-8: var(--swatch-lc-2);
   --surface-lc-8: var(--swatch-lc-8);
-  --grey-swatch-lc-2: 25% 0;
+  --grey-swatch-lc-2: 24.5%
+    0;
   --grey-text-lc-8: var(--grey-swatch-lc-2);
   --grey-surface-lc-8: var(--grey-swatch-lc-8);
-  --swatch-lc-1: 19.02% 0.052;
+  --swatch-lc-1: 17% 0.055;
   --text-lc-9: var(--swatch-lc-1);
   --surface-lc-9: var(--swatch-lc-9);
-  --grey-swatch-lc-1: 13% 0;
+  --grey-swatch-lc-1: 17%
+    0;
   --grey-text-lc-9: var(--grey-swatch-lc-1);
   --grey-surface-lc-9: var(--grey-swatch-lc-9);
-  --primary-surface-lc: 32.24% 0.174;
-  --primary-text-lc: 98.82% 0.017;
-  --primary-grey-surface-lc: 50% 0.05;
-  --primary-grey-text-lc: 99% 0;
+  --primary-surface-lc: 46%
+    0.17;
+  --primary-text-lc: 99%
+    0.018;
+  --primary-grey-surface-lc: 46%
+    0;
+  --primary-grey-text-lc: 99%
+    0;
   --icon-chevron: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=");
   --icon-calendar: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==");
   --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
@@ -562,64 +601,77 @@ html:has(dialog[open]) {
 }
 
 [data-color-scheme=light] {
-  --swatch-lc-1: 98.82% 0.017;
+  --swatch-lc-1: 99% 0.018;
   --text-lc-1: var(--swatch-lc-9);
   --surface-lc-1: var(--swatch-lc-1);
-  --grey-swatch-lc-1: 99% 0;
+  --grey-swatch-lc-1: 99%
+    0;
   --grey-text-lc-1: var(--grey-swatch-lc-9);
   --grey-surface-lc-1: var(--grey-swatch-lc-1);
-  --swatch-lc-2: 92.86% 0.039;
+  --swatch-lc-2: 90.5% 0.045;
   --text-lc-2: var(--swatch-lc-8);
   --surface-lc-2: var(--swatch-lc-2);
-  --grey-swatch-lc-2: 90% 0;
+  --grey-swatch-lc-2: 90.5%
+    0;
   --grey-text-lc-2: var(--grey-swatch-lc-8);
   --grey-surface-lc-2: var(--grey-swatch-lc-2);
-  --swatch-lc-3: 70.13% 0.137;
+  --swatch-lc-3: 80.5% 0.125;
   --text-lc-3: var(--swatch-lc-7);
   --surface-lc-3: var(--swatch-lc-3);
-  --grey-swatch-lc-3: 80% 0;
+  --grey-swatch-lc-3: 80.5%
+    0;
   --grey-text-lc-3: var(--grey-swatch-lc-7);
   --grey-surface-lc-3: var(--grey-swatch-lc-3);
-  --swatch-lc-4: 53.07% 0.174;
+  --swatch-lc-4: 69.5% 0.17;
   --text-lc-4: var(--swatch-lc-6);
   --surface-lc-4: var(--swatch-lc-4);
-  --grey-swatch-lc-4: 72% 0;
+  --grey-swatch-lc-4: 69.5%
+    0;
   --grey-text-lc-4: var(--grey-swatch-lc-6);
   --grey-surface-lc-4: var(--grey-swatch-lc-4);
-  --swatch-lc-5: 40.99% 0.188;
+  --swatch-lc-5: 58% 0.185;
   --text-lc-5: var(--swatch-lc-5);
   --surface-lc-5: var(--swatch-lc-5);
-  --grey-swatch-lc-5: 67% 0;
+  --grey-swatch-lc-5: 58%
+    0;
   --grey-text-lc-5: var(--grey-swatch-lc-5);
   --grey-surface-lc-5: var(--grey-swatch-lc-5);
-  --swatch-lc-6: 32.24% 0.174;
+  --swatch-lc-6: 46% 0.17;
   --text-lc-6: var(--swatch-lc-4);
   --surface-lc-6: var(--swatch-lc-6);
-  --grey-swatch-lc-6: 50% 0.05;
+  --grey-swatch-lc-6: 46%
+    0;
   --grey-text-lc-6: var(--grey-swatch-lc-4);
   --grey-surface-lc-6: var(--grey-swatch-lc-6);
-  --swatch-lc-7: 26.34% 0.136;
+  --swatch-lc-7: 34% 0.135;
   --text-lc-7: var(--swatch-lc-3);
   --surface-lc-7: var(--swatch-lc-7);
-  --grey-swatch-lc-7: 35% 0;
+  --grey-swatch-lc-7: 34%
+    0;
   --grey-text-lc-7: var(--grey-swatch-lc-3);
   --grey-surface-lc-7: var(--grey-swatch-lc-7);
-  --swatch-lc-8: 22.1% 0.091;
+  --swatch-lc-8: 24.5% 0.095;
   --text-lc-8: var(--swatch-lc-2);
   --surface-lc-8: var(--swatch-lc-8);
-  --grey-swatch-lc-8: 25% 0;
+  --grey-swatch-lc-8: 24.5%
+    0;
   --grey-text-lc-8: var(--grey-swatch-lc-2);
   --grey-surface-lc-8: var(--grey-swatch-lc-8);
-  --swatch-lc-9: 19.02% 0.052;
+  --swatch-lc-9: 17% 0.055;
   --text-lc-9: var(--swatch-lc-1);
   --surface-lc-9: var(--swatch-lc-9);
-  --grey-swatch-lc-9: 13% 0;
+  --grey-swatch-lc-9: 17%
+    0;
   --grey-text-lc-9: var(--grey-swatch-lc-1);
   --grey-surface-lc-9: var(--grey-swatch-lc-9);
-  --primary-surface-lc: 32.24% 0.174;
-  --primary-text-lc: 98.82% 0.017;
-  --primary-grey-surface-lc: 50% 0.05;
-  --primary-grey-text-lc: 99% 0;
+  --primary-surface-lc: 46%
+    0.17;
+  --primary-text-lc: 99%
+    0.018;
+  --primary-grey-surface-lc: 46%
+    0;
+  --primary-grey-text-lc: 99%
+    0;
   --icon-chevron: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=");
   --icon-calendar: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==");
   --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
@@ -635,7 +687,8 @@ html:has(dialog[open]) {
 body {
   font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 18px;
-  background-color: oklch(from var(--color) var(--surface-lc-1) h);
+  --background-color:cur-color(var(--surface-lc-1));
+  background-color: var(--background-color);
   min-height: 100vh;
   color: oklch(from var(--color) var(--text-lc-1) h);
 }
