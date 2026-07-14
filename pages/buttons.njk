@@ -1,0 +1,116 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set toc = [
+  ["variants", "Variants"],
+  ["elements", "Any element"],
+  ["states", "States"],
+  ["shape", "Shape"],
+  ["semantic", "Unstyling"],
+  ["groups", "Groups"]
+] %}
+
+{% block content %}
+<h1>Buttons</h1>
+<p>
+  Every variant is styled through one selector group, so <code>&lt;button&gt;</code>,
+  <code>&lt;input type="submit"&gt;</code>, <code>&lt;input type="button"&gt;</code>,
+  <code>&lt;input type="reset"&gt;</code>, and anything with <code>role="button"</code> get the same
+  treatment.
+</p>
+
+<section id="variants">
+  <h2>Variants</h2>
+  {% call m.demo("btn-variants") %}
+<div class="flex" style="flex-wrap: wrap">
+  <button>Default</button>
+  <button class="primary">Primary</button>
+  <button class="secondary">Secondary</button>
+  <button class="ghost">Ghost</button>
+  <button class="contrast">Contrast</button>
+</div>
+  {% endcall %}
+  <p>
+    <small>
+      Default and <code>.primary</code> render identically today. <code>.primary</code> exists so
+      intent is explicit in markup and so the two can diverge later. <code>.contrast</code> rebinds
+      <code>--color</code> to <code>--fallback-color</code>, which produces a neutral button on any
+      hue.
+    </small>
+  </p>
+</section>
+
+<section id="elements">
+  <h2>Any element</h2>
+  {% call m.demo("btn-elements") %}
+<div class="flex" style="flex-wrap: wrap; align-items: center">
+  <button type="button">button</button>
+  <input type="submit" value="input[submit]" />
+  <input type="reset" value="input[reset]" />
+  <a href="#elements" role="button">a[role=button]</a>
+</div>
+  {% endcall %}
+</section>
+
+<section id="states">
+  <h2>States</h2>
+  <p>
+    <code>:disabled</code> and <code>.disabled</code> both swap the color scale for the greyscale
+    one. Use <code>.disabled</code> when the element is not a form control.
+  </p>
+  {% call m.demo("btn-states") %}
+<div class="flex" style="flex-wrap: wrap">
+  <button disabled>Disabled</button>
+  <button class="secondary" disabled>Disabled secondary</button>
+  <a href="#states" role="button" class="disabled">Disabled link button</a>
+</div>
+  {% endcall %}
+</section>
+
+<section id="shape">
+  <h2>Shape</h2>
+  <p>
+    <code>.rounded</code> sets <code>--border-radius: 2rem</code> on the element. The radius is a
+    variable, so you can set it yourself anywhere.
+  </p>
+  {% call m.demo("btn-shape") %}
+<div class="flex" style="flex-wrap: wrap">
+  <button class="rounded">Rounded</button>
+  <button class="secondary rounded">Rounded secondary</button>
+  <button style="--border-radius: 0">Square</button>
+</div>
+  {% endcall %}
+</section>
+
+<section id="semantic">
+  <h2>Unstyling a button</h2>
+  <p>
+    <code>.semantic</code> applies <code>all: unset</code> and keeps the pointer cursor. Use it when
+    you need a real <code>&lt;button&gt;</code> for accessibility but no button chrome.
+  </p>
+  {% call m.demo("btn-semantic") %}
+<p>
+  Read more about
+  <button class="semantic" style="text-decoration: underline">this topic</button>,
+  or dismiss it.
+</p>
+  {% endcall %}
+</section>
+
+<section id="groups">
+  <h2>Groups and footers</h2>
+  <p>
+    <code>.flex</code> handles rows. Inside <code>article &gt; footer</code>, contents are pushed
+    right automatically.
+  </p>
+  {% call m.demo("btn-groups") %}
+<article class="card">
+  <h3>Delete this project?</h3>
+  <p>This cannot be undone.</p>
+  <footer class="flex">
+    <button class="secondary">Cancel</button>
+    <button>Delete</button>
+  </footer>
+</article>
+  {% endcall %}
+</section>
+{% endblock %}

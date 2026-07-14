@@ -1,0 +1,298 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Typography · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="container-fluid site-header">
+      <nav class="flex" style="align-items: center">
+        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      </nav>
+      <nav class="flex site-nav" style="flex-wrap: wrap">
+        
+          <a href="./index.html">Home</a>
+        
+          <a href="./colors.html">Colors</a>
+        
+          <a href="./typography.html" aria-current="page">Typography</a>
+        
+          <a href="./buttons.html">Buttons</a>
+        
+          <a href="./forms.html">Forms</a>
+        
+          <a href="./containers.html">Containers</a>
+        
+          <a href="./layout.html">Layout</a>
+        
+          <a href="./customizing.html">Customizing</a>
+        
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            
+              <li><a href="#headings">Headings</a></li>
+            
+              <li><a href="#prose">Prose</a></li>
+            
+              <li><a href="#blockquote">Blockquote</a></li>
+            
+              <li><a href="#lists">Lists</a></li>
+            
+              <li><a href="#code">Code</a></li>
+            
+              <li><a href="#small">Small text</a></li>
+            
+              <li><a href="#rules">Rules</a></li>
+            
+          </ul>
+        </nav>
+      
+
+      
+<h1>Typography</h1>
+<p>Text elements are styled without classes. Everything below is plain semantic HTML.</p>
+
+<section id="headings">
+  <h2>Headings</h2>
+  
+<div class="demo">
+  
+<h1>Heading level 1</h1>
+<h2>Heading level 2</h2>
+<h3>Heading level 3</h3>
+<h4>Heading level 4</h4>
+<h5>Heading level 5</h5>
+<h6>Heading level 6</h6>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="type-headings">Copy</button>
+  <pre><code id="type-headings">&lt;h1&gt;Heading level 1&lt;/h1&gt;
+&lt;h2&gt;Heading level 2&lt;/h2&gt;
+&lt;h3&gt;Heading level 3&lt;/h3&gt;
+&lt;h4&gt;Heading level 4&lt;/h4&gt;
+&lt;h5&gt;Heading level 5&lt;/h5&gt;
+&lt;h6&gt;Heading level 6&lt;/h6&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="prose">
+  <h2>Prose</h2>
+  
+<div class="demo">
+  
+<p>
+  A paragraph with <strong>strong emphasis</strong>, <em>emphasis</em>,
+  <a href="#prose">a link</a>, and <small>small print</small>.
+</p>
+<p class="secondary">
+  A paragraph with <code>.secondary</code>, which drops it to <code>--text-lc-3</code>.
+</p>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="type-prose">Copy</button>
+  <pre><code id="type-prose">&lt;p&gt;
+  A paragraph with &lt;strong&gt;strong emphasis&lt;/strong&gt;, &lt;em&gt;emphasis&lt;/em&gt;,
+  &lt;a href=&quot;#prose&quot;&gt;a link&lt;/a&gt;, and &lt;small&gt;small print&lt;/small&gt;.
+&lt;/p&gt;
+&lt;p class=&quot;secondary&quot;&gt;
+  A paragraph with &lt;code&gt;.secondary&lt;/code&gt;, which drops it to &lt;code&gt;--text-lc-3&lt;/code&gt;.
+&lt;/p&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="blockquote">
+  <h2>Blockquote</h2>
+  <p>Bordered on the left at double the standard border width.</p>
+  
+<div class="demo">
+  
+<blockquote>
+  <p>The best way to predict the future is to invent it.</p>
+  <footer><small>Alan Kay</small></footer>
+</blockquote>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="type-blockquote">Copy</button>
+  <pre><code id="type-blockquote">&lt;blockquote&gt;
+  &lt;p&gt;The best way to predict the future is to invent it.&lt;/p&gt;
+  &lt;footer&gt;&lt;small&gt;Alan Kay&lt;/small&gt;&lt;/footer&gt;
+&lt;/blockquote&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="lists">
+  <h2>Lists</h2>
+  
+<div class="demo">
+  
+<ul>
+  <li>Unordered item</li>
+  <li>
+    With a nested list
+    <ul>
+      <li>Nested item</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>Ordered item</li>
+  <li>Second item</li>
+</ol>
+
+<dl>
+  <dt>Term</dt>
+  <dd>Definition</dd>
+</dl>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="type-lists">Copy</button>
+  <pre><code id="type-lists">&lt;ul&gt;
+  &lt;li&gt;Unordered item&lt;/li&gt;
+  &lt;li&gt;
+    With a nested list
+    &lt;ul&gt;
+      &lt;li&gt;Nested item&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;Ordered item&lt;/li&gt;
+  &lt;li&gt;Second item&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;dl&gt;
+  &lt;dt&gt;Term&lt;/dt&gt;
+  &lt;dd&gt;Definition&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="code">
+  <h2>Code</h2>
+  <p>
+    <code>code</code>, <code>kbd</code>, and <code>samp</code> render inline. <code>kbd</code> uses
+    the primary surface so it reads as a key.
+  </p>
+  
+<div class="demo">
+  
+<p>
+  Run <code>npm install</code>, then press <kbd>Ctrl</kbd> + <kbd>C</kbd> to
+  stop it. The output was <samp>done in 1.2s</samp>.
+</p>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="type-inline-code">Copy</button>
+  <pre><code id="type-inline-code">&lt;p&gt;
+  Run &lt;code&gt;npm install&lt;/code&gt;, then press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;C&lt;/kbd&gt; to
+  stop it. The output was &lt;samp&gt;done in 1.2s&lt;/samp&gt;.
+&lt;/p&gt;</code></pre>
+</div>
+
+
+  <p>Inside a <code>pre</code>, the font size scales up and padding is applied.</p>
+  
+<div class="demo">
+  
+<pre><code>export function greet(name) {
+  return "Hello, " + name;
+}</code></pre>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="type-pre">Copy</button>
+  <pre><code id="type-pre">&lt;pre&gt;&lt;code&gt;export function greet(name) {
+  return &quot;Hello, &quot; + name;
+}&lt;/code&gt;&lt;/pre&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="small">
+  <h2>Small text</h2>
+  <p>
+    <code>small</code> after an input becomes helper text. <code>small.error</code> rebinds
+    <code>--color</code> to <code>--error-color</code>. <code>small.chip</code> is a pill on
+    <code>--surface-lc-3</code>.
+  </p>
+  
+<div class="demo">
+  
+<p>
+  <small class="chip">draft</small>
+  <small class="chip">v2.1.0</small>
+  <small class="chip">needs review</small>
+</p>
+<p><small class="error">Something went wrong.</small></p>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="type-small">Copy</button>
+  <pre><code id="type-small">&lt;p&gt;
+  &lt;small class=&quot;chip&quot;&gt;draft&lt;/small&gt;
+  &lt;small class=&quot;chip&quot;&gt;v2.1.0&lt;/small&gt;
+  &lt;small class=&quot;chip&quot;&gt;needs review&lt;/small&gt;
+&lt;/p&gt;
+&lt;p&gt;&lt;small class=&quot;error&quot;&gt;Something went wrong.&lt;/small&gt;&lt;/p&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="rules">
+  <h2>Horizontal rules</h2>
+  
+<div class="demo">
+  
+<p>Above the rule.</p>
+<hr />
+<p>Below the rule.</p>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="type-hr">Copy</button>
+  <pre><code id="type-hr">&lt;p&gt;Above the rule.&lt;/p&gt;
+&lt;hr /&gt;
+&lt;p&gt;Below the rule.&lt;/p&gt;</code></pre>
+</div>
+
+</section>
+
+
+      <footer class="site-footer">
+        <hr />
+        <p>
+          <small>
+            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+            MIT
+          </small>
+        </p>
+      </footer>
+    </main>
+
+    
+  </body>
+</html>

@@ -1,0 +1,124 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set toc = [
+  ["headings", "Headings"],
+  ["prose", "Prose"],
+  ["blockquote", "Blockquote"],
+  ["lists", "Lists"],
+  ["code", "Code"],
+  ["small", "Small text"],
+  ["rules", "Rules"]
+] %}
+
+{% block content %}
+<h1>Typography</h1>
+<p>Text elements are styled without classes. Everything below is plain semantic HTML.</p>
+
+<section id="headings">
+  <h2>Headings</h2>
+  {% call m.demo("type-headings") %}
+<h1>Heading level 1</h1>
+<h2>Heading level 2</h2>
+<h3>Heading level 3</h3>
+<h4>Heading level 4</h4>
+<h5>Heading level 5</h5>
+<h6>Heading level 6</h6>
+  {% endcall %}
+</section>
+
+<section id="prose">
+  <h2>Prose</h2>
+  {% call m.demo("type-prose") %}
+<p>
+  A paragraph with <strong>strong emphasis</strong>, <em>emphasis</em>,
+  <a href="#prose">a link</a>, and <small>small print</small>.
+</p>
+<p class="secondary">
+  A paragraph with <code>.secondary</code>, which drops it to <code>--text-lc-3</code>.
+</p>
+  {% endcall %}
+</section>
+
+<section id="blockquote">
+  <h2>Blockquote</h2>
+  <p>Bordered on the left at double the standard border width.</p>
+  {% call m.demo("type-blockquote") %}
+<blockquote>
+  <p>The best way to predict the future is to invent it.</p>
+  <footer><small>Alan Kay</small></footer>
+</blockquote>
+  {% endcall %}
+</section>
+
+<section id="lists">
+  <h2>Lists</h2>
+  {% call m.demo("type-lists") %}
+<ul>
+  <li>Unordered item</li>
+  <li>
+    With a nested list
+    <ul>
+      <li>Nested item</li>
+    </ul>
+  </li>
+</ul>
+
+<ol>
+  <li>Ordered item</li>
+  <li>Second item</li>
+</ol>
+
+<dl>
+  <dt>Term</dt>
+  <dd>Definition</dd>
+</dl>
+  {% endcall %}
+</section>
+
+<section id="code">
+  <h2>Code</h2>
+  <p>
+    <code>code</code>, <code>kbd</code>, and <code>samp</code> render inline. <code>kbd</code> uses
+    the primary surface so it reads as a key.
+  </p>
+  {% call m.demo("type-inline-code") %}
+<p>
+  Run <code>npm install</code>, then press <kbd>Ctrl</kbd> + <kbd>C</kbd> to
+  stop it. The output was <samp>done in 1.2s</samp>.
+</p>
+  {% endcall %}
+
+  <p>Inside a <code>pre</code>, the font size scales up and padding is applied.</p>
+  {% call m.demo("type-pre") %}
+<pre><code>export function greet(name) {
+  return "Hello, " + name;
+}</code></pre>
+  {% endcall %}
+</section>
+
+<section id="small">
+  <h2>Small text</h2>
+  <p>
+    <code>small</code> after an input becomes helper text. <code>small.error</code> rebinds
+    <code>--color</code> to <code>--error-color</code>. <code>small.chip</code> is a pill on
+    <code>--surface-lc-3</code>.
+  </p>
+  {% call m.demo("type-small") %}
+<p>
+  <small class="chip">draft</small>
+  <small class="chip">v2.1.0</small>
+  <small class="chip">needs review</small>
+</p>
+<p><small class="error">Something went wrong.</small></p>
+  {% endcall %}
+</section>
+
+<section id="rules">
+  <h2>Horizontal rules</h2>
+  {% call m.demo("type-hr") %}
+<p>Above the rule.</p>
+<hr />
+<p>Below the rule.</p>
+  {% endcall %}
+</section>
+{% endblock %}

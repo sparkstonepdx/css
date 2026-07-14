@@ -8,21 +8,18 @@ const run = promisify(exec);
 async function rebuild() {
   try {
     console.log('🔄 Rebuilding...');
-    await run('node build.js');
+    // sass first: build.js copies dist/theme.css into docs/, so it has to exist
     await run('sass src/theme.scss dist/theme.css');
-    await run('cp dist/theme.css docs/theme.css');
+    await run('node build.js');
     console.log('✅ Build complete.\n');
   } catch (err) {
     console.error('❌ Build failed:', err.stderr || err);
   }
 }
 
-// Initial build
 await rebuild();
 
-// Watch for changes in key folders
-const watcher = chokidar.watch('.', {
-  ignored: ['node_modules', 'dist', 'docs', '.git'],
+const watcher = chokidar.watch(['src', 'pages', 'templates', 'static', 'build.js'], {
   ignoreInitial: true,
   persistent: true,
 });
@@ -32,7 +29,6 @@ watcher.on('all', async (event, path) => {
   await rebuild();
 });
 
-// Serve docs folder
 liveServer.start({
   root: 'docs',
   open: true,

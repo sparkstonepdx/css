@@ -1,0 +1,167 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set toc = [
+  ["variables", "Variables"],
+  ["scoping", "Scoping"],
+  ["scheme", "Color scheme"],
+  ["scale", "Replacing the scale"],
+  ["sass", "Sass API"],
+  ["icons", "Icons"]
+] %}
+
+{% block content %}
+<h1>Customizing</h1>
+<p>
+  Every design decision in the framework is a CSS variable or a Sass function. Nothing is hardcoded
+  at a call site.
+</p>
+
+<section id="variables">
+  <h2>Variable reference</h2>
+  <table>
+    <thead>
+      <tr><th>Variable</th><th>Default</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>--color</code></td><td><code>rebeccapurple</code></td><td>Base hue. Everything derives from this.</td></tr>
+      <tr><td><code>--accent-color</code></td><td>complement of <code>--color</code></td><td>Links</td></tr>
+      <tr><td><code>--error-color</code></td><td><code>maroon</code></td><td>Invalid inputs, <code>small.error</code></td></tr>
+      <tr><td><code>--fallback-color</code></td><td><code>white</code></td><td>Used by <code>.contrast</code></td></tr>
+      <tr><td><code>--border-radius</code></td><td><code>0.25rem</code></td><td>Corners on every surface</td></tr>
+      <tr><td><code>--border-width</code></td><td><code>0.1625rem</code></td><td>Borders and rules</td></tr>
+      <tr><td><code>--padding</code></td><td><code>1rem</code></td><td>Base spacing unit</td></tr>
+      <tr><td><code>--box-shadow</code></td><td>four-layer shadow</td><td>Articles and dialogs</td></tr>
+      <tr><td><code>--icon-width</code></td><td><code>1rem</code></td><td>Size of input icons</td></tr>
+      <tr><td><code>--icon-position</code></td><td><code>0.75rem</code></td><td>Inset of input icons</td></tr>
+      <tr><td><code>--surface-lc-1</code>…<code>-9</code></td><td>derived</td><td>Background stops, light to dark</td></tr>
+      <tr><td><code>--text-lc-1</code>…<code>-9</code></td><td>derived</td><td>Foreground stops, high to low contrast</td></tr>
+      <tr><td><code>--primary-surface-lc</code></td><td>stop 6</td><td>Primary button background</td></tr>
+      <tr><td><code>--primary-text-lc</code></td><td>stop 1</td><td>Primary button text</td></tr>
+      <tr><td><code>--grey-surface-lc-*</code></td><td>derived</td><td>Chroma-free equivalents, used by disabled states</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <small>
+      <code>--primary-color</code> is declared on <code>:root</code> but is not read by any rule.
+      Primary buttons use <code>--primary-surface-lc</code> against the ambient <code>--color</code>.
+    </small>
+  </p>
+</section>
+
+<section id="scoping">
+  <h2>Scoping</h2>
+  <p>
+    Variables cascade, so overriding one on a subtree is the whole customization story. No build step
+    is involved in any of this.
+  </p>
+  {% call m.demo("custom-scoping") %}
+<article class="card" style="--color: seagreen; --border-radius: 1rem">
+  <h3>Scoped surface</h3>
+  <p>Different hue, different radius, same markup.</p>
+  <button>Themed button</button>
+</article>
+  {% endcall %}
+</section>
+
+<section id="scheme">
+  <h2>Color scheme</h2>
+  <p>
+    Without a <code>data-color-scheme</code> attribute, the scheme follows
+    <code>prefers-color-scheme</code>. Set the attribute to pin it, on <code>&lt;html&gt;</code> or on
+    any subtree.
+  </p>
+  {% call m.demo("custom-scheme") %}
+<div class="flex flip">
+  <div data-color-scheme="light" class="scheme-pane">
+    <p><strong>Forced light</strong></p>
+    <button>Button</button>
+  </div>
+  <div data-color-scheme="dark" class="scheme-pane">
+    <p><strong>Forced dark</strong></p>
+    <button>Button</button>
+  </div>
+</div>
+  {% endcall %}
+</section>
+
+<section id="scale">
+  <h2>Replacing the scale</h2>
+  <p>
+    The nine stops live in <code>$lcArray</code> in <code>vars.scss</code>, as
+    <code>(lightness, chroma)</code> pairs from lightest to darkest. <code>$dimLcArray</code> is the
+    greyscale counterpart used by disabled states.
+  </p>
+  {% call m.snippet("custom-scale", "scss") %}
+$lcArray: (
+  (99%, 0.018),
+  (90.5%, 0.045),
+  (80.5%, 0.125),
+  (69.5%, 0.17),
+  (58%, 0.185),
+  (46%, 0.17),
+  (34%, 0.135),
+  (24.5%, 0.095),
+  (17%, 0.055)
+);
+  {% endcall %}
+  <p>
+    If you change these, check contrast in <strong>both</strong> schemes. Light mode resolves
+    <code>text-lc-N</code> on <code>surface-lc-M</code> to stops <code>(M, 10 - N)</code>; dark mode
+    resolves the same pairing to stops <code>(10 - M, N)</code>. Those are different swatches, so
+    passing in one scheme does not imply passing in the other.
+  </p>
+</section>
+
+<section id="sass">
+  <h2>Sass API</h2>
+  <table>
+    <thead>
+      <tr><th>Signature</th><th>Returns</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>cur-color($lc)</code></td><td>The ambient <code>--color</code> at stop <code>$lc</code></td></tr>
+      <tr><td><code>get-color($lc, $color)</code></td><td>An explicit color at stop <code>$lc</code></td></tr>
+      <tr><td><code>get-grey($lc, $color)</code></td><td>The same, with chroma forced to zero</td></tr>
+      <tr><td><code>get-border-color()</code></td><td>Shorthand for <code>cur-color(var(--surface-lc-4))</code></td></tr>
+      <tr><td><code>oklch-from-vars($color, $lightness)</code></td><td>Lightness override, chroma and hue preserved</td></tr>
+      <tr><td><code>@include apply-greyscale()</code></td><td>Swaps the live scale for the grey one on this element and its subtree</td></tr>
+      <tr><td><code>@include lightSchemeVars()</code></td><td>Emits the full light-mode variable block</td></tr>
+      <tr><td><code>@include darkSchemeVars()</code></td><td>Emits the full dark-mode variable block</td></tr>
+    </tbody>
+  </table>
+
+  {% call m.snippet("custom-sass", "scss") %}
+@use "@sparkstone/css/src/vars.scss" as *;
+
+.alert {
+  --color: var(--error-color);
+
+  background-color: cur-color(var(--surface-lc-2));
+  color: cur-color(var(--text-lc-1));
+  border: var(--border-width) solid get-border-color();
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+}
+  {% endcall %}
+
+  <p>
+    That is the pattern for your own components: rebind <code>--color</code> if you want a different
+    hue, then pull surfaces and text from the same stops the framework uses. You inherit the contrast
+    guarantees for free.
+  </p>
+</section>
+
+<section id="icons">
+  <h2>Icons</h2>
+  <p>
+    Three icons ship as base64 SVG data URLs, redefined per scheme so the stroke flips:
+    <code>--icon-chevron</code> for select, <code>--icon-calendar</code> for date,
+    <code>--icon-clock</code> for time. Override any of them with your own data URL.
+  </p>
+  {% call m.snippet("custom-icons", "css") %}
+select {
+  --icon-chevron: url("data:image/svg+xml;base64,…");
+}
+  {% endcall %}
+</section>
+{% endblock %}

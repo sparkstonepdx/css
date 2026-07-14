@@ -1,0 +1,120 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set toc = [
+  ["container", "Container"],
+  ["flex", "Flex"],
+  ["flip", "Flip"],
+  ["grid", "Grid"],
+  ["spacing", "Spacing"]
+] %}
+
+{% block content %}
+<h1>Layout</h1>
+<p>Two containers and one flex helper. Everything else is native CSS.</p>
+
+<section id="container">
+  <h2>Container</h2>
+  <p>
+    <code>.container</code> centers content and steps its max width at each breakpoint.
+    <code>.container-fluid</code> keeps the padding but spans the full width, which is what you want
+    for a header or a full-bleed section.
+  </p>
+  <table>
+    <thead>
+      <tr><th>Viewport</th><th><code>.container</code> max width</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>&lt; 576px</td><td>100%, 1rem padding</td></tr>
+      <tr><td>≥ 576px</td><td>510px</td></tr>
+      <tr><td>≥ 768px</td><td>700px</td></tr>
+      <tr><td>≥ 1024px</td><td>950px</td></tr>
+      <tr><td>≥ 1280px</td><td>1200px</td></tr>
+      <tr><td>≥ 1536px</td><td>1450px</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <small>
+      A bare <code>.container</code> also caps at <code>80ch</code> and adds bottom padding, which is
+      the reading measure this documentation uses.
+    </small>
+  </p>
+  {% call m.snippet("layout-container", "html") %}
+<header class="container-fluid">…</header>
+<main class="container">…</main>
+  {% endcall %}
+</section>
+
+<section id="flex">
+  <h2>Flex</h2>
+  <p>
+    <code>.flex</code> is <code>display: flex</code> with a <code>1rem</code> gap. That is the whole
+    utility.
+  </p>
+  {% call m.demo("layout-flex") %}
+<div class="flex">
+  <article class="card" style="flex: 1">One</article>
+  <article class="card" style="flex: 1">Two</article>
+  <article class="card" style="flex: 1">Three</article>
+</div>
+  {% endcall %}
+</section>
+
+<section id="flip">
+  <h2>Flip</h2>
+  <p>
+    Add <code>.flip</code> and the row becomes a column below 600px. Add <code>.reverse</code> and it
+    stacks bottom-up, which is how you get a sidebar that appears above the content on mobile but
+    beside it on desktop.
+  </p>
+  {% call m.demo("layout-flip") %}
+<div class="flex flip">
+  <article class="card" style="flex: 2">Main content</article>
+  <article class="card" style="flex: 1">Sidebar</article>
+</div>
+
+<div class="flex flip reverse">
+  <article class="card" style="flex: 2">Main, second on mobile</article>
+  <article class="card" style="flex: 1">Sidebar, first on mobile</article>
+</div>
+  {% endcall %}
+  <p><small>Resize the window to see the breakpoint.</small></p>
+</section>
+
+<section id="grid">
+  <h2>Grid</h2>
+  <p>
+    There is no grid utility. Use CSS, and use the framework's variables for spacing so it stays in
+    rhythm.
+  </p>
+  {% call m.demo("layout-grid") %}
+<div
+  style="
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+    gap: var(--padding);
+  ">
+  <article class="card">Auto</article>
+  <article class="card">Fitting</article>
+  <article class="card">Grid</article>
+  <article class="card">Cells</article>
+</div>
+  {% endcall %}
+</section>
+
+<section id="spacing">
+  <h2>Spacing</h2>
+  <p>
+    <code>--padding</code> is the base unit. Block elements carry a <code>1rem</code> bottom margin;
+    list items carry <code>0.25rem</code>.
+  </p>
+  {% call m.snippet("layout-spacing", "css") %}
+.tight {
+  --padding: 0.5rem;
+}
+
+.roomy {
+  --padding: 2rem;
+}
+  {% endcall %}
+</section>
+{% endblock %}

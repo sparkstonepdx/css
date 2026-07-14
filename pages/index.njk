@@ -1,112 +1,147 @@
-{% extends "layout.njk" %} {% block content %}
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set toc = [
+  ["install", "Install"],
+  ["quickstart", "Quick start"],
+  ["theming", "Theming"],
+  ["preview", "Live preview"],
+  ["support", "Browser support"]
+] %}
+
+{% block content %}
 <h1>@sparkstone/css</h1>
-
 <p>
-  <code>@sparkstone/css</code> is a lightweight SCSS framework inspired by
-  <a href="https://picocss.com" target="_blank">Pico.css</a>, but rebuilt from the ground up with
-  <code>oklch()</code> color primitives and a powerful theme system based on native CSS variables.
+  A lightweight SCSS framework in the spirit of
+  <a href="https://picocss.com" target="_blank" rel="noreferrer">Pico.css</a>, rebuilt on
+  <code>oklch()</code> relative color syntax. Give it one base color and it derives an entire light
+  and dark palette that clears WCAG AA on every pairing the framework uses.
 </p>
 
 <p>
-  📦 <a href="https://www.npmjs.com/package/@sparkstone/css" target="_blank">View on NPM</a> · 💻
-  <a href="https://github.com/sparkstonepdx/css" target="_blank">View on GitHub</a>
+  <a href="https://www.npmjs.com/package/@sparkstone/css" target="_blank" rel="noreferrer">npm</a> ·
+  <a href="https://github.com/sparkstonepdx/css" target="_blank" rel="noreferrer">GitHub</a>
 </p>
 
-<ul>
-  <li>🎨 Perceptually-uniform color scales via <code>oklch()</code></li>
-  <li>🌗 Graceful light/dark theming using system preferences</li>
-  <li>🧱 Minimal class usage with sensible defaults</li>
-  <li>⚡ No JavaScript required for core styling</li>
-  <li>🧩 Sass functions and mixins for full control</li>
-</ul>
+<section id="why">
+  <h2>What you get</h2>
+  <ul>
+    <li>A nine-step perceptual scale derived from a single <code>--color</code>.</li>
+    <li>Light and dark from the same scale, mirrored. No second palette to maintain.</li>
+    <li>Semantic HTML styled by default. Classes are the exception, not the rule.</li>
+    <li>No JavaScript for any core styling.</li>
+    <li>Sass functions and mixins when you need to reach past the defaults.</li>
+  </ul>
+</section>
 
-<h2>Get Started</h2>
-<p>Install the package with your preferred package manager:</p>
-
-<pre><code class="language-bash"># pnpm
+<section id="install">
+  <h2>Install</h2>
+  {% call m.snippet("install-pkg", "bash") %}
+# pnpm
 pnpm add @sparkstone/css
 
 # yarn
 yarn add @sparkstone/css
 
 # npm
-npm install @sparkstone/css</code></pre>
+npm install @sparkstone/css
+  {% endcall %}
 
-<p>Then import the theme:</p>
+  <p>Then import either the source or the precompiled stylesheet:</p>
+  {% call m.snippet("install-import", "scss") %}
+// SCSS, if you want the functions and mixins
+@use "@sparkstone/css/src/theme.scss";
 
-<pre><code class="language-js">// SCSS
-import "@sparkstone/css/src/theme.scss";
+// or the precompiled CSS
+import "@sparkstone/css/theme.css";
+  {% endcall %}
+</section>
 
-// or precompiled CSS
-import "@sparkstone/css/theme.css";</code></pre>
+<section id="quickstart">
+  <h2>A complete page</h2>
+  <p>This is the whole thing. No wrapper classes beyond <code>.container</code>.</p>
+  {% call m.snippet("quickstart-page", "html") %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+      :root {
+        --color: teal;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Hello</h1>
+      <p>Body copy, and <a href="#">a link</a>.</p>
 
-<h2>Theming</h2>
-<p>The entire theme can be customized via CSS variables. For example:</p>
+      <article class="card">
+        <h2>A card</h2>
+        <p>Cards are just articles.</p>
+        <footer>
+          <button class="secondary">Cancel</button>
+          <button>Confirm</button>
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>
+  {% endcall %}
+</section>
 
-<button class="ghost copy-button" data-target="code-default-styles">Copy Code</button>
-<pre><code id="code-default-styles" class="language-css">:root {
+<section id="theming">
+  <h2>Theming</h2>
+  <p>Three colors drive everything. Set them anywhere a CSS variable can be set.</p>
+  {% call m.snippet("theming-vars", "css") %}
+:root {
   --color: rebeccapurple;
-  --primary-color: blue;
   --accent-color: oklch(from var(--color) l c calc(h + 180));
   --error-color: maroon;
-}</code></pre>
+}
+  {% endcall %}
 
-<p>Light and dark mode follow system settings by default. Override manually with:</p>
+  <p>
+    Because they are plain CSS variables, you can rebind <code>--color</code> on a subtree and every
+    descendant recolors itself. See <a href="./colors.html">Colors</a>.
+  </p>
 
-<pre><code class="language-html">&lt;html data-color-scheme="light"&gt;
-&lt;!-- or --&gt;
-&lt;html data-color-scheme="dark"&gt;</code></pre>
+  <h3>Light and dark</h3>
+  <p>
+    The scheme follows <code>prefers-color-scheme</code> by default. Force it with an attribute on
+    any element, not just <code>&lt;html&gt;</code>:
+  </p>
+  {% call m.snippet("theming-scheme", "html") %}
+<html data-color-scheme="light">
+<html data-color-scheme="dark">
+  {% endcall %}
+</section>
 
-<h2>Docs</h2>
-<p>Explore styled components and utilities:</p>
-<ul>
-  <li><a href="forms.html">Form Elements</a></li>
-  <li><a href="colors.html">Color Palettes</a></li>
-  <li><a href="containers.html">Containers & Dialogs</a></li>
-</ul>
+<section id="preview">
+  <h2>Live preview</h2>
+  <p>Change these and every page on this site updates. Values persist for the session.</p>
+  <form class="flex" style="flex-wrap: wrap; align-items: end">
+    <label>
+      <p>Base</p>
+      <input type="color" id="base-color-picker" />
+    </label>
+    <label>
+      <p>Accent</p>
+      <input type="color" id="accent-color-picker" />
+    </label>
+    <label>
+      <p>Error</p>
+      <input type="color" id="error-color-picker" />
+    </label>
+  </form>
+</section>
 
-<h2>Live Theme Preview</h2>
-<p>Try customizing the theme color:</p>
-<form style="display: flex; gap: 1rem; align-items: center">
-  <label>
-    Base Color
-    <input type="color" id="base-color-picker" />
-  </label>
-  <label>
-    Accent Color
-    <input type="color" id="accent-color-picker" />
-  </label>
-</form>
-{% endblock %} {% block scripts %}
-<script type="module">
-  const defaults = [
-    ['--color', '#663399', 'sparkstone-base-color', 'base-color-picker'],
-    ['--accent-color', '#009688', 'sparkstone-accent-color', 'accent-color-picker'],
-  ];
-
-  const getCSSVar = name =>
-    getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-
-  for (const [cssVar, fallback, storageKey, inputId] of defaults) {
-    const input = document.getElementById(inputId);
-    const stored = sessionStorage.getItem(storageKey);
-    if (stored) {
-      document.documentElement.style.setProperty(cssVar, stored);
-      input.value = stored;
-    } else {
-      try {
-        const ctx = document.createElement('canvas').getContext('2d');
-        ctx.fillStyle = getCSSVar(cssVar);
-        input.value = ctx.fillStyle;
-      } catch {
-        input.value = fallback;
-      }
-    }
-
-    input.addEventListener('input', () => {
-      document.documentElement.style.setProperty(cssVar, input.value);
-      sessionStorage.setItem(storageKey, input.value);
-    });
-  }
-</script>
+<section id="support">
+  <h2>Browser support</h2>
+  <p>
+    The framework leans on relative color syntax, <code>oklch(from ...)</code>. That means Chrome
+    119+, Safari 16.4+, and Firefox 128+. There is no fallback layer, by design.
+  </p>
+</section>
 {% endblock %}

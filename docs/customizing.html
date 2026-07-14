@@ -1,0 +1,270 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Customizing · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="container-fluid site-header">
+      <nav class="flex" style="align-items: center">
+        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      </nav>
+      <nav class="flex site-nav" style="flex-wrap: wrap">
+        
+          <a href="./index.html">Home</a>
+        
+          <a href="./colors.html">Colors</a>
+        
+          <a href="./typography.html">Typography</a>
+        
+          <a href="./buttons.html">Buttons</a>
+        
+          <a href="./forms.html">Forms</a>
+        
+          <a href="./containers.html">Containers</a>
+        
+          <a href="./layout.html">Layout</a>
+        
+          <a href="./customizing.html" aria-current="page">Customizing</a>
+        
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            
+              <li><a href="#variables">Variables</a></li>
+            
+              <li><a href="#scoping">Scoping</a></li>
+            
+              <li><a href="#scheme">Color scheme</a></li>
+            
+              <li><a href="#scale">Replacing the scale</a></li>
+            
+              <li><a href="#sass">Sass API</a></li>
+            
+              <li><a href="#icons">Icons</a></li>
+            
+          </ul>
+        </nav>
+      
+
+      
+<h1>Customizing</h1>
+<p>
+  Every design decision in the framework is a CSS variable or a Sass function. Nothing is hardcoded
+  at a call site.
+</p>
+
+<section id="variables">
+  <h2>Variable reference</h2>
+  <table>
+    <thead>
+      <tr><th>Variable</th><th>Default</th><th>Purpose</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>--color</code></td><td><code>rebeccapurple</code></td><td>Base hue. Everything derives from this.</td></tr>
+      <tr><td><code>--accent-color</code></td><td>complement of <code>--color</code></td><td>Links</td></tr>
+      <tr><td><code>--error-color</code></td><td><code>maroon</code></td><td>Invalid inputs, <code>small.error</code></td></tr>
+      <tr><td><code>--fallback-color</code></td><td><code>white</code></td><td>Used by <code>.contrast</code></td></tr>
+      <tr><td><code>--border-radius</code></td><td><code>0.25rem</code></td><td>Corners on every surface</td></tr>
+      <tr><td><code>--border-width</code></td><td><code>0.1625rem</code></td><td>Borders and rules</td></tr>
+      <tr><td><code>--padding</code></td><td><code>1rem</code></td><td>Base spacing unit</td></tr>
+      <tr><td><code>--box-shadow</code></td><td>four-layer shadow</td><td>Articles and dialogs</td></tr>
+      <tr><td><code>--icon-width</code></td><td><code>1rem</code></td><td>Size of input icons</td></tr>
+      <tr><td><code>--icon-position</code></td><td><code>0.75rem</code></td><td>Inset of input icons</td></tr>
+      <tr><td><code>--surface-lc-1</code>…<code>-9</code></td><td>derived</td><td>Background stops, light to dark</td></tr>
+      <tr><td><code>--text-lc-1</code>…<code>-9</code></td><td>derived</td><td>Foreground stops, high to low contrast</td></tr>
+      <tr><td><code>--primary-surface-lc</code></td><td>stop 6</td><td>Primary button background</td></tr>
+      <tr><td><code>--primary-text-lc</code></td><td>stop 1</td><td>Primary button text</td></tr>
+      <tr><td><code>--grey-surface-lc-*</code></td><td>derived</td><td>Chroma-free equivalents, used by disabled states</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <small>
+      <code>--primary-color</code> is declared on <code>:root</code> but is not read by any rule.
+      Primary buttons use <code>--primary-surface-lc</code> against the ambient <code>--color</code>.
+    </small>
+  </p>
+</section>
+
+<section id="scoping">
+  <h2>Scoping</h2>
+  <p>
+    Variables cascade, so overriding one on a subtree is the whole customization story. No build step
+    is involved in any of this.
+  </p>
+  
+<div class="demo">
+  
+<article class="card" style="--color: seagreen; --border-radius: 1rem">
+  <h3>Scoped surface</h3>
+  <p>Different hue, different radius, same markup.</p>
+  <button>Themed button</button>
+</article>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="custom-scoping">Copy</button>
+  <pre><code id="custom-scoping">&lt;article class=&quot;card&quot; style=&quot;--color: seagreen; --border-radius: 1rem&quot;&gt;
+  &lt;h3&gt;Scoped surface&lt;/h3&gt;
+  &lt;p&gt;Different hue, different radius, same markup.&lt;/p&gt;
+  &lt;button&gt;Themed button&lt;/button&gt;
+&lt;/article&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="scheme">
+  <h2>Color scheme</h2>
+  <p>
+    Without a <code>data-color-scheme</code> attribute, the scheme follows
+    <code>prefers-color-scheme</code>. Set the attribute to pin it, on <code>&lt;html&gt;</code> or on
+    any subtree.
+  </p>
+  
+<div class="demo">
+  
+<div class="flex flip">
+  <div data-color-scheme="light" class="scheme-pane">
+    <p><strong>Forced light</strong></p>
+    <button>Button</button>
+  </div>
+  <div data-color-scheme="dark" class="scheme-pane">
+    <p><strong>Forced dark</strong></p>
+    <button>Button</button>
+  </div>
+</div>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="custom-scheme">Copy</button>
+  <pre><code id="custom-scheme">&lt;div class=&quot;flex flip&quot;&gt;
+  &lt;div data-color-scheme=&quot;light&quot; class=&quot;scheme-pane&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;Forced light&lt;/strong&gt;&lt;/p&gt;
+    &lt;button&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div data-color-scheme=&quot;dark&quot; class=&quot;scheme-pane&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;Forced dark&lt;/strong&gt;&lt;/p&gt;
+    &lt;button&gt;Button&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="scale">
+  <h2>Replacing the scale</h2>
+  <p>
+    The nine stops live in <code>$lcArray</code> in <code>vars.scss</code>, as
+    <code>(lightness, chroma)</code> pairs from lightest to darkest. <code>$dimLcArray</code> is the
+    greyscale counterpart used by disabled states.
+  </p>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="custom-scale">Copy</button>
+  <pre><code id="custom-scale" class="language-scss">$lcArray: (
+  (99%, 0.018),
+  (90.5%, 0.045),
+  (80.5%, 0.125),
+  (69.5%, 0.17),
+  (58%, 0.185),
+  (46%, 0.17),
+  (34%, 0.135),
+  (24.5%, 0.095),
+  (17%, 0.055)
+);</code></pre>
+</div>
+
+  <p>
+    If you change these, check contrast in <strong>both</strong> schemes. Light mode resolves
+    <code>text-lc-N</code> on <code>surface-lc-M</code> to stops <code>(M, 10 - N)</code>; dark mode
+    resolves the same pairing to stops <code>(10 - M, N)</code>. Those are different swatches, so
+    passing in one scheme does not imply passing in the other.
+  </p>
+</section>
+
+<section id="sass">
+  <h2>Sass API</h2>
+  <table>
+    <thead>
+      <tr><th>Signature</th><th>Returns</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>cur-color($lc)</code></td><td>The ambient <code>--color</code> at stop <code>$lc</code></td></tr>
+      <tr><td><code>get-color($lc, $color)</code></td><td>An explicit color at stop <code>$lc</code></td></tr>
+      <tr><td><code>get-grey($lc, $color)</code></td><td>The same, with chroma forced to zero</td></tr>
+      <tr><td><code>get-border-color()</code></td><td>Shorthand for <code>cur-color(var(--surface-lc-4))</code></td></tr>
+      <tr><td><code>oklch-from-vars($color, $lightness)</code></td><td>Lightness override, chroma and hue preserved</td></tr>
+      <tr><td><code>@include apply-greyscale()</code></td><td>Swaps the live scale for the grey one on this element and its subtree</td></tr>
+      <tr><td><code>@include lightSchemeVars()</code></td><td>Emits the full light-mode variable block</td></tr>
+      <tr><td><code>@include darkSchemeVars()</code></td><td>Emits the full dark-mode variable block</td></tr>
+    </tbody>
+  </table>
+
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="custom-sass">Copy</button>
+  <pre><code id="custom-sass" class="language-scss">@use &quot;@sparkstone/css/src/vars.scss&quot; as *;
+
+.alert {
+  --color: var(--error-color);
+
+  background-color: cur-color(var(--surface-lc-2));
+  color: cur-color(var(--text-lc-1));
+  border: var(--border-width) solid get-border-color();
+  border-radius: var(--border-radius);
+  padding: var(--padding);
+}</code></pre>
+</div>
+
+
+  <p>
+    That is the pattern for your own components: rebind <code>--color</code> if you want a different
+    hue, then pull surfaces and text from the same stops the framework uses. You inherit the contrast
+    guarantees for free.
+  </p>
+</section>
+
+<section id="icons">
+  <h2>Icons</h2>
+  <p>
+    Three icons ship as base64 SVG data URLs, redefined per scheme so the stroke flips:
+    <code>--icon-chevron</code> for select, <code>--icon-calendar</code> for date,
+    <code>--icon-clock</code> for time. Override any of them with your own data URL.
+  </p>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="custom-icons">Copy</button>
+  <pre><code id="custom-icons" class="language-css">select {
+  --icon-chevron: url(&quot;data:image/svg+xml;base64,…&quot;);
+}</code></pre>
+</div>
+
+</section>
+
+
+      <footer class="site-footer">
+        <hr />
+        <p>
+          <small>
+            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+            MIT
+          </small>
+        </p>
+      </footer>
+    </main>
+
+    
+  </body>
+</html>

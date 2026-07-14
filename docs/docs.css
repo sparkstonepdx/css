@@ -1,0 +1,119 @@
+/* Styles for the documentation site only. Not part of @sparkstone/css. */
+
+.site-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--padding);
+  padding: var(--padding);
+  flex-wrap: wrap;
+  border-bottom: var(--border-width) solid
+    oklch(from var(--color) var(--surface-lc-3) h);
+  margin-bottom: 2rem;
+}
+
+.site-nav {
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.site-nav a[aria-current="page"] {
+  text-decoration: underline;
+  text-underline-offset: 0.25rem;
+}
+
+.site-nav button {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.875rem;
+}
+
+.site-footer {
+  margin-top: 4rem;
+}
+
+/* On-this-page table of contents */
+.toc {
+  margin-bottom: 2rem;
+}
+
+.toc ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+}
+
+/* Live example surface */
+.demo {
+  padding: var(--padding);
+  border: var(--border-width) solid
+    oklch(from var(--color) var(--surface-lc-3) h);
+  border-radius: var(--border-radius);
+  margin-bottom: 0.5rem;
+}
+
+.demo > :last-child {
+  margin-bottom: 0;
+}
+
+/* Code block with an anchored copy button */
+.code-block {
+  position: relative;
+  margin-bottom: 2rem;
+}
+
+.code-block .copy-button {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  z-index: 1;
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+}
+
+.code-block pre {
+  margin-bottom: 0;
+}
+
+.code-block pre > code {
+  display: block;
+  white-space: pre-wrap;
+  overflow-x: auto;
+}
+
+/* Swatch grids on the colors page */
+.swatch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(7rem, 1fr));
+  gap: 0.5rem;
+}
+
+.swatch {
+  aspect-ratio: 1;
+  display: grid;
+  align-content: center;
+  justify-content: center;
+  text-align: center;
+  font-size: 0.75rem;
+  border-radius: var(--border-radius);
+  padding: 0.5rem;
+}
+
+.scheme-pane {
+  flex-grow: 1;
+  flex-basis: 0;
+  min-width: 0;
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+  background-color: oklch(from var(--color) var(--surface-lc-1) h);
+  color: oklch(from var(--color) var(--text-lc-1) h);
+}
+
+section {
+  scroll-margin-top: 1rem;
+}
+
+.site-header .semantic {
+  cursor: pointer;
+}

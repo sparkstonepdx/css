@@ -1,0 +1,27 @@
+{#
+  demo(id)     live example + escaped, copyable source, from ONE block of markup
+  snippet(id)  escaped, copyable source only
+
+  Both take their markup as a {% call %} body, so the rendered demo and the code
+  the reader copies can never drift apart.
+
+  forceescape, not escape: caller() returns a SafeString, and the `escape` filter
+  passes SafeStrings through untouched.
+#}
+
+{% macro demo(id) %}
+<div class="demo">
+  {{ caller() }}
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="{{ id }}">Copy</button>
+  <pre><code id="{{ id }}">{{- caller() | forceescape | trim -}}</code></pre>
+</div>
+{% endmacro %}
+
+{% macro snippet(id, lang="") %}
+<div class="code-block">
+  <button class="ghost copy-button" data-target="{{ id }}">Copy</button>
+  <pre><code id="{{ id }}" class="language-{{ lang }}">{{- caller() | forceescape | trim -}}</code></pre>
+</div>
+{% endmacro %}

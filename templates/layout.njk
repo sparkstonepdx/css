@@ -1,93 +1,62 @@
+{% set navItems = [
+  ["index", "Home"],
+  ["colors", "Colors"],
+  ["typography", "Typography"],
+  ["buttons", "Buttons"],
+  ["forms", "Forms"],
+  ["containers", "Containers"],
+  ["layout", "Layout"],
+  ["customizing", "Customizing"]
+] %}
+{% set current = title or "index" %}
 <!DOCTYPE html>
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>{{ title or "@sparkstone/css" }}</title>
+    <title>{% if title %}{{ title | capitalize }} · {% endif %}@sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./theme.css" />
-    <style>
-      main.container {
-        position: relative;
-      }
-      .copy-button {
-        position: absolute;
-        right: 0;
-        z-index: 1;
-      }
-
-      pre {
-        white-space: pre-wrap;
-      }
-    </style>
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
   </head>
   <body>
-    {% include "header.njk" %}
-    <main class="container">{% block content %}{% endblock %}</main>
+    <header class="container-fluid site-header">
+      <nav class="flex" style="align-items: center">
+        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      </nav>
+      <nav class="flex site-nav" style="flex-wrap: wrap">
+        {% for item in navItems %}
+          <a href="./{{ item[0] }}.html"{% if item[0] == current %} aria-current="page"{% endif %}>{{ item[1] }}</a>
+        {% endfor %}
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      {% if toc %}
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            {% for item in toc %}
+              <li><a href="#{{ item[0] }}">{{ item[1] }}</a></li>
+            {% endfor %}
+          </ul>
+        </nav>
+      {% endif %}
+
+      {% block content %}{% endblock %}
+
+      <footer class="site-footer">
+        <hr />
+        <p>
+          <small>
+            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+            MIT
+          </small>
+        </p>
+      </footer>
+    </main>
+
+    {% block scripts %}{% endblock %}
   </body>
 </html>
-<script type="module">
-  document.querySelectorAll('.copy-button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.getAttribute('data-target');
-      const code = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        btn.textContent = 'Copied!';
-        setTimeout(() => (btn.textContent = 'Copy Code'), 1000);
-      });
-    });
-  });
-</script>
-<script type="module">
-  const pickerConfigs = [
-    {
-      var: '--color',
-      id: 'base-color-picker',
-      storage: 'sparkstone-base-color',
-      fallback: 'rebeccapurple',
-    },
-    {
-      var: '--accent-color',
-      id: 'accent-color-picker',
-      storage: 'sparkstone-accent-color',
-      fallback: '#425e00',
-    },
-    {
-      var: '--error-color',
-      id: 'error-color-picker',
-      storage: 'sparkstone-error-color',
-      fallback: 'maroon',
-    },
-  ];
-
-  function getCSSVar(name) {
-    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  }
-
-  function toHex(colorString, fallback) {
-    try {
-      const ctx = document.createElement('canvas').getContext('2d');
-      ctx.fillStyle = colorString;
-      return ctx.fillStyle;
-    } catch {
-      return fallback;
-    }
-  }
-
-  for (const { var: cssVar, id, storage, fallback } of pickerConfigs) {
-    const input = document.getElementById(id);
-
-    const stored = sessionStorage.getItem(storage);
-    const initial = stored || toHex(getCSSVar(cssVar), fallback);
-
-    document.documentElement.style.setProperty(cssVar, initial);
-
-    if (!input) continue;
-    input.value = initial;
-
-    input.addEventListener('input', () => {
-      const newValue = input.value;
-      document.documentElement.style.setProperty(cssVar, newValue);
-      sessionStorage.setItem(storage, newValue);
-    });
-  }
-</script>

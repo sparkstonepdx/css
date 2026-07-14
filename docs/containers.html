@@ -1,244 +1,346 @@
+
+
 <!DOCTYPE html>
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>containers</title>
+    <title>Containers · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./theme.css" />
-    <style>
-      main.container {
-        position: relative;
-      }
-      .copy-button {
-        position: absolute;
-        right: 0;
-        z-index: 1;
-      }
-
-      pre {
-        white-space: pre-wrap;
-      }
-    </style>
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
   </head>
   <body>
-    <script>
-  const saved = sessionStorage.getItem('color-scheme');
-  if (saved) {
-    document.documentElement.setAttribute('data-color-scheme', saved);
-  }
-</script>
-
-<main class="container">
-  <header
-    style="
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: var(--padding);
-      gap: var(--padding);
-    ">
-    <nav class="flex" style="align-items: center">
-      <strong>@sparkstone/css</strong>
-    </nav>
-      <nav class="flex" style="flex-wrap: wrap">
-      <a id="theme-toggle"  aria-label="Toggle Theme" title="Toggle Theme">🌙</a>
-        <a href="./index.html">Home</a>
-        <a href="./colors.html">Colors</a>
-        <a href="./forms.html">Forms</a>
-        <a href="./containers.html">Containers</a>
+    <header class="container-fluid site-header">
+      <nav class="flex" style="align-items: center">
+        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
       </nav>
-  </header>
-</main>
-
-<script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  const root = document.documentElement;
-
-  const updateIcon = () => {
-    const scheme = root.getAttribute('data-color-scheme') || 'light';
-    toggleBtn.textContent = scheme === 'dark' ? '🌙 Dark' : '☀️ light';
-  };
-
-  toggleBtn.addEventListener('click', () => {
-    const current = root.getAttribute('data-color-scheme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-color-scheme', next);
-    sessionStorage.setItem('color-scheme', next);
-    updateIcon();
-  });
-
-  updateIcon();
-</script>
+      <nav class="flex site-nav" style="flex-wrap: wrap">
+        
+          <a href="./index.html">Home</a>
+        
+          <a href="./colors.html">Colors</a>
+        
+          <a href="./typography.html">Typography</a>
+        
+          <a href="./buttons.html">Buttons</a>
+        
+          <a href="./forms.html">Forms</a>
+        
+          <a href="./containers.html" aria-current="page">Containers</a>
+        
+          <a href="./layout.html">Layout</a>
+        
+          <a href="./customizing.html">Customizing</a>
+        
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
 
     <main class="container">
+      
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            
+              <li><a href="#article">Article</a></li>
+            
+              <li><a href="#card">Card</a></li>
+            
+              <li><a href="#dialog">Dialog</a></li>
+            
+              <li><a href="#details">Details</a></li>
+            
+              <li><a href="#table">Tables</a></li>
+            
+              <li><a href="#progress">Progress</a></li>
+            
+          </ul>
+        </nav>
+      
+
+      
 <h1>Containers</h1>
 <p>
-  This page showcases base containers styled by <code>@sparkstone/css</code>, including
-  <code>article</code>, <code>.card</code>, and <code>&lt;dialog&gt;</code>.
+  Surfaces and grouping elements. <code>article</code> is the base surface; <code>.card</code> and
+  <code>dialog</code> build on it.
 </p>
 
-<section>
-  <h2>Default Article</h2>
-  <article>
-    <h3>Standard Article</h3>
-    <p>
-      This is a plain <code>&lt;article&gt;</code> element. It uses the default spacing and text
-      styles defined in the theme.
-    </p>
-  </article>
-  <br />
-  <button class="ghost copy-button" data-target="code-article">Copy Code</button>
-  <pre><code class="language-html" id="code-article">
-&lt;article&gt;
-  &lt;h3&gt;Standard Article&lt;/h3&gt;
-  &lt;p&gt;
-    This is a plain &lt;code&gt;&amp;lt;article&amp;gt;&lt;/code&gt; element.
-     It uses the default spacing and text styles defined in the theme.
-  &lt;/p&gt;
-&lt;/article&gt;
-</code></pre>
+<section id="article">
+  <h2>Article</h2>
+  <p>
+    A raised surface on <code>--surface-lc-2</code> with the shared <code>--box-shadow</code>. A
+    <code>&lt;footer&gt;</code> inside gets a top border and right-aligns its contents.
+  </p>
+  
+<div class="demo">
+  
+<article>
+  <header>
+    <h3>Standard article</h3>
+  </header>
+  <p>Default padding, radius, and shadow from the theme.</p>
+  <footer>
+    <button class="secondary">Dismiss</button>
+    <button>Confirm</button>
+  </footer>
+</article>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="cont-article">Copy</button>
+  <pre><code id="cont-article">&lt;article&gt;
+  &lt;header&gt;
+    &lt;h3&gt;Standard article&lt;/h3&gt;
+  &lt;/header&gt;
+  &lt;p&gt;Default padding, radius, and shadow from the theme.&lt;/p&gt;
+  &lt;footer&gt;
+    &lt;button class=&quot;secondary&quot;&gt;Dismiss&lt;/button&gt;
+    &lt;button&gt;Confirm&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+</div>
+
 </section>
 
-<section>
+<section id="card">
   <h2>Card</h2>
-  <article class="card">
-    <h3>Card Article</h3>
-    <p>
-      This is an article with the <code>.card</code> class. It includes padding, background styling,
-      and a border or shadow depending on the theme.
-    </p>
+  <p>
+    <code>.card</code> is the flat variant. It sits on <code>--surface-lc-1</code> with a border
+    instead of a shadow. Use it for lists of items where stacked shadows would get noisy.
+  </p>
+  
+<div class="demo">
+  
+<div class="flex flip">
+  <article class="card" style="flex: 1">
+    <h3>Card one</h3>
+    <p>Border, no shadow.</p>
   </article>
-  <br />
-  <button class="ghost copy-button" data-target="code-article-card">Copy Code</button>
-  <pre><code class="language-html" id="code-article-card">
-&lt;article class="card"&gt;
-  &lt;h3&gt;Card Article&lt;/h3&gt;
-  &lt;p&gt;
-    This is an article with the &lt;code&gt;.card&lt;/code&gt; class.
-    It includes padding, background styling, and a border or shadow depending on the theme.
-  &lt;/p&gt;
-&lt;/article&gt;
-</code></pre>
+  <article class="card" style="flex: 1">
+    <h3>Card two</h3>
+    <p><small class="chip">new</small></p>
+  </article>
+</div>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="cont-card">Copy</button>
+  <pre><code id="cont-card">&lt;div class=&quot;flex flip&quot;&gt;
+  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;
+    &lt;h3&gt;Card one&lt;/h3&gt;
+    &lt;p&gt;Border, no shadow.&lt;/p&gt;
+  &lt;/article&gt;
+  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;
+    &lt;h3&gt;Card two&lt;/h3&gt;
+    &lt;p&gt;&lt;small class=&quot;chip&quot;&gt;new&lt;/small&gt;&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <p>
+    <small>
+      <code>.card</code> works on any element, not just <code>article</code>. On a plain
+      <code>&lt;div&gt;</code> you get the surface without the article padding rules.
+    </small>
+  </p>
 </section>
 
-<section>
-  <h2>Dialog Example</h2>
-  <button id="show-dialog">Open Dialog</button>
+<section id="dialog">
+  <h2>Dialog</h2>
+  <p>
+    The native <code>&lt;dialog&gt;</code> is styled as a centered, backdrop-blurred modal. Open it
+    with <code>showModal()</code>. Wrapping the content in
+    <code>&lt;form method="dialog"&gt;</code> means the close button needs no JavaScript.
+  </p>
+  
+<div class="demo">
+  
+<button data-dialog="demo-dialog">Open dialog</button>
 
-  <dialog id="demo-dialog">
-    <form method="dialog">
-      <article>
-        <header>
-          <h3>Dialog Heading</h3>
-        </header>
-        <p>
-          This dialog uses the native <code>&lt;dialog&gt;</code> element, which is styled minimally
-          but respectably with the current theme.
-        </p>
-        <footer>
-          <button type="submit">Close</button>
-        </footer>
-      </article>
-    </form>
-  </dialog>
-  <br />
+<dialog id="demo-dialog">
+  <form method="dialog">
+    <article>
+      <header>
+        <h3>Dialog heading</h3>
+      </header>
+      <p>
+        Scrolls internally when the content exceeds the viewport, and locks
+        scrolling on the page behind it.
+      </p>
+      <footer>
+        <button value="cancel" class="secondary">Cancel</button>
+        <button value="ok">OK</button>
+      </footer>
+    </article>
+  </form>
+</dialog>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="cont-dialog">Copy</button>
+  <pre><code id="cont-dialog">&lt;button data-dialog=&quot;demo-dialog&quot;&gt;Open dialog&lt;/button&gt;
 
-  <br />
-  <button class="ghost copy-button" data-target="code-dialog">Copy Code</button>
-  <pre><code class="language-html" id="code-dialog">
-&lt;button id="show-dialog"&gt;Open Dialog&lt;/button&gt;
-
-&lt;dialog id="demo-dialog"&gt;
-  &lt;form method="dialog"&gt;
+&lt;dialog id=&quot;demo-dialog&quot;&gt;
+  &lt;form method=&quot;dialog&quot;&gt;
     &lt;article&gt;
       &lt;header&gt;
-        &lt;h3&gt;Dialog Heading&lt;/h3&gt;
+        &lt;h3&gt;Dialog heading&lt;/h3&gt;
       &lt;/header&gt;
       &lt;p&gt;
-        This dialog uses the native &lt;code&gt;&amp;lt;dialog&amp;gt;&lt;/code&gt;
-         element, which is styled minimally but respectably with the current theme.
+        Scrolls internally when the content exceeds the viewport, and locks
+        scrolling on the page behind it.
       &lt;/p&gt;
       &lt;footer&gt;
-        &lt;button type="submit"&gt;Close&lt;/button&gt;
+        &lt;button value=&quot;cancel&quot; class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
+        &lt;button value=&quot;ok&quot;&gt;OK&lt;/button&gt;
       &lt;/footer&gt;
     &lt;/article&gt;
   &lt;/form&gt;
-&lt;/dialog&gt;
-</code></pre>
-</section>
-<script>
-  const dialog = document.getElementById('demo-dialog');
-  const openBtn = document.getElementById('show-dialog');
+&lt;/dialog&gt;</code></pre>
+</div>
 
-  openBtn?.addEventListener('click', () => {
-    dialog?.showModal();
-  });
-</script></main>
+  <p>
+    <small>
+      The docs script wires <code>[data-dialog]</code> to <code>showModal()</code>. In your own app
+      that is one line: <code>dialog.showModal()</code>.
+    </small>
+  </p>
+</section>
+
+<section id="details">
+  <h2>Details</h2>
+  
+<div class="demo">
+  
+<details>
+  <summary>What does the scale look like?</summary>
+  <p>Nine steps, mirrored between light and dark. See the colors page.</p>
+</details>
+<details open>
+  <summary>Can I nest them?</summary>
+  <details>
+    <summary>Yes</summary>
+    <p>Like this.</p>
+  </details>
+</details>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="cont-details">Copy</button>
+  <pre><code id="cont-details">&lt;details&gt;
+  &lt;summary&gt;What does the scale look like?&lt;/summary&gt;
+  &lt;p&gt;Nine steps, mirrored between light and dark. See the colors page.&lt;/p&gt;
+&lt;/details&gt;
+&lt;details open&gt;
+  &lt;summary&gt;Can I nest them?&lt;/summary&gt;
+  &lt;details&gt;
+    &lt;summary&gt;Yes&lt;/summary&gt;
+    &lt;p&gt;Like this.&lt;/p&gt;
+  &lt;/details&gt;
+&lt;/details&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="table">
+  <h2>Tables</h2>
+  <p>Full width, collapsed borders, and a heavier rule under the header row.</p>
+  
+<div class="demo">
+  
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Default</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--color</code></td>
+      <td><code>rebeccapurple</code></td>
+      <td>Base hue for the whole scale</td>
+    </tr>
+    <tr>
+      <td><code>--border-radius</code></td>
+      <td><code>0.25rem</code></td>
+      <td>Corner radius on every surface</td>
+    </tr>
+    <tr>
+      <td><code>--padding</code></td>
+      <td><code>1rem</code></td>
+      <td>Base spacing unit</td>
+    </tr>
+  </tbody>
+</table>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="cont-table">Copy</button>
+  <pre><code id="cont-table">&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;Variable&lt;/th&gt;
+      &lt;th&gt;Default&lt;/th&gt;
+      &lt;th&gt;Purpose&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code&gt;--color&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;rebeccapurple&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Base hue for the whole scale&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code&gt;--border-radius&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;0.25rem&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Corner radius on every surface&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;&lt;code&gt;--padding&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;&lt;code&gt;1rem&lt;/code&gt;&lt;/td&gt;
+      &lt;td&gt;Base spacing unit&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="progress">
+  <h2>Progress</h2>
+  
+<div class="demo">
+  
+<progress value="25" max="100"></progress>
+<progress value="70" max="100"></progress>
+<progress></progress>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="cont-progress">Copy</button>
+  <pre><code id="cont-progress">&lt;progress value=&quot;25&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;
+&lt;progress value=&quot;70&quot; max=&quot;100&quot;&gt;&lt;/progress&gt;
+&lt;progress&gt;&lt;/progress&gt;</code></pre>
+</div>
+
+  <p><small>A <code>progress</code> with no <code>value</code> renders indeterminate.</small></p>
+</section>
+
+
+      <footer class="site-footer">
+        <hr />
+        <p>
+          <small>
+            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+            MIT
+          </small>
+        </p>
+      </footer>
+    </main>
+
+    
   </body>
 </html>
-<script type="module">
-  document.querySelectorAll('.copy-button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.getAttribute('data-target');
-      const code = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        btn.textContent = 'Copied!';
-        setTimeout(() => (btn.textContent = 'Copy Code'), 1000);
-      });
-    });
-  });
-</script>
-<script type="module">
-  const pickerConfigs = [
-    {
-      var: '--color',
-      id: 'base-color-picker',
-      storage: 'sparkstone-base-color',
-      fallback: 'rebeccapurple',
-    },
-    {
-      var: '--accent-color',
-      id: 'accent-color-picker',
-      storage: 'sparkstone-accent-color',
-      fallback: '#425e00',
-    },
-    {
-      var: '--error-color',
-      id: 'error-color-picker',
-      storage: 'sparkstone-error-color',
-      fallback: 'maroon',
-    },
-  ];
-
-  function getCSSVar(name) {
-    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  }
-
-  function toHex(colorString, fallback) {
-    try {
-      const ctx = document.createElement('canvas').getContext('2d');
-      ctx.fillStyle = colorString;
-      return ctx.fillStyle;
-    } catch {
-      return fallback;
-    }
-  }
-
-  for (const { var: cssVar, id, storage, fallback } of pickerConfigs) {
-    const input = document.getElementById(id);
-
-    const stored = sessionStorage.getItem(storage);
-    const initial = stored || toHex(getCSSVar(cssVar), fallback);
-
-    document.documentElement.style.setProperty(cssVar, initial);
-
-    if (!input) continue;
-    input.value = initial;
-
-    input.addEventListener('input', () => {
-      const newValue = input.value;
-      document.documentElement.style.setProperty(cssVar, newValue);
-      sessionStorage.setItem(storage, newValue);
-    });
-  }
-</script>

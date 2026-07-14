@@ -1,292 +1,427 @@
+
+
 <!DOCTYPE html>
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>forms</title>
+    <title>Forms · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./theme.css" />
-    <style>
-      main.container {
-        position: relative;
-      }
-      .copy-button {
-        position: absolute;
-        right: 0;
-        z-index: 1;
-      }
-
-      pre {
-        white-space: pre-wrap;
-      }
-    </style>
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
   </head>
   <body>
-    <script>
-  const saved = sessionStorage.getItem('color-scheme');
-  if (saved) {
-    document.documentElement.setAttribute('data-color-scheme', saved);
-  }
-</script>
-
-<main class="container">
-  <header
-    style="
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: var(--padding);
-      gap: var(--padding);
-    ">
-    <nav class="flex" style="align-items: center">
-      <strong>@sparkstone/css</strong>
-    </nav>
-      <nav class="flex" style="flex-wrap: wrap">
-      <a id="theme-toggle"  aria-label="Toggle Theme" title="Toggle Theme">🌙</a>
-        <a href="./index.html">Home</a>
-        <a href="./colors.html">Colors</a>
-        <a href="./forms.html">Forms</a>
-        <a href="./containers.html">Containers</a>
+    <header class="container-fluid site-header">
+      <nav class="flex" style="align-items: center">
+        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
       </nav>
-  </header>
-</main>
-
-<script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  const root = document.documentElement;
-
-  const updateIcon = () => {
-    const scheme = root.getAttribute('data-color-scheme') || 'light';
-    toggleBtn.textContent = scheme === 'dark' ? '🌙 Dark' : '☀️ light';
-  };
-
-  toggleBtn.addEventListener('click', () => {
-    const current = root.getAttribute('data-color-scheme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-color-scheme', next);
-    sessionStorage.setItem('color-scheme', next);
-    updateIcon();
-  });
-
-  updateIcon();
-</script>
+      <nav class="flex site-nav" style="flex-wrap: wrap">
+        
+          <a href="./index.html">Home</a>
+        
+          <a href="./colors.html">Colors</a>
+        
+          <a href="./typography.html">Typography</a>
+        
+          <a href="./buttons.html">Buttons</a>
+        
+          <a href="./forms.html" aria-current="page">Forms</a>
+        
+          <a href="./containers.html">Containers</a>
+        
+          <a href="./layout.html">Layout</a>
+        
+          <a href="./customizing.html">Customizing</a>
+        
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
 
     <main class="container">
+      
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            
+              <li><a href="#text">Text inputs</a></li>
+            
+              <li><a href="#labels">Labels</a></li>
+            
+              <li><a href="#select">Select</a></li>
+            
+              <li><a href="#choice">Checkbox and radio</a></li>
+            
+              <li><a href="#helper">Helper text</a></li>
+            
+              <li><a href="#validation">Validation</a></li>
+            
+              <li><a href="#disabled">Disabled</a></li>
+            
+              <li><a href="#fieldset">Fieldsets</a></li>
+            
+              <li><a href="#kitchen-sink">Kitchen sink</a></li>
+            
+          </ul>
+        </nav>
+      
+
+      
 <h1>Forms</h1>
-<p>
-  This page demonstrates how <code>@sparkstone/css</code> styles common form elements and includes
-  example code for each.
-</p>
+<p>Wrap a control in a <code>&lt;label&gt;</code> and it is styled. No classes for the common cases.</p>
 
-<nav>
-  <ul>
-    <li><a href="#basic-form">Basic Form</a></li>
-    <li><a href="#validation">Validation</a></li>
-    <li><a href="#buttons">Button Styles</a></li>
-    <li><a href="#kitchen-sink">Kitchen Sink</a></li>
-  </ul>
-</nav>
+<section id="text">
+  <h2>Text inputs</h2>
+  
+<div class="demo">
+  
+<label>Name <input type="text" placeholder="Jane Doe" /></label>
+<label>Email <input type="email" placeholder="jane@example.com" /></label>
+<label>Password <input type="password" placeholder="••••••••" /></label>
+<label>Phone <input type="tel" placeholder="503-555-0100" /></label>
+<label>Website <input type="url" placeholder="https://example.com" /></label>
+<label>Search <input type="search" placeholder="Search" /></label>
+<label>Quantity <input type="number" value="1" min="0" /></label>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="form-text">Copy</button>
+  <pre><code id="form-text">&lt;label&gt;Name &lt;input type=&quot;text&quot; placeholder=&quot;Jane Doe&quot; /&gt;&lt;/label&gt;
+&lt;label&gt;Email &lt;input type=&quot;email&quot; placeholder=&quot;jane@example.com&quot; /&gt;&lt;/label&gt;
+&lt;label&gt;Password &lt;input type=&quot;password&quot; placeholder=&quot;••••••••&quot; /&gt;&lt;/label&gt;
+&lt;label&gt;Phone &lt;input type=&quot;tel&quot; placeholder=&quot;503-555-0100&quot; /&gt;&lt;/label&gt;
+&lt;label&gt;Website &lt;input type=&quot;url&quot; placeholder=&quot;https://example.com&quot; /&gt;&lt;/label&gt;
+&lt;label&gt;Search &lt;input type=&quot;search&quot; placeholder=&quot;Search&quot; /&gt;&lt;/label&gt;
+&lt;label&gt;Quantity &lt;input type=&quot;number&quot; value=&quot;1&quot; min=&quot;0&quot; /&gt;&lt;/label&gt;</code></pre>
+</div>
 
-<hr />
+</section>
 
-<section id="basic-form">
-  <h2>Basic Form</h2>
-  <form>
-    <label>Name <input type="text" placeholder="Jane Doe" /></label>
-    <label>Email <input type="email" placeholder="jane@example.com" /></label>
-    <label>Bio <textarea placeholder="Tell us about yourself"></textarea></label>
-    <label><p>Birth date</p><input type='date' /></label>
-    <label>
-      Role
-      <select>
-        <option value="">Select a role</option>
-        <option>Developer</option>
-        <option>Designer</option>
-        <option>Project Manager</option>
-      </select>
-    </label>
-    <label><input type="checkbox" /> Subscribe to updates</label>
-    <button type="submit">Submit</button>
-  </form>
+<section id="labels">
+  <h2>Label structure</h2>
+  <p>
+    A bare text node in the label works. Wrapping it in <code>&lt;p&gt;</code> gives you a block you
+    can style, and it is what the invalid-state selector keys off of.
+  </p>
+  
+<div class="demo">
+  
+<label>
+  <p>Birth date</p>
+  <input type="date" />
+</label>
+<label>
+  <p>Reminder</p>
+  <input type="time" />
+</label>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="form-labels">Copy</button>
+  <pre><code id="form-labels">&lt;label&gt;
+  &lt;p&gt;Birth date&lt;/p&gt;
+  &lt;input type=&quot;date&quot; /&gt;
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;p&gt;Reminder&lt;/p&gt;
+  &lt;input type=&quot;time&quot; /&gt;
+&lt;/label&gt;</code></pre>
+</div>
 
-  <button class="ghost copy-button" data-target="code-basic-form">Copy Code</button>
-  <pre><code id="code-basic-form" class="language-html">
-&lt;form&gt;
-  &lt;label&gt;Name &lt;input type="text" placeholder="Jane Doe"&gt;&lt;/label&gt;
-  &lt;label&gt;Email &lt;input type="email" placeholder="jane@example.com"&gt;&lt;/label&gt;
-  &lt;label&gt;Bio &lt;textarea&gt;&lt;/textarea&gt;&lt;/label&gt;
-  &lt;label&gt;
-    Role
-    &lt;select&gt;
-      &lt;option&gt;Developer&lt;/option&gt;
-    &lt;/select&gt;
-  &lt;/label&gt;
-  &lt;label&gt;&lt;input type="checkbox"&gt; Subscribe&lt;/label&gt;
-  &lt;button&gt;Submit&lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
+  <p>
+    <small>
+      Date, time, and select controls get an icon from <code>--icon-calendar</code>,
+      <code>--icon-clock</code>, and <code>--icon-chevron</code>. Each is an inline base64 SVG that
+      swaps between a black and white stroke with the color scheme. Size and inset come from
+      <code>--icon-width</code> and <code>--icon-position</code>.
+    </small>
+  </p>
+</section>
+
+<section id="select">
+  <h2>Select and textarea</h2>
+  
+<div class="demo">
+  
+<label>
+  Role
+  <select>
+    <option value="">Select a role</option>
+    <option>Developer</option>
+    <option>Designer</option>
+    <option>Project manager</option>
+  </select>
+</label>
+
+<label>
+  Bio
+  <textarea placeholder="Tell us about yourself"></textarea>
+</label>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="form-select">Copy</button>
+  <pre><code id="form-select">&lt;label&gt;
+  Role
+  &lt;select&gt;
+    &lt;option value=&quot;&quot;&gt;Select a role&lt;/option&gt;
+    &lt;option&gt;Developer&lt;/option&gt;
+    &lt;option&gt;Designer&lt;/option&gt;
+    &lt;option&gt;Project manager&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/label&gt;
+
+&lt;label&gt;
+  Bio
+  &lt;textarea placeholder=&quot;Tell us about yourself&quot;&gt;&lt;/textarea&gt;
+&lt;/label&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="choice">
+  <h2>Checkboxes and radios</h2>
+  <p>Put the control inside the label, before the text.</p>
+  
+<div class="demo">
+  
+<label><input type="checkbox" /> Subscribe to updates</label>
+<label><input type="checkbox" checked /> Already subscribed</label>
+
+<label><input type="radio" name="plan" checked /> Free plan</label>
+<label><input type="radio" name="plan" /> Pro plan</label>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="form-choice">Copy</button>
+  <pre><code id="form-choice">&lt;label&gt;&lt;input type=&quot;checkbox&quot; /&gt; Subscribe to updates&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;checkbox&quot; checked /&gt; Already subscribed&lt;/label&gt;
+
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;plan&quot; checked /&gt; Free plan&lt;/label&gt;
+&lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;plan&quot; /&gt; Pro plan&lt;/label&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="helper">
+  <h2>Helper text</h2>
+  <p>
+    A <code>&lt;small&gt;</code> immediately after a control collapses the control's bottom margin
+    and becomes helper text at <code>--text-lc-3</code>.
+  </p>
+  
+<div class="demo">
+  
+<label>
+  Username
+  <input type="text" />
+  <small>Letters, numbers, and underscores only.</small>
+</label>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="form-helper">Copy</button>
+  <pre><code id="form-helper">&lt;label&gt;
+  Username
+  &lt;input type=&quot;text&quot; /&gt;
+  &lt;small&gt;Letters, numbers, and underscores only.&lt;/small&gt;
+&lt;/label&gt;</code></pre>
+</div>
+
 </section>
 
 <section id="validation">
-  <h2>Validation States</h2>
-  <form>
-    <label>
-      Username
-      <input type="text" value="taken_username" aria-invalid="true" />
-      <small class="error">This username is already taken</small>
-    </label>
-    <label>
-      Password
-      <input type="password" aria-invalid="true" />
-      <small class="error">Password must be at least 8 characters</small>
-    </label>
-    <button class="error">Submit with Errors</button>
-  </form>
+  <h2>Validation</h2>
+  <p>
+    Set <code>aria-invalid="true"</code> on the control. The label's <code>&lt;p&gt;</code> and the
+    control both pick up <code>--error-color</code>. Pair it with <code>small.error</code>.
+  </p>
+  
+<div class="demo">
+  
+<label>
+  <p>Username</p>
+  <input type="text" value="taken_username" aria-invalid="true" />
+  <small class="error">This username is already taken.</small>
+</label>
 
-  <button class="ghost copy-button" data-target="code-validation">Copy Code</button>
-  <pre><code id="code-validation" class="language-html">
-&lt;form&gt;
-  &lt;label&gt;
-    Username
-    &lt;input type="text" aria-invalid="true"&gt;
-    &lt;small class="error"&gt;This username is already taken&lt;/small&gt;
-  &lt;/label&gt;
-  &lt;label&gt;
-    Password
-    &lt;input type="password" aria-invalid="true"&gt;
-    &lt;small class="error"&gt;Password must be at least 8 characters&lt;/small&gt;
-  &lt;/label&gt;
-  &lt;button class="error"&gt;Submit&lt;/button&gt;
-&lt;/form&gt;
-</code></pre>
+<label>
+  <p>Password</p>
+  <input type="password" aria-invalid="true" />
+  <small class="error">Must be at least 8 characters.</small>
+</label>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="form-validation">Copy</button>
+  <pre><code id="form-validation">&lt;label&gt;
+  &lt;p&gt;Username&lt;/p&gt;
+  &lt;input type=&quot;text&quot; value=&quot;taken_username&quot; aria-invalid=&quot;true&quot; /&gt;
+  &lt;small class=&quot;error&quot;&gt;This username is already taken.&lt;/small&gt;
+&lt;/label&gt;
+
+&lt;label&gt;
+  &lt;p&gt;Password&lt;/p&gt;
+  &lt;input type=&quot;password&quot; aria-invalid=&quot;true&quot; /&gt;
+  &lt;small class=&quot;error&quot;&gt;Must be at least 8 characters.&lt;/small&gt;
+&lt;/label&gt;</code></pre>
+</div>
+
 </section>
 
-<section id="buttons">
-  <h2>Button Styles</h2>
-  <p>Use semantic classes to change button appearance:</p>
-  <button>Default</button>
-  <button class="secondary">Secondary</button>
-  <button class="contrast">Contrast</button>
-  <button class="ghost">Ghost</button>
+<section id="disabled">
+  <h2>Disabled and readonly</h2>
+  
+<div class="demo">
+  
+<label>
+  Locked field
+  <input type="text" value="Cannot edit" disabled />
+</label>
+<label>
+  Read only
+  <input type="text" value="Can select, cannot edit" readonly />
+</label>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="form-disabled">Copy</button>
+  <pre><code id="form-disabled">&lt;label&gt;
+  Locked field
+  &lt;input type=&quot;text&quot; value=&quot;Cannot edit&quot; disabled /&gt;
+&lt;/label&gt;
+&lt;label&gt;
+  Read only
+  &lt;input type=&quot;text&quot; value=&quot;Can select, cannot edit&quot; readonly /&gt;
+&lt;/label&gt;</code></pre>
+</div>
 
-  <button class="ghost copy-button" data-target="code-buttons">Copy Code</button>
-  <pre><code id="code-buttons" class="language-html">
-&lt;button&gt;Default&lt;/button&gt;
-&lt;button class="secondary"&gt;Secondary&lt;/button&gt;
-&lt;button class="contrast"&gt;Contrast&lt;/button&gt;
-&lt;button class="ghost"&gt;Ghost&lt;/button&gt;
-</code></pre>
+</section>
+
+<section id="fieldset">
+  <h2>Fieldsets</h2>
+  
+<div class="demo">
+  
+<fieldset>
+  <legend>Contact info</legend>
+  <label>Name <input type="text" /></label>
+  <label>Email <input type="email" /></label>
+</fieldset>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="form-fieldset">Copy</button>
+  <pre><code id="form-fieldset">&lt;fieldset&gt;
+  &lt;legend&gt;Contact info&lt;/legend&gt;
+  &lt;label&gt;Name &lt;input type=&quot;text&quot; /&gt;&lt;/label&gt;
+  &lt;label&gt;Email &lt;input type=&quot;email&quot; /&gt;&lt;/label&gt;
+&lt;/fieldset&gt;</code></pre>
+</div>
+
 </section>
 
 <section id="kitchen-sink">
-  <h2>Kitchen Sink Form</h2>
-  <p>A full form combining all the above elements into a realistic layout.</p>
-
-  <form>
-    <fieldset>
-      <legend>Contact Info</legend>
-      <label>Name <input type="text" /></label>
-      <label>Email <input type="email" /></label>
-      <label>Phone <input type="tel" /></label>
-    </fieldset>
-
-    <fieldset>
-      <legend>Preferences</legend>
-      <label>
-        Favorite Language
-        <select>
-          <option>JavaScript</option>
-          <option>TypeScript</option>
-          <option>CSS</option>
-        </select>
-      </label>
-      <label>
-        <input type="checkbox" />
-        I want to receive updates
-      </label>
-      <label>
-        <input type="radio" name="plan" checked />
-        Free Plan
-      </label>
-      <label>
-        <input type="radio" name="plan" />
-        Pro Plan
-      </label>
-    </fieldset>
-
+  <h2>Kitchen sink</h2>
+  <p>Everything above, in one realistic form.</p>
+  
+<div class="demo">
+  
+<form>
+  <fieldset>
+    <legend>Contact info</legend>
+    <label>Name <input type="text" placeholder="Jane Doe" /></label>
+    <label>Email <input type="email" placeholder="jane@example.com" /></label>
     <label>
-      Message
-      <textarea></textarea>
+      <p>Phone</p>
+      <input type="tel" aria-invalid="true" />
+      <small class="error">Enter a valid phone number.</small>
     </label>
+  </fieldset>
 
-    <button class="primary">Submit</button>
-  </form>
+  <fieldset>
+    <legend>Preferences</legend>
+    <label>
+      Favorite language
+      <select>
+        <option>TypeScript</option>
+        <option>Go</option>
+        <option>CSS</option>
+      </select>
+    </label>
+    <label><input type="checkbox" /> Send me updates</label>
+    <label><input type="radio" name="tier" checked /> Free</label>
+    <label><input type="radio" name="tier" /> Pro</label>
+  </fieldset>
+
+  <label>
+    Message
+    <textarea></textarea>
+    <small>Markdown is supported.</small>
+  </label>
+
+  <div class="flex">
+    <button type="reset" class="secondary">Reset</button>
+    <button type="submit">Submit</button>
+  </div>
+</form>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="form-kitchen-sink">Copy</button>
+  <pre><code id="form-kitchen-sink">&lt;form&gt;
+  &lt;fieldset&gt;
+    &lt;legend&gt;Contact info&lt;/legend&gt;
+    &lt;label&gt;Name &lt;input type=&quot;text&quot; placeholder=&quot;Jane Doe&quot; /&gt;&lt;/label&gt;
+    &lt;label&gt;Email &lt;input type=&quot;email&quot; placeholder=&quot;jane@example.com&quot; /&gt;&lt;/label&gt;
+    &lt;label&gt;
+      &lt;p&gt;Phone&lt;/p&gt;
+      &lt;input type=&quot;tel&quot; aria-invalid=&quot;true&quot; /&gt;
+      &lt;small class=&quot;error&quot;&gt;Enter a valid phone number.&lt;/small&gt;
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+
+  &lt;fieldset&gt;
+    &lt;legend&gt;Preferences&lt;/legend&gt;
+    &lt;label&gt;
+      Favorite language
+      &lt;select&gt;
+        &lt;option&gt;TypeScript&lt;/option&gt;
+        &lt;option&gt;Go&lt;/option&gt;
+        &lt;option&gt;CSS&lt;/option&gt;
+      &lt;/select&gt;
+    &lt;/label&gt;
+    &lt;label&gt;&lt;input type=&quot;checkbox&quot; /&gt; Send me updates&lt;/label&gt;
+    &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;tier&quot; checked /&gt; Free&lt;/label&gt;
+    &lt;label&gt;&lt;input type=&quot;radio&quot; name=&quot;tier&quot; /&gt; Pro&lt;/label&gt;
+  &lt;/fieldset&gt;
+
+  &lt;label&gt;
+    Message
+    &lt;textarea&gt;&lt;/textarea&gt;
+    &lt;small&gt;Markdown is supported.&lt;/small&gt;
+  &lt;/label&gt;
+
+  &lt;div class=&quot;flex&quot;&gt;
+    &lt;button type=&quot;reset&quot; class=&quot;secondary&quot;&gt;Reset&lt;/button&gt;
+    &lt;button type=&quot;submit&quot;&gt;Submit&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/form&gt;</code></pre>
+</div>
+
 </section>
-</main>
+
+
+      <footer class="site-footer">
+        <hr />
+        <p>
+          <small>
+            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+            MIT
+          </small>
+        </p>
+      </footer>
+    </main>
+
+    
   </body>
 </html>
-<script type="module">
-  document.querySelectorAll('.copy-button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.getAttribute('data-target');
-      const code = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        btn.textContent = 'Copied!';
-        setTimeout(() => (btn.textContent = 'Copy Code'), 1000);
-      });
-    });
-  });
-</script>
-<script type="module">
-  const pickerConfigs = [
-    {
-      var: '--color',
-      id: 'base-color-picker',
-      storage: 'sparkstone-base-color',
-      fallback: 'rebeccapurple',
-    },
-    {
-      var: '--accent-color',
-      id: 'accent-color-picker',
-      storage: 'sparkstone-accent-color',
-      fallback: '#425e00',
-    },
-    {
-      var: '--error-color',
-      id: 'error-color-picker',
-      storage: 'sparkstone-error-color',
-      fallback: 'maroon',
-    },
-  ];
-
-  function getCSSVar(name) {
-    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  }
-
-  function toHex(colorString, fallback) {
-    try {
-      const ctx = document.createElement('canvas').getContext('2d');
-      ctx.fillStyle = colorString;
-      return ctx.fillStyle;
-    } catch {
-      return fallback;
-    }
-  }
-
-  for (const { var: cssVar, id, storage, fallback } of pickerConfigs) {
-    const input = document.getElementById(id);
-
-    const stored = sessionStorage.getItem(storage);
-    const initial = stored || toHex(getCSSVar(cssVar), fallback);
-
-    document.documentElement.style.setProperty(cssVar, initial);
-
-    if (!input) continue;
-    input.value = initial;
-
-    input.addEventListener('input', () => {
-      const newValue = input.value;
-      document.documentElement.style.setProperty(cssVar, newValue);
-      sessionStorage.setItem(storage, newValue);
-    });
-  }
-</script>

@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en" data-color-scheme="light">
   <head>
@@ -5,97 +7,86 @@
     <title>@sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./theme.css" />
-    <style>
-      main.container {
-        position: relative;
-      }
-      .copy-button {
-        position: absolute;
-        right: 0;
-        z-index: 1;
-      }
-
-      pre {
-        white-space: pre-wrap;
-      }
-    </style>
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
   </head>
   <body>
-    <script>
-  const saved = sessionStorage.getItem('color-scheme');
-  if (saved) {
-    document.documentElement.setAttribute('data-color-scheme', saved);
-  }
-</script>
-
-<main class="container">
-  <header
-    style="
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: var(--padding);
-      gap: var(--padding);
-    ">
-    <nav class="flex" style="align-items: center">
-      <strong>@sparkstone/css</strong>
-    </nav>
-      <nav class="flex" style="flex-wrap: wrap">
-      <a id="theme-toggle"  aria-label="Toggle Theme" title="Toggle Theme">🌙</a>
-        <a href="./index.html">Home</a>
-        <a href="./colors.html">Colors</a>
-        <a href="./forms.html">Forms</a>
-        <a href="./containers.html">Containers</a>
+    <header class="container-fluid site-header">
+      <nav class="flex" style="align-items: center">
+        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
       </nav>
-  </header>
-</main>
-
-<script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  const root = document.documentElement;
-
-  const updateIcon = () => {
-    const scheme = root.getAttribute('data-color-scheme') || 'light';
-    toggleBtn.textContent = scheme === 'dark' ? '🌙 Dark' : '☀️ light';
-  };
-
-  toggleBtn.addEventListener('click', () => {
-    const current = root.getAttribute('data-color-scheme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-color-scheme', next);
-    sessionStorage.setItem('color-scheme', next);
-    updateIcon();
-  });
-
-  updateIcon();
-</script>
+      <nav class="flex site-nav" style="flex-wrap: wrap">
+        
+          <a href="./index.html" aria-current="page">Home</a>
+        
+          <a href="./colors.html">Colors</a>
+        
+          <a href="./typography.html">Typography</a>
+        
+          <a href="./buttons.html">Buttons</a>
+        
+          <a href="./forms.html">Forms</a>
+        
+          <a href="./containers.html">Containers</a>
+        
+          <a href="./layout.html">Layout</a>
+        
+          <a href="./customizing.html">Customizing</a>
+        
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
 
     <main class="container">
+      
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            
+              <li><a href="#install">Install</a></li>
+            
+              <li><a href="#quickstart">Quick start</a></li>
+            
+              <li><a href="#theming">Theming</a></li>
+            
+              <li><a href="#preview">Live preview</a></li>
+            
+              <li><a href="#support">Browser support</a></li>
+            
+          </ul>
+        </nav>
+      
+
+      
 <h1>@sparkstone/css</h1>
-
 <p>
-  <code>@sparkstone/css</code> is a lightweight SCSS framework inspired by
-  <a href="https://picocss.com" target="_blank">Pico.css</a>, but rebuilt from the ground up with
-  <code>oklch()</code> color primitives and a powerful theme system based on native CSS variables.
+  A lightweight SCSS framework in the spirit of
+  <a href="https://picocss.com" target="_blank" rel="noreferrer">Pico.css</a>, rebuilt on
+  <code>oklch()</code> relative color syntax. Give it one base color and it derives an entire light
+  and dark palette that clears WCAG AA on every pairing the framework uses.
 </p>
 
 <p>
-  📦 <a href="https://www.npmjs.com/package/@sparkstone/css" target="_blank">View on NPM</a> · 💻
-  <a href="https://github.com/sparkstonepdx/css" target="_blank">View on GitHub</a>
+  <a href="https://www.npmjs.com/package/@sparkstone/css" target="_blank" rel="noreferrer">npm</a> ·
+  <a href="https://github.com/sparkstonepdx/css" target="_blank" rel="noreferrer">GitHub</a>
 </p>
 
-<ul>
-  <li>🎨 Perceptually-uniform color scales via <code>oklch()</code></li>
-  <li>🌗 Graceful light/dark theming using system preferences</li>
-  <li>🧱 Minimal class usage with sensible defaults</li>
-  <li>⚡ No JavaScript required for core styling</li>
-  <li>🧩 Sass functions and mixins for full control</li>
-</ul>
+<section id="why">
+  <h2>What you get</h2>
+  <ul>
+    <li>A nine-step perceptual scale derived from a single <code>--color</code>.</li>
+    <li>Light and dark from the same scale, mirrored. No second palette to maintain.</li>
+    <li>Semantic HTML styled by default. Classes are the exception, not the rule.</li>
+    <li>No JavaScript for any core styling.</li>
+    <li>Sass functions and mixins when you need to reach past the defaults.</li>
+  </ul>
+</section>
 
-<h2>Get Started</h2>
-<p>Install the package with your preferred package manager:</p>
-
-<pre><code class="language-bash"># pnpm
+<section id="install">
+  <h2>Install</h2>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="install-pkg">Copy</button>
+  <pre><code id="install-pkg" class="language-bash"># pnpm
 pnpm add @sparkstone/css
 
 # yarn
@@ -103,118 +94,133 @@ yarn add @sparkstone/css
 
 # npm
 npm install @sparkstone/css</code></pre>
+</div>
 
-<p>Then import the theme:</p>
 
-<pre><code class="language-js">// SCSS
-import "@sparkstone/css/src/theme.scss";
+  <p>Then import either the source or the precompiled stylesheet:</p>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="install-import">Copy</button>
+  <pre><code id="install-import" class="language-scss">// SCSS, if you want the functions and mixins
+@use &quot;@sparkstone/css/src/theme.scss&quot;;
 
-// or precompiled CSS
-import "@sparkstone/css/theme.css";</code></pre>
+// or the precompiled CSS
+import &quot;@sparkstone/css/theme.css&quot;;</code></pre>
+</div>
 
-<h2>Theming</h2>
-<p>The entire theme can be customized via CSS variables. For example:</p>
+</section>
 
-<button class="ghost copy-button" data-target="code-default-styles">Copy Code</button>
-<pre><code id="code-default-styles" class="language-css">:root {
+<section id="quickstart">
+  <h2>A complete page</h2>
+  <p>This is the whole thing. No wrapper classes beyond <code>.container</code>.</p>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="quickstart-page">Copy</button>
+  <pre><code id="quickstart-page" class="language-html">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;theme.css&quot; /&gt;
+    &lt;style&gt;
+      :root {
+        --color: teal;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main class=&quot;container&quot;&gt;
+      &lt;h1&gt;Hello&lt;/h1&gt;
+      &lt;p&gt;Body copy, and &lt;a href=&quot;#&quot;&gt;a link&lt;/a&gt;.&lt;/p&gt;
+
+      &lt;article class=&quot;card&quot;&gt;
+        &lt;h2&gt;A card&lt;/h2&gt;
+        &lt;p&gt;Cards are just articles.&lt;/p&gt;
+        &lt;footer&gt;
+          &lt;button class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
+          &lt;button&gt;Confirm&lt;/button&gt;
+        &lt;/footer&gt;
+      &lt;/article&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="theming">
+  <h2>Theming</h2>
+  <p>Three colors drive everything. Set them anywhere a CSS variable can be set.</p>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="theming-vars">Copy</button>
+  <pre><code id="theming-vars" class="language-css">:root {
   --color: rebeccapurple;
-  --primary-color: blue;
   --accent-color: oklch(from var(--color) l c calc(h + 180));
   --error-color: maroon;
 }</code></pre>
+</div>
 
-<p>Light and dark mode follow system settings by default. Override manually with:</p>
 
-<pre><code class="language-html">&lt;html data-color-scheme="light"&gt;
-&lt;!-- or --&gt;
-&lt;html data-color-scheme="dark"&gt;</code></pre>
+  <p>
+    Because they are plain CSS variables, you can rebind <code>--color</code> on a subtree and every
+    descendant recolors itself. See <a href="./colors.html">Colors</a>.
+  </p>
 
-<h2>Docs</h2>
-<p>Explore styled components and utilities:</p>
-<ul>
-  <li><a href="forms.html">Form Elements</a></li>
-  <li><a href="colors.html">Color Palettes</a></li>
-  <li><a href="containers.html">Containers & Dialogs</a></li>
-</ul>
+  <h3>Light and dark</h3>
+  <p>
+    The scheme follows <code>prefers-color-scheme</code> by default. Force it with an attribute on
+    any element, not just <code>&lt;html&gt;</code>:
+  </p>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="theming-scheme">Copy</button>
+  <pre><code id="theming-scheme" class="language-html">&lt;html data-color-scheme=&quot;light&quot;&gt;
+&lt;html data-color-scheme=&quot;dark&quot;&gt;</code></pre>
+</div>
 
-<h2>Live Theme Preview</h2>
-<p>Try customizing the theme color:</p>
-<form style="display: flex; gap: 1rem; align-items: center">
-  <label>
-    Base Color
-    <input type="color" id="base-color-picker" />
-  </label>
-  <label>
-    Accent Color
-    <input type="color" id="accent-color-picker" />
-  </label>
-</form>
-</main>
+</section>
+
+<section id="preview">
+  <h2>Live preview</h2>
+  <p>Change these and every page on this site updates. Values persist for the session.</p>
+  <form class="flex" style="flex-wrap: wrap; align-items: end">
+    <label>
+      <p>Base</p>
+      <input type="color" id="base-color-picker" />
+    </label>
+    <label>
+      <p>Accent</p>
+      <input type="color" id="accent-color-picker" />
+    </label>
+    <label>
+      <p>Error</p>
+      <input type="color" id="error-color-picker" />
+    </label>
+  </form>
+</section>
+
+<section id="support">
+  <h2>Browser support</h2>
+  <p>
+    The framework leans on relative color syntax, <code>oklch(from ...)</code>. That means Chrome
+    119+, Safari 16.4+, and Firefox 128+. There is no fallback layer, by design.
+  </p>
+</section>
+
+
+      <footer class="site-footer">
+        <hr />
+        <p>
+          <small>
+            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+            MIT
+          </small>
+        </p>
+      </footer>
+    </main>
+
+    
   </body>
 </html>
-<script type="module">
-  document.querySelectorAll('.copy-button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.getAttribute('data-target');
-      const code = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        btn.textContent = 'Copied!';
-        setTimeout(() => (btn.textContent = 'Copy Code'), 1000);
-      });
-    });
-  });
-</script>
-<script type="module">
-  const pickerConfigs = [
-    {
-      var: '--color',
-      id: 'base-color-picker',
-      storage: 'sparkstone-base-color',
-      fallback: 'rebeccapurple',
-    },
-    {
-      var: '--accent-color',
-      id: 'accent-color-picker',
-      storage: 'sparkstone-accent-color',
-      fallback: '#425e00',
-    },
-    {
-      var: '--error-color',
-      id: 'error-color-picker',
-      storage: 'sparkstone-error-color',
-      fallback: 'maroon',
-    },
-  ];
-
-  function getCSSVar(name) {
-    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  }
-
-  function toHex(colorString, fallback) {
-    try {
-      const ctx = document.createElement('canvas').getContext('2d');
-      ctx.fillStyle = colorString;
-      return ctx.fillStyle;
-    } catch {
-      return fallback;
-    }
-  }
-
-  for (const { var: cssVar, id, storage, fallback } of pickerConfigs) {
-    const input = document.getElementById(id);
-
-    const stored = sessionStorage.getItem(storage);
-    const initial = stored || toHex(getCSSVar(cssVar), fallback);
-
-    document.documentElement.style.setProperty(cssVar, initial);
-
-    if (!input) continue;
-    input.value = initial;
-
-    input.addEventListener('input', () => {
-      const newValue = input.value;
-      document.documentElement.style.setProperty(cssVar, newValue);
-      sessionStorage.setItem(storage, newValue);
-    });
-  }
-</script>

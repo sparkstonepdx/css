@@ -1,93 +1,111 @@
+
+
 <!DOCTYPE html>
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>colors</title>
+    <title>Colors · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./theme.css" />
-    <style>
-      main.container {
-        position: relative;
-      }
-      .copy-button {
-        position: absolute;
-        right: 0;
-        z-index: 1;
-      }
-
-      pre {
-        white-space: pre-wrap;
-      }
-    </style>
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
   </head>
   <body>
-    <script>
-  const saved = sessionStorage.getItem('color-scheme');
-  if (saved) {
-    document.documentElement.setAttribute('data-color-scheme', saved);
-  }
-</script>
-
-<main class="container">
-  <header
-    style="
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      padding: var(--padding);
-      gap: var(--padding);
-    ">
-    <nav class="flex" style="align-items: center">
-      <strong>@sparkstone/css</strong>
-    </nav>
-      <nav class="flex" style="flex-wrap: wrap">
-      <a id="theme-toggle"  aria-label="Toggle Theme" title="Toggle Theme">🌙</a>
-        <a href="./index.html">Home</a>
-        <a href="./colors.html">Colors</a>
-        <a href="./forms.html">Forms</a>
-        <a href="./containers.html">Containers</a>
+    <header class="container-fluid site-header">
+      <nav class="flex" style="align-items: center">
+        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
       </nav>
-  </header>
-</main>
-
-<script>
-  const toggleBtn = document.getElementById('theme-toggle');
-  const root = document.documentElement;
-
-  const updateIcon = () => {
-    const scheme = root.getAttribute('data-color-scheme') || 'light';
-    toggleBtn.textContent = scheme === 'dark' ? '🌙 Dark' : '☀️ light';
-  };
-
-  toggleBtn.addEventListener('click', () => {
-    const current = root.getAttribute('data-color-scheme') || 'light';
-    const next = current === 'dark' ? 'light' : 'dark';
-    root.setAttribute('data-color-scheme', next);
-    sessionStorage.setItem('color-scheme', next);
-    updateIcon();
-  });
-
-  updateIcon();
-</script>
+      <nav class="flex site-nav" style="flex-wrap: wrap">
+        
+          <a href="./index.html">Home</a>
+        
+          <a href="./colors.html" aria-current="page">Colors</a>
+        
+          <a href="./typography.html">Typography</a>
+        
+          <a href="./buttons.html">Buttons</a>
+        
+          <a href="./forms.html">Forms</a>
+        
+          <a href="./containers.html">Containers</a>
+        
+          <a href="./layout.html">Layout</a>
+        
+          <a href="./customizing.html">Customizing</a>
+        
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
 
     <main class="container">
-<h1>Color Palettes</h1>
+      
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            
+              <li><a href="#scale">The scale</a></li>
+            
+              <li><a href="#swatches">Swatches</a></li>
+            
+              <li><a href="#contrast">Contrast</a></li>
+            
+              <li><a href="#scoping">Scoping</a></li>
+            
+              <li><a href="#semantic-colors">Accent and error</a></li>
+            
+              <li><a href="#greyscale">Greyscale</a></li>
+            
+              <li><a href="#sass">Sass API</a></li>
+            
+          </ul>
+        </nav>
+      
 
-
+      
+<h1>Colors</h1>
 <p>
-  This CSS library uses <code>oklch()</code> to calculate all colors from a single base color,
-  defined by <code>--color</code>. The system generates lightness-adjusted text and surface swatches
-  using <code>--text-lc-*</code> and <code>--surface-lc-*</code> values, which adapt to light and
-  dark modes automatically. These are used with <code>cur-color()</code> to derive accessible
-  contrast values.
+  Every color in the framework is derived from one variable, <code>--color</code>, using
+  <code>oklch()</code> relative color syntax. A nine-step scale of lightness and chroma pairs is
+  applied to that hue. Light and dark mode use the same scale, mirrored.
 </p>
 
-<form style="margin-bottom: 2rem">
-  <label>
-    <p>Base Color:</p>
-    <input id="base-color-picker" type="color" title="Select theme base color" />
-  </label>
+<section id="scale">
+  <h2>The scale</h2>
+  <p>
+    <code>$lcArray</code> holds nine <code>(lightness, chroma)</code> pairs. Each becomes a
+    <code>--swatch-lc-N</code>. Surfaces read the scale forward, text reads it backward:
+  </p>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="scale-mapping">Copy</button>
+  <pre><code id="scale-mapping" class="language-css">--swatch-lc-1:  99%  0.018;   /* lightest */
+--swatch-lc-9:  17%  0.055;   /* darkest  */
 
+--surface-lc-N: var(--swatch-lc-N);
+--text-lc-N:    var(--swatch-lc-[10 - N]);</code></pre>
+</div>
+
+  <p>
+    In dark mode the swatch indices are reversed before the same mapping is applied, so
+    <code>surface-lc-1</code> is always the page background and <code>text-lc-1</code> is always the
+    highest-contrast text, in both schemes.
+  </p>
+  <p>
+    The consequence worth internalizing: <strong>a pairing that reads well as
+    <code>text-lc-N</code> on <code>surface-lc-M</code> in light mode does not automatically read
+    well in dark mode</strong>, because the two schemes resolve it to different swatch pairs. Light
+    resolves to stops <code>(M, 10 - N)</code>; dark resolves to stops <code>(10 - M, N)</code>. Use
+    the table below rather than guessing.
+  </p>
+</section>
+
+<section id="swatches">
+  <h2>Swatches</h2>
+  <form style="margin-bottom: 1rem">
+    <label>
+      <p>Base color</p>
+      <input type="color" id="base-color-picker" />
+    </label>
+  </form>
   
 <div class="flex flip" style="justify-content: stretch; gap: 0.5rem">
   <article
@@ -398,15 +416,90 @@
   </div>
 </div>
 
-</form>
+</section>
 
-<form style="margin-bottom: 2rem">
+<section id="contrast">
+  <h2>Contrast</h2>
+  <p>
+    The scale is tuned so every pairing the framework itself uses clears WCAG AA (4.5:1) for normal
+    text, at every hue, in both schemes. Worst-case ratios:
+  </p>
+  <table>
+    <thead>
+      <tr><th>Pairing</th><th>Used by</th><th>Light</th><th>Dark</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>text-lc-1</code> / <code>surface-lc-1</code></td><td>body copy</td><td>18.5</td><td>18.5</td></tr>
+      <tr><td><code>text-lc-1</code> / <code>surface-lc-2</code></td><td>article, dialog</td><td>14.3</td><td>15.5</td></tr>
+      <tr><td><code>text-lc-3</code> / <code>surface-lc-1</code></td><td><code>.secondary</code>, <code>.ghost</code>, <code>small</code></td><td>11.0</td><td>10.0</td></tr>
+      <tr><td><code>text-lc-3</code> / <code>surface-lc-2</code></td><td><code>code</code>, <code>pre</code></td><td>8.6</td><td>8.7</td></tr>
+      <tr><td><code>text-lc-3</code> / <code>surface-lc-3</code></td><td><code>small.chip</code></td><td>6.4</td><td>6.4</td></tr>
+      <tr><td><code>text-lc-4</code> / <code>surface-lc-1</code></td><td>links</td><td>6.5</td><td>6.5</td></tr>
+      <tr><td><code>text-lc-4</code> / <code>surface-lc-2</code></td><td>links inside articles</td><td>5.1</td><td>5.7</td></tr>
+      <tr><td><code>primary-text-lc</code> / <code>primary-surface-lc</code></td><td>primary buttons</td><td>6.5</td><td>6.5</td></tr>
+    </tbody>
+  </table>
+  <p>
+    <small>
+      Two pairings to avoid. <code>text-lc-5</code> on <code>surface-lc-5</code> resolves to the same
+      color in both schemes. <code>text-lc-4</code> on <code>surface-lc-3</code> lands near 3.6:1,
+      below AA for normal text.
+    </small>
+  </p>
+</section>
+
+<section id="scoping">
+  <h2>Scoping a color</h2>
+  <p>
+    Rebind <code>--color</code> on any element and its whole subtree recolors. This is how
+    <code>--accent-color</code> and <code>--error-color</code> are applied internally.
+  </p>
+  
+<div class="demo">
+  
+<div class="flex flip">
+  <article class="card" style="--color: teal; flex: 1">
+    <h3>Teal</h3>
+    <p>Scoped with <code>--color: teal</code>.</p>
+    <button>Action</button>
+  </article>
+  <article class="card" style="--color: crimson; flex: 1">
+    <h3>Crimson</h3>
+    <p>Scoped with <code>--color: crimson</code>.</p>
+    <button>Action</button>
+  </article>
+</div>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="colors-scoping">Copy</button>
+  <pre><code id="colors-scoping">&lt;div class=&quot;flex flip&quot;&gt;
+  &lt;article class=&quot;card&quot; style=&quot;--color: teal; flex: 1&quot;&gt;
+    &lt;h3&gt;Teal&lt;/h3&gt;
+    &lt;p&gt;Scoped with &lt;code&gt;--color: teal&lt;/code&gt;.&lt;/p&gt;
+    &lt;button&gt;Action&lt;/button&gt;
+  &lt;/article&gt;
+  &lt;article class=&quot;card&quot; style=&quot;--color: crimson; flex: 1&quot;&gt;
+    &lt;h3&gt;Crimson&lt;/h3&gt;
+    &lt;p&gt;Scoped with &lt;code&gt;--color: crimson&lt;/code&gt;.&lt;/p&gt;
+    &lt;button&gt;Action&lt;/button&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="semantic-colors">
+  <h2>Accent and error</h2>
+  <p>
+    <code>--accent-color</code> defaults to the complement of the base hue and is what links use.
+    <code>--error-color</code> drives <code>small.error</code> and invalid inputs.
+  </p>
   <div style="--color: var(--accent-color)">
     <label>
-      <p>Accent Color:</p>
-      <input id="accent-color-picker" type="color" title="Select accent color" />
+      <p>Accent color</p>
+      <input type="color" id="accent-color-picker" />
     </label>
-
     
 <div class="flex flip" style="justify-content: stretch; gap: 0.5rem">
   <article
@@ -718,14 +811,12 @@
 </div>
 
   </div>
-</form>
-<form style="margin-bottom: 2rem">
-  <div style="--color: var(--error-color)">
+
+  <div style="--color: var(--error-color); margin-top: 2rem">
     <label>
-      <p>Error Color:</p>
-      <input id="error-color-picker" type="color" title="Select accent color" />
+      <p>Error color</p>
+      <input type="color" id="error-color-picker" />
     </label>
-
     
 <div class="flex flip" style="justify-content: stretch; gap: 0.5rem">
   <article
@@ -1037,74 +1128,100 @@
 </div>
 
   </div>
-</form>
 
-</main>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="colors-semantic">Copy</button>
+  <pre><code id="colors-semantic" class="language-css">:root {
+  --color: rebeccapurple;
+  --accent-color: oklch(from var(--color) l c calc(h + 180));
+  --error-color: maroon;
+  --fallback-color: white;
+}</code></pre>
+</div>
+
+</section>
+
+<section id="greyscale">
+  <h2>Greyscale and disabled</h2>
+  <p>
+    A parallel chroma-free scale backs <code>--grey-surface-lc-*</code> and
+    <code>--grey-text-lc-*</code>. The <code>.disabled</code> class and the <code>:disabled</code>
+    pseudo-class swap the live scale for it via the <code>apply-greyscale()</code> mixin.
+  </p>
+  
+<div class="demo">
+  
+<div class="flex">
+  <button>Enabled</button>
+  <button disabled>Disabled</button>
+  <article class="card disabled" style="flex: 1">
+    <p>An entire subtree can be desaturated with <code>.disabled</code>.</p>
+  </article>
+</div>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="colors-greyscale">Copy</button>
+  <pre><code id="colors-greyscale">&lt;div class=&quot;flex&quot;&gt;
+  &lt;button&gt;Enabled&lt;/button&gt;
+  &lt;button disabled&gt;Disabled&lt;/button&gt;
+  &lt;article class=&quot;card disabled&quot; style=&quot;flex: 1&quot;&gt;
+    &lt;p&gt;An entire subtree can be desaturated with &lt;code&gt;.disabled&lt;/code&gt;.&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="sass">
+  <h2>Sass API</h2>
+  
+<div class="code-block">
+  <button class="ghost copy-button" data-target="colors-sass">Copy</button>
+  <pre><code id="colors-sass" class="language-scss">@use &quot;@sparkstone/css/src/vars.scss&quot; as *;
+
+.thing {
+  /* the ambient --color, at a given stop */
+  background: cur-color(var(--surface-lc-2));
+  color: cur-color(var(--text-lc-1));
+  border: var(--border-width) solid get-border-color();
+}
+
+.fixed-hue {
+  /* an explicit color instead of --color */
+  background: get-color(var(--surface-lc-2), tomato);
+  /* the same stop, chroma forced to zero */
+  border-color: get-grey(var(--surface-lc-4), tomato);
+}
+
+.inert {
+  @include apply-greyscale();
+}</code></pre>
+</div>
+
+  <p>
+    <small>
+      <code>get-border-color()</code> is shorthand for <code>cur-color(var(--surface-lc-4))</code>.
+      <code>cur-color()</code> reads whatever <code>--color</code> is in scope where the rule
+      applies, so scoping still works.
+    </small>
+  </p>
+</section>
+
+
+      <footer class="site-footer">
+        <hr />
+        <p>
+          <small>
+            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+            MIT
+          </small>
+        </p>
+      </footer>
+    </main>
+
+    
   </body>
 </html>
-<script type="module">
-  document.querySelectorAll('.copy-button').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const id = btn.getAttribute('data-target');
-      const code = document.getElementById(id).innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        btn.textContent = 'Copied!';
-        setTimeout(() => (btn.textContent = 'Copy Code'), 1000);
-      });
-    });
-  });
-</script>
-<script type="module">
-  const pickerConfigs = [
-    {
-      var: '--color',
-      id: 'base-color-picker',
-      storage: 'sparkstone-base-color',
-      fallback: 'rebeccapurple',
-    },
-    {
-      var: '--accent-color',
-      id: 'accent-color-picker',
-      storage: 'sparkstone-accent-color',
-      fallback: '#425e00',
-    },
-    {
-      var: '--error-color',
-      id: 'error-color-picker',
-      storage: 'sparkstone-error-color',
-      fallback: 'maroon',
-    },
-  ];
-
-  function getCSSVar(name) {
-    return getComputedStyle(document.documentElement).getPropertyValue(name).trim();
-  }
-
-  function toHex(colorString, fallback) {
-    try {
-      const ctx = document.createElement('canvas').getContext('2d');
-      ctx.fillStyle = colorString;
-      return ctx.fillStyle;
-    } catch {
-      return fallback;
-    }
-  }
-
-  for (const { var: cssVar, id, storage, fallback } of pickerConfigs) {
-    const input = document.getElementById(id);
-
-    const stored = sessionStorage.getItem(storage);
-    const initial = stored || toHex(getCSSVar(cssVar), fallback);
-
-    document.documentElement.style.setProperty(cssVar, initial);
-
-    if (!input) continue;
-    input.value = initial;
-
-    input.addEventListener('input', () => {
-      const newValue = input.value;
-      document.documentElement.style.setProperty(cssVar, newValue);
-      sessionStorage.setItem(storage, newValue);
-    });
-  }
-</script>

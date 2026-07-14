@@ -1,0 +1,259 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Buttons · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="container-fluid site-header">
+      <nav class="flex" style="align-items: center">
+        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      </nav>
+      <nav class="flex site-nav" style="flex-wrap: wrap">
+        
+          <a href="./index.html">Home</a>
+        
+          <a href="./colors.html">Colors</a>
+        
+          <a href="./typography.html">Typography</a>
+        
+          <a href="./buttons.html" aria-current="page">Buttons</a>
+        
+          <a href="./forms.html">Forms</a>
+        
+          <a href="./containers.html">Containers</a>
+        
+          <a href="./layout.html">Layout</a>
+        
+          <a href="./customizing.html">Customizing</a>
+        
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <main class="container">
+      
+        <nav class="toc" aria-label="On this page">
+          <ul>
+            
+              <li><a href="#variants">Variants</a></li>
+            
+              <li><a href="#elements">Any element</a></li>
+            
+              <li><a href="#states">States</a></li>
+            
+              <li><a href="#shape">Shape</a></li>
+            
+              <li><a href="#semantic">Unstyling</a></li>
+            
+              <li><a href="#groups">Groups</a></li>
+            
+          </ul>
+        </nav>
+      
+
+      
+<h1>Buttons</h1>
+<p>
+  Every variant is styled through one selector group, so <code>&lt;button&gt;</code>,
+  <code>&lt;input type="submit"&gt;</code>, <code>&lt;input type="button"&gt;</code>,
+  <code>&lt;input type="reset"&gt;</code>, and anything with <code>role="button"</code> get the same
+  treatment.
+</p>
+
+<section id="variants">
+  <h2>Variants</h2>
+  
+<div class="demo">
+  
+<div class="flex" style="flex-wrap: wrap">
+  <button>Default</button>
+  <button class="primary">Primary</button>
+  <button class="secondary">Secondary</button>
+  <button class="ghost">Ghost</button>
+  <button class="contrast">Contrast</button>
+</div>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="btn-variants">Copy</button>
+  <pre><code id="btn-variants">&lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap&quot;&gt;
+  &lt;button&gt;Default&lt;/button&gt;
+  &lt;button class=&quot;primary&quot;&gt;Primary&lt;/button&gt;
+  &lt;button class=&quot;secondary&quot;&gt;Secondary&lt;/button&gt;
+  &lt;button class=&quot;ghost&quot;&gt;Ghost&lt;/button&gt;
+  &lt;button class=&quot;contrast&quot;&gt;Contrast&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+  <p>
+    <small>
+      Default and <code>.primary</code> render identically today. <code>.primary</code> exists so
+      intent is explicit in markup and so the two can diverge later. <code>.contrast</code> rebinds
+      <code>--color</code> to <code>--fallback-color</code>, which produces a neutral button on any
+      hue.
+    </small>
+  </p>
+</section>
+
+<section id="elements">
+  <h2>Any element</h2>
+  
+<div class="demo">
+  
+<div class="flex" style="flex-wrap: wrap; align-items: center">
+  <button type="button">button</button>
+  <input type="submit" value="input[submit]" />
+  <input type="reset" value="input[reset]" />
+  <a href="#elements" role="button">a[role=button]</a>
+</div>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="btn-elements">Copy</button>
+  <pre><code id="btn-elements">&lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap; align-items: center&quot;&gt;
+  &lt;button type=&quot;button&quot;&gt;button&lt;/button&gt;
+  &lt;input type=&quot;submit&quot; value=&quot;input[submit]&quot; /&gt;
+  &lt;input type=&quot;reset&quot; value=&quot;input[reset]&quot; /&gt;
+  &lt;a href=&quot;#elements&quot; role=&quot;button&quot;&gt;a[role=button]&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="states">
+  <h2>States</h2>
+  <p>
+    <code>:disabled</code> and <code>.disabled</code> both swap the color scale for the greyscale
+    one. Use <code>.disabled</code> when the element is not a form control.
+  </p>
+  
+<div class="demo">
+  
+<div class="flex" style="flex-wrap: wrap">
+  <button disabled>Disabled</button>
+  <button class="secondary" disabled>Disabled secondary</button>
+  <a href="#states" role="button" class="disabled">Disabled link button</a>
+</div>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="btn-states">Copy</button>
+  <pre><code id="btn-states">&lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap&quot;&gt;
+  &lt;button disabled&gt;Disabled&lt;/button&gt;
+  &lt;button class=&quot;secondary&quot; disabled&gt;Disabled secondary&lt;/button&gt;
+  &lt;a href=&quot;#states&quot; role=&quot;button&quot; class=&quot;disabled&quot;&gt;Disabled link button&lt;/a&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="shape">
+  <h2>Shape</h2>
+  <p>
+    <code>.rounded</code> sets <code>--border-radius: 2rem</code> on the element. The radius is a
+    variable, so you can set it yourself anywhere.
+  </p>
+  
+<div class="demo">
+  
+<div class="flex" style="flex-wrap: wrap">
+  <button class="rounded">Rounded</button>
+  <button class="secondary rounded">Rounded secondary</button>
+  <button style="--border-radius: 0">Square</button>
+</div>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="btn-shape">Copy</button>
+  <pre><code id="btn-shape">&lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap&quot;&gt;
+  &lt;button class=&quot;rounded&quot;&gt;Rounded&lt;/button&gt;
+  &lt;button class=&quot;secondary rounded&quot;&gt;Rounded secondary&lt;/button&gt;
+  &lt;button style=&quot;--border-radius: 0&quot;&gt;Square&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="semantic">
+  <h2>Unstyling a button</h2>
+  <p>
+    <code>.semantic</code> applies <code>all: unset</code> and keeps the pointer cursor. Use it when
+    you need a real <code>&lt;button&gt;</code> for accessibility but no button chrome.
+  </p>
+  
+<div class="demo">
+  
+<p>
+  Read more about
+  <button class="semantic" style="text-decoration: underline">this topic</button>,
+  or dismiss it.
+</p>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="btn-semantic">Copy</button>
+  <pre><code id="btn-semantic">&lt;p&gt;
+  Read more about
+  &lt;button class=&quot;semantic&quot; style=&quot;text-decoration: underline&quot;&gt;this topic&lt;/button&gt;,
+  or dismiss it.
+&lt;/p&gt;</code></pre>
+</div>
+
+</section>
+
+<section id="groups">
+  <h2>Groups and footers</h2>
+  <p>
+    <code>.flex</code> handles rows. Inside <code>article &gt; footer</code>, contents are pushed
+    right automatically.
+  </p>
+  
+<div class="demo">
+  
+<article class="card">
+  <h3>Delete this project?</h3>
+  <p>This cannot be undone.</p>
+  <footer class="flex">
+    <button class="secondary">Cancel</button>
+    <button>Delete</button>
+  </footer>
+</article>
+  
+</div>
+<div class="code-block">
+  <button class="ghost copy-button" data-target="btn-groups">Copy</button>
+  <pre><code id="btn-groups">&lt;article class=&quot;card&quot;&gt;
+  &lt;h3&gt;Delete this project?&lt;/h3&gt;
+  &lt;p&gt;This cannot be undone.&lt;/p&gt;
+  &lt;footer class=&quot;flex&quot;&gt;
+    &lt;button class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
+    &lt;button&gt;Delete&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+</div>
+
+</section>
+
+
+      <footer class="site-footer">
+        <hr />
+        <p>
+          <small>
+            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+            MIT
+          </small>
+        </p>
+      </footer>
+    </main>
+
+    
+  </body>
+</html>

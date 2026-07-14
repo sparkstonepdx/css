@@ -1,104 +1,160 @@
-{% extends "layout.njk" %} {% block content %}
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set toc = [
+  ["article", "Article"],
+  ["card", "Card"],
+  ["dialog", "Dialog"],
+  ["details", "Details"],
+  ["table", "Tables"],
+  ["progress", "Progress"]
+] %}
+
+{% block content %}
 <h1>Containers</h1>
 <p>
-  This page showcases base containers styled by <code>@sparkstone/css</code>, including
-  <code>article</code>, <code>.card</code>, and <code>&lt;dialog&gt;</code>.
+  Surfaces and grouping elements. <code>article</code> is the base surface; <code>.card</code> and
+  <code>dialog</code> build on it.
 </p>
 
-<section>
-  <h2>Default Article</h2>
-  <article>
-    <h3>Standard Article</h3>
-    <p>
-      This is a plain <code>&lt;article&gt;</code> element. It uses the default spacing and text
-      styles defined in the theme.
-    </p>
-  </article>
-  <br />
-  <button class="ghost copy-button" data-target="code-article">Copy Code</button>
-  <pre><code class="language-html" id="code-article">
-&lt;article&gt;
-  &lt;h3&gt;Standard Article&lt;/h3&gt;
-  &lt;p&gt;
-    This is a plain &lt;code&gt;&amp;lt;article&amp;gt;&lt;/code&gt; element.
-     It uses the default spacing and text styles defined in the theme.
-  &lt;/p&gt;
-&lt;/article&gt;
-</code></pre>
+<section id="article">
+  <h2>Article</h2>
+  <p>
+    A raised surface on <code>--surface-lc-2</code> with the shared <code>--box-shadow</code>. A
+    <code>&lt;footer&gt;</code> inside gets a top border and right-aligns its contents.
+  </p>
+  {% call m.demo("cont-article") %}
+<article>
+  <header>
+    <h3>Standard article</h3>
+  </header>
+  <p>Default padding, radius, and shadow from the theme.</p>
+  <footer>
+    <button class="secondary">Dismiss</button>
+    <button>Confirm</button>
+  </footer>
+</article>
+  {% endcall %}
 </section>
 
-<section>
+<section id="card">
   <h2>Card</h2>
-  <article class="card">
-    <h3>Card Article</h3>
-    <p>
-      This is an article with the <code>.card</code> class. It includes padding, background styling,
-      and a border or shadow depending on the theme.
-    </p>
+  <p>
+    <code>.card</code> is the flat variant. It sits on <code>--surface-lc-1</code> with a border
+    instead of a shadow. Use it for lists of items where stacked shadows would get noisy.
+  </p>
+  {% call m.demo("cont-card") %}
+<div class="flex flip">
+  <article class="card" style="flex: 1">
+    <h3>Card one</h3>
+    <p>Border, no shadow.</p>
   </article>
-  <br />
-  <button class="ghost copy-button" data-target="code-article-card">Copy Code</button>
-  <pre><code class="language-html" id="code-article-card">
-&lt;article class="card"&gt;
-  &lt;h3&gt;Card Article&lt;/h3&gt;
-  &lt;p&gt;
-    This is an article with the &lt;code&gt;.card&lt;/code&gt; class.
-    It includes padding, background styling, and a border or shadow depending on the theme.
-  &lt;/p&gt;
-&lt;/article&gt;
-</code></pre>
+  <article class="card" style="flex: 1">
+    <h3>Card two</h3>
+    <p><small class="chip">new</small></p>
+  </article>
+</div>
+  {% endcall %}
+  <p>
+    <small>
+      <code>.card</code> works on any element, not just <code>article</code>. On a plain
+      <code>&lt;div&gt;</code> you get the surface without the article padding rules.
+    </small>
+  </p>
 </section>
 
-<section>
-  <h2>Dialog Example</h2>
-  <button id="show-dialog">Open Dialog</button>
+<section id="dialog">
+  <h2>Dialog</h2>
+  <p>
+    The native <code>&lt;dialog&gt;</code> is styled as a centered, backdrop-blurred modal. Open it
+    with <code>showModal()</code>. Wrapping the content in
+    <code>&lt;form method="dialog"&gt;</code> means the close button needs no JavaScript.
+  </p>
+  {% call m.demo("cont-dialog") %}
+<button data-dialog="demo-dialog">Open dialog</button>
 
-  <dialog id="demo-dialog">
-    <form method="dialog">
-      <article>
-        <header>
-          <h3>Dialog Heading</h3>
-        </header>
-        <p>
-          This dialog uses the native <code>&lt;dialog&gt;</code> element, which is styled minimally
-          but respectably with the current theme.
-        </p>
-        <footer>
-          <button type="submit">Close</button>
-        </footer>
-      </article>
-    </form>
-  </dialog>
-  <br />
-
-  <br />
-  <button class="ghost copy-button" data-target="code-dialog">Copy Code</button>
-  <pre><code class="language-html" id="code-dialog">
-&lt;button id="show-dialog"&gt;Open Dialog&lt;/button&gt;
-
-&lt;dialog id="demo-dialog"&gt;
-  &lt;form method="dialog"&gt;
-    &lt;article&gt;
-      &lt;header&gt;
-        &lt;h3&gt;Dialog Heading&lt;/h3&gt;
-      &lt;/header&gt;
-      &lt;p&gt;
-        This dialog uses the native &lt;code&gt;&amp;lt;dialog&amp;gt;&lt;/code&gt;
-         element, which is styled minimally but respectably with the current theme.
-      &lt;/p&gt;
-      &lt;footer&gt;
-        &lt;button type="submit"&gt;Close&lt;/button&gt;
-      &lt;/footer&gt;
-    &lt;/article&gt;
-  &lt;/form&gt;
-&lt;/dialog&gt;
-</code></pre>
+<dialog id="demo-dialog">
+  <form method="dialog">
+    <article>
+      <header>
+        <h3>Dialog heading</h3>
+      </header>
+      <p>
+        Scrolls internally when the content exceeds the viewport, and locks
+        scrolling on the page behind it.
+      </p>
+      <footer>
+        <button value="cancel" class="secondary">Cancel</button>
+        <button value="ok">OK</button>
+      </footer>
+    </article>
+  </form>
+</dialog>
+  {% endcall %}
+  <p>
+    <small>
+      The docs script wires <code>[data-dialog]</code> to <code>showModal()</code>. In your own app
+      that is one line: <code>dialog.showModal()</code>.
+    </small>
+  </p>
 </section>
-<script>
-  const dialog = document.getElementById('demo-dialog');
-  const openBtn = document.getElementById('show-dialog');
 
-  openBtn?.addEventListener('click', () => {
-    dialog?.showModal();
-  });
-</script>{% endblock %}
+<section id="details">
+  <h2>Details</h2>
+  {% call m.demo("cont-details") %}
+<details>
+  <summary>What does the scale look like?</summary>
+  <p>Nine steps, mirrored between light and dark. See the colors page.</p>
+</details>
+<details open>
+  <summary>Can I nest them?</summary>
+  <details>
+    <summary>Yes</summary>
+    <p>Like this.</p>
+  </details>
+</details>
+  {% endcall %}
+</section>
+
+<section id="table">
+  <h2>Tables</h2>
+  <p>Full width, collapsed borders, and a heavier rule under the header row.</p>
+  {% call m.demo("cont-table") %}
+<table>
+  <thead>
+    <tr>
+      <th>Variable</th>
+      <th>Default</th>
+      <th>Purpose</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code>--color</code></td>
+      <td><code>rebeccapurple</code></td>
+      <td>Base hue for the whole scale</td>
+    </tr>
+    <tr>
+      <td><code>--border-radius</code></td>
+      <td><code>0.25rem</code></td>
+      <td>Corner radius on every surface</td>
+    </tr>
+    <tr>
+      <td><code>--padding</code></td>
+      <td><code>1rem</code></td>
+      <td>Base spacing unit</td>
+    </tr>
+  </tbody>
+</table>
+  {% endcall %}
+</section>
+
+<section id="progress">
+  <h2>Progress</h2>
+  {% call m.demo("cont-progress") %}
+<progress value="25" max="100"></progress>
+<progress value="70" max="100"></progress>
+<progress></progress>
+  {% endcall %}
+  <p><small>A <code>progress</code> with no <code>value</code> renders indeterminate.</small></p>
+</section>
+{% endblock %}
