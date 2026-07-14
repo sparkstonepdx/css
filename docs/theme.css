@@ -687,8 +687,7 @@ html:has(dialog[open]) {
 body {
   font-family: Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-size: 18px;
-  --background-color:cur-color(var(--surface-lc-1));
-  background-color: var(--background-color);
+  background-color: oklch(from var(--color) var(--surface-lc-1) h);
   min-height: 100vh;
   color: oklch(from var(--color) var(--text-lc-1) h);
 }
