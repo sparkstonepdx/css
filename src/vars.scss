@@ -2,18 +2,28 @@
 @use "sass:list";
 
 $lcArray: (
-  (98.82%, 0.017),
-  (92.86%, 0.039),
-  (70.13%, 0.137),
-  (53.07%, 0.174),
-  (40.99%, 0.188),
-  (32.24%, 0.174),
-  (26.34%, 0.136),
-  (22.1%, 0.091),
-  (19.02%, 0.052)
+  (99%, 0.018),
+  (90.5%, 0.045),
+  (80.5%, 0.125),
+  (69.5%, 0.17),
+  (58%, 0.185),
+  (46%, 0.17),
+  (34%, 0.135),
+  (24.5%, 0.095),
+  (17%, 0.055)
 );
 
-$dimLcArray: ((99%, 0), (90%, 0), (80%, 0), (72%, 0), (67%, 0), (50%, 0.05), (35%, 0), (25%, 0), (13%, 0), (5%, 0));
+$dimLcArray: (
+  (99%, 0),
+  (90.5%, 0),
+  (80.5%, 0),
+  (69.5%, 0),
+  (58%, 0),
+  (46%, 0),
+  (34%, 0),
+  (24.5%, 0),
+  (17%, 0)
+);
 
 @mixin lightSchemeVars {
   $len: list.length($lcArray);
@@ -26,21 +36,26 @@ $dimLcArray: ((99%, 0), (90%, 0), (80%, 0), (72%, 0), (67%, 0), (50%, 0.05), (35
     --text-lc-#{$i}: var(--swatch-lc-#{$r});
     --surface-lc-#{$i}: var(--swatch-lc-#{$i});
 
-    --grey-swatch-lc-#{$i}: #{list.nth($grey-swatch, 1)} #{list.nth($grey-swatch, 2)};
+    --grey-swatch-lc-#{$i}: #{list.nth($grey-swatch, 1)}
+      #{list.nth($grey-swatch, 2)};
     --grey-text-lc-#{$i}: var(--grey-swatch-lc-#{$r});
     --grey-surface-lc-#{$i}: var(--grey-swatch-lc-#{$i});
   }
   $primary-surface-swatch: list.nth($lcArray, 6);
   $primary-text-swatch: list.nth($lcArray, 1);
 
-  --primary-surface-lc: #{list.nth($primary-surface-swatch, 1)} #{list.nth($primary-surface-swatch, 2)};
-  --primary-text-lc: #{list.nth($primary-text-swatch, 1)} #{list.nth($primary-text-swatch, 2)};
+  --primary-surface-lc: #{list.nth($primary-surface-swatch, 1)}
+    #{list.nth($primary-surface-swatch, 2)};
+  --primary-text-lc: #{list.nth($primary-text-swatch, 1)}
+    #{list.nth($primary-text-swatch, 2)};
 
   $primary-grey-surface-swatch: list.nth($dimLcArray, 6);
   $primary-grey-text-swatch: list.nth($dimLcArray, 1);
 
-  --primary-grey-surface-lc: #{list.nth($primary-grey-surface-swatch, 1)} #{list.nth($primary-grey-surface-swatch, 2)};
-  --primary-grey-text-lc: #{list.nth($primary-grey-text-swatch, 1)} #{list.nth($primary-grey-text-swatch, 2)};
+  --primary-grey-surface-lc: #{list.nth($primary-grey-surface-swatch, 1)}
+    #{list.nth($primary-grey-surface-swatch, 2)};
+  --primary-grey-text-lc: #{list.nth($primary-grey-text-swatch, 1)}
+    #{list.nth($primary-grey-text-swatch, 2)};
 
   --icon-chevron: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=");
   --icon-calendar: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==");
@@ -58,21 +73,26 @@ $dimLcArray: ((99%, 0), (90%, 0), (80%, 0), (72%, 0), (67%, 0), (50%, 0.05), (35
     --text-lc-#{$i}: var(--swatch-lc-#{$r});
     --surface-lc-#{$i}: var(--swatch-lc-#{$i});
 
-    --grey-swatch-lc-#{$r}: #{list.nth($grey-swatch, 1)} #{list.nth($grey-swatch, 2)};
+    --grey-swatch-lc-#{$r}: #{list.nth($grey-swatch, 1)}
+      #{list.nth($grey-swatch, 2)};
     --grey-text-lc-#{$i}: var(--grey-swatch-lc-#{$r});
     --grey-surface-lc-#{$i}: var(--grey-swatch-lc-#{$i});
   }
   $primary-surface-swatch: list.nth($lcArray, 6);
   $primary-text-swatch: list.nth($lcArray, 1);
 
-  --primary-surface-lc: #{list.nth($primary-surface-swatch, 1)} #{list.nth($primary-surface-swatch, 2)};
-  --primary-text-lc: #{list.nth($primary-text-swatch, 1)} #{list.nth($primary-text-swatch, 2)};
+  --primary-surface-lc: #{list.nth($primary-surface-swatch, 1)}
+    #{list.nth($primary-surface-swatch, 2)};
+  --primary-text-lc: #{list.nth($primary-text-swatch, 1)}
+    #{list.nth($primary-text-swatch, 2)};
 
   $primary-grey-surface-swatch: list.nth($dimLcArray, 6);
   $primary-grey-text-swatch: list.nth($dimLcArray, 1);
 
-  --primary-grey-surface-lc: #{list.nth($primary-grey-surface-swatch, 1)} #{list.nth($primary-grey-surface-swatch, 2)};
-  --primary-grey-text-lc: #{list.nth($primary-grey-text-swatch, 1)} #{list.nth($primary-grey-text-swatch, 2)};
+  --primary-grey-surface-lc: #{list.nth($primary-grey-surface-swatch, 1)}
+    #{list.nth($primary-grey-surface-swatch, 2)};
+  --primary-grey-text-lc: #{list.nth($primary-grey-text-swatch, 1)}
+    #{list.nth($primary-grey-text-swatch, 2)};
 
   --icon-chevron: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=");
   --icon-calendar: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==");

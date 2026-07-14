@@ -72,7 +72,8 @@ body {
     sans-serif;
   font-size: 18px;
 
-  background-color: cur-color(var(--surface-lc-1));
+  --background-color:cur-color(var(--surface-lc-1));
+  background-color: var(--background-color);
 
   min-height: 100vh;
 
