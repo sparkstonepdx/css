@@ -664,7 +664,8 @@
     --color: var(--accent-color);
     color: oklch(from var(--color) var(--text-lc-4) h);
   }
-  a {
+  a,
+  a.semantic {
     cursor: pointer;
   }
   .container {

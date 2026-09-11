@@ -109,7 +109,8 @@
     color: cur-color(var(--text-lc-4));
   }
 
-  a {
+  a,
+  a.semantic {
     cursor: pointer;
   }
 
