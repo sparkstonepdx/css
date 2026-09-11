@@ -107,6 +107,9 @@
   a:not([role="button"]):not(.semantic) {
     --color: var(--accent-color);
     color: cur-color(var(--text-lc-4));
+  }
+
+  a {
     cursor: pointer;
   }
 
