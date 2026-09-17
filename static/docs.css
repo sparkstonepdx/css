@@ -10,6 +10,8 @@
   border-bottom: var(--border-width) solid
     oklch(from var(--color) var(--surface-lc-3) h);
   margin-bottom: 2rem;
+  margin: auto;
+  max-width: 1450px;
 }
 
 .site-nav {
