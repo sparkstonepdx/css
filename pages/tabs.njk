@@ -7,9 +7,9 @@
 <h1>Tabs</h1>
 <p class="lede">
   Layered panels with one visible at a time. The classes follow daisyUI 5 and
-  know nothing about any component library. If you drive tabs with
-  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte</a>,
-  the <code>/kobalte</code> build binds its state attributes to these same classes.
+  know nothing about any component library. The classless build has a
+  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte</a>
+  layer that binds its state attributes to these same classes.
 </p>
 
 {{ m.classes([
@@ -38,17 +38,14 @@
 
 <h2>With Kobalte</h2>
 <p>
-  Kobalte renders the roles and sets <code>data-selected</code>, <code>data-disabled</code>
-  and <code>data-orientation</code> itself, but it never adds
-  <code>tab-active</code>. Import the <code>/kobalte</code> build and those
-  attributes are bound to the classes above, so the markup carries no classes at
-  all:
+  Kobalte renders the roles and sets <code>data-selected</code>,
+  <code>data-disabled</code> and <code>data-orientation</code> itself, but it never
+  adds <code>tab-active</code>. <code>/classless/kobalte</code> is the classless
+  build with those attributes bound to the classes above, so Kobalte markup needs
+  no classes at all:
 </p>
 {% call m.snippet("tabs-kobalte-import", "scss") %}
-// class-based build + Kobalte bindings
-@use "pkg:@sparkstone/css/kobalte";
-
-// or classless build + Kobalte bindings
+// instead of "pkg:@sparkstone/css/classless"
 @use "pkg:@sparkstone/css/classless/kobalte";
 {% endcall %}
 {% set markup %}
@@ -114,15 +111,26 @@ import { Tabs } from "@kobalte/core/tabs";
 {% endset %}
 {{ m.headless("tabs-vertical", markup, jsx, variant="kobalte") }}
 
-<h2>Mixing the two</h2>
+<h2>On the class-based build</h2>
 <p>
-  The bindings are <code>@extend</code>s of the same classes, so a Kobalte part and
-  a hand-written one share a rule. You can add classes to Kobalte parts where you
-  want to be explicit, and both styles agree.
+  There is no Kobalte layer for the class-based build, and it does not need one:
+  put the classes on the Kobalte parts yourself. The bindings above are
+  <code>@extend</code>s of these same classes, so the two approaches produce
+  identical styles and can be mixed.
 </p>
-{% call m.snippet("tabs-mixed", "jsx") %}
-<Tabs.List class="tabs">
-  <Tabs.Trigger class="tab" value="week">This week</Tabs.Trigger>
-</Tabs.List>
-{% endcall %}
+{% call m.snippet("tabs-mixed", "jsx") %}{% raw %}
+const [tab, setTab] = createSignal("week");
+
+<Tabs value={tab()} onChange={setTab}>
+  <Tabs.List class="tabs">
+    <Tabs.Trigger
+      class="tab"
+      classList={{ "tab-active": tab() === "week" }}
+      value="week"
+    >
+      This week
+    </Tabs.Trigger>
+  </Tabs.List>
+</Tabs>
+{% endraw %}{% endcall %}
 {% endblock %}

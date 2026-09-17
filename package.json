@@ -16,11 +16,6 @@
       "style": "./dist/classless.css",
       "default": "./dist/classless.css"
     },
-    "./kobalte": {
-      "sass": "./src/kobalte.scss",
-      "style": "./dist/kobalte.css",
-      "default": "./dist/kobalte.css"
-    },
     "./classless/kobalte": {
       "sass": "./src/classless/kobalte.scss",
       "style": "./dist/classless/kobalte.css",

@@ -3,8 +3,8 @@
 // VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. Every value is listed in
 // DESIGN-REVIEW.md at the repo root for review.
 //
-// Bindings from Kobalte's rendered markup to the framework's classes, so a
-// Kobalte app can skip the class attributes entirely. Every rule here is an
+// Bindings from Kobalte's rendered markup to the framework's classes, layered
+// into the classless build so a Kobalte app can skip class attributes entirely. Every rule here is an
 // @extend of a class defined elsewhere, plus the few parts Kobalte has that
 // daisyUI has no class for.
 //

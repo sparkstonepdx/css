@@ -275,9 +275,9 @@
 <h1>Tabs</h1>
 <p class="lede">
   Layered panels with one visible at a time. The classes follow daisyUI 5 and
-  know nothing about any component library. If you drive tabs with
-  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte</a>,
-  the <code>/kobalte</code> build binds its state attributes to these same classes.
+  know nothing about any component library. The classless build has a
+  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte</a>
+  layer that binds its state attributes to these same classes.
 </p>
 
 
@@ -332,19 +332,16 @@
 
 <h2>With Kobalte</h2>
 <p>
-  Kobalte renders the roles and sets <code>data-selected</code>, <code>data-disabled</code>
-  and <code>data-orientation</code> itself, but it never adds
-  <code>tab-active</code>. Import the <code>/kobalte</code> build and those
-  attributes are bound to the classes above, so the markup carries no classes at
-  all:
+  Kobalte renders the roles and sets <code>data-selected</code>,
+  <code>data-disabled</code> and <code>data-orientation</code> itself, but it never
+  adds <code>tab-active</code>. <code>/classless/kobalte</code> is the classless
+  build with those attributes bound to the classes above, so Kobalte markup needs
+  no classes at all:
 </p>
 
 <div class="code-block standalone">
   <button class="ghost copy-button" data-target="tabs-kobalte-import">Copy</button>
-  <pre><code id="tabs-kobalte-import" class="language-scss">// class-based build + Kobalte bindings
-@use &quot;pkg:@sparkstone/css/kobalte&quot;;
-
-// or classless build + Kobalte bindings
+  <pre><code id="tabs-kobalte-import" class="language-scss">// instead of &quot;pkg:@sparkstone/css/classless&quot;
 @use &quot;pkg:@sparkstone/css/classless/kobalte&quot;;</code></pre>
 </div>
 
@@ -433,18 +430,29 @@
 </div>
 
 
-<h2>Mixing the two</h2>
+<h2>On the class-based build</h2>
 <p>
-  The bindings are <code>@extend</code>s of the same classes, so a Kobalte part and
-  a hand-written one share a rule. You can add classes to Kobalte parts where you
-  want to be explicit, and both styles agree.
+  There is no Kobalte layer for the class-based build, and it does not need one:
+  put the classes on the Kobalte parts yourself. The bindings above are
+  <code>@extend</code>s of these same classes, so the two approaches produce
+  identical styles and can be mixed.
 </p>
 
 <div class="code-block standalone">
   <button class="ghost copy-button" data-target="tabs-mixed">Copy</button>
-  <pre><code id="tabs-mixed" class="language-jsx">&lt;Tabs.List class=&quot;tabs&quot;&gt;
-  &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;week&quot;&gt;This week&lt;/Tabs.Trigger&gt;
-&lt;/Tabs.List&gt;</code></pre>
+  <pre><code id="tabs-mixed" class="language-jsx">const [tab, setTab] = createSignal(&quot;week&quot;);
+
+&lt;Tabs value={tab()} onChange={setTab}&gt;
+  &lt;Tabs.List class=&quot;tabs&quot;&gt;
+    &lt;Tabs.Trigger
+      class=&quot;tab&quot;
+      classList={{ &quot;tab-active&quot;: tab() === &quot;week&quot; }}
+      value=&quot;week&quot;
+    &gt;
+      This week
+    &lt;/Tabs.Trigger&gt;
+  &lt;/Tabs.List&gt;
+&lt;/Tabs&gt;</code></pre>
 </div>
 
 
