@@ -110,7 +110,10 @@ const selectTab = tab => {
   const list = tab.closest('[role="tablist"]');
   if (!list) return;
   for (const other of list.querySelectorAll('[role="tab"]')) {
+    // Both spellings: data-selected is what Kobalte sets, .tab-active is what
+    // the class-based build styles.
     other.toggleAttribute('data-selected', other === tab);
+    other.classList.toggle('tab-active', other === tab && other.classList.contains('tab'));
     other.setAttribute('aria-selected', String(other === tab));
     other.tabIndex = other === tab ? 0 : -1;
     const panel = document.getElementById(other.getAttribute('aria-controls') || '');
