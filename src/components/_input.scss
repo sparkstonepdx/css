@@ -51,35 +51,29 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     @include field-text;
     @include field-height;
 
-    &:is(#{$date-types}) {
-      @include field-icon;
-
-      &::-webkit-calendar-picker-indicator {
-        width: 1rem;
-        margin-right: calc(1.25rem * -1);
-        margin-left: 1.25rem;
-        cursor: pointer;
-        opacity: 0;
-      }
-
-      [dir="rtl"] & {
-        text-align: right;
-      }
-    }
-
-    &[type="time"] {
-      background-image: var(--icon-clock);
-    }
-
-    // Firefox draws its own picker icon, so drop ours there. @-moz-document
-    // was disabled for page stylesheets in Firefox 61, except for an empty
-    // url-prefix(), which was kept working precisely so it could be used this
-    // way. It is non-standard and deprecated, so treat it as a nicety.
-    @-moz-document url-prefix() {
+    // Only Chromium and WebKit can hide their native picker button, so only
+    // they get our icon and the padding that makes room for it. Firefox has no
+    // such pseudo-element and keeps drawing its own icon, unpadded.
+    @supports selector(::-webkit-calendar-picker-indicator) {
       &:is(#{$date-types}) {
-        padding-right: 1rem !important;
-        background-image: none !important;
+        @include field-icon;
+
+        &::-webkit-calendar-picker-indicator {
+          width: 1rem;
+          margin-right: calc(1.25rem * -1);
+          margin-left: 1.25rem;
+          cursor: pointer;
+          opacity: 0;
+        }
       }
+
+      &[type="time"] {
+        background-image: var(--icon-clock);
+      }
+    }
+
+    [dir="rtl"] &:is(#{$date-types}) {
+      text-align: right;
     }
   }
 

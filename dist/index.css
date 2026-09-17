@@ -94,32 +94,28 @@
     padding: 0.75rem 1rem;
     height: calc(3rem + var(--border-width) * 2);
   }
-  .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
-    padding-inline-start: 1rem;
-    padding-inline-end: 2.5rem;
-    background-image: var(--icon-calendar);
-    background-position: center right 1.25rem;
-    background-size: 1rem auto;
-    background-repeat: no-repeat;
-  }
-  .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week])::-webkit-calendar-picker-indicator {
-    width: 1rem;
-    margin-right: -1.25rem;
-    margin-left: 1.25rem;
-    cursor: pointer;
-    opacity: 0;
+  @supports selector(::-webkit-calendar-picker-indicator) {
+    .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
+      padding-inline-start: 1rem;
+      padding-inline-end: 2.5rem;
+      background-image: var(--icon-calendar);
+      background-position: center right 1.25rem;
+      background-size: 1rem auto;
+      background-repeat: no-repeat;
+    }
+    .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week])::-webkit-calendar-picker-indicator {
+      width: 1rem;
+      margin-right: -1.25rem;
+      margin-left: 1.25rem;
+      cursor: pointer;
+      opacity: 0;
+    }
+    .input[type=time] {
+      background-image: var(--icon-clock);
+    }
   }
   [dir=rtl] .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
     text-align: right;
-  }
-  .input[type=time] {
-    background-image: var(--icon-clock);
-  }
-  @-moz-document url-prefix() {
-    .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
-      padding-right: 1rem !important;
-      background-image: none !important;
-    }
   }
   .select {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
