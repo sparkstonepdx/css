@@ -8,6 +8,7 @@
 @use "label";
 @use "layout";
 @use "link";
+@use "menu";
 @use "progress";
 @use "prose";
 @use "table";
@@ -43,6 +44,7 @@
   @include fieldset.styles;
   @include table.styles;
   @include tabs.styles;
+  @include menu.styles;
   @include progress.styles;
   @include layout.flex-styles;
   @include badge.styles;

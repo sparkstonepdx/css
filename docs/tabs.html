@@ -130,6 +130,14 @@
                   >
                 </li>
               
+                <li>
+                  <a
+                    href="./dropdown.html"
+                    
+                    >Dropdown</a
+                  >
+                </li>
+              
             </ul>
           
             <p class="sidebar-group">Data display</p>
@@ -302,7 +310,15 @@
 
 
 <h2>Basic</h2>
-<p>You mark the selected tab yourself and wire the clicks.</p>
+<p>
+  On the class-based build you mark the selected tab and wire the clicks. Kobalte
+  sets <code>data-selected</code>, <code>data-disabled</code> and
+  <code>data-orientation</code> itself but never adds <code>tab-active</code>, so
+  <code>/classless/kobalte</code> binds those attributes to the same classes and
+  its markup needs none of them.
+</p>
+
+
 
 
 
@@ -310,7 +326,13 @@
   <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
   <div class="demo-bar">
     
-      <span class="demo-note"><small>Same markup in both builds</small></span>
+      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
+        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+        
+          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
+        
+      </div>
     
     <button class="ghost copy-button" data-target="tabs-basic-classes">Copy</button>
   </div>
@@ -326,59 +348,43 @@
   &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-billing&quot; aria-labelledby=&quot;t-billing&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
 &lt;/div&gt;</code></pre>
     
-  </div>
-</div>
-
-
-<h2>With Kobalte</h2>
-<p>
-  Kobalte renders the roles and sets <code>data-selected</code>,
-  <code>data-disabled</code> and <code>data-orientation</code> itself, but it never
-  adds <code>tab-active</code>. <code>/classless/kobalte</code> is the classless
-  build with those attributes bound to the classes above, so a
-  <code>Tabs.Trigger</code> and a <code>.tab</code> share one rule and Kobalte
-  markup needs no classes at all:
-</p>
-
-<div class="code-block standalone">
-  <button class="ghost copy-button" data-target="tabs-kobalte-import">Copy</button>
-  <pre><code id="tabs-kobalte-import" class="language-scss">// instead of &quot;pkg:@sparkstone/css/classless&quot;
-@use &quot;pkg:@sparkstone/css/classless/kobalte&quot;;</code></pre>
-</div>
-
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    <div class="variant-tabs" role="tablist" aria-label="Source">
-      <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="true">Markup</button>
-      <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">Kobalte</button>
-    </div>
-    <button class="ghost copy-button" data-target="tabs-kobalte-markup">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="tabs-kobalte-markup" data-variant="kobalte">&lt;div&gt;
-  &lt;div role=&quot;tablist&quot; data-orientation=&quot;horizontal&quot;&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;k-week&quot; aria-controls=&quot;kp-week&quot; data-selected&gt;This week&lt;/button&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;k-month&quot; aria-controls=&quot;kp-month&quot;&gt;This month&lt;/button&gt;
-    &lt;div class=&quot;tab-indicator&quot;&gt;&lt;/div&gt;
+      <pre hidden><code id="tabs-basic-classless" data-variant="classless">&lt;div&gt;
+  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;tab tab-active&quot; role=&quot;tab&quot; id=&quot;t-profile&quot; aria-controls=&quot;p-profile&quot; data-selected&gt;Profile&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t-dashboard&quot; aria-controls=&quot;p-dashboard&quot;&gt;Dashboard&lt;/button&gt;
+    &lt;button class=&quot;tab tab-disabled&quot; role=&quot;tab&quot; id=&quot;t-billing&quot; aria-controls=&quot;p-billing&quot;&gt;Billing&lt;/button&gt;
   &lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-week&quot; aria-labelledby=&quot;k-week&quot;&gt;7 new sign-ups&lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-month&quot; aria-labelledby=&quot;k-month&quot; hidden&gt;34 new sign-ups&lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-profile&quot; aria-labelledby=&quot;t-profile&quot;&gt;Profile details&lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-dashboard&quot; aria-labelledby=&quot;t-dashboard&quot; hidden&gt;Dashboard details&lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-billing&quot; aria-labelledby=&quot;t-billing&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
 &lt;/div&gt;</code></pre>
-    <pre hidden><code id="tabs-kobalte-source" data-variant="source">import { Tabs } from &quot;@kobalte/core/tabs&quot;;
+    
+    
+      <pre hidden><code id="tabs-basic-kobalte" data-variant="kobalte">import { Tabs } from &quot;@kobalte/core/tabs&quot;;
 
-&lt;Tabs aria-label=&quot;Sign-ups&quot; defaultValue=&quot;week&quot;&gt;
+&lt;Tabs aria-label=&quot;Account&quot; defaultValue=&quot;profile&quot;&gt;
   &lt;Tabs.List&gt;
-    &lt;Tabs.Trigger value=&quot;week&quot;&gt;This week&lt;/Tabs.Trigger&gt;
-    &lt;Tabs.Trigger value=&quot;month&quot;&gt;This month&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Trigger value=&quot;profile&quot;&gt;Profile&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Trigger value=&quot;dashboard&quot;&gt;Dashboard&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Trigger value=&quot;billing&quot; disabled&gt;Billing&lt;/Tabs.Trigger&gt;
     &lt;Tabs.Indicator class=&quot;tab-indicator&quot; /&gt;
   &lt;/Tabs.List&gt;
-  &lt;Tabs.Content value=&quot;week&quot;&gt;7 new sign-ups&lt;/Tabs.Content&gt;
-  &lt;Tabs.Content value=&quot;month&quot;&gt;34 new sign-ups&lt;/Tabs.Content&gt;
+  &lt;Tabs.Content value=&quot;profile&quot;&gt;Profile details&lt;/Tabs.Content&gt;
+  &lt;Tabs.Content value=&quot;dashboard&quot;&gt;Dashboard details&lt;/Tabs.Content&gt;
+  &lt;Tabs.Content value=&quot;billing&quot;&gt;Upgrade to see billing&lt;/Tabs.Content&gt;
 &lt;/Tabs&gt;</code></pre>
+      <pre hidden><code id="tabs-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div&gt;
+  &lt;div role=&quot;tablist&quot; data-orientation=&quot;horizontal&quot;&gt;
+    &lt;button role=&quot;tab&quot; id=&quot;k-profile&quot; aria-controls=&quot;kp-profile&quot; data-selected&gt;Profile&lt;/button&gt;
+    &lt;button role=&quot;tab&quot; id=&quot;k-dashboard&quot; aria-controls=&quot;kp-dashboard&quot;&gt;Dashboard&lt;/button&gt;
+    &lt;button role=&quot;tab&quot; id=&quot;k-billing&quot; aria-controls=&quot;kp-billing&quot; data-disabled&gt;Billing&lt;/button&gt;
+    &lt;div class=&quot;tab-indicator&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-profile&quot; aria-labelledby=&quot;k-profile&quot;&gt;Profile details&lt;/div&gt;
+  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-dashboard&quot; aria-labelledby=&quot;k-dashboard&quot; hidden&gt;Dashboard details&lt;/div&gt;
+  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-billing&quot; aria-labelledby=&quot;k-billing&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
   </div>
 </div>
 
@@ -389,6 +395,15 @@
     tab drops its own underline, so you never get both.
   </small>
 </p>
+
+<h2>Importing the Kobalte layer</h2>
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="tabs-kobalte-import">Copy</button>
+  <pre><code id="tabs-kobalte-import" class="language-scss">// instead of &quot;pkg:@sparkstone/css/classless&quot;
+@use &quot;pkg:@sparkstone/css/classless/kobalte&quot;;</code></pre>
+</div>
+
 
 <h2>Vertical</h2>
 <p>

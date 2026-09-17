@@ -21,7 +21,13 @@
 ]) }}
 
 <h2>Basic</h2>
-<p>You mark the selected tab yourself and wire the clicks.</p>
+<p>
+  On the class-based build you mark the selected tab and wire the clicks. Kobalte
+  sets <code>data-selected</code>, <code>data-disabled</code> and
+  <code>data-orientation</code> itself but never adds <code>tab-active</code>, so
+  <code>/classless/kobalte</code> binds those attributes to the same classes and
+  its markup needs none of them.
+</p>
 {% set classless %}
 <div>
   <div class="tabs" role="tablist">
@@ -34,46 +40,35 @@
   <div class="tab-content" role="tabpanel" id="p-billing" aria-labelledby="t-billing" hidden>Upgrade to see billing</div>
 </div>
 {% endset %}
-{{ m.demo("tabs-basic", classless) }}
-
-<h2>With Kobalte</h2>
-<p>
-  Kobalte renders the roles and sets <code>data-selected</code>,
-  <code>data-disabled</code> and <code>data-orientation</code> itself, but it never
-  adds <code>tab-active</code>. <code>/classless/kobalte</code> is the classless
-  build with those attributes bound to the classes above, so a
-  <code>Tabs.Trigger</code> and a <code>.tab</code> share one rule and Kobalte
-  markup needs no classes at all:
-</p>
-{% call m.snippet("tabs-kobalte-import", "scss") %}
-// instead of "pkg:@sparkstone/css/classless"
-@use "pkg:@sparkstone/css/classless/kobalte";
-{% endcall %}
-{% set markup %}
+{% set kobalte_markup %}
 <div>
   <div role="tablist" data-orientation="horizontal">
-    <button role="tab" id="k-week" aria-controls="kp-week" data-selected>This week</button>
-    <button role="tab" id="k-month" aria-controls="kp-month">This month</button>
+    <button role="tab" id="k-profile" aria-controls="kp-profile" data-selected>Profile</button>
+    <button role="tab" id="k-dashboard" aria-controls="kp-dashboard">Dashboard</button>
+    <button role="tab" id="k-billing" aria-controls="kp-billing" data-disabled>Billing</button>
     <div class="tab-indicator"></div>
   </div>
-  <div role="tabpanel" id="kp-week" aria-labelledby="k-week">7 new sign-ups</div>
-  <div role="tabpanel" id="kp-month" aria-labelledby="k-month" hidden>34 new sign-ups</div>
+  <div role="tabpanel" id="kp-profile" aria-labelledby="k-profile">Profile details</div>
+  <div role="tabpanel" id="kp-dashboard" aria-labelledby="k-dashboard" hidden>Dashboard details</div>
+  <div role="tabpanel" id="kp-billing" aria-labelledby="k-billing" hidden>Upgrade to see billing</div>
 </div>
 {% endset %}
-{% set jsx %}
+{% set kobalte %}
 import { Tabs } from "@kobalte/core/tabs";
 
-<Tabs aria-label="Sign-ups" defaultValue="week">
+<Tabs aria-label="Account" defaultValue="profile">
   <Tabs.List>
-    <Tabs.Trigger value="week">This week</Tabs.Trigger>
-    <Tabs.Trigger value="month">This month</Tabs.Trigger>
+    <Tabs.Trigger value="profile">Profile</Tabs.Trigger>
+    <Tabs.Trigger value="dashboard">Dashboard</Tabs.Trigger>
+    <Tabs.Trigger value="billing" disabled>Billing</Tabs.Trigger>
     <Tabs.Indicator class="tab-indicator" />
   </Tabs.List>
-  <Tabs.Content value="week">7 new sign-ups</Tabs.Content>
-  <Tabs.Content value="month">34 new sign-ups</Tabs.Content>
+  <Tabs.Content value="profile">Profile details</Tabs.Content>
+  <Tabs.Content value="dashboard">Dashboard details</Tabs.Content>
+  <Tabs.Content value="billing">Upgrade to see billing</Tabs.Content>
 </Tabs>
 {% endset %}
-{{ m.headless("tabs-kobalte", markup, jsx, variant="kobalte") }}
+{{ m.demo("tabs-basic", classless, "", kobalte, kobalte_markup) }}
 <p>
   <small>
     <code>Tabs.Indicator</code> has no daisyUI counterpart, so it lives in the
@@ -81,6 +76,12 @@ import { Tabs } from "@kobalte/core/tabs";
     tab drops its own underline, so you never get both.
   </small>
 </p>
+
+<h2>Importing the Kobalte layer</h2>
+{% call m.snippet("tabs-kobalte-import", "scss") %}
+// instead of "pkg:@sparkstone/css/classless"
+@use "pkg:@sparkstone/css/classless/kobalte";
+{% endcall %}
 
 <h2>Vertical</h2>
 <p>

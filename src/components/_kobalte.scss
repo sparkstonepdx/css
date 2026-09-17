@@ -61,6 +61,45 @@
   }
 }
 
+// DropdownMenu.Content -> div[role="menu"], .Item -> div[role="menuitem"],
+// .CheckboxItem -> [role="menuitemcheckbox"], .RadioItem -> [role="menuitemradio"],
+// .GroupLabel -> span, .Separator -> hr, .SubTrigger -> div[role="menuitem"],
+// .SubContent -> div[role="menu"], .Trigger -> button, .Icon -> span.
+@mixin dropdown-menu {
+  [role="menu"] {
+    @extend .dropdown-content;
+    @extend .menu;
+  }
+
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]) {
+    @extend .menu-item;
+
+    &[data-highlighted] {
+      @extend .menu-active;
+    }
+
+    &[data-disabled] {
+      @extend .menu-disabled;
+    }
+  }
+
+  [role="menu"] [role="group"] > span:first-child {
+    @extend .menu-title;
+  }
+
+  [role="menu"] > hr {
+    margin: calc(var(--padding) / 4) 0;
+    border: 0;
+    border-top: var(--border-width) solid cur-color(var(--surface-lc-2));
+  }
+
+  // DropdownMenu.Icon: a span next to the trigger label that flips when open.
+  button[aria-haspopup] > span[data-expanded] {
+    transform: rotate(180deg);
+  }
+}
+
 @mixin bindings {
   @include tabs;
+  @include dropdown-menu;
 }

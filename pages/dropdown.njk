@@ -1,0 +1,185 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Dropdown" %}
+{% set slug = "dropdown" %}
+
+{% block content %}
+<h1>Dropdown</h1>
+<p class="lede">
+  A floating panel of actions. The classes paint the panel and its rows; nothing
+  here positions anything. daisyUI anchors its dropdown with CSS, and
+  <a href="https://kobalte.dev/docs/core/components/dropdown-menu" target="_blank" rel="noreferrer">Kobalte</a>
+  positions with a popper that writes inline styles, so placement stays with
+  whatever opens the menu.
+</p>
+
+{{ m.classes([
+  ["dropdown-content", "The floating panel: raised surface, border, shadow"],
+  ["menu", "The list inside it: a column with gaps"],
+  ["menu-item", "A row: padding, radius, hover surface"],
+  ["menu-active", "The highlighted row"],
+  ["menu-disabled", "A disabled row: greyed out and inert"],
+  ["menu-title", "A group heading inside the menu"],
+  ["menu-shortcut", "Trailing text in a row, pushed to the end"]
+]) }}
+
+<h2>The panel</h2>
+<p>
+  Shown open and in place. Use <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> and
+  the rows stay semantic; Kobalte renders divs with menu roles instead.
+</p>
+{% set classless %}
+<div class="dropdown-content">
+  <ul class="menu">
+    <li class="menu-item">Commit <span class="menu-shortcut">⌘K</span></li>
+    <li class="menu-item menu-active">Push <span class="menu-shortcut">⇧⌘K</span></li>
+    <li class="menu-item menu-disabled">Update project</li>
+    <li><hr /></li>
+    <li class="menu-title">Branches</li>
+    <li class="menu-item">main</li>
+    <li class="menu-item">develop</li>
+  </ul>
+</div>
+{% endset %}
+{% set kobalte_markup %}
+<div role="menu" data-expanded>
+  <div role="menuitem">Commit <span class="menu-shortcut">⌘K</span></div>
+  <div role="menuitem" data-highlighted>Push <span class="menu-shortcut">⇧⌘K</span></div>
+  <div role="menuitem" data-disabled>Update project</div>
+  <hr />
+  <div role="group">
+    <span>Branches</span>
+    <div role="menuitemradio" data-checked>main</div>
+    <div role="menuitemradio">develop</div>
+  </div>
+</div>
+{% endset %}
+{% set kobalte %}
+import { DropdownMenu } from "@kobalte/core/dropdown-menu";
+
+<DropdownMenu>
+  <DropdownMenu.Trigger class="btn">
+    Git settings
+    <DropdownMenu.Icon>▾</DropdownMenu.Icon>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>
+        Commit <span class="menu-shortcut">⌘K</span>
+      </DropdownMenu.Item>
+      <DropdownMenu.Item>
+        Push <span class="menu-shortcut">⇧⌘K</span>
+      </DropdownMenu.Item>
+      <DropdownMenu.Item disabled>Update project</DropdownMenu.Item>
+      <DropdownMenu.Separator />
+      <DropdownMenu.Group>
+        <DropdownMenu.GroupLabel>Branches</DropdownMenu.GroupLabel>
+        <DropdownMenu.RadioGroup value={branch()} onChange={setBranch}>
+          <DropdownMenu.RadioItem value="main">main</DropdownMenu.RadioItem>
+          <DropdownMenu.RadioItem value="develop">develop</DropdownMenu.RadioItem>
+        </DropdownMenu.RadioGroup>
+      </DropdownMenu.Group>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+</DropdownMenu>
+{% endset %}
+{{ m.demo("dropdown-panel", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    On the Kobalte tab the rows carry no classes: <code>role="menuitem"</code>,
+    <code>data-highlighted</code> and <code>data-disabled</code> are bound to
+    <code>.menu-item</code>, <code>.menu-active</code> and
+    <code>.menu-disabled</code> by <code>/classless/kobalte</code>.
+  </small>
+</p>
+
+<h2>With a trigger</h2>
+<p>
+  The trigger is an ordinary button. Kobalte marks it <code>data-expanded</code>
+  while the menu is open, and flips a <code>DropdownMenu.Icon</code> inside it.
+</p>
+{% set classless %}
+<details class="dropdown">
+  <summary class="btn">Git settings ▾</summary>
+  <div class="dropdown-content">
+    <ul class="menu">
+      <li class="menu-item">Commit</li>
+      <li class="menu-item">Push</li>
+    </ul>
+  </div>
+</details>
+{% endset %}
+{% set kobalte_markup %}
+<div>
+  <button aria-haspopup="true" aria-expanded="true" data-expanded class="btn">
+    Git settings <span data-expanded>▾</span>
+  </button>
+  <div role="menu" data-expanded style="margin-top: 0.25rem">
+    <div role="menuitem">Commit</div>
+    <div role="menuitem">Push</div>
+  </div>
+</div>
+{% endset %}
+{% set kobalte %}
+<DropdownMenu>
+  <DropdownMenu.Trigger class="btn">
+    Git settings
+    <DropdownMenu.Icon>▾</DropdownMenu.Icon>
+  </DropdownMenu.Trigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.Content>
+      <DropdownMenu.Item>Commit</DropdownMenu.Item>
+      <DropdownMenu.Item>Push</DropdownMenu.Item>
+    </DropdownMenu.Content>
+  </DropdownMenu.Portal>
+</DropdownMenu>
+{% endset %}
+{{ m.demo("dropdown-trigger", classless, "", kobalte, kobalte_markup) }}
+
+<h2>Submenus</h2>
+<p>
+  A <code>DropdownMenu.SubTrigger</code> is a row that is also a trigger, so it
+  takes <code>.menu-item</code> and picks up <code>data-highlighted</code> like
+  any other row. Its <code>SubContent</code> is another panel.
+</p>
+{% set classless %}
+<div class="dropdown-content">
+  <ul class="menu">
+    <li class="menu-item menu-active">GitHub <span class="menu-shortcut">›</span></li>
+  </ul>
+</div>
+<div class="dropdown-content" style="margin-top: 0.25rem">
+  <ul class="menu">
+    <li class="menu-item">Create pull request…</li>
+    <li class="menu-item">Sync fork</li>
+  </ul>
+</div>
+{% endset %}
+{% set kobalte_markup %}
+<div>
+  <div role="menu" data-expanded>
+    <div role="menuitem" aria-haspopup="true" data-highlighted data-expanded>
+      GitHub <span class="menu-shortcut">›</span>
+    </div>
+  </div>
+  <div role="menu" data-expanded style="margin-top: 0.25rem">
+    <div role="menuitem">Create pull request…</div>
+    <div role="menuitem">Sync fork</div>
+  </div>
+</div>
+{% endset %}
+{% set kobalte %}
+<DropdownMenu.Sub overlap gutter={4} shift={-8}>
+  <DropdownMenu.SubTrigger>
+    GitHub <span class="menu-shortcut">›</span>
+  </DropdownMenu.SubTrigger>
+  <DropdownMenu.Portal>
+    <DropdownMenu.SubContent>
+      <DropdownMenu.Item>Create pull request…</DropdownMenu.Item>
+      <DropdownMenu.Item>Sync fork</DropdownMenu.Item>
+    </DropdownMenu.SubContent>
+  </DropdownMenu.Portal>
+</DropdownMenu.Sub>
+{% endset %}
+{{ m.demo("dropdown-sub", classless, "", kobalte, kobalte_markup) }}
+{% endblock %}

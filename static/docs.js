@@ -156,7 +156,9 @@ const frameDoc = (markup, variant, id) => {
     .map(([v, value]) => `${v}:${value}`)
     .join(';');
   const sheets =
-    { classless: ['classless.css'], kobalte: ['kobalte.css'] }[variant] || ['index.css'];
+    { classless: ['classless.css'], kobalte: ['kobalte.css'], 'kobalte-markup': ['kobalte.css'] }[
+      variant
+    ] || ['index.css'];
   return `<!doctype html><html lang="en" data-color-scheme="${scheme}" style="${vars}">
 <head><meta charset="utf-8">${sheets.map(s => `<link rel="stylesheet" href="./${s}">`).join('')}</head>
 <body>${markup}${FRAME_RUNTIME.replace('FRAME_ID', JSON.stringify(id))}</body></html>`;
@@ -169,8 +171,9 @@ const demos = [...document.querySelectorAll('[data-demo]')].map((el, index) => {
   const render = () => {
     const variant = el.dataset.variant || 'classes';
     const code = codes.find(c => c.dataset.variant === variant) || codes[0];
-    // A 'source' tab holds JSX, not markup: keep previewing the rendered markup.
-    const preview = code.dataset.variant === 'source' ? codes[0] : code;
+    // Tabs that hold JSX rather than markup preview the DOM that JSX renders.
+    const previewFor = { source: 'classes', kobalte: 'kobalte-markup' }[code.dataset.variant];
+    const preview = previewFor ? codes.find(c => c.dataset.variant === previewFor) || codes[0] : code;
     frame.srcdoc = frameDoc(preview.textContent, preview.dataset.variant, id);
   };
   const demo = { id, el, frame, codes, render };

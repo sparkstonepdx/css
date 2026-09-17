@@ -1,0 +1,79 @@
+@use "../vars.scss" as *;
+
+// VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. Every value is listed in
+// DESIGN-REVIEW.md at the repo root for review.
+//
+// Menus and the panel a dropdown pops open, following daisyUI 5:
+// .dropdown-content on the floating panel, .menu on the list inside it,
+// .menu-item on each row, .menu-active and .menu-disabled for state,
+// .menu-title on a group heading.
+//
+// Positioning is not here. daisyUI's .dropdown anchors the panel with CSS;
+// Kobalte's popper sets inline styles on a positioner it owns. These classes
+// only paint.
+//
+// Order matters: these rules come after .btn in components/_index.scss, because
+// a Kobalte SubTrigger renders as a div but its Trigger is a <button>.
+@mixin styles {
+  .dropdown-content {
+    min-width: 12rem;
+    padding: calc(var(--padding) / 4);
+
+    background-color: cur-color(var(--surface-lc-1));
+    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+
+    z-index: 50;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 8);
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+
+    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    border-radius: var(--border-radius);
+
+    color: cur-color(var(--text-lc-1));
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background-color: cur-color(var(--surface-lc-2));
+    }
+  }
+
+  .menu-active {
+    background-color: cur-color(var(--surface-lc-2));
+  }
+
+  .menu-disabled {
+    @include apply-greyscale();
+    pointer-events: none;
+  }
+
+  .menu-title {
+    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    font-size: 0.875rem;
+    color: cur-color(var(--text-lc-3));
+  }
+
+  .menu-shortcut {
+    margin-left: auto;
+    padding-left: var(--padding);
+    font-size: 0.875rem;
+    color: cur-color(var(--text-lc-3));
+  }
+}

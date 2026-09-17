@@ -1168,6 +1168,74 @@
   .tab-content:focus-visible {
     border-radius: var(--border-radius);
   }
+  .dropdown-content {
+    min-width: 12rem;
+    padding: calc(var(--padding) / 4);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    z-index: 50;
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 8);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    border-radius: var(--border-radius);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+  }
+  .menu-item:hover {
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .menu-active {
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .menu-disabled {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  .menu-title {
+    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    font-size: 0.875rem;
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .menu-shortcut {
+    margin-left: auto;
+    padding-left: var(--padding);
+    font-size: 0.875rem;
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
   .progress, progress {
     appearance: none;
     display: inline-block;
