@@ -318,3 +318,21 @@ section {
 .demo-surface > :last-child {
   margin-bottom: 0;
 }
+
+/* Tables in prose: let long class names and package names break instead of
+   forcing the page wider than the viewport, and scroll as a last resort. */
+.site-main table {
+  max-width: 100%;
+}
+
+.site-main td code,
+.site-main th code {
+  overflow-wrap: anywhere;
+}
+
+@media (max-width: 640px) {
+  .site-main table {
+    display: block;
+    overflow-x: auto;
+  }
+}
