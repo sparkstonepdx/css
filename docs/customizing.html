@@ -6,59 +6,259 @@
     <meta charset="UTF-8" />
     <title>Customizing · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
     <script src="./docs.js" type="module"></script>
   </head>
   <body>
-    <header class="container-fluid site-header">
-      <nav class="flex" style="align-items: center">
-        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
-      </nav>
-      <nav class="flex site-nav" style="flex-wrap: wrap">
-        
-          <a href="./index.html">Home</a>
-        
-          <a href="./colors.html">Colors</a>
-        
-          <a href="./typography.html">Typography</a>
-        
-          <a href="./buttons.html">Buttons</a>
-        
-          <a href="./forms.html">Forms</a>
-        
-          <a href="./containers.html">Containers</a>
-        
-          <a href="./layout.html">Layout</a>
-        
-          <a href="./customizing.html" aria-current="page">Customizing</a>
-        
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
         <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
       </nav>
     </header>
 
-    <main class="container">
-      
-        <nav class="toc" aria-label="On this page">
-          <ul>
-            
-              <li><a href="#variables">Variables</a></li>
-            
-              <li><a href="#scoping">Scoping</a></li>
-            
-              <li><a href="#scheme">Color scheme</a></li>
-            
-              <li><a href="#scale">Replacing the scale</a></li>
-            
-              <li><a href="#sass">Sass API</a></li>
-            
-              <li><a href="#icons">Icons</a></li>
-            
-          </ul>
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    aria-current="page"
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
         </nav>
-      
+      </aside>
 
-      
+      <main class="site-main">
+        
 <h1>Customizing</h1>
 <p>
   Every design decision in the framework is a CSS variable or a Sass function. Nothing is hardcoded
@@ -104,22 +304,27 @@
     is involved in any of this.
   </p>
   
-<div class="demo">
-  
-<article class="card" style="--color: seagreen; --border-radius: 1rem">
+<div class="demo inline">
+  <div class="demo-surface">
+    
+<article class="card-border" style="--color: seagreen; --border-radius: 1rem">
   <h3>Scoped surface</h3>
   <p>Different hue, different radius, same markup.</p>
   <button>Themed button</button>
 </article>
   
-</div>
-<div class="code-block">
-  <button class="ghost copy-button" data-target="custom-scoping">Copy</button>
-  <pre><code id="custom-scoping">&lt;article class=&quot;card&quot; style=&quot;--color: seagreen; --border-radius: 1rem&quot;&gt;
+  </div>
+  <div class="demo-bar">
+    <span class="demo-note"><small>Same markup in both builds</small></span>
+    <button class="ghost copy-button" data-target="custom-scoping">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="custom-scoping">&lt;article class=&quot;card-border&quot; style=&quot;--color: seagreen; --border-radius: 1rem&quot;&gt;
   &lt;h3&gt;Scoped surface&lt;/h3&gt;
   &lt;p&gt;Different hue, different radius, same markup.&lt;/p&gt;
   &lt;button&gt;Themed button&lt;/button&gt;
 &lt;/article&gt;</code></pre>
+  </div>
 </div>
 
 </section>
@@ -132,8 +337,9 @@
     any subtree.
   </p>
   
-<div class="demo">
-  
+<div class="demo inline">
+  <div class="demo-surface">
+    
 <div class="flex flip">
   <div data-color-scheme="light" class="scheme-pane">
     <p><strong>Forced light</strong></p>
@@ -145,10 +351,13 @@
   </div>
 </div>
   
-</div>
-<div class="code-block">
-  <button class="ghost copy-button" data-target="custom-scheme">Copy</button>
-  <pre><code id="custom-scheme">&lt;div class=&quot;flex flip&quot;&gt;
+  </div>
+  <div class="demo-bar">
+    <span class="demo-note"><small>Same markup in both builds</small></span>
+    <button class="ghost copy-button" data-target="custom-scheme">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="custom-scheme">&lt;div class=&quot;flex flip&quot;&gt;
   &lt;div data-color-scheme=&quot;light&quot; class=&quot;scheme-pane&quot;&gt;
     &lt;p&gt;&lt;strong&gt;Forced light&lt;/strong&gt;&lt;/p&gt;
     &lt;button&gt;Button&lt;/button&gt;
@@ -158,6 +367,7 @@
     &lt;button&gt;Button&lt;/button&gt;
   &lt;/div&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </div>
 
 </section>
@@ -170,7 +380,7 @@
     greyscale counterpart used by disabled states.
   </p>
   
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="custom-scale">Copy</button>
   <pre><code id="custom-scale" class="language-scss">$lcArray: (
   (99%, 0.018),
@@ -212,7 +422,7 @@
   </table>
 
   
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="custom-sass">Copy</button>
   <pre><code id="custom-sass" class="language-scss">@use &quot;@sparkstone/css/src/vars.scss&quot; as *;
 
@@ -243,7 +453,7 @@
     <code>--icon-clock</code> for time. Override any of them with your own data URL.
   </p>
   
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="custom-icons">Copy</button>
   <pre><code id="custom-icons" class="language-css">select {
   --icon-chevron: url(&quot;data:image/svg+xml;base64,…&quot;);
@@ -253,17 +463,18 @@
 </section>
 
 
-      <footer class="site-footer">
-        <hr />
-        <p>
-          <small>
-            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
-            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
-            MIT
-          </small>
-        </p>
-      </footer>
-    </main>
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
 
     
   </body>

@@ -1,15 +1,8 @@
 {% extends "layout.njk" %}
 {% import "macros.njk" as m %}
+{% set title = "Colors" %}
+{% set slug = "colors" %}
 {% import "swatch-grid.njk" as swatches %}
-{% set toc = [
-  ["scale", "The scale"],
-  ["swatches", "Swatches"],
-  ["contrast", "Contrast"],
-  ["scoping", "Scoping"],
-  ["semantic-colors", "Accent and error"],
-  ["greyscale", "Greyscale"],
-  ["sass", "Sass API"]
-] %}
 
 {% block content %}
 <h1>Colors</h1>
@@ -93,14 +86,14 @@
     Rebind <code>--color</code> on any element and its whole subtree recolors. This is how
     <code>--accent-color</code> and <code>--error-color</code> are applied internally.
   </p>
-  {% call m.demo("colors-scoping") %}
+  {% call m.inline_demo("colors-scoping") %}
 <div class="flex flip">
-  <article class="card" style="--color: teal; flex: 1">
+  <article class="card-border" style="--color: teal; flex: 1">
     <h3>Teal</h3>
     <p>Scoped with <code>--color: teal</code>.</p>
     <button>Action</button>
   </article>
-  <article class="card" style="--color: crimson; flex: 1">
+  <article class="card-border" style="--color: crimson; flex: 1">
     <h3>Crimson</h3>
     <p>Scoped with <code>--color: crimson</code>.</p>
     <button>Action</button>
@@ -148,11 +141,11 @@
     <code>--grey-text-lc-*</code>. The <code>.disabled</code> class and the <code>:disabled</code>
     pseudo-class swap the live scale for it via the <code>apply-greyscale()</code> mixin.
   </p>
-  {% call m.demo("colors-greyscale") %}
+  {% call m.inline_demo("colors-greyscale") %}
 <div class="flex">
   <button>Enabled</button>
   <button disabled>Disabled</button>
-  <article class="card disabled" style="flex: 1">
+  <article class="card-border disabled" style="flex: 1">
     <p>An entire subtree can be desaturated with <code>.disabled</code>.</p>
   </article>
 </div>

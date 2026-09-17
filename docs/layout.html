@@ -6,57 +6,259 @@
     <meta charset="UTF-8" />
     <title>Layout · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
     <script src="./docs.js" type="module"></script>
   </head>
   <body>
-    <header class="container-fluid site-header">
-      <nav class="flex" style="align-items: center">
-        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
-      </nav>
-      <nav class="flex site-nav" style="flex-wrap: wrap">
-        
-          <a href="./index.html">Home</a>
-        
-          <a href="./colors.html">Colors</a>
-        
-          <a href="./typography.html">Typography</a>
-        
-          <a href="./buttons.html">Buttons</a>
-        
-          <a href="./forms.html">Forms</a>
-        
-          <a href="./containers.html">Containers</a>
-        
-          <a href="./layout.html" aria-current="page">Layout</a>
-        
-          <a href="./customizing.html">Customizing</a>
-        
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
         <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
       </nav>
     </header>
 
-    <main class="container">
-      
-        <nav class="toc" aria-label="On this page">
-          <ul>
-            
-              <li><a href="#container">Container</a></li>
-            
-              <li><a href="#flex">Flex</a></li>
-            
-              <li><a href="#flip">Flip</a></li>
-            
-              <li><a href="#grid">Grid</a></li>
-            
-              <li><a href="#spacing">Spacing</a></li>
-            
-          </ul>
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    aria-current="page"
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
         </nav>
-      
+      </aside>
 
-      
+      <main class="site-main">
+        
 <h1>Layout</h1>
 <p>Two containers and one flex helper. Everything else is native CSS.</p>
 
@@ -87,7 +289,7 @@
     </small>
   </p>
   
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="layout-container">Copy</button>
   <pre><code id="layout-container" class="language-html">&lt;header class=&quot;container-fluid&quot;&gt;…&lt;/header&gt;
 &lt;main class=&quot;container&quot;&gt;…&lt;/main&gt;</code></pre>
@@ -102,22 +304,27 @@
     utility.
   </p>
   
-<div class="demo">
-  
+<div class="demo inline">
+  <div class="demo-surface">
+    
 <div class="flex">
-  <article class="card" style="flex: 1">One</article>
-  <article class="card" style="flex: 1">Two</article>
-  <article class="card" style="flex: 1">Three</article>
+  <article class="card-border" style="flex: 1">One</article>
+  <article class="card-border" style="flex: 1">Two</article>
+  <article class="card-border" style="flex: 1">Three</article>
 </div>
   
-</div>
-<div class="code-block">
-  <button class="ghost copy-button" data-target="layout-flex">Copy</button>
-  <pre><code id="layout-flex">&lt;div class=&quot;flex&quot;&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;One&lt;/article&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;Two&lt;/article&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;Three&lt;/article&gt;
+  </div>
+  <div class="demo-bar">
+    <span class="demo-note"><small>Same markup in both builds</small></span>
+    <button class="ghost copy-button" data-target="layout-flex">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="layout-flex">&lt;div class=&quot;flex&quot;&gt;
+  &lt;article class=&quot;card-border&quot; style=&quot;flex: 1&quot;&gt;One&lt;/article&gt;
+  &lt;article class=&quot;card-border&quot; style=&quot;flex: 1&quot;&gt;Two&lt;/article&gt;
+  &lt;article class=&quot;card-border&quot; style=&quot;flex: 1&quot;&gt;Three&lt;/article&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </div>
 
 </section>
@@ -130,30 +337,35 @@
     beside it on desktop.
   </p>
   
-<div class="demo">
-  
+<div class="demo inline">
+  <div class="demo-surface">
+    
 <div class="flex flip">
-  <article class="card" style="flex: 2">Main content</article>
-  <article class="card" style="flex: 1">Sidebar</article>
+  <article class="card-border" style="flex: 2">Main content</article>
+  <article class="card-border" style="flex: 1">Sidebar</article>
 </div>
 
 <div class="flex flip reverse">
-  <article class="card" style="flex: 2">Main, second on mobile</article>
-  <article class="card" style="flex: 1">Sidebar, first on mobile</article>
+  <article class="card-border" style="flex: 2">Main, second on mobile</article>
+  <article class="card-border" style="flex: 1">Sidebar, first on mobile</article>
 </div>
   
-</div>
-<div class="code-block">
-  <button class="ghost copy-button" data-target="layout-flip">Copy</button>
-  <pre><code id="layout-flip">&lt;div class=&quot;flex flip&quot;&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 2&quot;&gt;Main content&lt;/article&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;Sidebar&lt;/article&gt;
+  </div>
+  <div class="demo-bar">
+    <span class="demo-note"><small>Same markup in both builds</small></span>
+    <button class="ghost copy-button" data-target="layout-flip">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="layout-flip">&lt;div class=&quot;flex flip&quot;&gt;
+  &lt;article class=&quot;card-border&quot; style=&quot;flex: 2&quot;&gt;Main content&lt;/article&gt;
+  &lt;article class=&quot;card-border&quot; style=&quot;flex: 1&quot;&gt;Sidebar&lt;/article&gt;
 &lt;/div&gt;
 
 &lt;div class=&quot;flex flip reverse&quot;&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 2&quot;&gt;Main, second on mobile&lt;/article&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;Sidebar, first on mobile&lt;/article&gt;
+  &lt;article class=&quot;card-border&quot; style=&quot;flex: 2&quot;&gt;Main, second on mobile&lt;/article&gt;
+  &lt;article class=&quot;card-border&quot; style=&quot;flex: 1&quot;&gt;Sidebar, first on mobile&lt;/article&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </div>
 
   <p><small>Resize the window to see the breakpoint.</small></p>
@@ -166,34 +378,39 @@
     rhythm.
   </p>
   
-<div class="demo">
-  
+<div class="demo inline">
+  <div class="demo-surface">
+    
 <div
   style="
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     gap: var(--padding);
   ">
-  <article class="card">Auto</article>
-  <article class="card">Fitting</article>
-  <article class="card">Grid</article>
-  <article class="card">Cells</article>
+  <article class="card-border">Auto</article>
+  <article class="card-border">Fitting</article>
+  <article class="card-border">Grid</article>
+  <article class="card-border">Cells</article>
 </div>
   
-</div>
-<div class="code-block">
-  <button class="ghost copy-button" data-target="layout-grid">Copy</button>
-  <pre><code id="layout-grid">&lt;div
+  </div>
+  <div class="demo-bar">
+    <span class="demo-note"><small>Same markup in both builds</small></span>
+    <button class="ghost copy-button" data-target="layout-grid">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="layout-grid">&lt;div
   style=&quot;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     gap: var(--padding);
   &quot;&gt;
-  &lt;article class=&quot;card&quot;&gt;Auto&lt;/article&gt;
-  &lt;article class=&quot;card&quot;&gt;Fitting&lt;/article&gt;
-  &lt;article class=&quot;card&quot;&gt;Grid&lt;/article&gt;
-  &lt;article class=&quot;card&quot;&gt;Cells&lt;/article&gt;
+  &lt;article class=&quot;card-border&quot;&gt;Auto&lt;/article&gt;
+  &lt;article class=&quot;card-border&quot;&gt;Fitting&lt;/article&gt;
+  &lt;article class=&quot;card-border&quot;&gt;Grid&lt;/article&gt;
+  &lt;article class=&quot;card-border&quot;&gt;Cells&lt;/article&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </div>
 
 </section>
@@ -205,7 +422,7 @@
     list items carry <code>0.25rem</code>.
   </p>
   
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="layout-spacing">Copy</button>
   <pre><code id="layout-spacing" class="language-css">.tight {
   --padding: 0.5rem;
@@ -219,17 +436,18 @@
 </section>
 
 
-      <footer class="site-footer">
-        <hr />
-        <p>
-          <small>
-            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
-            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
-            MIT
-          </small>
-        </p>
-      </footer>
-    </main>
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
 
     
   </body>

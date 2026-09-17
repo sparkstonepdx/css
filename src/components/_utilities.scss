@@ -1,0 +1,30 @@
+@use "../vars.scss" as *;
+
+@mixin styles {
+  // Strips every style off an element, for markup that should not look like
+  // the component around it.
+  .semantic {
+    all: unset;
+  }
+
+  a.semantic,
+  button.semantic,
+  [role="button"].semantic {
+    cursor: pointer;
+  }
+
+  .text-secondary {
+    color: cur-color(var(--text-lc-3));
+  }
+
+  .disabled,
+  .btn-disabled,
+  *:disabled {
+    @include apply-greyscale();
+  }
+
+  .text-error {
+    --color: var(--error-color);
+    color: cur-color(var(--text-lc-3));
+  }
+}

@@ -1,13 +1,7 @@
 {% extends "layout.njk" %}
 {% import "macros.njk" as m %}
-{% set toc = [
-  ["variables", "Variables"],
-  ["scoping", "Scoping"],
-  ["scheme", "Color scheme"],
-  ["scale", "Replacing the scale"],
-  ["sass", "Sass API"],
-  ["icons", "Icons"]
-] %}
+{% set title = "Customizing" %}
+{% set slug = "customizing" %}
 
 {% block content %}
 <h1>Customizing</h1>
@@ -54,8 +48,8 @@
     Variables cascade, so overriding one on a subtree is the whole customization story. No build step
     is involved in any of this.
   </p>
-  {% call m.demo("custom-scoping") %}
-<article class="card" style="--color: seagreen; --border-radius: 1rem">
+  {% call m.inline_demo("custom-scoping") %}
+<article class="card-border" style="--color: seagreen; --border-radius: 1rem">
   <h3>Scoped surface</h3>
   <p>Different hue, different radius, same markup.</p>
   <button>Themed button</button>
@@ -70,7 +64,7 @@
     <code>prefers-color-scheme</code>. Set the attribute to pin it, on <code>&lt;html&gt;</code> or on
     any subtree.
   </p>
-  {% call m.demo("custom-scheme") %}
+  {% call m.inline_demo("custom-scheme") %}
 <div class="flex flip">
   <div data-color-scheme="light" class="scheme-pane">
     <p><strong>Forced light</strong></p>

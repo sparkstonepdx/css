@@ -1,0 +1,27 @@
+@use "../vars.scss" as *;
+
+@mixin styles {
+  .progress {
+    appearance: none;
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 0.5rem;
+    background-color: cur-color(var(--primary-text-lc));
+    border: none;
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    height: 0.5rem;
+
+    &::-webkit-progress-bar {
+      background-color: cur-color(var(--surface-lc-2));
+    }
+
+    &::-webkit-progress-value {
+      background-color: cur-color(var(--surface-lc-5));
+    }
+
+    &::-moz-progress-bar {
+      background-color: cur-color(var(--surface-lc-5));
+    }
+  }
+}

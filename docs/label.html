@@ -1,0 +1,401 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Label · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    aria-current="page"
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Label</h1>
+<p class="lede">
+  Wrap a control in a label and the spacing, hint text and choice layouts follow.
+  The label is the layout primitive for every form control in this framework.
+</p>
+
+
+<table class="class-table">
+  <thead>
+    <tr><th>Class</th><th>Does what</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr><td><code>label</code></td><td>Block label with spacing for the control it wraps</td></tr>
+    
+      <tr><td><code>block</code></td><td>On a label wrapping a radio: renders it as a selectable card</td></tr>
+    
+  </tbody>
+</table>
+
+
+<h2>Label and control</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="label-basic-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="label-basic-classes" data-variant="classes">&lt;label class=&quot;label&quot;&gt;
+  Email
+  &lt;input type=&quot;email&quot; class=&quot;input&quot; placeholder=&quot;you@example.com&quot; /&gt;
+&lt;/label&gt;</code></pre>
+    
+      <pre hidden><code id="label-basic-classless" data-variant="classless">&lt;label&gt;
+  Email
+  &lt;input type=&quot;email&quot; placeholder=&quot;you@example.com&quot; /&gt;
+&lt;/label&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<h2>Hint text</h2>
+<p>A <code>small</code> after the control becomes a hint, and the control's bottom margin collapses into it.</p>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="label-hint-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="label-hint-classes" data-variant="classes">&lt;label class=&quot;label&quot;&gt;
+  Username
+  &lt;input type=&quot;text&quot; class=&quot;input&quot; /&gt;
+  &lt;small&gt;Letters, numbers and dashes.&lt;/small&gt;
+&lt;/label&gt;</code></pre>
+    
+      <pre hidden><code id="label-hint-classless" data-variant="classless">&lt;label&gt;
+  Username
+  &lt;input type=&quot;text&quot; /&gt;
+  &lt;small&gt;Letters, numbers and dashes.&lt;/small&gt;
+&lt;/label&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<h2>Invalid state</h2>
+<p>A label's leading <code>p</code> turns error-colored when the control after it is invalid.</p>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="label-invalid-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="label-invalid-classes" data-variant="classes">&lt;label class=&quot;label&quot;&gt;
+  &lt;p&gt;Email&lt;/p&gt;
+  &lt;input type=&quot;email&quot; class=&quot;input input-error&quot; aria-invalid=&quot;true&quot; value=&quot;not-an-email&quot; /&gt;
+  &lt;small class=&quot;text-error&quot;&gt;Enter a valid email address.&lt;/small&gt;
+&lt;/label&gt;</code></pre>
+    
+      <pre hidden><code id="label-invalid-classless" data-variant="classless">&lt;label&gt;
+  &lt;p&gt;Email&lt;/p&gt;
+  &lt;input type=&quot;email&quot; aria-invalid=&quot;true&quot; value=&quot;not-an-email&quot; /&gt;
+  &lt;small class=&quot;error&quot;&gt;Enter a valid email address.&lt;/small&gt;
+&lt;/label&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<p class="classless-note"><small><strong>Classless:</strong> &lt;code&gt;aria-invalid=&quot;true&quot;&lt;/code&gt; drives the error color on its own. &lt;code&gt;.input-error&lt;/code&gt; is there for when you cannot set the attribute.</small></p>
+
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

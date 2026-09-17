@@ -1,0 +1,432 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Dialog · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    aria-current="page"
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Dialog</h1>
+<p class="lede">
+  A centered, backdrop-blurred modal built on the native <code>&lt;dialog&gt;</code>
+  element. Open it with <code>showModal()</code>. These class names deviate from
+  daisyUI, which calls the component <code>modal</code>.
+</p>
+
+
+<table class="class-table">
+  <thead>
+    <tr><th>Class</th><th>Does what</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr><td><code>dialog</code></td><td>The dialog itself: fixed, centered, blurred backdrop, hidden unless open</td></tr>
+    
+      <tr><td><code>dialog-box</code></td><td>The panel inside: card surface, scrolls internally, capped width</td></tr>
+    
+      <tr><td><code>dialog-header</code></td><td>Header row inside the panel</td></tr>
+    
+      <tr><td><code>dialog-actions</code></td><td>Footer row inside the panel: top border, right-aligned actions</td></tr>
+    
+  </tbody>
+</table>
+
+
+<h2>Basic</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="dialog-basic-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="dialog-basic-classes" data-variant="classes">&lt;button class=&quot;btn&quot; data-dialog=&quot;demo-dialog&quot;&gt;Open dialog&lt;/button&gt;
+
+&lt;dialog id=&quot;demo-dialog&quot; class=&quot;dialog&quot;&gt;
+  &lt;form method=&quot;dialog&quot;&gt;
+    &lt;article class=&quot;dialog-box prose&quot;&gt;
+      &lt;header class=&quot;dialog-header&quot;&gt;
+        &lt;h3&gt;Dialog heading&lt;/h3&gt;
+      &lt;/header&gt;
+      &lt;p&gt;Scrolls internally when the content is taller than the viewport, and locks
+        scrolling on the page behind it.&lt;/p&gt;
+      &lt;footer class=&quot;dialog-actions&quot;&gt;
+        &lt;button value=&quot;cancel&quot; class=&quot;btn btn-secondary&quot;&gt;Cancel&lt;/button&gt;
+        &lt;button value=&quot;ok&quot; class=&quot;btn&quot;&gt;OK&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
+    
+      <pre hidden><code id="dialog-basic-classless" data-variant="classless">&lt;button data-dialog=&quot;demo-dialog&quot;&gt;Open dialog&lt;/button&gt;
+
+&lt;dialog id=&quot;demo-dialog&quot;&gt;
+  &lt;form method=&quot;dialog&quot;&gt;
+    &lt;article&gt;
+      &lt;header&gt;
+        &lt;h3&gt;Dialog heading&lt;/h3&gt;
+      &lt;/header&gt;
+      &lt;p&gt;Scrolls internally when the content is taller than the viewport, and locks
+        scrolling on the page behind it.&lt;/p&gt;
+      &lt;footer&gt;
+        &lt;button value=&quot;cancel&quot; class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
+        &lt;button value=&quot;ok&quot;&gt;OK&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
+    
+  </div>
+</div>
+
+<p>
+  <small>
+    The docs script wires <code>[data-dialog]</code> to <code>showModal()</code>. In your own
+    app that is one line: <code>dialog.showModal()</code>.
+  </small>
+</p>
+
+<h2>Form nesting</h2>
+<p>
+  Both nestings work, so the close button needs no JavaScript:
+  <code>dialog &gt; form &gt; .dialog-box</code> and
+  <code>dialog &gt; .dialog-box &gt; form</code>.
+</p>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="dialog-form-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="dialog-form-classes" data-variant="classes">&lt;button class=&quot;btn&quot; data-dialog=&quot;inner-form-dialog&quot;&gt;Open&lt;/button&gt;
+
+&lt;dialog id=&quot;inner-form-dialog&quot; class=&quot;dialog&quot;&gt;
+  &lt;article class=&quot;dialog-box prose&quot;&gt;
+    &lt;form method=&quot;dialog&quot;&gt;
+      &lt;header class=&quot;dialog-header&quot;&gt;&lt;h3&gt;Rename&lt;/h3&gt;&lt;/header&gt;
+      &lt;label class=&quot;label&quot;&gt;
+        Name
+        &lt;input type=&quot;text&quot; class=&quot;input&quot; value=&quot;Untitled&quot; /&gt;
+      &lt;/label&gt;
+      &lt;footer class=&quot;dialog-actions&quot;&gt;
+        &lt;button value=&quot;cancel&quot; class=&quot;btn btn-secondary&quot;&gt;Cancel&lt;/button&gt;
+        &lt;button value=&quot;save&quot; class=&quot;btn&quot;&gt;Save&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/form&gt;
+  &lt;/article&gt;
+&lt;/dialog&gt;</code></pre>
+    
+      <pre hidden><code id="dialog-form-classless" data-variant="classless">&lt;button data-dialog=&quot;inner-form-dialog&quot;&gt;Open&lt;/button&gt;
+
+&lt;dialog id=&quot;inner-form-dialog&quot;&gt;
+  &lt;article&gt;
+    &lt;form method=&quot;dialog&quot;&gt;
+      &lt;header&gt;&lt;h3&gt;Rename&lt;/h3&gt;&lt;/header&gt;
+      &lt;label&gt;
+        Name
+        &lt;input type=&quot;text&quot; value=&quot;Untitled&quot; /&gt;
+      &lt;/label&gt;
+      &lt;footer&gt;
+        &lt;button value=&quot;cancel&quot; class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
+        &lt;button value=&quot;save&quot;&gt;Save&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/form&gt;
+  &lt;/article&gt;
+&lt;/dialog&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<p class="classless-note"><small><strong>Classless:</strong> the panel is an &lt;code&gt;article&lt;/code&gt;, so it picks up the card styling automatically. With classes, &lt;code&gt;.dialog-box&lt;/code&gt; includes it.</small></p>
+
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

@@ -6,153 +6,369 @@
     <meta charset="UTF-8" />
     <title>@sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
     <script src="./docs.js" type="module"></script>
   </head>
   <body>
-    <header class="container-fluid site-header">
-      <nav class="flex" style="align-items: center">
-        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
-      </nav>
-      <nav class="flex site-nav" style="flex-wrap: wrap">
-        
-          <a href="./index.html" aria-current="page">Home</a>
-        
-          <a href="./colors.html">Colors</a>
-        
-          <a href="./typography.html">Typography</a>
-        
-          <a href="./buttons.html">Buttons</a>
-        
-          <a href="./forms.html">Forms</a>
-        
-          <a href="./containers.html">Containers</a>
-        
-          <a href="./layout.html">Layout</a>
-        
-          <a href="./customizing.html">Customizing</a>
-        
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
         <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
       </nav>
     </header>
 
-    <main class="container">
-      
-        <nav class="toc" aria-label="On this page">
-          <ul>
-            
-              <li><a href="#install">Install</a></li>
-            
-              <li><a href="#quickstart">Quick start</a></li>
-            
-              <li><a href="#theming">Theming</a></li>
-            
-              <li><a href="#preview">Live preview</a></li>
-            
-              <li><a href="#support">Browser support</a></li>
-            
-          </ul>
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    aria-current="page"
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
         </nav>
-      
+      </aside>
 
-      
+      <main class="site-main">
+        
 <h1>@sparkstone/css</h1>
-<p>
+<p class="lede">
   A lightweight SCSS framework in the spirit of
-  <a href="https://picocss.com" target="_blank" rel="noreferrer">Pico.css</a>, rebuilt on
-  <code>oklch()</code> relative color syntax. Give it one base color and it derives an entire light
-  and dark palette that clears WCAG AA on every pairing the framework uses.
+  <a href="https://picocss.com" target="_blank" rel="noreferrer">Pico.css</a> and
+  <a href="https://daisyui.com" target="_blank" rel="noreferrer">daisyUI</a>, rebuilt on
+  <code>oklch()</code> relative color syntax. Give it one base color and it derives an
+  entire light and dark palette that clears WCAG AA on every pairing the framework uses.
 </p>
 
 <p>
+  <a href="./quickstart.html">Quickstart</a> ·
   <a href="https://www.npmjs.com/package/@sparkstone/css" target="_blank" rel="noreferrer">npm</a> ·
   <a href="https://github.com/sparkstonepdx/css" target="_blank" rel="noreferrer">GitHub</a>
 </p>
 
-<section id="why">
-  <h2>What you get</h2>
-  <ul>
-    <li>A nine-step perceptual scale derived from a single <code>--color</code>.</li>
-    <li>Light and dark from the same scale, mirrored. No second palette to maintain.</li>
-    <li>Semantic HTML styled by default. Classes are the exception, not the rule.</li>
-    <li>No JavaScript for any core styling.</li>
-    <li>Sass functions and mixins when you need to reach past the defaults.</li>
-  </ul>
-</section>
+<h2>Two builds, one source</h2>
+<p>
+  Every component is defined once, as a class. The classless build emits those
+  same classes and then binds them to plain elements with Sass
+  <code>@extend</code>, which is the native version of Tailwind's
+  <code>@apply</code>: <code>button { @extend .btn; }</code> compiles to
+  <code>.btn, button { ... }</code>. One rule, both builds, no drift. The
+  classless build carries the class names too, so you can mix the two.
+</p>
 
-<section id="install">
-  <h2>Install</h2>
-  
-<div class="code-block">
-  <button class="ghost copy-button" data-target="install-pkg">Copy</button>
-  <pre><code id="install-pkg" class="language-bash"># pnpm
-pnpm add @sparkstone/css
+<table class="class-table">
+  <thead>
+    <tr><th>Build</th><th>Import</th><th>Styles</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Class</td>
+      <td><code>@sparkstone/css</code></td>
+      <td>Class names only, following daisyUI 5. Plain elements are left alone.</td>
+    </tr>
+    <tr>
+      <td>Classless</td>
+      <td><code>@sparkstone/css/classless</code></td>
+      <td>Semantic HTML, no classes needed. This is the 1.x theme, unchanged.</td>
+    </tr>
+  </tbody>
+</table>
 
-# yarn
-yarn add @sparkstone/css
+<p>
+  Every component page below shows both, side by side. Switch the tab on any
+  example to see the other build, and the preview switches stylesheets with it.
+</p>
 
-# npm
-npm install @sparkstone/css</code></pre>
+<h2>The same page, both ways</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="overview-hello-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="overview-hello-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
+  &lt;h2&gt;Hello&lt;/h2&gt;
+  &lt;p&gt;Body copy, and &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;a link&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;article class=&quot;card prose&quot;&gt;
+  &lt;h3&gt;A card&lt;/h3&gt;
+  &lt;p&gt;Cards are just articles.&lt;/p&gt;
+  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
+    &lt;button class=&quot;btn btn-secondary&quot;&gt;Cancel&lt;/button&gt;
+    &lt;button class=&quot;btn&quot;&gt;Confirm&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+    
+      <pre hidden><code id="overview-hello-classless" data-variant="classless">&lt;div&gt;
+  &lt;h2&gt;Hello&lt;/h2&gt;
+  &lt;p&gt;Body copy, and &lt;a href=&quot;#&quot;&gt;a link&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;article&gt;
+  &lt;h3&gt;A card&lt;/h3&gt;
+  &lt;p&gt;Cards are just articles.&lt;/p&gt;
+  &lt;footer class=&quot;flex&quot; style=&quot;justify-content: end&quot;&gt;
+    &lt;button class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
+    &lt;button&gt;Confirm&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+    
+  </div>
 </div>
 
 
-  <p>Then import either the source or the precompiled stylesheet:</p>
-  
-<div class="code-block">
-  <button class="ghost copy-button" data-target="install-import">Copy</button>
-  <pre><code id="install-import" class="language-scss">// SCSS, if you want the functions and mixins
-@use &quot;@sparkstone/css/src/theme.scss&quot;;
+<h2>What you get</h2>
+<ul>
+  <li>A nine-step perceptual scale derived from a single <code>--color</code>.</li>
+  <li>Light and dark from the same scale, mirrored. No second palette to maintain.</li>
+  <li>daisyUI 5 class names, with <code>dialog-*</code> in place of <code>modal-*</code>.</li>
+  <li>No JavaScript for any core styling.</li>
+  <li>Sass functions and mixins when you need to reach past the defaults.</li>
+</ul>
 
-// or the precompiled CSS
-import &quot;@sparkstone/css/theme.css&quot;;</code></pre>
-</div>
+<h2>Theming</h2>
+<p>Three colors drive everything. Set them anywhere a CSS variable can be set.</p>
 
-</section>
-
-<section id="quickstart">
-  <h2>A complete page</h2>
-  <p>This is the whole thing. No wrapper classes beyond <code>.container</code>.</p>
-  
-<div class="code-block">
-  <button class="ghost copy-button" data-target="quickstart-page">Copy</button>
-  <pre><code id="quickstart-page" class="language-html">&lt;!DOCTYPE html&gt;
-&lt;html lang=&quot;en&quot;&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;UTF-8&quot; /&gt;
-    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;theme.css&quot; /&gt;
-    &lt;style&gt;
-      :root {
-        --color: teal;
-      }
-    &lt;/style&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;main class=&quot;container&quot;&gt;
-      &lt;h1&gt;Hello&lt;/h1&gt;
-      &lt;p&gt;Body copy, and &lt;a href=&quot;#&quot;&gt;a link&lt;/a&gt;.&lt;/p&gt;
-
-      &lt;article class=&quot;card&quot;&gt;
-        &lt;h2&gt;A card&lt;/h2&gt;
-        &lt;p&gt;Cards are just articles.&lt;/p&gt;
-        &lt;footer&gt;
-          &lt;button class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
-          &lt;button&gt;Confirm&lt;/button&gt;
-        &lt;/footer&gt;
-      &lt;/article&gt;
-    &lt;/main&gt;
-  &lt;/body&gt;
-&lt;/html&gt;</code></pre>
-</div>
-
-</section>
-
-<section id="theming">
-  <h2>Theming</h2>
-  <p>Three colors drive everything. Set them anywhere a CSS variable can be set.</p>
-  
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="theming-vars">Copy</button>
   <pre><code id="theming-vars" class="language-css">:root {
   --color: rebeccapurple;
@@ -162,64 +378,61 @@ import &quot;@sparkstone/css/theme.css&quot;;</code></pre>
 </div>
 
 
-  <p>
-    Because they are plain CSS variables, you can rebind <code>--color</code> on a subtree and every
-    descendant recolors itself. See <a href="./colors.html">Colors</a>.
-  </p>
+<p>
+  Because they are plain CSS variables, you can rebind <code>--color</code> on a subtree and
+  every descendant recolors itself. See <a href="./colors.html">Colors</a> and
+  <a href="./customizing.html">Customizing</a>.
+</p>
 
-  <h3>Light and dark</h3>
-  <p>
-    The scheme follows <code>prefers-color-scheme</code> by default. Force it with an attribute on
-    any element, not just <code>&lt;html&gt;</code>:
-  </p>
-  
-<div class="code-block">
+<h3>Light and dark</h3>
+<p>
+  The scheme follows <code>prefers-color-scheme</code> by default. Force it with an attribute
+  on any element, not just <code>&lt;html&gt;</code>:
+</p>
+
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="theming-scheme">Copy</button>
   <pre><code id="theming-scheme" class="language-html">&lt;html data-color-scheme=&quot;light&quot;&gt;
 &lt;html data-color-scheme=&quot;dark&quot;&gt;</code></pre>
 </div>
 
-</section>
 
-<section id="preview">
-  <h2>Live preview</h2>
-  <p>Change these and every page on this site updates. Values persist for the session.</p>
-  <form class="flex" style="flex-wrap: wrap; align-items: end">
-    <label>
-      <p>Base</p>
-      <input type="color" id="base-color-picker" />
-    </label>
-    <label>
-      <p>Accent</p>
-      <input type="color" id="accent-color-picker" />
-    </label>
-    <label>
-      <p>Error</p>
-      <input type="color" id="error-color-picker" />
-    </label>
-  </form>
-</section>
+<h2>Live preview</h2>
+<p>Change these and every page on this site updates. Values persist for the session.</p>
+<form class="flex" style="flex-wrap: wrap; align-items: end">
+  <label>
+    <p>Base</p>
+    <input type="color" id="base-color-picker" />
+  </label>
+  <label>
+    <p>Accent</p>
+    <input type="color" id="accent-color-picker" />
+  </label>
+  <label>
+    <p>Error</p>
+    <input type="color" id="error-color-picker" />
+  </label>
+</form>
 
-<section id="support">
-  <h2>Browser support</h2>
-  <p>
-    The framework leans on relative color syntax, <code>oklch(from ...)</code>. That means Chrome
-    119+, Safari 16.4+, and Firefox 128+. There is no fallback layer, by design.
-  </p>
-</section>
+<h2>Browser support</h2>
+<p>
+  The framework leans on relative color syntax, <code>oklch(from ...)</code>. That means
+  Chrome 119+, Safari 16.4+, and Firefox 128+. There is no fallback layer, by design.
+</p>
 
 
-      <footer class="site-footer">
-        <hr />
-        <p>
-          <small>
-            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
-            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
-            MIT
-          </small>
-        </p>
-      </footer>
-    </main>
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
 
     
   </body>

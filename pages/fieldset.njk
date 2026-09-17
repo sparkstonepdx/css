@@ -1,0 +1,43 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Fieldset" %}
+{% set slug = "fieldset" %}
+
+{% block content %}
+<h1>Fieldset</h1>
+<p class="lede">Groups related controls behind a border, with the legend notched into it.</p>
+
+{{ m.classes([
+  ["fieldset", "Bordered group with padding and a bottom margin"],
+  ["fieldset-legend", "Legend, pulled into the border"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<fieldset>
+  <legend>Shipping</legend>
+  <label>
+    Address
+    <input type="text" />
+  </label>
+  <label>
+    City
+    <input type="text" />
+  </label>
+</fieldset>
+{% endset %}
+{% set classes %}
+<fieldset class="fieldset">
+  <legend class="fieldset-legend">Shipping</legend>
+  <label class="label">
+    Address
+    <input type="text" class="input" />
+  </label>
+  <label class="label">
+    City
+    <input type="text" class="input" />
+  </label>
+</fieldset>
+{% endset %}
+{{ m.demo("fieldset-basic", classless, classes) }}
+{% endblock %}

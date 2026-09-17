@@ -6,61 +6,259 @@
     <meta charset="UTF-8" />
     <title>Colors · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
     <script src="./docs.js" type="module"></script>
   </head>
   <body>
-    <header class="container-fluid site-header">
-      <nav class="flex" style="align-items: center">
-        <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
-      </nav>
-      <nav class="flex site-nav" style="flex-wrap: wrap">
-        
-          <a href="./index.html">Home</a>
-        
-          <a href="./colors.html" aria-current="page">Colors</a>
-        
-          <a href="./typography.html">Typography</a>
-        
-          <a href="./buttons.html">Buttons</a>
-        
-          <a href="./forms.html">Forms</a>
-        
-          <a href="./containers.html">Containers</a>
-        
-          <a href="./layout.html">Layout</a>
-        
-          <a href="./customizing.html">Customizing</a>
-        
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
         <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
       </nav>
     </header>
 
-    <main class="container">
-      
-        <nav class="toc" aria-label="On this page">
-          <ul>
-            
-              <li><a href="#scale">The scale</a></li>
-            
-              <li><a href="#swatches">Swatches</a></li>
-            
-              <li><a href="#contrast">Contrast</a></li>
-            
-              <li><a href="#scoping">Scoping</a></li>
-            
-              <li><a href="#semantic-colors">Accent and error</a></li>
-            
-              <li><a href="#greyscale">Greyscale</a></li>
-            
-              <li><a href="#sass">Sass API</a></li>
-            
-          </ul>
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    aria-current="page"
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
         </nav>
-      
+      </aside>
 
-      
+      <main class="site-main">
+        
 <h1>Colors</h1>
 <p>
   Every color in the framework is derived from one variable, <code>--color</code>, using
@@ -75,7 +273,7 @@
     <code>--swatch-lc-N</code>. Surfaces read the scale forward, text reads it backward:
   </p>
   
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="scale-mapping">Copy</button>
   <pre><code id="scale-mapping" class="language-css">--swatch-lc-1:  99%  0.018;   /* lightest */
 --swatch-lc-9:  17%  0.055;   /* darkest  */
@@ -109,7 +307,7 @@
   
 <div class="flex flip" style="justify-content: stretch; gap: 0.5rem">
   <article
-    class="card"
+    class="card-border"
     data-color-scheme="light"
     style="flex-grow: 1; padding: 1rem; padding-bottom: 2rem; border-radius: var(--border-radius)">
     <p>Light Mode</p>
@@ -121,7 +319,7 @@
       ">
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -137,7 +335,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -153,7 +351,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -169,7 +367,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -185,7 +383,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -201,7 +399,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -217,7 +415,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -233,7 +431,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -249,7 +447,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -278,7 +476,7 @@
       ">
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-1) h);
@@ -293,7 +491,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-2) h);
@@ -308,7 +506,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-3) h);
@@ -323,7 +521,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-4) h);
@@ -338,7 +536,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-5) h);
@@ -353,7 +551,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-6) h);
@@ -368,7 +566,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-7) h);
@@ -383,7 +581,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-8) h);
@@ -398,7 +596,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-9) h);
@@ -455,36 +653,41 @@
     <code>--accent-color</code> and <code>--error-color</code> are applied internally.
   </p>
   
-<div class="demo">
-  
+<div class="demo inline">
+  <div class="demo-surface">
+    
 <div class="flex flip">
-  <article class="card" style="--color: teal; flex: 1">
+  <article class="card-border" style="--color: teal; flex: 1">
     <h3>Teal</h3>
     <p>Scoped with <code>--color: teal</code>.</p>
     <button>Action</button>
   </article>
-  <article class="card" style="--color: crimson; flex: 1">
+  <article class="card-border" style="--color: crimson; flex: 1">
     <h3>Crimson</h3>
     <p>Scoped with <code>--color: crimson</code>.</p>
     <button>Action</button>
   </article>
 </div>
   
-</div>
-<div class="code-block">
-  <button class="ghost copy-button" data-target="colors-scoping">Copy</button>
-  <pre><code id="colors-scoping">&lt;div class=&quot;flex flip&quot;&gt;
-  &lt;article class=&quot;card&quot; style=&quot;--color: teal; flex: 1&quot;&gt;
+  </div>
+  <div class="demo-bar">
+    <span class="demo-note"><small>Same markup in both builds</small></span>
+    <button class="ghost copy-button" data-target="colors-scoping">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="colors-scoping">&lt;div class=&quot;flex flip&quot;&gt;
+  &lt;article class=&quot;card-border&quot; style=&quot;--color: teal; flex: 1&quot;&gt;
     &lt;h3&gt;Teal&lt;/h3&gt;
     &lt;p&gt;Scoped with &lt;code&gt;--color: teal&lt;/code&gt;.&lt;/p&gt;
     &lt;button&gt;Action&lt;/button&gt;
   &lt;/article&gt;
-  &lt;article class=&quot;card&quot; style=&quot;--color: crimson; flex: 1&quot;&gt;
+  &lt;article class=&quot;card-border&quot; style=&quot;--color: crimson; flex: 1&quot;&gt;
     &lt;h3&gt;Crimson&lt;/h3&gt;
     &lt;p&gt;Scoped with &lt;code&gt;--color: crimson&lt;/code&gt;.&lt;/p&gt;
     &lt;button&gt;Action&lt;/button&gt;
   &lt;/article&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </div>
 
 </section>
@@ -503,7 +706,7 @@
     
 <div class="flex flip" style="justify-content: stretch; gap: 0.5rem">
   <article
-    class="card"
+    class="card-border"
     data-color-scheme="light"
     style="flex-grow: 1; padding: 1rem; padding-bottom: 2rem; border-radius: var(--border-radius)">
     <p>Light Mode</p>
@@ -515,7 +718,7 @@
       ">
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -531,7 +734,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -547,7 +750,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -563,7 +766,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -579,7 +782,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -595,7 +798,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -611,7 +814,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -627,7 +830,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -643,7 +846,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -672,7 +875,7 @@
       ">
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-1) h);
@@ -687,7 +890,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-2) h);
@@ -702,7 +905,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-3) h);
@@ -717,7 +920,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-4) h);
@@ -732,7 +935,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-5) h);
@@ -747,7 +950,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-6) h);
@@ -762,7 +965,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-7) h);
@@ -777,7 +980,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-8) h);
@@ -792,7 +995,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-9) h);
@@ -820,7 +1023,7 @@
     
 <div class="flex flip" style="justify-content: stretch; gap: 0.5rem">
   <article
-    class="card"
+    class="card-border"
     data-color-scheme="light"
     style="flex-grow: 1; padding: 1rem; padding-bottom: 2rem; border-radius: var(--border-radius)">
     <p>Light Mode</p>
@@ -832,7 +1035,7 @@
       ">
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -848,7 +1051,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -864,7 +1067,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -880,7 +1083,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -896,7 +1099,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -912,7 +1115,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -928,7 +1131,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -944,7 +1147,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -960,7 +1163,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           flex-grow: 1;
           aspect-ratio: 1;
@@ -989,7 +1192,7 @@
       ">
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-1) h);
@@ -1004,7 +1207,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-2) h);
@@ -1019,7 +1222,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-3) h);
@@ -1034,7 +1237,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-4) h);
@@ -1049,7 +1252,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-5) h);
@@ -1064,7 +1267,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-6) h);
@@ -1079,7 +1282,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-7) h);
@@ -1094,7 +1297,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-8) h);
@@ -1109,7 +1312,7 @@
       </article>
       
       <article
-        class="card"
+        class="card-border"
         style="
           aspect-ratio: 1;
           background: oklch(from var(--color) var(--surface-lc-9) h);
@@ -1130,7 +1333,7 @@
   </div>
 
   
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="colors-semantic">Copy</button>
   <pre><code id="colors-semantic" class="language-css">:root {
   --color: rebeccapurple;
@@ -1150,26 +1353,31 @@
     pseudo-class swap the live scale for it via the <code>apply-greyscale()</code> mixin.
   </p>
   
-<div class="demo">
-  
+<div class="demo inline">
+  <div class="demo-surface">
+    
 <div class="flex">
   <button>Enabled</button>
   <button disabled>Disabled</button>
-  <article class="card disabled" style="flex: 1">
+  <article class="card-border disabled" style="flex: 1">
     <p>An entire subtree can be desaturated with <code>.disabled</code>.</p>
   </article>
 </div>
   
-</div>
-<div class="code-block">
-  <button class="ghost copy-button" data-target="colors-greyscale">Copy</button>
-  <pre><code id="colors-greyscale">&lt;div class=&quot;flex&quot;&gt;
+  </div>
+  <div class="demo-bar">
+    <span class="demo-note"><small>Same markup in both builds</small></span>
+    <button class="ghost copy-button" data-target="colors-greyscale">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="colors-greyscale">&lt;div class=&quot;flex&quot;&gt;
   &lt;button&gt;Enabled&lt;/button&gt;
   &lt;button disabled&gt;Disabled&lt;/button&gt;
-  &lt;article class=&quot;card disabled&quot; style=&quot;flex: 1&quot;&gt;
+  &lt;article class=&quot;card-border disabled&quot; style=&quot;flex: 1&quot;&gt;
     &lt;p&gt;An entire subtree can be desaturated with &lt;code&gt;.disabled&lt;/code&gt;.&lt;/p&gt;
   &lt;/article&gt;
 &lt;/div&gt;</code></pre>
+  </div>
 </div>
 
 </section>
@@ -1177,7 +1385,7 @@
 <section id="sass">
   <h2>Sass API</h2>
   
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="colors-sass">Copy</button>
   <pre><code id="colors-sass" class="language-scss">@use &quot;@sparkstone/css/src/vars.scss&quot; as *;
 
@@ -1210,17 +1418,18 @@
 </section>
 
 
-      <footer class="site-footer">
-        <hr />
-        <p>
-          <small>
-            <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
-            <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
-            MIT
-          </small>
-        </p>
-      </footer>
-    </main>
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
 
     
   </body>

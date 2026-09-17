@@ -1,0 +1,424 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Quickstart · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    aria-current="page"
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Quickstart</h1>
+<p class="lede">Install, pick a build, set a color.</p>
+
+<h2>Install</h2>
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="install-pkg">Copy</button>
+  <pre><code id="install-pkg" class="language-bash"># pnpm
+pnpm add @sparkstone/css
+
+# yarn
+yarn add @sparkstone/css
+
+# npm
+npm install @sparkstone/css</code></pre>
+</div>
+
+
+<h2>Pick a build</h2>
+<p>
+  The package root is the class build. The classless build, which is the 1.x
+  theme, lives at <code>/classless</code>.
+</p>
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="install-import">Copy</button>
+  <pre><code id="install-import" class="language-scss">// Sass, either build. Needs the Node package importer:
+//   sass --pkg-importer=node
+//   importers: [new NodePackageImporter()]
+@use &quot;pkg:@sparkstone/css&quot;;
+@use &quot;pkg:@sparkstone/css/classless&quot;;</code></pre>
+</div>
+
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="install-import-js">Copy</button>
+  <pre><code id="install-import-js" class="language-ts">// Precompiled CSS
+import &quot;@sparkstone/css&quot;;           // dist/index.css
+import &quot;@sparkstone/css/classless&quot;; // dist/classless.css</code></pre>
+</div>
+
+
+<h2>A complete page</h2>
+<p>Switch the tab to see the same page in the other build.</p>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="quickstart-page-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="quickstart-page-classes" data-variant="classes">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; data-color-scheme=&quot;light&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;index.css&quot; /&gt;
+    &lt;style&gt;
+      :root {
+        --color: teal;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body class=&quot;prose&quot;&gt;
+    &lt;main class=&quot;container&quot;&gt;
+      &lt;h1&gt;Hello&lt;/h1&gt;
+      &lt;p&gt;Body copy, and &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;a link&lt;/a&gt;.&lt;/p&gt;
+
+      &lt;article class=&quot;card&quot;&gt;
+        &lt;h2&gt;A card&lt;/h2&gt;
+        &lt;p&gt;Cards are just articles.&lt;/p&gt;
+        &lt;footer class=&quot;card-actions&quot;&gt;
+          &lt;button class=&quot;btn btn-secondary&quot;&gt;Cancel&lt;/button&gt;
+          &lt;button class=&quot;btn&quot;&gt;Confirm&lt;/button&gt;
+        &lt;/footer&gt;
+      &lt;/article&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    
+      <pre hidden><code id="quickstart-page-classless" data-variant="classless">&lt;!DOCTYPE html&gt;
+&lt;html lang=&quot;en&quot; data-color-scheme=&quot;light&quot;&gt;
+  &lt;head&gt;
+    &lt;meta charset=&quot;UTF-8&quot; /&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;classless.css&quot; /&gt;
+    &lt;style&gt;
+      :root {
+        --color: teal;
+      }
+    &lt;/style&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;main class=&quot;container&quot;&gt;
+      &lt;h1&gt;Hello&lt;/h1&gt;
+      &lt;p&gt;Body copy, and &lt;a href=&quot;#&quot;&gt;a link&lt;/a&gt;.&lt;/p&gt;
+
+      &lt;article&gt;
+        &lt;h2&gt;A card&lt;/h2&gt;
+        &lt;p&gt;Cards are just articles.&lt;/p&gt;
+        &lt;footer&gt;
+          &lt;button class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
+          &lt;button&gt;Confirm&lt;/button&gt;
+        &lt;/footer&gt;
+      &lt;/article&gt;
+    &lt;/main&gt;
+  &lt;/body&gt;
+&lt;/html&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<h2>Set your color</h2>
+<p>
+  One custom property drives the whole palette. Everything else is derived from
+  it in <code>oklch</code>.
+</p>
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="quickstart-color">Copy</button>
+  <pre><code id="quickstart-color" class="language-css">:root {
+  --color: teal;
+}</code></pre>
+</div>
+
+
+<h2>Coming from 1.x</h2>
+<ul>
+  <li>Replace <code>dist/theme.css</code> with <code>dist/classless.css</code>.</li>
+  <li>Replace <code>src/theme.scss</code> with <code>src/classless.scss</code>, or import <code>pkg:@sparkstone/css/classless</code>.</li>
+  <li><code>input[type="submit"|"reset"|"button"]</code> is now styled only as a button. In 1.x it also picked up the text-field width, height and bottom margin.</li>
+  <li><code>.card</code> is the base card in both builds now. Rename 1.x's <code>.card</code> to <code>.card-border</code> for the bordered look.</li>
+  <li>The classless build now ships the class names too, so <code>.btn</code>, <code>.input</code> and the rest work there as well.</li>
+  <li>Moving to classes? <code>.card</code> becomes <code>.card-border</code>, and dialogs pick up <code>.dialog</code>, <code>.dialog-box</code> and <code>.dialog-actions</code>.</li>
+</ul>
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

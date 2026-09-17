@@ -1,0 +1,371 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Select · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    aria-current="page"
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Select</h1>
+<p class="lede">
+  Single selects get a chevron drawn from <code>--icon-chevron</code>. Multiple
+  and sized selects keep the native list, with no icon.
+</p>
+
+
+<table class="class-table">
+  <thead>
+    <tr><th>Class</th><th>Does what</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr><td><code>select</code></td><td>Full-width select with a chevron</td></tr>
+    
+      <tr><td><code>select-error</code></td><td>Error color, for when aria-invalid is not available</td></tr>
+    
+  </tbody>
+</table>
+
+
+<h2>Basic</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="select-basic-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="select-basic-classes" data-variant="classes">&lt;label class=&quot;label&quot;&gt;
+  Environment
+  &lt;select class=&quot;select&quot;&gt;
+    &lt;option&gt;Development&lt;/option&gt;
+    &lt;option&gt;Staging&lt;/option&gt;
+    &lt;option&gt;Production&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/label&gt;</code></pre>
+    
+      <pre hidden><code id="select-basic-classless" data-variant="classless">&lt;label&gt;
+  Environment
+  &lt;select&gt;
+    &lt;option&gt;Development&lt;/option&gt;
+    &lt;option&gt;Staging&lt;/option&gt;
+    &lt;option&gt;Production&lt;/option&gt;
+  &lt;/select&gt;
+&lt;/label&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<h2>Multiple</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="select-multiple-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="select-multiple-classes" data-variant="classes">&lt;select class=&quot;select&quot; multiple size=&quot;3&quot;&gt;
+  &lt;option&gt;One&lt;/option&gt;
+  &lt;option&gt;Two&lt;/option&gt;
+  &lt;option&gt;Three&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+    
+      <pre hidden><code id="select-multiple-classless" data-variant="classless">&lt;select multiple size=&quot;3&quot;&gt;
+  &lt;option&gt;One&lt;/option&gt;
+  &lt;option&gt;Two&lt;/option&gt;
+  &lt;option&gt;Three&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

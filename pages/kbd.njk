@@ -1,0 +1,27 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Kbd" %}
+{% set slug = "kbd" %}
+
+{% block content %}
+<h1>Kbd</h1>
+<p class="lede">Keyboard keys, filled with the primary color.</p>
+
+{{ m.classes([
+  ["kbd", "Key cap: small, bold, primary fill"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<div>
+  <p>Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to search.</p>
+</div>
+{% endset %}
+{% set classes %}
+<div class="prose">
+  <p>Press <kbd class="kbd">Ctrl</kbd> + <kbd class="kbd">K</kbd> to search.</p>
+</div>
+{% endset %}
+{{ m.demo("kbd-basic", classless, classes) }}
+{{ m.classless_note("<code>kbd</code> is styled everywhere. With classes, <code>.kbd</code> works on its own, and <code>kbd</code> inside <code>.prose</code> is styled without it.") }}
+{% endblock %}

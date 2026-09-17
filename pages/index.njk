@@ -1,147 +1,145 @@
 {% extends "layout.njk" %}
 {% import "macros.njk" as m %}
-{% set toc = [
-  ["install", "Install"],
-  ["quickstart", "Quick start"],
-  ["theming", "Theming"],
-  ["preview", "Live preview"],
-  ["support", "Browser support"]
-] %}
+{% set title = null %}
+{% set slug = "index" %}
 
 {% block content %}
 <h1>@sparkstone/css</h1>
-<p>
+<p class="lede">
   A lightweight SCSS framework in the spirit of
-  <a href="https://picocss.com" target="_blank" rel="noreferrer">Pico.css</a>, rebuilt on
-  <code>oklch()</code> relative color syntax. Give it one base color and it derives an entire light
-  and dark palette that clears WCAG AA on every pairing the framework uses.
+  <a href="https://picocss.com" target="_blank" rel="noreferrer">Pico.css</a> and
+  <a href="https://daisyui.com" target="_blank" rel="noreferrer">daisyUI</a>, rebuilt on
+  <code>oklch()</code> relative color syntax. Give it one base color and it derives an
+  entire light and dark palette that clears WCAG AA on every pairing the framework uses.
 </p>
 
 <p>
+  <a href="./quickstart.html">Quickstart</a> ·
   <a href="https://www.npmjs.com/package/@sparkstone/css" target="_blank" rel="noreferrer">npm</a> ·
   <a href="https://github.com/sparkstonepdx/css" target="_blank" rel="noreferrer">GitHub</a>
 </p>
 
-<section id="why">
-  <h2>What you get</h2>
-  <ul>
-    <li>A nine-step perceptual scale derived from a single <code>--color</code>.</li>
-    <li>Light and dark from the same scale, mirrored. No second palette to maintain.</li>
-    <li>Semantic HTML styled by default. Classes are the exception, not the rule.</li>
-    <li>No JavaScript for any core styling.</li>
-    <li>Sass functions and mixins when you need to reach past the defaults.</li>
-  </ul>
-</section>
+<h2>Two builds, one source</h2>
+<p>
+  Every component is defined once, as a class. The classless build emits those
+  same classes and then binds them to plain elements with Sass
+  <code>@extend</code>, which is the native version of Tailwind's
+  <code>@apply</code>: <code>button { @extend .btn; }</code> compiles to
+  <code>.btn, button { ... }</code>. One rule, both builds, no drift. The
+  classless build carries the class names too, so you can mix the two.
+</p>
 
-<section id="install">
-  <h2>Install</h2>
-  {% call m.snippet("install-pkg", "bash") %}
-# pnpm
-pnpm add @sparkstone/css
+<table class="class-table">
+  <thead>
+    <tr><th>Build</th><th>Import</th><th>Styles</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Class</td>
+      <td><code>@sparkstone/css</code></td>
+      <td>Class names only, following daisyUI 5. Plain elements are left alone.</td>
+    </tr>
+    <tr>
+      <td>Classless</td>
+      <td><code>@sparkstone/css/classless</code></td>
+      <td>Semantic HTML, no classes needed. This is the 1.x theme, unchanged.</td>
+    </tr>
+  </tbody>
+</table>
 
-# yarn
-yarn add @sparkstone/css
+<p>
+  Every component page below shows both, side by side. Switch the tab on any
+  example to see the other build, and the preview switches stylesheets with it.
+</p>
 
-# npm
-npm install @sparkstone/css
-  {% endcall %}
+<h2>The same page, both ways</h2>
+{% set classless %}
+<div>
+  <h2>Hello</h2>
+  <p>Body copy, and <a href="#">a link</a>.</p>
+</div>
 
-  <p>Then import either the source or the precompiled stylesheet:</p>
-  {% call m.snippet("install-import", "scss") %}
-// SCSS, if you want the functions and mixins
-@use "@sparkstone/css/src/theme.scss";
+<article>
+  <h3>A card</h3>
+  <p>Cards are just articles.</p>
+  <footer class="flex" style="justify-content: end">
+    <button class="secondary">Cancel</button>
+    <button>Confirm</button>
+  </footer>
+</article>
+{% endset %}
+{% set classes %}
+<div class="prose">
+  <h2>Hello</h2>
+  <p>Body copy, and <a href="#" class="link">a link</a>.</p>
+</div>
 
-// or the precompiled CSS
-import "@sparkstone/css/theme.css";
-  {% endcall %}
-</section>
+<article class="card prose">
+  <h3>A card</h3>
+  <p>Cards are just articles.</p>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn btn-secondary">Cancel</button>
+    <button class="btn">Confirm</button>
+  </footer>
+</article>
+{% endset %}
+{{ m.demo("overview-hello", classless, classes) }}
 
-<section id="quickstart">
-  <h2>A complete page</h2>
-  <p>This is the whole thing. No wrapper classes beyond <code>.container</code>.</p>
-  {% call m.snippet("quickstart-page", "html") %}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="theme.css" />
-    <style>
-      :root {
-        --color: teal;
-      }
-    </style>
-  </head>
-  <body>
-    <main class="container">
-      <h1>Hello</h1>
-      <p>Body copy, and <a href="#">a link</a>.</p>
+<h2>What you get</h2>
+<ul>
+  <li>A nine-step perceptual scale derived from a single <code>--color</code>.</li>
+  <li>Light and dark from the same scale, mirrored. No second palette to maintain.</li>
+  <li>daisyUI 5 class names, with <code>dialog-*</code> in place of <code>modal-*</code>.</li>
+  <li>No JavaScript for any core styling.</li>
+  <li>Sass functions and mixins when you need to reach past the defaults.</li>
+</ul>
 
-      <article class="card">
-        <h2>A card</h2>
-        <p>Cards are just articles.</p>
-        <footer>
-          <button class="secondary">Cancel</button>
-          <button>Confirm</button>
-        </footer>
-      </article>
-    </main>
-  </body>
-</html>
-  {% endcall %}
-</section>
-
-<section id="theming">
-  <h2>Theming</h2>
-  <p>Three colors drive everything. Set them anywhere a CSS variable can be set.</p>
-  {% call m.snippet("theming-vars", "css") %}
+<h2>Theming</h2>
+<p>Three colors drive everything. Set them anywhere a CSS variable can be set.</p>
+{% call m.snippet("theming-vars", "css") %}
 :root {
   --color: rebeccapurple;
   --accent-color: oklch(from var(--color) l c calc(h + 180));
   --error-color: maroon;
 }
-  {% endcall %}
+{% endcall %}
 
-  <p>
-    Because they are plain CSS variables, you can rebind <code>--color</code> on a subtree and every
-    descendant recolors itself. See <a href="./colors.html">Colors</a>.
-  </p>
+<p>
+  Because they are plain CSS variables, you can rebind <code>--color</code> on a subtree and
+  every descendant recolors itself. See <a href="./colors.html">Colors</a> and
+  <a href="./customizing.html">Customizing</a>.
+</p>
 
-  <h3>Light and dark</h3>
-  <p>
-    The scheme follows <code>prefers-color-scheme</code> by default. Force it with an attribute on
-    any element, not just <code>&lt;html&gt;</code>:
-  </p>
-  {% call m.snippet("theming-scheme", "html") %}
+<h3>Light and dark</h3>
+<p>
+  The scheme follows <code>prefers-color-scheme</code> by default. Force it with an attribute
+  on any element, not just <code>&lt;html&gt;</code>:
+</p>
+{% call m.snippet("theming-scheme", "html") %}
 <html data-color-scheme="light">
 <html data-color-scheme="dark">
-  {% endcall %}
-</section>
+{% endcall %}
 
-<section id="preview">
-  <h2>Live preview</h2>
-  <p>Change these and every page on this site updates. Values persist for the session.</p>
-  <form class="flex" style="flex-wrap: wrap; align-items: end">
-    <label>
-      <p>Base</p>
-      <input type="color" id="base-color-picker" />
-    </label>
-    <label>
-      <p>Accent</p>
-      <input type="color" id="accent-color-picker" />
-    </label>
-    <label>
-      <p>Error</p>
-      <input type="color" id="error-color-picker" />
-    </label>
-  </form>
-</section>
+<h2>Live preview</h2>
+<p>Change these and every page on this site updates. Values persist for the session.</p>
+<form class="flex" style="flex-wrap: wrap; align-items: end">
+  <label>
+    <p>Base</p>
+    <input type="color" id="base-color-picker" />
+  </label>
+  <label>
+    <p>Accent</p>
+    <input type="color" id="accent-color-picker" />
+  </label>
+  <label>
+    <p>Error</p>
+    <input type="color" id="error-color-picker" />
+  </label>
+</form>
 
-<section id="support">
-  <h2>Browser support</h2>
-  <p>
-    The framework leans on relative color syntax, <code>oklch(from ...)</code>. That means Chrome
-    119+, Safari 16.4+, and Firefox 128+. There is no fallback layer, by design.
-  </p>
-</section>
+<h2>Browser support</h2>
+<p>
+  The framework leans on relative color syntax, <code>oklch(from ...)</code>. That means
+  Chrome 119+, Safari 16.4+, and Firefox 128+. There is no fallback layer, by design.
+</p>
 {% endblock %}

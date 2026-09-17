@@ -1,27 +1,82 @@
 {#
-  demo(id)     live example + escaped, copyable source, from ONE block of markup
-  snippet(id)  escaped, copyable source only
+  demo(id, classless, classes)
+    Live preview plus the markup behind it. The preview renders in an iframe
+    loading the matching build, so the class tab shows index.css and the
+    classless tab shows classless.css. Pass markup with {% set %}:
 
-  Both take their markup as a {% call %} body, so the rendered demo and the code
-  the reader copies can never drift apart.
+      {% set classless %}<button>Go</button>{% endset %}
+      {% set classes %}<button class="btn">Go</button>{% endset %}
+      {{ m.demo("btn-basic", classless, classes) }}
 
-  forceescape, not escape: caller() returns a SafeString, and the `escape` filter
-  passes SafeStrings through untouched.
+    Omit `classes` when the markup is identical in both builds.
+
+  snippet(id, lang)  escaped, copyable source only, as a {% call %} body
+  classes(rows)      table of class names, [[class, description], ...]
 #}
 
-{% macro demo(id) %}
-<div class="demo">
-  {{ caller() }}
+{% macro demo(id, classless, classes="") %}
+{% set same = not classes %}
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    {% if same %}
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    {% else %}
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    {% endif %}
+    <button class="ghost copy-button" data-target="{{ id }}-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="{{ id }}-classes" data-variant="classes">{{- (classes if not same else classless) | forceescape | trim -}}</code></pre>
+    {% if not same %}
+      <pre hidden><code id="{{ id }}-classless" data-variant="classless">{{- classless | forceescape | trim -}}</code></pre>
+    {% endif %}
+  </div>
 </div>
-<div class="code-block">
-  <button class="ghost copy-button" data-target="{{ id }}">Copy</button>
-  <pre><code id="{{ id }}">{{- caller() | forceescape | trim -}}</code></pre>
+{% endmacro %}
+
+{#
+  inline_demo(id)  live example rendered in the page itself, for markup that is
+  identical in both builds or that depends on docs-only CSS (swatches, panes).
+#}
+{% macro inline_demo(id) %}
+<div class="demo inline">
+  <div class="demo-surface">
+    {{ caller() }}
+  </div>
+  <div class="demo-bar">
+    <span class="demo-note"><small>Same markup in both builds</small></span>
+    <button class="ghost copy-button" data-target="{{ id }}">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="{{ id }}">{{- caller() | forceescape | trim -}}</code></pre>
+  </div>
 </div>
 {% endmacro %}
 
 {% macro snippet(id, lang="") %}
-<div class="code-block">
+<div class="code-block standalone">
   <button class="ghost copy-button" data-target="{{ id }}">Copy</button>
   <pre><code id="{{ id }}" class="language-{{ lang }}">{{- caller() | forceescape | trim -}}</code></pre>
 </div>
+{% endmacro %}
+
+{% macro classes(rows) %}
+<table class="class-table">
+  <thead>
+    <tr><th>Class</th><th>Does what</th></tr>
+  </thead>
+  <tbody>
+    {% for row in rows %}
+      <tr><td><code>{{ row[0] }}</code></td><td>{{ row[1] }}</td></tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endmacro %}
+
+{% macro classless_note(text) %}
+<p class="classless-note"><small><strong>Classless:</strong> {{ text }}</small></p>
 {% endmacro %}

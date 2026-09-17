@@ -1,0 +1,161 @@
+// Classless build: the same class rules as the main build, bound to plain
+// elements with @extend. `button { @extend .btn; }` compiles to
+// `.btn, button { ... }`, so an element and its class share one rule and the
+// two builds cannot drift apart. Add new styling to the class in
+// ./components, then bind it to an element here.
+
+@use "sass:meta";
+@use "./vars.scss" as *;
+@use "./components" as c;
+
+// Button-ish types are excluded: they are styled as buttons, not as fields.
+$text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"], [type="submit"], [type="reset"], [type="button"], [type="image"]))';
+
+@layer reset, theme;
+
+@layer reset {
+  @include meta.load-css("./lib/reset.css");
+}
+
+@layer theme {
+  @include c.styles($classless: true);
+  @include c.scroll-lock(dialog);
+
+  /* Form controls */
+  #{$text-input} {
+    @extend .input;
+  }
+
+  select {
+    @extend .select;
+  }
+
+  textarea {
+    @extend .textarea;
+  }
+
+  input:where([type="range"]) {
+    @extend .range;
+  }
+
+  input:where([type="file"]) {
+    @extend .file-input;
+  }
+
+  input:where([type="color"]) {
+    @extend .color-input;
+  }
+
+  input:where([type="checkbox"]) {
+    @extend .checkbox;
+  }
+
+  input:where([type="radio"]) {
+    @extend .radio;
+  }
+
+  label {
+    @extend .label;
+  }
+
+  fieldset {
+    @extend .fieldset;
+  }
+
+  fieldset > legend {
+    @extend .fieldset-legend;
+  }
+
+  /* Text */
+  a:not([role="button"]):not(.semantic) {
+    @extend .link;
+  }
+
+  a,
+  a.semantic {
+    cursor: pointer;
+  }
+
+  .secondary {
+    @extend .text-secondary;
+  }
+
+  small.error {
+    @extend .text-error;
+  }
+
+  small.chip {
+    @extend .badge;
+  }
+
+  /* Actions */
+  *:is(
+    button,
+    [type="button"],
+    [type="submit"],
+    [type="reset"],
+    [role="button"]
+  ) {
+    @extend .btn;
+
+    &.secondary {
+      @extend .btn-secondary;
+    }
+
+    &.ghost {
+      @extend .btn-ghost;
+    }
+
+    &.contrast {
+      @extend .btn-neutral;
+    }
+
+    &.primary {
+      @extend .btn-primary;
+    }
+  }
+
+  /* Containers */
+  article {
+    @extend .card;
+  }
+
+  :is(article > footer, article > form > footer) {
+    @extend .card-actions;
+  }
+
+  dialog {
+    @extend .dialog;
+  }
+
+  dialog > article,
+  dialog > form > article {
+    @extend .dialog-box;
+  }
+
+  dialog > article > footer,
+  dialog > article > form > footer,
+  dialog > form > article > footer,
+  dialog > form > article > form > footer {
+    @extend .dialog-actions;
+  }
+
+  table {
+    @extend .table;
+  }
+
+  progress {
+    @extend .progress;
+  }
+
+  details {
+    position: relative;
+    ::after {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='100%' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m0 0 100% 0'/%3E%3C/svg%3E");
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+}

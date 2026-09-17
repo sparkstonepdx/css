@@ -1,0 +1,97 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Button" %}
+{% set slug = "button" %}
+
+{% block content %}
+<h1>Button</h1>
+<p class="lede">
+  Buttons carry the primary color by default. In the classless build every
+  <code>button</code>, <code>[type="button"]</code>, <code>[type="submit"]</code>,
+  <code>[type="reset"]</code> and <code>[role="button"]</code> gets the same treatment.
+</p>
+
+{{ m.classes([
+  ["btn", "Base button"],
+  ["btn-primary", "Primary color fill (the default look)"],
+  ["btn-secondary", "Transparent with a border"],
+  ["btn-ghost", "No border, no fill"],
+  ["btn-neutral", "Fills from the fallback color instead of the theme color"],
+  ["btn-disabled", "Greyscale, for elements without a disabled attribute"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<button>Button</button>
+<a href="#" role="button">Link button</a>
+{% endset %}
+{% set classes %}
+<button class="btn">Button</button>
+<a href="#" class="btn">Link button</a>
+{% endset %}
+{{ m.demo("btn-basic", classless, classes) }}
+
+<h2>Variants</h2>
+{% set classless %}
+<button class="primary">Primary</button>
+<button class="secondary">Secondary</button>
+<button class="ghost">Ghost</button>
+<button class="contrast">Contrast</button>
+{% endset %}
+{% set classes %}
+<button class="btn btn-primary">Primary</button>
+<button class="btn btn-secondary">Secondary</button>
+<button class="btn btn-ghost">Ghost</button>
+<button class="btn btn-neutral">Contrast</button>
+{% endset %}
+{{ m.demo("btn-variants", classless, classes) }}
+{{ m.classless_note("the modifier classes are bare (<code>.primary</code>, <code>.contrast</code>) because they only apply to elements the theme already styles.") }}
+
+<h2>Disabled</h2>
+{% set classless %}
+<button disabled>Disabled</button>
+<button class="disabled">Looks disabled</button>
+{% endset %}
+{% set classes %}
+<button class="btn" disabled>Disabled</button>
+<button class="btn btn-disabled">Looks disabled</button>
+{% endset %}
+{{ m.demo("btn-disabled", classless, classes) }}
+
+<h2>Unstyling a button</h2>
+{% set classless %}
+<div>
+  <p>Read more about <button class="semantic" style="text-decoration: underline">this topic</button>.</p>
+</div>
+{% endset %}
+{% set classes %}
+<div class="prose">
+  <p>Read more about <button class="semantic" style="text-decoration: underline">this topic</button>.</p>
+</div>
+{% endset %}
+{{ m.demo("btn-semantic", classless, classes) }}
+<p>
+  <small>
+    <code>.semantic</code> unsets every style so a button can sit inside a sentence.
+    It works in both builds.
+  </small>
+</p>
+
+<h2>Input buttons</h2>
+{% set classless %}
+<input type="submit" value="Submit" />
+<input type="reset" value="Reset" />
+{% endset %}
+{% set classes %}
+<input type="submit" class="btn" value="Submit" />
+<input type="reset" class="btn" value="Reset" />
+{% endset %}
+{{ m.demo("btn-inputs", classless, classes) }}
+<p>
+  <small>
+    Button-type inputs are styled as buttons in both builds. In 1.x the classless
+    build also applied the text-field rules to them, so they stretched to the full
+    width and carried a bottom margin.
+  </small>
+</p>
+{% endblock %}

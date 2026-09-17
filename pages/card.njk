@@ -1,0 +1,79 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Card" %}
+{% set slug = "card" %}
+
+{% block content %}
+<h1>Card</h1>
+<p class="lede">
+  A padded surface with a shadow. The classless build styles every
+  <code>article</code> this way; <code>.card</code> in 1.x meant the bordered
+  variant, which is now <code>.card-border</code>.
+</p>
+
+{{ m.classes([
+  ["card", "Padded, raised surface with a shadow"],
+  ["card-border", "Flat surface with a border instead of a shadow"],
+  ["card-actions", "Footer row: top border, right-aligned actions"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<article>
+  <h3>Card heading</h3>
+  <p>Cards hold a block of related content.</p>
+</article>
+{% endset %}
+{% set classes %}
+<article class="card prose">
+  <h3>Card heading</h3>
+  <p>Cards hold a block of related content.</p>
+</article>
+{% endset %}
+{{ m.demo("card-basic", classless, classes) }}
+
+<h2>With a footer</h2>
+{% set classless %}
+<article>
+  <h3>Delete this project?</h3>
+  <p>This cannot be undone.</p>
+  <footer class="flex" style="justify-content: end">
+    <button class="secondary">Cancel</button>
+    <button>Delete</button>
+  </footer>
+</article>
+{% endset %}
+{% set classes %}
+<article class="card prose">
+  <h3>Delete this project?</h3>
+  <p>This cannot be undone.</p>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn btn-secondary">Cancel</button>
+    <button class="btn">Delete</button>
+  </footer>
+</article>
+{% endset %}
+{{ m.demo("card-footer", classless, classes) }}
+
+<h2>Bordered</h2>
+{% set classless %}
+<div class="card-border">
+  <h3>Bordered</h3>
+  <p>A border instead of a shadow, on the page background.</p>
+</div>
+{% endset %}
+{% set classes %}
+<div class="card-border prose">
+  <h3>Bordered</h3>
+  <p>A border instead of a shadow, on the page background.</p>
+</div>
+{% endset %}
+{{ m.demo("card-border", classless, classes) }}
+<p>
+  <small>
+    In 1.x, <code>.card</code> was the bordered variant. Both builds now share one
+    set of class names, so <code>.card</code> is the base card and the bordered one is
+    <code>.card-border</code>.
+  </small>
+</p>
+{% endblock %}

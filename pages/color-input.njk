@@ -1,0 +1,31 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Color input" %}
+{% set slug = "color-input" %}
+
+{% block content %}
+<h1>Color input</h1>
+<p class="lede">
+  A color swatch with the theme's border and radius instead of the browser's.
+  daisyUI has no equivalent, so this one follows the <code>file-input</code> pattern.
+</p>
+
+{{ m.classes([
+  ["color-input", "Swatch field with a rounded, bordered well"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<label>
+  Brand color
+  <input type="color" value="#663399" />
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  Brand color
+  <input type="color" class="color-input" value="#663399" />
+</label>
+{% endset %}
+{{ m.demo("color-input-basic", classless, classes) }}
+{% endblock %}

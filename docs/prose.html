@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Prose · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    aria-current="page"
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Prose</h1>
+<p class="lede">
+  Long-form content: paragraphs, headings, lists, quotes, rules and code. The
+  classless build styles these elements everywhere. The class build scopes them
+  to <code>.prose</code>, so a paragraph inside a component keeps its own spacing.
+</p>
+
+
+<table class="class-table">
+  <thead>
+    <tr><th>Class</th><th>Does what</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr><td><code>prose</code></td><td>Styles p, h1 to h6, ul, ol, li, blockquote, hr, code, pre, samp and kbd inside it</td></tr>
+    
+      <tr><td><code>kbd</code></td><td>Key cap, usable outside .prose</td></tr>
+    
+  </tbody>
+</table>
+
+
+<h2>Headings and paragraphs</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="prose-headings-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="prose-headings-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
+  &lt;h1&gt;Heading one&lt;/h1&gt;
+  &lt;h2&gt;Heading two&lt;/h2&gt;
+  &lt;h3&gt;Heading three&lt;/h3&gt;
+  &lt;p&gt;Body text sits at 18px with a 1rem bottom margin.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+    
+      <pre hidden><code id="prose-headings-classless" data-variant="classless">&lt;div&gt;
+  &lt;h1&gt;Heading one&lt;/h1&gt;
+  &lt;h2&gt;Heading two&lt;/h2&gt;
+  &lt;h3&gt;Heading three&lt;/h3&gt;
+  &lt;p&gt;Body text sits at 18px with a 1rem bottom margin.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<h2>Lists, quotes and rules</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="prose-lists-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="prose-lists-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;First item&lt;/li&gt;
+    &lt;li&gt;Second item&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;blockquote&gt;A quote gets a thick left border in the theme color.&lt;/blockquote&gt;
+  &lt;hr /&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Ordered one&lt;/li&gt;
+    &lt;li&gt;Ordered two&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+    
+      <pre hidden><code id="prose-lists-classless" data-variant="classless">&lt;div&gt;
+  &lt;ul&gt;
+    &lt;li&gt;First item&lt;/li&gt;
+    &lt;li&gt;Second item&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;blockquote&gt;A quote gets a thick left border in the theme color.&lt;/blockquote&gt;
+  &lt;hr /&gt;
+  &lt;ol&gt;
+    &lt;li&gt;Ordered one&lt;/li&gt;
+    &lt;li&gt;Ordered two&lt;/li&gt;
+  &lt;/ol&gt;
+&lt;/div&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<h2>Code</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="prose-code-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="prose-code-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
+  &lt;p&gt;Inline &lt;code&gt;code&lt;/code&gt; and &lt;samp&gt;samp&lt;/samp&gt; sit on a raised surface.&lt;/p&gt;
+  &lt;pre&gt;&lt;code&gt;const theme = &quot;@sparkstone/css&quot;;
+console.log(theme);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+    
+      <pre hidden><code id="prose-code-classless" data-variant="classless">&lt;div&gt;
+  &lt;p&gt;Inline &lt;code&gt;code&lt;/code&gt; and &lt;samp&gt;samp&lt;/samp&gt; sit on a raised surface.&lt;/p&gt;
+  &lt;pre&gt;&lt;code&gt;const theme = &quot;@sparkstone/css&quot;;
+console.log(theme);&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

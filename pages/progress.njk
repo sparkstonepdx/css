@@ -1,0 +1,26 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Progress" %}
+{% set slug = "progress" %}
+
+{% block content %}
+<h1>Progress</h1>
+<p class="lede">A flat progress bar. Drop the <code>value</code> attribute for the indeterminate state.</p>
+
+{{ m.classes([
+  ["progress", "Full-width bar, 0.5rem tall, rounded"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<progress value="25" max="100"></progress>
+<progress value="70" max="100"></progress>
+<progress></progress>
+{% endset %}
+{% set classes %}
+<progress class="progress" value="25" max="100"></progress>
+<progress class="progress" value="70" max="100"></progress>
+<progress class="progress"></progress>
+{% endset %}
+{{ m.demo("progress-basic", classless, classes) }}
+{% endblock %}

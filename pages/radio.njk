@@ -1,0 +1,64 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Radio" %}
+{% set slug = "radio" %}
+
+{% block content %}
+<h1>Radio</h1>
+<p class="lede">
+  Radios are styled by their wrapping label, which also gives you the card
+  variant for bigger choice targets.
+</p>
+
+{{ m.classes([
+  ["radio", "Custom radio dot"],
+  ["label", "On the wrapping label: row layout with a gap"],
+  ["block", "On the wrapping label: padded, bordered card that highlights when selected"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<label>
+  <input type="radio" name="plan" checked />
+  Monthly
+</label>
+<label>
+  <input type="radio" name="plan" />
+  Yearly
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  <input type="radio" name="plan" class="radio" checked />
+  Monthly
+</label>
+<label class="label">
+  <input type="radio" name="plan" class="radio" />
+  Yearly
+</label>
+{% endset %}
+{{ m.demo("radio-basic", classless, classes) }}
+
+<h2>Card radios</h2>
+{% set classless %}
+<label class="block">
+  <input type="radio" name="tier" checked />
+  Hobby
+</label>
+<label class="block">
+  <input type="radio" name="tier" />
+  Team
+</label>
+{% endset %}
+{% set classes %}
+<label class="label block">
+  <input type="radio" name="tier" class="radio" checked />
+  Hobby
+</label>
+<label class="label block">
+  <input type="radio" name="tier" class="radio" />
+  Team
+</label>
+{% endset %}
+{{ m.demo("radio-block", classless, classes) }}
+{% endblock %}

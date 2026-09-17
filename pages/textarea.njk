@@ -1,0 +1,29 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Textarea" %}
+{% set slug = "textarea" %}
+
+{% block content %}
+<h1>Textarea</h1>
+<p class="lede">Same surface as an input, resizable vertically only.</p>
+
+{{ m.classes([
+  ["textarea", "Block-level field, vertical resize"],
+  ["textarea-error", "Error color, for when aria-invalid is not available"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<label>
+  Notes
+  <textarea rows="4" placeholder="Write something"></textarea>
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  Notes
+  <textarea rows="4" class="textarea" placeholder="Write something"></textarea>
+</label>
+{% endset %}
+{{ m.demo("textarea-basic", classless, classes) }}
+{% endblock %}

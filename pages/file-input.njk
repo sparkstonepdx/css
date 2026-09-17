@@ -1,0 +1,31 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "File input" %}
+{% set slug = "file-input" %}
+
+{% block content %}
+<h1>File input</h1>
+<p class="lede">
+  The file picker button is styled through <code>::file-selector-button</code>,
+  so it matches a secondary button without extra markup.
+</p>
+
+{{ m.classes([
+  ["file-input", "Transparent field with a styled picker button"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<label>
+  Attachment
+  <input type="file" />
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  Attachment
+  <input type="file" class="file-input" />
+</label>
+{% endset %}
+{{ m.demo("file-input-basic", classless, classes) }}
+{% endblock %}

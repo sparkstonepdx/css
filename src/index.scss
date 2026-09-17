@@ -1,0 +1,21 @@
+// Class-based build, and the main export. Class names follow daisyUI 5, except
+// dialogs, which use .dialog, .dialog-box, .dialog-header and .dialog-actions.
+//
+// Every rule lives in ./components as a class. classless.scss emits the same
+// classes and then binds them to plain elements with @extend, so there is one
+// definition of each component and the two builds cannot drift apart.
+
+@use "sass:meta";
+@use "./vars.scss" as *;
+@use "./components" as c;
+
+@layer reset, theme;
+
+@layer reset {
+  @include meta.load-css("./lib/reset.css");
+}
+
+@layer theme {
+  @include c.styles;
+  @include c.scroll-lock(".dialog");
+}

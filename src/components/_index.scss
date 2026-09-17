@@ -1,0 +1,46 @@
+@use "base";
+@use "badge";
+@use "button";
+@use "card";
+@use "dialog";
+@use "fieldset";
+@use "input";
+@use "label";
+@use "layout";
+@use "link";
+@use "progress";
+@use "prose";
+@use "table";
+@use "utilities";
+
+@forward "base";
+@forward "dialog" show scroll-lock;
+@forward "prose" show content;
+
+// Every class rule in the framework, in cascade order. Both entries include
+// this: index.scss emits it as-is, classless.scss emits it and then binds the
+// classes to plain elements with @extend.
+// $classless adds the bare-element typography rules at the point where .prose
+// sits, so both builds keep the same cascade order.
+@mixin styles($classless: false) {
+  @include input.styles;
+  @include base.root;
+  @include base.schemes;
+  @include link.styles;
+  @include layout.container-styles;
+  @include prose.styles;
+  @if $classless {
+    @include prose.content;
+  }
+  @include label.styles;
+  @include layout.rounded-styles;
+  @include button.styles;
+  @include utilities.styles;
+  @include dialog.styles;
+  @include card.styles;
+  @include fieldset.styles;
+  @include table.styles;
+  @include progress.styles;
+  @include layout.flex-styles;
+  @include badge.styles;
+}
