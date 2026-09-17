@@ -334,16 +334,16 @@
 <p>
   Kobalte renders the roles and sets <code>data-selected</code>,
   <code>data-disabled</code> and <code>data-orientation</code> itself, but it never
-  adds <code>tab-active</code>. <code>/classless/kobalte</code> is the classless
-  build with those attributes styled as the same components, in a
-  <code>kobalte</code> cascade layer above <code>theme</code>, so a
-  <code>Tabs.Trigger</code> wins over the button styling it would otherwise pick
-  up. Kobalte markup needs no classes at all:
+  adds <code>tab-active</code>. <code>/classless/kobalte</code> is an add-on that
+  styles those attributes as the same components, in a <code>kobalte</code>
+  cascade layer above <code>theme</code>, so a <code>Tabs.Trigger</code> wins over
+  the button styling it would otherwise pick up. Import it next to the classless
+  build and Kobalte markup needs no classes at all:
 </p>
 
 <div class="code-block standalone">
   <button class="ghost copy-button" data-target="tabs-kobalte-import">Copy</button>
-  <pre><code id="tabs-kobalte-import" class="language-scss">// instead of &quot;pkg:@sparkstone/css/classless&quot;
+  <pre><code id="tabs-kobalte-import" class="language-scss">@use &quot;pkg:@sparkstone/css/classless&quot;;
 @use &quot;pkg:@sparkstone/css/classless/kobalte&quot;;</code></pre>
 </div>
 

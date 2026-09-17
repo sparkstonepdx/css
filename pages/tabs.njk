@@ -40,14 +40,14 @@
 <p>
   Kobalte renders the roles and sets <code>data-selected</code>,
   <code>data-disabled</code> and <code>data-orientation</code> itself, but it never
-  adds <code>tab-active</code>. <code>/classless/kobalte</code> is the classless
-  build with those attributes styled as the same components, in a
-  <code>kobalte</code> cascade layer above <code>theme</code>, so a
-  <code>Tabs.Trigger</code> wins over the button styling it would otherwise pick
-  up. Kobalte markup needs no classes at all:
+  adds <code>tab-active</code>. <code>/classless/kobalte</code> is an add-on that
+  styles those attributes as the same components, in a <code>kobalte</code>
+  cascade layer above <code>theme</code>, so a <code>Tabs.Trigger</code> wins over
+  the button styling it would otherwise pick up. Import it next to the classless
+  build and Kobalte markup needs no classes at all:
 </p>
 {% call m.snippet("tabs-kobalte-import", "scss") %}
-// instead of "pkg:@sparkstone/css/classless"
+@use "pkg:@sparkstone/css/classless";
 @use "pkg:@sparkstone/css/classless/kobalte";
 {% endcall %}
 {% set markup %}
