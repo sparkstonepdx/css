@@ -155,10 +155,8 @@ const frameDoc = (markup, variant, id) => {
     .filter(([, value]) => value)
     .map(([v, value]) => `${v}:${value}`)
     .join(';');
-  // The kobalte layer is an add-on, so its preview loads a build plus the layer.
   const sheets =
-    { classless: ['classless.css'], kobalte: ['classless.css', 'kobalte.css'] }[variant] ||
-    ['index.css'];
+    { classless: ['classless.css'], kobalte: ['kobalte.css'] }[variant] || ['index.css'];
   return `<!doctype html><html lang="en" data-color-scheme="${scheme}" style="${vars}">
 <head><meta charset="utf-8">${sheets.map(s => `<link rel="stylesheet" href="./${s}">`).join('')}</head>
 <body>${markup}${FRAME_RUNTIME.replace('FRAME_ID', JSON.stringify(id))}</body></html>`;

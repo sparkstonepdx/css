@@ -1,19 +1,16 @@
-// Kobalte's rendered markup styled as the matching framework components, so its
-// parts need no class attributes. This is an add-on: import it alongside a
-// build, not instead of one.
+// The classless build with Kobalte support: everything in
+// @sparkstone/css/classless, plus Kobalte's rendered markup bound to the
+// framework's classes, so its parts need no class attributes.
 //
-//   @use "pkg:@sparkstone/css/classless";
-//   @use "pkg:@sparkstone/css/classless/kobalte";
+// Import this instead of /classless, not alongside it. The bindings are
+// @extends, which merge a Kobalte selector into the class's own rule, so they
+// cannot live in a cascade layer of their own: an @extend always lands wherever
+// the class it extends was defined.
 //
-// The rules sit in a `kobalte` cascade layer above `theme`, so a Kobalte part
-// beats whatever the element it renders as would otherwise get: a Tabs.Trigger
-// is a <button>, and in the classless build a <button> is a .btn. The layer
-// order is declared here too, so it holds whichever order the two are imported.
+// On the class-based build you do not need this: put .tab, .tab-active and the
+// rest on the Kobalte parts yourself.
 
+@use "../classless.scss";
 @use "../components" as c;
 
-@layer reset, theme, kobalte;
-
-@layer kobalte {
-  @include c.bindings;
-}
+@include c.bindings;
