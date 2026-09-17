@@ -1,0 +1,499 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Tabs · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Navigation</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./tabs.html"
+                    aria-current="page"
+                    >Tabs</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Tabs</h1>
+<p class="lede">
+  Layered panels with one visible at a time. The classes are shaped around
+  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte's</a>
+  rendered markup, so state comes from its <code>data-*</code> attributes. Drive
+  the markup yourself and <code>.tab-active</code> does the same job.
+</p>
+
+
+<table class="class-table">
+  <thead>
+    <tr><th>Class</th><th>Does what</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr><td><code>tabs</code></td><td>The tab list: a row with a bottom rule. Put it on Tabs.List</td></tr>
+    
+      <tr><td><code>tab</code></td><td>A tab button. Put it on Tabs.Trigger</td></tr>
+    
+      <tr><td><code>tab-indicator</code></td><td>The sliding underline. Put it on Tabs.Indicator</td></tr>
+    
+      <tr><td><code>tab-content</code></td><td>A tab panel. Put it on Tabs.Content</td></tr>
+    
+      <tr><td><code>tab-active</code></td><td>Marks the selected tab when no headless library sets data-selected</td></tr>
+    
+  </tbody>
+</table>
+
+
+<h2>Basic</h2>
+<p>
+  Kobalte sets <code>data-selected</code> on the selected trigger and positions the
+  indicator, so the CSS only has to react to it.
+</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    <div class="variant-tabs" role="tablist" aria-label="Source">
+      <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Markup</button>
+      <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">Kobalte</button>
+    </div>
+    <button class="ghost copy-button" data-target="tabs-basic-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="tabs-basic-classes" data-variant="classes">&lt;div&gt;
+  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t-profile&quot; aria-controls=&quot;p-profile&quot; data-selected&gt;Profile&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t-dashboard&quot; aria-controls=&quot;p-dashboard&quot;&gt;Dashboard&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t-settings&quot; aria-controls=&quot;p-settings&quot;&gt;Settings&lt;/button&gt;
+    &lt;div class=&quot;tab-indicator&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-profile&quot; aria-labelledby=&quot;t-profile&quot;&gt;Profile details&lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-dashboard&quot; aria-labelledby=&quot;t-dashboard&quot; hidden&gt;Dashboard details&lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-settings&quot; aria-labelledby=&quot;t-settings&quot; hidden&gt;Settings details&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <pre hidden><code id="tabs-basic-source" data-variant="source">import { Tabs } from &quot;@kobalte/core/tabs&quot;;
+
+&lt;Tabs aria-label=&quot;Account&quot; defaultValue=&quot;profile&quot;&gt;
+  &lt;Tabs.List class=&quot;tabs&quot;&gt;
+    &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;profile&quot;&gt;Profile&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;dashboard&quot;&gt;Dashboard&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;settings&quot;&gt;Settings&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Indicator class=&quot;tab-indicator&quot; /&gt;
+  &lt;/Tabs.List&gt;
+  &lt;Tabs.Content class=&quot;tab-content&quot; value=&quot;profile&quot;&gt;Profile details&lt;/Tabs.Content&gt;
+  &lt;Tabs.Content class=&quot;tab-content&quot; value=&quot;dashboard&quot;&gt;Dashboard details&lt;/Tabs.Content&gt;
+  &lt;Tabs.Content class=&quot;tab-content&quot; value=&quot;settings&quot;&gt;Settings details&lt;/Tabs.Content&gt;
+&lt;/Tabs&gt;</code></pre>
+  </div>
+</div>
+
+
+<h2>Without an indicator</h2>
+<p>
+  Leave <code>Tabs.Indicator</code> out and the selected tab draws its own
+  underline instead. The rule is <code>.tabs:not(:has(.tab-indicator))</code>, so
+  you never get both.
+</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    <div class="variant-tabs" role="tablist" aria-label="Source">
+      <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Markup</button>
+      <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">Kobalte</button>
+    </div>
+    <button class="ghost copy-button" data-target="tabs-plain-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="tabs-plain-classes" data-variant="classes">&lt;div&gt;
+  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t2-week&quot; aria-controls=&quot;p2-week&quot; data-selected&gt;This week&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t2-month&quot; aria-controls=&quot;p2-month&quot;&gt;This month&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p2-week&quot; aria-labelledby=&quot;t2-week&quot;&gt;7 new sign-ups&lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p2-month&quot; aria-labelledby=&quot;t2-month&quot; hidden&gt;34 new sign-ups&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <pre hidden><code id="tabs-plain-source" data-variant="source">&lt;Tabs defaultValue=&quot;week&quot;&gt;
+  &lt;Tabs.List class=&quot;tabs&quot;&gt;
+    &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;week&quot;&gt;This week&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;month&quot;&gt;This month&lt;/Tabs.Trigger&gt;
+  &lt;/Tabs.List&gt;
+  &lt;Tabs.Content class=&quot;tab-content&quot; value=&quot;week&quot;&gt;7 new sign-ups&lt;/Tabs.Content&gt;
+  &lt;Tabs.Content class=&quot;tab-content&quot; value=&quot;month&quot;&gt;34 new sign-ups&lt;/Tabs.Content&gt;
+&lt;/Tabs&gt;</code></pre>
+  </div>
+</div>
+
+
+<h2>Disabled</h2>
+<p>
+  Kobalte sets <code>data-disabled</code> on a disabled trigger. The tab greys out
+  the same way a disabled button does, and stops taking pointer events.
+</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    <div class="variant-tabs" role="tablist" aria-label="Source">
+      <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Markup</button>
+      <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">Kobalte</button>
+    </div>
+    <button class="ghost copy-button" data-target="tabs-disabled-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="tabs-disabled-classes" data-variant="classes">&lt;div&gt;
+  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t3-a&quot; aria-controls=&quot;p3-a&quot; data-selected&gt;Details&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t3-b&quot; aria-controls=&quot;p3-b&quot; data-disabled&gt;Billing&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p3-a&quot; aria-labelledby=&quot;t3-a&quot;&gt;Available on every plan&lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p3-b&quot; aria-labelledby=&quot;t3-b&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <pre hidden><code id="tabs-disabled-source" data-variant="source">&lt;Tabs defaultValue=&quot;details&quot;&gt;
+  &lt;Tabs.List class=&quot;tabs&quot;&gt;
+    &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;details&quot;&gt;Details&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;billing&quot; disabled&gt;Billing&lt;/Tabs.Trigger&gt;
+  &lt;/Tabs.List&gt;
+  &lt;Tabs.Content class=&quot;tab-content&quot; value=&quot;details&quot;&gt;Available on every plan&lt;/Tabs.Content&gt;
+  &lt;Tabs.Content class=&quot;tab-content&quot; value=&quot;billing&quot;&gt;Upgrade to see billing&lt;/Tabs.Content&gt;
+&lt;/Tabs&gt;</code></pre>
+  </div>
+</div>
+
+
+<h2>Vertical</h2>
+<p>
+  Kobalte puts <code>data-orientation</code> on every part, so the list turns into a
+  column and the indicator moves to the trailing edge without any extra class.
+</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    <div class="variant-tabs" role="tablist" aria-label="Source">
+      <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Markup</button>
+      <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">Kobalte</button>
+    </div>
+    <button class="ghost copy-button" data-target="tabs-vertical-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="tabs-vertical-classes" data-variant="classes">&lt;div style=&quot;display: flex; gap: 1rem&quot; data-orientation=&quot;vertical&quot;&gt;
+  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot; aria-orientation=&quot;vertical&quot; data-orientation=&quot;vertical&quot;&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t4-a&quot; aria-controls=&quot;p4-a&quot; data-selected&gt;General&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t4-b&quot; aria-controls=&quot;p4-b&quot;&gt;Members&lt;/button&gt;
+    &lt;div class=&quot;tab-indicator&quot; data-orientation=&quot;vertical&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p4-a&quot; aria-labelledby=&quot;t4-a&quot;&gt;General settings&lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p4-b&quot; aria-labelledby=&quot;t4-b&quot; hidden&gt;Member settings&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    <pre hidden><code id="tabs-vertical-source" data-variant="source">&lt;Tabs orientation=&quot;vertical&quot; defaultValue=&quot;general&quot; style=&quot;display: flex; gap: 1rem&quot;&gt;
+  &lt;Tabs.List class=&quot;tabs&quot;&gt;
+    &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;general&quot;&gt;General&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Trigger class=&quot;tab&quot; value=&quot;members&quot;&gt;Members&lt;/Tabs.Trigger&gt;
+    &lt;Tabs.Indicator class=&quot;tab-indicator&quot; /&gt;
+  &lt;/Tabs.List&gt;
+  &lt;Tabs.Content class=&quot;tab-content&quot; value=&quot;general&quot;&gt;General settings&lt;/Tabs.Content&gt;
+  &lt;Tabs.Content class=&quot;tab-content&quot; value=&quot;members&quot;&gt;Member settings&lt;/Tabs.Content&gt;
+&lt;/Tabs&gt;</code></pre>
+  </div>
+</div>
+
+
+<h2>Without Kobalte</h2>
+<p>
+  The same classes work on plain markup. Use <code>.tab-active</code> for the
+  selected tab and <code>.tab-disabled</code> for a disabled one, and wire the
+  clicks yourself.
+</p>
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="tabs-plain-html">Copy</button>
+  <pre><code id="tabs-plain-html" class="language-html">&lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+  &lt;button class=&quot;tab tab-active&quot; role=&quot;tab&quot; aria-controls=&quot;panel-1&quot;&gt;One&lt;/button&gt;
+  &lt;button class=&quot;tab&quot; role=&quot;tab&quot; aria-controls=&quot;panel-2&quot;&gt;Two&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

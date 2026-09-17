@@ -11,6 +11,7 @@
 @use "progress";
 @use "prose";
 @use "table";
+@use "tabs";
 @use "utilities";
 
 @forward "base";
@@ -40,6 +41,7 @@
   @include card.styles;
   @include fieldset.styles;
   @include table.styles;
+  @include tabs.styles;
   @include progress.styles;
   @include layout.flex-styles;
   @include badge.styles;

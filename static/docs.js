@@ -106,6 +106,32 @@ const openHeight = () => {
   const box = dialog.firstElementChild;
   return Math.max((box?.scrollHeight || 0) + 96, 240);
 };
+const selectTab = tab => {
+  const list = tab.closest('[role="tablist"]');
+  if (!list) return;
+  for (const other of list.querySelectorAll('[role="tab"]')) {
+    other.toggleAttribute('data-selected', other === tab);
+    other.setAttribute('aria-selected', String(other === tab));
+    other.tabIndex = other === tab ? 0 : -1;
+    const panel = document.getElementById(other.getAttribute('aria-controls') || '');
+    if (panel) panel.hidden = other !== tab;
+  }
+  const indicator = list.querySelector('.tab-indicator');
+  if (indicator) {
+    indicator.style.width = tab.offsetWidth + 'px';
+    indicator.style.left = tab.offsetLeft + 'px';
+  }
+};
+document.addEventListener('click', e => {
+  const tab = e.target.closest('[role="tab"]');
+  if (tab && !tab.hasAttribute('data-disabled')) selectTab(tab);
+});
+addEventListener('load', () => {
+  for (const list of document.querySelectorAll('[role="tablist"]')) {
+    const selected = list.querySelector('[role="tab"][data-selected]');
+    if (selected) selectTab(selected);
+  }
+});
 const send = () => parent.postMessage(
   { demo: FRAME_ID, height: Math.max(document.body.scrollHeight, openHeight()) },
   '*'
@@ -139,15 +165,17 @@ const demos = [...document.querySelectorAll('[data-demo]')].map((el, index) => {
   const render = () => {
     const variant = el.dataset.variant || 'classes';
     const code = codes.find(c => c.dataset.variant === variant) || codes[0];
-    frame.srcdoc = frameDoc(code.textContent, code.dataset.variant, id);
+    // A 'source' tab holds JSX, not markup: keep previewing the rendered markup.
+    const preview = code.dataset.variant === 'source' ? codes[0] : code;
+    frame.srcdoc = frameDoc(preview.textContent, preview.dataset.variant, id);
   };
   const demo = { id, el, frame, codes, render };
 
-  for (const tab of el.querySelectorAll('.tab')) {
+  for (const tab of el.querySelectorAll('.variant-tab')) {
     tab.addEventListener('click', () => {
       const variant = tab.dataset.variant;
       el.dataset.variant = variant;
-      for (const other of el.querySelectorAll('.tab'))
+      for (const other of el.querySelectorAll('.variant-tab'))
         other.setAttribute('aria-selected', String(other === tab));
       for (const code of codes) code.parentElement.hidden = code.dataset.variant !== variant;
       const copy = el.querySelector('.copy-button');

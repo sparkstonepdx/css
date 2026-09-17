@@ -22,9 +22,9 @@
     {% if same %}
       <span class="demo-note"><small>Same markup in both builds</small></span>
     {% else %}
-      <div class="tabs" role="tablist" aria-label="Markup variant">
-        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
-        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
+        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
       </div>
     {% endif %}
     <button class="ghost copy-button" data-target="{{ id }}-classes">Copy</button>
@@ -53,6 +53,29 @@
   </div>
   <div class="code-block">
     <pre><code id="{{ id }}">{{- caller() | forceescape | trim -}}</code></pre>
+  </div>
+</div>
+{% endmacro %}
+
+{#
+  headless(id, markup, jsx, label)
+    For components that need a headless library to drive them. The preview and
+    the first tab show the rendered markup the CSS targets; the second tab shows
+    the source that produces it.
+#}
+{% macro headless(id, markup, jsx, label="Kobalte") %}
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    <div class="variant-tabs" role="tablist" aria-label="Source">
+      <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Markup</button>
+      <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">{{ label }}</button>
+    </div>
+    <button class="ghost copy-button" data-target="{{ id }}-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="{{ id }}-classes" data-variant="classes">{{- markup | forceescape | trim -}}</code></pre>
+    <pre hidden><code id="{{ id }}-source" data-variant="source">{{- jsx | forceescape | trim -}}</code></pre>
   </div>
 </div>
 {% endmacro %}

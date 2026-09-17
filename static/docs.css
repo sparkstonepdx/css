@@ -267,12 +267,12 @@ section {
   color: oklch(from var(--color) var(--text-lc-3) h);
 }
 
-.tabs {
+.variant-tabs {
   display: flex;
   gap: 0.25rem;
 }
 
-.tab {
+.variant-tab {
   padding: 0.25rem 0.75rem;
   font-size: 0.8125rem;
   border: 0;
@@ -282,7 +282,7 @@ section {
   cursor: pointer;
 }
 
-.tab[aria-selected="true"] {
+.variant-tab[aria-selected="true"] {
   background-color: oklch(from var(--color) var(--surface-lc-2) h);
   color: oklch(from var(--color) var(--text-lc-1) h);
 }
