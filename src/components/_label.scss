@@ -1,0 +1,93 @@
+@use "../vars.scss" as *;
+
+// Selectors for the controls a label can wrap differ per build:
+//   $field    text-like controls that get a top margin inside a label
+//   $hinted   controls followed by a <small> hint
+//   $radio    / $checkbox  the choice controls
+//   $invalid  an invalid control, used to tint the label text
+@mixin label($field, $hinted, $radio, $checkbox, $invalid) {
+  display: block;
+  margin-bottom: calc(1rem * 0.375);
+
+  > :where(#{$field}) {
+    margin-top: calc(1rem * 0.25);
+  }
+
+  &:has(> #{$radio}) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    #{$radio} {
+      appearance: none;
+      width: 1rem;
+      height: 1rem;
+      border: var(--border-width) solid get-border-color();
+      border-radius: 50%;
+      position: relative;
+      box-sizing: border-box;
+      display: inline-block;
+      margin: 0;
+
+      &::after {
+        content: "";
+        position: absolute;
+        width: 1rem;
+        height: 1rem;
+        top: 0;
+        left: 0;
+        border: var(--border-width) solid cur-color(var(--surface-lc-1));
+        box-sizing: border-box;
+        background: get-border-color();
+        border-radius: 50%;
+        opacity: 0;
+        transition: opacity 0.2s;
+      }
+
+      &:checked::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  &:has(> #{$checkbox}) {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.5em;
+    transition:
+      border-color 0.2s,
+      background 0.2s;
+    margin-bottom: 1rem;
+  }
+
+  &.block:has(> #{$radio}) {
+    padding: 2rem;
+    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-radius: var(--border-radius);
+
+    &:has(#{$radio}:checked) {
+      border-color: get-border-color();
+      background-color: cur-color(var(--surface-lc-2));
+    }
+  }
+
+  > p {
+    margin: 0;
+  }
+
+  > p:has(+ #{$invalid}) {
+    --color: var(--error-color);
+  }
+
+  > #{$hinted}:has(+ small) {
+    margin-bottom: 0 !important;
+  }
+
+  > #{$hinted} ~ small {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: cur-color(var(--text-lc-3));
+  }
+}

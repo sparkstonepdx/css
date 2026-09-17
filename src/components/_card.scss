@@ -1,0 +1,24 @@
+@use "../vars.scss" as *;
+
+@mixin card {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+  background-color: cur-color(var(--surface-lc-2));
+
+  box-shadow: var(--box-shadow);
+}
+
+@mixin card-actions {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-bottom-right-radius: var(--border-radius);
+  border-bottom-left-radius: var(--border-radius);
+  border-top: var(--border-width) solid get-border-color();
+}
+
+@mixin card-border {
+  border: var(--border-width) solid cur-color(var(--surface-lc-2));
+  background-color: cur-color(var(--surface-lc-1));
+  padding: var(--padding);
+  border-radius: var(--border-radius);
+}

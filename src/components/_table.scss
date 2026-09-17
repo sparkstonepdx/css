@@ -1,0 +1,18 @@
+@use "../vars.scss" as *;
+
+@mixin table {
+  border-collapse: collapse;
+  width: 100%;
+
+  th {
+    --specific-border-width: calc(var(--border-width) * 2);
+  }
+
+  td,
+  th {
+    border-bottom: var(--specific-border-width, var(--border-width)) solid
+      cur-color(var(--surface-lc-2));
+    text-align: left;
+    padding: calc(1rem / 2) 1rem;
+  }
+}

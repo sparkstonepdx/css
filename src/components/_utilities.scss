@@ -1,0 +1,18 @@
+@use "../vars.scss" as *;
+
+@mixin text-secondary {
+  color: cur-color(var(--text-lc-3));
+}
+
+@mixin disabled {
+  @include apply-greyscale();
+}
+
+@mixin text-error {
+  --color: var(--error-color);
+  color: cur-color(var(--text-lc-3));
+}
+
+@mixin semantic {
+  all: unset;
+}

@@ -1,0 +1,10 @@
+@use "../vars.scss" as *;
+
+@mixin link {
+  --color: var(--accent-color);
+  color: cur-color(var(--text-lc-4));
+}
+
+@mixin link-cursor {
+  cursor: pointer;
+}

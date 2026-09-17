@@ -1,0 +1,192 @@
+// Classless build (the 1.x theme). Every rule here applies a component mixin
+// from ./components to plain elements, so class-based and classless styles
+// stay in sync. Add new styling to the component mixin, not here.
+
+@use "sass:meta";
+@use "./vars.scss" as *;
+@use "./components" as c;
+
+$text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"]))';
+
+@layer reset, theme;
+
+@layer reset {
+  @include meta.load-css("./lib/reset.css");
+}
+
+@layer theme {
+  #{$text-input} {
+    @include c.input;
+  }
+  @include c.input-firefox($text-input);
+
+  select {
+    @include c.select;
+  }
+
+  textarea {
+    @include c.textarea;
+  }
+
+  input:where([type="range"]) {
+    @include c.range;
+  }
+
+  input:where([type="file"]) {
+    @include c.file-input;
+  }
+
+  input:where([type="color"]) {
+    @include c.color-input;
+  }
+
+  input:where([type="checkbox"]) {
+    @include c.checkbox;
+  }
+
+  input:where([type="radio"]) {
+    @include c.radio;
+  }
+
+  @include c.root;
+  @include c.modal-scroll-lock(dialog);
+  @include c.schemes;
+
+  dialog {
+    @include c.modal-color;
+  }
+
+  a:not([role="button"]):not(.semantic) {
+    @include c.link;
+  }
+
+  a,
+  a.semantic {
+    @include c.link-cursor;
+  }
+
+  @include c.container;
+
+  @include c.prose;
+
+  .semantic {
+    @include c.semantic;
+  }
+
+  label {
+    @include c.label(
+      $field: 'input:not([type="checkbox"], [type="radio"]), select, textarea',
+      $hinted: ":is(input, select, textarea)",
+      $radio: 'input[type="radio"]',
+      $checkbox: 'input[type="checkbox"]',
+      $invalid: 'input[aria-invalid="true"]'
+    );
+  }
+
+  .rounded {
+    @include c.rounded;
+  }
+
+  *:is(
+    button,
+    [type="button"],
+    [type="submit"],
+    [type="reset"],
+    [role="button"]
+  ) {
+    @include c.btn;
+
+    &.semantic {
+      all: unset;
+      cursor: pointer;
+    }
+
+    &.secondary {
+      @include c.btn-secondary;
+    }
+
+    &.ghost {
+      @include c.btn-ghost;
+    }
+
+    &.contrast {
+      @include c.btn-neutral;
+    }
+
+    &.primary {
+      @include c.btn-primary;
+    }
+  }
+
+  .secondary {
+    @include c.text-secondary;
+  }
+
+  .disabled,
+  *:disabled {
+    @include c.disabled;
+  }
+
+  dialog {
+    @include c.modal($box: article, $action: footer);
+  }
+
+  article {
+    @include c.card;
+  }
+
+  :is(article > footer, article > form > footer) {
+    @include c.card-actions;
+  }
+
+  :is(
+    article,
+    article > footer,
+    article > form > footer,
+    article > header,
+    article > form > header
+  )
+  > {
+    :is([type="button"], [type="reset"], [type="submit"]) {
+      margin-bottom: 0;
+    }
+  }
+
+  fieldset {
+    @include c.fieldset($legend: legend);
+  }
+
+  table {
+    @include c.table;
+  }
+
+  details {
+    position: relative;
+    ::after {
+      content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='100%' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m0 0 100% 0'/%3E%3C/svg%3E");
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+  }
+
+  progress {
+    @include c.progress;
+  }
+
+  article.card,
+  .card {
+    @include c.card-border;
+  }
+
+  @include c.flex;
+
+  small.error {
+    @include c.text-error;
+  }
+
+  small.chip {
+    @include c.badge;
+  }
+}
