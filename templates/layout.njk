@@ -39,7 +39,7 @@
                   <a
                     href="./{{ item[0] }}.html"
                     {% if item[0] == current %}aria-current="page"{% endif %}
-                    >{{ item[1] }}{% if item[2] %}<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span>{% endif %}</a
+                    >{{ item[1] }}{% if item[2] %}<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span>{% endif %}{% if item[3] %}<span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span>{% endif %}</a
                   >
                 </li>
               {% endfor %}

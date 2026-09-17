@@ -51,7 +51,7 @@
       {% for item in group[1] %}
         <a class="component-card" href="./{{ item[0] }}.html">
           <span class="component-preview" aria-hidden="true">{{ p.preview(item[0]) }}</span>
-          <strong>{{ item[1] }}{% if item[2] %}<span class="kobalte-badge">K</span>{% endif %}</strong>
+          <strong>{{ item[1] }}{% if item[2] %}<span class="kobalte-badge">K</span>{% endif %}{% if item[3] %}<span class="alpha-badge">alpha</span>{% endif %}</strong>
           <small>{{ blurbs[item[0]] }}</small>
         </a>
       {% endfor %}

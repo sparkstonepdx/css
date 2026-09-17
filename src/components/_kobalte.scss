@@ -1,7 +1,7 @@
 @use "../vars.scss" as *;
 
-// VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. Every value is listed in
-// DESIGN-REVIEW.md at the repo root for review.
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
 //
 // Kobalte's rendered markup bound to the framework's classes with @extend, so a
 // Kobalte part and its class share one rule. Only Kobalte parts with no class of

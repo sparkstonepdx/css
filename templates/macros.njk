@@ -90,6 +90,17 @@
 </div>
 {% endmacro %}
 
+{#
+  alpha()  banner for a component whose look is not signed off yet
+#}
+{% macro alpha() %}
+<p class="alpha-note">
+  <span class="alpha-badge">alpha</span>
+  The class names and states here are stable. The look is not: these styles can
+  change in a minor release, without a major version bump.
+</p>
+{% endmacro %}
+
 {% macro snippet(id, lang="") %}
 <div class="code-block standalone">
   <button class="ghost copy-button" data-target="{{ id }}">Copy</button>

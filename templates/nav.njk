@@ -1,7 +1,8 @@
 {#
-  Site navigation. Each group is [label, [[slug, title, kobalte?], ...]].
-  A truthy third field marks a component the Kobalte layer covers, and shows a
-  badge in the sidebar and on the components page.
+  Site navigation. Each group is [label, [[slug, title, kobalte?, alpha?], ...]].
+  The third field marks a component the Kobalte layer covers. The fourth marks
+  one whose look is still unapproved, and can change in a minor release. Both
+  show a badge in the sidebar and on the components page.
 #}
 {% set navGroups = [
   ["Getting started", [
@@ -21,16 +22,16 @@
     ["button", "Button"]
   ]],
   ["Navigation", [
-    ["tabs", "Tabs", true],
-    ["dropdown", "Dropdown", true]
+    ["tabs", "Tabs", true, true],
+    ["dropdown", "Dropdown", true, true]
   ]],
   ["Data display", [
-    ["alert", "Alert", true],
+    ["alert", "Alert", true, true],
     ["badge", "Badge"],
     ["card", "Card"],
     ["progress", "Progress"],
     ["table", "Table"],
-    ["collapse", "Collapse", true]
+    ["collapse", "Collapse", true, true]
   ]],
   ["Forms", [
     ["label", "Label"],
@@ -43,10 +44,10 @@
     ["range", "Range"],
     ["file-input", "File input"],
     ["color-input", "Color input"],
-    ["toggle", "Toggle", true]
+    ["toggle", "Toggle", true, true]
   ]],
   ["Overlay", [
     ["dialog", "Dialog"],
-    ["tooltip", "Tooltip", true]
+    ["tooltip", "Tooltip", true, true]
   ]]
 ] %}

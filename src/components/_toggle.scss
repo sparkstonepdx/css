@@ -1,6 +1,7 @@
 @use "../vars.scss" as *;
 
-// VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. See DESIGN-REVIEW.md.
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
 //
 // A switch. Two shapes are supported, because the two worlds build it
 // differently:

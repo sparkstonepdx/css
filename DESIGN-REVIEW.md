@@ -12,7 +12,13 @@ here was derived from an existing rule in the framework: these are proposals.
 Structure, class names and state handling are settled; the numbers and the look
 are not.
 
-When a component is signed off, delete its section.
+A component with a section here ships as **alpha**: its styles can change in a
+minor release, without a major version bump. The docs badge every alpha
+component in the sidebar and on the components page, and each of their pages
+carries a banner saying so. When you sign a component off, delete its section
+here, drop the `alpha` flag from its entry in `templates/nav.njk`, remove the
+`{{ m.alpha() }}` call from its page, and drop the ALPHA header from its source
+file.
 
 ## Tabs (`src/components/_tabs.scss`) — not signed off
 
