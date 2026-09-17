@@ -4,7 +4,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>Dropdown · @sparkstone/css</title>
+    <title>Popover · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
@@ -141,7 +141,7 @@
                 <li>
                   <a
                     href="./dropdown.html"
-                    aria-current="page"
+                    
                     >Dropdown<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
                   >
                 </li>
@@ -332,7 +332,7 @@
                 <li>
                   <a
                     href="./popover.html"
-                    
+                    aria-current="page"
                     >Popover<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
                   >
                 </li>
@@ -373,13 +373,12 @@
 
       <main class="site-main">
         
-<h1>Dropdown</h1>
+<h1>Popover</h1>
 <p class="lede">
-  A floating panel of actions. The classes paint the panel and its rows; nothing
-  here positions anything.
-  <a href="https://kobalte.dev/docs/core/components/dropdown-menu" target="_blank" rel="noreferrer">Kobalte</a>
-  positions with a popper that writes inline styles, and a CSS-only dropdown
-  anchors the panel itself, so placement stays with whatever opens the menu.
+  A floating panel with content in it, as opposed to a menu of rows.
+  <a href="https://kobalte.dev/docs/core/components/popover" target="_blank" rel="noreferrer">Kobalte's Popover</a>
+  renders its content as <code>role="dialog"</code> and positions it with a popper;
+  these classes only paint.
 </p>
 
 
@@ -397,29 +396,17 @@
   </thead>
   <tbody>
     
-      <tr><td><code>dropdown-content</code></td><td>The floating panel: raised surface, border, shadow</td></tr>
+      <tr><td><code>popover-content</code></td><td>The panel: raised surface, border, shadow</td></tr>
     
-      <tr><td><code>menu</code></td><td>The list inside it: a column with gaps</td></tr>
+      <tr><td><code>popover-title</code></td><td>Its heading</td></tr>
     
-      <tr><td><code>menu-item</code></td><td>A row: padding, radius, hover surface</td></tr>
-    
-      <tr><td><code>menu-active</code></td><td>The highlighted row</td></tr>
-    
-      <tr><td><code>menu-disabled</code></td><td>A disabled row: greyed out and inert</td></tr>
-    
-      <tr><td><code>menu-title</code></td><td>A group heading inside the menu</td></tr>
-    
-      <tr><td><code>menu-shortcut</code></td><td>Trailing text in a row, pushed to the end</td></tr>
+      <tr><td><code>popover-description</code></td><td>Muted body text</td></tr>
     
   </tbody>
 </table>
 
 
-<h2>The panel</h2>
-<p>
-  Shown open and in place. Use <code>&lt;ul&gt;</code> and <code>&lt;li&gt;</code> and
-  the rows stay semantic; Kobalte renders divs with menu roles instead.
-</p>
+<h2>Basic</h2>
 
 
 
@@ -437,75 +424,37 @@
         
       </div>
     
-    <button class="ghost copy-button" data-target="dropdown-panel-classes">Copy</button>
+    <button class="ghost copy-button" data-target="popover-basic-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="dropdown-panel-classes" data-variant="classes">&lt;ul class=&quot;dropdown-content menu&quot;&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Commit &lt;span class=&quot;menu-shortcut&quot;&gt;⌘K&lt;/span&gt;&lt;/li&gt;
-    &lt;li class=&quot;menu-item menu-active&quot;&gt;Push &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘K&lt;/span&gt;&lt;/li&gt;
-    &lt;li class=&quot;menu-item menu-disabled&quot;&gt;Update project&lt;/li&gt;
-    &lt;li&gt;&lt;hr /&gt;&lt;/li&gt;
-    &lt;li&gt;
-      &lt;ul class=&quot;menu&quot;&gt;
-        &lt;li class=&quot;menu-title&quot;&gt;Branches&lt;/li&gt;
-        &lt;li class=&quot;menu-item&quot;&gt;main&lt;/li&gt;
-        &lt;li class=&quot;menu-item&quot;&gt;develop&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+    <pre><code id="popover-basic-classes" data-variant="classes">&lt;div class=&quot;popover-content&quot;&gt;
+  &lt;h2 class=&quot;popover-title&quot;&gt;Share this page&lt;/h2&gt;
+  &lt;p class=&quot;popover-description&quot;&gt;Anyone with the link can read it.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
     
-      <pre hidden><code id="dropdown-panel-classless" data-variant="classless">&lt;ul class=&quot;dropdown-content menu&quot;&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Commit &lt;span class=&quot;menu-shortcut&quot;&gt;⌘K&lt;/span&gt;&lt;/li&gt;
-    &lt;li class=&quot;menu-item menu-active&quot;&gt;Push &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘K&lt;/span&gt;&lt;/li&gt;
-    &lt;li class=&quot;menu-item menu-disabled&quot;&gt;Update project&lt;/li&gt;
-    &lt;li&gt;&lt;hr /&gt;&lt;/li&gt;
-    &lt;li&gt;
-      &lt;ul class=&quot;menu&quot;&gt;
-        &lt;li class=&quot;menu-title&quot;&gt;Branches&lt;/li&gt;
-        &lt;li class=&quot;menu-item&quot;&gt;main&lt;/li&gt;
-        &lt;li class=&quot;menu-item&quot;&gt;develop&lt;/li&gt;
-      &lt;/ul&gt;
-    &lt;/li&gt;
-&lt;/ul&gt;</code></pre>
+      <pre hidden><code id="popover-basic-classless" data-variant="classless">&lt;div class=&quot;popover-content&quot;&gt;
+  &lt;h2 class=&quot;popover-title&quot;&gt;Share this page&lt;/h2&gt;
+  &lt;p class=&quot;popover-description&quot;&gt;Anyone with the link can read it.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
     
     
-      <pre hidden><code id="dropdown-panel-kobalte" data-variant="kobalte">import { DropdownMenu } from &quot;@kobalte/core/dropdown-menu&quot;;
+      <pre hidden><code id="popover-basic-kobalte" data-variant="kobalte">import { Popover } from &quot;@kobalte/core/popover&quot;;
 
-&lt;DropdownMenu&gt;
-  &lt;DropdownMenu.Trigger class=&quot;btn&quot;&gt;
-    Git settings
-    &lt;DropdownMenu.Icon&gt;▾&lt;/DropdownMenu.Icon&gt;
-  &lt;/DropdownMenu.Trigger&gt;
-  &lt;DropdownMenu.Portal&gt;
-    &lt;DropdownMenu.Content&gt;
-      &lt;DropdownMenu.Item&gt;
-        Commit &lt;span class=&quot;menu-shortcut&quot;&gt;⌘K&lt;/span&gt;
-      &lt;/DropdownMenu.Item&gt;
-      &lt;DropdownMenu.Item&gt;
-        Push &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘K&lt;/span&gt;
-      &lt;/DropdownMenu.Item&gt;
-      &lt;DropdownMenu.Item disabled&gt;Update project&lt;/DropdownMenu.Item&gt;
-      &lt;DropdownMenu.Separator /&gt;
-      &lt;DropdownMenu.Group&gt;
-        &lt;DropdownMenu.GroupLabel&gt;Branches&lt;/DropdownMenu.GroupLabel&gt;
-        &lt;DropdownMenu.RadioGroup value={branch()} onChange={setBranch}&gt;
-          &lt;DropdownMenu.RadioItem value=&quot;main&quot;&gt;main&lt;/DropdownMenu.RadioItem&gt;
-          &lt;DropdownMenu.RadioItem value=&quot;develop&quot;&gt;develop&lt;/DropdownMenu.RadioItem&gt;
-        &lt;/DropdownMenu.RadioGroup&gt;
-      &lt;/DropdownMenu.Group&gt;
-    &lt;/DropdownMenu.Content&gt;
-  &lt;/DropdownMenu.Portal&gt;
-&lt;/DropdownMenu&gt;</code></pre>
-      <pre hidden><code id="dropdown-panel-kobalte-markup" data-variant="kobalte-markup">&lt;div role=&quot;menu&quot; data-expanded&gt;
-  &lt;div role=&quot;menuitem&quot;&gt;Commit &lt;span class=&quot;menu-shortcut&quot;&gt;⌘K&lt;/span&gt;&lt;/div&gt;
-  &lt;div role=&quot;menuitem&quot; data-highlighted&gt;Push &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘K&lt;/span&gt;&lt;/div&gt;
-  &lt;div role=&quot;menuitem&quot; data-disabled&gt;Update project&lt;/div&gt;
-  &lt;hr /&gt;
-  &lt;div role=&quot;group&quot;&gt;
-    &lt;span&gt;Branches&lt;/span&gt;
-    &lt;div role=&quot;menuitemradio&quot; data-checked&gt;main&lt;/div&gt;
-    &lt;div role=&quot;menuitemradio&quot;&gt;develop&lt;/div&gt;
-  &lt;/div&gt;
+&lt;Popover&gt;
+  &lt;Popover.Trigger class=&quot;btn&quot;&gt;Share&lt;/Popover.Trigger&gt;
+  &lt;Popover.Portal&gt;
+    &lt;Popover.Content&gt;
+      &lt;Popover.Title class=&quot;popover-title&quot;&gt;Share this page&lt;/Popover.Title&gt;
+      &lt;Popover.Description class=&quot;popover-description&quot;&gt;
+        Anyone with the link can read it.
+      &lt;/Popover.Description&gt;
+      &lt;Popover.CloseButton class=&quot;btn btn-ghost&quot;&gt;Close&lt;/Popover.CloseButton&gt;
+    &lt;/Popover.Content&gt;
+  &lt;/Popover.Portal&gt;
+&lt;/Popover&gt;</code></pre>
+      <pre hidden><code id="popover-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div role=&quot;dialog&quot; data-expanded&gt;
+  &lt;h2 class=&quot;popover-title&quot;&gt;Share this page&lt;/h2&gt;
+  &lt;p class=&quot;popover-description&quot;&gt;Anyone with the link can read it.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
     
   </div>
@@ -513,152 +462,11 @@
 
 <p>
   <small>
-    On the Kobalte tab the rows carry no classes: <code>role="menuitem"</code>,
-    <code>data-highlighted</code> and <code>data-disabled</code> are bound to
-    <code>.menu-item</code>, <code>.menu-active</code> and
-    <code>.menu-disabled</code> by <code>/classless/kobalte</code>.
+    <code>Dialog.Content</code> is also <code>role="dialog"</code>, and Kobalte marks
+    them the same way, so a Kobalte dialog picks up this panel too. Add
+    <code>.dialog-box</code> to it if you want the modal sizing as well.
   </small>
 </p>
-
-<h2>With a trigger</h2>
-<p>
-  The trigger is an ordinary button. Kobalte marks it <code>data-expanded</code>
-  while the menu is open, and flips a <code>DropdownMenu.Icon</code> inside it.
-</p>
-
-
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
-        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
-        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
-        
-          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
-        
-      </div>
-    
-    <button class="ghost copy-button" data-target="dropdown-trigger-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="dropdown-trigger-classes" data-variant="classes">&lt;details open&gt;
-  &lt;summary class=&quot;btn&quot;&gt;Git settings ▾&lt;/summary&gt;
-  &lt;ul class=&quot;dropdown-content menu&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Commit&lt;/li&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Push&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/details&gt;</code></pre>
-    
-      <pre hidden><code id="dropdown-trigger-classless" data-variant="classless">&lt;details open&gt;
-  &lt;summary class=&quot;btn&quot;&gt;Git settings ▾&lt;/summary&gt;
-  &lt;ul class=&quot;dropdown-content menu&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Commit&lt;/li&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Push&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/details&gt;</code></pre>
-    
-    
-      <pre hidden><code id="dropdown-trigger-kobalte" data-variant="kobalte">&lt;DropdownMenu&gt;
-  &lt;DropdownMenu.Trigger class=&quot;btn&quot;&gt;
-    Git settings
-    &lt;DropdownMenu.Icon&gt;▾&lt;/DropdownMenu.Icon&gt;
-  &lt;/DropdownMenu.Trigger&gt;
-  &lt;DropdownMenu.Portal&gt;
-    &lt;DropdownMenu.Content&gt;
-      &lt;DropdownMenu.Item&gt;Commit&lt;/DropdownMenu.Item&gt;
-      &lt;DropdownMenu.Item&gt;Push&lt;/DropdownMenu.Item&gt;
-    &lt;/DropdownMenu.Content&gt;
-  &lt;/DropdownMenu.Portal&gt;
-&lt;/DropdownMenu&gt;</code></pre>
-      <pre hidden><code id="dropdown-trigger-kobalte-markup" data-variant="kobalte-markup">&lt;div&gt;
-  &lt;button aria-haspopup=&quot;true&quot; aria-expanded=&quot;true&quot; data-expanded class=&quot;btn&quot;&gt;
-    Git settings &lt;span data-expanded&gt;▾&lt;/span&gt;
-  &lt;/button&gt;
-  &lt;div role=&quot;menu&quot; data-expanded style=&quot;margin-top: 0.25rem&quot;&gt;
-    &lt;div role=&quot;menuitem&quot;&gt;Commit&lt;/div&gt;
-    &lt;div role=&quot;menuitem&quot;&gt;Push&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-    
-  </div>
-</div>
-
-
-<h2>Submenus</h2>
-<p>
-  A <code>DropdownMenu.SubTrigger</code> is a row that is also a trigger, so it
-  takes <code>.menu-item</code> and picks up <code>data-highlighted</code> like
-  any other row. Its <code>SubContent</code> is another panel.
-</p>
-
-
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
-        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
-        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
-        
-          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
-        
-      </div>
-    
-    <button class="ghost copy-button" data-target="dropdown-sub-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="dropdown-sub-classes" data-variant="classes">&lt;ul class=&quot;dropdown-content menu&quot;&gt;
-    &lt;li class=&quot;menu-item menu-active&quot;&gt;GitHub &lt;span class=&quot;menu-shortcut&quot;&gt;›&lt;/span&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-&lt;ul class=&quot;dropdown-content menu&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Create pull request…&lt;/li&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Sync fork&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    
-      <pre hidden><code id="dropdown-sub-classless" data-variant="classless">&lt;ul class=&quot;dropdown-content menu&quot;&gt;
-    &lt;li class=&quot;menu-item menu-active&quot;&gt;GitHub &lt;span class=&quot;menu-shortcut&quot;&gt;›&lt;/span&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;
-&lt;ul class=&quot;dropdown-content menu&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Create pull request…&lt;/li&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;Sync fork&lt;/li&gt;
-&lt;/ul&gt;</code></pre>
-    
-    
-      <pre hidden><code id="dropdown-sub-kobalte" data-variant="kobalte">&lt;DropdownMenu.Sub overlap gutter={4} shift={-8}&gt;
-  &lt;DropdownMenu.SubTrigger&gt;
-    GitHub &lt;span class=&quot;menu-shortcut&quot;&gt;›&lt;/span&gt;
-  &lt;/DropdownMenu.SubTrigger&gt;
-  &lt;DropdownMenu.Portal&gt;
-    &lt;DropdownMenu.SubContent&gt;
-      &lt;DropdownMenu.Item&gt;Create pull request…&lt;/DropdownMenu.Item&gt;
-      &lt;DropdownMenu.Item&gt;Sync fork&lt;/DropdownMenu.Item&gt;
-    &lt;/DropdownMenu.SubContent&gt;
-  &lt;/DropdownMenu.Portal&gt;
-&lt;/DropdownMenu.Sub&gt;</code></pre>
-      <pre hidden><code id="dropdown-sub-kobalte-markup" data-variant="kobalte-markup">&lt;div&gt;
-  &lt;div role=&quot;menu&quot; data-expanded&gt;
-    &lt;div role=&quot;menuitem&quot; aria-haspopup=&quot;true&quot; data-highlighted data-expanded&gt;
-      GitHub &lt;span class=&quot;menu-shortcut&quot;&gt;›&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div role=&quot;menu&quot; data-expanded style=&quot;margin-top: 0.25rem&quot;&gt;
-    &lt;div role=&quot;menuitem&quot;&gt;Create pull request…&lt;/div&gt;
-    &lt;div role=&quot;menuitem&quot;&gt;Sync fork&lt;/div&gt;
-  &lt;/div&gt;
-&lt;/div&gt;</code></pre>
-    
-  </div>
-</div>
-
 
 
         <footer class="site-footer">

@@ -1,0 +1,60 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Popover" %}
+{% set slug = "popover" %}
+
+{% block content %}
+<h1>Popover</h1>
+<p class="lede">
+  A floating panel with content in it, as opposed to a menu of rows.
+  <a href="https://kobalte.dev/docs/core/components/popover" target="_blank" rel="noreferrer">Kobalte's Popover</a>
+  renders its content as <code>role="dialog"</code> and positions it with a popper;
+  these classes only paint.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["popover-content", "The panel: raised surface, border, shadow"],
+  ["popover-title", "Its heading"],
+  ["popover-description", "Muted body text"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<div class="popover-content">
+  <h2 class="popover-title">Share this page</h2>
+  <p class="popover-description">Anyone with the link can read it.</p>
+</div>
+{% endset %}
+{% set kobalte_markup %}
+<div role="dialog" data-expanded>
+  <h2 class="popover-title">Share this page</h2>
+  <p class="popover-description">Anyone with the link can read it.</p>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Popover } from "@kobalte/core/popover";
+
+<Popover>
+  <Popover.Trigger class="btn">Share</Popover.Trigger>
+  <Popover.Portal>
+    <Popover.Content>
+      <Popover.Title class="popover-title">Share this page</Popover.Title>
+      <Popover.Description class="popover-description">
+        Anyone with the link can read it.
+      </Popover.Description>
+      <Popover.CloseButton class="btn btn-ghost">Close</Popover.CloseButton>
+    </Popover.Content>
+  </Popover.Portal>
+</Popover>
+{% endset %}
+{{ m.demo("popover-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    <code>Dialog.Content</code> is also <code>role="dialog"</code>, and Kobalte marks
+    them the same way, so a Kobalte dialog picks up this panel too. Add
+    <code>.dialog-box</code> to it if you want the modal sizing as well.
+  </small>
+</p>
+{% endblock %}

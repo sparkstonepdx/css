@@ -55,6 +55,18 @@
   <div class="dialog-box" style="font-size: 0.65rem; padding: 0.35rem; width: 7rem; margin: 0; line-height: 1.3">Delete this?<div class="dialog-actions" style="margin-top: 0.25rem; padding-top: 0.25rem; text-align: right"><span class="btn" style="padding: 0.15rem 0.4rem; font-size: 0.65rem">OK</span></div></div>
 {%- elif slug == "tooltip" -%}
   <span class="tooltip-content">Saves and closes</span>
+{%- elif slug == "popover" -%}
+  <span class="popover-content" style="font-size: 0.7rem; padding: 0.45rem; width: 8rem"><span class="popover-title" style="font-size: 0.75rem">Share</span><br /><span class="popover-description">Anyone with the link</span></span>
+{%- elif slug == "toast" -%}
+  <span class="alert" style="font-size: 0.7rem; padding: 0.3rem 0.5rem; margin: 0; width: 8rem">Saved</span>
+{%- elif slug == "divider" -%}
+  <span style="width: 7rem"><span style="font-size: 0.7rem">Above</span><hr class="divider" style="margin: 0.3rem 0" /><span style="font-size: 0.7rem">Below</span></span>
+{%- elif slug == "skeleton" -%}
+  <span style="width: 7rem; display: block"><span class="skeleton" style="height: 0.7rem; width: 60%; display: block; margin-bottom: 0.3rem"></span><span class="skeleton" style="height: 0.7rem; display: block"></span></span>
+{%- elif slug == "loading" -%}
+  <span class="loading"></span>
+{%- elif slug == "slider" -%}
+  <span class="slider" style="width: 7rem; margin: 0"><span class="slider-track" style="display: block"><span class="slider-fill" style="width: 60%"></span><span class="slider-thumb" style="position: absolute; left: 60%"></span></span></span>
 {%- elif slug == "colors" -%}
   <span style="display: flex; gap: 0.2rem">
     {% for i in [1, 3, 5, 7, 9] %}<span style="width: 1rem; height: 1.6rem; border-radius: var(--border-radius); background: oklch(from var(--color) var(--surface-lc-{{ i }}) h)"></span>{% endfor %}

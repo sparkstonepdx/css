@@ -127,7 +127,9 @@
     }
   }
 
-  [role="region"] {
+  // Toast.Region is also role="region", so match only a region that follows an
+  // accordion header.
+  :is(h1, h2, h3, h4, h5, h6):has(+ [role="region"]) + [role="region"] {
     @extend .collapse-content;
   }
 }
@@ -172,6 +174,42 @@
 // Switch has no role or attribute that identifies its Control and Thumb: both
 // are divs carrying the same data attributes as the root. Put .toggle and
 // .toggle-thumb on those parts yourself; only the state is bound here.
+// Separator -> [role="separator"], with data-orientation on it.
+@mixin separator {
+  [role="separator"] {
+    @extend .divider;
+
+    &[data-orientation="vertical"] {
+      @extend .divider-vertical;
+    }
+  }
+}
+
+// Popover.Content is role="dialog", and so is Dialog.Content: Kobalte gives
+// them no attribute that tells them apart, so both take the panel. Add
+// .dialog-box to a Kobalte dialog if you want the modal sizing as well.
+@mixin popover {
+  [role="dialog"] {
+    @extend .popover-content;
+  }
+}
+
+// Each Toast is li[role="status"]; its Region needs .toast by hand, since
+// role="region" is shared with accordion content and page landmarks.
+@mixin toast {
+  li[role="status"] {
+    @extend .alert;
+  }
+}
+
+// Slider.Thumb is the only part with a role; Track, Fill and the root take
+// their classes by hand.
+@mixin slider {
+  [role="slider"] {
+    @extend .slider-thumb;
+  }
+}
+
 @mixin bindings {
   @include tabs;
   @include dropdown-menu;
@@ -179,4 +217,8 @@
   @include alert;
   @include accordion;
   @include select;
+  @include separator;
+  @include popover;
+  @include toast;
+  @include slider;
 }

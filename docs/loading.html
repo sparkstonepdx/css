@@ -4,7 +4,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>Badge · @sparkstone/css</title>
+    <title>Loading · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
@@ -162,7 +162,7 @@
                 <li>
                   <a
                     href="./badge.html"
-                    aria-current="page"
+                    
                     >Badge</a
                   >
                 </li>
@@ -361,7 +361,7 @@
                 <li>
                   <a
                     href="./loading.html"
-                    
+                    aria-current="page"
                     >Loading<span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
                   >
                 </li>
@@ -373,8 +373,20 @@
 
       <main class="site-main">
         
-<h1>Badge</h1>
-<p class="lede">A small pill for counts, tags and statuses.</p>
+<h1>Loading</h1>
+<p class="lede">
+  A spinner, drawn in <code>currentColor</code> so it works on any surface and
+  inside a button. No component library renders this one: it is a single element
+  you place yourself.
+</p>
+
+
+<p class="alpha-note">
+  <span class="alpha-badge">alpha</span>
+  The class names and states here are stable. The look is not: these styles can
+  change in a minor release, without a major version bump.
+</p>
+
 
 
 <table class="class-table">
@@ -383,11 +395,7 @@
   </thead>
   <tbody>
     
-      <tr><td><code>badge</code></td><td>Rounded pill on a raised surface</td></tr>
-    
-      <tr><td><code>text-error</code></td><td>Error-colored text, for validation messages</td></tr>
-    
-      <tr><td><code>text-secondary</code></td><td>Muted text</td></tr>
+      <tr><td><code>loading</code></td><td>A spinner. Inherits its colour, sized with width and height</td></tr>
     
   </tbody>
 </table>
@@ -397,65 +405,31 @@
 
 
 
-
 <div class="demo" data-demo>
   <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
   <div class="demo-bar">
     
-      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
-        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
-        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
-        
-      </div>
+      <span class="demo-note"><small>Same markup in both builds</small></span>
     
-    <button class="ghost copy-button" data-target="badge-basic-classes">Copy</button>
+    <button class="ghost copy-button" data-target="loading-basic-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="badge-basic-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
-  &lt;p&gt;Status &lt;small class=&quot;badge&quot;&gt;Draft&lt;/small&gt; &lt;small class=&quot;badge&quot;&gt;3 open&lt;/small&gt;&lt;/p&gt;
-&lt;/div&gt;</code></pre>
-    
-      <pre hidden><code id="badge-basic-classless" data-variant="classless">&lt;div&gt;
-  &lt;p&gt;Status &lt;small class=&quot;chip&quot;&gt;Draft&lt;/small&gt; &lt;small class=&quot;chip&quot;&gt;3 open&lt;/small&gt;&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+    <pre><code id="loading-basic-classes" data-variant="classes">&lt;span class=&quot;loading&quot;&gt;&lt;/span&gt;
+&lt;span class=&quot;loading&quot; style=&quot;width: 2rem; height: 2rem&quot;&gt;&lt;/span&gt;
+&lt;button class=&quot;btn&quot;&gt;&lt;span class=&quot;loading&quot; style=&quot;width: 1rem; height: 1rem&quot;&gt;&lt;/span&gt; Saving&lt;/button&gt;
+&lt;p&gt;&lt;span class=&quot;loading&quot; style=&quot;width: 0.9rem; height: 0.9rem&quot;&gt;&lt;/span&gt; Loading results&lt;/p&gt;</code></pre>
     
     
   </div>
 </div>
 
-
-<h2>Muted and error text</h2>
-
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
-        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
-        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
-        
-      </div>
-    
-    <button class="ghost copy-button" data-target="badge-text-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="badge-text-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
-  &lt;p class=&quot;text-secondary&quot;&gt;Secondary text&lt;/p&gt;
-  &lt;small class=&quot;text-error&quot;&gt;That email address is already taken.&lt;/small&gt;
-&lt;/div&gt;</code></pre>
-    
-      <pre hidden><code id="badge-text-classless" data-variant="classless">&lt;div&gt;
-  &lt;p class=&quot;secondary&quot;&gt;Secondary text&lt;/p&gt;
-  &lt;small class=&quot;error&quot;&gt;That email address is already taken.&lt;/small&gt;
-&lt;/div&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
+<p>
+  <small>
+    The spin stops under <code>prefers-reduced-motion</code>. Pair it with
+    <code>aria-busy="true"</code> on the region it is loading, or with visually
+    hidden text, since the element itself says nothing.
+  </small>
+</p>
 
 
         <footer class="site-footer">

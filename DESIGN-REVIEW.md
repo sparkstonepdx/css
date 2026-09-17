@@ -104,3 +104,52 @@ file.
 | `.menu-selected` | bold | distinguishes the chosen option from the highlighted one. **Questionable**: bold shifts row width, the same objection as `.tab-active` |
 | Kobalte trigger | takes `.select`'s field styling, with the chevron background dropped | it is a button that should read as a form control |
 
+## Popover (`src/components/_popover.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Panel | same recipe as `.dropdown-content`: `--surface-lc-1`, `--surface-lc-2` border, `--box-shadow` | **Questionable**: two classes with identical surfaces. One could extend the other, or they could stay separate so they can diverge |
+| Padding, width | `--padding`, max `20rem` | |
+| Title, description | `1rem` bold, and `--text-lc-3` body | |
+| z-index | `50` | the third place this number appears |
+
+## Toast (`src/components/_toast.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Position | fixed, bottom-right, `--padding` from each edge | **Open question**: bottom-right is a guess. Top-right and bottom-centre are equally common |
+| Stack | column, `--padding / 2` gap, max `24rem` | |
+| Message | reuses `.alert` | |
+| z-index | `100` | above the dropdown's 50, below the dialog's 999 |
+
+## Divider (`src/components/_divider.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Rule | `--border-width` in `--surface-lc-2`, `--padding` margins | matches the rule under `.collapse` and `.tabs` |
+| Vertical | `.divider-vertical`, sized by the caller | it needs a height from the flex row it sits in |
+
+## Skeleton (`src/components/_skeleton.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Block | `--surface-lc-2`, `--border-radius` | |
+| Shimmer | a `--surface-lc-1` gradient sweeping over 1.4s, off under reduced motion | **Questionable**: the third motion duration in the framework, after 150ms and 250ms |
+| Sizing | none: the caller sets width and height | |
+
+## Loading (`src/components/_loading.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Spinner | a `currentColor` ring on a 25% transparent track, 1.25rem, 0.7s | drawn from `currentColor` so it works inside a button without a variant per colour |
+| Variants | none | daisyUI has dots, bars, ring and others. **Open question**: worth having, or is one spinner enough? |
+
+## Slider (`src/components/_slider.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Track | half the thumb tall, `--surface-lc-2`, fully rounded | |
+| Fill, thumb | `--surface-lc-4`; thumb is `--surface-lc-1` with a `--surface-lc-4` border | same pairing as the tab indicator and the toggle knob |
+| Thumb size | `--slider-thumb: 1rem`, exposed so a caller can resize it | the only component here with its own sizing variable |
+| Label, value | `0.875rem` in `--text-lc-3` | matches `.menu-title` and `.menu-shortcut` |
+

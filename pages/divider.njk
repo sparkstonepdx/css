@@ -1,0 +1,57 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Divider" %}
+{% set slug = "divider" %}
+
+{% block content %}
+<h1>Divider</h1>
+<p class="lede">
+  A rule between blocks of content.
+  <a href="https://kobalte.dev/docs/core/components/separator" target="_blank" rel="noreferrer">Kobalte's Separator</a>
+  renders <code>role="separator"</code> with its orientation on it, so it needs no
+  class.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["divider", "A horizontal rule with vertical margins"],
+  ["divider-vertical", "A vertical rule, for a flex row"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<p>Above the rule.</p>
+<hr class="divider" />
+<p>Below it.</p>
+<div class="flex" style="align-items: center">
+  <span>Left</span>
+  <hr class="divider divider-vertical" style="height: 1.5rem" />
+  <span>Right</span>
+</div>
+{% endset %}
+{% set kobalte_markup %}
+<p>Above the rule.</p>
+<hr role="separator" data-orientation="horizontal" />
+<p>Below it.</p>
+<div class="flex" style="align-items: center">
+  <span>Left</span>
+  <hr role="separator" data-orientation="vertical" style="height: 1.5rem" />
+  <span>Right</span>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Separator } from "@kobalte/core/separator";
+
+<Separator />
+<Separator orientation="vertical" />
+{% endset %}
+{{ m.demo("divider-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    A bare <code>&lt;hr&gt;</code> is prose: it takes the typography rule inside
+    <code>.prose</code> and the tight rule inside a <code>.menu</code>.
+    <code>.divider</code> is the standalone one.
+  </small>
+</p>
+{% endblock %}

@@ -12,6 +12,12 @@
 @use "collapse";
 @use "toggle";
 @use "tooltip";
+@use "divider";
+@use "loading";
+@use "popover";
+@use "skeleton";
+@use "slider";
+@use "toast";
 @use "menu";
 @use "progress";
 @use "prose";
@@ -53,6 +59,12 @@
   @include collapse.styles;
   @include tooltip.styles;
   @include alert.styles;
+  @include popover.styles;
+  @include toast.styles;
+  @include divider.styles;
+  @include skeleton.styles;
+  @include loading.styles;
+  @include slider.styles;
   @include progress.styles;
   @include layout.flex-styles;
   @include badge.styles;

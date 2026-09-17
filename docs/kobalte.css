@@ -1398,7 +1398,7 @@
     --primary-text-lc: var(--primary-grey-text-lc);
     pointer-events: none;
   }
-  .collapse-content, [role=region] {
+  .collapse-content, :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) + [role=region] {
     padding-bottom: calc(var(--padding) / 2);
   }
   .tooltip-content, [role=tooltip] {
@@ -1413,7 +1413,7 @@
   .tooltip-arrow {
     color: oklch(from var(--color) var(--surface-lc-5) h);
   }
-  .alert, [role=alert] {
+  .alert, [role=alert], li[role=status] {
     display: flex;
     align-items: center;
     gap: calc(var(--padding) / 2);
@@ -1426,6 +1426,187 @@
   }
   .alert-error {
     --color: var(--error-color);
+  }
+  .popover-content, [role=dialog] {
+    max-width: 20rem;
+    padding: var(--padding);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    z-index: 50;
+  }
+  .popover-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: calc(var(--padding) / 4);
+  }
+  .popover-description {
+    color: oklch(from var(--color) var(--text-lc-3) h);
+    margin-bottom: 0;
+  }
+  .toast {
+    position: fixed;
+    inset-block-end: var(--padding);
+    inset-inline-end: var(--padding);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 2);
+    max-width: min(24rem, 100vw - var(--padding) * 2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 100;
+  }
+  .toast ol {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .toast .alert, .toast [role=alert], .toast li[role=status] {
+    margin-bottom: 0;
+  }
+  .toast-title {
+    font-weight: bold;
+  }
+  .toast-description {
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .divider, [role=separator] {
+    border: 0;
+    align-self: stretch;
+    margin: var(--padding) 0;
+    border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .divider-vertical, [role=separator][data-orientation=vertical] {
+    margin: 0 var(--padding);
+    border-top: 0;
+    border-left: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .skeleton {
+    display: block;
+    min-height: 1rem;
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .skeleton {
+      background-image: linear-gradient(90deg, transparent, oklch(from var(--color) var(--surface-lc-1) h), transparent);
+      background-size: 60% 100%;
+      background-repeat: no-repeat;
+      animation: sparkstone-skeleton 1.4s ease-in-out infinite;
+    }
+  }
+  .skeleton:not([data-animate]) {
+    animation: none;
+    background-image: none;
+  }
+  .skeleton:not([data-visible]) {
+    background-color: transparent;
+  }
+  @keyframes sparkstone-skeleton {
+    from {
+      background-position: -60% 0;
+    }
+    to {
+      background-position: 160% 0;
+    }
+  }
+  .loading {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: -0.25rem;
+    border: var(--border-width) solid color-mix(in oklch, currentColor, transparent 75%);
+    border-top-color: currentColor;
+    border-radius: 999px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .loading {
+      animation: sparkstone-spin 0.7s linear infinite;
+    }
+  }
+  @keyframes sparkstone-spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  .slider {
+    --slider-thumb: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 4);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .slider:is([data-disabled]) {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --surface-lc-1: var(--grey-surface-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --surface-lc-2: var(--grey-surface-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --surface-lc-3: var(--grey-surface-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --surface-lc-4: var(--grey-surface-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --surface-lc-5: var(--grey-surface-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --surface-lc-6: var(--grey-surface-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --surface-lc-7: var(--grey-surface-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --surface-lc-8: var(--grey-surface-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --surface-lc-9: var(--grey-surface-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  .slider-track {
+    position: relative;
+    height: calc(var(--slider-thumb) / 2);
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .slider-fill {
+    position: absolute;
+    height: 100%;
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-4) h);
+  }
+  .slider-thumb, [role=slider] {
+    display: block;
+    width: var(--slider-thumb);
+    height: var(--slider-thumb);
+    top: calc(var(--slider-thumb) / -4);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+  }
+  .slider-thumb input, [role=slider] input {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+  }
+  .slider-label,
+  .slider-value {
+    font-size: 0.875rem;
+    color: oklch(from var(--color) var(--text-lc-3) h);
   }
   .progress, progress {
     appearance: none;
