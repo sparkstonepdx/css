@@ -1,0 +1,31 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Range" %}
+{% set slug = "range" %}
+
+{% block content %}
+<h1>Range</h1>
+<p class="lede">
+  A native range on the shared control surface. The track and thumb stay native,
+  so the browser's own accent applies.
+</p>
+
+{{ m.classes([
+  ["range", "Full-width range on the control surface"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<label>
+  Volume
+  <input type="range" min="0" max="100" value="60" />
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  Volume
+  <input type="range" class="range" min="0" max="100" value="60" />
+</label>
+{% endset %}
+{{ m.demo("range-basic", classless, classes) }}
+{% endblock %}

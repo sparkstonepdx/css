@@ -154,12 +154,14 @@ border-color: get-border-color();
 
 See it live via GitHub Pages:
 
-- [`forms.html`](https://sparkstonepdx.github.io/css/forms.html) — Styled form elements and validation states
-- [`colors.html`](https://sparkstonepdx.github.io/css/colors.html) — Theme-based palette viewer with interactive color picker
-- [`containers.html`](https://sparkstonepdx.github.io/css/containers.html) — Articles, cards, and dialogs
-- [`index.html`](https://sparkstonepdx.github.io/css/) — Overview & installation
+- [Overview](https://sparkstonepdx.github.io/css/): what the two builds are, and how they relate
+- [Quickstart](https://sparkstonepdx.github.io/css/quickstart.html): install, pick a build, set a color
+- [Colors](https://sparkstonepdx.github.io/css/colors.html): the scale, with an interactive color picker
+- [Customizing](https://sparkstonepdx.github.io/css/customizing.html): tokens, scoping, and Sass entry points
+- One page per component, from [Button](https://sparkstonepdx.github.io/css/button.html) to [Dialog](https://sparkstonepdx.github.io/css/dialog.html)
 
-Each page includes copyable code examples and live previews.
+Every example has a Class and a Classless tab. The preview renders in a frame
+loading the matching build, so what you see is what that build produces.
 
 ---
 

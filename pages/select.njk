@@ -1,0 +1,57 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Select" %}
+{% set slug = "select" %}
+
+{% block content %}
+<h1>Select</h1>
+<p class="lede">
+  Single selects get a chevron drawn from <code>--icon-chevron</code>. Multiple
+  and sized selects keep the native list, with no icon.
+</p>
+
+{{ m.classes([
+  ["select", "Full-width select with a chevron"],
+  ["select-error", "Error color, for when aria-invalid is not available"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<label>
+  Environment
+  <select>
+    <option>Development</option>
+    <option>Staging</option>
+    <option>Production</option>
+  </select>
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  Environment
+  <select class="select">
+    <option>Development</option>
+    <option>Staging</option>
+    <option>Production</option>
+  </select>
+</label>
+{% endset %}
+{{ m.demo("select-basic", classless, classes) }}
+
+<h2>Multiple</h2>
+{% set classless %}
+<select multiple size="3">
+  <option>One</option>
+  <option>Two</option>
+  <option>Three</option>
+</select>
+{% endset %}
+{% set classes %}
+<select class="select" multiple size="3">
+  <option>One</option>
+  <option>Two</option>
+  <option>Three</option>
+</select>
+{% endset %}
+{{ m.demo("select-multiple", classless, classes) }}
+{% endblock %}

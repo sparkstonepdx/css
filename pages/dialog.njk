@@ -1,0 +1,114 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Dialog" %}
+{% set slug = "dialog" %}
+
+{% block content %}
+<h1>Dialog</h1>
+<p class="lede">
+  A centered, backdrop-blurred modal built on the native <code>&lt;dialog&gt;</code>
+  element. Open it with <code>showModal()</code>. These class names deviate from
+  daisyUI, which calls the component <code>modal</code>.
+</p>
+
+{{ m.classes([
+  ["dialog", "The dialog itself: fixed, centered, blurred backdrop, hidden unless open"],
+  ["dialog-box", "The panel inside: card surface, scrolls internally, capped width"],
+  ["dialog-header", "Header row inside the panel"],
+  ["dialog-actions", "Footer row inside the panel: top border, right-aligned actions"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<button data-dialog="demo-dialog">Open dialog</button>
+
+<dialog id="demo-dialog">
+  <form method="dialog">
+    <article>
+      <header>
+        <h3>Dialog heading</h3>
+      </header>
+      <p>Scrolls internally when the content is taller than the viewport, and locks
+        scrolling on the page behind it.</p>
+      <footer>
+        <button value="cancel" class="secondary">Cancel</button>
+        <button value="ok">OK</button>
+      </footer>
+    </article>
+  </form>
+</dialog>
+{% endset %}
+{% set classes %}
+<button class="btn" data-dialog="demo-dialog">Open dialog</button>
+
+<dialog id="demo-dialog" class="dialog">
+  <form method="dialog">
+    <article class="dialog-box">
+      <header class="dialog-header">
+        <h3>Dialog heading</h3>
+      </header>
+      <p>Scrolls internally when the content is taller than the viewport, and locks
+        scrolling on the page behind it.</p>
+      <footer class="dialog-actions">
+        <button value="cancel" class="btn btn-secondary">Cancel</button>
+        <button value="ok" class="btn">OK</button>
+      </footer>
+    </article>
+  </form>
+</dialog>
+{% endset %}
+{{ m.demo("dialog-basic", classless, classes) }}
+<p>
+  <small>
+    The docs script wires <code>[data-dialog]</code> to <code>showModal()</code>. In your own
+    app that is one line: <code>dialog.showModal()</code>.
+  </small>
+</p>
+
+<h2>Form nesting</h2>
+<p>
+  Both nestings work, so the close button needs no JavaScript:
+  <code>dialog &gt; form &gt; .dialog-box</code> and
+  <code>dialog &gt; .dialog-box &gt; form</code>.
+</p>
+{% set classless %}
+<button data-dialog="inner-form-dialog">Open</button>
+
+<dialog id="inner-form-dialog">
+  <article>
+    <form method="dialog">
+      <header><h3>Rename</h3></header>
+      <label>
+        Name
+        <input type="text" value="Untitled" />
+      </label>
+      <footer>
+        <button value="cancel" class="secondary">Cancel</button>
+        <button value="save">Save</button>
+      </footer>
+    </form>
+  </article>
+</dialog>
+{% endset %}
+{% set classes %}
+<button class="btn" data-dialog="inner-form-dialog">Open</button>
+
+<dialog id="inner-form-dialog" class="dialog">
+  <article class="dialog-box">
+    <form method="dialog">
+      <header class="dialog-header"><h3>Rename</h3></header>
+      <label class="label">
+        Name
+        <input type="text" class="input" value="Untitled" />
+      </label>
+      <footer class="dialog-actions">
+        <button value="cancel" class="btn btn-secondary">Cancel</button>
+        <button value="save" class="btn">Save</button>
+      </footer>
+    </form>
+  </article>
+</dialog>
+{% endset %}
+{{ m.demo("dialog-form", classless, classes) }}
+{{ m.classless_note("the panel is an <code>article</code>, so it picks up the card styling automatically. With classes, <code>.dialog-box</code> includes it.") }}
+{% endblock %}

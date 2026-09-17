@@ -1,0 +1,122 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Quickstart" %}
+{% set slug = "quickstart" %}
+
+{% block content %}
+<h1>Quickstart</h1>
+<p class="lede">Install, pick a build, set a color.</p>
+
+<h2>Install</h2>
+{% call m.snippet("install-pkg", "bash") %}
+# pnpm
+pnpm add @sparkstone/css
+
+# yarn
+yarn add @sparkstone/css
+
+# npm
+npm install @sparkstone/css
+{% endcall %}
+
+<h2>Pick a build</h2>
+<p>
+  The package root is the class build. The classless build, which is the 1.x
+  theme, lives at <code>/classless</code>.
+</p>
+{% call m.snippet("install-import", "scss") %}
+// Sass, either build. Needs the Node package importer:
+//   sass --pkg-importer=node
+//   importers: [new NodePackageImporter()]
+@use "pkg:@sparkstone/css";
+@use "pkg:@sparkstone/css/classless";
+{% endcall %}
+{% call m.snippet("install-import-js", "ts") %}
+// Precompiled CSS
+import "@sparkstone/css";           // dist/index.css
+import "@sparkstone/css/classless"; // dist/classless.css
+{% endcall %}
+
+<h2>A complete page</h2>
+<p>Switch the tab to see the same page in the other build.</p>
+{% set classless %}
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="classless.css" />
+    <style>
+      :root {
+        --color: teal;
+      }
+    </style>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Hello</h1>
+      <p>Body copy, and <a href="#">a link</a>.</p>
+
+      <article>
+        <h2>A card</h2>
+        <p>Cards are just articles.</p>
+        <footer>
+          <button class="secondary">Cancel</button>
+          <button>Confirm</button>
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>
+{% endset %}
+{% set classes %}
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="index.css" />
+    <style>
+      :root {
+        --color: teal;
+      }
+    </style>
+  </head>
+  <body class="prose">
+    <main class="container">
+      <h1>Hello</h1>
+      <p>Body copy, and <a href="#" class="link">a link</a>.</p>
+
+      <article class="card">
+        <h2>A card</h2>
+        <p>Cards are just articles.</p>
+        <footer class="card-actions">
+          <button class="btn btn-secondary">Cancel</button>
+          <button class="btn">Confirm</button>
+        </footer>
+      </article>
+    </main>
+  </body>
+</html>
+{% endset %}
+{{ m.demo("quickstart-page", classless, classes) }}
+
+<h2>Set your color</h2>
+<p>
+  One custom property drives the whole palette. Everything else is derived from
+  it in <code>oklch</code>.
+</p>
+{% call m.snippet("quickstart-color", "css") %}
+:root {
+  --color: teal;
+}
+{% endcall %}
+
+<h2>Coming from 1.x</h2>
+<ul>
+  <li>Replace <code>dist/theme.css</code> with <code>dist/classless.css</code>.</li>
+  <li>Replace <code>src/theme.scss</code> with <code>src/classless.scss</code>, or import <code>pkg:@sparkstone/css/classless</code>.</li>
+  <li>Nothing else changes. The classless build is byte-for-byte the same theme.</li>
+  <li>Moving to classes? <code>.card</code> becomes <code>.card-border</code>, and dialogs pick up <code>.dialog</code>, <code>.dialog-box</code> and <code>.dialog-actions</code>.</li>
+</ul>
+{% endblock %}

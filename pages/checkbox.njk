@@ -1,0 +1,55 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Checkbox" %}
+{% set slug = "checkbox" %}
+
+{% block content %}
+<h1>Checkbox</h1>
+<p class="lede">
+  A custom check drawn with a rotated border, filled from the theme color when
+  checked. Wrap it in a label to get the row layout.
+</p>
+
+{{ m.classes([
+  ["checkbox", "1.5rem box with a drawn check mark"],
+  ["label", "On the wrapping label: row layout with a gap"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<label>
+  <input type="checkbox" checked />
+  Email me about releases
+</label>
+<label>
+  <input type="checkbox" />
+  Email me about everything else
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  <input type="checkbox" class="checkbox" checked />
+  Email me about releases
+</label>
+<label class="label">
+  <input type="checkbox" class="checkbox" />
+  Email me about everything else
+</label>
+{% endset %}
+{{ m.demo("checkbox-basic", classless, classes) }}
+
+<h2>Disabled</h2>
+{% set classless %}
+<label>
+  <input type="checkbox" checked disabled />
+  Locked on
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  <input type="checkbox" class="checkbox" checked disabled />
+  Locked on
+</label>
+{% endset %}
+{{ m.demo("checkbox-disabled", classless, classes) }}
+{% endblock %}

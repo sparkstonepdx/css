@@ -4,7 +4,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>Layout · @sparkstone/css</title>
+    <title>Checkbox · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
@@ -70,7 +70,7 @@
                 <li>
                   <a
                     href="./layout.html"
-                    aria-current="page"
+                    
                     >Layout</a
                   >
                 </li>
@@ -202,7 +202,7 @@
                 <li>
                   <a
                     href="./checkbox.html"
-                    
+                    aria-current="page"
                     >Checkbox</a
                   >
                 </li>
@@ -259,181 +259,96 @@
 
       <main class="site-main">
         
-<h1>Layout</h1>
-<p>Two containers and one flex helper. Everything else is native CSS.</p>
+<h1>Checkbox</h1>
+<p class="lede">
+  A custom check drawn with a rotated border, filled from the theme color when
+  checked. Wrap it in a label to get the row layout.
+</p>
 
-<section id="container">
-  <h2>Container</h2>
-  <p>
-    <code>.container</code> centers content and steps its max width at each breakpoint.
-    <code>.container-fluid</code> keeps the padding but spans the full width, which is what you want
-    for a header or a full-bleed section.
-  </p>
-  <table>
-    <thead>
-      <tr><th>Viewport</th><th><code>.container</code> max width</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>&lt; 576px</td><td>100%, 1rem padding</td></tr>
-      <tr><td>≥ 576px</td><td>510px</td></tr>
-      <tr><td>≥ 768px</td><td>700px</td></tr>
-      <tr><td>≥ 1024px</td><td>950px</td></tr>
-      <tr><td>≥ 1280px</td><td>1200px</td></tr>
-      <tr><td>≥ 1536px</td><td>1450px</td></tr>
-    </tbody>
-  </table>
-  <p>
-    <small>
-      A bare <code>.container</code> also caps at <code>80ch</code> and adds bottom padding, which is
-      the reading measure this documentation uses.
-    </small>
-  </p>
-  
-<div class="code-block standalone">
-  <button class="ghost copy-button" data-target="layout-container">Copy</button>
-  <pre><code id="layout-container" class="language-html">&lt;header class=&quot;container-fluid&quot;&gt;…&lt;/header&gt;
-&lt;main class=&quot;container&quot;&gt;…&lt;/main&gt;</code></pre>
-</div>
 
-</section>
-
-<section id="flex">
-  <h2>Flex</h2>
-  <p>
-    <code>.flex</code> is <code>display: flex</code> with a <code>1rem</code> gap. That is the whole
-    utility.
-  </p>
-  
-<div class="demo inline">
-  <div class="demo-surface">
+<table class="class-table">
+  <thead>
+    <tr><th>Class</th><th>Does what</th></tr>
+  </thead>
+  <tbody>
     
-<div class="flex">
-  <article class="card" style="flex: 1">One</article>
-  <article class="card" style="flex: 1">Two</article>
-  <article class="card" style="flex: 1">Three</article>
-</div>
-  
-  </div>
+      <tr><td><code>checkbox</code></td><td>1.5rem box with a drawn check mark</td></tr>
+    
+      <tr><td><code>label</code></td><td>On the wrapping label: row layout with a gap</td></tr>
+    
+  </tbody>
+</table>
+
+
+<h2>Basic</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
   <div class="demo-bar">
-    <span class="demo-note"><small>Same markup in both builds</small></span>
-    <button class="ghost copy-button" data-target="layout-flex">Copy</button>
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="checkbox-basic-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="layout-flex">&lt;div class=&quot;flex&quot;&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;One&lt;/article&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;Two&lt;/article&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;Three&lt;/article&gt;
-&lt;/div&gt;</code></pre>
-  </div>
-</div>
-
-</section>
-
-<section id="flip">
-  <h2>Flip</h2>
-  <p>
-    Add <code>.flip</code> and the row becomes a column below 600px. Add <code>.reverse</code> and it
-    stacks bottom-up, which is how you get a sidebar that appears above the content on mobile but
-    beside it on desktop.
-  </p>
-  
-<div class="demo inline">
-  <div class="demo-surface">
+    <pre><code id="checkbox-basic-classes" data-variant="classes">&lt;label class=&quot;label&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt;
+  Email me about releases
+&lt;/label&gt;
+&lt;label class=&quot;label&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt;
+  Email me about everything else
+&lt;/label&gt;</code></pre>
     
-<div class="flex flip">
-  <article class="card" style="flex: 2">Main content</article>
-  <article class="card" style="flex: 1">Sidebar</article>
+      <pre hidden><code id="checkbox-basic-classless" data-variant="classless">&lt;label&gt;
+  &lt;input type=&quot;checkbox&quot; checked /&gt;
+  Email me about releases
+&lt;/label&gt;
+&lt;label&gt;
+  &lt;input type=&quot;checkbox&quot; /&gt;
+  Email me about everything else
+&lt;/label&gt;</code></pre>
+    
+  </div>
 </div>
 
-<div class="flex flip reverse">
-  <article class="card" style="flex: 2">Main, second on mobile</article>
-  <article class="card" style="flex: 1">Sidebar, first on mobile</article>
-</div>
-  
-  </div>
+
+<h2>Disabled</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
   <div class="demo-bar">
-    <span class="demo-note"><small>Same markup in both builds</small></span>
-    <button class="ghost copy-button" data-target="layout-flip">Copy</button>
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="checkbox-disabled-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="layout-flip">&lt;div class=&quot;flex flip&quot;&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 2&quot;&gt;Main content&lt;/article&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;Sidebar&lt;/article&gt;
-&lt;/div&gt;
-
-&lt;div class=&quot;flex flip reverse&quot;&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 2&quot;&gt;Main, second on mobile&lt;/article&gt;
-  &lt;article class=&quot;card&quot; style=&quot;flex: 1&quot;&gt;Sidebar, first on mobile&lt;/article&gt;
-&lt;/div&gt;</code></pre>
-  </div>
-</div>
-
-  <p><small>Resize the window to see the breakpoint.</small></p>
-</section>
-
-<section id="grid">
-  <h2>Grid</h2>
-  <p>
-    There is no grid utility. Use CSS, and use the framework's variables for spacing so it stays in
-    rhythm.
-  </p>
-  
-<div class="demo inline">
-  <div class="demo-surface">
+    <pre><code id="checkbox-disabled-classes" data-variant="classes">&lt;label class=&quot;label&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked disabled /&gt;
+  Locked on
+&lt;/label&gt;</code></pre>
     
-<div
-  style="
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    gap: var(--padding);
-  ">
-  <article class="card">Auto</article>
-  <article class="card">Fitting</article>
-  <article class="card">Grid</article>
-  <article class="card">Cells</article>
-</div>
-  
-  </div>
-  <div class="demo-bar">
-    <span class="demo-note"><small>Same markup in both builds</small></span>
-    <button class="ghost copy-button" data-target="layout-grid">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="layout-grid">&lt;div
-  style=&quot;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
-    gap: var(--padding);
-  &quot;&gt;
-  &lt;article class=&quot;card&quot;&gt;Auto&lt;/article&gt;
-  &lt;article class=&quot;card&quot;&gt;Fitting&lt;/article&gt;
-  &lt;article class=&quot;card&quot;&gt;Grid&lt;/article&gt;
-  &lt;article class=&quot;card&quot;&gt;Cells&lt;/article&gt;
-&lt;/div&gt;</code></pre>
+      <pre hidden><code id="checkbox-disabled-classless" data-variant="classless">&lt;label&gt;
+  &lt;input type=&quot;checkbox&quot; checked disabled /&gt;
+  Locked on
+&lt;/label&gt;</code></pre>
+    
   </div>
 </div>
 
-</section>
-
-<section id="spacing">
-  <h2>Spacing</h2>
-  <p>
-    <code>--padding</code> is the base unit. Block elements carry a <code>1rem</code> bottom margin;
-    list items carry <code>0.25rem</code>.
-  </p>
-  
-<div class="code-block standalone">
-  <button class="ghost copy-button" data-target="layout-spacing">Copy</button>
-  <pre><code id="layout-spacing" class="language-css">.tight {
-  --padding: 0.5rem;
-}
-
-.roomy {
-  --padding: 2rem;
-}</code></pre>
-</div>
-
-</section>
 
 
         <footer class="site-footer">

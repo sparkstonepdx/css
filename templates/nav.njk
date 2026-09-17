@@ -1,0 +1,42 @@
+{#
+  Site navigation. Each group is [label, [[slug, title], ...]].
+  build.js reads nothing from here; layout.njk renders it.
+#}
+{% set navGroups = [
+  ["Getting started", [
+    ["index", "Overview"],
+    ["quickstart", "Quickstart"],
+    ["colors", "Colors"],
+    ["customizing", "Customizing"],
+    ["layout", "Layout"]
+  ]],
+  ["Typography", [
+    ["prose", "Prose"],
+    ["link", "Link"],
+    ["kbd", "Kbd"]
+  ]],
+  ["Actions", [
+    ["button", "Button"]
+  ]],
+  ["Data display", [
+    ["badge", "Badge"],
+    ["card", "Card"],
+    ["progress", "Progress"],
+    ["table", "Table"]
+  ]],
+  ["Forms", [
+    ["label", "Label"],
+    ["fieldset", "Fieldset"],
+    ["input", "Input"],
+    ["textarea", "Textarea"],
+    ["select", "Select"],
+    ["checkbox", "Checkbox"],
+    ["radio", "Radio"],
+    ["range", "Range"],
+    ["file-input", "File input"],
+    ["color-input", "Color input"]
+  ]],
+  ["Overlay", [
+    ["dialog", "Dialog"]
+  ]]
+] %}

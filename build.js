@@ -18,9 +18,11 @@ for (const file of await glob('pages/*.njk')) {
   console.log(`✓ Built ${name}.html`);
 }
 
-// dist/classless.css is what the docs pages are written against; static/* is docs-only css + js.
+// Both builds ship to docs/: the pages load classless.css, and demo previews
+// load whichever build their tab selects. static/* is docs-only css + js.
 const assets = [
   ['dist/classless.css', 'classless.css'],
+  ['dist/index.css', 'index.css'],
   ...(await glob('static/*')).map(f => [f, path.basename(f)]),
 ];
 

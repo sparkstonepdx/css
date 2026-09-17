@@ -1,0 +1,35 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Badge" %}
+{% set slug = "badge" %}
+
+{% block content %}
+<h1>Badge</h1>
+<p class="lede">A small pill for counts, tags and statuses.</p>
+
+{{ m.classes([
+  ["badge", "Rounded pill on a raised surface"],
+  ["text-error", "Error-colored text, for validation messages"],
+  ["text-secondary", "Muted text"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<p>Status <small class="chip">Draft</small> <small class="chip">3 open</small></p>
+{% endset %}
+{% set classes %}
+<p>Status <small class="badge">Draft</small> <small class="badge">3 open</small></p>
+{% endset %}
+{{ m.demo("badge-basic", classless, classes) }}
+
+<h2>Muted and error text</h2>
+{% set classless %}
+<p class="secondary">Secondary text</p>
+<small class="error">That email address is already taken.</small>
+{% endset %}
+{% set classes %}
+<p class="text-secondary">Secondary text</p>
+<small class="text-error">That email address is already taken.</small>
+{% endset %}
+{{ m.demo("badge-text", classless, classes) }}
+{% endblock %}

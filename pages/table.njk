@@ -1,0 +1,40 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Table" %}
+{% set slug = "table" %}
+
+{% block content %}
+<h1>Table</h1>
+<p class="lede">Full-width, collapsed borders, a heavier rule under the header row.</p>
+
+{{ m.classes([
+  ["table", "Full-width table with bottom-bordered cells"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<table>
+  <thead>
+    <tr><th>Token</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--color</code></td><td>Base hue for the whole scale</td></tr>
+    <tr><td><code>--accent-color</code></td><td>Links</td></tr>
+    <tr><td><code>--error-color</code></td><td>Invalid inputs</td></tr>
+  </tbody>
+</table>
+{% endset %}
+{% set classes %}
+<table class="table">
+  <thead>
+    <tr><th>Token</th><th>Purpose</th></tr>
+  </thead>
+  <tbody>
+    <tr><td><code>--color</code></td><td>Base hue for the whole scale</td></tr>
+    <tr><td><code>--accent-color</code></td><td>Links</td></tr>
+    <tr><td><code>--error-color</code></td><td>Invalid inputs</td></tr>
+  </tbody>
+</table>
+{% endset %}
+{{ m.demo("table-basic", classless, classes) }}
+{% endblock %}

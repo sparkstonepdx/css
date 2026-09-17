@@ -4,7 +4,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>@sparkstone/css</title>
+    <title>Button · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
@@ -38,7 +38,7 @@
                 <li>
                   <a
                     href="./index.html"
-                    aria-current="page"
+                    
                     >Overview</a
                   >
                 </li>
@@ -112,7 +112,7 @@
                 <li>
                   <a
                     href="./button.html"
-                    
+                    aria-current="page"
                     >Button</a
                   >
                 </li>
@@ -259,52 +259,37 @@
 
       <main class="site-main">
         
-<h1>@sparkstone/css</h1>
+<h1>Button</h1>
 <p class="lede">
-  A lightweight SCSS framework in the spirit of
-  <a href="https://picocss.com" target="_blank" rel="noreferrer">Pico.css</a> and
-  <a href="https://daisyui.com" target="_blank" rel="noreferrer">daisyUI</a>, rebuilt on
-  <code>oklch()</code> relative color syntax. Give it one base color and it derives an
-  entire light and dark palette that clears WCAG AA on every pairing the framework uses.
+  Buttons carry the primary color by default. In the classless build every
+  <code>button</code>, <code>[type="button"]</code>, <code>[type="submit"]</code>,
+  <code>[type="reset"]</code> and <code>[role="button"]</code> gets the same treatment.
 </p>
 
-<p>
-  <a href="./quickstart.html">Quickstart</a> ·
-  <a href="https://www.npmjs.com/package/@sparkstone/css" target="_blank" rel="noreferrer">npm</a> ·
-  <a href="https://github.com/sparkstonepdx/css" target="_blank" rel="noreferrer">GitHub</a>
-</p>
-
-<h2>Two builds, one source</h2>
-<p>
-  Every component is a Sass mixin. The class build applies those mixins to class
-  names, and the classless build applies the same mixins to plain elements, so
-  the two cannot drift apart.
-</p>
 
 <table class="class-table">
   <thead>
-    <tr><th>Build</th><th>Import</th><th>Styles</th></tr>
+    <tr><th>Class</th><th>Does what</th></tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Class</td>
-      <td><code>@sparkstone/css</code></td>
-      <td>Class names only, following daisyUI 5. Plain elements are left alone.</td>
-    </tr>
-    <tr>
-      <td>Classless</td>
-      <td><code>@sparkstone/css/classless</code></td>
-      <td>Semantic HTML, no classes needed. This is the 1.x theme, unchanged.</td>
-    </tr>
+    
+      <tr><td><code>btn</code></td><td>Base button</td></tr>
+    
+      <tr><td><code>btn-primary</code></td><td>Primary color fill (the default look)</td></tr>
+    
+      <tr><td><code>btn-secondary</code></td><td>Transparent with a border</td></tr>
+    
+      <tr><td><code>btn-ghost</code></td><td>No border, no fill</td></tr>
+    
+      <tr><td><code>btn-neutral</code></td><td>Fills from the fallback color instead of the theme color</td></tr>
+    
+      <tr><td><code>btn-disabled</code></td><td>Greyscale, for elements without a disabled attribute</td></tr>
+    
   </tbody>
 </table>
 
-<p>
-  Every component page below shows both, side by side. Switch the tab on any
-  example to see the other build, and the preview switches stylesheets with it.
-</p>
 
-<h2>The same page, both ways</h2>
+<h2>Basic</h2>
 
 
 
@@ -318,102 +303,137 @@
         <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
       </div>
     
-    <button class="ghost copy-button" data-target="overview-hello-classes">Copy</button>
+    <button class="ghost copy-button" data-target="btn-basic-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="overview-hello-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
-  &lt;h2&gt;Hello&lt;/h2&gt;
-  &lt;p&gt;Body copy, and &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;a link&lt;/a&gt;.&lt;/p&gt;
-&lt;/div&gt;
-
-&lt;article class=&quot;card&quot;&gt;
-  &lt;h3&gt;A card&lt;/h3&gt;
-  &lt;p&gt;Cards are just articles.&lt;/p&gt;
-  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
-    &lt;button class=&quot;btn btn-secondary&quot;&gt;Cancel&lt;/button&gt;
-    &lt;button class=&quot;btn&quot;&gt;Confirm&lt;/button&gt;
-  &lt;/footer&gt;
-&lt;/article&gt;</code></pre>
+    <pre><code id="btn-basic-classes" data-variant="classes">&lt;button class=&quot;btn&quot;&gt;Button&lt;/button&gt;
+&lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Link button&lt;/a&gt;</code></pre>
     
-      <pre hidden><code id="overview-hello-classless" data-variant="classless">&lt;h2&gt;Hello&lt;/h2&gt;
-&lt;p&gt;Body copy, and &lt;a href=&quot;#&quot;&gt;a link&lt;/a&gt;.&lt;/p&gt;
-
-&lt;article&gt;
-  &lt;h3&gt;A card&lt;/h3&gt;
-  &lt;p&gt;Cards are just articles.&lt;/p&gt;
-  &lt;footer class=&quot;flex&quot; style=&quot;justify-content: end&quot;&gt;
-    &lt;button class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
-    &lt;button&gt;Confirm&lt;/button&gt;
-  &lt;/footer&gt;
-&lt;/article&gt;</code></pre>
+      <pre hidden><code id="btn-basic-classless" data-variant="classless">&lt;button&gt;Button&lt;/button&gt;
+&lt;a href=&quot;#&quot; role=&quot;button&quot;&gt;Link button&lt;/a&gt;</code></pre>
     
   </div>
 </div>
 
 
-<h2>What you get</h2>
-<ul>
-  <li>A nine-step perceptual scale derived from a single <code>--color</code>.</li>
-  <li>Light and dark from the same scale, mirrored. No second palette to maintain.</li>
-  <li>daisyUI 5 class names, with <code>dialog-*</code> in place of <code>modal-*</code>.</li>
-  <li>No JavaScript for any core styling.</li>
-  <li>Sass functions and mixins when you need to reach past the defaults.</li>
-</ul>
+<h2>Variants</h2>
 
-<h2>Theming</h2>
-<p>Three colors drive everything. Set them anywhere a CSS variable can be set.</p>
 
-<div class="code-block standalone">
-  <button class="ghost copy-button" data-target="theming-vars">Copy</button>
-  <pre><code id="theming-vars" class="language-css">:root {
-  --color: rebeccapurple;
-  --accent-color: oklch(from var(--color) l c calc(h + 180));
-  --error-color: maroon;
-}</code></pre>
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="btn-variants-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="btn-variants-classes" data-variant="classes">&lt;button class=&quot;btn btn-primary&quot;&gt;Primary&lt;/button&gt;
+&lt;button class=&quot;btn btn-secondary&quot;&gt;Secondary&lt;/button&gt;
+&lt;button class=&quot;btn btn-ghost&quot;&gt;Ghost&lt;/button&gt;
+&lt;button class=&quot;btn btn-neutral&quot;&gt;Contrast&lt;/button&gt;</code></pre>
+    
+      <pre hidden><code id="btn-variants-classless" data-variant="classless">&lt;button class=&quot;primary&quot;&gt;Primary&lt;/button&gt;
+&lt;button class=&quot;secondary&quot;&gt;Secondary&lt;/button&gt;
+&lt;button class=&quot;ghost&quot;&gt;Ghost&lt;/button&gt;
+&lt;button class=&quot;contrast&quot;&gt;Contrast&lt;/button&gt;</code></pre>
+    
+  </div>
 </div>
 
 
-<p>
-  Because they are plain CSS variables, you can rebind <code>--color</code> on a subtree and
-  every descendant recolors itself. See <a href="./colors.html">Colors</a> and
-  <a href="./customizing.html">Customizing</a>.
-</p>
+<p class="classless-note"><small><strong>Classless:</strong> the modifier classes are bare (&lt;code&gt;.primary&lt;/code&gt;, &lt;code&gt;.contrast&lt;/code&gt;) because they only apply to elements the theme already styles.</small></p>
 
-<h3>Light and dark</h3>
-<p>
-  The scheme follows <code>prefers-color-scheme</code> by default. Force it with an attribute
-  on any element, not just <code>&lt;html&gt;</code>:
-</p>
 
-<div class="code-block standalone">
-  <button class="ghost copy-button" data-target="theming-scheme">Copy</button>
-  <pre><code id="theming-scheme" class="language-html">&lt;html data-color-scheme=&quot;light&quot;&gt;
-&lt;html data-color-scheme=&quot;dark&quot;&gt;</code></pre>
+<h2>Disabled</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="btn-disabled-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="btn-disabled-classes" data-variant="classes">&lt;button class=&quot;btn&quot; disabled&gt;Disabled&lt;/button&gt;
+&lt;button class=&quot;btn btn-disabled&quot;&gt;Looks disabled&lt;/button&gt;</code></pre>
+    
+      <pre hidden><code id="btn-disabled-classless" data-variant="classless">&lt;button disabled&gt;Disabled&lt;/button&gt;
+&lt;button class=&quot;disabled&quot;&gt;Looks disabled&lt;/button&gt;</code></pre>
+    
+  </div>
 </div>
 
 
-<h2>Live preview</h2>
-<p>Change these and every page on this site updates. Values persist for the session.</p>
-<form class="flex" style="flex-wrap: wrap; align-items: end">
-  <label>
-    <p>Base</p>
-    <input type="color" id="base-color-picker" />
-  </label>
-  <label>
-    <p>Accent</p>
-    <input type="color" id="accent-color-picker" />
-  </label>
-  <label>
-    <p>Error</p>
-    <input type="color" id="error-color-picker" />
-  </label>
-</form>
+<h2>Unstyling a button</h2>
 
-<h2>Browser support</h2>
-<p>
-  The framework leans on relative color syntax, <code>oklch(from ...)</code>. That means
-  Chrome 119+, Safari 16.4+, and Firefox 128+. There is no fallback layer, by design.
-</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="btn-semantic-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="btn-semantic-classes" data-variant="classes">&lt;p&gt;Read more about &lt;button style=&quot;text-decoration: underline&quot;&gt;this topic&lt;/button&gt;.&lt;/p&gt;</code></pre>
+    
+      <pre hidden><code id="btn-semantic-classless" data-variant="classless">&lt;p&gt;Read more about &lt;button class=&quot;semantic&quot; style=&quot;text-decoration: underline&quot;&gt;this topic&lt;/button&gt;.&lt;/p&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<p class="classless-note"><small><strong>Classless:</strong> &lt;code&gt;.semantic&lt;/code&gt; unsets the button styling so a button can sit inside a sentence. The class build has nothing to unset, so leave the class off.</small></p>
+
+
+<h2>Input buttons</h2>
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="tabs" role="tablist" aria-label="Markup variant">
+        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      </div>
+    
+    <button class="ghost copy-button" data-target="btn-inputs-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="btn-inputs-classes" data-variant="classes">&lt;input type=&quot;submit&quot; class=&quot;btn&quot; value=&quot;Submit&quot; /&gt;
+&lt;input type=&quot;reset&quot; class=&quot;btn&quot; value=&quot;Reset&quot; /&gt;</code></pre>
+    
+      <pre hidden><code id="btn-inputs-classless" data-variant="classless">&lt;input type=&quot;submit&quot; value=&quot;Submit&quot; /&gt;
+&lt;input type=&quot;reset&quot; value=&quot;Reset&quot; /&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<p class="classless-note"><small><strong>Classless:</strong> &lt;code&gt;input[type=&quot;submit&quot;]&lt;/code&gt; also picks up the text-field width and margin rules, so it stretches to the full width outside a flex row. With classes, &lt;code&gt;.btn&lt;/code&gt; alone leaves it at its natural width.</small></p>
+
 
 
         <footer class="site-footer">

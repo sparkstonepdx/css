@@ -1,0 +1,79 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Prose" %}
+{% set slug = "prose" %}
+
+{% block content %}
+<h1>Prose</h1>
+<p class="lede">
+  Long-form content: paragraphs, headings, lists, quotes, rules and code. The
+  classless build styles these elements everywhere. The class build scopes them
+  to <code>.prose</code>, so a paragraph inside a component keeps its own spacing.
+</p>
+
+{{ m.classes([
+  ["prose", "Styles p, h1 to h6, ul, ol, li, blockquote, hr, code, pre, samp and kbd inside it"],
+  ["kbd", "Key cap, usable outside .prose"]
+]) }}
+
+<h2>Headings and paragraphs</h2>
+{% set classless %}
+<h1>Heading one</h1>
+<h2>Heading two</h2>
+<h3>Heading three</h3>
+<p>Body text sits at 18px with a 1rem bottom margin.</p>
+{% endset %}
+{% set classes %}
+<div class="prose">
+  <h1>Heading one</h1>
+  <h2>Heading two</h2>
+  <h3>Heading three</h3>
+  <p>Body text sits at 18px with a 1rem bottom margin.</p>
+</div>
+{% endset %}
+{{ m.demo("prose-headings", classless, classes) }}
+
+<h2>Lists, quotes and rules</h2>
+{% set classless %}
+<ul>
+  <li>First item</li>
+  <li>Second item</li>
+</ul>
+<blockquote>A quote gets a thick left border in the theme color.</blockquote>
+<hr />
+<ol>
+  <li>Ordered one</li>
+  <li>Ordered two</li>
+</ol>
+{% endset %}
+{% set classes %}
+<div class="prose">
+  <ul>
+    <li>First item</li>
+    <li>Second item</li>
+  </ul>
+  <blockquote>A quote gets a thick left border in the theme color.</blockquote>
+  <hr />
+  <ol>
+    <li>Ordered one</li>
+    <li>Ordered two</li>
+  </ol>
+</div>
+{% endset %}
+{{ m.demo("prose-lists", classless, classes) }}
+
+<h2>Code</h2>
+{% set classless %}
+<p>Inline <code>code</code> and <samp>samp</samp> sit on a raised surface.</p>
+<pre><code>const theme = "@sparkstone/css";
+console.log(theme);</code></pre>
+{% endset %}
+{% set classes %}
+<div class="prose">
+  <p>Inline <code>code</code> and <samp>samp</samp> sit on a raised surface.</p>
+  <pre><code>const theme = "@sparkstone/css";
+console.log(theme);</code></pre>
+</div>
+{% endset %}
+{{ m.demo("prose-code", classless, classes) }}
+{% endblock %}

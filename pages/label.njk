@@ -1,0 +1,69 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Label" %}
+{% set slug = "label" %}
+
+{% block content %}
+<h1>Label</h1>
+<p class="lede">
+  Wrap a control in a label and the spacing, hint text and choice layouts follow.
+  The label is the layout primitive for every form control in this framework.
+</p>
+
+{{ m.classes([
+  ["label", "Block label with spacing for the control it wraps"],
+  ["block", "On a label wrapping a radio: renders it as a selectable card"]
+]) }}
+
+<h2>Label and control</h2>
+{% set classless %}
+<label>
+  Email
+  <input type="email" placeholder="you@example.com" />
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  Email
+  <input type="email" class="input" placeholder="you@example.com" />
+</label>
+{% endset %}
+{{ m.demo("label-basic", classless, classes) }}
+
+<h2>Hint text</h2>
+<p>A <code>small</code> after the control becomes a hint, and the control's bottom margin collapses into it.</p>
+{% set classless %}
+<label>
+  Username
+  <input type="text" />
+  <small>Letters, numbers and dashes.</small>
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  Username
+  <input type="text" class="input" />
+  <small>Letters, numbers and dashes.</small>
+</label>
+{% endset %}
+{{ m.demo("label-hint", classless, classes) }}
+
+<h2>Invalid state</h2>
+<p>A label's leading <code>p</code> turns error-colored when the control after it is invalid.</p>
+{% set classless %}
+<label>
+  <p>Email</p>
+  <input type="email" aria-invalid="true" value="not-an-email" />
+  <small class="error">Enter a valid email address.</small>
+</label>
+{% endset %}
+{% set classes %}
+<label class="label">
+  <p>Email</p>
+  <input type="email" class="input input-error" aria-invalid="true" value="not-an-email" />
+  <small class="text-error">Enter a valid email address.</small>
+</label>
+{% endset %}
+{{ m.demo("label-invalid", classless, classes) }}
+{{ m.classless_note("<code>aria-invalid=\"true\"</code> drives the error color on its own. <code>.input-error</code> is there for when you cannot set the attribute.") }}
+{% endblock %}

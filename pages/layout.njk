@@ -1,12 +1,7 @@
 {% extends "layout.njk" %}
 {% import "macros.njk" as m %}
-{% set toc = [
-  ["container", "Container"],
-  ["flex", "Flex"],
-  ["flip", "Flip"],
-  ["grid", "Grid"],
-  ["spacing", "Spacing"]
-] %}
+{% set title = "Layout" %}
+{% set slug = "layout" %}
 
 {% block content %}
 <h1>Layout</h1>
@@ -50,7 +45,7 @@
     <code>.flex</code> is <code>display: flex</code> with a <code>1rem</code> gap. That is the whole
     utility.
   </p>
-  {% call m.demo("layout-flex") %}
+  {% call m.inline_demo("layout-flex") %}
 <div class="flex">
   <article class="card" style="flex: 1">One</article>
   <article class="card" style="flex: 1">Two</article>
@@ -66,7 +61,7 @@
     stacks bottom-up, which is how you get a sidebar that appears above the content on mobile but
     beside it on desktop.
   </p>
-  {% call m.demo("layout-flip") %}
+  {% call m.inline_demo("layout-flip") %}
 <div class="flex flip">
   <article class="card" style="flex: 2">Main content</article>
   <article class="card" style="flex: 1">Sidebar</article>
@@ -86,7 +81,7 @@
     There is no grid utility. Use CSS, and use the framework's variables for spacing so it stays in
     rhythm.
   </p>
-  {% call m.demo("layout-grid") %}
+  {% call m.inline_demo("layout-grid") %}
 <div
   style="
     display: grid;

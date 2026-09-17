@@ -1,0 +1,55 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Input" %}
+{% set slug = "input" %}
+
+{% block content %}
+<h1>Input</h1>
+<p class="lede">
+  Text-like inputs: text, email, password, search, tel, url, number, and the
+  date and time family, which get an icon on the trailing edge.
+</p>
+
+{{ m.classes([
+  ["input", "Full-width field with the shared control surface"],
+  ["input-error", "Error color, for when aria-invalid is not available"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<input type="text" placeholder="Text" />
+<input type="email" placeholder="you@example.com" />
+<input type="password" value="hunter2" />
+{% endset %}
+{% set classes %}
+<input type="text" class="input" placeholder="Text" />
+<input type="email" class="input" placeholder="you@example.com" />
+<input type="password" class="input" value="hunter2" />
+{% endset %}
+{{ m.demo("input-basic", classless, classes) }}
+
+<h2>Date and time</h2>
+{% set classless %}
+<input type="date" />
+<input type="time" />
+<input type="month" />
+{% endset %}
+{% set classes %}
+<input type="date" class="input" />
+<input type="time" class="input" />
+<input type="month" class="input" />
+{% endset %}
+{{ m.demo("input-date", classless, classes) }}
+
+<h2>Invalid and disabled</h2>
+{% set classless %}
+<input type="text" aria-invalid="true" value="Invalid" />
+<input type="text" value="Disabled" disabled />
+{% endset %}
+{% set classes %}
+<input type="text" class="input" aria-invalid="true" value="Invalid" />
+<input type="text" class="input" value="Disabled" disabled />
+{% endset %}
+{{ m.demo("input-states", classless, classes) }}
+{{ m.classless_note("every <code>input</code> except checkbox, radio, range, file and color gets this styling, including <code>type=\"submit\"</code>.") }}
+{% endblock %}
