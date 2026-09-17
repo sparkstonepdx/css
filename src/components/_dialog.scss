@@ -1,56 +1,54 @@
 @use "../vars.scss" as *;
+@use "card";
 
-@use "card" as *;
-
-// $box and $actions are the child selectors for the dialog panel and its
-// footer: `article`/`footer` in classless, `.dialog-box`/`.dialog-actions` with classes.
-@mixin dialog($box, $actions) {
-  display: flex;
-  z-index: 999;
-  position: fixed;
-  inset: 0;
-  justify-content: center;
-  align-items: center;
-  backdrop-filter: blur(0.375rem);
-  min-height: 100%;
-  min-width: 100%;
-  padding: 0;
-  border: 0;
-  background: 0;
-
-  hr {
-    border-color: cur-color(var(--surface-lc-3));
-  }
-
-  &:not([open]),
-  &[open="false"] {
-    display: none;
-  }
-
-  &::backdrop {
+// Every class here is flat: .dialog-box does not sit inside .dialog. @extend
+// merges ancestor chains when it can, so a nested .dialog > .dialog-box would
+// compile to selectors like `dialog > form.dialog > article` once an element
+// extends it. Flat rules extend cleanly.
+@mixin styles {
+  .dialog {
+    display: flex;
+    z-index: 999;
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.1);
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(0.375rem);
+    min-height: 100%;
+    min-width: 100%;
+    padding: 0;
+    border: 0;
+    background: 0;
+    color: cur-color(var(--text-lc-1));
+
+    hr {
+      border-color: cur-color(var(--surface-lc-3));
+    }
+
+    &:not([open]),
+    &[open="false"] {
+      display: none;
+    }
+
+    &::backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.1);
+    }
+
+    > form {
+      width: 100%;
+      max-height: calc(100lvh - 2rem);
+    }
   }
 
-  > form {
-    width: 100%;
-    max-height: calc(100lvh - 2rem);
-  }
-
-  > #{$box},
-  > form > #{$box} {
+  .dialog-box {
+    @include card.card;
     width: 100%;
     max-height: calc(100lvh - 2rem);
     margin: 1rem auto;
     overflow: auto;
     color: cur-color(var(--text-lc-1));
-
-    > #{$actions},
-    > form > #{$actions} {
-      text-align: right;
-      justify-content: end;
-    }
 
     @media (min-width: 576px) {
       max-width: 510px;
@@ -60,29 +58,21 @@
       max-width: 700px;
     }
   }
-}
 
-@mixin dialog-color {
-  color: cur-color(var(--text-lc-1));
-}
+  // No declarations of its own yet: 1.x styles the dialog header only through
+  // its contents. Kept as a hook so the markup reads the same in both builds.
+  .dialog-header {
+  }
 
-@mixin dialog-scroll-lock($dialog) {
-  html:has(#{$dialog}[open]) {
-    overflow: hidden;
+  .dialog-actions {
+    @include card.card-actions;
+    text-align: right;
+    justify-content: end;
   }
 }
 
-// Standalone panel and footer. In classless these come from `article` and
-// `article > footer`, so the class build composes the card mixins.
-@mixin dialog-box {
-  @include card;
-}
-
-@mixin dialog-actions {
-  @include card-actions;
-}
-
-// Classless 1.x has no header styling beyond resetting button margins, which
-// the class build doesn't need, so this is a hook with no declarations yet.
-@mixin dialog-header {
+@mixin scroll-lock($dialog) {
+  html:has(#{$dialog}[open]) {
+    overflow: hidden;
+  }
 }

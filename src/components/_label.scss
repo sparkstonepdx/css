@@ -1,93 +1,94 @@
 @use "../vars.scss" as *;
 
-// Selectors for the controls a label can wrap differ per build:
-//   $field    text-like controls that get a top margin inside a label
-//   $hinted   controls followed by a <small> hint
-//   $radio    / $checkbox  the choice controls
-//   $invalid  an invalid control, used to tint the label text
-@mixin label($field, $hinted, $radio, $checkbox, $invalid) {
-  display: block;
-  margin-bottom: calc(1rem * 0.375);
+// Written against the class names. The classless build extends .label with
+// `label`, .radio with `input[type="radio"]` and so on, and @extend expands
+// every combination of those, so `label:has(> input[type="radio"])` comes out
+// of the same rule.
+@mixin styles {
+  .label {
+    display: block;
+    margin-bottom: calc(1rem * 0.375);
 
-  > :where(#{$field}) {
-    margin-top: calc(1rem * 0.25);
-  }
+    > :where(.input, .select, .textarea, .range, .file-input, .color-input) {
+      margin-top: calc(1rem * 0.25);
+    }
 
-  &:has(> #{$radio}) {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
+    &:has(> .radio) {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      cursor: pointer;
 
-    #{$radio} {
-      appearance: none;
-      width: 1rem;
-      height: 1rem;
-      border: var(--border-width) solid get-border-color();
-      border-radius: 50%;
-      position: relative;
-      box-sizing: border-box;
-      display: inline-block;
-      margin: 0;
-
-      &::after {
-        content: "";
-        position: absolute;
+      .radio {
+        appearance: none;
         width: 1rem;
         height: 1rem;
-        top: 0;
-        left: 0;
-        border: var(--border-width) solid cur-color(var(--surface-lc-1));
-        box-sizing: border-box;
-        background: get-border-color();
+        border: var(--border-width) solid get-border-color();
         border-radius: 50%;
-        opacity: 0;
-        transition: opacity 0.2s;
-      }
+        position: relative;
+        box-sizing: border-box;
+        display: inline-block;
+        margin: 0;
 
-      &:checked::after {
-        opacity: 1;
+        &::after {
+          content: "";
+          position: absolute;
+          width: 1rem;
+          height: 1rem;
+          top: 0;
+          left: 0;
+          border: var(--border-width) solid cur-color(var(--surface-lc-1));
+          box-sizing: border-box;
+          background: get-border-color();
+          border-radius: 50%;
+          opacity: 0;
+          transition: opacity 0.2s;
+        }
+
+        &:checked::after {
+          opacity: 1;
+        }
       }
     }
-  }
 
-  &:has(> #{$checkbox}) {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    gap: 0.5em;
-    transition:
-      border-color 0.2s,
-      background 0.2s;
-    margin-bottom: 1rem;
-  }
-
-  &.block:has(> #{$radio}) {
-    padding: 2rem;
-    border: var(--border-width) solid cur-color(var(--surface-lc-2));
-    border-radius: var(--border-radius);
-
-    &:has(#{$radio}:checked) {
-      border-color: get-border-color();
-      background-color: cur-color(var(--surface-lc-2));
+    &:has(> .checkbox) {
+      display: flex;
+      align-items: center;
+      cursor: pointer;
+      gap: 0.5em;
+      transition:
+        border-color 0.2s,
+        background 0.2s;
+      margin-bottom: 1rem;
     }
-  }
 
-  > p {
-    margin: 0;
-  }
+    &.block:has(> .radio) {
+      padding: 2rem;
+      border: var(--border-width) solid cur-color(var(--surface-lc-2));
+      border-radius: var(--border-radius);
 
-  > p:has(+ #{$invalid}) {
-    --color: var(--error-color);
-  }
+      &:has(.radio:checked) {
+        border-color: get-border-color();
+        background-color: cur-color(var(--surface-lc-2));
+      }
+    }
 
-  > #{$hinted}:has(+ small) {
-    margin-bottom: 0 !important;
-  }
+    > p {
+      margin: 0;
+    }
 
-  > #{$hinted} ~ small {
-    display: inline-block;
-    margin-bottom: 1rem;
-    color: cur-color(var(--text-lc-3));
+    > p:has(+ :is(.input, .select, .textarea):is([aria-invalid="true"], .input-error, .select-error, .textarea-error)) {
+      --color: var(--error-color);
+    }
+
+    > :is(.input, .select, .textarea):has(+ small) {
+      margin-bottom: 0 !important;
+    }
+
+    > :is(.input, .select, .textarea) ~ small {
+      display: inline-block;
+      margin-bottom: 1rem;
+      color: cur-color(var(--text-lc-3));
+    }
   }
 }

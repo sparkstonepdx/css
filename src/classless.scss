@@ -1,6 +1,8 @@
-// Classless build (the 1.x theme). Every rule here applies a component mixin
-// from ./components to plain elements, so class-based and classless styles
-// stay in sync. Add new styling to the component mixin, not here.
+// Classless build: the same class rules as the main build, bound to plain
+// elements with @extend. `button { @extend .btn; }` compiles to
+// `.btn, button { ... }`, so an element and its class share one rule and the
+// two builds cannot drift apart. Add new styling to the class in
+// ./components, then bind it to an element here.
 
 @use "sass:meta";
 @use "./vars.scss" as *;
@@ -16,78 +18,78 @@ $text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"]
 }
 
 @layer theme {
+  @include c.styles($classless: true);
+  @include c.firefox($text-input);
+  @include c.scroll-lock(dialog);
+
+  /* Form controls */
   #{$text-input} {
-    @include c.input;
+    @extend .input;
   }
-  @include c.input-firefox($text-input);
 
   select {
-    @include c.select;
+    @extend .select;
   }
 
   textarea {
-    @include c.textarea;
+    @extend .textarea;
   }
 
   input:where([type="range"]) {
-    @include c.range;
+    @extend .range;
   }
 
   input:where([type="file"]) {
-    @include c.file-input;
+    @extend .file-input;
   }
 
   input:where([type="color"]) {
-    @include c.color-input;
+    @extend .color-input;
   }
 
   input:where([type="checkbox"]) {
-    @include c.checkbox;
+    @extend .checkbox;
   }
 
   input:where([type="radio"]) {
-    @include c.radio;
+    @extend .radio;
   }
 
-  @include c.root;
-  @include c.dialog-scroll-lock(dialog);
-  @include c.schemes;
-
-  dialog {
-    @include c.dialog-color;
+  label {
+    @extend .label;
   }
 
+  fieldset {
+    @extend .fieldset;
+  }
+
+  fieldset > legend {
+    @extend .fieldset-legend;
+  }
+
+  /* Text */
   a:not([role="button"]):not(.semantic) {
-    @include c.link;
+    @extend .link;
   }
 
   a,
   a.semantic {
-    @include c.link-cursor;
+    cursor: pointer;
   }
 
-  @include c.container;
-
-  @include c.prose;
-
-  .semantic {
-    @include c.semantic;
+  .secondary {
+    @extend .text-secondary;
   }
 
-  label {
-    @include c.label(
-      $field: 'input:not([type="checkbox"], [type="radio"]), select, textarea',
-      $hinted: ":is(input, select, textarea)",
-      $radio: 'input[type="radio"]',
-      $checkbox: 'input[type="checkbox"]',
-      $invalid: 'input[aria-invalid="true"]'
-    );
+  small.error {
+    @extend .text-error;
   }
 
-  .rounded {
-    @include c.rounded;
+  small.chip {
+    @extend .badge;
   }
 
+  /* Actions */
   *:is(
     button,
     [type="button"],
@@ -95,57 +97,56 @@ $text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"]
     [type="reset"],
     [role="button"]
   ) {
-    @include c.btn;
-
-    &.semantic {
-      all: unset;
-      cursor: pointer;
-    }
+    @extend .btn;
 
     &.secondary {
-      @include c.btn-secondary;
+      @extend .btn-secondary;
     }
 
     &.ghost {
-      @include c.btn-ghost;
+      @extend .btn-ghost;
     }
 
     &.contrast {
-      @include c.btn-neutral;
+      @extend .btn-neutral;
     }
 
     &.primary {
-      @include c.btn-primary;
+      @extend .btn-primary;
     }
   }
 
-  .secondary {
-    @include c.text-secondary;
-  }
-
-  .disabled,
-  *:disabled {
-    @include c.disabled;
-  }
-
-  dialog {
-    @include c.dialog($box: article, $actions: footer);
-  }
-
+  /* Containers */
   article {
-    @include c.card;
+    @extend .card;
   }
 
   :is(article > footer, article > form > footer) {
-    @include c.card-actions;
+    @extend .card-actions;
   }
 
-  fieldset {
-    @include c.fieldset($legend: legend);
+  dialog {
+    @extend .dialog;
+  }
+
+  dialog > article,
+  dialog > form > article {
+    @extend .dialog-box;
+  }
+
+  dialog > article > footer,
+  dialog > article > form > footer,
+  dialog > form > article > footer,
+  dialog > form > article > form > footer {
+    @extend .dialog-actions;
   }
 
   table {
-    @include c.table;
+    @extend .table;
+  }
+
+  progress {
+    @extend .progress;
   }
 
   details {
@@ -157,24 +158,5 @@ $text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"]
       left: 0;
       height: 100%;
     }
-  }
-
-  progress {
-    @include c.progress;
-  }
-
-  article.card,
-  .card {
-    @include c.card-border;
-  }
-
-  @include c.flex;
-
-  small.error {
-    @include c.text-error;
-  }
-
-  small.chip {
-    @include c.badge;
   }
 }

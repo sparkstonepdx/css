@@ -1,6 +1,6 @@
 // Layout classes. These were already classes in 1.x, so both builds emit them as-is.
 
-@mixin container {
+@mixin container-styles {
   .container {
     max-width: 80ch;
     margin: auto;
@@ -50,11 +50,13 @@
   }
 }
 
-@mixin rounded {
-  --border-radius: 2rem;
+@mixin rounded-styles {
+  .rounded {
+    --border-radius: 2rem;
+  }
 }
 
-@mixin flex {
+@mixin flex-styles {
   .flex {
     display: flex;
     gap: 1rem;

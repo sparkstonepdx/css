@@ -88,12 +88,12 @@
   </p>
   {% call m.inline_demo("colors-scoping") %}
 <div class="flex flip">
-  <article class="card" style="--color: teal; flex: 1">
+  <article class="card-border" style="--color: teal; flex: 1">
     <h3>Teal</h3>
     <p>Scoped with <code>--color: teal</code>.</p>
     <button>Action</button>
   </article>
-  <article class="card" style="--color: crimson; flex: 1">
+  <article class="card-border" style="--color: crimson; flex: 1">
     <h3>Crimson</h3>
     <p>Scoped with <code>--color: crimson</code>.</p>
     <button>Action</button>
@@ -145,7 +145,7 @@
 <div class="flex">
   <button>Enabled</button>
   <button disabled>Disabled</button>
-  <article class="card disabled" style="flex: 1">
+  <article class="card-border disabled" style="flex: 1">
     <p>An entire subtree can be desaturated with <code>.disabled</code>.</p>
   </article>
 </div>

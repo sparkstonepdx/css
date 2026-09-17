@@ -1,14 +1,9 @@
 @use "../vars.scss" as *;
 
-// .prose styles long-form content by element, the way daisyUI projects pair
-// with the typography plugin. Classless applies it at the document root.
-
-@mixin kbd {
-  background-color: cur-color(var(--primary-surface-lc));
-  color: cur-color(var(--primary-text-lc));
-}
-
-@mixin prose {
+// The one component @extend cannot express: the classless build needs these
+// rules on bare elements at the document root, and .prose needs the same rules
+// as descendants. Both builds include `content`; only the scope differs.
+@mixin content {
   p {
     margin-bottom: 1rem;
   }
@@ -73,12 +68,22 @@
   }
 }
 
-// Standalone .kbd outside .prose: the inline code box plus kbd colors.
-@mixin kbd-standalone {
-  font-size: 0.75rem;
-  font-weight: bold;
-  display: inline-block;
-  padding: 0.375rem;
-  border-radius: 0.25rem;
-  @include kbd;
+@mixin kbd {
+  background-color: cur-color(var(--primary-surface-lc));
+  color: cur-color(var(--primary-text-lc));
+}
+
+@mixin styles {
+  .prose {
+    @include content;
+  }
+
+  .kbd {
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.375rem;
+    border-radius: 0.25rem;
+    @include kbd;
+  }
 }

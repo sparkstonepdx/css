@@ -97,13 +97,22 @@ Dialogs intentionally use `dialog-*` instead of daisyUI's `modal-*`.
 </article>
 ```
 
-The classless build applies the same component mixins to elements, so both builds stay in sync. When changing styles, edit the mixin in `src/components/`, not the entry files.
+The classless build emits the same classes and binds them to elements with Sass `@extend`, which is the native equivalent of Tailwind's `@apply`:
+
+```scss
+button { @extend .btn; }   // compiles to: .btn, button { ... }
+```
+
+One rule serves both builds, so they cannot drift apart, and the classless build carries the class names too if you want to mix the two. When changing styles, edit the class in `src/components/`, not the entry files.
 
 ### Migrating from 1.x
 
 1.x's theme is now the classless build. Replace `@sparkstone/css/src/theme.scss` with `@sparkstone/css/src/classless.scss` (or `pkg:@sparkstone/css/classless`), and `dist/theme.css` with `dist/classless.css`. Importing the package root now gives you the class-based build.
 
-One rendering change comes with it: `input[type="submit"]`, `[type="reset"]` and `[type="button"]` are styled only as buttons. In 1.x they also picked up the text-field rules, so they stretched to the full width and carried a bottom margin.
+Two rendering changes come with it:
+
+- `input[type="submit"]`, `[type="reset"]` and `[type="button"]` are styled only as buttons. In 1.x they also picked up the text-field rules, so they stretched to the full width and carried a bottom margin.
+- `.card` is the base card in both builds. Rename 1.x's `.card` to `.card-border` for the bordered look.
 
 ---
 

@@ -21,9 +21,12 @@
 
 <h2>Two builds, one source</h2>
 <p>
-  Every component is a Sass mixin. The class build applies those mixins to class
-  names, and the classless build applies the same mixins to plain elements, so
-  the two cannot drift apart.
+  Every component is defined once, as a class. The classless build emits those
+  same classes and then binds them to plain elements with Sass
+  <code>@extend</code>, which is the native version of Tailwind's
+  <code>@apply</code>: <code>button { @extend .btn; }</code> compiles to
+  <code>.btn, button { ... }</code>. One rule, both builds, no drift. The
+  classless build carries the class names too, so you can mix the two.
 </p>
 
 <table class="class-table">

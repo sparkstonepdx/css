@@ -2,7 +2,7 @@
 
 $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"]';
 
-// Shared surface for every form control.
+// Shared declaration blocks, reused by the control classes below.
 @mixin field {
   border: var(--border-width) solid get-border-color();
   border-radius: var(--border-radius);
@@ -13,16 +13,12 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   outline-style: none;
 
   &[aria-invalid="true"] {
-    @include field-error;
+    --color: var(--error-color);
   }
 
   &::placeholder {
     color: color-mix(in oklch, cur-color(var(--text-lc-2)), transparent 50%);
   }
-}
-
-@mixin field-error {
-  --color: var(--error-color);
 }
 
 @mixin field-block {
@@ -48,155 +44,163 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   background-repeat: no-repeat;
 }
 
-@mixin input {
-  @include field;
-  @include field-block;
-  @include field-text;
-  @include field-height;
+@mixin styles {
+  .input {
+    @include field;
+    @include field-block;
+    @include field-text;
+    @include field-height;
 
-  &:is(#{$date-types}) {
-    @include field-icon;
+    &:is(#{$date-types}) {
+      @include field-icon;
 
-    &::-webkit-calendar-picker-indicator {
-      width: 1rem;
-      margin-right: calc(1.25rem * -1);
-      margin-left: 1.25rem;
-      cursor: pointer;
-      opacity: 0;
+      &::-webkit-calendar-picker-indicator {
+        width: 1rem;
+        margin-right: calc(1.25rem * -1);
+        margin-left: 1.25rem;
+        cursor: pointer;
+        opacity: 0;
+      }
+
+      [dir="rtl"] & {
+        text-align: right;
+      }
     }
 
-    [dir="rtl"] & {
-      text-align: right;
+    &[type="time"] {
+      background-image: var(--icon-clock);
     }
   }
 
-  &[type="time"] {
-    background-image: var(--icon-clock);
+  .select {
+    @include field;
+    @include field-block;
+    @include field-text;
+
+    &:not([multiple], [size]) {
+      @include field-icon;
+      background-image: var(--icon-chevron);
+    }
+  }
+
+  .textarea {
+    @include field;
+    @include field-block;
+    @include field-text;
+    display: block;
+    resize: vertical;
+  }
+
+  .range {
+    @include field;
+    @include field-block;
+  }
+
+  .file-input {
+    @include field;
+    @include field-block;
+    color: cur-color(var(--text-lc-3));
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: auto;
+
+    &::file-selector-button {
+      border-radius: var(--border-radius);
+      border: var(--border-width) solid cur-color(var(--surface-lc-3));
+      top: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      margin-right: 1rem;
+
+      background-color: cur-color(var(--surface-lc-2));
+      color: cur-color(var(--text-lc-3));
+      cursor: pointer;
+    }
+  }
+
+  .color-input {
+    @include field;
+    @include field-block;
+    @include field-height;
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: var(--border-width) solid get-border-color();
+
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    &::-webkit-color-swatch {
+      border-radius: var(--border-radius);
+      border: 0;
+    }
+
+    &::-moz-color-swatch {
+      border-radius: var(--border-radius);
+      border: 0;
+    }
+  }
+
+  .checkbox {
+    @include field;
+    margin: 0;
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border: var(--border-width) solid get-border-color();
+    border-radius: calc(var(--border-radius) / 2);
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0.55rem;
+      left: 0.6rem;
+      width: 0.4rem;
+      height: 0.8rem;
+      border: solid cur-color(var(--surface-lc-1));
+      border-width: 0 var(--border-width) var(--border-width) 0;
+      transform: translate(-50%, -50%) rotate(45deg);
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+
+    &:checked {
+      background-color: cur-color(var(--surface-lc-4));
+
+      &::after {
+        opacity: 1;
+      }
+    }
+  }
+
+  .radio {
+    @include field;
+    cursor: pointer;
+  }
+
+  .input-error,
+  .select-error,
+  .textarea-error {
+    --color: var(--error-color);
   }
 }
 
 // Firefox draws its own picker icon; drop ours. Emitted at the top level
-// because @-moz-document can't nest inside a style rule.
-@mixin input-firefox($input) {
+// because @-moz-document cannot nest inside a style rule.
+@mixin firefox($input) {
   @-moz-document url-prefix() {
     #{$input}:is(#{$date-types}) {
       padding-right: 1rem !important;
       background-image: none !important;
     }
   }
-}
-
-@mixin select {
-  @include field;
-  @include field-block;
-  @include field-text;
-
-  &:not([multiple], [size]) {
-    @include field-icon;
-    background-image: var(--icon-chevron);
-  }
-}
-
-@mixin textarea {
-  @include field;
-  @include field-block;
-  @include field-text;
-  display: block;
-  resize: vertical;
-}
-
-@mixin range {
-  @include field;
-  @include field-block;
-}
-
-@mixin file-input {
-  @include field;
-  @include field-block;
-  color: cur-color(var(--text-lc-3));
-  background-color: transparent;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  height: auto;
-
-  &::file-selector-button {
-    border-radius: var(--border-radius);
-    border: var(--border-width) solid cur-color(var(--surface-lc-3));
-    top: 0;
-    bottom: 0;
-    padding: 0.75rem 1rem;
-    margin-right: 1rem;
-
-    background-color: cur-color(var(--surface-lc-2));
-    color: cur-color(var(--text-lc-3));
-    cursor: pointer;
-  }
-}
-
-@mixin color-input {
-  @include field;
-  @include field-block;
-  @include field-height;
-  appearance: none;
-  -webkit-appearance: none;
-  background: none;
-  padding: 0.25rem;
-  box-sizing: border-box;
-  cursor: pointer;
-  border: var(--border-width) solid get-border-color();
-
-  &::-webkit-color-swatch-wrapper {
-    padding: 0;
-  }
-
-  &::-webkit-color-swatch {
-    border-radius: var(--border-radius);
-    border: 0;
-  }
-
-  &::-moz-color-swatch {
-    border-radius: var(--border-radius);
-    border: 0;
-  }
-}
-
-@mixin checkbox {
-  @include field;
-  margin: 0;
-  appearance: none;
-  width: 1.5rem;
-  height: 1.5rem;
-  border: var(--border-width) solid get-border-color();
-  border-radius: calc(var(--border-radius) / 2);
-  display: inline-block;
-  position: relative;
-  cursor: pointer;
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0.55rem;
-    left: 0.6rem;
-    width: 0.4rem;
-    height: 0.8rem;
-    border: solid cur-color(var(--surface-lc-1));
-    border-width: 0 var(--border-width) var(--border-width) 0;
-    transform: translate(-50%, -50%) rotate(45deg);
-    opacity: 0;
-    transition: opacity 0.2s;
-  }
-
-  &:checked {
-    background-color: cur-color(var(--surface-lc-4));
-
-    &::after {
-      opacity: 1;
-    }
-  }
-}
-
-@mixin radio {
-  @include field;
-  cursor: pointer;
 }

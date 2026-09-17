@@ -1,17 +1,15 @@
 @use "../vars.scss" as *;
 
-@mixin fieldset($legend) {
-  border: var(--border-width) solid cur-color(var(--surface-lc-2));
-  border-radius: var(--border-radius);
-  padding: 1rem 1rem;
-  margin-bottom: 1rem;
-
-  > #{$legend} {
-    @include fieldset-legend;
+@mixin styles {
+  .fieldset {
+    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-radius: var(--border-radius);
+    padding: 1rem 1rem;
+    margin-bottom: 1rem;
   }
-}
 
-@mixin fieldset-legend {
-  margin-left: -0.5rem;
-  padding: 0 0.5rem;
+  .fieldset-legend {
+    margin-left: -0.5rem;
+    padding: 0 0.5rem;
+  }
 }

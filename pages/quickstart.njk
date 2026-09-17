@@ -117,7 +117,8 @@ import "@sparkstone/css/classless"; // dist/classless.css
   <li>Replace <code>dist/theme.css</code> with <code>dist/classless.css</code>.</li>
   <li>Replace <code>src/theme.scss</code> with <code>src/classless.scss</code>, or import <code>pkg:@sparkstone/css/classless</code>.</li>
   <li><code>input[type="submit"|"reset"|"button"]</code> is now styled only as a button. In 1.x it also picked up the text-field width, height and bottom margin.</li>
-  <li>Nothing else changes.</li>
+  <li><code>.card</code> is the base card in both builds now. Rename 1.x's <code>.card</code> to <code>.card-border</code> for the bordered look.</li>
+  <li>The classless build now ships the class names too, so <code>.btn</code>, <code>.input</code> and the rest work there as well.</li>
   <li>Moving to classes? <code>.card</code> becomes <code>.card-border</code>, and dialogs pick up <code>.dialog</code>, <code>.dialog-box</code> and <code>.dialog-actions</code>.</li>
 </ul>
 {% endblock %}

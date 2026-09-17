@@ -47,9 +47,9 @@
   </p>
   {% call m.inline_demo("layout-flex") %}
 <div class="flex">
-  <article class="card" style="flex: 1">One</article>
-  <article class="card" style="flex: 1">Two</article>
-  <article class="card" style="flex: 1">Three</article>
+  <article class="card-border" style="flex: 1">One</article>
+  <article class="card-border" style="flex: 1">Two</article>
+  <article class="card-border" style="flex: 1">Three</article>
 </div>
   {% endcall %}
 </section>
@@ -63,13 +63,13 @@
   </p>
   {% call m.inline_demo("layout-flip") %}
 <div class="flex flip">
-  <article class="card" style="flex: 2">Main content</article>
-  <article class="card" style="flex: 1">Sidebar</article>
+  <article class="card-border" style="flex: 2">Main content</article>
+  <article class="card-border" style="flex: 1">Sidebar</article>
 </div>
 
 <div class="flex flip reverse">
-  <article class="card" style="flex: 2">Main, second on mobile</article>
-  <article class="card" style="flex: 1">Sidebar, first on mobile</article>
+  <article class="card-border" style="flex: 2">Main, second on mobile</article>
+  <article class="card-border" style="flex: 1">Sidebar, first on mobile</article>
 </div>
   {% endcall %}
   <p><small>Resize the window to see the breakpoint.</small></p>
@@ -88,10 +88,10 @@
     grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
     gap: var(--padding);
   ">
-  <article class="card">Auto</article>
-  <article class="card">Fitting</article>
-  <article class="card">Grid</article>
-  <article class="card">Cells</article>
+  <article class="card-border">Auto</article>
+  <article class="card-border">Fitting</article>
+  <article class="card-border">Grid</article>
+  <article class="card-border">Cells</article>
 </div>
   {% endcall %}
 </section>

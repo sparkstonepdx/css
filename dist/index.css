@@ -115,12 +115,6 @@
   .input[type=time] {
     background-image: var(--icon-clock);
   }
-  @-moz-document url-prefix() {
-    .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
-      padding-right: 1rem !important;
-      background-image: none !important;
-    }
-  }
   .select {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
     border-radius: var(--border-radius);
@@ -513,9 +507,6 @@
     height: 0;
     width: 0;
   }
-  html:has(.dialog[open]) {
-    overflow: hidden;
-  }
   [data-color-scheme=dark] {
     --swatch-lc-9: 99% 0.018;
     --text-lc-1: var(--swatch-lc-9);
@@ -689,9 +680,6 @@
   body *::selection {
     background-color: color-mix(in oklch, oklch(from var(--color) var(--surface-lc-3) h), transparent 50%);
   }
-  .dialog {
-    color: oklch(from var(--color) var(--text-lc-1) h);
-  }
   .link {
     --color: var(--accent-color);
     color: oklch(from var(--color) var(--text-lc-4) h);
@@ -861,13 +849,13 @@
   .label > p {
     margin: 0;
   }
-  .label > p:has(+ :is(.input, .select, .textarea, .range, .file-input, .color-input):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
+  .label > p:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
     --color: var(--error-color);
   }
-  .label > :is(.input, .select, .textarea, .range, .file-input, .color-input):has(+ small) {
+  .label > :is(.input, .select, .textarea):has(+ small) {
     margin-bottom: 0 !important;
   }
-  .label > :is(.input, .select, .textarea, .range, .file-input, .color-input) ~ small {
+  .label > :is(.input, .select, .textarea) ~ small {
     display: inline-block;
     margin-bottom: 1rem;
     color: oklch(from var(--color) var(--text-lc-3) h);
@@ -939,6 +927,10 @@
     --primary-surface-lc: var(--primary-grey-surface-lc);
     --primary-text-lc: var(--primary-grey-text-lc);
   }
+  .text-error {
+    --color: var(--error-color);
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
   .dialog {
     display: flex;
     z-index: 999;
@@ -952,6 +944,7 @@
     padding: 0;
     border: 0;
     background: 0;
+    color: oklch(from var(--color) var(--text-lc-1) h);
   }
   .dialog hr {
     border-color: oklch(from var(--color) var(--surface-lc-3) h);
@@ -968,38 +961,26 @@
     width: 100%;
     max-height: calc(100lvh - 2rem);
   }
-  .dialog > .dialog-box,
-  .dialog > form > .dialog-box {
+  .dialog-box {
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+    box-shadow: var(--box-shadow);
     width: 100%;
     max-height: calc(100lvh - 2rem);
     margin: 1rem auto;
     overflow: auto;
     color: oklch(from var(--color) var(--text-lc-1) h);
   }
-  .dialog > .dialog-box > .dialog-actions,
-  .dialog > .dialog-box > form > .dialog-actions,
-  .dialog > form > .dialog-box > .dialog-actions,
-  .dialog > form > .dialog-box > form > .dialog-actions {
-    text-align: right;
-    justify-content: end;
-  }
   @media (min-width: 576px) {
-    .dialog > .dialog-box,
-    .dialog > form > .dialog-box {
+    .dialog-box {
       max-width: 510px;
     }
   }
   @media (min-width: 768px) {
-    .dialog > .dialog-box,
-    .dialog > form > .dialog-box {
+    .dialog-box {
       max-width: 700px;
     }
-  }
-  .dialog-box {
-    padding: 1rem;
-    border-radius: var(--border-radius);
-    background-color: oklch(from var(--color) var(--surface-lc-2) h);
-    box-shadow: var(--box-shadow);
   }
   .dialog-actions {
     margin-top: 1rem;
@@ -1007,6 +988,8 @@
     border-bottom-right-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
     border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    text-align: right;
+    justify-content: end;
   }
   .card {
     padding: 1rem;
@@ -1021,15 +1004,17 @@
     border-bottom-left-radius: var(--border-radius);
     border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
   }
+  .card-border {
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    padding: var(--padding);
+    border-radius: var(--border-radius);
+  }
   .fieldset {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
     border-radius: var(--border-radius);
     padding: 1rem 1rem;
     margin-bottom: 1rem;
-  }
-  .fieldset > .fieldset-legend {
-    margin-left: -0.5rem;
-    padding: 0 0.5rem;
   }
   .fieldset-legend {
     margin-left: -0.5rem;
@@ -1068,12 +1053,6 @@
   .progress::-moz-progress-bar {
     background-color: oklch(from var(--color) var(--surface-lc-5) h);
   }
-  .card-border {
-    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
-    background-color: oklch(from var(--color) var(--surface-lc-1) h);
-    padding: var(--padding);
-    border-radius: var(--border-radius);
-  }
   .flex {
     display: flex;
     gap: 1rem;
@@ -1086,16 +1065,21 @@
       flex-direction: column-reverse;
     }
   }
-  .text-error {
-    --color: var(--error-color);
-    color: oklch(from var(--color) var(--text-lc-3) h);
-  }
   .badge {
     border-radius: calc(var(--border-radius) * 2);
     background-color: oklch(from var(--color) var(--surface-lc-3) h);
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
     color: oklch(from var(--color) var(--text-lc-3) h);
     white-space: nowrap;
+  }
+  @-moz-document url-prefix() {
+    .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
+      padding-right: 1rem !important;
+      background-image: none !important;
+    }
+  }
+  html:has(.dialog[open]) {
+    overflow: hidden;
   }
 }
 

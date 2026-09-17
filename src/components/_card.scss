@@ -1,5 +1,6 @@
 @use "../vars.scss" as *;
 
+// Declaration blocks, so .dialog-box and .dialog-actions can reuse them.
 @mixin card {
   padding: 1rem;
   border-radius: var(--border-radius);
@@ -21,4 +22,18 @@
   background-color: cur-color(var(--surface-lc-1));
   padding: var(--padding);
   border-radius: var(--border-radius);
+}
+
+@mixin styles {
+  .card {
+    @include card;
+  }
+
+  .card-actions {
+    @include card-actions;
+  }
+
+  .card-border {
+    @include card-border;
+  }
 }

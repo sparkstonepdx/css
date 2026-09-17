@@ -57,7 +57,7 @@
 
 <h2>Bordered</h2>
 {% set classless %}
-<div class="card">
+<div class="card-border">
   <h3>Bordered</h3>
   <p>A border instead of a shadow, on the page background.</p>
 </div>
@@ -69,5 +69,11 @@
 </div>
 {% endset %}
 {{ m.demo("card-border", classless, classes) }}
-{{ m.classless_note("<code>article.card</code> and <code>.card</code> both give you the bordered variant in 1.x. Migrating to classes means renaming those to <code>.card-border</code>.") }}
+<p>
+  <small>
+    In 1.x, <code>.card</code> was the bordered variant. Both builds now share one
+    set of class names, so <code>.card</code> is the base card and the bordered one is
+    <code>.card-border</code>.
+  </small>
+</p>
 {% endblock %}

@@ -375,7 +375,7 @@
   &lt;p&gt;A border instead of a shadow, on the page background.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
     
-      <pre hidden><code id="card-border-classless" data-variant="classless">&lt;div class=&quot;card&quot;&gt;
+      <pre hidden><code id="card-border-classless" data-variant="classless">&lt;div class=&quot;card-border&quot;&gt;
   &lt;h3&gt;Bordered&lt;/h3&gt;
   &lt;p&gt;A border instead of a shadow, on the page background.&lt;/p&gt;
 &lt;/div&gt;</code></pre>
@@ -383,9 +383,13 @@
   </div>
 </div>
 
-
-<p class="classless-note"><small><strong>Classless:</strong> &lt;code&gt;article.card&lt;/code&gt; and &lt;code&gt;.card&lt;/code&gt; both give you the bordered variant in 1.x. Migrating to classes means renaming those to &lt;code&gt;.card-border&lt;/code&gt;.</small></p>
-
+<p>
+  <small>
+    In 1.x, <code>.card</code> was the bordered variant. Both builds now share one
+    set of class names, so <code>.card</code> is the base card and the bordered one is
+    <code>.card-border</code>.
+  </small>
+</p>
 
 
         <footer class="site-footer">
