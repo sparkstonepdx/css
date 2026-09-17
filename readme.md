@@ -103,6 +103,8 @@ The classless build applies the same component mixins to elements, so both build
 
 1.x's theme is now the classless build. Replace `@sparkstone/css/src/theme.scss` with `@sparkstone/css/src/classless.scss` (or `pkg:@sparkstone/css/classless`), and `dist/theme.css` with `dist/classless.css`. Importing the package root now gives you the class-based build.
 
+One rendering change comes with it: `input[type="submit"]`, `[type="reset"]` and `[type="button"]` are styled only as buttons. In 1.x they also picked up the text-field rules, so they stretched to the full width and carried a bottom margin.
+
 ---
 
 ## 🎨 Theming

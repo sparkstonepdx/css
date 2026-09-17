@@ -87,5 +87,11 @@
 <input type="reset" class="btn" value="Reset" />
 {% endset %}
 {{ m.demo("btn-inputs", classless, classes) }}
-{{ m.classless_note("<code>input[type=\"submit\"]</code> also picks up the text-field width and margin rules, so it stretches to the full width outside a flex row. With classes, <code>.btn</code> alone leaves it at its natural width.") }}
+<p>
+  <small>
+    Button-type inputs are styled as buttons in both builds. In 1.x the classless
+    build also applied the text-field rules to them, so they stretched to the full
+    width and carried a bottom margin.
+  </small>
+</p>
 {% endblock %}

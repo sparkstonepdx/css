@@ -72,7 +72,7 @@
   }
 }
 @layer theme {
-  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color])) {
+  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
     border-radius: var(--border-radius);
     padding: calc(var(--padding) / 2);
@@ -81,20 +81,20 @@
     outline-width: 0;
     outline-style: none;
   }
-  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color]))[aria-invalid=true] {
+  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image]))[aria-invalid=true] {
     --color: var(--error-color);
   }
-  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color]))::placeholder {
+  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image]))::placeholder {
     color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
   }
-  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color])) {
+  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
     margin-bottom: 1rem;
     width: 100%;
     appearance: none;
     padding: 0.75rem 1rem;
     height: calc(3rem + var(--border-width) * 2);
   }
-  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color])):is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
+  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])):is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
     padding-inline-start: 1rem;
     padding-inline-end: 2.5rem;
     background-image: var(--icon-calendar);
@@ -102,21 +102,21 @@
     background-size: 1rem auto;
     background-repeat: no-repeat;
   }
-  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color])):is([type=date], [type=datetime-local], [type=month], [type=time], [type=week])::-webkit-calendar-picker-indicator {
+  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])):is([type=date], [type=datetime-local], [type=month], [type=time], [type=week])::-webkit-calendar-picker-indicator {
     width: 1rem;
     margin-right: -1.25rem;
     margin-left: 1.25rem;
     cursor: pointer;
     opacity: 0;
   }
-  [dir=rtl] input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color])):is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
+  [dir=rtl] input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])):is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
     text-align: right;
   }
-  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color]))[type=time] {
+  input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image]))[type=time] {
     background-image: var(--icon-clock);
   }
   @-moz-document url-prefix() {
-    input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color])):is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
+    input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])):is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
       padding-right: 1rem !important;
       background-image: none !important;
     }
@@ -1018,13 +1018,6 @@
     border-bottom-right-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
     border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
-  }
-  :is(article,
-  article > footer,
-  article > form > footer,
-  article > header,
-  article > form > header) > :is([type=button], [type=reset], [type=submit]) {
-    margin-bottom: 0;
   }
   fieldset {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);

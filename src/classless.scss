@@ -6,7 +6,8 @@
 @use "./vars.scss" as *;
 @use "./components" as c;
 
-$text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"]))';
+// Button-ish types are excluded: they are styled as buttons, not as fields.
+$text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"], [type="submit"], [type="reset"], [type="button"], [type="image"]))';
 
 @layer reset, theme;
 
@@ -137,19 +138,6 @@ $text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"]
 
   :is(article > footer, article > form > footer) {
     @include c.card-actions;
-  }
-
-  :is(
-    article,
-    article > footer,
-    article > form > footer,
-    article > header,
-    article > form > header
-  )
-  > {
-    :is([type="button"], [type="reset"], [type="submit"]) {
-      margin-bottom: 0;
-    }
   }
 
   fieldset {
