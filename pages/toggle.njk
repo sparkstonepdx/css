@@ -1,0 +1,69 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Toggle" %}
+{% set slug = "toggle" %}
+
+{% block content %}
+<h1>Toggle</h1>
+<p class="lede">
+  A switch. daisyUI puts <code>.toggle</code> on a checkbox;
+  <a href="https://kobalte.dev/docs/core/components/switch" target="_blank" rel="noreferrer">Kobalte's Switch</a>
+  builds it from a Control and a Thumb, with the real input visually hidden. Both
+  shapes work.
+</p>
+
+{{ m.classes([
+  ["toggle", "The track, on a checkbox or on Kobalte's Control"],
+  ["toggle-thumb", "The knob, on Kobalte's Thumb. Not needed on a checkbox"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<label class="label">
+  <input type="checkbox" class="toggle" checked />
+  Email me about releases
+</label>
+<label class="label">
+  <input type="checkbox" class="toggle" />
+  Email me about everything else
+</label>
+<label class="label">
+  <input type="checkbox" class="toggle" disabled />
+  Locked off
+</label>
+{% endset %}
+{% set kobalte_markup %}
+<div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem">
+  <div class="toggle" data-checked><div class="toggle-thumb" data-checked></div></div>
+  <label>Email me about releases</label>
+</div>
+<div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem">
+  <div class="toggle"><div class="toggle-thumb"></div></div>
+  <label>Email me about everything else</label>
+</div>
+<div style="display: flex; align-items: center; gap: 0.5rem">
+  <div class="toggle" data-disabled><div class="toggle-thumb"></div></div>
+  <label>Locked off</label>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Switch } from "@kobalte/core/switch";
+
+<Switch checked={enabled()} onChange={setEnabled}>
+  <Switch.Input />
+  <Switch.Control class="toggle">
+    <Switch.Thumb class="toggle-thumb" />
+  </Switch.Control>
+  <Switch.Label>Email me about releases</Switch.Label>
+</Switch>
+{% endset %}
+{{ m.demo("toggle-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    Switch is the one component here whose parts carry no role or attribute of
+    their own: Control, Thumb and the root are all divs with the same
+    <code>data-checked</code>. So the classes go on the parts by hand, and
+    <code>/classless/kobalte</code> only supplies the state.
+  </small>
+</p>
+{% endblock %}

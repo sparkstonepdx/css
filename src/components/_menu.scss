@@ -72,6 +72,12 @@
     background-color: cur-color(var(--surface-lc-2));
   }
 
+  // A selected row, as opposed to the highlighted one: a select keeps one row
+  // selected while the pointer highlights another.
+  .menu-selected {
+    font-weight: bold;
+  }
+
   .menu-disabled {
     @include apply-greyscale();
     pointer-events: none;

@@ -1,0 +1,44 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Alert" %}
+{% set slug = "alert" %}
+
+{% block content %}
+<h1>Alert</h1>
+<p class="lede">
+  A short, important message.
+  <a href="https://kobalte.dev/docs/core/components/alert" target="_blank" rel="noreferrer">Kobalte's Alert</a>
+  is one element with <code>role="alert"</code>, which the Kobalte layer binds, so
+  it needs no class at all.
+</p>
+
+{{ m.classes([
+  ["alert", "The message box"],
+  ["alert-error", "Recolours it with --error-color"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<div class="alert" role="alert">Your changes have been saved.</div>
+<div class="alert alert-error" role="alert">We could not reach the server.</div>
+{% endset %}
+{% set kobalte_markup %}
+<div role="alert">Your changes have been saved.</div>
+<div role="alert" class="alert-error">We could not reach the server.</div>
+{% endset %}
+{% set kobalte %}
+import { Alert } from "@kobalte/core/alert";
+
+<Alert>Your changes have been saved.</Alert>
+<Alert class="alert-error">We could not reach the server.</Alert>
+{% endset %}
+{{ m.demo("alert-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    daisyUI also has <code>alert-info</code>, <code>alert-success</code> and
+    <code>alert-warning</code>. This framework derives everything from one
+    <code>--color</code> plus <code>--error-color</code>, so there are no tokens
+    for those yet.
+  </small>
+</p>
+{% endblock %}

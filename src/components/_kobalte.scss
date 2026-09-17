@@ -99,7 +99,84 @@
   }
 }
 
+// Tooltip.Content -> div[role="tooltip"].
+@mixin tooltip {
+  [role="tooltip"] {
+    @extend .tooltip-content;
+  }
+}
+
+// Alert -> div[role="alert"].
+@mixin alert {
+  [role="alert"] {
+    @extend .alert;
+  }
+}
+
+// Accordion.Content -> div[role="region"]; Accordion.Trigger is a button with
+// no role of its own, inside Accordion.Header, which is the heading right
+// before that region.
+@mixin accordion {
+  :is(h1, h2, h3, h4, h5, h6):has(+ [role="region"]) {
+    @extend .collapse;
+
+    margin-bottom: 0;
+
+    > button {
+      @extend .collapse-title;
+    }
+  }
+
+  [role="region"] {
+    @extend .collapse-content;
+  }
+}
+
+// Select.Trigger -> button[aria-haspopup="listbox"], .Listbox -> ul[role="listbox"],
+// .Item -> li[role="option"]. The trigger is a form control, not a button, so it
+// takes the field styling.
+@mixin select {
+  button[aria-haspopup="listbox"] {
+    @extend .select;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: calc(var(--padding) / 2);
+    text-align: left;
+    background-image: none;
+  }
+
+  [role="listbox"] {
+    @extend .dropdown-content;
+    @extend .menu;
+  }
+
+  [role="option"] {
+    @extend .menu-item;
+
+    &[data-highlighted] {
+      @extend .menu-active;
+    }
+
+    &[data-selected] {
+      @extend .menu-selected;
+    }
+
+    &[data-disabled] {
+      @extend .menu-disabled;
+    }
+  }
+}
+
+// Switch has no role or attribute that identifies its Control and Thumb: both
+// are divs carrying the same data attributes as the root. Put .toggle and
+// .toggle-thumb on those parts yourself; only the state is bound here.
 @mixin bindings {
   @include tabs;
   @include dropdown-menu;
+  @include tooltip;
+  @include alert;
+  @include accordion;
+  @include select;
 }

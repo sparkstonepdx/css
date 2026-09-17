@@ -49,3 +49,45 @@ When a component is signed off, delete its section.
 | `.menu-title` | `0.875rem` in `--text-lc-3` | |
 | `.menu-shortcut` | `margin-left: auto`, `0.875rem` in `--text-lc-3` | not a daisyUI class; it names the trailing slot Kobalte's example calls `item-right-slot` |
 | Kobalte separator | `hr` inside a menu gets a `--surface-lc-2` rule with `--padding / 4` margins | the framework's `hr` is a prose rule with 1rem margins, too loose inside a panel |
+
+## Toggle (`src/components/_toggle.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Size | `--toggle-height: 1.5rem`, track 1.75x that | matches `.checkbox`'s 1.5rem box |
+| Track | `--surface-lc-2`, `--surface-lc-4` when on, border from `get-border-color()` | |
+| Knob | `--surface-lc-1` | |
+| Motion | `150ms` on background and on the knob's transform | **Questionable**: the tab indicator animates at 250ms. Two durations, no scale |
+| One-element form | knob drawn as a radial gradient and slid with `background-position` | a checkbox has no child to move and no usable `::before`. **Questionable**: a gradient knob will not take a border or a shadow if the design ever wants one |
+
+## Tooltip (`src/components/_tooltip.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Bubble | `--surface-lc-5` background with `--surface-lc-1` text | the only inverted surface in the framework |
+| Text | `0.875rem`, max-width `20rem` | |
+| z-index | `50` | same magic number as the dropdown panel |
+
+## Collapse (`src/components/_collapse.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Section | bottom rule only, no border or background | so a stack reads as a list, not as cards |
+| Title | bold, `1rem`, full width, space-between | the size is pinned because Kobalte's trigger sits inside a heading |
+| Title hover | text drops to `--text-lc-3` | **Questionable**: every other trigger in the framework changes its background on hover, not its text |
+| Content padding | bottom only | |
+
+## Alert (`src/components/_alert.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Box | `--surface-lc-2` with a border and `1rem` bottom margin | same surface as `.card` |
+| Variants | `.alert-error` only | **Open question**: daisyUI has info, success and warning too. The framework has `--color` and `--error-color` and nothing else, so those need new tokens before the classes can exist |
+
+## Select, Kobalte listbox (`src/components/_menu.scss`, `_kobalte.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| `.menu-selected` | bold | distinguishes the chosen option from the highlighted one. **Questionable**: bold shifts row width, the same objection as `.tab-active` |
+| Kobalte trigger | takes `.select`'s field styling, with the chevron background dropped | it is a button that should read as a form control |
+

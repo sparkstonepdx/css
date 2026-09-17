@@ -1,0 +1,44 @@
+@use "../vars.scss" as *;
+
+// VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. See DESIGN-REVIEW.md.
+//
+// Collapsible sections, named after daisyUI 5. An accordion is a stack of
+// these: .collapse per section, .collapse-title on the trigger,
+// .collapse-content on the panel.
+@mixin styles {
+  .collapse {
+    border-bottom: var(--border-width) solid cur-color(var(--surface-lc-2));
+  }
+
+  .collapse-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--padding);
+    width: 100%;
+
+    padding: calc(var(--padding) / 2) 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: cur-color(var(--text-lc-1));
+    // Kobalte puts the trigger inside a heading, which would otherwise size it.
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+
+    &:hover {
+      color: cur-color(var(--text-lc-3));
+    }
+
+    &:is([data-disabled], :disabled) {
+      @include apply-greyscale();
+      pointer-events: none;
+    }
+  }
+
+  .collapse-content {
+    padding-bottom: calc(var(--padding) / 2);
+  }
+}

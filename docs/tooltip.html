@@ -4,7 +4,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>Kbd · @sparkstone/css</title>
+    <title>Tooltip · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
@@ -99,7 +99,7 @@
                 <li>
                   <a
                     href="./kbd.html"
-                    aria-current="page"
+                    
                     >Kbd</a
                   >
                 </li>
@@ -300,7 +300,7 @@
                 <li>
                   <a
                     href="./tooltip.html"
-                    
+                    aria-current="page"
                     >Tooltip</a
                   >
                 </li>
@@ -312,8 +312,13 @@
 
       <main class="site-main">
         
-<h1>Kbd</h1>
-<p class="lede">Keyboard keys, filled with the primary color.</p>
+<h1>Tooltip</h1>
+<p class="lede">
+  A small bubble of explanatory text. The class paints the bubble and nothing
+  else: daisyUI anchors its tooltip with a pseudo-element, and
+  <a href="https://kobalte.dev/docs/core/components/tooltip" target="_blank" rel="noreferrer">Kobalte</a>
+  positions a portaled <code>Content</code> with its popper.
+</p>
 
 
 <table class="class-table">
@@ -322,13 +327,16 @@
   </thead>
   <tbody>
     
-      <tr><td><code>kbd</code></td><td>Key cap: small, bold, primary fill</td></tr>
+      <tr><td><code>tooltip-content</code></td><td>The bubble: inverted surface, small text</td></tr>
+    
+      <tr><td><code>tooltip-arrow</code></td><td>Colour for Kobalte&#39;s arrow, which draws itself in currentColor</td></tr>
     
   </tbody>
 </table>
 
 
 <h2>Basic</h2>
+
 
 
 
@@ -341,26 +349,44 @@
         <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
         <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
         
+          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
+        
       </div>
     
-    <button class="ghost copy-button" data-target="kbd-basic-classes">Copy</button>
+    <button class="ghost copy-button" data-target="tooltip-basic-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="kbd-basic-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
-  &lt;p&gt;Press &lt;kbd class=&quot;kbd&quot;&gt;Ctrl&lt;/kbd&gt; + &lt;kbd class=&quot;kbd&quot;&gt;K&lt;/kbd&gt; to search.&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+    <pre><code id="tooltip-basic-classes" data-variant="classes">&lt;button class=&quot;btn&quot;&gt;Save&lt;/button&gt;
+&lt;span class=&quot;tooltip-content&quot; style=&quot;display: inline-block; margin-left: 0.5rem&quot;&gt;Saves and closes&lt;/span&gt;</code></pre>
     
-      <pre hidden><code id="kbd-basic-classless" data-variant="classless">&lt;div&gt;
-  &lt;p&gt;Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;K&lt;/kbd&gt; to search.&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+      <pre hidden><code id="tooltip-basic-classless" data-variant="classless">&lt;button class=&quot;btn&quot;&gt;Save&lt;/button&gt;
+&lt;span class=&quot;tooltip-content&quot; style=&quot;display: inline-block; margin-left: 0.5rem&quot;&gt;Saves and closes&lt;/span&gt;</code></pre>
     
+    
+      <pre hidden><code id="tooltip-basic-kobalte" data-variant="kobalte">import { Tooltip } from &quot;@kobalte/core/tooltip&quot;;
+
+&lt;Tooltip&gt;
+  &lt;Tooltip.Trigger class=&quot;btn&quot;&gt;Save&lt;/Tooltip.Trigger&gt;
+  &lt;Tooltip.Portal&gt;
+    &lt;Tooltip.Content&gt;
+      Saves and closes
+      &lt;Tooltip.Arrow /&gt;
+    &lt;/Tooltip.Content&gt;
+  &lt;/Tooltip.Portal&gt;
+&lt;/Tooltip&gt;</code></pre>
+      <pre hidden><code id="tooltip-basic-kobalte-markup" data-variant="kobalte-markup">&lt;button class=&quot;btn&quot; aria-describedby=&quot;tip&quot;&gt;Save&lt;/button&gt;
+&lt;div role=&quot;tooltip&quot; id=&quot;tip&quot; data-expanded style=&quot;display: inline-block; margin-left: 0.5rem&quot;&gt;Saves and closes&lt;/div&gt;</code></pre>
     
   </div>
 </div>
 
-
-<p class="classless-note"><small><strong>Classless:</strong> &lt;code&gt;kbd&lt;/code&gt; is styled everywhere. With classes, &lt;code&gt;.kbd&lt;/code&gt; works on its own, and &lt;code&gt;kbd&lt;/code&gt; inside &lt;code&gt;.prose&lt;/code&gt; is styled without it.</small></p>
-
+<p>
+  <small>
+    The demo places the bubble inline so it is visible without a hover. In an app
+    Kobalte's popper positions it, and <code>data-expanded</code> tells you when it
+    is open if you want to animate it.
+  </small>
+</p>
 
 
         <footer class="site-footer">

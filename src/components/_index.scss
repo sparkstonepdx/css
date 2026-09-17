@@ -8,6 +8,10 @@
 @use "label";
 @use "layout";
 @use "link";
+@use "alert";
+@use "collapse";
+@use "toggle";
+@use "tooltip";
 @use "menu";
 @use "progress";
 @use "prose";
@@ -45,6 +49,10 @@
   @include table.styles;
   @include tabs.styles;
   @include menu.styles;
+  @include toggle.styles;
+  @include collapse.styles;
+  @include tooltip.styles;
+  @include alert.styles;
   @include progress.styles;
   @include layout.flex-styles;
   @include badge.styles;

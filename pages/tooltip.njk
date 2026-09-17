@@ -1,0 +1,50 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Tooltip" %}
+{% set slug = "tooltip" %}
+
+{% block content %}
+<h1>Tooltip</h1>
+<p class="lede">
+  A small bubble of explanatory text. The class paints the bubble and nothing
+  else: daisyUI anchors its tooltip with a pseudo-element, and
+  <a href="https://kobalte.dev/docs/core/components/tooltip" target="_blank" rel="noreferrer">Kobalte</a>
+  positions a portaled <code>Content</code> with its popper.
+</p>
+
+{{ m.classes([
+  ["tooltip-content", "The bubble: inverted surface, small text"],
+  ["tooltip-arrow", "Colour for Kobalte's arrow, which draws itself in currentColor"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<button class="btn">Save</button>
+<span class="tooltip-content" style="display: inline-block; margin-left: 0.5rem">Saves and closes</span>
+{% endset %}
+{% set kobalte_markup %}
+<button class="btn" aria-describedby="tip">Save</button>
+<div role="tooltip" id="tip" data-expanded style="display: inline-block; margin-left: 0.5rem">Saves and closes</div>
+{% endset %}
+{% set kobalte %}
+import { Tooltip } from "@kobalte/core/tooltip";
+
+<Tooltip>
+  <Tooltip.Trigger class="btn">Save</Tooltip.Trigger>
+  <Tooltip.Portal>
+    <Tooltip.Content>
+      Saves and closes
+      <Tooltip.Arrow />
+    </Tooltip.Content>
+  </Tooltip.Portal>
+</Tooltip>
+{% endset %}
+{{ m.demo("tooltip-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    The demo places the bubble inline so it is visible without a hover. In an app
+    Kobalte's popper positions it, and <code>data-expanded</code> tells you when it
+    is open if you want to animate it.
+  </small>
+</p>
+{% endblock %}

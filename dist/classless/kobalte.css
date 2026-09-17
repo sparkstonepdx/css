@@ -117,7 +117,7 @@
   [dir=rtl] .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]), [dir=rtl] input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]):where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
     text-align: right;
   }
-  .select, select {
+  .select, button[aria-haspopup=listbox], select {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
     border-radius: var(--border-radius);
     padding: calc(var(--padding) / 2);
@@ -126,19 +126,19 @@
     outline-width: 0;
     outline-style: none;
   }
-  .select[aria-invalid=true], select[aria-invalid=true] {
+  .select[aria-invalid=true], button[aria-invalid=true][aria-haspopup=listbox], select[aria-invalid=true] {
     --color: var(--error-color);
   }
-  .select::placeholder, select::placeholder {
+  .select::placeholder, button[aria-haspopup=listbox]::placeholder, select::placeholder {
     color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
   }
-  .select, select {
+  .select, button[aria-haspopup=listbox], select {
     margin-bottom: 1rem;
     width: 100%;
     appearance: none;
     padding: 0.75rem 1rem;
   }
-  .select:not([multiple], [size]), select:not([multiple], [size]) {
+  .select:not([multiple], [size]), button[aria-haspopup=listbox]:not([multiple], [size]), select:not([multiple], [size]) {
     padding-inline-start: 1rem;
     padding-inline-end: 2.5rem;
     background-image: var(--icon-calendar);
@@ -847,7 +847,7 @@
     display: block;
     margin-bottom: 0.375rem;
   }
-  .label > :where(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea, .range, input:where([type=range]), .file-input, input:where([type=file]), .color-input, input:where([type=color])), label > :where(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea, .range, input:where([type=range]), .file-input, input:where([type=file]), .color-input, input:where([type=color])) {
+  .label > :where(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea, .range, input:where([type=range]), .file-input, input:where([type=file]), .color-input, input:where([type=color])), label > :where(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea, .range, input:where([type=range]), .file-input, input:where([type=file]), .color-input, input:where([type=color])) {
     margin-top: 0.25rem;
   }
   .label:has(> .radio, > input:where([type=radio])), label:has(> .radio, > input:where([type=radio])) {
@@ -884,7 +884,7 @@
   .label:has(> .radio, > input:where([type=radio])) .radio:checked::after, label:has(> .radio, > input:where([type=radio])) .radio:checked::after, .label:has(> .radio, > input:where([type=radio])) input:checked:where([type=radio])::after, label:has(> .radio, > input:where([type=radio])) input:checked:where([type=radio])::after {
     opacity: 1;
   }
-  .label:has(> .checkbox, > input:where([type=checkbox])), label:has(> .checkbox, > input:where([type=checkbox])) {
+  .label:has(> .checkbox, > input:where([type=checkbox]), > .toggle), label:has(> .checkbox, > input:where([type=checkbox]), > .toggle) {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -904,13 +904,13 @@
   .label > p, label > p {
     margin: 0;
   }
-  .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
+  .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
     --color: var(--error-color);
   }
-  .label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):has(+ small), label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):has(+ small) {
+  .label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):has(+ small), label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):has(+ small) {
     margin-bottom: 0 !important;
   }
-  .label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea) ~ small, label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea) ~ small {
+  .label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea) ~ small, label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea) ~ small {
     display: inline-block;
     margin-bottom: 1rem;
     color: oklch(from var(--color) var(--text-lc-3) h);
@@ -1168,7 +1168,7 @@
   .tab-content:focus-visible, [role=tabpanel]:focus-visible {
     border-radius: var(--border-radius);
   }
-  .dropdown-content, [role=menu] {
+  .dropdown-content, [role=menu], [role=listbox] {
     min-width: 12rem;
     padding: calc(var(--padding) / 4);
     background-color: oklch(from var(--color) var(--surface-lc-1) h);
@@ -1177,7 +1177,7 @@
     box-shadow: var(--box-shadow);
     z-index: 50;
   }
-  .menu, [role=menu], [role=menu] [role=group] {
+  .menu, [role=menu], [role=menu] [role=group], [role=listbox] {
     display: flex;
     flex-direction: column;
     gap: calc(var(--padding) / 8);
@@ -1185,15 +1185,15 @@
     margin: 0;
     padding: 0;
   }
-  .menu li, [role=menu] li, [role=menu] [role=group] li {
+  .menu li, [role=menu] li, [role=menu] [role=group] li, [role=listbox] li {
     margin: 0;
   }
-  .menu hr, [role=menu] hr, [role=menu] [role=group] hr {
+  .menu hr, [role=menu] hr, [role=menu] [role=group] hr, [role=listbox] hr {
     margin: calc(var(--padding) / 4) 0;
     border: 0;
     border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
   }
-  .menu-item, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio]) {
+  .menu-item, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio]), [role=option] {
     display: flex;
     align-items: center;
     gap: calc(var(--padding) / 2);
@@ -1204,13 +1204,16 @@
     cursor: pointer;
     user-select: none;
   }
-  .menu-item:hover, :hover:is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio]) {
+  .menu-item:hover, :hover:is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio]), [role=option]:hover {
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
   }
-  .menu-active, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio])[data-highlighted] {
+  .menu-active, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio])[data-highlighted], [role=option][data-highlighted] {
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
   }
-  .menu-disabled, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio])[data-disabled] {
+  .menu-selected, [role=option][data-selected] {
+    font-weight: bold;
+  }
+  .menu-disabled, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio])[data-disabled], [role=option][data-disabled] {
     --swatch-lc-1: var(--grey-swatch-lc-1);
     --text-lc-1: var(--grey-text-lc-1);
     --swatch-lc-2: var(--grey-swatch-lc-2);
@@ -1244,6 +1247,140 @@
     padding-left: var(--padding);
     font-size: 0.875rem;
     color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .toggle {
+    --toggle-height: 1.5rem;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    width: calc(var(--toggle-height) * 1.75);
+    height: var(--toggle-height);
+    padding: var(--border-width);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    cursor: pointer;
+    transition: background-color 150ms;
+  }
+  .toggle:is(:checked, [data-checked]) {
+    background-color: oklch(from var(--color) var(--surface-lc-4) h);
+  }
+  .toggle:is(:disabled, [data-disabled]) {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  input.toggle {
+    appearance: none;
+    background-image: radial-gradient(circle at calc(var(--toggle-height) / 2 - var(--border-width)) 50%, oklch(from var(--color) var(--surface-lc-1) h) calc(var(--toggle-height) / 2 - 0.3rem), transparent 0);
+    background-repeat: no-repeat;
+    transition: background-color 150ms, background-position 150ms;
+  }
+  input.toggle:checked {
+    background-position: calc(var(--toggle-height) * 0.75) 0;
+  }
+  .toggle-thumb {
+    width: calc(var(--toggle-height) - var(--border-width) * 4);
+    height: calc(var(--toggle-height) - var(--border-width) * 4);
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    transition: transform 150ms;
+  }
+  .toggle-thumb[data-checked] {
+    transform: translateX(calc(var(--toggle-height) * 0.75));
+  }
+  .collapse, :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) {
+    border-bottom: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .collapse-title, :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) > button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--padding);
+    width: 100%;
+    padding: calc(var(--padding) / 2) 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+  }
+  .collapse-title:hover, :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) > button:hover {
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .collapse-title:is([data-disabled], :disabled), :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) > button:is([data-disabled], :disabled) {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  .collapse-content, [role=region] {
+    padding-bottom: calc(var(--padding) / 2);
+  }
+  .tooltip-content, [role=tooltip] {
+    max-width: 20rem;
+    padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-5) h);
+    color: oklch(from var(--color) var(--surface-lc-1) h);
+    font-size: 0.875rem;
+    z-index: 50;
+  }
+  .tooltip-arrow {
+    color: oklch(from var(--color) var(--surface-lc-5) h);
+  }
+  .alert, [role=alert] {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    padding: calc(var(--padding) / 2) var(--padding);
+    margin-bottom: 1rem;
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+  }
+  .alert-error {
+    --color: var(--error-color);
   }
   .progress, progress {
     appearance: none;
@@ -1333,6 +1470,18 @@
 
 button[aria-haspopup] > span[data-expanded] {
   transform: rotate(180deg);
+}
+
+:is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) {
+  margin-bottom: 0;
+}
+button[aria-haspopup=listbox] {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: calc(var(--padding) / 2);
+  text-align: left;
+  background-image: none;
 }
 
 /*# sourceMappingURL=kobalte.css.map */

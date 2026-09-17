@@ -1,0 +1,71 @@
+@use "../vars.scss" as *;
+
+// VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. See DESIGN-REVIEW.md.
+//
+// A switch, named .toggle after daisyUI 5. Two shapes are supported, because
+// the two worlds build it differently:
+//   <input type="checkbox" class="toggle">        daisyUI: one element
+//   <div class="toggle"><div class="toggle-thumb">  Kobalte: Control + Thumb
+@mixin styles {
+  .toggle {
+    --toggle-height: 1.5rem;
+
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+
+    width: calc(var(--toggle-height) * 1.75);
+    height: var(--toggle-height);
+    padding: var(--border-width);
+
+    border: var(--border-width) solid get-border-color();
+    border-radius: 999px;
+    background-color: cur-color(var(--surface-lc-2));
+    color: cur-color(var(--text-lc-1));
+    cursor: pointer;
+
+    transition: background-color 150ms;
+
+    &:is(:checked, [data-checked]) {
+      background-color: cur-color(var(--surface-lc-4));
+    }
+
+    &:is(:disabled, [data-disabled]) {
+      @include apply-greyscale();
+      pointer-events: none;
+    }
+  }
+
+  // The one-element form has no child to move, so the knob is drawn on the
+  // track itself and slid with background-position.
+  input.toggle {
+    appearance: none;
+    background-image: radial-gradient(
+      circle at calc(var(--toggle-height) / 2 - var(--border-width)) 50%,
+      cur-color(var(--surface-lc-1)) calc(var(--toggle-height) / 2 - 0.3rem),
+      transparent 0
+    );
+    background-repeat: no-repeat;
+    transition:
+      background-color 150ms,
+      background-position 150ms;
+
+    &:checked {
+      background-position: calc(var(--toggle-height) * 0.75) 0;
+    }
+  }
+
+  .toggle-thumb {
+    width: calc(var(--toggle-height) - var(--border-width) * 4);
+    height: calc(var(--toggle-height) - var(--border-width) * 4);
+
+    border-radius: 999px;
+    background-color: cur-color(var(--surface-lc-1));
+
+    transition: transform 150ms;
+
+    &[data-checked] {
+      transform: translateX(calc(var(--toggle-height) * 0.75));
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Collapse" %}
+{% set slug = "collapse" %}
+
+{% block content %}
+<h1>Collapse</h1>
+<p class="lede">
+  A section that opens and closes. Stack them and you have an accordion, which is
+  what
+  <a href="https://kobalte.dev/docs/core/components/accordion" target="_blank" rel="noreferrer">Kobalte's Accordion</a>
+  renders: a heading with a trigger, then a region.
+</p>
+
+{{ m.classes([
+  ["collapse", "One section, with a rule under it"],
+  ["collapse-title", "The trigger row"],
+  ["collapse-content", "The panel"]
+]) }}
+
+<h2>Basic</h2>
+<p>
+  <code>&lt;details&gt;</code> gives you this with no script. Kobalte gives you
+  keyboard navigation across the whole stack, and marks the open item
+  <code>data-expanded</code>.
+</p>
+{% set classless %}
+<details class="collapse" open>
+  <summary class="collapse-title">What is included? <span>−</span></summary>
+  <div class="collapse-content">Everything in the free plan, plus unlimited projects.</div>
+</details>
+<details class="collapse">
+  <summary class="collapse-title">Can I cancel? <span>+</span></summary>
+  <div class="collapse-content">Any time, from the billing page.</div>
+</details>
+{% endset %}
+{% set kobalte_markup %}
+<div>
+  <h3><button aria-expanded="true" aria-controls="r1" data-expanded>What is included? <span>−</span></button></h3>
+  <div role="region" id="r1" data-expanded>Everything in the free plan, plus unlimited projects.</div>
+  <h3><button aria-expanded="false" aria-controls="r2">Can I cancel? <span>+</span></button></h3>
+  <div role="region" id="r2" hidden>Any time, from the billing page.</div>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Accordion } from "@kobalte/core/accordion";
+
+<Accordion defaultValue={["included"]}>
+  <Accordion.Item value="included">
+    <Accordion.Header>
+      <Accordion.Trigger>What is included? <span>−</span></Accordion.Trigger>
+    </Accordion.Header>
+    <Accordion.Content>
+      Everything in the free plan, plus unlimited projects.
+    </Accordion.Content>
+  </Accordion.Item>
+  <Accordion.Item value="cancel">
+    <Accordion.Header>
+      <Accordion.Trigger>Can I cancel? <span>+</span></Accordion.Trigger>
+    </Accordion.Header>
+    <Accordion.Content>Any time, from the billing page.</Accordion.Content>
+  </Accordion.Item>
+</Accordion>
+{% endset %}
+{{ m.demo("collapse-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    Kobalte's <code>Trigger</code> has no role of its own, so the binding reaches it
+    as the button inside the heading that precedes a <code>role="region"</code>.
+    That is the most positional selector in the Kobalte layer.
+  </small>
+</p>
+{% endblock %}

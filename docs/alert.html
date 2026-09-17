@@ -4,7 +4,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>Kbd · @sparkstone/css</title>
+    <title>Alert · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
@@ -99,7 +99,7 @@
                 <li>
                   <a
                     href="./kbd.html"
-                    aria-current="page"
+                    
                     >Kbd</a
                   >
                 </li>
@@ -146,7 +146,7 @@
                 <li>
                   <a
                     href="./alert.html"
-                    
+                    aria-current="page"
                     >Alert</a
                   >
                 </li>
@@ -312,8 +312,13 @@
 
       <main class="site-main">
         
-<h1>Kbd</h1>
-<p class="lede">Keyboard keys, filled with the primary color.</p>
+<h1>Alert</h1>
+<p class="lede">
+  A short, important message.
+  <a href="https://kobalte.dev/docs/core/components/alert" target="_blank" rel="noreferrer">Kobalte's Alert</a>
+  is one element with <code>role="alert"</code>, which the Kobalte layer binds, so
+  it needs no class at all.
+</p>
 
 
 <table class="class-table">
@@ -322,13 +327,16 @@
   </thead>
   <tbody>
     
-      <tr><td><code>kbd</code></td><td>Key cap: small, bold, primary fill</td></tr>
+      <tr><td><code>alert</code></td><td>The message box</td></tr>
+    
+      <tr><td><code>alert-error</code></td><td>Recolours it with --error-color</td></tr>
     
   </tbody>
 </table>
 
 
 <h2>Basic</h2>
+
 
 
 
@@ -341,26 +349,38 @@
         <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
         <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
         
+          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
+        
       </div>
     
-    <button class="ghost copy-button" data-target="kbd-basic-classes">Copy</button>
+    <button class="ghost copy-button" data-target="alert-basic-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="kbd-basic-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
-  &lt;p&gt;Press &lt;kbd class=&quot;kbd&quot;&gt;Ctrl&lt;/kbd&gt; + &lt;kbd class=&quot;kbd&quot;&gt;K&lt;/kbd&gt; to search.&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+    <pre><code id="alert-basic-classes" data-variant="classes">&lt;div class=&quot;alert&quot; role=&quot;alert&quot;&gt;Your changes have been saved.&lt;/div&gt;
+&lt;div class=&quot;alert alert-error&quot; role=&quot;alert&quot;&gt;We could not reach the server.&lt;/div&gt;</code></pre>
     
-      <pre hidden><code id="kbd-basic-classless" data-variant="classless">&lt;div&gt;
-  &lt;p&gt;Press &lt;kbd&gt;Ctrl&lt;/kbd&gt; + &lt;kbd&gt;K&lt;/kbd&gt; to search.&lt;/p&gt;
-&lt;/div&gt;</code></pre>
+      <pre hidden><code id="alert-basic-classless" data-variant="classless">&lt;div class=&quot;alert&quot; role=&quot;alert&quot;&gt;Your changes have been saved.&lt;/div&gt;
+&lt;div class=&quot;alert alert-error&quot; role=&quot;alert&quot;&gt;We could not reach the server.&lt;/div&gt;</code></pre>
     
+    
+      <pre hidden><code id="alert-basic-kobalte" data-variant="kobalte">import { Alert } from &quot;@kobalte/core/alert&quot;;
+
+&lt;Alert&gt;Your changes have been saved.&lt;/Alert&gt;
+&lt;Alert class=&quot;alert-error&quot;&gt;We could not reach the server.&lt;/Alert&gt;</code></pre>
+      <pre hidden><code id="alert-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div role=&quot;alert&quot;&gt;Your changes have been saved.&lt;/div&gt;
+&lt;div role=&quot;alert&quot; class=&quot;alert-error&quot;&gt;We could not reach the server.&lt;/div&gt;</code></pre>
     
   </div>
 </div>
 
-
-<p class="classless-note"><small><strong>Classless:</strong> &lt;code&gt;kbd&lt;/code&gt; is styled everywhere. With classes, &lt;code&gt;.kbd&lt;/code&gt; works on its own, and &lt;code&gt;kbd&lt;/code&gt; inside &lt;code&gt;.prose&lt;/code&gt; is styled without it.</small></p>
-
+<p>
+  <small>
+    daisyUI also has <code>alert-info</code>, <code>alert-success</code> and
+    <code>alert-warning</code>. This framework derives everything from one
+    <code>--color</code> plus <code>--error-color</code>, so there are no tokens
+    for those yet.
+  </small>
+</p>
 
 
         <footer class="site-footer">
