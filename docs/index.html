@@ -6,7 +6,7 @@
     <meta charset="UTF-8" />
     <title>@sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="./theme.css" />
+    <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
     <script src="./docs.js" type="module"></script>
   </head>
@@ -97,15 +97,20 @@ npm install @sparkstone/css</code></pre>
 </div>
 
 
-  <p>Then import either the source or the precompiled stylesheet:</p>
+  <p>
+    Then import a build. These docs use the classless build. The main export is the class-based
+    build, which uses daisyUI 5 class names and leaves plain elements alone.
+  </p>
   
 <div class="code-block">
   <button class="ghost copy-button" data-target="install-import">Copy</button>
-  <pre><code id="install-import" class="language-scss">// SCSS, if you want the functions and mixins
-@use &quot;@sparkstone/css/src/theme.scss&quot;;
+  <pre><code id="install-import" class="language-scss">// classless: style plain HTML
+@use &quot;pkg:@sparkstone/css/classless&quot;;
+import &quot;@sparkstone/css/classless&quot;;
 
-// or the precompiled CSS
-import &quot;@sparkstone/css/theme.css&quot;;</code></pre>
+// class-based: .btn, .input, .card, .dialog, ...
+@use &quot;pkg:@sparkstone/css&quot;;
+import &quot;@sparkstone/css&quot;;</code></pre>
 </div>
 
 </section>
@@ -121,7 +126,7 @@ import &quot;@sparkstone/css/theme.css&quot;;</code></pre>
   &lt;head&gt;
     &lt;meta charset=&quot;UTF-8&quot; /&gt;
     &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot; /&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;theme.css&quot; /&gt;
+    &lt;link rel=&quot;stylesheet&quot; href=&quot;classless.css&quot; /&gt;
     &lt;style&gt;
       :root {
         --color: teal;

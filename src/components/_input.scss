@@ -9,7 +9,8 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   padding: calc(var(--padding) / 2);
   background-color: cur-color(var(--surface-lc-1));
   color: cur-color(var(--text-lc-1));
-  outline: 0;
+  outline-width: 0;
+  outline-style: none;
 
   &[aria-invalid="true"] {
     @include field-error;

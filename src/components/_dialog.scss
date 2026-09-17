@@ -1,8 +1,10 @@
 @use "../vars.scss" as *;
 
-// $box and $action are the child selectors for the dialog panel and its
-// footer: `article`/`footer` in classless, `.modal-box`/`.modal-action` with classes.
-@mixin modal($box, $action) {
+@use "card" as *;
+
+// $box and $actions are the child selectors for the dialog panel and its
+// footer: `article`/`footer` in classless, `.dialog-box`/`.dialog-actions` with classes.
+@mixin dialog($box, $actions) {
   display: flex;
   z-index: 999;
   position: fixed;
@@ -44,8 +46,8 @@
     overflow: auto;
     color: cur-color(var(--text-lc-1));
 
-    > #{$action},
-    > form > #{$action} {
+    > #{$actions},
+    > form > #{$actions} {
       text-align: right;
       justify-content: end;
     }
@@ -60,12 +62,27 @@
   }
 }
 
-@mixin modal-color {
+@mixin dialog-color {
   color: cur-color(var(--text-lc-1));
 }
 
-@mixin modal-scroll-lock($modal) {
-  html:has(#{$modal}[open]) {
+@mixin dialog-scroll-lock($dialog) {
+  html:has(#{$dialog}[open]) {
     overflow: hidden;
   }
+}
+
+// Standalone panel and footer. In classless these come from `article` and
+// `article > footer`, so the class build composes the card mixins.
+@mixin dialog-box {
+  @include card;
+}
+
+@mixin dialog-actions {
+  @include card-actions;
+}
+
+// Classless 1.x has no header styling beyond resetting button margins, which
+// the class build doesn't need, so this is a hook with no declarations yet.
+@mixin dialog-header {
 }

@@ -1,9 +1,25 @@
 {
   "name": "@sparkstone/css",
-  "version": "1.7.2",
-  "description": "A minimal CSS framework inspired by Pico.css, with OKLCH-powered theming and light/dark mode support.",
-  "main": "dist/theme.css",
-  "style": "dist/theme.css",
+  "version": "2.0.0",
+  "description": "A minimal CSS framework inspired by Pico.css and daisyUI, with OKLCH-powered theming, light/dark mode, and both class-based and classless builds.",
+  "main": "dist/index.css",
+  "style": "dist/index.css",
+  "sass": "src/index.scss",
+  "exports": {
+    ".": {
+      "sass": "./src/index.scss",
+      "style": "./dist/index.css",
+      "default": "./dist/index.css"
+    },
+    "./classless": {
+      "sass": "./src/classless.scss",
+      "style": "./dist/classless.css",
+      "default": "./dist/classless.css"
+    },
+    "./src/*": "./src/*",
+    "./dist/*": "./dist/*",
+    "./package.json": "./package.json"
+  },
   "type": "module",
   "files": ["dist/", "src/", "README.md"],
   "scripts": {

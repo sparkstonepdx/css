@@ -1,0 +1,178 @@
+// Class-based build. Class names follow daisyUI 5, except dialogs, which use
+// .dialog / .dialog-box / .dialog-header / .dialog-actions. Every rule applies
+// a component mixin from ./components; classless.scss applies the same mixins
+// to plain elements. Add new styling to the component mixin, not here.
+
+@use "sass:meta";
+@use "./vars.scss" as *;
+@use "./components" as c;
+
+$fields: ".input, .select, .textarea, .range, .file-input, .color-input";
+
+@layer reset, theme;
+
+@layer reset {
+  @include meta.load-css("./lib/reset.css");
+}
+
+@layer theme {
+  .input {
+    @include c.input;
+  }
+  @include c.input-firefox(".input");
+
+  .select {
+    @include c.select;
+  }
+
+  .textarea {
+    @include c.textarea;
+  }
+
+  .range {
+    @include c.range;
+  }
+
+  .file-input {
+    @include c.file-input;
+  }
+
+  .color-input {
+    @include c.color-input;
+  }
+
+  .checkbox {
+    @include c.checkbox;
+  }
+
+  .radio {
+    @include c.radio;
+  }
+
+  .input-error,
+  .select-error,
+  .textarea-error {
+    @include c.field-error;
+  }
+
+  @include c.root;
+  @include c.dialog-scroll-lock(".dialog");
+  @include c.schemes;
+
+  .dialog {
+    @include c.dialog-color;
+  }
+
+  .link {
+    @include c.link;
+    @include c.link-cursor;
+  }
+
+  @include c.container;
+
+  .prose {
+    @include c.prose;
+  }
+
+  .kbd {
+    @include c.kbd-standalone;
+  }
+
+  .label {
+    @include c.label(
+      $field: $fields,
+      $hinted: ":is(#{$fields})",
+      $radio: ".radio",
+      $checkbox: ".checkbox",
+      $invalid: ":is(#{$fields}):is([aria-invalid='true'], .input-error, .select-error, .textarea-error)"
+    );
+  }
+
+  .rounded {
+    @include c.rounded;
+  }
+
+  .btn {
+    @include c.btn;
+  }
+
+  .btn-secondary {
+    @include c.btn-secondary;
+  }
+
+  .btn-ghost {
+    @include c.btn-ghost;
+  }
+
+  .btn-neutral {
+    @include c.btn-neutral;
+  }
+
+  .btn-primary {
+    @include c.btn-primary;
+  }
+
+  .text-secondary {
+    @include c.text-secondary;
+  }
+
+  .disabled,
+  .btn-disabled,
+  *:disabled {
+    @include c.disabled;
+  }
+
+  .dialog {
+    @include c.dialog($box: ".dialog-box", $actions: ".dialog-actions");
+  }
+
+  .dialog-box {
+    @include c.dialog-box;
+  }
+
+  .dialog-header {
+    @include c.dialog-header;
+  }
+
+  .dialog-actions {
+    @include c.dialog-actions;
+  }
+
+  .card {
+    @include c.card;
+  }
+
+  .card-actions {
+    @include c.card-actions;
+  }
+
+  .fieldset {
+    @include c.fieldset($legend: ".fieldset-legend");
+  }
+
+  .fieldset-legend {
+    @include c.fieldset-legend;
+  }
+
+  .table {
+    @include c.table;
+  }
+
+  .progress {
+    @include c.progress;
+  }
+
+  .card-border {
+    @include c.card-border;
+  }
+
+  @include c.flex;
+
+  .text-error {
+    @include c.text-error;
+  }
+
+  .badge {
+    @include c.badge;
+  }
+}

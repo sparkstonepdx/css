@@ -72,58 +72,145 @@
   }
 }
 @layer theme {
-  input,
-  textarea,
-  select {
+  .input {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
     border-radius: var(--border-radius);
     padding: calc(var(--padding) / 2);
     background-color: oklch(from var(--color) var(--surface-lc-1) h);
     color: oklch(from var(--color) var(--text-lc-1) h);
+    outline-width: 0;
+    outline-style: none;
   }
-  input[aria-invalid=true],
-  textarea[aria-invalid=true],
-  select[aria-invalid=true] {
+  .input[aria-invalid=true] {
     --color: var(--error-color);
   }
-  textarea {
-    display: block;
-    resize: vertical;
+  .input::placeholder {
+    color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
   }
-  input:not([type=checkbox], [type=radio]),
-  select,
-  textarea {
+  .input {
     margin-bottom: 1rem;
+    width: 100%;
+    appearance: none;
+    padding: 0.75rem 1rem;
+    height: calc(3rem + var(--border-width) * 2);
   }
-  input:not([type=checkbox], [type=radio], [type=range], [type=file]),
-  select,
-  textarea {
+  .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
+    padding-inline-start: 1rem;
+    padding-inline-end: 2.5rem;
+    background-image: var(--icon-calendar);
+    background-position: center right 1.25rem;
+    background-size: 1rem auto;
+    background-repeat: no-repeat;
+  }
+  .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week])::-webkit-calendar-picker-indicator {
+    width: 1rem;
+    margin-right: -1.25rem;
+    margin-left: 1.25rem;
+    cursor: pointer;
+    opacity: 0;
+  }
+  [dir=rtl] .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
+    text-align: right;
+  }
+  .input[type=time] {
+    background-image: var(--icon-clock);
+  }
+  @-moz-document url-prefix() {
+    .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
+      padding-right: 1rem !important;
+      background-image: none !important;
+    }
+  }
+  .select {
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: var(--border-radius);
+    padding: calc(var(--padding) / 2);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    outline-width: 0;
+    outline-style: none;
+  }
+  .select[aria-invalid=true] {
+    --color: var(--error-color);
+  }
+  .select::placeholder {
+    color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
+  }
+  .select {
+    margin-bottom: 1rem;
+    width: 100%;
     appearance: none;
     padding: 0.75rem 1rem;
   }
-  input:not([type=checkbox], [type=radio], [type=range]) {
-    height: calc(3rem + var(--border-width) * 2);
+  .select:not([multiple], [size]) {
+    padding-inline-start: 1rem;
+    padding-inline-end: 2.5rem;
+    background-image: var(--icon-calendar);
+    background-position: center right 1.25rem;
+    background-size: 1rem auto;
+    background-repeat: no-repeat;
+    background-image: var(--icon-chevron);
   }
-  input:not([type=checkbox], [type=radio]),
-  select,
-  textarea {
-    width: 100%;
-  }
-  input,
-  select,
-  textarea {
+  .textarea {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
     border-radius: var(--border-radius);
+    padding: calc(var(--padding) / 2);
     background-color: oklch(from var(--color) var(--surface-lc-1) h);
     color: oklch(from var(--color) var(--text-lc-1) h);
-    outline: 0;
+    outline-width: 0;
+    outline-style: none;
   }
-  input::placeholder,
-  select::placeholder,
-  textarea::placeholder {
+  .textarea[aria-invalid=true] {
+    --color: var(--error-color);
+  }
+  .textarea::placeholder {
     color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
   }
-  input[type=file] {
+  .textarea {
+    margin-bottom: 1rem;
+    width: 100%;
+    appearance: none;
+    padding: 0.75rem 1rem;
+    display: block;
+    resize: vertical;
+  }
+  .range {
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: var(--border-radius);
+    padding: calc(var(--padding) / 2);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    outline-width: 0;
+    outline-style: none;
+  }
+  .range[aria-invalid=true] {
+    --color: var(--error-color);
+  }
+  .range::placeholder {
+    color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
+  }
+  .range {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+  .file-input {
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: var(--border-radius);
+    padding: calc(var(--padding) / 2);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    outline-width: 0;
+    outline-style: none;
+  }
+  .file-input[aria-invalid=true] {
+    --color: var(--error-color);
+  }
+  .file-input::placeholder {
+    color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
+  }
+  .file-input {
+    margin-bottom: 1rem;
+    width: 100%;
     color: oklch(from var(--color) var(--text-lc-3) h);
     background-color: transparent;
     display: flex;
@@ -131,7 +218,7 @@
     justify-content: center;
     height: auto;
   }
-  input::file-selector-button {
+  .file-input::file-selector-button {
     border-radius: var(--border-radius);
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-3) h);
     top: 0;
@@ -142,98 +229,60 @@
     color: oklch(from var(--color) var(--text-lc-3) h);
     cursor: pointer;
   }
-  label > :where(input, select, textarea) {
-    margin-top: 0.25rem;
-  }
-  select:not([multiple], [size]),
-  input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
-    padding-inline-start: 1rem;
-    padding-inline-end: 2.5rem;
-    background-image: var(--icon-calendar);
-    background-position: center right 1.25rem;
-    background-size: 1rem auto;
-    background-repeat: no-repeat;
-  }
-  select:not([multiple], [size]) {
-    background-image: var(--icon-chevron);
-  }
-  input:not([type=checkbox], [type=radio], [type=range], [type=file])[type=time] {
-    background-image: var(--icon-clock);
-  }
-  [type=date]::-webkit-calendar-picker-indicator,
-  [type=datetime-local]::-webkit-calendar-picker-indicator,
-  [type=month]::-webkit-calendar-picker-indicator,
-  [type=time]::-webkit-calendar-picker-indicator,
-  [type=week]::-webkit-calendar-picker-indicator {
-    width: 1rem;
-    margin-right: -1.25rem;
-    margin-left: 1.25rem;
-    cursor: pointer;
-    opacity: 0;
-  }
-  @-moz-document url-prefix() {
-    [type=date],
-    [type=datetime-local],
-    [type=month],
-    [type=time],
-    [type=week] {
-      padding-right: 1rem !important;
-      background-image: none !important;
-    }
-  }
-  [dir=rtl] :is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
-    text-align: right;
-  }
-  label:has(> input[type=radio]) {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    cursor: pointer;
-  }
-  label:has(> input[type=radio]) input[type=radio] {
-    appearance: none;
-    width: 1rem;
-    height: 1rem;
+  .color-input {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
-    border-radius: 50%;
-    position: relative;
-    box-sizing: border-box;
-    display: inline-block;
-    margin: 0;
+    border-radius: var(--border-radius);
+    padding: calc(var(--padding) / 2);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    outline-width: 0;
+    outline-style: none;
   }
-  label:has(> input[type=radio]) input[type=radio]::after {
-    content: "";
-    position: absolute;
-    width: 1rem;
-    height: 1rem;
-    top: 0;
-    left: 0;
-    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-1) h);
-    box-sizing: border-box;
-    background: oklch(from var(--color) var(--surface-lc-4) h);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity 0.2s;
+  .color-input[aria-invalid=true] {
+    --color: var(--error-color);
   }
-  label:has(> input[type=radio]) input[type=radio]:checked::after {
-    opacity: 1;
+  .color-input::placeholder {
+    color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
   }
-  label:has(> input[type=checkbox]) {
-    display: flex;
-    align-items: center;
-    cursor: pointer;
-    gap: 0.5em;
-    /* padding: 0.5em; */
-    /* border: 2px solid #ccc; */
-    /* border-radius: 0.5em; */
-    transition: border-color 0.2s, background 0.2s;
+  .color-input {
     margin-bottom: 1rem;
+    width: 100%;
+    height: calc(3rem + var(--border-width) * 2);
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
   }
-  label:has(> input[type=checkbox]:checked) {
-    /* border-color: #333; */
-    /* background: #f0f0f0; */
+  .color-input::-webkit-color-swatch-wrapper {
+    padding: 0;
   }
-  input[type=checkbox] {
+  .color-input::-webkit-color-swatch {
+    border-radius: var(--border-radius);
+    border: 0;
+  }
+  .color-input::-moz-color-swatch {
+    border-radius: var(--border-radius);
+    border: 0;
+  }
+  .checkbox {
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: var(--border-radius);
+    padding: calc(var(--padding) / 2);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    outline-width: 0;
+    outline-style: none;
+  }
+  .checkbox[aria-invalid=true] {
+    --color: var(--error-color);
+  }
+  .checkbox::placeholder {
+    color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
+  }
+  .checkbox {
     margin: 0;
     appearance: none;
     width: 1.5rem;
@@ -242,8 +291,9 @@
     border-radius: calc(var(--border-radius) / 2);
     display: inline-block;
     position: relative;
+    cursor: pointer;
   }
-  input[type=checkbox]::after {
+  .checkbox::after {
     content: "";
     position: absolute;
     top: 0.55rem;
@@ -256,52 +306,34 @@
     opacity: 0;
     transition: opacity 0.2s;
   }
-  input[type=checkbox]:checked {
+  .checkbox:checked {
     background-color: oklch(from var(--color) var(--surface-lc-4) h);
   }
-  input[type=checkbox]:checked::after {
+  .checkbox:checked::after {
     opacity: 1;
   }
-  label.block:has(> input[type=radio]) {
-    padding: 2rem;
-    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
-    border-radius: var(--border-radius);
-  }
-  label.block:has(> input[type=radio]):has(input:checked) {
-    border-color: oklch(from var(--color) var(--surface-lc-4) h);
-    background-color: oklch(from var(--color) var(--surface-lc-2) h);
-  }
-  label.block:has(> input[type=radio]) {
-    /* &:has(input[aria-invalid="true"]) { */
-    /* --color: var(--error-color); */
-    /* background-color: cur-color(var(--surface-lc-3)); */
-    /* } */
-  }
-  input[type=radio],
-  input[type=checkbox] {
-    cursor: pointer;
-  }
-  input[type=color] {
-    appearance: none;
-    -webkit-appearance: none;
-    padding: 0;
-    background: none;
-    border: none;
-    padding: 0.25rem;
-    box-sizing: border-box;
-    cursor: pointer;
+  .radio {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
-  }
-  input[type=color]::-webkit-color-swatch-wrapper {
-    padding: 0;
-  }
-  input[type=color]::-webkit-color-swatch {
     border-radius: var(--border-radius);
-    border: 0;
+    padding: calc(var(--padding) / 2);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    outline-width: 0;
+    outline-style: none;
   }
-  input[type=color]::-moz-color-swatch {
-    border-radius: var(--border-radius);
-    border: 0;
+  .radio[aria-invalid=true] {
+    --color: var(--error-color);
+  }
+  .radio::placeholder {
+    color: color-mix(in oklch, oklch(from var(--color) var(--text-lc-2) h), transparent 50%);
+  }
+  .radio {
+    cursor: pointer;
+  }
+  .input-error,
+  .select-error,
+  .textarea-error {
+    --color: var(--error-color);
   }
   :root {
     --border-radius: 0.25rem;
@@ -481,7 +513,7 @@
     height: 0;
     width: 0;
   }
-  html:has(dialog[open]) {
+  html:has(.dialog[open]) {
     overflow: hidden;
   }
   [data-color-scheme=dark] {
@@ -657,15 +689,12 @@
   body *::selection {
     background-color: color-mix(in oklch, oklch(from var(--color) var(--surface-lc-3) h), transparent 50%);
   }
-  dialog {
+  .dialog {
     color: oklch(from var(--color) var(--text-lc-1) h);
   }
-  a:not([role=button]):not(.semantic) {
+  .link {
     --color: var(--accent-color);
     color: oklch(from var(--color) var(--text-lc-4) h);
-  }
-  a,
-  a.semantic {
     cursor: pointer;
   }
   .container {
@@ -709,79 +738,144 @@
       max-width: 1450px;
     }
   }
-  p {
+  .prose p {
     margin-bottom: 1rem;
   }
-  blockquote {
+  .prose blockquote {
     margin: 1rem 0;
     padding: 1rem;
     border-left: calc(2 * var(--border-width)) solid oklch(from var(--color) var(--surface-lc-4) h);
   }
-  hr {
+  .prose hr {
     margin: 1rem 0;
     border: 0;
     border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
   }
-  code,
-  kbd,
-  samp {
+  .prose code,
+  .prose kbd,
+  .prose samp {
     font-size: 0.75rem;
     font-weight: bold;
     display: inline-block;
     padding: 0.375rem;
   }
-  code,
-  kbd,
-  pre,
-  samp {
+  .prose code,
+  .prose kbd,
+  .prose pre,
+  .prose samp {
     border-radius: 0.25rem;
     background: oklch(from var(--color) var(--surface-lc-2) h);
     color: oklch(from var(--color) var(--text-lc-3) h);
   }
-  pre > code,
-  pre > samp {
+  .prose pre > code,
+  .prose pre > samp {
     font-weight: initial;
     font-size: 1rem;
     padding: 1rem;
   }
-  kbd {
+  .prose kbd {
     background-color: oklch(from var(--color) var(--primary-surface-lc) h);
     color: oklch(from var(--color) var(--primary-text-lc) h);
   }
-  pre,
-  section,
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  ul {
+  .prose pre,
+  .prose section,
+  .prose h1,
+  .prose h2,
+  .prose h3,
+  .prose h4,
+  .prose h5,
+  .prose h6,
+  .prose ul {
     margin-bottom: 1rem;
   }
-  :where(ol, ul) li {
+  .prose :where(ol, ul) li {
     margin-bottom: 0.25rem;
   }
-  .semantic {
-    all: unset;
+  .kbd {
+    font-size: 0.75rem;
+    font-weight: bold;
+    display: inline-block;
+    padding: 0.375rem;
+    border-radius: 0.25rem;
+    background-color: oklch(from var(--color) var(--primary-surface-lc) h);
+    color: oklch(from var(--color) var(--primary-text-lc) h);
   }
-  label {
+  .label {
     display: block;
     margin-bottom: 0.375rem;
   }
-  /* [type="button"], */
-  /* [type="reset"], */
-  /* [type="submit"] { */
-  /* margin-bottom: 1rem; */
-  /* } */
+  .label > :where(.input, .select, .textarea, .range, .file-input, .color-input) {
+    margin-top: 0.25rem;
+  }
+  .label:has(> .radio) {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+  }
+  .label:has(> .radio) .radio {
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: 50%;
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+  }
+  .label:has(> .radio) .radio::after {
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0;
+    left: 0;
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-1) h);
+    box-sizing: border-box;
+    background: oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .label:has(> .radio) .radio:checked::after {
+    opacity: 1;
+  }
+  .label:has(> .checkbox) {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    gap: 0.5em;
+    transition: border-color 0.2s, background 0.2s;
+    margin-bottom: 1rem;
+  }
+  .label.block:has(> .radio) {
+    padding: 2rem;
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+    border-radius: var(--border-radius);
+  }
+  .label.block:has(> .radio):has(.radio:checked) {
+    border-color: oklch(from var(--color) var(--surface-lc-4) h);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .label > p {
+    margin: 0;
+  }
+  .label > p:has(+ :is(.input, .select, .textarea, .range, .file-input, .color-input):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
+    --color: var(--error-color);
+  }
+  .label > :is(.input, .select, .textarea, .range, .file-input, .color-input):has(+ small) {
+    margin-bottom: 0 !important;
+  }
+  .label > :is(.input, .select, .textarea, .range, .file-input, .color-input) ~ small {
+    display: inline-block;
+    margin-bottom: 1rem;
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
   .rounded {
     --border-radius: 2rem;
   }
-  *:is(button,
-  [type=button],
-  [type=submit],
-  [type=reset],
-  [role=button]) {
+  .btn {
     border: var(--border-width) solid oklch(from var(--color) var(--primary-surface-lc) h);
     display: inline-block;
     text-decoration: none;
@@ -792,52 +886,29 @@
     background-color: oklch(from var(--color) var(--primary-surface-lc) h);
     color: oklch(from var(--color) var(--primary-text-lc) h);
   }
-  *:is(button,
-  [type=button],
-  [type=submit],
-  [type=reset],
-  [role=button]).semantic {
-    all: unset;
-    cursor: pointer;
-  }
-  *:is(button,
-  [type=button],
-  [type=submit],
-  [type=reset],
-  [role=button]).secondary {
+  .btn-secondary {
     border-color: oklch(from var(--color) var(--text-lc-4) h);
     color: oklch(from var(--color) var(--text-lc-3) h);
     background: transparent;
   }
-  *:is(button,
-  [type=button],
-  [type=submit],
-  [type=reset],
-  [role=button]).ghost {
+  .btn-ghost {
     color: oklch(from var(--color) var(--text-lc-3) h);
     background-color: transparent;
     border-color: transparent;
   }
-  *:is(button,
-  [type=button],
-  [type=submit],
-  [type=reset],
-  [role=button]).contrast {
+  .btn-neutral {
     --color: var(--fallback-color);
   }
-  *:is(button,
-  [type=button],
-  [type=submit],
-  [type=reset],
-  [role=button]).primary {
+  .btn-primary {
     background-color: oklch(from var(--color) var(--primary-surface-lc) h);
     color: oklch(from var(--color) var(--primary-text-lc) h);
     border-color: oklch(from var(--color) var(--primary-surface-lc) h);
   }
-  .secondary {
+  .text-secondary {
     color: oklch(from var(--color) var(--text-lc-3) h);
   }
   .disabled,
+  .btn-disabled,
   *:disabled {
     --swatch-lc-1: var(--grey-swatch-lc-1);
     --text-lc-1: var(--grey-text-lc-1);
@@ -860,7 +931,7 @@
     --primary-surface-lc: var(--primary-grey-surface-lc);
     --primary-text-lc: var(--primary-grey-text-lc);
   }
-  dialog {
+  .dialog {
     display: flex;
     z-index: 999;
     position: fixed;
@@ -874,102 +945,102 @@
     border: 0;
     background: 0;
   }
-  dialog hr {
+  .dialog hr {
     border-color: oklch(from var(--color) var(--surface-lc-3) h);
   }
-  dialog:not([open]), dialog[open=false] {
+  .dialog:not([open]), .dialog[open=false] {
     display: none;
   }
-  dialog::backdrop {
+  .dialog::backdrop {
     position: fixed;
     inset: 0;
     background: rgba(0, 0, 0, 0.1);
   }
-  dialog > form {
+  .dialog > form {
     width: 100%;
     max-height: calc(100lvh - 2rem);
   }
-  dialog > article,
-  dialog > form > article {
+  .dialog > .dialog-box,
+  .dialog > form > .dialog-box {
     width: 100%;
     max-height: calc(100lvh - 2rem);
     margin: 1rem auto;
     overflow: auto;
     color: oklch(from var(--color) var(--text-lc-1) h);
   }
-  dialog > article > footer,
-  dialog > article > form > footer,
-  dialog > form > article > footer,
-  dialog > form > article > form > footer {
+  .dialog > .dialog-box > .dialog-actions,
+  .dialog > .dialog-box > form > .dialog-actions,
+  .dialog > form > .dialog-box > .dialog-actions,
+  .dialog > form > .dialog-box > form > .dialog-actions {
     text-align: right;
     justify-content: end;
   }
-  article {
+  @media (min-width: 576px) {
+    .dialog > .dialog-box,
+    .dialog > form > .dialog-box {
+      max-width: 510px;
+    }
+  }
+  @media (min-width: 768px) {
+    .dialog > .dialog-box,
+    .dialog > form > .dialog-box {
+      max-width: 700px;
+    }
+  }
+  .dialog-box {
     padding: 1rem;
     border-radius: var(--border-radius);
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
     box-shadow: var(--box-shadow);
   }
-  :is(article > footer, article > form > footer) {
+  .dialog-actions {
     margin-top: 1rem;
     padding-top: 1rem;
     border-bottom-right-radius: var(--border-radius);
     border-bottom-left-radius: var(--border-radius);
     border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
   }
-  :is(article,
-  article > footer,
-  article > form > footer,
-  article > header,
-  article > form > header) > :is([type=button], [type=reset], [type=submit]) {
-    margin-bottom: 0;
+  .card {
+    padding: 1rem;
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+    box-shadow: var(--box-shadow);
   }
-  @media (min-width: 576px) {
-    dialog > form > article,
-    dialog > article {
-      max-width: 510px;
-    }
+  .card-actions {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-bottom-right-radius: var(--border-radius);
+    border-bottom-left-radius: var(--border-radius);
+    border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
   }
-  @media (min-width: 768px) {
-    :is(dialog > article, dialog > form > article) {
-      max-width: 700px;
-    }
-  }
-  fieldset {
+  .fieldset {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
     border-radius: var(--border-radius);
-    /* box-shdow: var(--box-shadow); */
     padding: 1rem 1rem;
     margin-bottom: 1rem;
   }
-  fieldset > legend {
+  .fieldset > .fieldset-legend {
     margin-left: -0.5rem;
     padding: 0 0.5rem;
   }
-  table {
+  .fieldset-legend {
+    margin-left: -0.5rem;
+    padding: 0 0.5rem;
+  }
+  .table {
     border-collapse: collapse;
     width: 100%;
   }
-  table th {
+  .table th {
     --specific-border-width: calc(var(--border-width) * 2);
   }
-  table td,
-  table th {
+  .table td,
+  .table th {
     border-bottom: var(--specific-border-width, var(--border-width)) solid oklch(from var(--color) var(--surface-lc-2) h);
     text-align: left;
     padding: 0.5rem 1rem;
   }
-  details {
-    position: relative;
-  }
-  details ::after {
-    content: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='100%' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round' %3E%3Cpath d='m0 0 100% 0'/%3E%3C/svg%3E");
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-  }
-  progress {
+  .progress {
     appearance: none;
     display: inline-block;
     width: 100%;
@@ -980,22 +1051,20 @@
     overflow: hidden;
     height: 0.5rem;
   }
-  progress::-webkit-progress-bar {
+  .progress::-webkit-progress-bar {
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
   }
-  progress::-webkit-progress-value {
+  .progress::-webkit-progress-value {
     background-color: oklch(from var(--color) var(--surface-lc-5) h);
   }
-  progress::-moz-progress-bar {
+  .progress::-moz-progress-bar {
     background-color: oklch(from var(--color) var(--surface-lc-5) h);
   }
-  article.card,
-  .card {
+  .card-border {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
     background-color: oklch(from var(--color) var(--surface-lc-1) h);
     padding: var(--padding);
     border-radius: var(--border-radius);
-    /* transition: all ease-in-out 250ms; */
   }
   .flex {
     display: flex;
@@ -1009,25 +1078,11 @@
       flex-direction: column-reverse;
     }
   }
-  label > p {
-    margin: 0;
-  }
-  label > p:has(+ input[aria-invalid=true]) {
-    --color: var(--error-color);
-  }
-  label > :is(input, select, textarea):has(+ small) {
-    margin-bottom: 0 !important;
-  }
-  label > :is(input, select, textarea) ~ small {
-    display: inline-block;
-    margin-bottom: 1rem;
-    color: oklch(from var(--color) var(--text-lc-3) h);
-  }
-  small.error {
+  .text-error {
     --color: var(--error-color);
     color: oklch(from var(--color) var(--text-lc-3) h);
   }
-  small.chip {
+  .badge {
     border-radius: calc(var(--border-radius) * 2);
     background-color: oklch(from var(--color) var(--surface-lc-3) h);
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
@@ -1036,4 +1091,4 @@
   }
 }
 
-/*# sourceMappingURL=theme.css.map */
+/*# sourceMappingURL=index.css.map */

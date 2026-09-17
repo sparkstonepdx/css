@@ -8,8 +8,8 @@ const run = promisify(exec);
 async function rebuild() {
   try {
     console.log('🔄 Rebuilding...');
-    // sass first: build.js copies dist/theme.css into docs/, so it has to exist
-    await run('sass src/theme.scss dist/theme.css');
+    // sass first: build.js copies dist/classless.css into docs/, so it has to exist
+    await run('sass src/:dist/');
     await run('node build.js');
     console.log('✅ Build complete.\n');
   } catch (err) {

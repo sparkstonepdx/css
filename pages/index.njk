@@ -46,13 +46,18 @@ yarn add @sparkstone/css
 npm install @sparkstone/css
   {% endcall %}
 
-  <p>Then import either the source or the precompiled stylesheet:</p>
+  <p>
+    Then import a build. These docs use the classless build. The main export is the class-based
+    build, which uses daisyUI 5 class names and leaves plain elements alone.
+  </p>
   {% call m.snippet("install-import", "scss") %}
-// SCSS, if you want the functions and mixins
-@use "@sparkstone/css/src/theme.scss";
+// classless: style plain HTML
+@use "pkg:@sparkstone/css/classless";
+import "@sparkstone/css/classless";
 
-// or the precompiled CSS
-import "@sparkstone/css/theme.css";
+// class-based: .btn, .input, .card, .dialog, ...
+@use "pkg:@sparkstone/css";
+import "@sparkstone/css";
   {% endcall %}
 </section>
 
@@ -65,7 +70,7 @@ import "@sparkstone/css/theme.css";
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="theme.css" />
+    <link rel="stylesheet" href="classless.css" />
     <style>
       :root {
         --color: teal;

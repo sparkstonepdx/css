@@ -49,11 +49,11 @@ $text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"]
   }
 
   @include c.root;
-  @include c.modal-scroll-lock(dialog);
+  @include c.dialog-scroll-lock(dialog);
   @include c.schemes;
 
   dialog {
-    @include c.modal-color;
+    @include c.dialog-color;
   }
 
   a:not([role="button"]):not(.semantic) {
@@ -128,7 +128,7 @@ $text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"]
   }
 
   dialog {
-    @include c.modal($box: article, $action: footer);
+    @include c.dialog($box: article, $actions: footer);
   }
 
   article {

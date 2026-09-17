@@ -18,9 +18,9 @@ for (const file of await glob('pages/*.njk')) {
   console.log(`✓ Built ${name}.html`);
 }
 
-// dist/theme.css is the compiled framework; static/* is docs-only css + js.
+// dist/classless.css is what the docs pages are written against; static/* is docs-only css + js.
 const assets = [
-  ['dist/theme.css', 'theme.css'],
+  ['dist/classless.css', 'classless.css'],
   ...(await glob('static/*')).map(f => [f, path.basename(f)]),
 ];
 
