@@ -31,4 +31,5 @@ When a component is signed off, delete its section.
 | `.tab-indicator` thickness | `--border-width` | |
 | `.tab-indicator` transition | `all 250ms` | taken from Kobalte's own docs example; the framework has no motion convention yet, and this is the first animated thing in it |
 | Indicator vs underline | when an indicator is present, the active tab drops its own underline | |
+| Cascade layer | bindings live in a `kobalte` layer above `theme` | structural, not visual: it makes a Kobalte part beat the element defaults without relying on rule order |
 | Vertical orientation | bottom rule becomes a right rule, indicator moves to the trailing edge | |

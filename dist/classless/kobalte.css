@@ -1115,13 +1115,13 @@
     text-align: left;
     padding: 0.5rem 1rem;
   }
-  .tabs, [role=tablist] {
+  .tabs {
     position: relative;
     display: flex;
     align-items: center;
     border-bottom: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
   }
-  .tab, [role=tab] {
+  .tab {
     display: inline-block;
     border: 0;
     background-color: transparent;
@@ -1131,15 +1131,15 @@
     text-align: center;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
-  .tab:hover, [role=tab]:hover {
+  .tab:hover {
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
   }
-  .tab-active, [role=tab][data-selected] {
+  .tab-active {
     color: oklch(from var(--color) var(--text-lc-1) h);
     font-weight: bold;
     box-shadow: inset 0 calc(var(--border-width) * -1) 0 oklch(from var(--color) var(--surface-lc-4) h);
   }
-  .tab-disabled, [role=tab][data-disabled] {
+  .tab-disabled {
     --swatch-lc-1: var(--grey-swatch-lc-1);
     --text-lc-1: var(--grey-text-lc-1);
     --swatch-lc-2: var(--grey-swatch-lc-2);
@@ -1162,10 +1162,10 @@
     --primary-text-lc: var(--primary-grey-text-lc);
     pointer-events: none;
   }
-  .tab-content, [role=tabpanel] {
+  .tab-content {
     padding: 1rem 0;
   }
-  .tab-content:focus-visible, [role=tabpanel]:focus-visible {
+  .tab-content:focus-visible {
     border-radius: var(--border-radius);
   }
   .progress, progress {
@@ -1229,30 +1229,83 @@
     height: 100%;
   }
 }
-[role=tablist]:has(> .tab-indicator, > [data-kb-tab-indicator]) [role=tab][data-selected] {
-  box-shadow: none;
-}
-
-.tab-indicator,
-[data-kb-tab-indicator] {
-  position: absolute;
-  background-color: oklch(from var(--color) var(--surface-lc-4) h);
-  transition: all 250ms;
-  bottom: calc(var(--border-width) * -1);
-  height: var(--border-width);
-}
-
-[data-orientation=vertical][role=tablist] {
-  flex-direction: column;
-  align-items: stretch;
-  border-bottom: 0;
-  border-right: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
-}
-[data-orientation=vertical].tab-indicator, [data-orientation=vertical][data-kb-tab-indicator] {
-  bottom: auto;
-  right: calc(var(--border-width) * -1);
-  height: auto;
-  width: var(--border-width);
+@layer reset, theme, kobalte;
+@layer kobalte {
+  [role=tablist] {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  [role=tablist][data-orientation=vertical] {
+    flex-direction: column;
+    align-items: stretch;
+    border-bottom: 0;
+    border-right: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  [role=tab] {
+    display: inline-block;
+    border: 0;
+    background-color: transparent;
+    color: oklch(from var(--color) var(--text-lc-3) h);
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+  [role=tab]:hover {
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  [role=tab][data-selected] {
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    font-weight: bold;
+    box-shadow: inset 0 calc(var(--border-width) * -1) 0 oklch(from var(--color) var(--surface-lc-4) h);
+  }
+  [role=tab][data-disabled] {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  [role=tabpanel] {
+    padding: 1rem 0;
+  }
+  [role=tabpanel]:focus-visible {
+    border-radius: var(--border-radius);
+  }
+  [role=tablist]:has(.tab-indicator) [role=tab][data-selected] {
+    box-shadow: none;
+  }
+  .tab-indicator {
+    position: absolute;
+    background-color: oklch(from var(--color) var(--surface-lc-4) h);
+    transition: all 250ms;
+    bottom: calc(var(--border-width) * -1);
+    height: var(--border-width);
+  }
+  .tab-indicator[data-orientation=vertical] {
+    bottom: auto;
+    right: calc(var(--border-width) * -1);
+    height: auto;
+    width: var(--border-width);
+  }
 }
 
 /*# sourceMappingURL=kobalte.css.map */

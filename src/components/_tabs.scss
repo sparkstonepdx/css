@@ -6,50 +6,71 @@
 // Tabs, following daisyUI 5: .tabs on the list, .tab on each item,
 // .tab-active and .tab-disabled for state, .tab-content on the panel.
 //
-// State is expressed as classes here, and nothing in this file knows about any
-// headless library. classless/kobalte.scss binds Kobalte's data attributes to
-// these same classes.
+// Each class is a mixin so the Kobalte layer can apply the same declarations to
+// Kobalte's own selectors from a later cascade layer. Nothing in this file
+// knows about any component library.
+
+@mixin tabs {
+  position: relative;
+  display: flex;
+  align-items: center;
+
+  border-bottom: var(--border-width) solid cur-color(var(--surface-lc-2));
+}
+
+@mixin tab {
+  display: inline-block;
+  border: 0;
+  background-color: transparent;
+  color: cur-color(var(--text-lc-3));
+  cursor: pointer;
+  padding: 0.75rem 1rem;
+  text-align: center;
+  border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+  &:hover {
+    background-color: cur-color(var(--surface-lc-2));
+  }
+}
+
+@mixin tab-active {
+  color: cur-color(var(--text-lc-1));
+  font-weight: bold;
+  box-shadow: inset 0 calc(var(--border-width) * -1) 0
+    cur-color(var(--surface-lc-4));
+}
+
+@mixin tab-disabled {
+  @include apply-greyscale();
+  pointer-events: none;
+}
+
+@mixin tab-content {
+  padding: 1rem 0;
+
+  &:focus-visible {
+    border-radius: var(--border-radius);
+  }
+}
+
 @mixin styles {
   .tabs {
-    position: relative;
-    display: flex;
-    align-items: center;
-
-    border-bottom: var(--border-width) solid cur-color(var(--surface-lc-2));
+    @include tabs;
   }
 
   .tab {
-    display: inline-block;
-    border: 0;
-    background-color: transparent;
-    color: cur-color(var(--text-lc-3));
-    cursor: pointer;
-    padding: 0.75rem 1rem;
-    text-align: center;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
-
-    &:hover {
-      background-color: cur-color(var(--surface-lc-2));
-    }
+    @include tab;
   }
 
   .tab-active {
-    color: cur-color(var(--text-lc-1));
-    font-weight: bold;
-    box-shadow: inset 0 calc(var(--border-width) * -1) 0
-      cur-color(var(--surface-lc-4));
+    @include tab-active;
   }
 
   .tab-disabled {
-    @include apply-greyscale();
-    pointer-events: none;
+    @include tab-disabled;
   }
 
   .tab-content {
-    padding: 1rem 0;
-
-    &:focus-visible {
-      border-radius: var(--border-radius);
-    }
+    @include tab-content;
   }
 }
