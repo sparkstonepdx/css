@@ -60,13 +60,22 @@
 
 <h2>Unstyling a button</h2>
 {% set classless %}
-<p>Read more about <button class="semantic" style="text-decoration: underline">this topic</button>.</p>
+<div>
+  <p>Read more about <button class="semantic" style="text-decoration: underline">this topic</button>.</p>
+</div>
 {% endset %}
 {% set classes %}
-<p>Read more about <button style="text-decoration: underline">this topic</button>.</p>
+<div class="prose">
+  <p>Read more about <button class="semantic" style="text-decoration: underline">this topic</button>.</p>
+</div>
 {% endset %}
 {{ m.demo("btn-semantic", classless, classes) }}
-{{ m.classless_note("<code>.semantic</code> unsets the button styling so a button can sit inside a sentence. The class build has nothing to unset, so leave the class off.") }}
+<p>
+  <small>
+    <code>.semantic</code> unsets every style so a button can sit inside a sentence.
+    It works in both builds.
+  </small>
+</p>
 
 <h2>Input buttons</h2>
 {% set classless %}

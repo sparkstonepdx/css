@@ -904,6 +904,14 @@
     color: oklch(from var(--color) var(--primary-text-lc) h);
     border-color: oklch(from var(--color) var(--primary-surface-lc) h);
   }
+  .semantic {
+    all: unset;
+  }
+  a.semantic,
+  button.semantic,
+  [role=button].semantic {
+    cursor: pointer;
+  }
   .text-secondary {
     color: oklch(from var(--color) var(--text-lc-3) h);
   }

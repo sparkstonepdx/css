@@ -18,10 +18,12 @@
 
 <h2>Headings and paragraphs</h2>
 {% set classless %}
-<h1>Heading one</h1>
-<h2>Heading two</h2>
-<h3>Heading three</h3>
-<p>Body text sits at 18px with a 1rem bottom margin.</p>
+<div>
+  <h1>Heading one</h1>
+  <h2>Heading two</h2>
+  <h3>Heading three</h3>
+  <p>Body text sits at 18px with a 1rem bottom margin.</p>
+</div>
 {% endset %}
 {% set classes %}
 <div class="prose">
@@ -35,16 +37,18 @@
 
 <h2>Lists, quotes and rules</h2>
 {% set classless %}
-<ul>
-  <li>First item</li>
-  <li>Second item</li>
-</ul>
-<blockquote>A quote gets a thick left border in the theme color.</blockquote>
-<hr />
-<ol>
-  <li>Ordered one</li>
-  <li>Ordered two</li>
-</ol>
+<div>
+  <ul>
+    <li>First item</li>
+    <li>Second item</li>
+  </ul>
+  <blockquote>A quote gets a thick left border in the theme color.</blockquote>
+  <hr />
+  <ol>
+    <li>Ordered one</li>
+    <li>Ordered two</li>
+  </ol>
+</div>
 {% endset %}
 {% set classes %}
 <div class="prose">
@@ -64,9 +68,11 @@
 
 <h2>Code</h2>
 {% set classless %}
-<p>Inline <code>code</code> and <samp>samp</samp> sit on a raised surface.</p>
-<pre><code>const theme = "@sparkstone/css";
+<div>
+  <p>Inline <code>code</code> and <samp>samp</samp> sit on a raised surface.</p>
+  <pre><code>const theme = "@sparkstone/css";
 console.log(theme);</code></pre>
+</div>
 {% endset %}
 {% set classes %}
 <div class="prose">

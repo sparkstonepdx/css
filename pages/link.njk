@@ -16,20 +16,28 @@
 
 <h2>Basic</h2>
 {% set classless %}
-<p>Read the <a href="#">installation guide</a> to get started.</p>
+<div>
+  <p>Read the <a href="#">installation guide</a> to get started.</p>
+</div>
 {% endset %}
 {% set classes %}
-<p>Read the <a href="#" class="link">installation guide</a> to get started.</p>
+<div class="prose">
+  <p>Read the <a href="#" class="link">installation guide</a> to get started.</p>
+</div>
 {% endset %}
 {{ m.demo("link-basic", classless, classes) }}
 
 <h2>Recoloring</h2>
 <p>Set <code>--accent-color</code> on any ancestor to change links in that subtree.</p>
 {% set classless %}
-<p style="--accent-color: teal">A <a href="#">teal link</a> inside a scoped block.</p>
+<div>
+  <p style="--accent-color: teal">A <a href="#">teal link</a> inside a scoped block.</p>
+</div>
 {% endset %}
 {% set classes %}
-<p style="--accent-color: teal">A <a href="#" class="link">teal link</a> inside a scoped block.</p>
+<div class="prose">
+  <p style="--accent-color: teal">A <a href="#" class="link">teal link</a> inside a scoped block.</p>
+</div>
 {% endset %}
 {{ m.demo("link-scoped", classless, classes) }}
 
@@ -38,8 +46,13 @@
 <a href="#" class="semantic">No accent color, no underline</a>
 {% endset %}
 {% set classes %}
-<a href="#">No accent color, no underline</a>
+<a href="#" class="semantic">No accent color, no underline</a>
 {% endset %}
 {{ m.demo("link-semantic", classless, classes) }}
-{{ m.classless_note("<code>.semantic</code> also removes the focus ring, since it unsets every property. Prefer the class build when you need unstyled links to stay keyboard accessible.") }}
+<p>
+  <small>
+    <code>.semantic</code> exists in both builds. Note that it unsets every property,
+    including the focus ring, so leave it off anything the keyboard needs to reach.
+  </small>
+</p>
 {% endblock %}

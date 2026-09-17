@@ -13,10 +13,14 @@
 
 <h2>Basic</h2>
 {% set classless %}
-<p>Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to search.</p>
+<div>
+  <p>Press <kbd>Ctrl</kbd> + <kbd>K</kbd> to search.</p>
+</div>
 {% endset %}
 {% set classes %}
-<p class="prose">Press <kbd class="kbd">Ctrl</kbd> + <kbd class="kbd">K</kbd> to search.</p>
+<div class="prose">
+  <p>Press <kbd class="kbd">Ctrl</kbd> + <kbd class="kbd">K</kbd> to search.</p>
+</div>
 {% endset %}
 {{ m.demo("kbd-basic", classless, classes) }}
 {{ m.classless_note("<code>kbd</code> is styled everywhere. With classes, <code>.kbd</code> works on its own, and <code>kbd</code> inside <code>.prose</code> is styled without it.") }}

@@ -112,6 +112,18 @@ $fields: ".input, .select, .textarea, .range, .file-input, .color-input";
     @include c.btn-primary;
   }
 
+  // Strips every style off an element, as it does in the classless build, for
+  // markup that should not look like the component it sits in.
+  .semantic {
+    @include c.semantic;
+  }
+
+  a.semantic,
+  button.semantic,
+  [role="button"].semantic {
+    cursor: pointer;
+  }
+
   .text-secondary {
     @include c.text-secondary;
   }

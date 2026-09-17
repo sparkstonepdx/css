@@ -15,21 +15,29 @@
 
 <h2>Basic</h2>
 {% set classless %}
-<p>Status <small class="chip">Draft</small> <small class="chip">3 open</small></p>
+<div>
+  <p>Status <small class="chip">Draft</small> <small class="chip">3 open</small></p>
+</div>
 {% endset %}
 {% set classes %}
-<p>Status <small class="badge">Draft</small> <small class="badge">3 open</small></p>
+<div class="prose">
+  <p>Status <small class="badge">Draft</small> <small class="badge">3 open</small></p>
+</div>
 {% endset %}
 {{ m.demo("badge-basic", classless, classes) }}
 
 <h2>Muted and error text</h2>
 {% set classless %}
-<p class="secondary">Secondary text</p>
-<small class="error">That email address is already taken.</small>
+<div>
+  <p class="secondary">Secondary text</p>
+  <small class="error">That email address is already taken.</small>
+</div>
 {% endset %}
 {% set classes %}
-<p class="text-secondary">Secondary text</p>
-<small class="text-error">That email address is already taken.</small>
+<div class="prose">
+  <p class="text-secondary">Secondary text</p>
+  <small class="text-error">That email address is already taken.</small>
+</div>
 {% endset %}
 {{ m.demo("badge-text", classless, classes) }}
 {% endblock %}

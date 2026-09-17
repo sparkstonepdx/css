@@ -51,8 +51,10 @@
 
 <h2>The same page, both ways</h2>
 {% set classless %}
-<h2>Hello</h2>
-<p>Body copy, and <a href="#">a link</a>.</p>
+<div>
+  <h2>Hello</h2>
+  <p>Body copy, and <a href="#">a link</a>.</p>
+</div>
 
 <article>
   <h3>A card</h3>
@@ -69,7 +71,7 @@
   <p>Body copy, and <a href="#" class="link">a link</a>.</p>
 </div>
 
-<article class="card">
+<article class="card prose">
   <h3>A card</h3>
   <p>Cards are just articles.</p>
   <footer class="card-actions flex" style="justify-content: end">

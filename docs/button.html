@@ -394,16 +394,23 @@
     <button class="ghost copy-button" data-target="btn-semantic-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="btn-semantic-classes" data-variant="classes">&lt;p&gt;Read more about &lt;button style=&quot;text-decoration: underline&quot;&gt;this topic&lt;/button&gt;.&lt;/p&gt;</code></pre>
+    <pre><code id="btn-semantic-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
+  &lt;p&gt;Read more about &lt;button class=&quot;semantic&quot; style=&quot;text-decoration: underline&quot;&gt;this topic&lt;/button&gt;.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
     
-      <pre hidden><code id="btn-semantic-classless" data-variant="classless">&lt;p&gt;Read more about &lt;button class=&quot;semantic&quot; style=&quot;text-decoration: underline&quot;&gt;this topic&lt;/button&gt;.&lt;/p&gt;</code></pre>
+      <pre hidden><code id="btn-semantic-classless" data-variant="classless">&lt;div&gt;
+  &lt;p&gt;Read more about &lt;button class=&quot;semantic&quot; style=&quot;text-decoration: underline&quot;&gt;this topic&lt;/button&gt;.&lt;/p&gt;
+&lt;/div&gt;</code></pre>
     
   </div>
 </div>
 
-
-<p class="classless-note"><small><strong>Classless:</strong> &lt;code&gt;.semantic&lt;/code&gt; unsets the button styling so a button can sit inside a sentence. The class build has nothing to unset, so leave the class off.</small></p>
-
+<p>
+  <small>
+    <code>.semantic</code> unsets every style so a button can sit inside a sentence.
+    It works in both builds.
+  </small>
+</p>
 
 <h2>Input buttons</h2>
 
