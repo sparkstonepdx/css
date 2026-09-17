@@ -83,14 +83,14 @@
     }
   }
 
-  [role="menu"] [role="group"] > span:first-child {
-    @extend .menu-title;
+  // DropdownMenu.Group is a plain div, so it breaks the menu's own column
+  // layout unless it lays its children out the same way.
+  [role="menu"] [role="group"] {
+    @extend .menu;
   }
 
-  [role="menu"] > hr {
-    margin: calc(var(--padding) / 4) 0;
-    border: 0;
-    border-top: var(--border-width) solid cur-color(var(--surface-lc-2));
+  [role="menu"] [role="group"] > span:first-child {
+    @extend .menu-title;
   }
 
   // DropdownMenu.Icon: a span next to the trigger label that flips when open.

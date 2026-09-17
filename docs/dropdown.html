@@ -339,29 +339,33 @@
     <button class="ghost copy-button" data-target="dropdown-panel-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="dropdown-panel-classes" data-variant="classes">&lt;div class=&quot;dropdown-content&quot;&gt;
-  &lt;ul class=&quot;menu&quot;&gt;
+    <pre><code id="dropdown-panel-classes" data-variant="classes">&lt;ul class=&quot;dropdown-content menu&quot;&gt;
     &lt;li class=&quot;menu-item&quot;&gt;Commit &lt;span class=&quot;menu-shortcut&quot;&gt;⌘K&lt;/span&gt;&lt;/li&gt;
     &lt;li class=&quot;menu-item menu-active&quot;&gt;Push &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘K&lt;/span&gt;&lt;/li&gt;
     &lt;li class=&quot;menu-item menu-disabled&quot;&gt;Update project&lt;/li&gt;
     &lt;li&gt;&lt;hr /&gt;&lt;/li&gt;
-    &lt;li class=&quot;menu-title&quot;&gt;Branches&lt;/li&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;main&lt;/li&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;develop&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
+    &lt;li&gt;
+      &lt;ul class=&quot;menu&quot;&gt;
+        &lt;li class=&quot;menu-title&quot;&gt;Branches&lt;/li&gt;
+        &lt;li class=&quot;menu-item&quot;&gt;main&lt;/li&gt;
+        &lt;li class=&quot;menu-item&quot;&gt;develop&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
     
-      <pre hidden><code id="dropdown-panel-classless" data-variant="classless">&lt;div class=&quot;dropdown-content&quot;&gt;
-  &lt;ul class=&quot;menu&quot;&gt;
+      <pre hidden><code id="dropdown-panel-classless" data-variant="classless">&lt;ul class=&quot;dropdown-content menu&quot;&gt;
     &lt;li class=&quot;menu-item&quot;&gt;Commit &lt;span class=&quot;menu-shortcut&quot;&gt;⌘K&lt;/span&gt;&lt;/li&gt;
     &lt;li class=&quot;menu-item menu-active&quot;&gt;Push &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘K&lt;/span&gt;&lt;/li&gt;
     &lt;li class=&quot;menu-item menu-disabled&quot;&gt;Update project&lt;/li&gt;
     &lt;li&gt;&lt;hr /&gt;&lt;/li&gt;
-    &lt;li class=&quot;menu-title&quot;&gt;Branches&lt;/li&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;main&lt;/li&gt;
-    &lt;li class=&quot;menu-item&quot;&gt;develop&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
+    &lt;li&gt;
+      &lt;ul class=&quot;menu&quot;&gt;
+        &lt;li class=&quot;menu-title&quot;&gt;Branches&lt;/li&gt;
+        &lt;li class=&quot;menu-item&quot;&gt;main&lt;/li&gt;
+        &lt;li class=&quot;menu-item&quot;&gt;develop&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
     
     
       <pre hidden><code id="dropdown-panel-kobalte" data-variant="kobalte">import { DropdownMenu } from &quot;@kobalte/core/dropdown-menu&quot;;
@@ -440,24 +444,20 @@
     <button class="ghost copy-button" data-target="dropdown-trigger-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="dropdown-trigger-classes" data-variant="classes">&lt;details class=&quot;dropdown&quot;&gt;
+    <pre><code id="dropdown-trigger-classes" data-variant="classes">&lt;details&gt;
   &lt;summary class=&quot;btn&quot;&gt;Git settings ▾&lt;/summary&gt;
-  &lt;div class=&quot;dropdown-content&quot;&gt;
-    &lt;ul class=&quot;menu&quot;&gt;
-      &lt;li class=&quot;menu-item&quot;&gt;Commit&lt;/li&gt;
-      &lt;li class=&quot;menu-item&quot;&gt;Push&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
+  &lt;ul class=&quot;dropdown-content menu&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
+    &lt;li class=&quot;menu-item&quot;&gt;Commit&lt;/li&gt;
+    &lt;li class=&quot;menu-item&quot;&gt;Push&lt;/li&gt;
+  &lt;/ul&gt;
 &lt;/details&gt;</code></pre>
     
-      <pre hidden><code id="dropdown-trigger-classless" data-variant="classless">&lt;details class=&quot;dropdown&quot;&gt;
+      <pre hidden><code id="dropdown-trigger-classless" data-variant="classless">&lt;details&gt;
   &lt;summary class=&quot;btn&quot;&gt;Git settings ▾&lt;/summary&gt;
-  &lt;div class=&quot;dropdown-content&quot;&gt;
-    &lt;ul class=&quot;menu&quot;&gt;
-      &lt;li class=&quot;menu-item&quot;&gt;Commit&lt;/li&gt;
-      &lt;li class=&quot;menu-item&quot;&gt;Push&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/div&gt;
+  &lt;ul class=&quot;dropdown-content menu&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
+    &lt;li class=&quot;menu-item&quot;&gt;Commit&lt;/li&gt;
+    &lt;li class=&quot;menu-item&quot;&gt;Push&lt;/li&gt;
+  &lt;/ul&gt;
 &lt;/details&gt;</code></pre>
     
     
@@ -513,29 +513,23 @@
     <button class="ghost copy-button" data-target="dropdown-sub-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="dropdown-sub-classes" data-variant="classes">&lt;div class=&quot;dropdown-content&quot;&gt;
-  &lt;ul class=&quot;menu&quot;&gt;
+    <pre><code id="dropdown-sub-classes" data-variant="classes">&lt;ul class=&quot;dropdown-content menu&quot;&gt;
     &lt;li class=&quot;menu-item menu-active&quot;&gt;GitHub &lt;span class=&quot;menu-shortcut&quot;&gt;›&lt;/span&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div class=&quot;dropdown-content&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
-  &lt;ul class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;dropdown-content menu&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
     &lt;li class=&quot;menu-item&quot;&gt;Create pull request…&lt;/li&gt;
     &lt;li class=&quot;menu-item&quot;&gt;Sync fork&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
+&lt;/ul&gt;</code></pre>
     
-      <pre hidden><code id="dropdown-sub-classless" data-variant="classless">&lt;div class=&quot;dropdown-content&quot;&gt;
-  &lt;ul class=&quot;menu&quot;&gt;
+      <pre hidden><code id="dropdown-sub-classless" data-variant="classless">&lt;ul class=&quot;dropdown-content menu&quot;&gt;
     &lt;li class=&quot;menu-item menu-active&quot;&gt;GitHub &lt;span class=&quot;menu-shortcut&quot;&gt;›&lt;/span&gt;&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;
-&lt;div class=&quot;dropdown-content&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
-  &lt;ul class=&quot;menu&quot;&gt;
+&lt;ul class=&quot;dropdown-content menu&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
     &lt;li class=&quot;menu-item&quot;&gt;Create pull request…&lt;/li&gt;
     &lt;li class=&quot;menu-item&quot;&gt;Sync fork&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/div&gt;</code></pre>
+&lt;/ul&gt;</code></pre>
     
     
       <pre hidden><code id="dropdown-sub-kobalte" data-variant="kobalte">&lt;DropdownMenu.Sub overlap gutter={4} shift={-8}&gt;

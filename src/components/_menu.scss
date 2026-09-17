@@ -35,6 +35,19 @@
     list-style: none;
     margin: 0;
     padding: 0;
+
+    // <ul><li> rows keep their list spacing from the typography rules in the
+    // classless build; a menu row is not prose.
+    li {
+      margin: 0;
+    }
+
+    // Same for a separator: the prose <hr> has 1rem margins, too loose here.
+    hr {
+      margin: calc(var(--padding) / 4) 0;
+      border: 0;
+      border-top: var(--border-width) solid cur-color(var(--surface-lc-2));
+    }
   }
 
   .menu-item {
@@ -65,6 +78,7 @@
   }
 
   .menu-title {
+    display: block;
     padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
     font-size: 0.875rem;
     color: cur-color(var(--text-lc-3));

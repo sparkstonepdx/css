@@ -1177,13 +1177,21 @@
     box-shadow: var(--box-shadow);
     z-index: 50;
   }
-  .menu, [role=menu] {
+  .menu, [role=menu], [role=menu] [role=group] {
     display: flex;
     flex-direction: column;
     gap: calc(var(--padding) / 8);
     list-style: none;
     margin: 0;
     padding: 0;
+  }
+  .menu li, [role=menu] li, [role=menu] [role=group] li {
+    margin: 0;
+  }
+  .menu hr, [role=menu] hr, [role=menu] [role=group] hr {
+    margin: calc(var(--padding) / 4) 0;
+    border: 0;
+    border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
   }
   .menu-item, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio]) {
     display: flex;
@@ -1226,6 +1234,7 @@
     pointer-events: none;
   }
   .menu-title, [role=menu] [role=group] > span:first-child {
+    display: block;
     padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
     font-size: 0.875rem;
     color: oklch(from var(--color) var(--text-lc-3) h);
@@ -1320,12 +1329,6 @@
   right: calc(var(--border-width) * -1);
   height: auto;
   width: var(--border-width);
-}
-
-[role=menu] > hr {
-  margin: calc(var(--padding) / 4) 0;
-  border: 0;
-  border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
 }
 
 button[aria-haspopup] > span[data-expanded] {

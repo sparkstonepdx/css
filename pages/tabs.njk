@@ -46,7 +46,6 @@
     <button role="tab" id="k-profile" aria-controls="kp-profile" data-selected>Profile</button>
     <button role="tab" id="k-dashboard" aria-controls="kp-dashboard">Dashboard</button>
     <button role="tab" id="k-billing" aria-controls="kp-billing" data-disabled>Billing</button>
-    <div class="tab-indicator"></div>
   </div>
   <div role="tabpanel" id="kp-profile" aria-labelledby="k-profile">Profile details</div>
   <div role="tabpanel" id="kp-dashboard" aria-labelledby="k-dashboard" hidden>Dashboard details</div>
@@ -61,7 +60,6 @@ import { Tabs } from "@kobalte/core/tabs";
     <Tabs.Trigger value="profile">Profile</Tabs.Trigger>
     <Tabs.Trigger value="dashboard">Dashboard</Tabs.Trigger>
     <Tabs.Trigger value="billing" disabled>Billing</Tabs.Trigger>
-    <Tabs.Indicator class="tab-indicator" />
   </Tabs.List>
   <Tabs.Content value="profile">Profile details</Tabs.Content>
   <Tabs.Content value="dashboard">Dashboard details</Tabs.Content>

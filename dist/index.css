@@ -1105,6 +1105,14 @@
     margin: 0;
     padding: 0;
   }
+  .menu li {
+    margin: 0;
+  }
+  .menu hr {
+    margin: calc(var(--padding) / 4) 0;
+    border: 0;
+    border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
   .menu-item {
     display: flex;
     align-items: center;
@@ -1146,6 +1154,7 @@
     pointer-events: none;
   }
   .menu-title {
+    display: block;
     padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
     font-size: 0.875rem;
     color: oklch(from var(--color) var(--text-lc-3) h);
