@@ -1,0 +1,72 @@
+@use "../vars.scss" as *;
+
+// VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. Every value is listed in
+// DESIGN-REVIEW.md at the repo root for review.
+//
+// Bindings from Kobalte's rendered markup to the framework's classes, so a
+// Kobalte app can skip the class attributes entirely. Every rule here is an
+// @extend of a class defined elsewhere, plus the few parts Kobalte has that
+// daisyUI has no class for.
+//
+// Kobalte 0.13: https://kobalte.dev/docs/core/components
+@mixin tabs {
+  // Tabs.List -> div[role="tablist"], Tabs.Trigger -> button[role="tab"],
+  // Tabs.Content -> div[role="tabpanel"]
+  [role="tablist"] {
+    @extend .tabs;
+  }
+
+  [role="tab"] {
+    @extend .tab;
+
+    &[data-selected] {
+      @extend .tab-active;
+    }
+
+    &[data-disabled] {
+      @extend .tab-disabled;
+    }
+  }
+
+  [role="tabpanel"] {
+    @extend .tab-content;
+  }
+
+  // Tabs.Indicator has no daisyUI equivalent: Kobalte positions it inline and
+  // it replaces the selected tab's own underline.
+  [role="tablist"]:has(> .tab-indicator, > [data-kb-tab-indicator]) [role="tab"][data-selected] {
+    box-shadow: none;
+  }
+
+  .tab-indicator,
+  [data-kb-tab-indicator] {
+    position: absolute;
+    background-color: cur-color(var(--surface-lc-4));
+    transition: all 250ms;
+
+    bottom: calc(var(--border-width) * -1);
+    height: var(--border-width);
+  }
+
+  // Kobalte puts data-orientation on every part.
+  [data-orientation="vertical"] {
+    &[role="tablist"] {
+      flex-direction: column;
+      align-items: stretch;
+      border-bottom: 0;
+      border-right: var(--border-width) solid cur-color(var(--surface-lc-2));
+    }
+
+    &.tab-indicator,
+    &[data-kb-tab-indicator] {
+      bottom: auto;
+      right: calc(var(--border-width) * -1);
+      height: auto;
+      width: var(--border-width);
+    }
+  }
+}
+
+@mixin bindings {
+  @include tabs;
+}

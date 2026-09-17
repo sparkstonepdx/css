@@ -1,15 +1,14 @@
 @use "../vars.scss" as *;
-// apply-greyscale comes from vars.scss
 
-// Tabs, sized to work with Kobalte's rendered DOM:
-//   Tabs          -> div
-//   Tabs.List     -> div   [role="tablist"]  .tabs
-//   Tabs.Trigger  -> button[role="tab"]      .tab       [data-selected] [data-disabled] [data-highlighted]
-//   Tabs.Indicator-> div                     .tab-indicator
-//   Tabs.Content  -> div   [role="tabpanel"] .tab-content
+// VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. Every value is listed in
+// DESIGN-REVIEW.md at the repo root for review.
 //
-// State comes from data attributes when a headless library drives the markup,
-// and from .tab-active / .tab-disabled when you drive it yourself.
+// Tabs, following daisyUI 5: .tabs on the list, .tab on each item,
+// .tab-active and .tab-disabled for state, .tab-content on the panel.
+//
+// State is expressed as classes here, and nothing in this file knows about any
+// headless library. classless/kobalte.scss binds Kobalte's data attributes to
+// these same classes.
 @mixin styles {
   .tabs {
     position: relative;
@@ -17,13 +16,6 @@
     align-items: center;
 
     border-bottom: var(--border-width) solid cur-color(var(--surface-lc-2));
-
-    &[data-orientation="vertical"] {
-      flex-direction: column;
-      align-items: stretch;
-      border-bottom: 0;
-      border-right: var(--border-width) solid cur-color(var(--surface-lc-2));
-    }
   }
 
   .tab {
@@ -39,39 +31,18 @@
     &:hover {
       background-color: cur-color(var(--surface-lc-2));
     }
-
-    &:is([data-selected], .tab-active) {
-      color: cur-color(var(--text-lc-1));
-      font-weight: bold;
-    }
-
-    // Without an indicator element, the selected tab draws its own underline.
-    .tabs:not(:has(.tab-indicator)) &:is([data-selected], .tab-active) {
-      box-shadow: inset 0 calc(var(--border-width) * -1) 0
-        cur-color(var(--surface-lc-4));
-    }
-
-    &:is([data-disabled], .tab-disabled),
-    &:disabled {
-      @include apply-greyscale();
-      pointer-events: none;
-    }
   }
 
-  .tab-indicator {
-    position: absolute;
-    background-color: cur-color(var(--surface-lc-4));
-    transition: all 250ms;
+  .tab-active {
+    color: cur-color(var(--text-lc-1));
+    font-weight: bold;
+    box-shadow: inset 0 calc(var(--border-width) * -1) 0
+      cur-color(var(--surface-lc-4));
+  }
 
-    bottom: calc(var(--border-width) * -1);
-    height: var(--border-width);
-
-    &[data-orientation="vertical"] {
-      bottom: auto;
-      right: calc(var(--border-width) * -1);
-      height: auto;
-      width: var(--border-width);
-    }
+  .tab-disabled {
+    @include apply-greyscale();
+    pointer-events: none;
   }
 
   .tab-content {

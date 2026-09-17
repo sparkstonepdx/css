@@ -152,7 +152,8 @@ const frameDoc = (markup, variant, id) => {
     .filter(([, value]) => value)
     .map(([v, value]) => `${v}:${value}`)
     .join(';');
-  const sheet = variant === 'classless' ? 'classless.css' : 'index.css';
+  const sheet =
+    { classless: 'classless.css', kobalte: 'kobalte.css' }[variant] || 'index.css';
   return `<!doctype html><html lang="en" data-color-scheme="${scheme}" style="${vars}">
 <head><meta charset="utf-8"><link rel="stylesheet" href="./${sheet}"></head>
 <body>${markup}${FRAME_RUNTIME.replace('FRAME_ID', JSON.stringify(id))}</body></html>`;

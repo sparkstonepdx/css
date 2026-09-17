@@ -1115,13 +1115,13 @@
     text-align: left;
     padding: 0.5rem 1rem;
   }
-  .tabs {
+  .tabs, [role=tablist] {
     position: relative;
     display: flex;
     align-items: center;
     border-bottom: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
   }
-  .tab {
+  .tab, [role=tab] {
     display: inline-block;
     border: 0;
     background-color: transparent;
@@ -1131,15 +1131,15 @@
     text-align: center;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
-  .tab:hover {
+  .tab:hover, [role=tab]:hover {
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
   }
-  .tab-active {
+  .tab-active, [role=tab][data-selected] {
     color: oklch(from var(--color) var(--text-lc-1) h);
     font-weight: bold;
     box-shadow: inset 0 calc(var(--border-width) * -1) 0 oklch(from var(--color) var(--surface-lc-4) h);
   }
-  .tab-disabled {
+  .tab-disabled, [role=tab][data-disabled] {
     --swatch-lc-1: var(--grey-swatch-lc-1);
     --text-lc-1: var(--grey-text-lc-1);
     --swatch-lc-2: var(--grey-swatch-lc-2);
@@ -1162,10 +1162,10 @@
     --primary-text-lc: var(--primary-grey-text-lc);
     pointer-events: none;
   }
-  .tab-content {
+  .tab-content, [role=tabpanel] {
     padding: 1rem 0;
   }
-  .tab-content:focus-visible {
+  .tab-content:focus-visible, [role=tabpanel]:focus-visible {
     border-radius: var(--border-radius);
   }
   .progress, progress {
@@ -1229,5 +1229,30 @@
     height: 100%;
   }
 }
+[role=tablist]:has(> .tab-indicator, > [data-kb-tab-indicator]) [role=tab][data-selected] {
+  box-shadow: none;
+}
 
-/*# sourceMappingURL=classless.css.map */
+.tab-indicator,
+[data-kb-tab-indicator] {
+  position: absolute;
+  background-color: oklch(from var(--color) var(--surface-lc-4) h);
+  transition: all 250ms;
+  bottom: calc(var(--border-width) * -1);
+  height: var(--border-width);
+}
+
+[data-orientation=vertical][role=tablist] {
+  flex-direction: column;
+  align-items: stretch;
+  border-bottom: 0;
+  border-right: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+}
+[data-orientation=vertical].tab-indicator, [data-orientation=vertical][data-kb-tab-indicator] {
+  bottom: auto;
+  right: calc(var(--border-width) * -1);
+  height: auto;
+  width: var(--border-width);
+}
+
+/*# sourceMappingURL=kobalte.css.map */

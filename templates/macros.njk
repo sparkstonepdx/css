@@ -63,18 +63,18 @@
     the first tab show the rendered markup the CSS targets; the second tab shows
     the source that produces it.
 #}
-{% macro headless(id, markup, jsx, label="Kobalte") %}
+{% macro headless(id, markup, jsx, label="Kobalte", variant="classes") %}
 <div class="demo" data-demo>
   <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
   <div class="demo-bar">
     <div class="variant-tabs" role="tablist" aria-label="Source">
-      <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Markup</button>
+      <button class="variant-tab" role="tab" type="button" data-variant="{{ variant }}" aria-selected="true">Markup</button>
       <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">{{ label }}</button>
     </div>
-    <button class="ghost copy-button" data-target="{{ id }}-classes">Copy</button>
+    <button class="ghost copy-button" data-target="{{ id }}-markup">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="{{ id }}-classes" data-variant="classes">{{- markup | forceescape | trim -}}</code></pre>
+    <pre><code id="{{ id }}-markup" data-variant="{{ variant }}">{{- markup | forceescape | trim -}}</code></pre>
     <pre hidden><code id="{{ id }}-source" data-variant="source">{{- jsx | forceescape | trim -}}</code></pre>
   </div>
 </div>

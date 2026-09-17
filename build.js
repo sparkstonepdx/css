@@ -23,6 +23,7 @@ for (const file of await glob('pages/*.njk')) {
 const assets = [
   ['dist/classless.css', 'classless.css'],
   ['dist/index.css', 'index.css'],
+  ['dist/kobalte.css', 'kobalte.css'],
   ...(await glob('static/*')).map(f => [f, path.basename(f)]),
 ];
 

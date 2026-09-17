@@ -1,0 +1,10 @@
+// Classless build plus Kobalte support: everything in @sparkstone/css/classless,
+// with Kobalte's rendered markup bound to the framework's classes, so components
+// like tabs and menus are styled without touching their class attributes.
+//
+// Import this instead of /classless, not alongside it.
+
+@use "../classless.scss";
+@use "../components" as c;
+
+@include c.bindings;

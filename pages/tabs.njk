@@ -6,149 +6,123 @@
 {% block content %}
 <h1>Tabs</h1>
 <p class="lede">
-  Layered panels with one visible at a time. The classes are shaped around
-  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte's</a>
-  rendered markup, so state comes from its <code>data-*</code> attributes. Drive
-  the markup yourself and <code>.tab-active</code> does the same job.
+  Layered panels with one visible at a time. The classes follow daisyUI 5 and
+  know nothing about any component library. If you drive tabs with
+  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte</a>,
+  the <code>/kobalte</code> build binds its state attributes to these same classes.
 </p>
 
 {{ m.classes([
-  ["tabs", "The tab list: a row with a bottom rule. Put it on Tabs.List"],
-  ["tab", "A tab button. Put it on Tabs.Trigger"],
-  ["tab-indicator", "The sliding underline. Put it on Tabs.Indicator"],
-  ["tab-content", "A tab panel. Put it on Tabs.Content"],
-  ["tab-active", "Marks the selected tab when no headless library sets data-selected"]
+  ["tabs", "The tab list: a row with a bottom rule"],
+  ["tab", "A tab item. Works on a button, an anchor or a label"],
+  ["tab-active", "The selected tab: darker, bold, underlined"],
+  ["tab-disabled", "A disabled tab: greyed out and inert"],
+  ["tab-content", "A tab panel"]
 ]) }}
 
 <h2>Basic</h2>
-<p>
-  Kobalte sets <code>data-selected</code> on the selected trigger and positions the
-  indicator, so the CSS only has to react to it.
-</p>
-{% set markup %}
+<p>You mark the selected tab yourself and wire the clicks.</p>
+{% set classless %}
 <div>
   <div class="tabs" role="tablist">
-    <button class="tab" role="tab" id="t-profile" aria-controls="p-profile" data-selected>Profile</button>
+    <button class="tab tab-active" role="tab" id="t-profile" aria-controls="p-profile" data-selected>Profile</button>
     <button class="tab" role="tab" id="t-dashboard" aria-controls="p-dashboard">Dashboard</button>
-    <button class="tab" role="tab" id="t-settings" aria-controls="p-settings">Settings</button>
-    <div class="tab-indicator"></div>
+    <button class="tab tab-disabled" role="tab" id="t-billing" aria-controls="p-billing">Billing</button>
   </div>
   <div class="tab-content" role="tabpanel" id="p-profile" aria-labelledby="t-profile">Profile details</div>
   <div class="tab-content" role="tabpanel" id="p-dashboard" aria-labelledby="t-dashboard" hidden>Dashboard details</div>
-  <div class="tab-content" role="tabpanel" id="p-settings" aria-labelledby="t-settings" hidden>Settings details</div>
+  <div class="tab-content" role="tabpanel" id="p-billing" aria-labelledby="t-billing" hidden>Upgrade to see billing</div>
+</div>
+{% endset %}
+{{ m.demo("tabs-basic", classless) }}
+
+<h2>With Kobalte</h2>
+<p>
+  Kobalte renders the roles and sets <code>data-selected</code>, <code>data-disabled</code>
+  and <code>data-orientation</code> itself, but it never adds
+  <code>tab-active</code>. Import the <code>/kobalte</code> build and those
+  attributes are bound to the classes above, so the markup carries no classes at
+  all:
+</p>
+{% call m.snippet("tabs-kobalte-import", "scss") %}
+// class-based build + Kobalte bindings
+@use "pkg:@sparkstone/css/kobalte";
+
+// or classless build + Kobalte bindings
+@use "pkg:@sparkstone/css/classless/kobalte";
+{% endcall %}
+{% set markup %}
+<div>
+  <div role="tablist" data-orientation="horizontal">
+    <button role="tab" id="k-week" aria-controls="kp-week" data-selected>This week</button>
+    <button role="tab" id="k-month" aria-controls="kp-month">This month</button>
+    <div class="tab-indicator"></div>
+  </div>
+  <div role="tabpanel" id="kp-week" aria-labelledby="k-week">7 new sign-ups</div>
+  <div role="tabpanel" id="kp-month" aria-labelledby="k-month" hidden>34 new sign-ups</div>
 </div>
 {% endset %}
 {% set jsx %}
 import { Tabs } from "@kobalte/core/tabs";
 
-<Tabs aria-label="Account" defaultValue="profile">
-  <Tabs.List class="tabs">
-    <Tabs.Trigger class="tab" value="profile">Profile</Tabs.Trigger>
-    <Tabs.Trigger class="tab" value="dashboard">Dashboard</Tabs.Trigger>
-    <Tabs.Trigger class="tab" value="settings">Settings</Tabs.Trigger>
+<Tabs aria-label="Sign-ups" defaultValue="week">
+  <Tabs.List>
+    <Tabs.Trigger value="week">This week</Tabs.Trigger>
+    <Tabs.Trigger value="month">This month</Tabs.Trigger>
     <Tabs.Indicator class="tab-indicator" />
   </Tabs.List>
-  <Tabs.Content class="tab-content" value="profile">Profile details</Tabs.Content>
-  <Tabs.Content class="tab-content" value="dashboard">Dashboard details</Tabs.Content>
-  <Tabs.Content class="tab-content" value="settings">Settings details</Tabs.Content>
+  <Tabs.Content value="week">7 new sign-ups</Tabs.Content>
+  <Tabs.Content value="month">34 new sign-ups</Tabs.Content>
 </Tabs>
 {% endset %}
-{{ m.headless("tabs-basic", markup, jsx) }}
-
-<h2>Without an indicator</h2>
+{{ m.headless("tabs-kobalte", markup, jsx, variant="kobalte") }}
 <p>
-  Leave <code>Tabs.Indicator</code> out and the selected tab draws its own
-  underline instead. The rule is <code>.tabs:not(:has(.tab-indicator))</code>, so
-  you never get both.
+  <small>
+    <code>Tabs.Indicator</code> has no daisyUI counterpart, so it lives in the
+    Kobalte layer as <code>.tab-indicator</code>. When one is present the selected
+    tab drops its own underline, so you never get both.
+  </small>
 </p>
-{% set markup %}
-<div>
-  <div class="tabs" role="tablist">
-    <button class="tab" role="tab" id="t2-week" aria-controls="p2-week" data-selected>This week</button>
-    <button class="tab" role="tab" id="t2-month" aria-controls="p2-month">This month</button>
-  </div>
-  <div class="tab-content" role="tabpanel" id="p2-week" aria-labelledby="t2-week">7 new sign-ups</div>
-  <div class="tab-content" role="tabpanel" id="p2-month" aria-labelledby="t2-month" hidden>34 new sign-ups</div>
-</div>
-{% endset %}
-{% set jsx %}
-<Tabs defaultValue="week">
-  <Tabs.List class="tabs">
-    <Tabs.Trigger class="tab" value="week">This week</Tabs.Trigger>
-    <Tabs.Trigger class="tab" value="month">This month</Tabs.Trigger>
-  </Tabs.List>
-  <Tabs.Content class="tab-content" value="week">7 new sign-ups</Tabs.Content>
-  <Tabs.Content class="tab-content" value="month">34 new sign-ups</Tabs.Content>
-</Tabs>
-{% endset %}
-{{ m.headless("tabs-plain", markup, jsx) }}
-
-<h2>Disabled</h2>
-<p>
-  Kobalte sets <code>data-disabled</code> on a disabled trigger. The tab greys out
-  the same way a disabled button does, and stops taking pointer events.
-</p>
-{% set markup %}
-<div>
-  <div class="tabs" role="tablist">
-    <button class="tab" role="tab" id="t3-a" aria-controls="p3-a" data-selected>Details</button>
-    <button class="tab" role="tab" id="t3-b" aria-controls="p3-b" data-disabled>Billing</button>
-  </div>
-  <div class="tab-content" role="tabpanel" id="p3-a" aria-labelledby="t3-a">Available on every plan</div>
-  <div class="tab-content" role="tabpanel" id="p3-b" aria-labelledby="t3-b" hidden>Upgrade to see billing</div>
-</div>
-{% endset %}
-{% set jsx %}
-<Tabs defaultValue="details">
-  <Tabs.List class="tabs">
-    <Tabs.Trigger class="tab" value="details">Details</Tabs.Trigger>
-    <Tabs.Trigger class="tab" value="billing" disabled>Billing</Tabs.Trigger>
-  </Tabs.List>
-  <Tabs.Content class="tab-content" value="details">Available on every plan</Tabs.Content>
-  <Tabs.Content class="tab-content" value="billing">Upgrade to see billing</Tabs.Content>
-</Tabs>
-{% endset %}
-{{ m.headless("tabs-disabled", markup, jsx) }}
 
 <h2>Vertical</h2>
 <p>
-  Kobalte puts <code>data-orientation</code> on every part, so the list turns into a
-  column and the indicator moves to the trailing edge without any extra class.
+  <code>data-orientation="vertical"</code> turns the list into a column and moves
+  the indicator to the trailing edge. This is Kobalte-only: the daisyUI classes
+  have no vertical variant.
 </p>
 {% set markup %}
-<div style="display: flex; gap: 1rem" data-orientation="vertical">
-  <div class="tabs" role="tablist" aria-orientation="vertical" data-orientation="vertical">
-    <button class="tab" role="tab" id="t4-a" aria-controls="p4-a" data-selected>General</button>
-    <button class="tab" role="tab" id="t4-b" aria-controls="p4-b">Members</button>
+<div style="display: flex; gap: 1rem">
+  <div role="tablist" data-orientation="vertical">
+    <button role="tab" id="v-general" aria-controls="vp-general" data-selected>General</button>
+    <button role="tab" id="v-members" aria-controls="vp-members">Members</button>
     <div class="tab-indicator" data-orientation="vertical"></div>
   </div>
-  <div class="tab-content" role="tabpanel" id="p4-a" aria-labelledby="t4-a">General settings</div>
-  <div class="tab-content" role="tabpanel" id="p4-b" aria-labelledby="t4-b" hidden>Member settings</div>
+  <div role="tabpanel" id="vp-general" aria-labelledby="v-general">General settings</div>
+  <div role="tabpanel" id="vp-members" aria-labelledby="v-members" hidden>Member settings</div>
 </div>
 {% endset %}
 {% set jsx %}
 <Tabs orientation="vertical" defaultValue="general" style="display: flex; gap: 1rem">
-  <Tabs.List class="tabs">
-    <Tabs.Trigger class="tab" value="general">General</Tabs.Trigger>
-    <Tabs.Trigger class="tab" value="members">Members</Tabs.Trigger>
+  <Tabs.List>
+    <Tabs.Trigger value="general">General</Tabs.Trigger>
+    <Tabs.Trigger value="members">Members</Tabs.Trigger>
     <Tabs.Indicator class="tab-indicator" />
   </Tabs.List>
-  <Tabs.Content class="tab-content" value="general">General settings</Tabs.Content>
-  <Tabs.Content class="tab-content" value="members">Member settings</Tabs.Content>
+  <Tabs.Content value="general">General settings</Tabs.Content>
+  <Tabs.Content value="members">Member settings</Tabs.Content>
 </Tabs>
 {% endset %}
-{{ m.headless("tabs-vertical", markup, jsx) }}
+{{ m.headless("tabs-vertical", markup, jsx, variant="kobalte") }}
 
-<h2>Without Kobalte</h2>
+<h2>Mixing the two</h2>
 <p>
-  The same classes work on plain markup. Use <code>.tab-active</code> for the
-  selected tab and <code>.tab-disabled</code> for a disabled one, and wire the
-  clicks yourself.
+  The bindings are <code>@extend</code>s of the same classes, so a Kobalte part and
+  a hand-written one share a rule. You can add classes to Kobalte parts where you
+  want to be explicit, and both styles agree.
 </p>
-{% call m.snippet("tabs-plain-html", "html") %}
-<div class="tabs" role="tablist">
-  <button class="tab tab-active" role="tab" aria-controls="panel-1">One</button>
-  <button class="tab" role="tab" aria-controls="panel-2">Two</button>
-</div>
+{% call m.snippet("tabs-mixed", "jsx") %}
+<Tabs.List class="tabs">
+  <Tabs.Trigger class="tab" value="week">This week</Tabs.Trigger>
+</Tabs.List>
 {% endcall %}
 {% endblock %}
