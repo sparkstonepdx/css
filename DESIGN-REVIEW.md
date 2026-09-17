@@ -1,5 +1,12 @@
 # Design review
 
+Fixed since the last pass: `apply-greyscale()` now swaps `--surface-lc-*` as well
+as `--swatch-lc-*` and `--text-lc-*`, so backgrounds inside a disabled subtree
+lose their chroma. They stayed fully saturated before, which is what the unused
+`--grey-surface-lc-*` scale was built for. One gap remains: text inherited from
+an ancestor, rather than set from the scale, still does not grey, because an
+inherited `color` is an already-resolved value.
+
 Visual decisions made while adding components, waiting on your sign-off. Nothing
 here was derived from an existing rule in the framework: these are proposals.
 Structure, class names and state handling are settled; the numbers and the look

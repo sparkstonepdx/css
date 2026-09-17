@@ -380,3 +380,33 @@ section {
 .component-card small {
   color: oklch(from var(--color) var(--text-lc-3) h);
 }
+
+/* The card is a link, so it rebinds --color to the accent hue. Previews should
+   show the theme hue, so the grid stashes it and the preview restores it. */
+.component-grid {
+  --grid-color: var(--color);
+}
+
+.component-preview {
+  --color: var(--grid-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+
+  height: 4.5rem;
+  margin-bottom: 0.5rem;
+  padding: 0.5rem;
+  overflow: hidden;
+
+  border-radius: var(--border-radius);
+  background-color: oklch(from var(--color) var(--surface-lc-1) h);
+  color: oklch(from var(--color) var(--text-lc-1) h);
+
+  pointer-events: none;
+}
+
+.component-card {
+  color: oklch(from var(--color) var(--text-lc-1) h);
+}

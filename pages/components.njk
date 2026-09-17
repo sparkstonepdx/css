@@ -1,6 +1,7 @@
 {% extends "layout.njk" %}
 {% import "macros.njk" as m %}
 {% import "nav.njk" as nav %}
+{% import "previews.njk" as p %}
 {% set title = "All components" %}
 {% set slug = "components" %}
 
@@ -49,6 +50,7 @@
     <div class="component-grid">
       {% for item in group[1] %}
         <a class="component-card" href="./{{ item[0] }}.html">
+          <span class="component-preview" aria-hidden="true">{{ p.preview(item[0]) }}</span>
           <strong>{{ item[1] }}{% if item[2] %}<span class="kobalte-badge">K</span>{% endif %}</strong>
           <small>{{ blurbs[item[0]] }}</small>
         </a>
@@ -61,6 +63,7 @@
 <div class="component-grid">
   {% for slug, label in [["colors", "Colors"], ["customizing", "Customizing"], ["layout", "Layout"]] %}
     <a class="component-card" href="./{{ slug }}.html">
+      <span class="component-preview" aria-hidden="true">{{ p.preview(slug) }}</span>
       <strong>{{ label }}</strong>
       <small>{{ blurbs[slug] }}</small>
     </a>

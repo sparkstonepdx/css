@@ -115,10 +115,14 @@ $dimLcArray: (
   @return string.unquote("oklch(from var(--color) #{$swatch-lc} h)");
 }
 
+// Custom properties are substituted where they are declared, so rebinding the
+// swatches on a descendant does not reach --text-lc-* or --surface-lc-*: each
+// scale has to be swapped by name.
 @mixin apply-greyscale() {
   @for $i from 1 through list.length($lcArray) {
     --swatch-lc-#{$i}: var(--grey-swatch-lc-#{$i});
     --text-lc-#{$i}: var(--grey-text-lc-#{$i});
+    --surface-lc-#{$i}: var(--grey-surface-lc-#{$i});
   }
   --primary-surface-lc: var(--primary-grey-surface-lc);
   --primary-text-lc: var(--primary-grey-text-lc);
