@@ -6,8 +6,8 @@
 {% block content %}
 <h1>Tabs</h1>
 <p class="lede">
-  Layered panels with one visible at a time. The classes follow daisyUI 5 and
-  know nothing about any component library. The classless build has a
+  Layered panels with one visible at a time. The classes know nothing about any
+  component library. The classless build has a
   <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte</a>
   layer that binds its state attributes to these same classes.
 </p>
@@ -69,7 +69,7 @@ import { Tabs } from "@kobalte/core/tabs";
 {{ m.demo("tabs-basic", classless, "", kobalte, kobalte_markup) }}
 <p>
   <small>
-    <code>Tabs.Indicator</code> has no daisyUI counterpart, so it lives in the
+    <code>Tabs.Indicator</code> has no class of its own, so it lives in the
     Kobalte layer as <code>.tab-indicator</code>. When one is present the selected
     tab drops its own underline, so you never get both.
   </small>
@@ -84,8 +84,8 @@ import { Tabs } from "@kobalte/core/tabs";
 <h2>Vertical</h2>
 <p>
   <code>data-orientation="vertical"</code> turns the list into a column and moves
-  the indicator to the trailing edge. This is Kobalte-only: the daisyUI classes
-  have no vertical variant.
+  the indicator to the trailing edge. This is Kobalte-only: the classes have no
+  vertical variant.
 </p>
 {% set markup %}
 <div style="display: flex; gap: 1rem">

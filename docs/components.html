@@ -4,7 +4,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>Dialog · @sparkstone/css</title>
+    <title>All components · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
@@ -54,7 +54,7 @@
                 <li>
                   <a
                     href="./components.html"
-                    
+                    aria-current="page"
                     >All components</a
                   >
                 </li>
@@ -300,7 +300,7 @@
                 <li>
                   <a
                     href="./dialog.html"
-                    aria-current="page"
+                    
                     >Dialog</a
                   >
                 </li>
@@ -320,162 +320,203 @@
 
       <main class="site-main">
         
-<h1>Dialog</h1>
+<h1>All components</h1>
 <p class="lede">
-  A centered, backdrop-blurred modal built on the native <code>&lt;dialog&gt;</code>
-  element. Open it with <code>showModal()</code>.
+  Every component, with its page. A <span class="kobalte-badge">K</span> marks one
+  the Kobalte layer covers, so its parts are styled from the markup Kobalte
+  renders, without class attributes.
 </p>
 
 
-<table class="class-table">
-  <thead>
-    <tr><th>Class</th><th>Does what</th></tr>
-  </thead>
-  <tbody>
-    
-      <tr><td><code>dialog</code></td><td>The dialog itself: fixed, centered, blurred backdrop, hidden unless open</td></tr>
-    
-      <tr><td><code>dialog-box</code></td><td>The panel inside: card surface, scrolls internally, capped width</td></tr>
-    
-      <tr><td><code>dialog-header</code></td><td>Header row inside the panel</td></tr>
-    
-      <tr><td><code>dialog-actions</code></td><td>Footer row inside the panel: top border, right-aligned actions</td></tr>
-    
-  </tbody>
-</table>
+  
+
+  
+    <h2>Typography</h2>
+    <div class="component-grid">
+      
+        <a class="component-card" href="./prose.html">
+          <strong>Prose</strong>
+          <small>Headings, paragraphs, lists, quotes and code</small>
+        </a>
+      
+        <a class="component-card" href="./link.html">
+          <strong>Link</strong>
+          <small>Accent-coloured links</small>
+        </a>
+      
+        <a class="component-card" href="./kbd.html">
+          <strong>Kbd</strong>
+          <small>Keyboard keys</small>
+        </a>
+      
+    </div>
+  
+
+  
+    <h2>Actions</h2>
+    <div class="component-grid">
+      
+        <a class="component-card" href="./button.html">
+          <strong>Button</strong>
+          <small>btn and its variants</small>
+        </a>
+      
+    </div>
+  
+
+  
+    <h2>Navigation</h2>
+    <div class="component-grid">
+      
+        <a class="component-card" href="./tabs.html">
+          <strong>Tabs<span class="kobalte-badge">K</span></strong>
+          <small>Layered panels, one at a time</small>
+        </a>
+      
+        <a class="component-card" href="./dropdown.html">
+          <strong>Dropdown<span class="kobalte-badge">K</span></strong>
+          <small>A floating panel of actions</small>
+        </a>
+      
+    </div>
+  
+
+  
+    <h2>Data display</h2>
+    <div class="component-grid">
+      
+        <a class="component-card" href="./alert.html">
+          <strong>Alert<span class="kobalte-badge">K</span></strong>
+          <small>A short, important message</small>
+        </a>
+      
+        <a class="component-card" href="./badge.html">
+          <strong>Badge</strong>
+          <small>Pills for counts and tags</small>
+        </a>
+      
+        <a class="component-card" href="./card.html">
+          <strong>Card</strong>
+          <small>A padded surface</small>
+        </a>
+      
+        <a class="component-card" href="./progress.html">
+          <strong>Progress</strong>
+          <small>A flat progress bar</small>
+        </a>
+      
+        <a class="component-card" href="./table.html">
+          <strong>Table</strong>
+          <small>Rows and columns</small>
+        </a>
+      
+        <a class="component-card" href="./collapse.html">
+          <strong>Collapse<span class="kobalte-badge">K</span></strong>
+          <small>Sections that open and close</small>
+        </a>
+      
+    </div>
+  
+
+  
+    <h2>Forms</h2>
+    <div class="component-grid">
+      
+        <a class="component-card" href="./label.html">
+          <strong>Label</strong>
+          <small>The layout primitive for form controls</small>
+        </a>
+      
+        <a class="component-card" href="./fieldset.html">
+          <strong>Fieldset</strong>
+          <small>A bordered group of controls</small>
+        </a>
+      
+        <a class="component-card" href="./input.html">
+          <strong>Input</strong>
+          <small>Text-like inputs</small>
+        </a>
+      
+        <a class="component-card" href="./textarea.html">
+          <strong>Textarea</strong>
+          <small>Multi-line input</small>
+        </a>
+      
+        <a class="component-card" href="./select.html">
+          <strong>Select<span class="kobalte-badge">K</span></strong>
+          <small>Native select, and Kobalte&#39;s listbox</small>
+        </a>
+      
+        <a class="component-card" href="./checkbox.html">
+          <strong>Checkbox</strong>
+          <small>A drawn check</small>
+        </a>
+      
+        <a class="component-card" href="./radio.html">
+          <strong>Radio</strong>
+          <small>Choice rows and cards</small>
+        </a>
+      
+        <a class="component-card" href="./range.html">
+          <strong>Range</strong>
+          <small>A native slider</small>
+        </a>
+      
+        <a class="component-card" href="./file-input.html">
+          <strong>File input</strong>
+          <small>A styled picker button</small>
+        </a>
+      
+        <a class="component-card" href="./color-input.html">
+          <strong>Color input</strong>
+          <small>A colour swatch</small>
+        </a>
+      
+        <a class="component-card" href="./toggle.html">
+          <strong>Toggle<span class="kobalte-badge">K</span></strong>
+          <small>A switch</small>
+        </a>
+      
+    </div>
+  
+
+  
+    <h2>Overlay</h2>
+    <div class="component-grid">
+      
+        <a class="component-card" href="./dialog.html">
+          <strong>Dialog</strong>
+          <small>A modal built on &lt;dialog&gt;</small>
+        </a>
+      
+        <a class="component-card" href="./tooltip.html">
+          <strong>Tooltip<span class="kobalte-badge">K</span></strong>
+          <small>A bubble of explanatory text</small>
+        </a>
+      
+    </div>
+  
 
 
-<h2>Basic</h2>
-
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
-        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
-        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
-        
-      </div>
-    
-    <button class="ghost copy-button" data-target="dialog-basic-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="dialog-basic-classes" data-variant="classes">&lt;button class=&quot;btn&quot; data-dialog=&quot;demo-dialog&quot;&gt;Open dialog&lt;/button&gt;
-
-&lt;dialog id=&quot;demo-dialog&quot; class=&quot;dialog&quot;&gt;
-  &lt;form method=&quot;dialog&quot;&gt;
-    &lt;article class=&quot;dialog-box prose&quot;&gt;
-      &lt;header class=&quot;dialog-header&quot;&gt;
-        &lt;h3&gt;Dialog heading&lt;/h3&gt;
-      &lt;/header&gt;
-      &lt;p&gt;Scrolls internally when the content is taller than the viewport, and locks
-        scrolling on the page behind it.&lt;/p&gt;
-      &lt;footer class=&quot;dialog-actions&quot;&gt;
-        &lt;button value=&quot;cancel&quot; class=&quot;btn btn-secondary&quot;&gt;Cancel&lt;/button&gt;
-        &lt;button value=&quot;ok&quot; class=&quot;btn&quot;&gt;OK&lt;/button&gt;
-      &lt;/footer&gt;
-    &lt;/article&gt;
-  &lt;/form&gt;
-&lt;/dialog&gt;</code></pre>
-    
-      <pre hidden><code id="dialog-basic-classless" data-variant="classless">&lt;button data-dialog=&quot;demo-dialog&quot;&gt;Open dialog&lt;/button&gt;
-
-&lt;dialog id=&quot;demo-dialog&quot;&gt;
-  &lt;form method=&quot;dialog&quot;&gt;
-    &lt;article&gt;
-      &lt;header&gt;
-        &lt;h3&gt;Dialog heading&lt;/h3&gt;
-      &lt;/header&gt;
-      &lt;p&gt;Scrolls internally when the content is taller than the viewport, and locks
-        scrolling on the page behind it.&lt;/p&gt;
-      &lt;footer&gt;
-        &lt;button value=&quot;cancel&quot; class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
-        &lt;button value=&quot;ok&quot;&gt;OK&lt;/button&gt;
-      &lt;/footer&gt;
-    &lt;/article&gt;
-  &lt;/form&gt;
-&lt;/dialog&gt;</code></pre>
-    
-    
-  </div>
+<h2>Also</h2>
+<div class="component-grid">
+  
+    <a class="component-card" href="./colors.html">
+      <strong>Colors</strong>
+      <small>The scale, and how it is derived</small>
+    </a>
+  
+    <a class="component-card" href="./customizing.html">
+      <strong>Customizing</strong>
+      <small>Tokens, scoping and Sass entry points</small>
+    </a>
+  
+    <a class="component-card" href="./layout.html">
+      <strong>Layout</strong>
+      <small>Containers and the flex helper</small>
+    </a>
+  
 </div>
-
-<p>
-  <small>
-    The docs script wires <code>[data-dialog]</code> to <code>showModal()</code>. In your own
-    app that is one line: <code>dialog.showModal()</code>.
-  </small>
-</p>
-
-<h2>Form nesting</h2>
-<p>
-  Both nestings work, so the close button needs no JavaScript:
-  <code>dialog &gt; form &gt; .dialog-box</code> and
-  <code>dialog &gt; .dialog-box &gt; form</code>.
-</p>
-
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
-        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
-        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
-        
-      </div>
-    
-    <button class="ghost copy-button" data-target="dialog-form-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="dialog-form-classes" data-variant="classes">&lt;button class=&quot;btn&quot; data-dialog=&quot;inner-form-dialog&quot;&gt;Open&lt;/button&gt;
-
-&lt;dialog id=&quot;inner-form-dialog&quot; class=&quot;dialog&quot;&gt;
-  &lt;article class=&quot;dialog-box prose&quot;&gt;
-    &lt;form method=&quot;dialog&quot;&gt;
-      &lt;header class=&quot;dialog-header&quot;&gt;&lt;h3&gt;Rename&lt;/h3&gt;&lt;/header&gt;
-      &lt;label class=&quot;label&quot;&gt;
-        Name
-        &lt;input type=&quot;text&quot; class=&quot;input&quot; value=&quot;Untitled&quot; /&gt;
-      &lt;/label&gt;
-      &lt;footer class=&quot;dialog-actions&quot;&gt;
-        &lt;button value=&quot;cancel&quot; class=&quot;btn btn-secondary&quot;&gt;Cancel&lt;/button&gt;
-        &lt;button value=&quot;save&quot; class=&quot;btn&quot;&gt;Save&lt;/button&gt;
-      &lt;/footer&gt;
-    &lt;/form&gt;
-  &lt;/article&gt;
-&lt;/dialog&gt;</code></pre>
-    
-      <pre hidden><code id="dialog-form-classless" data-variant="classless">&lt;button data-dialog=&quot;inner-form-dialog&quot;&gt;Open&lt;/button&gt;
-
-&lt;dialog id=&quot;inner-form-dialog&quot;&gt;
-  &lt;article&gt;
-    &lt;form method=&quot;dialog&quot;&gt;
-      &lt;header&gt;&lt;h3&gt;Rename&lt;/h3&gt;&lt;/header&gt;
-      &lt;label&gt;
-        Name
-        &lt;input type=&quot;text&quot; value=&quot;Untitled&quot; /&gt;
-      &lt;/label&gt;
-      &lt;footer&gt;
-        &lt;button value=&quot;cancel&quot; class=&quot;secondary&quot;&gt;Cancel&lt;/button&gt;
-        &lt;button value=&quot;save&quot;&gt;Save&lt;/button&gt;
-      &lt;/footer&gt;
-    &lt;/form&gt;
-  &lt;/article&gt;
-&lt;/dialog&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
-
-<p class="classless-note"><small><strong>Classless:</strong> the panel is an &lt;code&gt;article&lt;/code&gt;, so it picks up the card styling automatically. With classes, &lt;code&gt;.dialog-box&lt;/code&gt; includes it.</small></p>
-
 
 
         <footer class="site-footer">

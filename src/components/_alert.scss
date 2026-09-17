@@ -2,9 +2,8 @@
 
 // VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. See DESIGN-REVIEW.md.
 //
-// A short, important message. daisyUI has alert-info, alert-success and
-// alert-warning too; this framework has no tokens for those, so only the error
-// variant exists. See DESIGN-REVIEW.md.
+// A short, important message. Only the error variant exists: the framework has
+// no tokens for info, success or warning. See DESIGN-REVIEW.md.
 @mixin styles {
   .alert {
     display: flex;

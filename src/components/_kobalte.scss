@@ -4,8 +4,8 @@
 // DESIGN-REVIEW.md at the repo root for review.
 //
 // Kobalte's rendered markup bound to the framework's classes with @extend, so a
-// Kobalte part and its class share one rule. Only the parts Kobalte has that
-// daisyUI has no class for get declarations of their own.
+// Kobalte part and its class share one rule. Only Kobalte parts with no class of
+// their own get declarations here.
 //
 // Kobalte 0.13: https://kobalte.dev/docs/core/components
 @mixin tabs {
@@ -38,8 +38,8 @@
     border-right: var(--border-width) solid cur-color(var(--surface-lc-2));
   }
 
-  // Tabs.Indicator has no daisyUI counterpart. Kobalte positions it inline, and
-  // it replaces the selected tab's own underline.
+  // Tabs.Indicator has no class of its own. Kobalte positions it inline, and it
+  // replaces the selected tab's own underline.
   [role="tablist"]:has(.tab-indicator) [role="tab"][data-selected] {
     box-shadow: none;
   }

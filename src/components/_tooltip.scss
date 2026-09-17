@@ -2,8 +2,8 @@
 
 // VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. See DESIGN-REVIEW.md.
 //
-// The bubble only. Placement belongs to whatever opens it: daisyUI's .tooltip
-// anchors with CSS and a pseudo-element, Kobalte's popper writes inline styles.
+// The bubble only. Placement belongs to whatever opens it: a CSS-only tooltip
+// anchors with a pseudo-element, Kobalte's popper writes inline styles.
 @mixin styles {
   .tooltip-content {
     max-width: 20rem;

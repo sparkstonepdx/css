@@ -1,11 +1,13 @@
 {#
-  Site navigation. Each group is [label, [[slug, title], ...]].
-  build.js reads nothing from here; layout.njk renders it.
+  Site navigation. Each group is [label, [[slug, title, kobalte?], ...]].
+  A truthy third field marks a component the Kobalte layer covers, and shows a
+  badge in the sidebar and on the components page.
 #}
 {% set navGroups = [
   ["Getting started", [
     ["index", "Overview"],
     ["quickstart", "Quickstart"],
+    ["components", "All components"],
     ["colors", "Colors"],
     ["customizing", "Customizing"],
     ["layout", "Layout"]
@@ -19,32 +21,32 @@
     ["button", "Button"]
   ]],
   ["Navigation", [
-    ["tabs", "Tabs"],
-    ["dropdown", "Dropdown"]
+    ["tabs", "Tabs", true],
+    ["dropdown", "Dropdown", true]
   ]],
   ["Data display", [
-    ["alert", "Alert"],
+    ["alert", "Alert", true],
     ["badge", "Badge"],
     ["card", "Card"],
     ["progress", "Progress"],
     ["table", "Table"],
-    ["collapse", "Collapse"]
+    ["collapse", "Collapse", true]
   ]],
   ["Forms", [
     ["label", "Label"],
     ["fieldset", "Fieldset"],
     ["input", "Input"],
     ["textarea", "Textarea"],
-    ["select", "Select"],
+    ["select", "Select", true],
     ["checkbox", "Checkbox"],
     ["radio", "Radio"],
     ["range", "Range"],
     ["file-input", "File input"],
     ["color-input", "Color input"],
-    ["toggle", "Toggle"]
+    ["toggle", "Toggle", true]
   ]],
   ["Overlay", [
     ["dialog", "Dialog"],
-    ["tooltip", "Tooltip"]
+    ["tooltip", "Tooltip", true]
   ]]
 ] %}

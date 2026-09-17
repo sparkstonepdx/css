@@ -338,3 +338,45 @@ section {
     overflow-x: auto;
   }
 }
+
+/* Marks a component the Kobalte layer covers */
+.kobalte-badge {
+  display: inline-block;
+  margin-left: 0.375rem;
+  padding: 0 0.3rem;
+  border-radius: calc(var(--border-radius) * 2);
+  background-color: oklch(from var(--color) var(--surface-lc-3) h);
+  color: oklch(from var(--color) var(--text-lc-1) h);
+  font-size: 0.6875rem;
+  font-weight: bold;
+  vertical-align: 0.05em;
+}
+
+/* Components index */
+.component-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr));
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.component-card {
+  display: block;
+  padding: 0.75rem;
+  border: var(--border-width) solid
+    oklch(from var(--color) var(--surface-lc-2) h);
+  border-radius: var(--border-radius);
+  text-decoration: none;
+}
+
+.component-card:hover {
+  background-color: oklch(from var(--color) var(--surface-lc-2) h);
+}
+
+.component-card strong {
+  display: block;
+}
+
+.component-card small {
+  color: oklch(from var(--color) var(--text-lc-3) h);
+}

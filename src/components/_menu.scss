@@ -3,14 +3,14 @@
 // VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. Every value is listed in
 // DESIGN-REVIEW.md at the repo root for review.
 //
-// Menus and the panel a dropdown pops open, following daisyUI 5:
+// Menus and the panel a dropdown pops open:
 // .dropdown-content on the floating panel, .menu on the list inside it,
 // .menu-item on each row, .menu-active and .menu-disabled for state,
 // .menu-title on a group heading.
 //
-// Positioning is not here. daisyUI's .dropdown anchors the panel with CSS;
-// Kobalte's popper sets inline styles on a positioner it owns. These classes
-// only paint.
+// Positioning is not here. Kobalte's popper sets inline styles on a positioner
+// it owns, and a CSS-only dropdown anchors the panel itself. These classes only
+// paint.
 //
 // Order matters: these rules come after .btn in components/_index.scss, because
 // a Kobalte SubTrigger renders as a div but its Trigger is a <button>.

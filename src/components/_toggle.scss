@@ -2,9 +2,9 @@
 
 // VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. See DESIGN-REVIEW.md.
 //
-// A switch, named .toggle after daisyUI 5. Two shapes are supported, because
-// the two worlds build it differently:
-//   <input type="checkbox" class="toggle">        daisyUI: one element
+// A switch. Two shapes are supported, because the two worlds build it
+// differently:
+//   <input type="checkbox" class="toggle">          one element
 //   <div class="toggle"><div class="toggle-thumb">  Kobalte: Control + Thumb
 @mixin styles {
   .toggle {

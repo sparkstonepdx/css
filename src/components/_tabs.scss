@@ -3,8 +3,8 @@
 // VISUAL CHOICES HERE ARE PROPOSALS, NOT SIGNED OFF. Every value is listed in
 // DESIGN-REVIEW.md at the repo root for review.
 //
-// Tabs, following daisyUI 5: .tabs on the list, .tab on each item,
-// .tab-active and .tab-disabled for state, .tab-content on the panel.
+// Tabs: .tabs on the list, .tab on each item, .tab-active and .tab-disabled
+// for state, .tab-content on the panel.
 //
 // Nothing here knows about any component library. classless/kobalte.scss
 // @extends these classes onto Kobalte's own selectors.
