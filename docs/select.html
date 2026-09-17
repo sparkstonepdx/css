@@ -478,10 +478,10 @@
   &lt;/Select.Portal&gt;
 &lt;/Select&gt;</code></pre>
       <pre hidden><code id="select-kobalte-kobalte-markup" data-variant="kobalte-markup">&lt;div&gt;
-  &lt;button aria-haspopup=&quot;listbox&quot; aria-expanded=&quot;true&quot; data-expanded&gt;
+  &lt;button aria-haspopup=&quot;listbox&quot; aria-expanded=&quot;true&quot; data-expanded style=&quot;margin-bottom: 0.25rem&quot;&gt;
     &lt;span&gt;Production&lt;/span&gt;&lt;span&gt;▾&lt;/span&gt;
   &lt;/button&gt;
-  &lt;ul role=&quot;listbox&quot; style=&quot;margin-top: 0.25rem&quot;&gt;
+  &lt;ul role=&quot;listbox&quot;&gt;
     &lt;li role=&quot;option&quot;&gt;Development&lt;/li&gt;
     &lt;li role=&quot;option&quot; data-highlighted&gt;Staging&lt;/li&gt;
     &lt;li role=&quot;option&quot; data-selected&gt;Production&lt;/li&gt;
@@ -491,6 +491,14 @@
   </div>
 </div>
 
+<p>
+  <small>
+    The trigger is a form field, so it carries the same bottom margin as an
+    <code>.input</code>. That margin is overridden in this demo because the
+    listbox sits inline here; in an app the content is portaled and positioned by
+    Kobalte's popper, which sets the gap with its <code>gutter</code> prop.
+  </small>
+</p>
 <p>
   <small>
     <code>data-selected</code> marks the chosen option and <code>data-highlighted</code>
