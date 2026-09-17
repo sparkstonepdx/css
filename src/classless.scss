@@ -19,7 +19,6 @@ $text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"]
 
 @layer theme {
   @include c.styles($classless: true);
-  @include c.firefox($text-input);
   @include c.scroll-lock(dialog);
 
   /* Form controls */

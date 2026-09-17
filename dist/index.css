@@ -115,6 +115,12 @@
   .input[type=time] {
     background-image: var(--icon-clock);
   }
+  @-moz-document url-prefix() {
+    .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
+      padding-right: 1rem !important;
+      background-image: none !important;
+    }
+  }
   .select {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
     border-radius: var(--border-radius);
@@ -1071,12 +1077,6 @@
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
     color: oklch(from var(--color) var(--text-lc-3) h);
     white-space: nowrap;
-  }
-  @-moz-document url-prefix() {
-    .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
-      padding-right: 1rem !important;
-      background-image: none !important;
-    }
   }
   html:has(.dialog[open]) {
     overflow: hidden;

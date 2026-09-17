@@ -70,6 +70,17 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     &[type="time"] {
       background-image: var(--icon-clock);
     }
+
+    // Firefox draws its own picker icon, so drop ours there. @-moz-document
+    // was disabled for page stylesheets in Firefox 61, except for an empty
+    // url-prefix(), which was kept working precisely so it could be used this
+    // way. It is non-standard and deprecated, so treat it as a nicety.
+    @-moz-document url-prefix() {
+      &:is(#{$date-types}) {
+        padding-right: 1rem !important;
+        background-image: none !important;
+      }
+    }
   }
 
   .select {
@@ -191,16 +202,5 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   .select-error,
   .textarea-error {
     --color: var(--error-color);
-  }
-}
-
-// Firefox draws its own picker icon; drop ours. Emitted at the top level
-// because @-moz-document cannot nest inside a style rule.
-@mixin firefox($input) {
-  @-moz-document url-prefix() {
-    #{$input}:is(#{$date-types}) {
-      padding-right: 1rem !important;
-      background-image: none !important;
-    }
   }
 }

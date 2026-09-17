@@ -17,6 +17,5 @@
 
 @layer theme {
   @include c.styles;
-  @include c.firefox(".input");
   @include c.scroll-lock(".dialog");
 }
