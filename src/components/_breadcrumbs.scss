@@ -24,9 +24,9 @@
     }
 
     // The current page is text, not a link.
+    // Links carry the accent colour, so the current page reads as plain text.
     :is([aria-current], [data-current]) {
       color: cur-color(var(--text-lc-1));
-      font-weight: bold;
       text-decoration: none;
     }
   }

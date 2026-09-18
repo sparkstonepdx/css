@@ -1065,7 +1065,6 @@
   }
   .tab-active {
     color: oklch(from var(--color) var(--text-lc-1) h);
-    font-weight: bold;
     box-shadow: inset 0 calc(var(--border-width) * -1) 0 oklch(from var(--color) var(--surface-lc-4) h);
   }
   .tab-disabled {
@@ -1149,7 +1148,7 @@
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
   }
   .menu-selected {
-    font-weight: bold;
+    box-shadow: inset calc(var(--border-width) * 1.5) 0 0 oklch(from var(--color) var(--surface-lc-4) h);
   }
   .menu-disabled {
     --swatch-lc-1: var(--grey-swatch-lc-1);
@@ -1571,7 +1570,6 @@
   }
   .breadcrumbs :is([aria-current], [data-current]) {
     color: oklch(from var(--color) var(--text-lc-1) h);
-    font-weight: bold;
     text-decoration: none;
   }
   .breadcrumbs-separator {
@@ -1628,7 +1626,6 @@
   }
   .segmented-item:has(input:checked), .segmented-item:is([data-checked], .segmented-item-active) {
     color: oklch(from var(--color) var(--text-lc-1) h);
-    font-weight: bold;
   }
   .segmented:not(:has(.segmented-indicator)) .segmented-item:is(:has(input:checked), [data-checked], .segmented-item-active) {
     background-color: oklch(from var(--color) var(--surface-lc-1) h);

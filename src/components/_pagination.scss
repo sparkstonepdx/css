@@ -1,4 +1,5 @@
 @use "../vars.scss" as *;
+@use "button";
 
 // ALPHA: the class names and states are stable, the look is not. These styles
 // can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
@@ -23,9 +24,7 @@
     }
 
     :is([aria-current], [data-current]) {
-      background-color: cur-color(var(--primary-surface-lc));
-      color: cur-color(var(--primary-text-lc));
-      border-color: cur-color(var(--primary-surface-lc));
+      @include button.btn-primary;
     }
   }
 

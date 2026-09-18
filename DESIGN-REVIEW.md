@@ -31,7 +31,7 @@ file.
 | `.tab` corners | `--border-radius` on the top two only | |
 | `.tab` hover | background `--surface-lc-2` | same surface as the rule above it |
 | `.tab-active` color | `--text-lc-1` | |
-| `.tab-active` weight | bold | **Questionable**: bolding changes the tab's width, so the Kobalte indicator resizes as you switch. Colour alone, or a fixed-weight trick, would avoid it |
+| `.tab-active` | colour and underline, no weight change | bold was shifting the tab's width, which resized the Kobalte indicator on every switch |
 | `.tab-active` underline | inset box-shadow, `--border-width` in `--surface-lc-4` | box-shadow rather than a border so it does not shift the text |
 | `.tab-disabled` | `apply-greyscale()` plus `pointer-events: none` | greyscale matches `:disabled` elsewhere; the pointer-events part is new behaviour for this framework |
 | `.tab-content` padding | `1rem 0` | horizontal padding left at 0 so panel text lines up with the page |
@@ -101,7 +101,7 @@ file.
 
 | Decision | Proposed | Note |
 | --- | --- | --- |
-| `.menu-selected` | bold | distinguishes the chosen option from the highlighted one. **Questionable**: bold shifts row width, the same objection as `.tab-active` |
+| `.menu-selected` | a leading bar in `--surface-lc-4` | reads differently from `.menu-active`'s fill, and does not shift the row the way bold did |
 | Kobalte trigger | takes `.select`'s field styling, with the chevron background dropped | it is a button that should read as a form control |
 
 ## Popover (`src/components/_popover.scss`) — not signed off
@@ -166,7 +166,7 @@ file.
 | Decision | Proposed | Note |
 | --- | --- | --- |
 | Trail | `0.875rem`, `--padding / 4` gaps, wraps | |
-| Current page | bold in `--text-lc-1`, no underline | **Questionable**: bold again, the third component to mark state that way |
+| Current page | `--text-lc-1`, no underline | links carry the accent colour, so plain text is enough to mark the current page |
 | Separator | a character you supply, `--text-lc-3` | a border or a slash pseudo-element would take it out of the markup |
 
 ## Pagination (`src/components/_pagination.scss`) — not signed off
@@ -174,7 +174,7 @@ file.
 | Decision | Proposed | Note |
 | --- | --- | --- |
 | Row | `--padding / 4` gaps, wraps | |
-| Current page | filled with the primary pair | so a row of `.btn-secondary` reads with one filled button. **Questionable**: it duplicates `.btn-primary` rather than applying it |
+| Current page | applies the `btn-primary` block from `_button.scss` | so a row of `.btn-secondary` reads with one filled button, from one definition |
 | Ellipsis | `--text-lc-3` | |
 
 ## Segmented control (`src/components/_segmented.scss`) — not signed off
@@ -182,7 +182,7 @@ file.
 | Decision | Proposed | Note |
 | --- | --- | --- |
 | Track | `--surface-lc-2` with a matching border, `--border-radius` | the inverse of `.tabs`, which has a rule rather than a fill |
-| Item | `--text-lc-3`, bold and `--text-lc-1` when checked | bold shifts item width, the same objection as `.tab-active` |
+| Item | `--text-lc-3`, `--text-lc-1` when checked | no weight change, so the item does not shift under the indicator |
 | Checked fill | `--surface-lc-1`, from the indicator when one is present, otherwise from the item | same pattern as the tab indicator |
 | Indicator motion | `all 250ms` | matches the tab indicator, not the toggle's 150ms |
 

@@ -38,7 +38,6 @@
 
   .tab-active {
     color: cur-color(var(--text-lc-1));
-    font-weight: bold;
     box-shadow: inset 0 calc(var(--border-width) * -1) 0
       cur-color(var(--surface-lc-4));
   }

@@ -42,7 +42,6 @@
     &:has(input:checked),
     &:is([data-checked], .segmented-item-active) {
       color: cur-color(var(--text-lc-1));
-      font-weight: bold;
     }
 
     // Without an indicator element, the selected item paints its own background.
