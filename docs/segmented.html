@@ -4,7 +4,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>Tabs · @sparkstone/css</title>
+    <title>Segmented control · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
@@ -133,7 +133,7 @@
                 <li>
                   <a
                     href="./tabs.html"
-                    aria-current="page"
+                    
                     >Tabs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
                   >
                 </li>
@@ -335,7 +335,7 @@
                 <li>
                   <a
                     href="./segmented.html"
-                    
+                    aria-current="page"
                     >Segmented control<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
                   >
                 </li>
@@ -405,12 +405,11 @@
 
       <main class="site-main">
         
-<h1>Tabs</h1>
+<h1>Segmented control</h1>
 <p class="lede">
-  Layered panels with one visible at a time. The classes know nothing about any
-  component library. The classless build has a
-  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte</a>
-  layer that binds its state attributes to these same classes.
+  One control, a few exclusive choices.
+  <a href="https://kobalte.dev/docs/core/components/segmented-control" target="_blank" rel="noreferrer">Kobalte's SegmentedControl</a>
+  builds it from a hidden radio per item plus an indicator it positions inline.
 </p>
 
 
@@ -428,28 +427,17 @@
   </thead>
   <tbody>
     
-      <tr><td><code>tabs</code></td><td>The tab list: a row with a bottom rule</td></tr>
+      <tr><td><code>segmented</code></td><td>The track holding the items</td></tr>
     
-      <tr><td><code>tab</code></td><td>A tab item. Works on a button, an anchor or a label</td></tr>
+      <tr><td><code>segmented-item</code></td><td>One choice. Checked state comes from its radio, data-checked, or segmented-item-active</td></tr>
     
-      <tr><td><code>tab-active</code></td><td>The selected tab: darker, bold, underlined</td></tr>
-    
-      <tr><td><code>tab-disabled</code></td><td>A disabled tab: greyed out and inert</td></tr>
-    
-      <tr><td><code>tab-content</code></td><td>A tab panel</td></tr>
+      <tr><td><code>segmented-indicator</code></td><td>The sliding highlight. Leave it out and the checked item paints its own</td></tr>
     
   </tbody>
 </table>
 
 
 <h2>Basic</h2>
-<p>
-  On the class-based build you mark the selected tab and wire the clicks. Kobalte
-  sets <code>data-selected</code>, <code>data-disabled</code> and
-  <code>data-orientation</code> itself but never adds <code>tab-active</code>, so
-  <code>/classless/kobalte</code> binds those attributes to the same classes and
-  its markup needs none of them.
-</p>
 
 
 
@@ -467,53 +455,40 @@
         
       </div>
     
-    <button class="ghost copy-button" data-target="tabs-basic-classes">Copy</button>
+    <button class="ghost copy-button" data-target="segmented-basic-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="tabs-basic-classes" data-variant="classes">&lt;div&gt;
-  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
-    &lt;button class=&quot;tab tab-active&quot; role=&quot;tab&quot; id=&quot;t-profile&quot; aria-controls=&quot;p-profile&quot; data-selected&gt;Profile&lt;/button&gt;
-    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t-dashboard&quot; aria-controls=&quot;p-dashboard&quot;&gt;Dashboard&lt;/button&gt;
-    &lt;button class=&quot;tab tab-disabled&quot; role=&quot;tab&quot; id=&quot;t-billing&quot; aria-controls=&quot;p-billing&quot;&gt;Billing&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-profile&quot; aria-labelledby=&quot;t-profile&quot;&gt;Profile details&lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-dashboard&quot; aria-labelledby=&quot;t-dashboard&quot; hidden&gt;Dashboard details&lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-billing&quot; aria-labelledby=&quot;t-billing&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
+    <pre><code id="segmented-basic-classes" data-variant="classes">&lt;div class=&quot;segmented&quot;&gt;
+  &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;view&quot; checked /&gt; List&lt;/label&gt;
+  &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;view&quot; /&gt; Board&lt;/label&gt;
+  &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;view&quot; /&gt; Calendar&lt;/label&gt;
 &lt;/div&gt;</code></pre>
     
-      <pre hidden><code id="tabs-basic-classless" data-variant="classless">&lt;div&gt;
-  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
-    &lt;button class=&quot;tab tab-active&quot; role=&quot;tab&quot; id=&quot;t-profile&quot; aria-controls=&quot;p-profile&quot; data-selected&gt;Profile&lt;/button&gt;
-    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t-dashboard&quot; aria-controls=&quot;p-dashboard&quot;&gt;Dashboard&lt;/button&gt;
-    &lt;button class=&quot;tab tab-disabled&quot; role=&quot;tab&quot; id=&quot;t-billing&quot; aria-controls=&quot;p-billing&quot;&gt;Billing&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-profile&quot; aria-labelledby=&quot;t-profile&quot;&gt;Profile details&lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-dashboard&quot; aria-labelledby=&quot;t-dashboard&quot; hidden&gt;Dashboard details&lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-billing&quot; aria-labelledby=&quot;t-billing&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
+      <pre hidden><code id="segmented-basic-classless" data-variant="classless">&lt;div class=&quot;segmented&quot;&gt;
+  &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;view&quot; checked /&gt; List&lt;/label&gt;
+  &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;view&quot; /&gt; Board&lt;/label&gt;
+  &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;view&quot; /&gt; Calendar&lt;/label&gt;
 &lt;/div&gt;</code></pre>
     
     
-      <pre hidden><code id="tabs-basic-kobalte" data-variant="kobalte">import { Tabs } from &quot;@kobalte/core/tabs&quot;;
+      <pre hidden><code id="segmented-basic-kobalte" data-variant="kobalte">import { SegmentedControl } from &quot;@kobalte/core/segmented-control&quot;;
 
-&lt;Tabs aria-label=&quot;Account&quot; defaultValue=&quot;profile&quot;&gt;
-  &lt;Tabs.List&gt;
-    &lt;Tabs.Trigger value=&quot;profile&quot;&gt;Profile&lt;/Tabs.Trigger&gt;
-    &lt;Tabs.Trigger value=&quot;dashboard&quot;&gt;Dashboard&lt;/Tabs.Trigger&gt;
-    &lt;Tabs.Trigger value=&quot;billing&quot; disabled&gt;Billing&lt;/Tabs.Trigger&gt;
-  &lt;/Tabs.List&gt;
-  &lt;Tabs.Content value=&quot;profile&quot;&gt;Profile details&lt;/Tabs.Content&gt;
-  &lt;Tabs.Content value=&quot;dashboard&quot;&gt;Dashboard details&lt;/Tabs.Content&gt;
-  &lt;Tabs.Content value=&quot;billing&quot;&gt;Upgrade to see billing&lt;/Tabs.Content&gt;
-&lt;/Tabs&gt;</code></pre>
-      <pre hidden><code id="tabs-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div&gt;
-  &lt;div role=&quot;tablist&quot; data-orientation=&quot;horizontal&quot;&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;k-profile&quot; aria-controls=&quot;kp-profile&quot; data-selected&gt;Profile&lt;/button&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;k-dashboard&quot; aria-controls=&quot;kp-dashboard&quot;&gt;Dashboard&lt;/button&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;k-billing&quot; aria-controls=&quot;kp-billing&quot; data-disabled&gt;Billing&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-profile&quot; aria-labelledby=&quot;k-profile&quot;&gt;Profile details&lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-dashboard&quot; aria-labelledby=&quot;k-dashboard&quot; hidden&gt;Dashboard details&lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-billing&quot; aria-labelledby=&quot;k-billing&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
+&lt;SegmentedControl class=&quot;segmented&quot; value={view()} onChange={setView}&gt;
+  &lt;SegmentedControl.Indicator class=&quot;segmented-indicator&quot; /&gt;
+  &lt;For each={[&quot;List&quot;, &quot;Board&quot;, &quot;Calendar&quot;]}&gt;
+    {option =&gt; (
+      &lt;SegmentedControl.Item value={option} class=&quot;segmented-item&quot;&gt;
+        &lt;SegmentedControl.ItemInput /&gt;
+        &lt;SegmentedControl.ItemLabel&gt;{option}&lt;/SegmentedControl.ItemLabel&gt;
+      &lt;/SegmentedControl.Item&gt;
+    )}
+  &lt;/For&gt;
+&lt;/SegmentedControl&gt;</code></pre>
+      <pre hidden><code id="segmented-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div class=&quot;segmented&quot;&gt;
+  &lt;div class=&quot;segmented-indicator&quot; style=&quot;left: 0.25rem; width: 4rem&quot;&gt;&lt;/div&gt;
+  &lt;label class=&quot;segmented-item&quot; data-checked&gt;&lt;input type=&quot;radio&quot; name=&quot;kview&quot; checked /&gt; List&lt;/label&gt;
+  &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;kview&quot; /&gt; Board&lt;/label&gt;
+  &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;kview&quot; /&gt; Calendar&lt;/label&gt;
 &lt;/div&gt;</code></pre>
     
   </div>
@@ -521,86 +496,11 @@
 
 <p>
   <small>
-    <code>Tabs.Indicator</code> has no class of its own, so it lives in the
-    Kobalte layer as <code>.tab-indicator</code>. When one is present the selected
-    tab drops its own underline, so you never get both.
+    None of Kobalte's parts here carry a role, so the classes go on them by hand.
+    The checked state is read three ways: the item's own radio, Kobalte's
+    <code>data-checked</code>, or <code>.segmented-item-active</code>.
   </small>
 </p>
-
-<h2>Importing the Kobalte layer</h2>
-
-<div class="code-block standalone">
-  <button class="ghost copy-button" data-target="tabs-kobalte-import">Copy</button>
-  <pre><code id="tabs-kobalte-import" class="language-scss">// instead of &quot;pkg:@sparkstone/css/classless&quot;
-@use &quot;pkg:@sparkstone/css/classless/kobalte&quot;;</code></pre>
-</div>
-
-
-<h2>Vertical</h2>
-<p>
-  <code>data-orientation="vertical"</code> turns the list into a column and moves
-  the indicator to the trailing edge. This is Kobalte-only: the classes have no
-  vertical variant.
-</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    <div class="variant-tabs" role="tablist" aria-label="Source">
-      <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="true">Markup</button>
-      <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">Kobalte</button>
-    </div>
-    <button class="ghost copy-button" data-target="tabs-vertical-markup">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="tabs-vertical-markup" data-variant="kobalte">&lt;div style=&quot;display: flex; gap: 1rem&quot;&gt;
-  &lt;div role=&quot;tablist&quot; data-orientation=&quot;vertical&quot;&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;v-general&quot; aria-controls=&quot;vp-general&quot; data-selected&gt;General&lt;/button&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;v-members&quot; aria-controls=&quot;vp-members&quot;&gt;Members&lt;/button&gt;
-    &lt;div class=&quot;tab-indicator&quot; data-orientation=&quot;vertical&quot;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;vp-general&quot; aria-labelledby=&quot;v-general&quot;&gt;General settings&lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;vp-members&quot; aria-labelledby=&quot;v-members&quot; hidden&gt;Member settings&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-    <pre hidden><code id="tabs-vertical-source" data-variant="source">&lt;Tabs orientation=&quot;vertical&quot; defaultValue=&quot;general&quot; style=&quot;display: flex; gap: 1rem&quot;&gt;
-  &lt;Tabs.List&gt;
-    &lt;Tabs.Trigger value=&quot;general&quot;&gt;General&lt;/Tabs.Trigger&gt;
-    &lt;Tabs.Trigger value=&quot;members&quot;&gt;Members&lt;/Tabs.Trigger&gt;
-    &lt;Tabs.Indicator class=&quot;tab-indicator&quot; /&gt;
-  &lt;/Tabs.List&gt;
-  &lt;Tabs.Content value=&quot;general&quot;&gt;General settings&lt;/Tabs.Content&gt;
-  &lt;Tabs.Content value=&quot;members&quot;&gt;Member settings&lt;/Tabs.Content&gt;
-&lt;/Tabs&gt;</code></pre>
-  </div>
-</div>
-
-
-<h2>On the class-based build</h2>
-<p>
-  There is no Kobalte layer for the class-based build, and it does not need one:
-  put the classes on the Kobalte parts yourself. Both paths apply the same
-  declarations, so the two approaches produce identical styles and can be mixed.
-</p>
-
-<div class="code-block standalone">
-  <button class="ghost copy-button" data-target="tabs-mixed">Copy</button>
-  <pre><code id="tabs-mixed" class="language-jsx">const [tab, setTab] = createSignal(&quot;week&quot;);
-
-&lt;Tabs value={tab()} onChange={setTab}&gt;
-  &lt;Tabs.List class=&quot;tabs&quot;&gt;
-    &lt;Tabs.Trigger
-      class=&quot;tab&quot;
-      classList={{ &quot;tab-active&quot;: tab() === &quot;week&quot; }}
-      value=&quot;week&quot;
-    &gt;
-      This week
-    &lt;/Tabs.Trigger&gt;
-  &lt;/Tabs.List&gt;
-&lt;/Tabs&gt;</code></pre>
-</div>
-
 
 
         <footer class="site-footer">

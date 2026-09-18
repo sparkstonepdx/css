@@ -1,0 +1,65 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// One control, several exclusive choices. Kobalte's SegmentedControl builds it
+// from a hidden radio per item plus an indicator it positions inline.
+@mixin styles {
+  .segmented {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--padding) / 8);
+
+    padding: calc(var(--padding) / 8);
+    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-radius: var(--border-radius);
+    background-color: cur-color(var(--surface-lc-2));
+  }
+
+  .segmented-item {
+    position: relative;
+    z-index: 1;
+
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--padding) / 4);
+
+    padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
+    border-radius: var(--border-radius);
+    color: cur-color(var(--text-lc-3));
+    cursor: pointer;
+
+    input {
+      position: absolute;
+      opacity: 0;
+      inset: 0;
+      margin: 0;
+      cursor: pointer;
+    }
+
+    &:has(input:checked),
+    &:is([data-checked], .segmented-item-active) {
+      color: cur-color(var(--text-lc-1));
+      font-weight: bold;
+    }
+
+    // Without an indicator element, the selected item paints its own background.
+    .segmented:not(:has(.segmented-indicator))
+      &:is(:has(input:checked), [data-checked], .segmented-item-active) {
+      background-color: cur-color(var(--surface-lc-1));
+    }
+  }
+
+  .segmented-indicator {
+    position: absolute;
+    z-index: 0;
+    top: calc(var(--padding) / 8);
+    bottom: calc(var(--padding) / 8);
+
+    border-radius: var(--border-radius);
+    background-color: cur-color(var(--surface-lc-1));
+    transition: all 250ms;
+  }
+}

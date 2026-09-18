@@ -1211,7 +1211,7 @@
     border: 0;
     border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
   }
-  .menu-item, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio]), [role=option] {
+  .menu-item, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option]) {
     display: flex;
     align-items: center;
     gap: calc(var(--padding) / 2);
@@ -1222,16 +1222,16 @@
     cursor: pointer;
     user-select: none;
   }
-  .menu-item:hover, :hover:is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio]), [role=option]:hover {
+  .menu-item:hover, :hover:is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option]) {
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
   }
-  .menu-active, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio])[data-highlighted], [role=option][data-highlighted] {
+  .menu-active, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option]):is([data-highlighted], [data-expanded]) {
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
   }
   .menu-selected, [role=option][data-selected] {
     font-weight: bold;
   }
-  .menu-disabled, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio])[data-disabled], [role=option][data-disabled] {
+  .menu-disabled, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option])[data-disabled] {
     --swatch-lc-1: var(--grey-swatch-lc-1);
     --text-lc-1: var(--grey-text-lc-1);
     --surface-lc-1: var(--grey-surface-lc-1);
@@ -1607,6 +1607,120 @@
   .slider-value {
     font-size: 0.875rem;
     color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: var(--padding);
+    padding: calc(var(--padding) / 2) var(--padding);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    border-bottom: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .navbar-start {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    margin-inline-end: auto;
+  }
+  .navbar-end {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    margin-inline-start: auto;
+  }
+  .menubar, [role=menubar] {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 8);
+  }
+  .breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--padding) / 4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.875rem;
+  }
+  .breadcrumbs li {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 4);
+    margin: 0;
+  }
+  .breadcrumbs :is([aria-current], [data-current]) {
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    font-weight: bold;
+    text-decoration: none;
+  }
+  .breadcrumbs-separator {
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--padding) / 4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .pagination li {
+    margin: 0;
+  }
+  .pagination :is([aria-current], [data-current]) {
+    background-color: oklch(from var(--color) var(--primary-surface-lc) h);
+    color: oklch(from var(--color) var(--primary-text-lc) h);
+    border-color: oklch(from var(--color) var(--primary-surface-lc) h);
+  }
+  .pagination-ellipsis {
+    padding: 0 calc(var(--padding) / 4);
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .segmented {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--padding) / 8);
+    padding: calc(var(--padding) / 8);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .segmented-item {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--padding) / 4);
+    padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
+    border-radius: var(--border-radius);
+    color: oklch(from var(--color) var(--text-lc-3) h);
+    cursor: pointer;
+  }
+  .segmented-item input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .segmented-item:has(input:checked), .segmented-item:is([data-checked], .segmented-item-active) {
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    font-weight: bold;
+  }
+  .segmented:not(:has(.segmented-indicator)) .segmented-item:is(:has(input:checked), [data-checked], .segmented-item-active) {
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+  }
+  .segmented-indicator {
+    position: absolute;
+    z-index: 0;
+    top: calc(var(--padding) / 8);
+    bottom: calc(var(--padding) / 8);
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    transition: all 250ms;
   }
   .progress, progress {
     appearance: none;

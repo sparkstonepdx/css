@@ -153,3 +153,36 @@ file.
 | Thumb size | `--slider-thumb: 1rem`, exposed so a caller can resize it | the only component here with its own sizing variable |
 | Label, value | `0.875rem` in `--text-lc-3` | matches `.menu-title` and `.menu-shortcut` |
 
+## Navbar and menubar (`src/components/_navbar.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Bar | `--surface-lc-1` with a `--surface-lc-2` rule under it, `--padding / 2` vertical | matches the rule under `.tabs` and `.collapse` |
+| Groups | `.navbar-start` and `.navbar-end` push apart with auto margins | **Open question**: no `.navbar-center`. Three-group layouts need a grid, not margins |
+| Menubar | a row with the same gap as `.menu`, triggers are `.menu-item` | |
+
+## Breadcrumbs (`src/components/_breadcrumbs.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Trail | `0.875rem`, `--padding / 4` gaps, wraps | |
+| Current page | bold in `--text-lc-1`, no underline | **Questionable**: bold again, the third component to mark state that way |
+| Separator | a character you supply, `--text-lc-3` | a border or a slash pseudo-element would take it out of the markup |
+
+## Pagination (`src/components/_pagination.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Row | `--padding / 4` gaps, wraps | |
+| Current page | filled with the primary pair | so a row of `.btn-secondary` reads with one filled button. **Questionable**: it duplicates `.btn-primary` rather than applying it |
+| Ellipsis | `--text-lc-3` | |
+
+## Segmented control (`src/components/_segmented.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Track | `--surface-lc-2` with a matching border, `--border-radius` | the inverse of `.tabs`, which has a rule rather than a fill |
+| Item | `--text-lc-3`, bold and `--text-lc-1` when checked | bold shifts item width, the same objection as `.tab-active` |
+| Checked fill | `--surface-lc-1`, from the indicator when one is present, otherwise from the item | same pattern as the tab indicator |
+| Indicator motion | `all 250ms` | matches the tab indicator, not the toggle's 150ms |
+

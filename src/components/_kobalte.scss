@@ -71,10 +71,14 @@
     @extend .menu;
   }
 
-  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"]) {
+  // .menu-item covers the parts that take the class by hand too: a Menubar or
+  // NavigationMenu trigger is a div with no role, but it still carries the state.
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"], .menu-item) {
     @extend .menu-item;
 
-    &[data-highlighted] {
+    // An open submenu or menubar trigger reads as active, as Kobalte's own
+    // example has it.
+    &:is([data-highlighted], [data-expanded]) {
       @extend .menu-active;
     }
 
@@ -210,6 +214,15 @@
   }
 }
 
+// Menubar is role="menubar"; its triggers are divs, which take .menu-item.
+// ContextMenu renders the same role="menu" and role="menuitem" as a dropdown,
+// so it needs nothing of its own.
+@mixin menubar {
+  [role="menubar"] {
+    @extend .menubar;
+  }
+}
+
 @mixin bindings {
   @include tabs;
   @include dropdown-menu;
@@ -221,4 +234,5 @@
   @include popover;
   @include toast;
   @include slider;
+  @include menubar;
 }

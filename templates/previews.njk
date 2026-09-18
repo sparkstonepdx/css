@@ -67,6 +67,14 @@
   <span class="loading"></span>
 {%- elif slug == "slider" -%}
   <span class="slider" style="width: 7rem; margin: 0"><span class="slider-track" style="display: block"><span class="slider-fill" style="width: 60%"></span><span class="slider-thumb" style="position: absolute; left: 60%"></span></span></span>
+{%- elif slug == "navbar" -%}
+  <span class="navbar" style="font-size: 0.7rem; padding: 0.3rem 0.5rem; width: 9rem; gap: 0.4rem"><strong>Site</strong><span class="menu-item" style="padding: 0.1rem 0.3rem">File</span><span class="menu-item menu-active" style="padding: 0.1rem 0.3rem">Edit</span></span>
+{%- elif slug == "breadcrumbs" -%}
+  <span class="breadcrumbs" style="font-size: 0.7rem"><span class="link">Docs</span> <span class="breadcrumbs-separator">/</span> <span aria-current="page">Here</span></span>
+{%- elif slug == "pagination" -%}
+  <span class="flex" style="gap: 0.2rem"><span class="btn btn-secondary" style="padding: 0.15rem 0.4rem; font-size: 0.7rem">1</span><span class="btn btn-secondary" aria-current="page" style="padding: 0.15rem 0.4rem; font-size: 0.7rem; background-color: oklch(from var(--color) var(--primary-surface-lc) h); color: oklch(from var(--color) var(--primary-text-lc) h)">2</span><span class="btn btn-secondary" style="padding: 0.15rem 0.4rem; font-size: 0.7rem">3</span></span>
+{%- elif slug == "segmented" -%}
+  <span class="segmented" style="font-size: 0.7rem"><span class="segmented-item segmented-item-active" style="padding: 0.15rem 0.4rem">List</span><span class="segmented-item" style="padding: 0.15rem 0.4rem">Board</span></span>
 {%- elif slug == "colors" -%}
   <span style="display: flex; gap: 0.2rem">
     {% for i in [1, 3, 5, 7, 9] %}<span style="width: 1rem; height: 1.6rem; border-radius: var(--border-radius); background: oklch(from var(--color) var(--surface-lc-{{ i }}) h)"></span>{% endfor %}

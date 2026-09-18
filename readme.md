@@ -88,7 +88,9 @@ Plain elements only get the reset and base colors. Styling comes from classes:
 
 ### Alpha components
 
-Tabs, Dropdown, Alert, Collapse, Toggle and Tooltip ship as alpha: their class
+Tabs, Dropdown, Navbar, Breadcrumbs, Pagination, Alert, Collapse, Skeleton,
+Toggle, Slider, Segmented control, Tooltip, Popover, Toast, Divider and Loading
+ship as alpha: their class
 names and states are settled, but their styling can change in a minor release.
 `DESIGN-REVIEW.md` lists every value that is still open, and the docs badge them.
 

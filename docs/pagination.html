@@ -4,7 +4,7 @@
 <html lang="en" data-color-scheme="light">
   <head>
     <meta charset="UTF-8" />
-    <title>Tabs · @sparkstone/css</title>
+    <title>Pagination · @sparkstone/css</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="./classless.css" />
     <link rel="stylesheet" href="./docs.css" />
@@ -133,7 +133,7 @@
                 <li>
                   <a
                     href="./tabs.html"
-                    aria-current="page"
+                    
                     >Tabs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
                   >
                 </li>
@@ -165,7 +165,7 @@
                 <li>
                   <a
                     href="./pagination.html"
-                    
+                    aria-current="page"
                     >Pagination<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
                   >
                 </li>
@@ -405,12 +405,12 @@
 
       <main class="site-main">
         
-<h1>Tabs</h1>
+<h1>Pagination</h1>
 <p class="lede">
-  Layered panels with one visible at a time. The classes know nothing about any
-  component library. The classless build has a
-  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte</a>
-  layer that binds its state attributes to these same classes.
+  A row of page buttons. Each button is a <a href="./button.html">btn</a>; this
+  lays them out and fills in the current one, which
+  <a href="https://kobalte.dev/docs/core/components/pagination" target="_blank" rel="noreferrer">Kobalte's Pagination</a>
+  marks with <code>aria-current</code> and <code>data-current</code>.
 </p>
 
 
@@ -428,28 +428,15 @@
   </thead>
   <tbody>
     
-      <tr><td><code>tabs</code></td><td>The tab list: a row with a bottom rule</td></tr>
+      <tr><td><code>pagination</code></td><td>The nav: lays out its ul, and fills the current page button</td></tr>
     
-      <tr><td><code>tab</code></td><td>A tab item. Works on a button, an anchor or a label</td></tr>
-    
-      <tr><td><code>tab-active</code></td><td>The selected tab: darker, bold, underlined</td></tr>
-    
-      <tr><td><code>tab-disabled</code></td><td>A disabled tab: greyed out and inert</td></tr>
-    
-      <tr><td><code>tab-content</code></td><td>A tab panel</td></tr>
+      <tr><td><code>pagination-ellipsis</code></td><td>The gap marker between ranges</td></tr>
     
   </tbody>
 </table>
 
 
 <h2>Basic</h2>
-<p>
-  On the class-based build you mark the selected tab and wire the clicks. Kobalte
-  sets <code>data-selected</code>, <code>data-disabled</code> and
-  <code>data-orientation</code> itself but never adds <code>tab-active</code>, so
-  <code>/classless/kobalte</code> binds those attributes to the same classes and
-  its markup needs none of them.
-</p>
 
 
 
@@ -467,138 +454,64 @@
         
       </div>
     
-    <button class="ghost copy-button" data-target="tabs-basic-classes">Copy</button>
+    <button class="ghost copy-button" data-target="pagination-basic-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="tabs-basic-classes" data-variant="classes">&lt;div&gt;
-  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
-    &lt;button class=&quot;tab tab-active&quot; role=&quot;tab&quot; id=&quot;t-profile&quot; aria-controls=&quot;p-profile&quot; data-selected&gt;Profile&lt;/button&gt;
-    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t-dashboard&quot; aria-controls=&quot;p-dashboard&quot;&gt;Dashboard&lt;/button&gt;
-    &lt;button class=&quot;tab tab-disabled&quot; role=&quot;tab&quot; id=&quot;t-billing&quot; aria-controls=&quot;p-billing&quot;&gt;Billing&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-profile&quot; aria-labelledby=&quot;t-profile&quot;&gt;Profile details&lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-dashboard&quot; aria-labelledby=&quot;t-dashboard&quot; hidden&gt;Dashboard details&lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-billing&quot; aria-labelledby=&quot;t-billing&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+    <pre><code id="pagination-basic-classes" data-variant="classes">&lt;nav class=&quot;pagination&quot; aria-label=&quot;Pages&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;Previous&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;1&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot; aria-current=&quot;page&quot;&gt;2&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span class=&quot;pagination-ellipsis&quot;&gt;…&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;9&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;Next&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
     
-      <pre hidden><code id="tabs-basic-classless" data-variant="classless">&lt;div&gt;
-  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
-    &lt;button class=&quot;tab tab-active&quot; role=&quot;tab&quot; id=&quot;t-profile&quot; aria-controls=&quot;p-profile&quot; data-selected&gt;Profile&lt;/button&gt;
-    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;t-dashboard&quot; aria-controls=&quot;p-dashboard&quot;&gt;Dashboard&lt;/button&gt;
-    &lt;button class=&quot;tab tab-disabled&quot; role=&quot;tab&quot; id=&quot;t-billing&quot; aria-controls=&quot;p-billing&quot;&gt;Billing&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-profile&quot; aria-labelledby=&quot;t-profile&quot;&gt;Profile details&lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-dashboard&quot; aria-labelledby=&quot;t-dashboard&quot; hidden&gt;Dashboard details&lt;/div&gt;
-  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;p-billing&quot; aria-labelledby=&quot;t-billing&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+      <pre hidden><code id="pagination-basic-classless" data-variant="classless">&lt;nav class=&quot;pagination&quot; aria-label=&quot;Pages&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;Previous&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;1&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot; aria-current=&quot;page&quot;&gt;2&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span class=&quot;pagination-ellipsis&quot;&gt;…&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;9&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;Next&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
     
     
-      <pre hidden><code id="tabs-basic-kobalte" data-variant="kobalte">import { Tabs } from &quot;@kobalte/core/tabs&quot;;
+      <pre hidden><code id="pagination-basic-kobalte" data-variant="kobalte">import { Pagination } from &quot;@kobalte/core/pagination&quot;;
 
-&lt;Tabs aria-label=&quot;Account&quot; defaultValue=&quot;profile&quot;&gt;
-  &lt;Tabs.List&gt;
-    &lt;Tabs.Trigger value=&quot;profile&quot;&gt;Profile&lt;/Tabs.Trigger&gt;
-    &lt;Tabs.Trigger value=&quot;dashboard&quot;&gt;Dashboard&lt;/Tabs.Trigger&gt;
-    &lt;Tabs.Trigger value=&quot;billing&quot; disabled&gt;Billing&lt;/Tabs.Trigger&gt;
-  &lt;/Tabs.List&gt;
-  &lt;Tabs.Content value=&quot;profile&quot;&gt;Profile details&lt;/Tabs.Content&gt;
-  &lt;Tabs.Content value=&quot;dashboard&quot;&gt;Dashboard details&lt;/Tabs.Content&gt;
-  &lt;Tabs.Content value=&quot;billing&quot;&gt;Upgrade to see billing&lt;/Tabs.Content&gt;
-&lt;/Tabs&gt;</code></pre>
-      <pre hidden><code id="tabs-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div&gt;
-  &lt;div role=&quot;tablist&quot; data-orientation=&quot;horizontal&quot;&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;k-profile&quot; aria-controls=&quot;kp-profile&quot; data-selected&gt;Profile&lt;/button&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;k-dashboard&quot; aria-controls=&quot;kp-dashboard&quot;&gt;Dashboard&lt;/button&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;k-billing&quot; aria-controls=&quot;kp-billing&quot; data-disabled&gt;Billing&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-profile&quot; aria-labelledby=&quot;k-profile&quot;&gt;Profile details&lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-dashboard&quot; aria-labelledby=&quot;k-dashboard&quot; hidden&gt;Dashboard details&lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;kp-billing&quot; aria-labelledby=&quot;k-billing&quot; hidden&gt;Upgrade to see billing&lt;/div&gt;
-&lt;/div&gt;</code></pre>
+&lt;Pagination
+  class=&quot;pagination&quot;
+  count={9}
+  page={page()}
+  onPageChange={setPage}
+  itemComponent={props =&gt; (
+    &lt;Pagination.Item class=&quot;btn btn-secondary&quot; page={props.page}&gt;
+      {props.page}
+    &lt;/Pagination.Item&gt;
+  )}
+  ellipsisComponent={() =&gt; (
+    &lt;Pagination.Ellipsis class=&quot;pagination-ellipsis&quot;&gt;…&lt;/Pagination.Ellipsis&gt;
+  )}
+&gt;
+  &lt;Pagination.Previous class=&quot;btn btn-secondary&quot;&gt;Previous&lt;/Pagination.Previous&gt;
+  &lt;Pagination.Items /&gt;
+  &lt;Pagination.Next class=&quot;btn btn-secondary&quot;&gt;Next&lt;/Pagination.Next&gt;
+&lt;/Pagination&gt;</code></pre>
+      <pre hidden><code id="pagination-basic-kobalte-markup" data-variant="kobalte-markup">&lt;nav class=&quot;pagination&quot; aria-label=&quot;Pages&quot;&gt;
+  &lt;ul&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;Previous&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;1&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot; data-current aria-current=&quot;page&quot;&gt;2&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;span class=&quot;pagination-ellipsis&quot;&gt;…&lt;/span&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;9&lt;/button&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;Next&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/nav&gt;</code></pre>
     
   </div>
-</div>
-
-<p>
-  <small>
-    <code>Tabs.Indicator</code> has no class of its own, so it lives in the
-    Kobalte layer as <code>.tab-indicator</code>. When one is present the selected
-    tab drops its own underline, so you never get both.
-  </small>
-</p>
-
-<h2>Importing the Kobalte layer</h2>
-
-<div class="code-block standalone">
-  <button class="ghost copy-button" data-target="tabs-kobalte-import">Copy</button>
-  <pre><code id="tabs-kobalte-import" class="language-scss">// instead of &quot;pkg:@sparkstone/css/classless&quot;
-@use &quot;pkg:@sparkstone/css/classless/kobalte&quot;;</code></pre>
-</div>
-
-
-<h2>Vertical</h2>
-<p>
-  <code>data-orientation="vertical"</code> turns the list into a column and moves
-  the indicator to the trailing edge. This is Kobalte-only: the classes have no
-  vertical variant.
-</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    <div class="variant-tabs" role="tablist" aria-label="Source">
-      <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="true">Markup</button>
-      <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">Kobalte</button>
-    </div>
-    <button class="ghost copy-button" data-target="tabs-vertical-markup">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="tabs-vertical-markup" data-variant="kobalte">&lt;div style=&quot;display: flex; gap: 1rem&quot;&gt;
-  &lt;div role=&quot;tablist&quot; data-orientation=&quot;vertical&quot;&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;v-general&quot; aria-controls=&quot;vp-general&quot; data-selected&gt;General&lt;/button&gt;
-    &lt;button role=&quot;tab&quot; id=&quot;v-members&quot; aria-controls=&quot;vp-members&quot;&gt;Members&lt;/button&gt;
-    &lt;div class=&quot;tab-indicator&quot; data-orientation=&quot;vertical&quot;&gt;&lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;vp-general&quot; aria-labelledby=&quot;v-general&quot;&gt;General settings&lt;/div&gt;
-  &lt;div role=&quot;tabpanel&quot; id=&quot;vp-members&quot; aria-labelledby=&quot;v-members&quot; hidden&gt;Member settings&lt;/div&gt;
-&lt;/div&gt;</code></pre>
-    <pre hidden><code id="tabs-vertical-source" data-variant="source">&lt;Tabs orientation=&quot;vertical&quot; defaultValue=&quot;general&quot; style=&quot;display: flex; gap: 1rem&quot;&gt;
-  &lt;Tabs.List&gt;
-    &lt;Tabs.Trigger value=&quot;general&quot;&gt;General&lt;/Tabs.Trigger&gt;
-    &lt;Tabs.Trigger value=&quot;members&quot;&gt;Members&lt;/Tabs.Trigger&gt;
-    &lt;Tabs.Indicator class=&quot;tab-indicator&quot; /&gt;
-  &lt;/Tabs.List&gt;
-  &lt;Tabs.Content value=&quot;general&quot;&gt;General settings&lt;/Tabs.Content&gt;
-  &lt;Tabs.Content value=&quot;members&quot;&gt;Member settings&lt;/Tabs.Content&gt;
-&lt;/Tabs&gt;</code></pre>
-  </div>
-</div>
-
-
-<h2>On the class-based build</h2>
-<p>
-  There is no Kobalte layer for the class-based build, and it does not need one:
-  put the classes on the Kobalte parts yourself. Both paths apply the same
-  declarations, so the two approaches produce identical styles and can be mixed.
-</p>
-
-<div class="code-block standalone">
-  <button class="ghost copy-button" data-target="tabs-mixed">Copy</button>
-  <pre><code id="tabs-mixed" class="language-jsx">const [tab, setTab] = createSignal(&quot;week&quot;);
-
-&lt;Tabs value={tab()} onChange={setTab}&gt;
-  &lt;Tabs.List class=&quot;tabs&quot;&gt;
-    &lt;Tabs.Trigger
-      class=&quot;tab&quot;
-      classList={{ &quot;tab-active&quot;: tab() === &quot;week&quot; }}
-      value=&quot;week&quot;
-    &gt;
-      This week
-    &lt;/Tabs.Trigger&gt;
-  &lt;/Tabs.List&gt;
-&lt;/Tabs&gt;</code></pre>
 </div>
 
 
