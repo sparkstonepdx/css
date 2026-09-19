@@ -1,0 +1,102 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// Menus and the panel a dropdown pops open:
+// .dropdown-content on the floating panel, .menu on the list inside it,
+// .menu-item on each row, .menu-active and .menu-disabled for state,
+// .menu-title on a group heading.
+//
+// Positioning is not here. Kobalte's popper sets inline styles on a positioner
+// it owns, and a CSS-only dropdown anchors the panel itself. These classes only
+// paint.
+//
+// Order matters: these rules come after .btn in components/_index.scss, because
+// a Kobalte SubTrigger renders as a div but its Trigger is a <button>.
+@mixin styles {
+  .dropdown-content {
+    min-width: 12rem;
+    padding: calc(var(--padding) / 4);
+
+    background-color: cur-color(var(--surface-lc-1));
+    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+
+    z-index: 50;
+  }
+
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 8);
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    // <ul><li> rows keep their list spacing from the typography rules in the
+    // classless build; a menu row is not prose.
+    li {
+      margin: 0;
+    }
+
+    // Same for a separator: the prose <hr> has 1rem margins, too loose here.
+    hr {
+      margin: calc(var(--padding) / 4) 0;
+      border: 0;
+      border-top: var(--border-width) solid cur-color(var(--surface-lc-2));
+    }
+  }
+
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+
+    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    border-radius: var(--border-radius);
+
+    color: cur-color(var(--text-lc-1));
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+
+    &:hover {
+      background-color: cur-color(var(--surface-lc-2));
+    }
+  }
+
+  .menu-active {
+    background-color: cur-color(var(--surface-lc-2));
+  }
+
+  // A selected row, as opposed to the highlighted one: a select keeps one row
+  // selected while the pointer highlights another. A leading bar rather than a
+  // fill, so it reads differently from .menu-active, and rather than bold, so
+  // the row does not change width.
+  .menu-selected {
+    box-shadow: inset calc(var(--border-width) * 1.5) 0 0
+      cur-color(var(--surface-lc-4));
+  }
+
+  .menu-disabled {
+    @include apply-greyscale();
+    pointer-events: none;
+  }
+
+  .menu-title {
+    display: block;
+    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    font-size: 0.875rem;
+    color: cur-color(var(--text-lc-3));
+  }
+
+  .menu-shortcut {
+    margin-left: auto;
+    padding-left: var(--padding);
+    font-size: 0.875rem;
+    color: cur-color(var(--text-lc-3));
+  }
+}

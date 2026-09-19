@@ -1,0 +1,62 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// A built slider, as opposed to .range, which styles a native input. Kobalte
+// positions the fill and the thumb with inline styles; these classes paint.
+@mixin styles {
+  .slider {
+    --slider-thumb: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 4);
+    margin-bottom: 1rem;
+    position: relative;
+
+    &:is([data-disabled]) {
+      @include apply-greyscale();
+      pointer-events: none;
+    }
+  }
+
+  .slider-track {
+    position: relative;
+    height: calc(var(--slider-thumb) / 2);
+    border-radius: 999px;
+    background-color: cur-color(var(--surface-lc-2));
+  }
+
+  .slider-fill {
+    position: absolute;
+    height: 100%;
+    border-radius: 999px;
+    background-color: cur-color(var(--surface-lc-4));
+  }
+
+  .slider-thumb {
+    display: block;
+    width: var(--slider-thumb);
+    height: var(--slider-thumb);
+    top: calc(var(--slider-thumb) / -4);
+
+    border: var(--border-width) solid cur-color(var(--surface-lc-4));
+    border-radius: 999px;
+    background-color: cur-color(var(--surface-lc-1));
+
+    input {
+      appearance: none;
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      opacity: 0;
+    }
+  }
+
+  .slider-label,
+  .slider-value {
+    font-size: 0.875rem;
+    color: cur-color(var(--text-lc-3));
+  }
+}

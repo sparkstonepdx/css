@@ -1,0 +1,45 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// .toast is the fixed stack in the corner; each message inside it is an .alert.
+@mixin styles {
+  .toast {
+    position: fixed;
+    inset-block-end: var(--padding);
+    inset-inline-end: var(--padding);
+
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 2);
+
+    max-width: min(24rem, calc(100vw - var(--padding) * 2));
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    z-index: 100;
+
+    ol {
+      display: flex;
+      flex-direction: column;
+      gap: calc(var(--padding) / 2);
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    .alert {
+      margin-bottom: 0;
+    }
+  }
+
+  .toast-title {
+    font-weight: bold;
+  }
+
+  .toast-description {
+    color: cur-color(var(--text-lc-3));
+  }
+}

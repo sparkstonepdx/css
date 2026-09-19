@@ -1,0 +1,45 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// A placeholder for content that has not arrived. Size it where you use it.
+@mixin styles {
+  .skeleton {
+    display: block;
+    min-height: 1rem;
+    border-radius: var(--border-radius);
+    background-color: cur-color(var(--surface-lc-2));
+
+    @media (prefers-reduced-motion: no-preference) {
+      background-image: linear-gradient(
+        90deg,
+        transparent,
+        cur-color(var(--surface-lc-1)),
+        transparent
+      );
+      background-size: 60% 100%;
+      background-repeat: no-repeat;
+      animation: sparkstone-skeleton 1.4s ease-in-out infinite;
+    }
+
+    // Kobalte's Skeleton hides the shimmer once the content is in.
+    &:not([data-animate]) {
+      animation: none;
+      background-image: none;
+    }
+
+    &:not([data-visible]) {
+      background-color: transparent;
+    }
+  }
+
+  @keyframes sparkstone-skeleton {
+    from {
+      background-position: -60% 0;
+    }
+    to {
+      background-position: 160% 0;
+    }
+  }
+}

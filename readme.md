@@ -1,6 +1,6 @@
 # @sparkstone/css
 
-A minimal CSS framework inspired by [Pico.css](https://picocss.com) and [daisyUI](https://daisyui.com), rebuilt with `oklch()` color primitives and a themeable design system using native CSS custom properties. Ships two builds from one source: class-based (the main export) and classless.
+A minimal CSS framework inspired by [Pico.css](https://picocss.com), rebuilt with `oklch()` color primitives and a themeable design system using native CSS custom properties. Ships two builds from one source: class-based (the main export) and classless.
 
 **🔗 [View on NPM](https://www.npmjs.com/package/@sparkstone/css) | [View on GitHub](https://github.com/sparkstonepdx/css)**
 
@@ -10,7 +10,7 @@ A minimal CSS framework inspired by [Pico.css](https://picocss.com) and [daisyUI
 
 - 💡 Built with `oklch()` for perceptually uniform color scales
 - 🌗 Automatic light/dark theming with CSS variables
-- 🧱 Class-based build with daisyUI 5 class names (`btn`, `input`, `card`, ...)
+- 🧱 Class-based build with short, semantic class names (`btn`, `input`, `card`, ...)
 - 📄 Classless build that styles plain HTML (the 1.x theme)
 - ⚡ No JS required for core styles
 - 🎨 Fully themeable via CSS variables or Sass functions
@@ -67,7 +67,7 @@ import '@sparkstone/css/classless'; // dist/classless.css
 
 ### Class-based
 
-Plain elements only get the reset and base colors. Styling comes from classes, named after daisyUI 5:
+Plain elements only get the reset and base colors. Styling comes from classes:
 
 | Component | Classes |
 | --- | --- |
@@ -79,14 +79,20 @@ Plain elements only get the reset and base colors. Styling comes from classes, n
 | Content | `prose` (styles `p`, headings, lists, `blockquote`, `hr`, `code`, `pre`, `kbd` inside it), `link`, `kbd`, `table`, `progress`, `badge` |
 | Utilities | `text-secondary`, `text-error`, `disabled`, `container`, `container-fluid`, `flex`, `flip`, `reverse`, `rounded` |
 
-Dialogs intentionally use `dialog-*` instead of daisyUI's `modal-*`.
-
 ```html
 <article class="card">
   <h2>Hello World</h2>
   <button class="btn btn-primary">Go</button>
 </article>
 ```
+
+### Alpha components
+
+Tabs, Dropdown, Navbar, Breadcrumbs, Pagination, Alert, Collapse, Skeleton,
+Toggle, Slider, Segmented control, Tooltip, Popover, Toast, Divider and Loading
+ship as alpha: their class
+names and states are settled, but their styling can change in a minor release.
+`DESIGN-REVIEW.md` lists every value that is still open, and the docs badge them.
 
 ### Classless
 

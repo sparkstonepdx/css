@@ -1,0 +1,52 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Skeleton" %}
+{% set slug = "skeleton" %}
+
+{% block content %}
+<h1>Skeleton</h1>
+<p class="lede">
+  A placeholder in the shape of the content that has not arrived yet. Size it
+  where you use it.
+  <a href="https://kobalte.dev/docs/core/components/skeleton" target="_blank" rel="noreferrer">Kobalte's Skeleton</a>
+  drives it with <code>data-visible</code> and <code>data-animate</code>.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["skeleton", "A shimmering block. Give it a width and a height"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<div class="card" style="width: 18rem">
+  <div class="skeleton" style="height: 1.2rem; width: 60%; margin-bottom: 0.5rem"></div>
+  <div class="skeleton" style="height: 1rem; margin-bottom: 0.35rem"></div>
+  <div class="skeleton" style="height: 1rem; width: 80%"></div>
+</div>
+{% endset %}
+{% set kobalte_markup %}
+<div class="card" style="width: 18rem">
+  <div class="skeleton" data-visible data-animate style="height: 1.2rem; width: 60%; margin-bottom: 0.5rem"></div>
+  <div class="skeleton" data-visible data-animate style="height: 1rem; margin-bottom: 0.35rem"></div>
+  <div class="skeleton" data-visible data-animate style="height: 1rem; width: 80%"></div>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Skeleton } from "@kobalte/core/skeleton";
+
+<Skeleton class="skeleton" visible={loading()} height={20} radius={4}>
+  <p>{post().title}</p>
+</Skeleton>
+{% endset %}
+{{ m.demo("skeleton-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    The shimmer stops under <code>prefers-reduced-motion</code>, and a Kobalte
+    skeleton with <code>data-visible</code> removed goes transparent so the real
+    content shows through. Kobalte's own part has no role, so the class goes on it
+    by hand.
+  </small>
+</p>
+{% endblock %}

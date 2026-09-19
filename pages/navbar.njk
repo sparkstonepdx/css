@@ -1,0 +1,136 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Navbar" %}
+{% set slug = "navbar" %}
+
+{% block content %}
+<h1>Navbar</h1>
+<p class="lede">
+  The bar across the top of a page. Pure layout: no component library renders
+  this one, and what goes in it is buttons, links and menus.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["navbar", "The bar: a padded row with a rule under it"],
+  ["navbar-start", "Left group, pushes the rest to the end"],
+  ["navbar-end", "Right group"],
+  ["menubar", "A row of menu triggers, for Kobalte's Menubar"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<div class="navbar">
+  <div class="navbar-start">
+    <strong>Sparkstone</strong>
+    <a href="#" class="link">Docs</a>
+    <a href="#" class="link">Pricing</a>
+  </div>
+  <div class="navbar-end">
+    <button class="btn btn-ghost">Sign in</button>
+    <button class="btn">Start</button>
+  </div>
+</div>
+{% endset %}
+{{ m.demo("navbar-basic", classless) }}
+
+<h2>With a menubar</h2>
+<p>
+  <a href="https://kobalte.dev/docs/core/components/menubar" target="_blank" rel="noreferrer">Kobalte's Menubar</a>
+  is <code>role="menubar"</code>, so the row styles itself. Its triggers are divs
+  with no role, so they take <code>.menu-item</code>, and each menu that opens is
+  the same <a href="./dropdown.html">dropdown</a> panel.
+</p>
+{% set classless %}
+<div class="navbar">
+  <div class="navbar-start">
+    <strong>Editor</strong>
+    <div class="menubar">
+      <span class="menu-item">File</span>
+      <span class="menu-item menu-active">Edit</span>
+      <span class="menu-item">View</span>
+    </div>
+  </div>
+</div>
+<div class="dropdown-content menu" style="width: 12rem; margin-top: 0.25rem">
+  <span class="menu-item">Undo <span class="menu-shortcut">⌘Z</span></span>
+  <span class="menu-item">Redo <span class="menu-shortcut">⇧⌘Z</span></span>
+</div>
+{% endset %}
+{% set kobalte_markup %}
+<div class="navbar">
+  <div class="navbar-start">
+    <strong>Editor</strong>
+    <div role="menubar">
+      <div class="menu-item">File</div>
+      <div class="menu-item" data-highlighted data-expanded>Edit</div>
+      <div class="menu-item">View</div>
+    </div>
+  </div>
+</div>
+<div role="menu" data-expanded style="width: 12rem; margin-top: 0.25rem">
+  <div role="menuitem">Undo <span class="menu-shortcut">⌘Z</span></div>
+  <div role="menuitem">Redo <span class="menu-shortcut">⇧⌘Z</span></div>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Menubar } from "@kobalte/core/menubar";
+
+<Menubar>
+  <Menubar.Menu>
+    <Menubar.Trigger class="menu-item">Edit</Menubar.Trigger>
+    <Menubar.Portal>
+      <Menubar.Content>
+        <Menubar.Item>Undo <span class="menu-shortcut">⌘Z</span></Menubar.Item>
+        <Menubar.Item>Redo <span class="menu-shortcut">⇧⌘Z</span></Menubar.Item>
+      </Menubar.Content>
+    </Menubar.Portal>
+  </Menubar.Menu>
+</Menubar>
+{% endset %}
+{{ m.demo("navbar-menubar", classless, "", kobalte, kobalte_markup) }}
+
+<h2>Navigation menu and context menu</h2>
+<p>
+  Two more Kobalte components reuse what is already here, so they need no classes
+  of their own:
+</p>
+<ul>
+  <li>
+    <strong>ContextMenu</strong> renders the same <code>role="menu"</code> and
+    <code>role="menuitem"</code> as a dropdown, so a right-click menu is styled
+    already. Only its trigger is yours to style.
+  </li>
+  <li>
+    <strong>NavigationMenu</strong> renders a <code>&lt;ul&gt;</code> with no role,
+    and its triggers are divs. Put <code>.menubar</code> on the root and
+    <code>.menu-item</code> on the triggers; each panel is a
+    <code>.dropdown-content</code>.
+  </li>
+</ul>
+{% call m.snippet("navbar-nav-menu", "jsx") %}
+<NavigationMenu class="menubar">
+  <NavigationMenu.Menu>
+    <NavigationMenu.Trigger class="menu-item">Product</NavigationMenu.Trigger>
+    <NavigationMenu.Portal>
+      <NavigationMenu.Content class="dropdown-content menu">
+        <NavigationMenu.Item class="menu-item">Overview</NavigationMenu.Item>
+        <NavigationMenu.Item class="menu-item">Changelog</NavigationMenu.Item>
+      </NavigationMenu.Content>
+    </NavigationMenu.Portal>
+  </NavigationMenu.Menu>
+</NavigationMenu>
+{% endcall %}
+{% call m.snippet("navbar-context-menu", "jsx") %}
+<ContextMenu>
+  <ContextMenu.Trigger class="card">Right-click me</ContextMenu.Trigger>
+  <ContextMenu.Portal>
+    <ContextMenu.Content>
+      <ContextMenu.Item>Rename</ContextMenu.Item>
+      <ContextMenu.Item>Delete</ContextMenu.Item>
+    </ContextMenu.Content>
+  </ContextMenu.Portal>
+</ContextMenu>
+{% endcall %}
+{% endblock %}

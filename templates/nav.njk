@@ -1,11 +1,14 @@
 {#
-  Site navigation. Each group is [label, [[slug, title], ...]].
-  build.js reads nothing from here; layout.njk renders it.
+  Site navigation. Each group is [label, [[slug, title, kobalte?, alpha?], ...]].
+  The third field marks a component the Kobalte layer covers. The fourth marks
+  one whose look is still unapproved, and can change in a minor release. Both
+  show a badge in the sidebar and on the components page.
 #}
 {% set navGroups = [
   ["Getting started", [
     ["index", "Overview"],
     ["quickstart", "Quickstart"],
+    ["components", "All components"],
     ["colors", "Colors"],
     ["customizing", "Customizing"],
     ["layout", "Layout"]
@@ -18,25 +21,45 @@
   ["Actions", [
     ["button", "Button"]
   ]],
+  ["Navigation", [
+    ["tabs", "Tabs", true, true],
+    ["dropdown", "Dropdown", true, true],
+    ["navbar", "Navbar", true, true],
+    ["breadcrumbs", "Breadcrumbs", true, true],
+    ["pagination", "Pagination", true, true]
+  ]],
   ["Data display", [
+    ["alert", "Alert", true, true],
     ["badge", "Badge"],
     ["card", "Card"],
     ["progress", "Progress"],
-    ["table", "Table"]
+    ["table", "Table"],
+    ["collapse", "Collapse", true, true],
+    ["skeleton", "Skeleton", true, true]
   ]],
   ["Forms", [
     ["label", "Label"],
     ["fieldset", "Fieldset"],
     ["input", "Input"],
     ["textarea", "Textarea"],
-    ["select", "Select"],
+    ["select", "Select", true, true],
     ["checkbox", "Checkbox"],
     ["radio", "Radio"],
     ["range", "Range"],
     ["file-input", "File input"],
-    ["color-input", "Color input"]
+    ["color-input", "Color input"],
+    ["toggle", "Toggle", true, true],
+    ["slider", "Slider", true, true],
+    ["segmented", "Segmented control", true, true]
   ]],
   ["Overlay", [
-    ["dialog", "Dialog"]
+    ["dialog", "Dialog"],
+    ["tooltip", "Tooltip", true, true],
+    ["popover", "Popover", true, true],
+    ["toast", "Toast", true, true]
+  ]],
+  ["Layout", [
+    ["divider", "Divider", true, true],
+    ["loading", "Loading", false, true]
   ]]
 ] %}

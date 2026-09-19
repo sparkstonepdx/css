@@ -1,0 +1,37 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+@mixin styles {
+  .breadcrumbs {
+    ol {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: calc(var(--padding) / 4);
+
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      font-size: 0.875rem;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: calc(var(--padding) / 4);
+      margin: 0;
+    }
+
+    // The current page is text, not a link.
+    // Links carry the accent colour, so the current page reads as plain text.
+    :is([aria-current], [data-current]) {
+      color: cur-color(var(--text-lc-1));
+      text-decoration: none;
+    }
+  }
+
+  .breadcrumbs-separator {
+    color: cur-color(var(--text-lc-3));
+  }
+}

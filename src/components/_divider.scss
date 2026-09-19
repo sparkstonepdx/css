@@ -1,0 +1,19 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+@mixin styles {
+  .divider {
+    border: 0;
+    align-self: stretch;
+
+    margin: var(--padding) 0;
+    border-top: var(--border-width) solid cur-color(var(--surface-lc-2));
+  }
+
+  .divider-vertical {
+    margin: 0 var(--padding);
+    border-top: 0;
+    border-left: var(--border-width) solid cur-color(var(--surface-lc-2));
+  }
+}

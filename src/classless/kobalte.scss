@@ -1,0 +1,16 @@
+// The classless build with Kobalte support: everything in
+// @sparkstone/css/classless, plus Kobalte's rendered markup bound to the
+// framework's classes, so its parts need no class attributes.
+//
+// Import this instead of /classless, not alongside it. The bindings are
+// @extends, which merge a Kobalte selector into the class's own rule, so they
+// cannot live in a cascade layer of their own: an @extend always lands wherever
+// the class it extends was defined.
+//
+// On the class-based build you do not need this: put .tab, .tab-active and the
+// rest on the Kobalte parts yourself.
+
+@use "../classless.scss";
+@use "../components" as c;
+
+@include c.bindings;

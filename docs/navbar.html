@@ -1,0 +1,626 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Navbar · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./components.html"
+                    
+                    >All components</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Navigation</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./tabs.html"
+                    
+                    >Tabs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./dropdown.html"
+                    
+                    >Dropdown<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./navbar.html"
+                    aria-current="page"
+                    >Navbar<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./breadcrumbs.html"
+                    
+                    >Breadcrumbs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./pagination.html"
+                    
+                    >Pagination<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./alert.html"
+                    
+                    >Alert<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./collapse.html"
+                    
+                    >Collapse<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./skeleton.html"
+                    
+                    >Skeleton<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toggle.html"
+                    
+                    >Toggle<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./slider.html"
+                    
+                    >Slider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./segmented.html"
+                    
+                    >Segmented control<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./tooltip.html"
+                    
+                    >Tooltip<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./popover.html"
+                    
+                    >Popover<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toast.html"
+                    
+                    >Toast<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Layout</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./divider.html"
+                    
+                    >Divider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./loading.html"
+                    
+                    >Loading<span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Navbar</h1>
+<p class="lede">
+  The bar across the top of a page. Pure layout: no component library renders
+  this one, and what goes in it is buttons, links and menus.
+</p>
+
+
+<p class="alpha-note">
+  <span class="alpha-badge">alpha</span>
+  The class names and states here are stable. The look is not: these styles can
+  change in a minor release, without a major version bump.
+</p>
+
+
+
+<table class="class-table">
+  <thead>
+    <tr><th>Class</th><th>Does what</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr><td><code>navbar</code></td><td>The bar: a padded row with a rule under it</td></tr>
+    
+      <tr><td><code>navbar-start</code></td><td>Left group, pushes the rest to the end</td></tr>
+    
+      <tr><td><code>navbar-end</code></td><td>Right group</td></tr>
+    
+      <tr><td><code>menubar</code></td><td>A row of menu triggers, for Kobalte&#39;s Menubar</td></tr>
+    
+  </tbody>
+</table>
+
+
+<h2>Basic</h2>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="navbar-basic-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="navbar-basic-classes" data-variant="classes">&lt;div class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-start&quot;&gt;
+    &lt;strong&gt;Sparkstone&lt;/strong&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Docs&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Pricing&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;navbar-end&quot;&gt;
+    &lt;button class=&quot;btn btn-ghost&quot;&gt;Sign in&lt;/button&gt;
+    &lt;button class=&quot;btn&quot;&gt;Start&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+
+<h2>With a menubar</h2>
+<p>
+  <a href="https://kobalte.dev/docs/core/components/menubar" target="_blank" rel="noreferrer">Kobalte's Menubar</a>
+  is <code>role="menubar"</code>, so the row styles itself. Its triggers are divs
+  with no role, so they take <code>.menu-item</code>, and each menu that opens is
+  the same <a href="./dropdown.html">dropdown</a> panel.
+</p>
+
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
+        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+        
+          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
+        
+      </div>
+    
+    <button class="ghost copy-button" data-target="navbar-menubar-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="navbar-menubar-classes" data-variant="classes">&lt;div class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-start&quot;&gt;
+    &lt;strong&gt;Editor&lt;/strong&gt;
+    &lt;div class=&quot;menubar&quot;&gt;
+      &lt;span class=&quot;menu-item&quot;&gt;File&lt;/span&gt;
+      &lt;span class=&quot;menu-item menu-active&quot;&gt;Edit&lt;/span&gt;
+      &lt;span class=&quot;menu-item&quot;&gt;View&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;dropdown-content menu&quot; style=&quot;width: 12rem; margin-top: 0.25rem&quot;&gt;
+  &lt;span class=&quot;menu-item&quot;&gt;Undo &lt;span class=&quot;menu-shortcut&quot;&gt;⌘Z&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;menu-item&quot;&gt;Redo &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘Z&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+    
+      <pre hidden><code id="navbar-menubar-classless" data-variant="classless">&lt;div class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-start&quot;&gt;
+    &lt;strong&gt;Editor&lt;/strong&gt;
+    &lt;div class=&quot;menubar&quot;&gt;
+      &lt;span class=&quot;menu-item&quot;&gt;File&lt;/span&gt;
+      &lt;span class=&quot;menu-item menu-active&quot;&gt;Edit&lt;/span&gt;
+      &lt;span class=&quot;menu-item&quot;&gt;View&lt;/span&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div class=&quot;dropdown-content menu&quot; style=&quot;width: 12rem; margin-top: 0.25rem&quot;&gt;
+  &lt;span class=&quot;menu-item&quot;&gt;Undo &lt;span class=&quot;menu-shortcut&quot;&gt;⌘Z&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;menu-item&quot;&gt;Redo &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘Z&lt;/span&gt;&lt;/span&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+      <pre hidden><code id="navbar-menubar-kobalte" data-variant="kobalte">import { Menubar } from &quot;@kobalte/core/menubar&quot;;
+
+&lt;Menubar&gt;
+  &lt;Menubar.Menu&gt;
+    &lt;Menubar.Trigger class=&quot;menu-item&quot;&gt;Edit&lt;/Menubar.Trigger&gt;
+    &lt;Menubar.Portal&gt;
+      &lt;Menubar.Content&gt;
+        &lt;Menubar.Item&gt;Undo &lt;span class=&quot;menu-shortcut&quot;&gt;⌘Z&lt;/span&gt;&lt;/Menubar.Item&gt;
+        &lt;Menubar.Item&gt;Redo &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘Z&lt;/span&gt;&lt;/Menubar.Item&gt;
+      &lt;/Menubar.Content&gt;
+    &lt;/Menubar.Portal&gt;
+  &lt;/Menubar.Menu&gt;
+&lt;/Menubar&gt;</code></pre>
+      <pre hidden><code id="navbar-menubar-kobalte-markup" data-variant="kobalte-markup">&lt;div class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-start&quot;&gt;
+    &lt;strong&gt;Editor&lt;/strong&gt;
+    &lt;div role=&quot;menubar&quot;&gt;
+      &lt;div class=&quot;menu-item&quot;&gt;File&lt;/div&gt;
+      &lt;div class=&quot;menu-item&quot; data-highlighted data-expanded&gt;Edit&lt;/div&gt;
+      &lt;div class=&quot;menu-item&quot;&gt;View&lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+&lt;div role=&quot;menu&quot; data-expanded style=&quot;width: 12rem; margin-top: 0.25rem&quot;&gt;
+  &lt;div role=&quot;menuitem&quot;&gt;Undo &lt;span class=&quot;menu-shortcut&quot;&gt;⌘Z&lt;/span&gt;&lt;/div&gt;
+  &lt;div role=&quot;menuitem&quot;&gt;Redo &lt;span class=&quot;menu-shortcut&quot;&gt;⇧⌘Z&lt;/span&gt;&lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<h2>Navigation menu and context menu</h2>
+<p>
+  Two more Kobalte components reuse what is already here, so they need no classes
+  of their own:
+</p>
+<ul>
+  <li>
+    <strong>ContextMenu</strong> renders the same <code>role="menu"</code> and
+    <code>role="menuitem"</code> as a dropdown, so a right-click menu is styled
+    already. Only its trigger is yours to style.
+  </li>
+  <li>
+    <strong>NavigationMenu</strong> renders a <code>&lt;ul&gt;</code> with no role,
+    and its triggers are divs. Put <code>.menubar</code> on the root and
+    <code>.menu-item</code> on the triggers; each panel is a
+    <code>.dropdown-content</code>.
+  </li>
+</ul>
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="navbar-nav-menu">Copy</button>
+  <pre><code id="navbar-nav-menu" class="language-jsx">&lt;NavigationMenu class=&quot;menubar&quot;&gt;
+  &lt;NavigationMenu.Menu&gt;
+    &lt;NavigationMenu.Trigger class=&quot;menu-item&quot;&gt;Product&lt;/NavigationMenu.Trigger&gt;
+    &lt;NavigationMenu.Portal&gt;
+      &lt;NavigationMenu.Content class=&quot;dropdown-content menu&quot;&gt;
+        &lt;NavigationMenu.Item class=&quot;menu-item&quot;&gt;Overview&lt;/NavigationMenu.Item&gt;
+        &lt;NavigationMenu.Item class=&quot;menu-item&quot;&gt;Changelog&lt;/NavigationMenu.Item&gt;
+      &lt;/NavigationMenu.Content&gt;
+    &lt;/NavigationMenu.Portal&gt;
+  &lt;/NavigationMenu.Menu&gt;
+&lt;/NavigationMenu&gt;</code></pre>
+</div>
+
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="navbar-context-menu">Copy</button>
+  <pre><code id="navbar-context-menu" class="language-jsx">&lt;ContextMenu&gt;
+  &lt;ContextMenu.Trigger class=&quot;card&quot;&gt;Right-click me&lt;/ContextMenu.Trigger&gt;
+  &lt;ContextMenu.Portal&gt;
+    &lt;ContextMenu.Content&gt;
+      &lt;ContextMenu.Item&gt;Rename&lt;/ContextMenu.Item&gt;
+      &lt;ContextMenu.Item&gt;Delete&lt;/ContextMenu.Item&gt;
+    &lt;/ContextMenu.Content&gt;
+  &lt;/ContextMenu.Portal&gt;
+&lt;/ContextMenu&gt;</code></pre>
+</div>
+
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

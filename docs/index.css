@@ -831,7 +831,7 @@
   .label:has(> .radio) .radio:checked::after {
     opacity: 1;
   }
-  .label:has(> .checkbox) {
+  .label:has(> .checkbox, > .toggle) {
     display: flex;
     align-items: center;
     cursor: pointer;
@@ -910,22 +910,31 @@
   *:disabled {
     --swatch-lc-1: var(--grey-swatch-lc-1);
     --text-lc-1: var(--grey-text-lc-1);
+    --surface-lc-1: var(--grey-surface-lc-1);
     --swatch-lc-2: var(--grey-swatch-lc-2);
     --text-lc-2: var(--grey-text-lc-2);
+    --surface-lc-2: var(--grey-surface-lc-2);
     --swatch-lc-3: var(--grey-swatch-lc-3);
     --text-lc-3: var(--grey-text-lc-3);
+    --surface-lc-3: var(--grey-surface-lc-3);
     --swatch-lc-4: var(--grey-swatch-lc-4);
     --text-lc-4: var(--grey-text-lc-4);
+    --surface-lc-4: var(--grey-surface-lc-4);
     --swatch-lc-5: var(--grey-swatch-lc-5);
     --text-lc-5: var(--grey-text-lc-5);
+    --surface-lc-5: var(--grey-surface-lc-5);
     --swatch-lc-6: var(--grey-swatch-lc-6);
     --text-lc-6: var(--grey-text-lc-6);
+    --surface-lc-6: var(--grey-surface-lc-6);
     --swatch-lc-7: var(--grey-swatch-lc-7);
     --text-lc-7: var(--grey-text-lc-7);
+    --surface-lc-7: var(--grey-surface-lc-7);
     --swatch-lc-8: var(--grey-swatch-lc-8);
     --text-lc-8: var(--grey-text-lc-8);
+    --surface-lc-8: var(--grey-surface-lc-8);
     --swatch-lc-9: var(--grey-swatch-lc-9);
     --text-lc-9: var(--grey-text-lc-9);
+    --surface-lc-9: var(--grey-surface-lc-9);
     --primary-surface-lc: var(--primary-grey-surface-lc);
     --primary-text-lc: var(--primary-grey-text-lc);
   }
@@ -1034,6 +1043,601 @@
     border-bottom: var(--specific-border-width, var(--border-width)) solid oklch(from var(--color) var(--surface-lc-2) h);
     text-align: left;
     padding: 0.5rem 1rem;
+  }
+  .tabs {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border-bottom: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .tab {
+    display: inline-block;
+    border: 0;
+    background-color: transparent;
+    color: oklch(from var(--color) var(--text-lc-3) h);
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+  }
+  .tab:hover {
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .tab-active {
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    box-shadow: inset 0 calc(var(--border-width) * -1) 0 oklch(from var(--color) var(--surface-lc-4) h);
+  }
+  .tab-disabled {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --surface-lc-1: var(--grey-surface-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --surface-lc-2: var(--grey-surface-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --surface-lc-3: var(--grey-surface-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --surface-lc-4: var(--grey-surface-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --surface-lc-5: var(--grey-surface-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --surface-lc-6: var(--grey-surface-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --surface-lc-7: var(--grey-surface-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --surface-lc-8: var(--grey-surface-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --surface-lc-9: var(--grey-surface-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  .tab-content {
+    padding: 1rem 0;
+  }
+  .tab-content:focus-visible {
+    border-radius: var(--border-radius);
+  }
+  .dropdown-content {
+    min-width: 12rem;
+    padding: calc(var(--padding) / 4);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    z-index: 50;
+  }
+  .menu {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 8);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .menu li {
+    margin: 0;
+  }
+  .menu hr {
+    margin: calc(var(--padding) / 4) 0;
+    border: 0;
+    border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .menu-item {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    border-radius: var(--border-radius);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    text-decoration: none;
+    cursor: pointer;
+    user-select: none;
+  }
+  .menu-item:hover {
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .menu-active {
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .menu-selected {
+    box-shadow: inset calc(var(--border-width) * 1.5) 0 0 oklch(from var(--color) var(--surface-lc-4) h);
+  }
+  .menu-disabled {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --surface-lc-1: var(--grey-surface-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --surface-lc-2: var(--grey-surface-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --surface-lc-3: var(--grey-surface-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --surface-lc-4: var(--grey-surface-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --surface-lc-5: var(--grey-surface-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --surface-lc-6: var(--grey-surface-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --surface-lc-7: var(--grey-surface-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --surface-lc-8: var(--grey-surface-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --surface-lc-9: var(--grey-surface-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  .menu-title {
+    display: block;
+    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    font-size: 0.875rem;
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .menu-shortcut {
+    margin-left: auto;
+    padding-left: var(--padding);
+    font-size: 0.875rem;
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .toggle {
+    --toggle-height: 1.5rem;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    width: calc(var(--toggle-height) * 1.75);
+    height: var(--toggle-height);
+    padding: var(--border-width);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    cursor: pointer;
+    transition: background-color 150ms;
+  }
+  .toggle:is(:checked, [data-checked]) {
+    background-color: oklch(from var(--color) var(--surface-lc-4) h);
+  }
+  .toggle:is(:disabled, [data-disabled]) {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --surface-lc-1: var(--grey-surface-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --surface-lc-2: var(--grey-surface-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --surface-lc-3: var(--grey-surface-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --surface-lc-4: var(--grey-surface-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --surface-lc-5: var(--grey-surface-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --surface-lc-6: var(--grey-surface-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --surface-lc-7: var(--grey-surface-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --surface-lc-8: var(--grey-surface-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --surface-lc-9: var(--grey-surface-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  input.toggle {
+    appearance: none;
+    background-image: radial-gradient(circle at calc(var(--toggle-height) / 2 - var(--border-width)) 50%, oklch(from var(--color) var(--surface-lc-1) h) calc(var(--toggle-height) / 2 - 0.3rem), transparent 0);
+    background-repeat: no-repeat;
+    transition: background-color 150ms, background-position 150ms;
+  }
+  input.toggle:checked {
+    background-position: calc(var(--toggle-height) * 0.75) 0;
+  }
+  .toggle-thumb {
+    width: calc(var(--toggle-height) - var(--border-width) * 4);
+    height: calc(var(--toggle-height) - var(--border-width) * 4);
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    transition: transform 150ms;
+  }
+  .toggle-thumb[data-checked] {
+    transform: translateX(calc(var(--toggle-height) * 0.75));
+  }
+  .collapse {
+    border-bottom: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .collapse-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--padding);
+    width: 100%;
+    padding: calc(var(--padding) / 2) 0;
+    border: 0;
+    border-radius: 0;
+    background-color: transparent;
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: left;
+    cursor: pointer;
+  }
+  .collapse-title:hover {
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .collapse-title:is([data-disabled], :disabled) {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --surface-lc-1: var(--grey-surface-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --surface-lc-2: var(--grey-surface-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --surface-lc-3: var(--grey-surface-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --surface-lc-4: var(--grey-surface-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --surface-lc-5: var(--grey-surface-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --surface-lc-6: var(--grey-surface-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --surface-lc-7: var(--grey-surface-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --surface-lc-8: var(--grey-surface-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --surface-lc-9: var(--grey-surface-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  .collapse-content {
+    padding-bottom: calc(var(--padding) / 2);
+  }
+  .tooltip-content {
+    max-width: 20rem;
+    padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-5) h);
+    color: oklch(from var(--color) var(--surface-lc-1) h);
+    font-size: 0.875rem;
+    z-index: 50;
+  }
+  .tooltip-arrow {
+    color: oklch(from var(--color) var(--surface-lc-5) h);
+  }
+  .alert {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    padding: calc(var(--padding) / 2) var(--padding);
+    margin-bottom: 1rem;
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+  }
+  .alert-error {
+    --color: var(--error-color);
+  }
+  .popover-content {
+    max-width: 20rem;
+    padding: var(--padding);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    z-index: 50;
+  }
+  .popover-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: calc(var(--padding) / 4);
+  }
+  .popover-description {
+    color: oklch(from var(--color) var(--text-lc-3) h);
+    margin-bottom: 0;
+  }
+  .toast {
+    position: fixed;
+    inset-block-end: var(--padding);
+    inset-inline-end: var(--padding);
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 2);
+    max-width: min(24rem, 100vw - var(--padding) * 2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    z-index: 100;
+  }
+  .toast ol {
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 2);
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  .toast .alert {
+    margin-bottom: 0;
+  }
+  .toast-title {
+    font-weight: bold;
+  }
+  .toast-description {
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .divider {
+    border: 0;
+    align-self: stretch;
+    margin: var(--padding) 0;
+    border-top: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .divider-vertical {
+    margin: 0 var(--padding);
+    border-top: 0;
+    border-left: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .skeleton {
+    display: block;
+    min-height: 1rem;
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .skeleton {
+      background-image: linear-gradient(90deg, transparent, oklch(from var(--color) var(--surface-lc-1) h), transparent);
+      background-size: 60% 100%;
+      background-repeat: no-repeat;
+      animation: sparkstone-skeleton 1.4s ease-in-out infinite;
+    }
+  }
+  .skeleton:not([data-animate]) {
+    animation: none;
+    background-image: none;
+  }
+  .skeleton:not([data-visible]) {
+    background-color: transparent;
+  }
+  @keyframes sparkstone-skeleton {
+    from {
+      background-position: -60% 0;
+    }
+    to {
+      background-position: 160% 0;
+    }
+  }
+  .loading {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: -0.25rem;
+    border: var(--border-width) solid color-mix(in oklch, currentColor, transparent 75%);
+    border-top-color: currentColor;
+    border-radius: 999px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .loading {
+      animation: sparkstone-spin 0.7s linear infinite;
+    }
+  }
+  @keyframes sparkstone-spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+  .slider {
+    --slider-thumb: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: calc(var(--padding) / 4);
+    margin-bottom: 1rem;
+    position: relative;
+  }
+  .slider:is([data-disabled]) {
+    --swatch-lc-1: var(--grey-swatch-lc-1);
+    --text-lc-1: var(--grey-text-lc-1);
+    --surface-lc-1: var(--grey-surface-lc-1);
+    --swatch-lc-2: var(--grey-swatch-lc-2);
+    --text-lc-2: var(--grey-text-lc-2);
+    --surface-lc-2: var(--grey-surface-lc-2);
+    --swatch-lc-3: var(--grey-swatch-lc-3);
+    --text-lc-3: var(--grey-text-lc-3);
+    --surface-lc-3: var(--grey-surface-lc-3);
+    --swatch-lc-4: var(--grey-swatch-lc-4);
+    --text-lc-4: var(--grey-text-lc-4);
+    --surface-lc-4: var(--grey-surface-lc-4);
+    --swatch-lc-5: var(--grey-swatch-lc-5);
+    --text-lc-5: var(--grey-text-lc-5);
+    --surface-lc-5: var(--grey-surface-lc-5);
+    --swatch-lc-6: var(--grey-swatch-lc-6);
+    --text-lc-6: var(--grey-text-lc-6);
+    --surface-lc-6: var(--grey-surface-lc-6);
+    --swatch-lc-7: var(--grey-swatch-lc-7);
+    --text-lc-7: var(--grey-text-lc-7);
+    --surface-lc-7: var(--grey-surface-lc-7);
+    --swatch-lc-8: var(--grey-swatch-lc-8);
+    --text-lc-8: var(--grey-text-lc-8);
+    --surface-lc-8: var(--grey-surface-lc-8);
+    --swatch-lc-9: var(--grey-swatch-lc-9);
+    --text-lc-9: var(--grey-text-lc-9);
+    --surface-lc-9: var(--grey-surface-lc-9);
+    --primary-surface-lc: var(--primary-grey-surface-lc);
+    --primary-text-lc: var(--primary-grey-text-lc);
+    pointer-events: none;
+  }
+  .slider-track {
+    position: relative;
+    height: calc(var(--slider-thumb) / 2);
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .slider-fill {
+    position: absolute;
+    height: 100%;
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-4) h);
+  }
+  .slider-thumb {
+    display: block;
+    width: var(--slider-thumb);
+    height: var(--slider-thumb);
+    top: calc(var(--slider-thumb) / -4);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+  }
+  .slider-thumb input {
+    appearance: none;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    opacity: 0;
+  }
+  .slider-label,
+  .slider-value {
+    font-size: 0.875rem;
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: var(--padding);
+    padding: calc(var(--padding) / 2) var(--padding);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    border-bottom: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .navbar-start {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    margin-inline-end: auto;
+  }
+  .navbar-end {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    margin-inline-start: auto;
+  }
+  .menubar {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 8);
+  }
+  .breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--padding) / 4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    font-size: 0.875rem;
+  }
+  .breadcrumbs li {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 4);
+    margin: 0;
+  }
+  .breadcrumbs :is([aria-current], [data-current]) {
+    color: oklch(from var(--color) var(--text-lc-1) h);
+    text-decoration: none;
+  }
+  .breadcrumbs-separator {
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .pagination ul {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: calc(var(--padding) / 4);
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+  .pagination li {
+    margin: 0;
+  }
+  .pagination :is([aria-current], [data-current]) {
+    background-color: oklch(from var(--color) var(--primary-surface-lc) h);
+    color: oklch(from var(--color) var(--primary-text-lc) h);
+    border-color: oklch(from var(--color) var(--primary-surface-lc) h);
+  }
+  .pagination-ellipsis {
+    padding: 0 calc(var(--padding) / 4);
+    color: oklch(from var(--color) var(--text-lc-3) h);
+  }
+  .segmented {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--padding) / 8);
+    padding: calc(var(--padding) / 8);
+    border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+  }
+  .segmented-item {
+    position: relative;
+    z-index: 1;
+    display: inline-flex;
+    align-items: center;
+    gap: calc(var(--padding) / 4);
+    padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
+    border-radius: var(--border-radius);
+    color: oklch(from var(--color) var(--text-lc-3) h);
+    cursor: pointer;
+  }
+  .segmented-item input {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+  .segmented-item:has(input:checked), .segmented-item:is([data-checked], .segmented-item-active) {
+    color: oklch(from var(--color) var(--text-lc-1) h);
+  }
+  .segmented:not(:has(.segmented-indicator)) .segmented-item:is(:has(input:checked), [data-checked], .segmented-item-active) {
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+  }
+  .segmented-indicator {
+    position: absolute;
+    z-index: 0;
+    top: calc(var(--padding) / 8);
+    bottom: calc(var(--padding) / 8);
+    border-radius: var(--border-radius);
+    background-color: oklch(from var(--color) var(--surface-lc-1) h);
+    transition: all 250ms;
   }
   .progress {
     appearance: none;

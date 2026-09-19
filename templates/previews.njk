@@ -1,0 +1,90 @@
+{#
+  preview(slug)  a miniature of the component, for the cards on the components
+  page. Inert: the wrapper sets pointer-events: none and aria-hidden.
+#}
+{% macro preview(slug) %}
+{%- if slug == "prose" -%}
+  <div class="prose" style="font-size: 0.7rem"><h4 style="margin:0">Heading</h4><p style="margin:0">Body copy and <code>code</code>.</p></div>
+{%- elif slug == "link" -%}
+  <span class="link" style="text-decoration: underline">a link</span>
+{%- elif slug == "kbd" -%}
+  <kbd class="kbd">Ctrl</kbd> <kbd class="kbd">K</kbd>
+{%- elif slug == "button" -%}
+  <span class="btn" style="padding: 0.4rem 0.7rem; font-size: 0.8rem">Button</span>
+  <span class="btn btn-secondary" style="padding: 0.4rem 0.7rem; font-size: 0.8rem">Cancel</span>
+{%- elif slug == "tabs" -%}
+  <div class="tabs" style="font-size: 0.75rem"><span class="tab tab-active" style="padding: 0.35rem 0.6rem">One</span><span class="tab" style="padding: 0.35rem 0.6rem">Two</span></div>
+{%- elif slug == "dropdown" -%}
+  <div class="dropdown-content menu" style="font-size: 0.75rem; min-width: 6rem"><span class="menu-item" style="padding: 0.25rem 0.4rem">Commit</span><span class="menu-item menu-active" style="padding: 0.25rem 0.4rem">Push</span></div>
+{%- elif slug == "alert" -%}
+  <div class="alert" style="font-size: 0.75rem; padding: 0.35rem 0.6rem; margin: 0">Saved</div>
+{%- elif slug == "badge" -%}
+  <small class="badge">Draft</small> <small class="badge">3 open</small>
+{%- elif slug == "card" -%}
+  <div class="card" style="font-size: 0.75rem; padding: 0.5rem; width: 6rem">A card</div>
+{%- elif slug == "progress" -%}
+  <progress class="progress" value="60" max="100" style="width: 7rem"></progress>
+{%- elif slug == "table" -%}
+  <table class="table" style="font-size: 0.7rem; width: 8rem"><tr><th style="padding: 0.2rem 0.4rem">Key</th><th style="padding: 0.2rem 0.4rem">Value</th></tr><tr><td style="padding: 0.2rem 0.4rem">a</td><td style="padding: 0.2rem 0.4rem">1</td></tr></table>
+{%- elif slug == "collapse" -%}
+  <div style="width: 8rem; font-size: 0.75rem"><div class="collapse"><div class="collapse-title" style="font-size: 0.75rem; padding: 0.25rem 0">Section <span>−</span></div><div class="collapse-content" style="padding-bottom: 0.25rem">Open</div></div></div>
+{%- elif slug == "label" -%}
+  <span class="label" style="font-size: 0.75rem">Email<input class="input" style="font-size: 0.75rem; height: auto; padding: 0.3rem 0.4rem; width: 7rem; margin: 0" value="you@" /></span>
+{%- elif slug == "fieldset" -%}
+  <fieldset class="fieldset" style="font-size: 0.7rem; padding: 0.4rem; margin: 0; width: 7rem"><legend class="fieldset-legend">Group</legend>Two fields</fieldset>
+{%- elif slug == "input" -%}
+  <input class="input" value="Text" style="font-size: 0.75rem; height: auto; padding: 0.3rem 0.5rem; width: 7rem; margin: 0" />
+{%- elif slug == "textarea" -%}
+  <textarea class="textarea" rows="2" style="padding: 0.25rem 0.5rem; width: 7rem; margin: 0; font-size: 0.75rem">Notes</textarea>
+{%- elif slug == "select" -%}
+  <select class="select" style="font-size: 0.75rem; height: auto; padding: 0.3rem 1.6rem 0.3rem 0.5rem; width: 8rem; margin: 0; background-size: 0.75rem auto; background-position: center right 0.5rem"><option>Pick one</option></select>
+{%- elif slug == "checkbox" -%}
+  <span class="label" style="font-size: 0.75rem"><input type="checkbox" class="checkbox" checked /> Checked</span>
+{%- elif slug == "radio" -%}
+  <span class="label" style="font-size: 0.75rem"><input type="radio" class="radio" checked /> Chosen</span>
+{%- elif slug == "range" -%}
+  <input type="range" class="range" value="60" style="width: 7rem; margin: 0" />
+{%- elif slug == "file-input" -%}
+  <input type="file" class="file-input" style="width: 8rem; margin: 0; font-size: 0.6rem; height: auto; padding: 0.2rem" />
+{%- elif slug == "color-input" -%}
+  <input type="color" class="color-input" value="#663399" style="width: 3rem; height: 1.8rem; margin: 0; padding: 0.2rem" />
+{%- elif slug == "toggle" -%}
+  <span class="toggle" style="--toggle-height: 1.25rem" data-checked><span class="toggle-thumb" data-checked></span></span>
+  <span class="toggle" style="--toggle-height: 1.25rem"><span class="toggle-thumb"></span></span>
+{%- elif slug == "dialog" -%}
+  <div class="dialog-box" style="font-size: 0.65rem; padding: 0.35rem; width: 7rem; margin: 0; line-height: 1.3">Delete this?<div class="dialog-actions" style="margin-top: 0.25rem; padding-top: 0.25rem; text-align: right"><span class="btn" style="padding: 0.15rem 0.4rem; font-size: 0.65rem">OK</span></div></div>
+{%- elif slug == "tooltip" -%}
+  <span class="tooltip-content">Saves and closes</span>
+{%- elif slug == "popover" -%}
+  <span class="popover-content" style="font-size: 0.7rem; padding: 0.45rem; width: 8rem"><span class="popover-title" style="font-size: 0.75rem">Share</span><br /><span class="popover-description">Anyone with the link</span></span>
+{%- elif slug == "toast" -%}
+  <span class="alert" style="font-size: 0.7rem; padding: 0.3rem 0.5rem; margin: 0; width: 8rem">Saved</span>
+{%- elif slug == "divider" -%}
+  <span style="width: 7rem"><span style="font-size: 0.7rem">Above</span><hr class="divider" style="margin: 0.3rem 0" /><span style="font-size: 0.7rem">Below</span></span>
+{%- elif slug == "skeleton" -%}
+  <span style="width: 7rem; display: block"><span class="skeleton" style="height: 0.7rem; width: 60%; display: block; margin-bottom: 0.3rem"></span><span class="skeleton" style="height: 0.7rem; display: block"></span></span>
+{%- elif slug == "loading" -%}
+  <span class="loading"></span>
+{%- elif slug == "slider" -%}
+  <span class="slider" style="width: 7rem; margin: 0"><span class="slider-track" style="display: block"><span class="slider-fill" style="width: 60%"></span><span class="slider-thumb" style="position: absolute; left: 60%"></span></span></span>
+{%- elif slug == "navbar" -%}
+  <span class="navbar" style="font-size: 0.7rem; padding: 0.3rem 0.5rem; width: 9rem; gap: 0.4rem"><strong>Site</strong><span class="menu-item" style="padding: 0.1rem 0.3rem">File</span><span class="menu-item menu-active" style="padding: 0.1rem 0.3rem">Edit</span></span>
+{%- elif slug == "breadcrumbs" -%}
+  <span class="breadcrumbs" style="font-size: 0.7rem"><span class="link">Docs</span> <span class="breadcrumbs-separator">/</span> <span aria-current="page">Here</span></span>
+{%- elif slug == "pagination" -%}
+  <span class="flex" style="gap: 0.2rem"><span class="btn btn-secondary" style="padding: 0.15rem 0.4rem; font-size: 0.7rem">1</span><span class="btn btn-secondary" aria-current="page" style="padding: 0.15rem 0.4rem; font-size: 0.7rem; background-color: oklch(from var(--color) var(--primary-surface-lc) h); color: oklch(from var(--color) var(--primary-text-lc) h)">2</span><span class="btn btn-secondary" style="padding: 0.15rem 0.4rem; font-size: 0.7rem">3</span></span>
+{%- elif slug == "segmented" -%}
+  <span class="segmented" style="font-size: 0.7rem"><span class="segmented-item segmented-item-active" style="padding: 0.15rem 0.4rem">List</span><span class="segmented-item" style="padding: 0.15rem 0.4rem">Board</span></span>
+{%- elif slug == "colors" -%}
+  <span style="display: flex; gap: 0.2rem">
+    {% for i in [1, 3, 5, 7, 9] %}<span style="width: 1rem; height: 1.6rem; border-radius: var(--border-radius); background: oklch(from var(--color) var(--surface-lc-{{ i }}) h)"></span>{% endfor %}
+  </span>
+{%- elif slug == "customizing" -%}
+  <code style="font-size: 0.7rem">--color: teal</code>
+{%- elif slug == "layout" -%}
+  <span style="display: flex; gap: 0.25rem">
+    <span class="card-border" style="width: 3.5rem; height: 1.8rem; padding: 0"></span>
+    <span class="card-border" style="width: 1.8rem; height: 1.8rem; padding: 0"></span>
+  </span>
+{%- endif -%}
+{% endmacro %}

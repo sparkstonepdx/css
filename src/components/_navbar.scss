@@ -1,0 +1,38 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// The bar across the top of a page, and the row of menu triggers that often
+// sits in it. No component library renders either: both are layout.
+@mixin styles {
+  .navbar {
+    display: flex;
+    align-items: center;
+    gap: var(--padding);
+
+    padding: calc(var(--padding) / 2) var(--padding);
+    background-color: cur-color(var(--surface-lc-1));
+    border-bottom: var(--border-width) solid cur-color(var(--surface-lc-2));
+  }
+
+  .navbar-start {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    margin-inline-end: auto;
+  }
+
+  .navbar-end {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+    margin-inline-start: auto;
+  }
+
+  .menubar {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 8);
+  }
+}

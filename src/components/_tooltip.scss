@@ -1,0 +1,24 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// The bubble only. Placement belongs to whatever opens it: a CSS-only tooltip
+// anchors with a pseudo-element, Kobalte's popper writes inline styles.
+@mixin styles {
+  .tooltip-content {
+    max-width: 20rem;
+    padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
+
+    border-radius: var(--border-radius);
+    background-color: cur-color(var(--surface-lc-5));
+    color: cur-color(var(--surface-lc-1));
+    font-size: 0.875rem;
+
+    z-index: 50;
+  }
+
+  .tooltip-arrow {
+    color: cur-color(var(--surface-lc-5));
+  }
+}

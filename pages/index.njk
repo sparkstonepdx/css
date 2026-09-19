@@ -7,14 +7,14 @@
 <h1>@sparkstone/css</h1>
 <p class="lede">
   A lightweight SCSS framework in the spirit of
-  <a href="https://picocss.com" target="_blank" rel="noreferrer">Pico.css</a> and
-  <a href="https://daisyui.com" target="_blank" rel="noreferrer">daisyUI</a>, rebuilt on
+  <a href="https://picocss.com" target="_blank" rel="noreferrer">Pico.css</a>, rebuilt on
   <code>oklch()</code> relative color syntax. Give it one base color and it derives an
   entire light and dark palette that clears WCAG AA on every pairing the framework uses.
 </p>
 
 <p>
   <a href="./quickstart.html">Quickstart</a> ·
+  <a href="./components.html">All components</a> ·
   <a href="https://www.npmjs.com/package/@sparkstone/css" target="_blank" rel="noreferrer">npm</a> ·
   <a href="https://github.com/sparkstonepdx/css" target="_blank" rel="noreferrer">GitHub</a>
 </p>
@@ -37,7 +37,7 @@
     <tr>
       <td>Class</td>
       <td><code>@sparkstone/css</code></td>
-      <td>Class names only, following daisyUI 5. Plain elements are left alone.</td>
+      <td>Short, semantic class names. Plain elements are left alone.</td>
     </tr>
     <tr>
       <td>Classless</td>
@@ -85,11 +85,20 @@
 {% endset %}
 {{ m.demo("overview-hello", classless, classes) }}
 
+<h2>Kobalte</h2>
+<p>
+  Components marked <span class="kobalte-badge">K</span> are covered by an opt-in
+  layer that styles
+  <a href="https://kobalte.dev" target="_blank" rel="noreferrer">Kobalte's</a>
+  rendered markup as the matching component, so its parts need no class
+  attributes. See <a href="./components.html">All components</a>.
+</p>
+
 <h2>What you get</h2>
 <ul>
   <li>A nine-step perceptual scale derived from a single <code>--color</code>.</li>
   <li>Light and dark from the same scale, mirrored. No second palette to maintain.</li>
-  <li>daisyUI 5 class names, with <code>dialog-*</code> in place of <code>modal-*</code>.</li>
+  <li>Short, semantic class names: <code>btn</code>, <code>card</code>, <code>menu</code>, <code>dialog</code>.</li>
   <li>No JavaScript for any core styling.</li>
   <li>Sass functions and mixins when you need to reach past the defaults.</li>
 </ul>

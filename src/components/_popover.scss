@@ -1,0 +1,32 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// A floating panel with content in it, as opposed to a menu of rows. Placement
+// belongs to whatever opens it.
+@mixin styles {
+  .popover-content {
+    max-width: 20rem;
+    padding: var(--padding);
+
+    background-color: cur-color(var(--surface-lc-1));
+    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    color: cur-color(var(--text-lc-1));
+
+    z-index: 50;
+  }
+
+  .popover-title {
+    font-size: 1rem;
+    font-weight: bold;
+    margin-bottom: calc(var(--padding) / 4);
+  }
+
+  .popover-description {
+    color: cur-color(var(--text-lc-3));
+    margin-bottom: 0;
+  }
+}
