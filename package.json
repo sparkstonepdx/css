@@ -57,7 +57,7 @@
     "url": "https://github.com/Sparkstonepdx/css/issues"
   },
   "homepage": "https://github.com/Sparkstonepdx/css#readme",
-  "packageManager": "pnpm@10.11.0",
+  "packageManager": "pnpm@12.4.2",
   "devDependencies": {
     "chokidar": "^4.0.3",
     "fast-glob": "^3.3.3",
