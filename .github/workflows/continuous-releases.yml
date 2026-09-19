@@ -36,5 +36,7 @@ jobs:
       - name: Build
         run: pnpm run build
 
+      # pkg.pr.new asks that CI runs it from the lockfile rather than through
+      # dlx, so the version is pinned with everything else.
       - name: Release
-        run: pnpm dlx pkg-pr-new@0.0 publish --compact
+        run: pnpm exec pkg-pr-new publish --compact
