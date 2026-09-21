@@ -47,12 +47,23 @@ const pickers = [
   { cssVar: '--error', id: 'error-color-picker', key: 'sparkstone-error', fallback: 'maroon' },
 ];
 
-const toHex = (value, fallback) => {
+// A colour input needs #rrggbb. Custom properties can hold relative-colour
+// expressions that nothing parses, so resolve them through a real element's
+// computed colour, then read the pixel back.
+const toHex = (cssColor, fallback) => {
   try {
-    const ctx = document.createElement('canvas').getContext('2d');
-    ctx.fillStyle = fallback;
-    ctx.fillStyle = value;
-    return ctx.fillStyle;
+    const probe = document.createElement('span');
+    probe.style.color = cssColor;
+    document.body.append(probe);
+    const resolved = getComputedStyle(probe).color;
+    probe.remove();
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 1;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    ctx.fillStyle = resolved;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+    return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
   } catch {
     return fallback;
   }
@@ -67,8 +78,10 @@ for (const { cssVar, id, key, fallback } of pickers) {
 
   const input = document.getElementById(id);
   if (!input) continue;
-  const computed = getComputedStyle(input).getPropertyValue(cssVar === '--secondary' ? '--link' : cssVar).trim();
-  input.value = stored || toHex(computed, fallback);
+  // Seed from what the page is actually using: the resolved colour of the
+  // derived role, so an unset --secondary shows the link colour it produces.
+  const role = { '--primary': 'var(--primary)', '--secondary': 'var(--link)', '--error': 'var(--error)' }[cssVar];
+  input.value = stored || toHex(role, fallback);
   input.addEventListener('input', () => {
     root.style.setProperty(cssVar, input.value);
     sessionStorage.setItem(key, input.value);

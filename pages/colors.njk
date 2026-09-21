@@ -21,6 +21,23 @@
   ["--error", "Invalid fields, error text, error alerts"]
 ]) }}
 
+<h2>Live preview</h2>
+<p>Change these and every page on this site updates. Values persist for the session.</p>
+<form class="flex" style="flex-wrap: wrap; align-items: end">
+  <label>
+    <p>Primary</p>
+    <input type="color" id="base-color-picker" />
+  </label>
+  <label>
+    <p>Secondary</p>
+    <input type="color" id="accent-color-picker" />
+  </label>
+  <label>
+    <p>Error</p>
+    <input type="color" id="error-color-picker" />
+  </label>
+</form>
+
 <h2>Derived colours</h2>
 <p>
   Components read these, never the inputs. Text colours are solid, so their
@@ -86,21 +103,4 @@
 </div>
 {% endset %}
 {{ m.demo("colors-brands", classless) }}
-
-<h2>Live preview</h2>
-<p>Change these and every page on this site updates. Values persist for the session.</p>
-<form class="flex" style="flex-wrap: wrap; align-items: end">
-  <label>
-    <p>Primary</p>
-    <input type="color" id="base-color-picker" />
-  </label>
-  <label>
-    <p>Secondary</p>
-    <input type="color" id="accent-color-picker" />
-  </label>
-  <label>
-    <p>Error</p>
-    <input type="color" id="error-color-picker" />
-  </label>
-</form>
 {% endblock %}
