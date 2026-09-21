@@ -36,14 +36,14 @@
   // an element and add .retheme to re-theme everything inside it. Components
   // that set an input themselves, such as error fields and disabled states,
   // @extend .retheme, so they share this one rule.
+  // One rule for every boundary. Components that set an input themselves
+  // @extend .retheme, which appends their selectors to this list rather than
+  // copying the block. Inherited text arrives already resolved, so a boundary
+  // re-applies it here too.
   :root,
   [data-color-scheme],
   .retheme {
     @include derived;
-  }
-
-  // Inherited text arrives already resolved, so a boundary re-applies it.
-  .retheme {
     color: var(--fg);
   }
 

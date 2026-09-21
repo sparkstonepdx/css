@@ -530,12 +530,6 @@
     --primary-fill: oklch(from var(--primary-base) 0.46 calc(min(c, 0.17) * var(--chroma)) h);
     --on-primary-fill: oklch(from var(--primary-base) 0.99 calc(min(c, 0.018) * var(--chroma)) h);
     --link: oklch(from var(--secondary-base) var(--l-accent-text) calc(min(c, 0.17) * var(--chroma)) h);
-  }
-  .retheme, .slider:is([data-disabled]), .alert-error, .collapse-title:is([data-disabled], :disabled), .toggle:is(:disabled, [data-disabled]), .menu-disabled, .tab-disabled, .text-error, .disabled,
-  .btn-disabled,
-  *:disabled, .btn-neutral, .label > p:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), .input[aria-invalid=true], .select[aria-invalid=true], .textarea[aria-invalid=true], .range:disabled, .file-input[aria-invalid=true], .color-input[aria-invalid=true], .checkbox[aria-invalid=true], .radio[aria-invalid=true], .input-error,
-  .select-error,
-  .textarea-error {
     color: var(--fg);
   }
   body {
