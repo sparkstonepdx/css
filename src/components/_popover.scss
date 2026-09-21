@@ -10,11 +10,11 @@
     max-width: 20rem;
     padding: var(--padding);
 
-    background-color: cur-color(var(--surface-lc-1));
-    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    background-color: var(--bg);
+    border: var(--border-width) solid var(--divider);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
-    color: cur-color(var(--text-lc-1));
+    color: var(--fg);
 
     z-index: 50;
   }
@@ -26,7 +26,7 @@
   }
 
   .popover-description {
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
     margin-bottom: 0;
   }
 }

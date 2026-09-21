@@ -12,7 +12,7 @@
     td,
     th {
       border-bottom: var(--specific-border-width, var(--border-width)) solid
-        cur-color(var(--surface-lc-2));
+        var(--divider);
       text-align: left;
       padding: calc(1rem / 2) 1rem;
     }

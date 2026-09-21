@@ -19,8 +19,8 @@
     min-width: 12rem;
     padding: calc(var(--padding) / 4);
 
-    background-color: cur-color(var(--surface-lc-1));
-    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    background-color: var(--bg);
+    border: var(--border-width) solid var(--divider);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
 
@@ -46,7 +46,7 @@
     hr {
       margin: calc(var(--padding) / 4) 0;
       border: 0;
-      border-top: var(--border-width) solid cur-color(var(--surface-lc-2));
+      border-top: var(--border-width) solid var(--divider);
     }
   }
 
@@ -58,18 +58,18 @@
     padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
     border-radius: var(--border-radius);
 
-    color: cur-color(var(--text-lc-1));
+    color: var(--fg);
     text-decoration: none;
     cursor: pointer;
     user-select: none;
 
     &:hover {
-      background-color: cur-color(var(--surface-lc-2));
+      background-color: var(--surface);
     }
   }
 
   .menu-active {
-    background-color: cur-color(var(--surface-lc-2));
+    background-color: var(--surface);
   }
 
   // A selected row, as opposed to the highlighted one: a select keeps one row
@@ -89,15 +89,15 @@
       width: calc(var(--border-width) * 1.5);
 
       border-radius: 999px;
-      background-color: cur-color(var(--surface-lc-4));
+      background-color: var(--line);
     }
   }
 
   // Same treatment as .tab-disabled: greyscale alone left a disabled row at full
   // strength, so it read as an ordinary row.
   .menu-disabled {
-    @include apply-greyscale();
-    color: cur-color(var(--text-lc-5));
+    --chroma: 0;
+    color: var(--fg-faint);
     pointer-events: none;
   }
 
@@ -105,13 +105,13 @@
     display: block;
     padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
     font-size: 0.875rem;
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 
   .menu-shortcut {
     margin-left: auto;
     padding-left: var(--padding);
     font-size: 0.875rem;
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 }

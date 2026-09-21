@@ -3,9 +3,9 @@
 @mixin styles {
   .badge {
     border-radius: calc(var(--border-radius) * 2);
-    background-color: cur-color(var(--surface-lc-3));
+    background-color: var(--surface-strong);
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
     white-space: nowrap;
   }
 }

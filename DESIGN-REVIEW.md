@@ -1,5 +1,27 @@
 # Design review
 
+## 3.0 colour engine (`src/vars.scss`) — not signed off
+
+The nine-step scale is gone. Four inputs, set on any element, re-theme its whole
+subtree: `--primary`, `--secondary`, `--neutral`, `--error`. Fourteen colours
+are derived from them on every element (`*`), which is what lets an input work
+anywhere. Colours keep the input's hue and chroma and pin only the lightness.
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Lightness and chroma per role | taken from 2.x's scale stops, so a vivid brand looks as it did | the caps are per scheme, since the dark end of the scale carries more chroma |
+| Surfaces and rules | a tinted mid-tone (`--tint`) at 30% and 63% | lands on 2.x's surface stops. They stack when nested, so a badge in a card is darker than a badge on the page. **Questionable** if you want them flat |
+| `--line` | lightness 0.62 light, 0.54 dark | **Deliberate change from 2.x**: 0.695 failed WCAG 1.4.11 (3:1 for UI boundaries) at about 2.7 for every brand tested. Borders, focus rings, active underlines and fills are slightly darker |
+| Disabled | one declaration, `--chroma: 0` | replaces 29 re-bound variables per disabled selector |
+| Tooltip | not yet checked against the new tokens | it read `--surface-lc-5`, which now maps to `--line` |
+| Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
+
+Measured across ten brand colours in both schemes (rebeccapurple, tomato,
+#c2410c, #6b7c59, slategrey, #1d4ed8, #ffd400, #00ff88, hotpink, black): every
+text pairing clears 4.5:1, the lowest being `--link` at 5.61, and `--line` clears
+3:1, the lowest being 3.25.
+
+
 Fixed since the last pass: a label's text never turned red when its control was
 invalid. The rule set `--color` on the label's `<p>`, but the `<p>` inherits an
 already-resolved colour from `body`, so nothing read it. It now sets its own

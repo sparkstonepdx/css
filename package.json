@@ -1,6 +1,6 @@
 {
   "name": "@sparkstone/css",
-  "version": "2.1.0",
+  "version": "3.0.0-alpha.0",
   "description": "A minimal CSS framework inspired by Pico.css, with OKLCH-powered theming, light/dark mode, and both class-based and classless builds.",
   "main": "dist/index.css",
   "style": "dist/index.css",

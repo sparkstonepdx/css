@@ -5,20 +5,20 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
 
 // Shared declaration blocks, reused by the control classes below.
 @mixin field {
-  border: var(--border-width) solid get-border-color();
+  border: var(--border-width) solid var(--line);
   border-radius: var(--border-radius);
   padding: calc(var(--padding) / 2);
-  background-color: cur-color(var(--surface-lc-1));
-  color: cur-color(var(--text-lc-1));
+  background-color: var(--bg);
+  color: var(--fg);
   outline-width: 0;
   outline-style: none;
 
   &[aria-invalid="true"] {
-    --color: var(--error-color);
+    --primary: var(--error);
   }
 
   &::placeholder {
-    color: color-mix(in oklch, cur-color(var(--text-lc-2)), transparent 50%);
+    color: color-mix(in oklch, var(--fg-muted), transparent 50%);
   }
 }
 
@@ -133,7 +133,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
       @include slider.rail;
       background-image: linear-gradient(
         to right,
-        cur-color(var(--surface-lc-4)) var(--range-fill),
+        var(--line) var(--range-fill),
         transparent var(--range-fill)
       );
     }
@@ -158,7 +158,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     }
 
     &:disabled {
-      @include apply-greyscale();
+      --chroma: 0;
       cursor: default;
     }
   }
@@ -166,7 +166,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   .file-input {
     @include field;
     @include field-block;
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
     background-color: transparent;
     display: flex;
     flex-direction: row;
@@ -175,14 +175,14 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
 
     &::file-selector-button {
       border-radius: var(--border-radius);
-      border: var(--border-width) solid cur-color(var(--surface-lc-3));
+      border: var(--border-width) solid var(--divider);
       top: 0;
       bottom: 0;
       padding: 0.75rem 1rem;
       margin-right: 1rem;
 
-      background-color: cur-color(var(--surface-lc-2));
-      color: cur-color(var(--text-lc-3));
+      background-color: var(--surface);
+      color: var(--fg-muted);
       cursor: pointer;
     }
   }
@@ -197,7 +197,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     padding: 0.25rem;
     box-sizing: border-box;
     cursor: pointer;
-    border: var(--border-width) solid get-border-color();
+    border: var(--border-width) solid var(--line);
 
     &::-webkit-color-swatch-wrapper {
       padding: 0;
@@ -220,7 +220,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     appearance: none;
     width: 1.5rem;
     height: 1.5rem;
-    border: var(--border-width) solid get-border-color();
+    border: var(--border-width) solid var(--line);
     border-radius: calc(var(--border-radius) / 2);
     display: inline-block;
     position: relative;
@@ -233,7 +233,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
       left: 0.6rem;
       width: 0.4rem;
       height: 0.8rem;
-      border: solid cur-color(var(--surface-lc-1));
+      border: solid var(--bg);
       border-width: 0 var(--border-width) var(--border-width) 0;
       transform: translate(-50%, -50%) rotate(45deg);
       opacity: 0;
@@ -241,7 +241,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     }
 
     &:checked {
-      background-color: cur-color(var(--surface-lc-4));
+      background-color: var(--line);
 
       &::after {
         opacity: 1;
@@ -257,6 +257,6 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   .input-error,
   .select-error,
   .textarea-error {
-    --color: var(--error-color);
+    --primary: var(--error);
   }
 }

@@ -7,7 +7,7 @@
 // section, .collapse-title on the trigger, .collapse-content on the panel.
 @mixin styles {
   .collapse {
-    border-bottom: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-bottom: var(--border-width) solid var(--divider);
   }
 
   .collapse-title {
@@ -21,7 +21,7 @@
     border: 0;
     border-radius: 0;
     background-color: transparent;
-    color: cur-color(var(--text-lc-1));
+    color: var(--fg);
     // Kobalte puts the trigger inside a heading, which would otherwise size it.
     font-size: 1rem;
     font-weight: bold;
@@ -29,11 +29,11 @@
     cursor: pointer;
 
     &:hover {
-      color: cur-color(var(--text-lc-3));
+      color: var(--fg-muted);
     }
 
     &:is([data-disabled], :disabled) {
-      @include apply-greyscale();
+      --chroma: 0;
       pointer-events: none;
     }
   }

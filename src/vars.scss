@@ -1,133 +1,109 @@
 @use "sass:string";
-@use "sass:list";
 
-$lcArray: (
-  (99%, 0.018),
-  (90.5%, 0.045),
-  (80.5%, 0.125),
-  (69.5%, 0.17),
-  (58%, 0.185),
-  (46%, 0.17),
-  (34%, 0.135),
-  (24.5%, 0.095),
-  (17%, 0.055)
-);
+// ---------------------------------------------------------------------------
+// v3 colour engine (PROPOSAL, nothing here is signed off)
+//
+// Three inputs you can set on any element, and the whole subtree re-themes:
+//   --primary    the brand colour. Its own hue and chroma are kept.
+//   --secondary  links and accents. Defaults to the primary rotated 180deg.
+//   --neutral    what text and surfaces are tinted with. Defaults to --primary.
+// plus --error, and two switches the framework sets itself:
+//   --chroma     1 normally, 0 inside anything disabled
+//   the scheme   a handful of lightness numbers, swapped for dark
+//
+// Every derived colour below is declared on *, so it is recomputed on each
+// element from whatever inputs that element inherits. That is what makes an
+// input work anywhere: a custom property declared once at the root is
+// substituted there, and a descendant changing the input would never reach it.
+//
+// Colours keep the input's hue and chroma and pin only the lightness, so a
+// brand colour survives. Chroma is capped per role with min(), because a vivid
+// colour at a very light or very dark lightness falls out of gamut; the caps
+// are today's scale values, so a vivid brand looks as it does in 2.x.
+// ---------------------------------------------------------------------------
 
-$dimLcArray: (
-  (99%, 0),
-  (90.5%, 0),
-  (80.5%, 0),
-  (69.5%, 0),
-  (58%, 0),
-  (46%, 0),
-  (34%, 0),
-  (24.5%, 0),
-  (17%, 0)
-);
-
-@mixin lightSchemeVars {
-  $len: list.length($lcArray);
-  @for $i from 1 through list.length($lcArray) {
-    $swatch: list.nth($lcArray, $i);
-    $grey-swatch: list.nth($dimLcArray, $i);
-
-    $r: $len - $i + 1;
-    --swatch-lc-#{$i}: #{list.nth($swatch, 1)} #{list.nth($swatch, 2)};
-    --text-lc-#{$i}: var(--swatch-lc-#{$r});
-    --surface-lc-#{$i}: var(--swatch-lc-#{$i});
-
-    --grey-swatch-lc-#{$i}: #{list.nth($grey-swatch, 1)}
-      #{list.nth($grey-swatch, 2)};
-    --grey-text-lc-#{$i}: var(--grey-swatch-lc-#{$r});
-    --grey-surface-lc-#{$i}: var(--grey-swatch-lc-#{$i});
-  }
-  $primary-surface-swatch: list.nth($lcArray, 6);
-  $primary-text-swatch: list.nth($lcArray, 1);
-
-  --primary-surface-lc: #{list.nth($primary-surface-swatch, 1)}
-    #{list.nth($primary-surface-swatch, 2)};
-  --primary-text-lc: #{list.nth($primary-text-swatch, 1)}
-    #{list.nth($primary-text-swatch, 2)};
-
-  $primary-grey-surface-swatch: list.nth($dimLcArray, 6);
-  $primary-grey-text-swatch: list.nth($dimLcArray, 1);
-
-  --primary-grey-surface-lc: #{list.nth($primary-grey-surface-swatch, 1)}
-    #{list.nth($primary-grey-surface-swatch, 2)};
-  --primary-grey-text-lc: #{list.nth($primary-grey-text-swatch, 1)}
-    #{list.nth($primary-grey-text-swatch, 2)};
-
-  --icon-chevron: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=");
-  --icon-calendar: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==");
-  --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
+@function tone($input, $lightness, $cap) {
+  @return string.unquote(
+    "oklch(from var(#{$input}) #{$lightness} calc(min(c, #{$cap}) * var(--chroma)) h)"
+  );
 }
 
-@mixin darkSchemeVars {
-  $len: list.length($lcArray);
-  @for $i from 1 through list.length($lcArray) {
-    $r: $len - $i + 1;
-    $swatch: list.nth($lcArray, $i);
-    $grey-swatch: list.nth($dimLcArray, $i);
-
-    --swatch-lc-#{$r}: #{list.nth($swatch, 1)} #{list.nth($swatch, 2)};
-    --text-lc-#{$i}: var(--swatch-lc-#{$r});
-    --surface-lc-#{$i}: var(--swatch-lc-#{$i});
-
-    --grey-swatch-lc-#{$r}: #{list.nth($grey-swatch, 1)}
-      #{list.nth($grey-swatch, 2)};
-    --grey-text-lc-#{$i}: var(--grey-swatch-lc-#{$r});
-    --grey-surface-lc-#{$i}: var(--grey-swatch-lc-#{$i});
-  }
-  $primary-surface-swatch: list.nth($lcArray, 6);
-  $primary-text-swatch: list.nth($lcArray, 1);
-
-  --primary-surface-lc: #{list.nth($primary-surface-swatch, 1)}
-    #{list.nth($primary-surface-swatch, 2)};
-  --primary-text-lc: #{list.nth($primary-text-swatch, 1)}
-    #{list.nth($primary-text-swatch, 2)};
-
-  $primary-grey-surface-swatch: list.nth($dimLcArray, 6);
-  $primary-grey-text-swatch: list.nth($dimLcArray, 1);
-
-  --primary-grey-surface-lc: #{list.nth($primary-grey-surface-swatch, 1)}
-    #{list.nth($primary-grey-surface-swatch, 2)};
-  --primary-grey-text-lc: #{list.nth($primary-grey-text-swatch, 1)}
-    #{list.nth($primary-grey-text-swatch, 2)};
-
-  --icon-chevron: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=");
-  --icon-calendar: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==");
-  --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
+@function map-get-icon($name, $scheme) {
+  @if $name == chevron and $scheme == light { @return string.unquote('url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=")'); }
+  @if $name == calendar and $scheme == light { @return string.unquote('url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==")'); }
+  @if $name == clock and $scheme == light { @return string.unquote('url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMwMDAwMDAiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+")'); }
+  @if $name == chevron and $scheme == dark { @return string.unquote('url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jaGV2cm9uLWRvd24taWNvbiBsdWNpZGUtY2hldnJvbi1kb3duIj48cGF0aCBkPSJtNiA5IDYgNiA2LTYiLz48L3N2Zz4=")'); }
+  @if $name == calendar and $scheme == dark { @return string.unquote('url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jYWxlbmRhci1pY29uIGx1Y2lkZS1jYWxlbmRhciI+PHBhdGggZD0iTTggMnY0Ii8+PHBhdGggZD0iTTE2IDJ2NCIvPjxyZWN0IHdpZHRoPSIxOCIgaGVpZ2h0PSIxOCIgeD0iMyIgeT0iNCIgcng9IjIiLz48cGF0aCBkPSJNMyAxMGgxOCIvPjwvc3ZnPg==")'); }
+  @if $name == clock and $scheme == dark { @return string.unquote('url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+")'); }
+  @return none;
 }
 
-@function oklch-from-vars($color-var, $lightness-var) {
-  @return string.unquote("oklch(from #{$color-var} #{$lightness-var} c h)");
+// Lightness, and the chroma cap that goes with it, per role and scheme.
+@mixin light-scheme {
+  --l-bg: 0.99;
+  --l-fg: 0.17;
+  --l-muted: 0.34;
+  --c-bg: 0.018;
+  --c-fg: 0.055;
+  --c-muted: 0.135;
+  // --l-line clears 3:1 against the page for any brand colour (lowest measured
+  // 3.25 across ten brands); 2.x used 0.695, which fails 1.4.11 at about 2.7.
+  --l-line: 0.62;
+  --l-tint: 0.695;
+  --l-accent-text: 0.46;
+  --icon-chevron: #{map-get-icon(chevron, light)};
+  --icon-calendar: #{map-get-icon(calendar, light)};
+  --icon-clock: #{map-get-icon(clock, light)};
 }
 
-@function get-color($swatch-lc, $color) {
-  @return string.unquote("oklch(from #{$color} #{$swatch-lc} h)");
+@mixin dark-scheme {
+  --l-bg: 0.17;
+  --l-fg: 0.99;
+  --l-muted: 0.805;
+  --c-bg: 0.055;
+  --c-fg: 0.018;
+  --c-muted: 0.125;
+  --l-line: 0.54;
+  --l-tint: 0.46;
+  --l-accent-text: 0.695;
+  --icon-chevron: #{map-get-icon(chevron, dark)};
+  --icon-calendar: #{map-get-icon(calendar, dark)};
+  --icon-clock: #{map-get-icon(clock, dark)};
 }
 
-@function get-grey($swatch-lc, $color) {
-  @return string.unquote("oklch(from #{$color} #{$swatch-lc} * 0 h)");
+// Inputs and their defaults. Only ever declared at the root, so an override
+// on any element is inherited by its subtree.
+@mixin inputs {
+  --primary: var(--color, rebeccapurple);
+  --error: maroon;
+  --chroma: 1;
 }
 
-@function cur-color($swatch-lc) {
-  @return string.unquote("oklch(from var(--color) #{$swatch-lc} h)");
-}
+// Derived colours. Declared on * by the entry files.
+@mixin derived {
+  --neutral-base: var(--neutral, var(--primary));
+  --secondary-base: var(--secondary, oklch(from var(--primary) l c calc(h + 180)));
 
-// Custom properties are substituted where they are declared, so rebinding the
-// swatches on a descendant does not reach --text-lc-* or --surface-lc-*: each
-// scale has to be swapped by name.
-@mixin apply-greyscale() {
-  @for $i from 1 through list.length($lcArray) {
-    --swatch-lc-#{$i}: var(--grey-swatch-lc-#{$i});
-    --text-lc-#{$i}: var(--grey-text-lc-#{$i});
-    --surface-lc-#{$i}: var(--grey-surface-lc-#{$i});
-  }
-  --primary-surface-lc: var(--primary-grey-surface-lc);
-  --primary-text-lc: var(--primary-grey-text-lc);
-}
+  // Text: solid colours, so contrast never depends on what is behind them.
+  --fg: #{tone(--neutral-base, var(--l-fg), var(--c-fg))};
+  --fg-muted: #{tone(--neutral-base, var(--l-muted), var(--c-muted))};
+  --fg-faint: #{tone(--neutral-base, 0.58, 0.185)};
+  --bg: #{tone(--neutral-base, var(--l-bg), var(--c-bg))};
 
-@function get-border-color() {
-  @return cur-color(var(--surface-lc-4));
+  // Surfaces and rules: a tinted mid-tone at partial opacity, so they carry the
+  // theme's colour, stack when nested, and flip with the scheme for free. Never
+  // used for text. The opacities land on 2.x's surface stops: 30% over the page
+  // gives the old surface-2, 63% the old surface-3.
+  --tint: #{tone(--neutral-base, var(--l-tint), 0.17)};
+  --surface: oklch(from var(--tint) l c h / 30%);
+  --surface-strong: oklch(from var(--tint) l c h / 63%);
+  --divider: oklch(from var(--tint) l c h / 30%);
+
+  // Brand. --line is for strokes and fills that must stay visible against the
+  // page: input borders, focus rings, active underlines.
+  --line: #{tone(--primary, var(--l-line), 0.17)};
+  --primary-text: #{tone(--primary, var(--l-accent-text), 0.17)};
+  --primary-fill: #{tone(--primary, 0.46, 0.17)};
+  --on-primary-fill: #{tone(--primary, 0.99, 0.018)};
+  --link: #{tone(--secondary-base, var(--l-accent-text), 0.17)};
 }

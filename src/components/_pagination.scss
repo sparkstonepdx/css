@@ -30,6 +30,6 @@
 
   .pagination-ellipsis {
     padding: 0 calc(var(--padding) / 4);
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 }

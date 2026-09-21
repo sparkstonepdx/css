@@ -42,9 +42,9 @@ for (const btn of document.querySelectorAll('.copy-button')) {
 /* ---------- live theme pickers ---------- */
 
 const pickers = [
-  { cssVar: '--color', id: 'base-color-picker', key: 'sparkstone-base-color', fallback: 'rebeccapurple' },
-  { cssVar: '--accent-color', id: 'accent-color-picker', key: 'sparkstone-accent-color', fallback: '#425e00' },
-  { cssVar: '--error-color', id: 'error-color-picker', key: 'sparkstone-error-color', fallback: 'maroon' },
+  { cssVar: '--primary', id: 'base-color-picker', key: 'sparkstone-primary', fallback: 'rebeccapurple' },
+  { cssVar: '--secondary', id: 'accent-color-picker', key: 'sparkstone-secondary', fallback: '#425e00' },
+  { cssVar: '--error', id: 'error-color-picker', key: 'sparkstone-error', fallback: 'maroon' },
 ];
 
 const toHex = (value, fallback) => {
@@ -59,13 +59,16 @@ const toHex = (value, fallback) => {
 };
 
 for (const { cssVar, id, key, fallback } of pickers) {
-  const computed = getComputedStyle(root).getPropertyValue(cssVar).trim();
-  const initial = sessionStorage.getItem(key) || toHex(computed, fallback);
-  root.style.setProperty(cssVar, initial);
+  // Only write an input the reader actually chose. Writing the default would pin
+  // it at the root, and an unset input is what lets --secondary follow --primary
+  // wherever --primary is changed.
+  const stored = sessionStorage.getItem(key);
+  if (stored) root.style.setProperty(cssVar, stored);
 
   const input = document.getElementById(id);
   if (!input) continue;
-  input.value = initial;
+  const computed = getComputedStyle(input).getPropertyValue(cssVar === '--secondary' ? '--link' : cssVar).trim();
+  input.value = stored || toHex(computed, fallback);
   input.addEventListener('input', () => {
     root.style.setProperty(cssVar, input.value);
     sessionStorage.setItem(key, input.value);
@@ -146,7 +149,7 @@ for (const dialog of document.querySelectorAll('dialog')) {
 }
 <\/scr` + `ipt>`;
 
-const themeVars = ['--color', '--accent-color', '--error-color'];
+const themeVars = ['--primary', '--secondary', '--error'];
 
 const frameDoc = (markup, variant, id) => {
   const scheme = root.getAttribute('data-color-scheme') || 'light';

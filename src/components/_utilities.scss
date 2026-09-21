@@ -14,17 +14,17 @@
   }
 
   .text-secondary {
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 
   .disabled,
   .btn-disabled,
   *:disabled {
-    @include apply-greyscale();
+    --chroma: 0;
   }
 
   .text-error {
-    --color: var(--error-color);
-    color: cur-color(var(--text-lc-3));
+    --primary: var(--error);
+    color: var(--fg-muted);
   }
 }

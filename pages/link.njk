@@ -7,7 +7,7 @@
 <h1>Link</h1>
 <p class="lede">
   Links use the accent color, which is the theme color rotated 180 degrees in
-  <code>oklch</code> unless you set <code>--accent-color</code> yourself.
+  <code>oklch</code> unless you set <code>--secondary</code> yourself.
 </p>
 
 {{ m.classes([
@@ -28,15 +28,15 @@
 {{ m.demo("link-basic", classless, classes) }}
 
 <h2>Recoloring</h2>
-<p>Set <code>--accent-color</code> on any ancestor to change links in that subtree.</p>
+<p>Set <code>--secondary</code> on any ancestor to change links in that subtree.</p>
 {% set classless %}
 <div>
-  <p style="--accent-color: teal">A <a href="#">teal link</a> inside a scoped block.</p>
+  <p style="--secondary: teal">A <a href="#">teal link</a> inside a scoped block.</p>
 </div>
 {% endset %}
 {% set classes %}
 <div class="prose">
-  <p style="--accent-color: teal">A <a href="#" class="link">teal link</a> inside a scoped block.</p>
+  <p style="--secondary: teal">A <a href="#" class="link">teal link</a> inside a scoped block.</p>
 </div>
 {% endset %}
 {{ m.demo("link-scoped", classless, classes) }}

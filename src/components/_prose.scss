@@ -11,13 +11,13 @@
   blockquote {
     margin: 1rem 0;
     padding: 1rem;
-    border-left: calc(2 * var(--border-width)) solid get-border-color();
+    border-left: calc(2 * var(--border-width)) solid var(--line);
   }
 
   hr {
     margin: 1rem 0;
     border: 0;
-    border-top: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-top: var(--border-width) solid var(--divider);
   }
 
   code,
@@ -34,8 +34,8 @@
   pre,
   samp {
     border-radius: 0.25rem;
-    background: cur-color(var(--surface-lc-2));
-    color: cur-color(var(--text-lc-3));
+    background: var(--surface);
+    color: var(--fg-muted);
   }
 
   pre {
@@ -69,8 +69,8 @@
 }
 
 @mixin kbd {
-  background-color: cur-color(var(--primary-surface-lc));
-  color: cur-color(var(--primary-text-lc));
+  background-color: var(--primary-fill);
+  color: var(--on-primary-fill);
 }
 
 @mixin styles {

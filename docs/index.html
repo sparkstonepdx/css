@@ -515,7 +515,7 @@
 
 <h2>What you get</h2>
 <ul>
-  <li>A nine-step perceptual scale derived from a single <code>--color</code>.</li>
+  <li>A whole theme from one brand colour, keeping that colour's own hue and chroma.</li>
   <li>Light and dark from the same scale, mirrored. No second palette to maintain.</li>
   <li>Short, semantic class names: <code>btn</code>, <code>card</code>, <code>menu</code>, <code>dialog</code>.</li>
   <li>No JavaScript for any core styling.</li>
@@ -528,15 +528,15 @@
 <div class="code-block standalone">
   <button class="ghost copy-button" data-target="theming-vars">Copy</button>
   <pre><code id="theming-vars" class="language-css">:root {
-  --color: rebeccapurple;
-  --accent-color: oklch(from var(--color) l c calc(h + 180));
-  --error-color: maroon;
+  --primary: rebeccapurple;
+  --secondary: teal;   /* optional: defaults to the primary rotated 180deg */
+  --error: maroon;
 }</code></pre>
 </div>
 
 
 <p>
-  Because they are plain CSS variables, you can rebind <code>--color</code> on a subtree and
+  Set any of them on any element and its whole subtree re-themes: <code>--primary</code> on a <code>&lt;section&gt;</code>
   every descendant recolors itself. See <a href="./colors.html">Colors</a> and
   <a href="./customizing.html">Customizing</a>.
 </p>

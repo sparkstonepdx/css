@@ -3,14 +3,14 @@
 // The primary fill, as a block, so other components can apply it rather than
 // repeating it. .pagination uses it for the current page.
 @mixin btn-primary {
-  background-color: cur-color(var(--primary-surface-lc));
-  color: cur-color(var(--primary-text-lc));
-  border-color: cur-color(var(--primary-surface-lc));
+  background-color: var(--primary-fill);
+  color: var(--on-primary-fill);
+  border-color: var(--primary-fill);
 }
 
 @mixin styles {
   .btn {
-    border: var(--border-width) solid cur-color(var(--primary-surface-lc));
+    border: var(--border-width) solid var(--primary-fill);
     display: inline-block;
     text-decoration: none;
     border-radius: var(--border-radius);
@@ -18,24 +18,24 @@
     padding: 0.75rem 1rem;
     text-align: center;
 
-    background-color: cur-color(var(--primary-surface-lc));
-    color: cur-color(var(--primary-text-lc));
+    background-color: var(--primary-fill);
+    color: var(--on-primary-fill);
   }
 
   .btn-secondary {
-    border-color: cur-color(var(--text-lc-4));
-    color: cur-color(var(--text-lc-3));
+    border-color: var(--primary-text);
+    color: var(--fg-muted);
     background: transparent;
   }
 
   .btn-ghost {
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
     background-color: transparent;
     border-color: transparent;
   }
 
   .btn-neutral {
-    --color: var(--fallback-color);
+    --primary: var(--neutral, grey);
   }
 
   .btn-primary {

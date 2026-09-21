@@ -23,7 +23,7 @@
         appearance: none;
         width: 1rem;
         height: 1rem;
-        border: var(--border-width) solid get-border-color();
+        border: var(--border-width) solid var(--line);
         border-radius: 50%;
         position: relative;
         box-sizing: border-box;
@@ -37,9 +37,9 @@
           height: 1rem;
           top: 0;
           left: 0;
-          border: var(--border-width) solid cur-color(var(--surface-lc-1));
+          border: var(--border-width) solid var(--bg);
           box-sizing: border-box;
-          background: get-border-color();
+          background: var(--line);
           border-radius: 50%;
           opacity: 0;
           transition: opacity 0.2s;
@@ -70,12 +70,12 @@
 
     &.block:has(> .radio) {
       padding: 2rem;
-      border: var(--border-width) solid cur-color(var(--surface-lc-2));
+      border: var(--border-width) solid var(--divider);
       border-radius: var(--border-radius);
 
       &:has(.radio:checked) {
-        border-color: get-border-color();
-        background-color: cur-color(var(--surface-lc-2));
+        border-color: var(--line);
+        background-color: var(--surface);
       }
     }
 
@@ -83,13 +83,12 @@
       margin: 0;
     }
 
-    // Setting --color alone did nothing here: the <p> inherits an already-resolved
-    // colour from body, so it has to read the scale itself to pick up the error
-    // hue. --text-lc-3 matches .text-error, so the label and its message agree;
-    // at --text-lc-1 the error hue has too little chroma to read as red.
+    // The <p> sets its own colour so it picks up the error hue; an inherited
+    // colour arrives already resolved. --fg-muted matches .text-error, so the
+    // label and its message agree.
     > p:has(+ :is(.input, .select, .textarea):is([aria-invalid="true"], .input-error, .select-error, .textarea-error)) {
-      --color: var(--error-color);
-      color: cur-color(var(--text-lc-3));
+      --primary: var(--error);
+      color: var(--fg-muted);
     }
 
     > :is(.input, .select, .textarea):has(+ small) {
@@ -99,7 +98,7 @@
     > :is(.input, .select, .textarea) ~ small {
       display: inline-block;
       margin-bottom: 1rem;
-      color: cur-color(var(--text-lc-3));
+      color: var(--fg-muted);
     }
   }
 }

@@ -10,12 +10,12 @@
 @mixin rail {
   height: calc(var(--slider-thumb) / 2);
   border-radius: 999px;
-  background-color: cur-color(var(--surface-lc-2));
+  background-color: var(--surface);
 }
 
 @mixin fill {
   border-radius: 999px;
-  background-color: cur-color(var(--surface-lc-4));
+  background-color: var(--line);
 }
 
 @mixin thumb {
@@ -23,9 +23,9 @@
   width: var(--slider-thumb);
   height: var(--slider-thumb);
 
-  border: var(--border-width) solid cur-color(var(--surface-lc-4));
+  border: var(--border-width) solid var(--line);
   border-radius: 999px;
-  background-color: cur-color(var(--surface-lc-1));
+  background-color: var(--bg);
 }
 
 @mixin styles {
@@ -46,7 +46,7 @@
     }
 
     &:is([data-disabled]) {
-      @include apply-greyscale();
+      --chroma: 0;
       pointer-events: none;
     }
   }
@@ -96,6 +96,6 @@
   .slider-label,
   .slider-value {
     font-size: 0.875rem;
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 }

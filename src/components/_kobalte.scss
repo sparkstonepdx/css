@@ -35,7 +35,7 @@
     flex-direction: column;
     align-items: stretch;
     border-bottom: 0;
-    border-right: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-right: var(--border-width) solid var(--divider);
   }
 
   // Tabs.Indicator has no class of its own. Kobalte positions it inline, and it
@@ -46,7 +46,7 @@
 
   .tab-indicator {
     position: absolute;
-    background-color: cur-color(var(--surface-lc-4));
+    background-color: var(--line);
     transition: all 250ms;
 
     bottom: calc(var(--border-width) * -1);
