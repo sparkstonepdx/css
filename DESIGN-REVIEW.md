@@ -58,7 +58,7 @@ file.
 | `.menu-item` padding | `--padding / 3` and `--padding / 2` | tighter than `.btn`, since rows stack |
 | `.menu-item` hover | `--surface-lc-2` | same hover surface as `.tab` |
 | `.menu-active` | `--surface-lc-2`, no colour change | **Questionable**: identical to hover, so a highlighted row and a hovered row are indistinguishable. Kobalte's own example inverts the row instead |
-| `.menu-disabled` | `apply-greyscale()` plus `pointer-events: none` | matches `.tab-disabled` |
+| `.menu-disabled` | `apply-greyscale()`, text at `--text-lc-5`, `pointer-events: none` | matches `.tab-disabled`, your call |
 | `.menu-title` | `0.875rem` in `--text-lc-3` | |
 | `.menu-shortcut` | `margin-left: auto`, `0.875rem` in `--text-lc-3` | names the trailing slot Kobalte's example calls `item-right-slot` |
 | Kobalte separator | `hr` inside a menu gets a `--surface-lc-2` rule with `--padding / 4` margins | the framework's `hr` is a prose rule with 1rem margins, too loose inside a panel |

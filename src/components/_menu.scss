@@ -93,8 +93,11 @@
     }
   }
 
+  // Same treatment as .tab-disabled: greyscale alone left a disabled row at full
+  // strength, so it read as an ordinary row.
   .menu-disabled {
     @include apply-greyscale();
+    color: cur-color(var(--text-lc-5));
     pointer-events: none;
   }
 

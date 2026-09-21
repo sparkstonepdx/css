@@ -1258,6 +1258,7 @@
     --surface-lc-9: var(--grey-surface-lc-9);
     --primary-surface-lc: var(--primary-grey-surface-lc);
     --primary-text-lc: var(--primary-grey-text-lc);
+    color: oklch(from var(--color) var(--text-lc-5) h);
     pointer-events: none;
   }
   .menu-title {
