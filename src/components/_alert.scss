@@ -1,0 +1,26 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// A short, important message. Only the error variant exists: the framework has
+// no tokens for info, success or warning. See DESIGN-REVIEW.md.
+@mixin styles {
+  .alert {
+    display: flex;
+    align-items: center;
+    gap: calc(var(--padding) / 2);
+
+    padding: calc(var(--padding) / 2) var(--padding);
+    margin-bottom: 1rem;
+
+    border: var(--border-width) solid get-border-color();
+    border-radius: var(--border-radius);
+    background-color: cur-color(var(--surface-lc-2));
+    color: cur-color(var(--text-lc-1));
+  }
+
+  .alert-error {
+    --color: var(--error-color);
+  }
+}

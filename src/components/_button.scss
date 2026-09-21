@@ -1,5 +1,13 @@
 @use "../vars.scss" as *;
 
+// The primary fill, as a block, so other components can apply it rather than
+// repeating it. .pagination uses it for the current page.
+@mixin btn-primary {
+  background-color: cur-color(var(--primary-surface-lc));
+  color: cur-color(var(--primary-text-lc));
+  border-color: cur-color(var(--primary-surface-lc));
+}
+
 @mixin styles {
   .btn {
     border: var(--border-width) solid cur-color(var(--primary-surface-lc));
@@ -31,8 +39,6 @@
   }
 
   .btn-primary {
-    background-color: cur-color(var(--primary-surface-lc));
-    color: cur-color(var(--primary-text-lc));
-    border-color: cur-color(var(--primary-surface-lc));
+    @include btn-primary;
   }
 }

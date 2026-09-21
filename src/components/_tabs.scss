@@ -1,0 +1,60 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// Tabs: .tabs on the list, .tab on each item, .tab-active and .tab-disabled
+// for state, .tab-content on the panel.
+//
+// Nothing here knows about any component library. classless/kobalte.scss
+// @extends these classes onto Kobalte's own selectors.
+//
+// Order matters: these rules come after .btn in components/_index.scss, because
+// a Kobalte Tabs.Trigger is a <button>, which the classless build styles as a
+// .btn. .tab has to win, and both end up in the same cascade layer.
+@mixin styles {
+  .tabs {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    border-bottom: var(--border-width) solid cur-color(var(--surface-lc-2));
+  }
+
+  .tab {
+    display: inline-block;
+    border: 0;
+    background-color: transparent;
+    color: cur-color(var(--text-lc-3));
+    cursor: pointer;
+    padding: 0.75rem 1rem;
+    text-align: center;
+    border-radius: var(--border-radius) var(--border-radius) 0 0;
+
+    &:hover {
+      background-color: cur-color(var(--surface-lc-2));
+    }
+  }
+
+  .tab-active {
+    color: cur-color(var(--text-lc-1));
+    box-shadow: inset 0 calc(var(--border-width) * -1) 0
+      cur-color(var(--surface-lc-4));
+  }
+
+  // Greyscale alone left a disabled tab at the same strength as an unselected
+  // one. Lighter text marks it as unavailable without changing its shape.
+  .tab-disabled {
+    @include apply-greyscale();
+    color: cur-color(var(--text-lc-5));
+    pointer-events: none;
+  }
+
+  .tab-content {
+    padding: 1rem 0;
+
+    &:focus-visible {
+      border-radius: var(--border-radius);
+    }
+  }
+}

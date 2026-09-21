@@ -1,0 +1,70 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Pagination" %}
+{% set slug = "pagination" %}
+
+{% block content %}
+<h1>Pagination</h1>
+<p class="lede">
+  A row of page buttons. Each button is a <a href="./button.html">btn</a>; this
+  lays them out and fills in the current one, which
+  <a href="https://kobalte.dev/docs/core/components/pagination" target="_blank" rel="noreferrer">Kobalte's Pagination</a>
+  marks with <code>aria-current</code> and <code>data-current</code>.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["pagination", "The nav: lays out its ul, and fills the current page button"],
+  ["pagination-ellipsis", "The gap marker between ranges"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<nav class="pagination" aria-label="Pages">
+  <ul>
+    <li><button class="btn btn-secondary">Previous</button></li>
+    <li><button class="btn btn-secondary">1</button></li>
+    <li><button class="btn btn-secondary" aria-current="page">2</button></li>
+    <li><span class="pagination-ellipsis">…</span></li>
+    <li><button class="btn btn-secondary">9</button></li>
+    <li><button class="btn btn-secondary">Next</button></li>
+  </ul>
+</nav>
+{% endset %}
+{% set kobalte_markup %}
+<nav class="pagination" aria-label="Pages">
+  <ul>
+    <li><button class="btn btn-secondary">Previous</button></li>
+    <li><button class="btn btn-secondary">1</button></li>
+    <li><button class="btn btn-secondary" data-current aria-current="page">2</button></li>
+    <li><span class="pagination-ellipsis">…</span></li>
+    <li><button class="btn btn-secondary">9</button></li>
+    <li><button class="btn btn-secondary">Next</button></li>
+  </ul>
+</nav>
+{% endset %}
+{% set kobalte %}
+import { Pagination } from "@kobalte/core/pagination";
+
+<Pagination
+  class="pagination"
+  count={9}
+  page={page()}
+  onPageChange={setPage}
+  itemComponent={props => (
+    <Pagination.Item class="btn btn-secondary" page={props.page}>
+      {props.page}
+    </Pagination.Item>
+  )}
+  ellipsisComponent={() => (
+    <Pagination.Ellipsis class="pagination-ellipsis">…</Pagination.Ellipsis>
+  )}
+>
+  <Pagination.Previous class="btn btn-secondary">Previous</Pagination.Previous>
+  <Pagination.Items />
+  <Pagination.Next class="btn btn-secondary">Next</Pagination.Next>
+</Pagination>
+{% endset %}
+{{ m.demo("pagination-basic", classless, "", kobalte, kobalte_markup) }}
+{% endblock %}

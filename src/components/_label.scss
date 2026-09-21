@@ -51,7 +51,7 @@
       }
     }
 
-    &:has(> .checkbox) {
+    &:has(> .checkbox, > .toggle) {
       display: flex;
       align-items: center;
       cursor: pointer;
@@ -60,6 +60,12 @@
         border-color 0.2s,
         background 0.2s;
       margin-bottom: 1rem;
+
+      // A headless switch nests its own <label> in the row, which the
+      // classless build styles as a .label with a bottom margin of its own.
+      > label {
+        margin-bottom: 0;
+      }
     }
 
     &.block:has(> .radio) {
@@ -77,8 +83,13 @@
       margin: 0;
     }
 
+    // Setting --color alone did nothing here: the <p> inherits an already-resolved
+    // colour from body, so it has to read the scale itself to pick up the error
+    // hue. --text-lc-3 matches .text-error, so the label and its message agree;
+    // at --text-lc-1 the error hue has too little chroma to read as red.
     > p:has(+ :is(.input, .select, .textarea):is([aria-invalid="true"], .input-error, .select-error, .textarea-error)) {
       --color: var(--error-color);
+      color: cur-color(var(--text-lc-3));
     }
 
     > :is(.input, .select, .textarea):has(+ small) {

@@ -1,0 +1,61 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Segmented control" %}
+{% set slug = "segmented" %}
+
+{% block content %}
+<h1>Segmented control</h1>
+<p class="lede">
+  One control, a few exclusive choices.
+  <a href="https://kobalte.dev/docs/core/components/segmented-control" target="_blank" rel="noreferrer">Kobalte's SegmentedControl</a>
+  builds it from a hidden radio per item plus an indicator it positions inline.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["segmented", "The track holding the items"],
+  ["segmented-item", "One choice. Checked state comes from its radio, data-checked, or segmented-item-active"],
+  ["segmented-indicator", "The sliding highlight. Leave it out and the checked item paints its own"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<div class="segmented">
+  <label class="segmented-item"><input type="radio" name="view" checked /> List</label>
+  <label class="segmented-item"><input type="radio" name="view" /> Board</label>
+  <label class="segmented-item"><input type="radio" name="view" /> Calendar</label>
+</div>
+{% endset %}
+{% set kobalte_markup %}
+<div class="segmented">
+  <div class="segmented-indicator" style="left: 0.25rem; width: 4rem"></div>
+  <label class="segmented-item" data-checked><input type="radio" name="kview" checked /> List</label>
+  <label class="segmented-item"><input type="radio" name="kview" /> Board</label>
+  <label class="segmented-item"><input type="radio" name="kview" /> Calendar</label>
+</div>
+{% endset %}
+{% set kobalte %}
+import { SegmentedControl } from "@kobalte/core/segmented-control";
+
+<SegmentedControl class="segmented" value={view()} onChange={setView}>
+  <SegmentedControl.Indicator class="segmented-indicator" />
+  <For each={["List", "Board", "Calendar"]}>
+    {option => (
+      <SegmentedControl.Item value={option} class="segmented-item">
+        <SegmentedControl.ItemInput />
+        <SegmentedControl.ItemLabel>{option}</SegmentedControl.ItemLabel>
+      </SegmentedControl.Item>
+    )}
+  </For>
+</SegmentedControl>
+{% endset %}
+{{ m.demo("segmented-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    None of Kobalte's parts here carry a role, so the classes go on them by hand.
+    The checked state is read three ways: the item's own radio, Kobalte's
+    <code>data-checked</code>, or <code>.segmented-item-active</code>.
+  </small>
+</p>
+{% endblock %}

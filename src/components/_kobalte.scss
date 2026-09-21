@@ -1,0 +1,233 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// Kobalte's rendered markup bound to the framework's classes with @extend, so a
+// Kobalte part and its class share one rule. Only Kobalte parts with no class of
+// their own get declarations here.
+//
+// Kobalte 0.13: https://kobalte.dev/docs/core/components
+@mixin tabs {
+  // Tabs.List -> div[role="tablist"], Tabs.Trigger -> button[role="tab"],
+  // Tabs.Content -> div[role="tabpanel"], Tabs.Indicator -> div
+  [role="tablist"] {
+    @extend .tabs;
+  }
+
+  [role="tab"] {
+    @extend .tab;
+
+    &[data-selected] {
+      @extend .tab-active;
+    }
+
+    &[data-disabled] {
+      @extend .tab-disabled;
+    }
+  }
+
+  [role="tabpanel"] {
+    @extend .tab-content;
+  }
+
+  [role="tablist"][data-orientation="vertical"] {
+    flex-direction: column;
+    align-items: stretch;
+    border-bottom: 0;
+    border-right: var(--border-width) solid cur-color(var(--surface-lc-2));
+  }
+
+  // Tabs.Indicator has no class of its own. Kobalte positions it inline, and it
+  // replaces the selected tab's own underline.
+  [role="tablist"]:has(.tab-indicator) [role="tab"][data-selected] {
+    box-shadow: none;
+  }
+
+  .tab-indicator {
+    position: absolute;
+    background-color: cur-color(var(--surface-lc-4));
+    transition: all 250ms;
+
+    bottom: calc(var(--border-width) * -1);
+    height: var(--border-width);
+
+    &[data-orientation="vertical"] {
+      bottom: auto;
+      right: calc(var(--border-width) * -1);
+      height: auto;
+      width: var(--border-width);
+    }
+  }
+}
+
+// DropdownMenu.Content -> div[role="menu"], .Item -> div[role="menuitem"],
+// .CheckboxItem -> [role="menuitemcheckbox"], .RadioItem -> [role="menuitemradio"],
+// .GroupLabel -> span, .Separator -> hr, .SubTrigger -> div[role="menuitem"],
+// .SubContent -> div[role="menu"], .Trigger -> button, .Icon -> span.
+@mixin dropdown-menu {
+  [role="menu"] {
+    @extend .dropdown-content;
+    @extend .menu;
+  }
+
+  // .menu-item covers the parts that take the class by hand too: a Menubar or
+  // NavigationMenu trigger is a div with no role, but it still carries the state.
+  :is([role="menuitem"], [role="menuitemcheckbox"], [role="menuitemradio"], .menu-item) {
+    @extend .menu-item;
+
+    // An open submenu or menubar trigger reads as active, as Kobalte's own
+    // example has it.
+    &:is([data-highlighted], [data-expanded]) {
+      @extend .menu-active;
+    }
+
+    &[data-disabled] {
+      @extend .menu-disabled;
+    }
+  }
+
+  // DropdownMenu.Group is a plain div, so it breaks the menu's own column
+  // layout unless it lays its children out the same way.
+  [role="menu"] [role="group"] {
+    @extend .menu;
+  }
+
+  [role="menu"] [role="group"] > span:first-child {
+    @extend .menu-title;
+  }
+
+  // DropdownMenu.Icon: a span next to the trigger label that flips when open.
+  button[aria-haspopup] > span[data-expanded] {
+    transform: rotate(180deg);
+  }
+}
+
+// Tooltip.Content -> div[role="tooltip"].
+@mixin tooltip {
+  [role="tooltip"] {
+    @extend .tooltip-content;
+  }
+}
+
+// Alert -> div[role="alert"].
+@mixin alert {
+  [role="alert"] {
+    @extend .alert;
+  }
+}
+
+// Accordion.Content -> div[role="region"]; Accordion.Trigger is a button with
+// no role of its own, inside Accordion.Header, which is the heading right
+// before that region.
+@mixin accordion {
+  :is(h1, h2, h3, h4, h5, h6):has(+ [role="region"]) {
+    @extend .collapse;
+
+    margin-bottom: 0;
+
+    > button {
+      @extend .collapse-title;
+    }
+  }
+
+  // Toast.Region is also role="region", so match only a region that follows an
+  // accordion header.
+  :is(h1, h2, h3, h4, h5, h6):has(+ [role="region"]) + [role="region"] {
+    @extend .collapse-content;
+  }
+}
+
+// Select.Trigger -> button[aria-haspopup="listbox"], .Listbox -> ul[role="listbox"],
+// .Item -> li[role="option"]. The trigger is a form control, not a button, so it
+// takes the field styling.
+@mixin select {
+  // The field draws the chevron, so Select.Icon is left out; drawing both put
+  // two chevrons on the class build.
+  button[aria-haspopup="listbox"] {
+    @extend .select;
+  }
+
+  [role="listbox"] {
+    @extend .dropdown-content;
+    @extend .menu;
+  }
+
+  [role="option"] {
+    @extend .menu-item;
+
+    &[data-highlighted] {
+      @extend .menu-active;
+    }
+
+    &[data-selected] {
+      @extend .menu-selected;
+    }
+
+    &[data-disabled] {
+      @extend .menu-disabled;
+    }
+  }
+}
+
+// Switch has no role or attribute that identifies its Control and Thumb: both
+// are divs carrying the same data attributes as the root. Put .toggle and
+// .toggle-thumb on those parts yourself; only the state is bound here.
+// Separator -> [role="separator"], with data-orientation on it.
+@mixin separator {
+  [role="separator"] {
+    @extend .divider;
+
+    &[data-orientation="vertical"] {
+      @extend .divider-vertical;
+    }
+  }
+}
+
+// Popover.Content is role="dialog", and so is Dialog.Content: Kobalte gives
+// them no attribute that tells them apart, so both take the panel. Add
+// .dialog-box to a Kobalte dialog if you want the modal sizing as well.
+@mixin popover {
+  [role="dialog"] {
+    @extend .popover-content;
+  }
+}
+
+// Each Toast is li[role="status"]; its Region needs .toast by hand, since
+// role="region" is shared with accordion content and page landmarks.
+@mixin toast {
+  li[role="status"] {
+    @extend .alert;
+  }
+}
+
+// Slider.Thumb is the only part with a role; Track, Fill and the root take
+// their classes by hand.
+@mixin slider {
+  [role="slider"] {
+    @extend .slider-thumb;
+  }
+}
+
+// Menubar is role="menubar"; its triggers are divs, which take .menu-item.
+// ContextMenu renders the same role="menu" and role="menuitem" as a dropdown,
+// so it needs nothing of its own.
+@mixin menubar {
+  [role="menubar"] {
+    @extend .menubar;
+  }
+}
+
+@mixin bindings {
+  @include tabs;
+  @include dropdown-menu;
+  @include tooltip;
+  @include alert;
+  @include accordion;
+  @include select;
+  @include separator;
+  @include popover;
+  @include toast;
+  @include slider;
+  @include menubar;
+}

@@ -1,5 +1,4 @@
-// Class-based build, and the main export. Class names follow daisyUI 5, except
-// dialogs, which use .dialog, .dialog-box, .dialog-header and .dialog-actions.
+// Class-based build, and the main export.
 //
 // Every rule lives in ./components as a class. classless.scss emits the same
 // classes and then binds them to plain elements with @extend, so there is one

@@ -1,0 +1,5 @@
+# pnpm 12 reads its settings from here, not from a "pnpm" field in package.json,
+# and blocks dependency build scripts until they are approved.
+# @parcel/watcher compiles a native binding, used by the docs watcher in dev.js.
+allowBuilds:
+  "@parcel/watcher": true

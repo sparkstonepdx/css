@@ -54,4 +54,102 @@
 </select>
 {% endset %}
 {{ m.demo("select-multiple", classless, classes) }}
+
+<h2>With Kobalte</h2>
+
+{{ m.alpha() }}
+
+<p>
+  The native <code>&lt;select&gt;</code> above is settled. What follows is not: the
+  listbox styling and <code>.menu-selected</code> are new.
+</p>
+<p>
+  <a href="https://kobalte.dev/docs/core/components/select" target="_blank" rel="noreferrer">Kobalte's Select</a>
+  is a button plus a listbox, not a native <code>&lt;select&gt;</code>. The Kobalte
+  layer gives the trigger the field styling above, and the listbox the dropdown
+  panel, so the same theme covers both.
+</p>
+{% set classless %}
+<select class="select">
+  <option>Development</option>
+  <option>Production</option>
+</select>
+{% endset %}
+{% set kobalte_markup %}
+<div>
+  <button aria-haspopup="listbox" aria-expanded="true" data-expanded style="margin-bottom: 0.25rem">
+    <span>Production</span>
+  </button>
+  <ul role="listbox">
+    <li role="option">Development</li>
+    <li role="option" data-highlighted>Staging</li>
+    <li role="option" data-selected>Production</li>
+  </ul>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Select } from "@kobalte/core/select";
+
+<Select
+  options={["Development", "Staging", "Production"]}
+  value={env()}
+  onChange={setEnv}
+  itemComponent={props => (
+    <Select.Item item={props.item}>
+      <Select.ItemLabel>{props.item.rawValue}</Select.ItemLabel>
+    </Select.Item>
+  )}
+>
+  <Select.Trigger>
+    <Select.Value>{state => state.selectedOption()}</Select.Value>
+  </Select.Trigger>
+  <Select.Portal>
+    <Select.Content>
+      <Select.Listbox />
+    </Select.Content>
+  </Select.Portal>
+</Select>
+{% endset %}
+{{ m.demo("select-kobalte", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    Leave out <code>Select.Icon</code>: the field draws its own chevron, the same
+    one the native select gets.
+  </small>
+</p>
+
+<h3>Disabled</h3>
+{% set classless %}
+<select class="select" disabled>
+  <option>Production</option>
+</select>
+{% endset %}
+{% set kobalte_markup %}
+<button aria-haspopup="listbox" aria-expanded="false" disabled data-disabled>
+  <span>Production</span>
+</button>
+{% endset %}
+{% set kobalte %}
+<Select disabled options={envs} value={env()} onChange={setEnv} itemComponent={Item}>
+  <Select.Trigger>
+    <Select.Value>{state => state.selectedOption()}</Select.Value>
+  </Select.Trigger>
+</Select>
+{% endset %}
+{{ m.demo("select-kobalte-disabled", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    The trigger is a form field, so it carries the same bottom margin as an
+    <code>.input</code>. That margin is overridden in this demo because the
+    listbox sits inline here; in an app the content is portaled and positioned by
+    Kobalte's popper, which sets the gap with its <code>gutter</code> prop.
+  </small>
+</p>
+<p>
+  <small>
+    <code>data-selected</code> marks the chosen option and <code>data-highlighted</code>
+    the one under the pointer or caret, so they get different treatments:
+    <code>.menu-selected</code> and <code>.menu-active</code>.
+  </small>
+</p>
 {% endblock %}

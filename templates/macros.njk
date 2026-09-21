@@ -1,38 +1,48 @@
 {#
-  demo(id, classless, classes)
+  demo(id, classless, classes, kobalte, kobalte_markup)
     Live preview plus the markup behind it. The preview renders in an iframe
-    loading the matching build, so the class tab shows index.css and the
-    classless tab shows classless.css. Pass markup with {% set %}:
+    loading the matching build, so the class tab shows index.css, the classless
+    tab shows classless.css and the Kobalte tab shows classless/kobalte.css.
+    Pass markup with {% set %}:
 
       {% set classless %}<button>Go</button>{% endset %}
       {% set classes %}<button class="btn">Go</button>{% endset %}
       {{ m.demo("btn-basic", classless, classes) }}
 
-    Omit `classes` when the markup is identical in both builds.
+    Omit `classes` when the markup is identical in both builds. Pass `kobalte`
+    (the JSX a Kobalte app writes) and `kobalte_markup` (the DOM it renders, used
+    for the preview) to add a third tab.
 
   snippet(id, lang)  escaped, copyable source only, as a {% call %} body
   classes(rows)      table of class names, [[class, description], ...]
 #}
 
-{% macro demo(id, classless, classes="") %}
+{% macro demo(id, classless, classes="", kobalte="", kobalte_markup="") %}
 {% set same = not classes %}
 <div class="demo" data-demo>
   <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
   <div class="demo-bar">
-    {% if same %}
+    {% if same and not kobalte %}
       <span class="demo-note"><small>Same markup in both builds</small></span>
     {% else %}
-      <div class="tabs" role="tablist" aria-label="Markup variant">
-        <button class="tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
-        <button class="tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
+        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+        {% if kobalte %}
+          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
+        {% endif %}
       </div>
     {% endif %}
     <button class="ghost copy-button" data-target="{{ id }}-classes">Copy</button>
   </div>
   <div class="code-block">
     <pre><code id="{{ id }}-classes" data-variant="classes">{{- (classes if not same else classless) | forceescape | trim -}}</code></pre>
-    {% if not same %}
+    {% if not same or kobalte %}
       <pre hidden><code id="{{ id }}-classless" data-variant="classless">{{- classless | forceescape | trim -}}</code></pre>
+    {% endif %}
+    {% if kobalte %}
+      <pre hidden><code id="{{ id }}-kobalte" data-variant="kobalte">{{- kobalte | forceescape | trim -}}</code></pre>
+      <pre hidden><code id="{{ id }}-kobalte-markup" data-variant="kobalte-markup">{{- kobalte_markup | forceescape | trim -}}</code></pre>
     {% endif %}
   </div>
 </div>
@@ -55,6 +65,40 @@
     <pre><code id="{{ id }}">{{- caller() | forceescape | trim -}}</code></pre>
   </div>
 </div>
+{% endmacro %}
+
+{#
+  headless(id, markup, jsx, label)
+    For components that need a headless library to drive them. The preview and
+    the first tab show the rendered markup the CSS targets; the second tab shows
+    the source that produces it.
+#}
+{% macro headless(id, markup, jsx, label="Kobalte", variant="classes") %}
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    <div class="variant-tabs" role="tablist" aria-label="Source">
+      <button class="variant-tab" role="tab" type="button" data-variant="{{ variant }}" aria-selected="true">Markup</button>
+      <button class="variant-tab" role="tab" type="button" data-variant="source" aria-selected="false">{{ label }}</button>
+    </div>
+    <button class="ghost copy-button" data-target="{{ id }}-markup">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="{{ id }}-markup" data-variant="{{ variant }}">{{- markup | forceescape | trim -}}</code></pre>
+    <pre hidden><code id="{{ id }}-source" data-variant="source">{{- jsx | forceescape | trim -}}</code></pre>
+  </div>
+</div>
+{% endmacro %}
+
+{#
+  alpha()  banner for a component whose look is not signed off yet
+#}
+{% macro alpha() %}
+<p class="alpha-note">
+  <span class="alpha-badge">alpha</span>
+  The class names and states here are stable. The look is not: these styles can
+  change in a minor release, without a major version bump.
+</p>
 {% endmacro %}
 
 {% macro snippet(id, lang="") %}

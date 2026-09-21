@@ -1,0 +1,35 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Loading" %}
+{% set slug = "loading" %}
+
+{% block content %}
+<h1>Loading</h1>
+<p class="lede">
+  A spinner, drawn in <code>currentColor</code> so it works on any surface and
+  inside a button. No component library renders this one: it is a single element
+  you place yourself.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["loading", "A spinner. Inherits its colour, sized with width and height"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<span class="loading"></span>
+<span class="loading" style="width: 2rem; height: 2rem"></span>
+<button class="btn"><span class="loading" style="width: 1rem; height: 1rem"></span> Saving</button>
+<p><span class="loading" style="width: 0.9rem; height: 0.9rem"></span> Loading results</p>
+{% endset %}
+{{ m.demo("loading-basic", classless) }}
+<p>
+  <small>
+    The spin stops under <code>prefers-reduced-motion</code>. Pair it with
+    <code>aria-busy="true"</code> on the region it is loading, or with visually
+    hidden text, since the element itself says nothing.
+  </small>
+</p>
+{% endblock %}

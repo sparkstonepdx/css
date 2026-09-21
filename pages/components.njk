@@ -1,0 +1,82 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% import "nav.njk" as nav %}
+{% import "previews.njk" as p %}
+{% set title = "All components" %}
+{% set slug = "components" %}
+
+{% set blurbs = {
+  "prose": "Headings, paragraphs, lists, quotes and code",
+  "link": "Accent-coloured links",
+  "kbd": "Keyboard keys",
+  "button": "btn and its variants",
+  "tabs": "Layered panels, one at a time",
+  "dropdown": "A floating panel of actions",
+  "alert": "A short, important message",
+  "badge": "Pills for counts and tags",
+  "card": "A padded surface",
+  "progress": "A flat progress bar",
+  "table": "Rows and columns",
+  "collapse": "Sections that open and close",
+  "label": "The layout primitive for form controls",
+  "fieldset": "A bordered group of controls",
+  "input": "Text-like inputs",
+  "textarea": "Multi-line input",
+  "select": "Native select, and Kobalte's listbox",
+  "checkbox": "A drawn check",
+  "radio": "Choice rows and cards",
+  "range": "A native slider",
+  "file-input": "A styled picker button",
+  "color-input": "A colour swatch",
+  "toggle": "A switch",
+  "dialog": "A modal built on <dialog>",
+  "tooltip": "A bubble of explanatory text",
+  "popover": "A floating panel with content",
+  "toast": "Messages stacked in a corner",
+  "divider": "A rule between blocks",
+  "skeleton": "A placeholder while content loads",
+  "loading": "A spinner",
+  "slider": "A built slider, track and thumb",
+  "navbar": "The bar across the top, and menubars",
+  "breadcrumbs": "The trail back up the hierarchy",
+  "pagination": "A row of page buttons",
+  "segmented": "Exclusive choices in one control",
+  "colors": "The scale, and how it is derived",
+  "customizing": "Tokens, scoping and Sass entry points",
+  "layout": "Containers and the flex helper"
+} %}
+
+{% block content %}
+<h1>All components</h1>
+<p class="lede">
+  Every component, with its page. A <span class="kobalte-badge">K</span> marks one
+  the Kobalte layer covers, so its parts are styled from the markup Kobalte
+  renders, without class attributes.
+</p>
+
+{% for group in nav.navGroups %}
+  {% if group[0] != "Getting started" %}
+    <h2>{{ group[0] }}</h2>
+    <div class="component-grid">
+      {% for item in group[1] %}
+        <a class="component-card" href="./{{ item[0] }}.html">
+          <span class="component-preview" aria-hidden="true">{{ p.preview(item[0]) }}</span>
+          <strong>{{ item[1] }}{% if item[2] %}<span class="kobalte-badge">K</span>{% endif %}{% if item[3] %}<span class="alpha-badge">alpha</span>{% endif %}</strong>
+          <small>{{ blurbs[item[0]] }}</small>
+        </a>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endfor %}
+
+<h2>Also</h2>
+<div class="component-grid">
+  {% for slug, label in [["colors", "Colors"], ["customizing", "Customizing"], ["layout", "Layout"]] %}
+    <a class="component-card" href="./{{ slug }}.html">
+      <span class="component-preview" aria-hidden="true">{{ p.preview(slug) }}</span>
+      <strong>{{ label }}</strong>
+      <small>{{ blurbs[slug] }}</small>
+    </a>
+  {% endfor %}
+</div>
+{% endblock %}

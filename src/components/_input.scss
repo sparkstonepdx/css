@@ -1,4 +1,5 @@
 @use "../vars.scss" as *;
+@use "slider";
 
 $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"]';
 
@@ -81,10 +82,20 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     @include field;
     @include field-block;
     @include field-text;
+    // A headless select's trigger is a <button>, which centres its text.
+    text-align: start;
 
     &:not([multiple], [size]) {
       @include field-icon;
       background-image: var(--icon-chevron);
+    }
+
+    // Chrome fades a disabled native select to 0.7 in its own stylesheet and
+    // nothing else does, so a button trigger or another browser looked enabled.
+    // Pinned here so every select disables the same way.
+    &:is(:disabled, [data-disabled]) {
+      opacity: 0.7;
+      cursor: default;
     }
   }
 
@@ -96,9 +107,60 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     resize: vertical;
   }
 
+  // ALPHA: the look of .range changed in the slider work and is not signed off.
+  //
+  // A native range painted with the slider's rail, fill and thumb, so it matches
+  // .slider and Kobalte's Slider. Firefox draws the fill itself; Chrome and Safari
+  // have no fill pseudo-element, so the fill reads --range-fill, which the page
+  // keeps in step with the value.
   .range {
-    @include field;
-    @include field-block;
+    --slider-thumb: 1rem;
+    --range-fill: 0%;
+
+    appearance: none;
+    // Full width already; block keeps a standalone range off the text baseline,
+    // which would otherwise drop it below a .slider.
+    display: block;
+    width: 100%;
+    height: var(--slider-thumb);
+    margin-bottom: 1rem;
+    padding: 0;
+    border: 0;
+    background: transparent;
+    cursor: pointer;
+
+    &::-webkit-slider-runnable-track {
+      @include slider.rail;
+      background-image: linear-gradient(
+        to right,
+        cur-color(var(--surface-lc-4)) var(--range-fill),
+        transparent var(--range-fill)
+      );
+    }
+
+    &::-webkit-slider-thumb {
+      appearance: none;
+      @include slider.thumb;
+      margin-top: calc(var(--slider-thumb) / -4);
+    }
+
+    &::-moz-range-track {
+      @include slider.rail;
+    }
+
+    &::-moz-range-progress {
+      height: calc(var(--slider-thumb) / 2);
+      @include slider.fill;
+    }
+
+    &::-moz-range-thumb {
+      @include slider.thumb;
+    }
+
+    &:disabled {
+      @include apply-greyscale();
+      cursor: default;
+    }
   }
 
   .file-input {

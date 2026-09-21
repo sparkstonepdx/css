@@ -1,0 +1,86 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Toast" %}
+{% set slug = "toast" %}
+
+{% block content %}
+<h1>Toast</h1>
+<p class="lede">
+  Messages stacked in a corner of the screen.
+  <a href="https://kobalte.dev/docs/core/components/toast" target="_blank" rel="noreferrer">Kobalte's Toast</a>
+  renders each message as <code>li role="status"</code>, which takes the same
+  styling as an <a href="./alert.html">alert</a>.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["toast", "The fixed stack in the corner"],
+  ["toast-title", "A bold first line inside a message"],
+  ["toast-description", "Muted body text inside a message"]
+]) }}
+
+<h2>Basic</h2>
+<p>The stack is shown in place here rather than fixed to the corner.</p>
+{% set classless %}
+<ul class="toast" style="position: static; max-width: 22rem">
+  <li class="alert">
+    <span>
+      <span class="toast-title">Saved</span><br />
+      <span class="toast-description">Your changes are live.</span>
+    </span>
+  </li>
+  <li class="alert alert-error">
+    <span>
+      <span class="toast-title">Upload failed</span><br />
+      <span class="toast-description">We could not reach the server.</span>
+    </span>
+  </li>
+</ul>
+{% endset %}
+{% set kobalte_markup %}
+<div class="toast" style="position: static; max-width: 22rem">
+  <ol>
+    <li role="status" data-opened>
+      <span>
+        <span class="toast-title">Saved</span><br />
+        <span class="toast-description">Your changes are live.</span>
+      </span>
+    </li>
+    <li role="status" data-opened class="alert-error">
+      <span>
+        <span class="toast-title">Upload failed</span><br />
+        <span class="toast-description">We could not reach the server.</span>
+      </span>
+    </li>
+  </ol>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Toast, toaster } from "@kobalte/core/toast";
+
+// once, near the root
+<Toast.Region>
+  <Toast.List class="toast" />
+</Toast.Region>
+
+// anywhere
+toaster.show(props => (
+  <Toast toastId={props.toastId}>
+    <Toast.Title class="toast-title">Saved</Toast.Title>
+    <Toast.Description class="toast-description">
+      Your changes are live.
+    </Toast.Description>
+    <Toast.CloseButton class="btn btn-ghost">×</Toast.CloseButton>
+  </Toast>
+));
+{% endset %}
+{{ m.demo("toast-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    <code>Toast.Region</code> is <code>role="region"</code>, which accordion panels
+    and page landmarks also use, so the stack takes <code>.toast</code> by hand.
+    The messages inside it need no classes.
+  </small>
+</p>
+{% endblock %}

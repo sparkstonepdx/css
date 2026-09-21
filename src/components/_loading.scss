@@ -1,0 +1,30 @@
+@use "../vars.scss" as *;
+
+// ALPHA: the class names and states are stable, the look is not. These styles
+// can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
+//
+// A spinner. No component library renders this: it is one element you place
+// yourself, usually inside a button or beside a label.
+@mixin styles {
+  .loading {
+    display: inline-block;
+    width: 1.25rem;
+    height: 1.25rem;
+    vertical-align: -0.25rem;
+
+    border: var(--border-width) solid
+      color-mix(in oklch, currentColor, transparent 75%);
+    border-top-color: currentColor;
+    border-radius: 999px;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: sparkstone-spin 0.7s linear infinite;
+    }
+  }
+
+  @keyframes sparkstone-spin {
+    to {
+      transform: rotate(1turn);
+    }
+  }
+}

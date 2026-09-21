@@ -1,0 +1,74 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Slider" %}
+{% set slug = "slider" %}
+
+{% block content %}
+<h1>Slider</h1>
+<p class="lede">
+  A built slider, as opposed to <a href="./range.html">range</a>, which styles the
+  native input.
+  <a href="https://kobalte.dev/docs/core/components/slider" target="_blank" rel="noreferrer">Kobalte's Slider</a>
+  positions the fill and the thumb with inline styles; these classes paint them.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["slider", "The root: column layout, and greys out when disabled"],
+  ["slider-track", "The rail"],
+  ["slider-fill", "The filled part of the rail"],
+  ["slider-thumb", "The handle"],
+  ["slider-label", "A label above the track"],
+  ["slider-value", "The current value, next to the label"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<div class="slider" style="width: 16rem">
+  <div class="flex" style="justify-content: space-between; gap: 0.5rem">
+    <span class="slider-label">Volume</span>
+    <span class="slider-value">60</span>
+  </div>
+  <div class="slider-track">
+    <div class="slider-fill" style="left: 0%; right: 40%"></div>
+    <span class="slider-thumb" style="position: absolute; left: 60%; transform: translateX(-50%)"></span>
+  </div>
+</div>
+{% endset %}
+{% set kobalte_markup %}
+<div class="slider" role="group" style="width: 16rem">
+  <div class="flex" style="justify-content: space-between; gap: 0.5rem">
+    <span class="slider-label">Volume</span>
+    <div class="slider-value">60</div>
+  </div>
+  <div class="slider-track">
+    <div class="slider-fill" style="left: 0%; right: 40%"></div>
+    <span role="slider" aria-valuenow="60" style="position: absolute; left: 60%; transform: translateX(-50%)"><input /></span>
+  </div>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Slider } from "@kobalte/core/slider";
+
+<Slider class="slider" value={volume()} onChange={setVolume}>
+  <div class="flex" style="justify-content: space-between">
+    <Slider.Label class="slider-label">Volume</Slider.Label>
+    <Slider.ValueLabel class="slider-value" />
+  </div>
+  <Slider.Track class="slider-track">
+    <Slider.Fill class="slider-fill" />
+    <Slider.Thumb>
+      <Slider.Input />
+    </Slider.Thumb>
+  </Slider.Track>
+</Slider>
+{% endset %}
+{{ m.demo("slider-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    <code>Slider.Thumb</code> is <code>role="slider"</code> and needs no class. The
+    root, track and fill have none, so they take theirs by hand.
+  </small>
+</p>
+{% endblock %}

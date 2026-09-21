@@ -1,0 +1,137 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Tabs" %}
+{% set slug = "tabs" %}
+
+{% block content %}
+<h1>Tabs</h1>
+<p class="lede">
+  Layered panels with one visible at a time. The classes know nothing about any
+  component library. The classless build has a
+  <a href="https://kobalte.dev/docs/core/components/tabs" target="_blank" rel="noreferrer">Kobalte</a>
+  layer that binds its state attributes to these same classes.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["tabs", "The tab list: a row with a bottom rule"],
+  ["tab", "A tab item. Works on a button, an anchor or a label"],
+  ["tab-active", "The selected tab: darker, bold, underlined"],
+  ["tab-disabled", "A disabled tab: greyed out and inert"],
+  ["tab-content", "A tab panel"]
+]) }}
+
+<h2>Basic</h2>
+<p>
+  On the class-based build you mark the selected tab and wire the clicks. Kobalte
+  sets <code>data-selected</code>, <code>data-disabled</code> and
+  <code>data-orientation</code> itself but never adds <code>tab-active</code>, so
+  <code>/classless/kobalte</code> binds those attributes to the same classes and
+  its markup needs none of them.
+</p>
+{% set classless %}
+<div>
+  <div class="tabs" role="tablist">
+    <button class="tab tab-active" role="tab" id="t-profile" aria-controls="p-profile" data-selected>Profile</button>
+    <button class="tab" role="tab" id="t-dashboard" aria-controls="p-dashboard">Dashboard</button>
+    <button class="tab tab-disabled" role="tab" id="t-billing" aria-controls="p-billing">Billing</button>
+  </div>
+  <div class="tab-content" role="tabpanel" id="p-profile" aria-labelledby="t-profile">Profile details</div>
+  <div class="tab-content" role="tabpanel" id="p-dashboard" aria-labelledby="t-dashboard" hidden>Dashboard details</div>
+  <div class="tab-content" role="tabpanel" id="p-billing" aria-labelledby="t-billing" hidden>Upgrade to see billing</div>
+</div>
+{% endset %}
+{% set kobalte_markup %}
+<div>
+  <div role="tablist" data-orientation="horizontal">
+    <button role="tab" id="k-profile" aria-controls="kp-profile" data-selected>Profile</button>
+    <button role="tab" id="k-dashboard" aria-controls="kp-dashboard">Dashboard</button>
+    <button role="tab" id="k-billing" aria-controls="kp-billing" data-disabled>Billing</button>
+  </div>
+  <div role="tabpanel" id="kp-profile" aria-labelledby="k-profile">Profile details</div>
+  <div role="tabpanel" id="kp-dashboard" aria-labelledby="k-dashboard" hidden>Dashboard details</div>
+  <div role="tabpanel" id="kp-billing" aria-labelledby="k-billing" hidden>Upgrade to see billing</div>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Tabs } from "@kobalte/core/tabs";
+
+<Tabs aria-label="Account" defaultValue="profile">
+  <Tabs.List>
+    <Tabs.Trigger value="profile">Profile</Tabs.Trigger>
+    <Tabs.Trigger value="dashboard">Dashboard</Tabs.Trigger>
+    <Tabs.Trigger value="billing" disabled>Billing</Tabs.Trigger>
+  </Tabs.List>
+  <Tabs.Content value="profile">Profile details</Tabs.Content>
+  <Tabs.Content value="dashboard">Dashboard details</Tabs.Content>
+  <Tabs.Content value="billing">Upgrade to see billing</Tabs.Content>
+</Tabs>
+{% endset %}
+{{ m.demo("tabs-basic", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    <code>Tabs.Indicator</code> has no class of its own, so it lives in the
+    Kobalte layer as <code>.tab-indicator</code>. When one is present the selected
+    tab drops its own underline, so you never get both.
+  </small>
+</p>
+
+<h2>Importing the Kobalte layer</h2>
+{% call m.snippet("tabs-kobalte-import", "scss") %}
+// instead of "pkg:@sparkstone/css/classless"
+@use "pkg:@sparkstone/css/classless/kobalte";
+{% endcall %}
+
+<h2>Vertical</h2>
+<p>
+  <code>data-orientation="vertical"</code> turns the list into a column and moves
+  the indicator to the trailing edge. This is Kobalte-only: the classes have no
+  vertical variant.
+</p>
+{% set markup %}
+<div style="display: flex; gap: 1rem">
+  <div role="tablist" data-orientation="vertical">
+    <button role="tab" id="v-general" aria-controls="vp-general" data-selected>General</button>
+    <button role="tab" id="v-members" aria-controls="vp-members">Members</button>
+    <div class="tab-indicator" data-orientation="vertical"></div>
+  </div>
+  <div role="tabpanel" id="vp-general" aria-labelledby="v-general">General settings</div>
+  <div role="tabpanel" id="vp-members" aria-labelledby="v-members" hidden>Member settings</div>
+</div>
+{% endset %}
+{% set jsx %}
+<Tabs orientation="vertical" defaultValue="general" style="display: flex; gap: 1rem">
+  <Tabs.List>
+    <Tabs.Trigger value="general">General</Tabs.Trigger>
+    <Tabs.Trigger value="members">Members</Tabs.Trigger>
+    <Tabs.Indicator class="tab-indicator" />
+  </Tabs.List>
+  <Tabs.Content value="general">General settings</Tabs.Content>
+  <Tabs.Content value="members">Member settings</Tabs.Content>
+</Tabs>
+{% endset %}
+{{ m.headless("tabs-vertical", markup, jsx, variant="kobalte") }}
+
+<h2>On the class-based build</h2>
+<p>
+  There is no Kobalte layer for the class-based build, and it does not need one:
+  put the classes on the Kobalte parts yourself. Both paths apply the same
+  declarations, so the two approaches produce identical styles and can be mixed.
+</p>
+{% call m.snippet("tabs-mixed", "jsx") %}{% raw %}
+const [tab, setTab] = createSignal("week");
+
+<Tabs value={tab()} onChange={setTab}>
+  <Tabs.List class="tabs">
+    <Tabs.Trigger
+      class="tab"
+      classList={{ "tab-active": tab() === "week" }}
+      value="week"
+    >
+      This week
+    </Tabs.Trigger>
+  </Tabs.List>
+</Tabs>
+{% endraw %}{% endcall %}
+{% endblock %}
