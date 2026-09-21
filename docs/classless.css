@@ -1176,13 +1176,6 @@
       animation: sparkstone-skeleton 1.4s ease-in-out infinite;
     }
   }
-  .skeleton:not([data-animate]) {
-    animation: none;
-    background-image: none;
-  }
-  .skeleton:not([data-visible]) {
-    background-color: transparent;
-  }
   @keyframes sparkstone-skeleton {
     from {
       background-position: -60% 0;

@@ -23,15 +23,6 @@
       animation: sparkstone-skeleton 1.4s ease-in-out infinite;
     }
 
-    // Kobalte's Skeleton hides the shimmer once the content is in.
-    &:not([data-animate]) {
-      animation: none;
-      background-image: none;
-    }
-
-    &:not([data-visible]) {
-      background-color: transparent;
-    }
   }
 
   @keyframes sparkstone-skeleton {
