@@ -1245,6 +1245,7 @@
     --surface-lc-9: var(--grey-surface-lc-9);
     --primary-surface-lc: var(--primary-grey-surface-lc);
     --primary-text-lc: var(--primary-grey-text-lc);
+    background-color: oklch(from var(--color) var(--surface-lc-2) h);
     pointer-events: none;
   }
   .tab-content, [role=tabpanel] {
@@ -1296,7 +1297,16 @@
     background-color: oklch(from var(--color) var(--surface-lc-2) h);
   }
   .menu-selected, [role=option][data-selected] {
-    box-shadow: inset calc(var(--border-width) * 1.5) 0 0 oklch(from var(--color) var(--surface-lc-4) h);
+    position: relative;
+  }
+  .menu-selected::before, [role=option][data-selected]::before {
+    content: "";
+    position: absolute;
+    inset-block: 25%;
+    inset-inline-start: 0;
+    width: calc(var(--border-width) * 1.5);
+    border-radius: 999px;
+    background-color: oklch(from var(--color) var(--surface-lc-4) h);
   }
   .menu-disabled, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option])[data-disabled] {
     --swatch-lc-1: var(--grey-swatch-lc-1);

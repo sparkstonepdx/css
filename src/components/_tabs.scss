@@ -42,8 +42,12 @@
       cur-color(var(--surface-lc-4));
   }
 
+  // Greyscale alone left a disabled tab on the page's own surface, so it read as
+  // an unselected tab rather than an unavailable one. The raised surface marks it,
+  // and turns grey with everything else here.
   .tab-disabled {
     @include apply-greyscale();
+    background-color: cur-color(var(--surface-lc-2));
     pointer-events: none;
   }
 

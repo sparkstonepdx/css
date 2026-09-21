@@ -75,10 +75,22 @@
   // A selected row, as opposed to the highlighted one: a select keeps one row
   // selected while the pointer highlights another. A leading bar rather than a
   // fill, so it reads differently from .menu-active, and rather than bold, so
-  // the row does not change width.
+  // the row does not change width. The bar is its own rounded pill, inset from
+  // the row's top and bottom, because an inset shadow bent around the row's
+  // rounded corners.
   .menu-selected {
-    box-shadow: inset calc(var(--border-width) * 1.5) 0 0
-      cur-color(var(--surface-lc-4));
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset-block: 25%;
+      inset-inline-start: 0;
+      width: calc(var(--border-width) * 1.5);
+
+      border-radius: 999px;
+      background-color: cur-color(var(--surface-lc-4));
+    }
   }
 
   .menu-disabled {

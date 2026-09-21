@@ -33,7 +33,7 @@ file.
 | `.tab-active` color | `--text-lc-1` | |
 | `.tab-active` | colour and underline, no weight change | bold was shifting the tab's width, which resized the Kobalte indicator on every switch |
 | `.tab-active` underline | inset box-shadow, `--border-width` in `--surface-lc-4` | box-shadow rather than a border so it does not shift the text |
-| `.tab-disabled` | `apply-greyscale()` plus `pointer-events: none` | greyscale matches `:disabled` elsewhere; the pointer-events part is new behaviour for this framework |
+| `.tab-disabled` | `apply-greyscale()`, a `--surface-lc-2` background, `pointer-events: none` | the background is your call: greyscale alone left it looking like an unselected tab |
 | `.tab-content` padding | `1rem 0` | horizontal padding left at 0 so panel text lines up with the page |
 
 ## Kobalte bindings (`src/components/_kobalte.scss`) — not signed off
@@ -101,7 +101,7 @@ file.
 
 | Decision | Proposed | Note |
 | --- | --- | --- |
-| `.menu-selected` | a leading bar in `--surface-lc-4` | reads differently from `.menu-active`'s fill, and does not shift the row the way bold did |
+| `.menu-selected` | a detached pill in `--surface-lc-4`, inset to the middle half of the row | an inset shadow bent around the row's rounded corners. **Alternative**: a trailing check mark, which most native selects use |
 | Kobalte trigger | takes `.select`'s field styling, chevron included; `Select.Icon` is left out | it is a button that should read as a form control, and one chevron source means both builds match |
 | Disabled `.select` | `opacity: 0.7`, `cursor: default` | Chrome already fades a disabled native select to 0.7; pinning it makes a button trigger and other browsers match. **Questionable**: this is the only disabled field that fades, since `.input` and `.textarea` only lose chroma |
 
