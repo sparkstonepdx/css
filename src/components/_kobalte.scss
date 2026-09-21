@@ -142,15 +142,10 @@
 // .Item -> li[role="option"]. The trigger is a form control, not a button, so it
 // takes the field styling.
 @mixin select {
+  // The field draws the chevron, so Select.Icon is left out; drawing both put
+  // two chevrons on the class build.
   button[aria-haspopup="listbox"] {
     @extend .select;
-
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: calc(var(--padding) / 2);
-    text-align: left;
-    background-image: none;
   }
 
   [role="listbox"] {

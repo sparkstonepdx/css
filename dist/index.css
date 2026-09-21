@@ -137,6 +137,7 @@
     width: 100%;
     appearance: none;
     padding: 0.75rem 1rem;
+    text-align: start;
   }
   .select:not([multiple], [size]) {
     padding-inline-start: 1rem;
@@ -146,6 +147,10 @@
     background-size: 1rem auto;
     background-repeat: no-repeat;
     background-image: var(--icon-chevron);
+  }
+  .select:is(:disabled, [data-disabled]) {
+    opacity: 0.7;
+    cursor: default;
   }
   .textarea {
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-4) h);

@@ -78,7 +78,7 @@
 {% set kobalte_markup %}
 <div>
   <button aria-haspopup="listbox" aria-expanded="true" data-expanded style="margin-bottom: 0.25rem">
-    <span>Production</span><span>▾</span>
+    <span>Production</span>
   </button>
   <ul role="listbox">
     <li role="option">Development</li>
@@ -102,7 +102,6 @@ import { Select } from "@kobalte/core/select";
 >
   <Select.Trigger>
     <Select.Value>{state => state.selectedOption()}</Select.Value>
-    <Select.Icon>▾</Select.Icon>
   </Select.Trigger>
   <Select.Portal>
     <Select.Content>
@@ -112,6 +111,32 @@ import { Select } from "@kobalte/core/select";
 </Select>
 {% endset %}
 {{ m.demo("select-kobalte", classless, "", kobalte, kobalte_markup) }}
+<p>
+  <small>
+    Leave out <code>Select.Icon</code>: the field draws its own chevron, the same
+    one the native select gets.
+  </small>
+</p>
+
+<h3>Disabled</h3>
+{% set classless %}
+<select class="select" disabled>
+  <option>Production</option>
+</select>
+{% endset %}
+{% set kobalte_markup %}
+<button aria-haspopup="listbox" aria-expanded="false" disabled data-disabled>
+  <span>Production</span>
+</button>
+{% endset %}
+{% set kobalte %}
+<Select disabled options={envs} value={env()} onChange={setEnv} itemComponent={Item}>
+  <Select.Trigger>
+    <Select.Value>{state => state.selectedOption()}</Select.Value>
+  </Select.Trigger>
+</Select>
+{% endset %}
+{{ m.demo("select-kobalte-disabled", classless, "", kobalte, kobalte_markup) }}
 <p>
   <small>
     The trigger is a form field, so it carries the same bottom margin as an

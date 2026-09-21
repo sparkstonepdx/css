@@ -81,10 +81,20 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     @include field;
     @include field-block;
     @include field-text;
+    // A headless select's trigger is a <button>, which centres its text.
+    text-align: start;
 
     &:not([multiple], [size]) {
       @include field-icon;
       background-image: var(--icon-chevron);
+    }
+
+    // Chrome fades a disabled native select to 0.7 in its own stylesheet and
+    // nothing else does, so a button trigger or another browser looked enabled.
+    // Pinned here so every select disables the same way.
+    &:is(:disabled, [data-disabled]) {
+      opacity: 0.7;
+      cursor: default;
     }
   }
 

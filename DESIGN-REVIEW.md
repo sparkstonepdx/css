@@ -102,7 +102,8 @@ file.
 | Decision | Proposed | Note |
 | --- | --- | --- |
 | `.menu-selected` | a leading bar in `--surface-lc-4` | reads differently from `.menu-active`'s fill, and does not shift the row the way bold did |
-| Kobalte trigger | takes `.select`'s field styling, with the chevron background dropped | it is a button that should read as a form control |
+| Kobalte trigger | takes `.select`'s field styling, chevron included; `Select.Icon` is left out | it is a button that should read as a form control, and one chevron source means both builds match |
+| Disabled `.select` | `opacity: 0.7`, `cursor: default` | Chrome already fades a disabled native select to 0.7; pinning it makes a button trigger and other browsers match. **Questionable**: this is the only disabled field that fades, since `.input` and `.textarea` only lose chroma |
 
 ## Popover (`src/components/_popover.scss`) — not signed off
 

@@ -567,7 +567,6 @@
 &gt;
   &lt;Select.Trigger&gt;
     &lt;Select.Value&gt;{state =&gt; state.selectedOption()}&lt;/Select.Value&gt;
-    &lt;Select.Icon&gt;▾&lt;/Select.Icon&gt;
   &lt;/Select.Trigger&gt;
   &lt;Select.Portal&gt;
     &lt;Select.Content&gt;
@@ -577,7 +576,7 @@
 &lt;/Select&gt;</code></pre>
       <pre hidden><code id="select-kobalte-kobalte-markup" data-variant="kobalte-markup">&lt;div&gt;
   &lt;button aria-haspopup=&quot;listbox&quot; aria-expanded=&quot;true&quot; data-expanded style=&quot;margin-bottom: 0.25rem&quot;&gt;
-    &lt;span&gt;Production&lt;/span&gt;&lt;span&gt;▾&lt;/span&gt;
+    &lt;span&gt;Production&lt;/span&gt;
   &lt;/button&gt;
   &lt;ul role=&quot;listbox&quot;&gt;
     &lt;li role=&quot;option&quot;&gt;Development&lt;/li&gt;
@@ -585,6 +584,55 @@
     &lt;li role=&quot;option&quot; data-selected&gt;Production&lt;/li&gt;
   &lt;/ul&gt;
 &lt;/div&gt;</code></pre>
+    
+  </div>
+</div>
+
+<p>
+  <small>
+    Leave out <code>Select.Icon</code>: the field draws its own chevron, the same
+    one the native select gets.
+  </small>
+</p>
+
+<h3>Disabled</h3>
+
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
+        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+        
+          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
+        
+      </div>
+    
+    <button class="ghost copy-button" data-target="select-kobalte-disabled-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="select-kobalte-disabled-classes" data-variant="classes">&lt;select class=&quot;select&quot; disabled&gt;
+  &lt;option&gt;Production&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+    
+      <pre hidden><code id="select-kobalte-disabled-classless" data-variant="classless">&lt;select class=&quot;select&quot; disabled&gt;
+  &lt;option&gt;Production&lt;/option&gt;
+&lt;/select&gt;</code></pre>
+    
+    
+      <pre hidden><code id="select-kobalte-disabled-kobalte" data-variant="kobalte">&lt;Select disabled options={envs} value={env()} onChange={setEnv} itemComponent={Item}&gt;
+  &lt;Select.Trigger&gt;
+    &lt;Select.Value&gt;{state =&gt; state.selectedOption()}&lt;/Select.Value&gt;
+  &lt;/Select.Trigger&gt;
+&lt;/Select&gt;</code></pre>
+      <pre hidden><code id="select-kobalte-disabled-kobalte-markup" data-variant="kobalte-markup">&lt;button aria-haspopup=&quot;listbox&quot; aria-expanded=&quot;false&quot; disabled data-disabled&gt;
+  &lt;span&gt;Production&lt;/span&gt;
+&lt;/button&gt;</code></pre>
     
   </div>
 </div>
