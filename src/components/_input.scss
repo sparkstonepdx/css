@@ -13,10 +13,6 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   outline-width: 0;
   outline-style: none;
 
-  &[aria-invalid="true"] {
-    --primary: var(--error);
-    @extend .retheme;
-  }
 
   &::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
@@ -159,8 +155,6 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     }
 
     &:disabled {
-      --chroma: 0;
-      @extend .retheme;
       cursor: default;
     }
   }
@@ -259,7 +253,6 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   .input-error,
   .select-error,
   .textarea-error {
-    --primary: var(--error);
-    @extend .retheme;
+    @extend .error;
   }
 }

@@ -21,7 +21,6 @@
   }
 
   .alert-error {
-    --primary: var(--error);
-    @extend .retheme;
+    @extend .error;
   }
 }

@@ -161,9 +161,6 @@
     outline-width: 0;
     outline-style: none;
   }
-  .input[aria-invalid=true], input[aria-invalid=true]:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
-    --primary: var(--error);
-  }
   .input::placeholder, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image]))::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
   }
@@ -206,9 +203,6 @@
     outline-width: 0;
     outline-style: none;
   }
-  .select[aria-invalid=true], select[aria-invalid=true] {
-    --primary: var(--error);
-  }
   .select::placeholder, select::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
   }
@@ -240,9 +234,6 @@
     color: var(--fg);
     outline-width: 0;
     outline-style: none;
-  }
-  .textarea[aria-invalid=true], textarea[aria-invalid=true] {
-    --primary: var(--error);
   }
   .textarea::placeholder, textarea::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
@@ -303,7 +294,6 @@
     background-color: var(--bg);
   }
   .range:disabled, input:disabled:where([type=range]) {
-    --chroma: 0;
     cursor: default;
   }
   .file-input, input:where([type=file]) {
@@ -314,9 +304,6 @@
     color: var(--fg);
     outline-width: 0;
     outline-style: none;
-  }
-  .file-input[aria-invalid=true], input[aria-invalid=true]:where([type=file]) {
-    --primary: var(--error);
   }
   .file-input::placeholder, input:where([type=file])::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
@@ -350,9 +337,6 @@
     color: var(--fg);
     outline-width: 0;
     outline-style: none;
-  }
-  .color-input[aria-invalid=true], input[aria-invalid=true]:where([type=color]) {
-    --primary: var(--error);
   }
   .color-input::placeholder, input:where([type=color])::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
@@ -388,9 +372,6 @@
     color: var(--fg);
     outline-width: 0;
     outline-style: none;
-  }
-  .checkbox[aria-invalid=true], input[aria-invalid=true]:where([type=checkbox]) {
-    --primary: var(--error);
   }
   .checkbox::placeholder, input:where([type=checkbox])::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
@@ -434,19 +415,11 @@
     outline-width: 0;
     outline-style: none;
   }
-  .radio[aria-invalid=true], input[aria-invalid=true]:where([type=radio]) {
-    --primary: var(--error);
-  }
   .radio::placeholder, input:where([type=radio])::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
   }
   .radio, input:where([type=radio]) {
     cursor: pointer;
-  }
-  .input-error,
-  .select-error,
-  .textarea-error {
-    --primary: var(--error);
   }
   :root {
     --border-radius: 0.25rem;
@@ -491,44 +464,34 @@
   :root,
   [data-color-scheme],
   .retheme,
-  .slider:is([data-disabled]),
+  .error,
   .alert-error,
-  .collapse-title:is([data-disabled], :disabled),
-  .toggle:is(:disabled, [data-disabled]),
-  .menu-disabled,
-  .tab-disabled,
   .text-error,
   small.error,
+  small.input-error,
+  small.select-error,
+  small.textarea-error,
+  small.text-error,
+  small.alert-error,
+  .input-error,
+  .select-error,
+  .textarea-error,
+  .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  [aria-invalid=true],
   .disabled,
+  .menu-disabled,
+  .tab-disabled,
   .btn-disabled,
-  *:disabled,
+  :disabled,
+  [data-disabled],
+  [aria-disabled=true],
   .btn-neutral,
   *:is(button,
   [type=button],
   [type=submit],
   [type=reset],
-  [role=button]).contrast,
-  .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
-  label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
-  .input[aria-invalid=true],
-  input[aria-invalid=true]:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])),
-  .select[aria-invalid=true],
-  select[aria-invalid=true],
-  .textarea[aria-invalid=true],
-  textarea[aria-invalid=true],
-  .range:disabled,
-  input:disabled:where([type=range]),
-  .file-input[aria-invalid=true],
-  input[aria-invalid=true]:where([type=file]),
-  .color-input[aria-invalid=true],
-  input[aria-invalid=true]:where([type=color]),
-  .checkbox[aria-invalid=true],
-  input[aria-invalid=true]:where([type=checkbox]),
-  .radio[aria-invalid=true],
-  input[aria-invalid=true]:where([type=radio]),
-  .input-error,
-  .select-error,
-  .textarea-error {
+  [role=button]).contrast {
     --primary-base: var(--primary, var(--color, rebeccapurple));
     --neutral-base: var(--neutral, var(--primary-base));
     --secondary-base: var(--secondary, oklch(from var(--primary-base) l c calc(h + 180)));
@@ -830,7 +793,6 @@
     margin: 0;
   }
   .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
-    --primary: var(--error);
     color: var(--fg-muted);
   }
   .label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):has(+ small), label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):has(+ small) {
@@ -904,13 +866,23 @@
   .text-secondary, .secondary {
     color: var(--fg-muted);
   }
-  .disabled,
-  .btn-disabled,
-  *:disabled {
+  .disabled, .menu-disabled, .tab-disabled, .btn-disabled,
+  :disabled,
+  [data-disabled],
+  [aria-disabled=true] {
     --chroma: 0;
   }
-  .text-error, small.error {
+  .error, .alert-error, .text-error, small.error, small.input-error,
+  small.select-error,
+  small.textarea-error, small.text-error, small.alert-error, .input-error,
+  .select-error,
+  .textarea-error, .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  [aria-invalid=true] {
     --primary: var(--error);
+  }
+  .text-error, small.error, small.input-error,
+  small.select-error,
+  small.textarea-error, small.text-error, small.alert-error {
     color: var(--fg-muted);
   }
   .dialog, dialog {
@@ -1046,7 +1018,6 @@
     box-shadow: inset 0 calc(var(--border-width) * -1) 0 var(--line);
   }
   .tab-disabled {
-    --chroma: 0;
     color: var(--fg-faint);
     pointer-events: none;
   }
@@ -1111,7 +1082,6 @@
     background-color: var(--line);
   }
   .menu-disabled {
-    --chroma: 0;
     color: var(--fg-faint);
     pointer-events: none;
   }
@@ -1146,7 +1116,6 @@
     background-color: var(--line);
   }
   .toggle:is(:disabled, [data-disabled]) {
-    --chroma: 0;
     pointer-events: none;
   }
   input.toggle {
@@ -1191,7 +1160,6 @@
     color: var(--fg-muted);
   }
   .collapse-title:is([data-disabled], :disabled) {
-    --chroma: 0;
     pointer-events: none;
   }
   .collapse-content {
@@ -1219,9 +1187,6 @@
     border-radius: var(--border-radius);
     background-color: var(--surface);
     color: var(--fg);
-  }
-  .alert-error {
-    --primary: var(--error);
   }
   .popover-content {
     max-width: 20rem;
@@ -1336,7 +1301,6 @@
     margin-bottom: 0;
   }
   .slider:is([data-disabled]) {
-    --chroma: 0;
     pointer-events: none;
   }
   .slider-track {

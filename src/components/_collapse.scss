@@ -33,8 +33,6 @@
     }
 
     &:is([data-disabled], :disabled) {
-      --chroma: 0;
-      @extend .retheme;
       pointer-events: none;
     }
   }

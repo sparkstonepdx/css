@@ -96,8 +96,7 @@
   // Same treatment as .tab-disabled: greyscale alone left a disabled row at full
   // strength, so it read as an ordinary row.
   .menu-disabled {
-    --chroma: 0;
-    @extend .retheme;
+    @extend .disabled;
     color: var(--fg-faint);
     pointer-events: none;
   }

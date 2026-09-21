@@ -45,8 +45,7 @@
   // Greyscale alone left a disabled tab at the same strength as an unselected
   // one. Lighter text marks it as unavailable without changing its shape.
   .tab-disabled {
-    --chroma: 0;
-    @extend .retheme;
+    @extend .disabled;
     color: var(--fg-faint);
     pointer-events: none;
   }

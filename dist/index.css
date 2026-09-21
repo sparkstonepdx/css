@@ -161,9 +161,6 @@
     outline-width: 0;
     outline-style: none;
   }
-  .input[aria-invalid=true] {
-    --primary: var(--error);
-  }
   .input::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
   }
@@ -206,9 +203,6 @@
     outline-width: 0;
     outline-style: none;
   }
-  .select[aria-invalid=true] {
-    --primary: var(--error);
-  }
   .select::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
   }
@@ -240,9 +234,6 @@
     color: var(--fg);
     outline-width: 0;
     outline-style: none;
-  }
-  .textarea[aria-invalid=true] {
-    --primary: var(--error);
   }
   .textarea::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
@@ -303,7 +294,6 @@
     background-color: var(--bg);
   }
   .range:disabled {
-    --chroma: 0;
     cursor: default;
   }
   .file-input {
@@ -314,9 +304,6 @@
     color: var(--fg);
     outline-width: 0;
     outline-style: none;
-  }
-  .file-input[aria-invalid=true] {
-    --primary: var(--error);
   }
   .file-input::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
@@ -350,9 +337,6 @@
     color: var(--fg);
     outline-width: 0;
     outline-style: none;
-  }
-  .color-input[aria-invalid=true] {
-    --primary: var(--error);
   }
   .color-input::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
@@ -388,9 +372,6 @@
     color: var(--fg);
     outline-width: 0;
     outline-style: none;
-  }
-  .checkbox[aria-invalid=true] {
-    --primary: var(--error);
   }
   .checkbox::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
@@ -434,19 +415,11 @@
     outline-width: 0;
     outline-style: none;
   }
-  .radio[aria-invalid=true] {
-    --primary: var(--error);
-  }
   .radio::placeholder {
     color: color-mix(in oklch, var(--fg-muted), transparent 50%);
   }
   .radio {
     cursor: pointer;
-  }
-  .input-error,
-  .select-error,
-  .textarea-error {
-    --primary: var(--error);
   }
   :root {
     --border-radius: 0.25rem;
@@ -491,29 +464,22 @@
   :root,
   [data-color-scheme],
   .retheme,
-  .slider:is([data-disabled]),
+  .error,
   .alert-error,
-  .collapse-title:is([data-disabled], :disabled),
-  .toggle:is(:disabled, [data-disabled]),
-  .menu-disabled,
-  .tab-disabled,
   .text-error,
-  .disabled,
-  .btn-disabled,
-  *:disabled,
-  .btn-neutral,
-  .label > p:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
-  .input[aria-invalid=true],
-  .select[aria-invalid=true],
-  .textarea[aria-invalid=true],
-  .range:disabled,
-  .file-input[aria-invalid=true],
-  .color-input[aria-invalid=true],
-  .checkbox[aria-invalid=true],
-  .radio[aria-invalid=true],
   .input-error,
   .select-error,
-  .textarea-error {
+  .textarea-error,
+  .label > p:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  [aria-invalid=true],
+  .disabled,
+  .menu-disabled,
+  .tab-disabled,
+  .btn-disabled,
+  :disabled,
+  [data-disabled],
+  [aria-disabled=true],
+  .btn-neutral {
     --primary-base: var(--primary, var(--color, rebeccapurple));
     --neutral-base: var(--neutral, var(--primary-base));
     --secondary-base: var(--secondary, oklch(from var(--primary-base) l c calc(h + 180)));
@@ -762,7 +728,6 @@
     margin: 0;
   }
   .label > p:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
-    --primary: var(--error);
     color: var(--fg-muted);
   }
   .label > :is(.input, .select, .textarea):has(+ small) {
@@ -816,13 +781,19 @@
   .text-secondary {
     color: var(--fg-muted);
   }
-  .disabled,
-  .btn-disabled,
-  *:disabled {
+  .disabled, .menu-disabled, .tab-disabled, .btn-disabled,
+  :disabled,
+  [data-disabled],
+  [aria-disabled=true] {
     --chroma: 0;
   }
-  .text-error {
+  .error, .alert-error, .text-error, .input-error,
+  .select-error,
+  .textarea-error, .label > p:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  [aria-invalid=true] {
     --primary: var(--error);
+  }
+  .text-error {
     color: var(--fg-muted);
   }
   .dialog {
@@ -951,7 +922,6 @@
     box-shadow: inset 0 calc(var(--border-width) * -1) 0 var(--line);
   }
   .tab-disabled {
-    --chroma: 0;
     color: var(--fg-faint);
     pointer-events: none;
   }
@@ -1016,7 +986,6 @@
     background-color: var(--line);
   }
   .menu-disabled {
-    --chroma: 0;
     color: var(--fg-faint);
     pointer-events: none;
   }
@@ -1051,7 +1020,6 @@
     background-color: var(--line);
   }
   .toggle:is(:disabled, [data-disabled]) {
-    --chroma: 0;
     pointer-events: none;
   }
   input.toggle {
@@ -1096,7 +1064,6 @@
     color: var(--fg-muted);
   }
   .collapse-title:is([data-disabled], :disabled) {
-    --chroma: 0;
     pointer-events: none;
   }
   .collapse-content {
@@ -1124,9 +1091,6 @@
     border-radius: var(--border-radius);
     background-color: var(--surface);
     color: var(--fg);
-  }
-  .alert-error {
-    --primary: var(--error);
   }
   .popover-content {
     max-width: 20rem;
@@ -1241,7 +1205,6 @@
     margin-bottom: 0;
   }
   .slider:is([data-disabled]) {
-    --chroma: 0;
     pointer-events: none;
   }
   .slider-track {
