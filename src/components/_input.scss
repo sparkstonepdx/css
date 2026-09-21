@@ -43,18 +43,42 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
 }
 
 @mixin styles {
-  .input {
+  // The shared blocks, emitted once each. Every control @extends the ones it
+  // needs, which groups their selectors onto one rule instead of repeating the
+  // declarations per control. Declared first, so a control's own declarations,
+  // which come later, still override them.
+  %field {
     @include field;
+  }
+
+  %field-block {
     @include field-block;
+  }
+
+  %field-text {
     @include field-text;
+  }
+
+  %field-height {
     @include field-height;
+  }
+
+  %field-icon {
+    @include field-icon;
+  }
+
+  .input {
+    @extend %field;
+    @extend %field-block;
+    @extend %field-text;
+    @extend %field-height;
 
     // Only Chromium and WebKit can hide their native picker button, so only
     // they get our icon and the padding that makes room for it. Firefox has no
     // such pseudo-element and keeps drawing its own icon, unpadded.
     @supports selector(::-webkit-calendar-picker-indicator) {
       &:is(#{$date-types}) {
-        @include field-icon;
+        @extend %field-icon;
 
         &::-webkit-calendar-picker-indicator {
           width: 1rem;
@@ -76,14 +100,14 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   }
 
   .select {
-    @include field;
-    @include field-block;
-    @include field-text;
+    @extend %field;
+    @extend %field-block;
+    @extend %field-text;
     // A headless select's trigger is a <button>, which centres its text.
     text-align: start;
 
     &:not([multiple], [size]) {
-      @include field-icon;
+      @extend %field-icon;
       background-image: var(--icon-chevron);
     }
 
@@ -97,9 +121,9 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   }
 
   .textarea {
-    @include field;
-    @include field-block;
-    @include field-text;
+    @extend %field;
+    @extend %field-block;
+    @extend %field-text;
     display: block;
     resize: vertical;
   }
@@ -160,8 +184,8 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   }
 
   .file-input {
-    @include field;
-    @include field-block;
+    @extend %field;
+    @extend %field-block;
     color: var(--fg-muted);
     background-color: transparent;
     display: flex;
@@ -184,9 +208,9 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   }
 
   .color-input {
-    @include field;
-    @include field-block;
-    @include field-height;
+    @extend %field;
+    @extend %field-block;
+    @extend %field-height;
     appearance: none;
     -webkit-appearance: none;
     background: none;
@@ -211,7 +235,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   }
 
   .checkbox {
-    @include field;
+    @extend %field;
     margin: 0;
     appearance: none;
     width: 1.5rem;
@@ -246,7 +270,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   }
 
   .radio {
-    @include field;
+    @extend %field;
     cursor: pointer;
   }
 
