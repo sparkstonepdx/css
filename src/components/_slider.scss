@@ -5,15 +5,45 @@
 //
 // A built slider, as opposed to .range, which styles a native input. Kobalte
 // positions the fill and the thumb with inline styles; these classes paint.
+// The rail, fill and thumb as declaration blocks, so .range can paint a native
+// input's pseudo-elements with exactly what .slider paints its elements with.
+@mixin rail {
+  height: calc(var(--slider-thumb) / 2);
+  border-radius: 999px;
+  background-color: cur-color(var(--surface-lc-2));
+}
+
+@mixin fill {
+  border-radius: 999px;
+  background-color: cur-color(var(--surface-lc-4));
+}
+
+@mixin thumb {
+  box-sizing: border-box;
+  width: var(--slider-thumb);
+  height: var(--slider-thumb);
+
+  border: var(--border-width) solid cur-color(var(--surface-lc-4));
+  border-radius: 999px;
+  background-color: cur-color(var(--surface-lc-1));
+}
+
 @mixin styles {
   .slider {
     --slider-thumb: 1rem;
 
     display: flex;
     flex-direction: column;
-    gap: calc(var(--padding) / 4);
+    // Matches the margin a label puts above a native .range.
+    gap: calc(1rem * 0.25);
     margin-bottom: 1rem;
     position: relative;
+
+    // A headless slider nests its own <label>, which the classless build styles
+    // as a .label with a bottom margin of its own.
+    > label {
+      margin-bottom: 0;
+    }
 
     &:is([data-disabled]) {
       @include apply-greyscale();
@@ -21,29 +51,38 @@
     }
   }
 
+  // Kobalte centres the thumb on the value, so at 0% and 100% it would hang half
+  // off the rail, where a native range thumb stays inside it. The track is inset
+  // by half a thumb so the thumb travels the same way, and the rail is drawn back
+  // out to full width underneath.
   .slider-track {
     position: relative;
-    height: calc(var(--slider-thumb) / 2);
-    border-radius: 999px;
-    background-color: cur-color(var(--surface-lc-2));
+    margin-inline: calc(var(--slider-thumb) / 2);
+    // The thumb overhangs the rail by a quarter thumb above and below. A native
+    // range's box includes that overhang, so this one does too.
+    margin-block: calc(var(--slider-thumb) / 4);
+    @include rail;
+    background-color: transparent;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: 0 calc(var(--slider-thumb) / -2);
+      @include rail;
+    }
   }
 
   .slider-fill {
     position: absolute;
     height: 100%;
-    border-radius: 999px;
-    background-color: cur-color(var(--surface-lc-4));
+    margin-left: calc(var(--slider-thumb) / -2);
+    @include fill;
   }
 
   .slider-thumb {
     display: block;
-    width: var(--slider-thumb);
-    height: var(--slider-thumb);
     top: calc(var(--slider-thumb) / -4);
-
-    border: var(--border-width) solid cur-color(var(--surface-lc-4));
-    border-radius: 999px;
-    background-color: cur-color(var(--surface-lc-1));
+    @include thumb;
 
     input {
       appearance: none;

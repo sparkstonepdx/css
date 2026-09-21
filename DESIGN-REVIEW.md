@@ -187,3 +187,20 @@ file.
 | Checked fill | `--surface-lc-1`, from the indicator when one is present, otherwise from the item | same pattern as the tab indicator |
 | Indicator motion | `all 250ms` | matches the tab indicator, not the toggle's 150ms |
 
+## Range (`src/components/_input.scss`) — not signed off
+
+`.range` used to be a native range on the field surface: a bordered box with the
+browser's own track and thumb inside. It is now painted with the slider's rail,
+fill and thumb, so it matches `.slider` and Kobalte's Slider pixel for pixel.
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Look | the slider's rail, fill and thumb, from one set of blocks in `_slider.scss` | **This changes the classless build**: every `input[type="range"]` looks like this now, not like 1.x |
+| Fill in Chrome and Safari | reads `--range-fill`, which the page must keep in step with the value | they have no fill pseudo-element. Firefox draws the fill itself. **Questionable**: without the variable, the fill never moves in those browsers |
+| Layout | `display: block` | it is full width anyway; block keeps it off the text baseline |
+
+The slider was adjusted to meet it, which matters more than it looks: Kobalte
+centres its thumb on the value, so the thumb used to hang half off the rail at 0%
+and 100%, where a native thumb stays inside. `.slider-track` is now inset by half
+a thumb and draws its rail back out to full width, so both travel identically.
+

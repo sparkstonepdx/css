@@ -6,26 +6,100 @@
 {% block content %}
 <h1>Range</h1>
 <p class="lede">
-  A native range on the shared control surface. The track and thumb stay native,
-  so the browser's own accent applies.
+  A native range, painted with the same rail, fill and thumb as the
+  <a href="./slider.html">slider</a>, so it matches
+  <a href="https://kobalte.dev/docs/core/components/slider" target="_blank" rel="noreferrer">Kobalte's Slider</a>.
 </p>
 
+{{ m.alpha() }}
+
 {{ m.classes([
-  ["range", "Full-width range on the control surface"]
+  ["range", "A native range with the slider's rail, fill and thumb"]
 ]) }}
 
 <h2>Basic</h2>
 {% set classless %}
 <label>
   Volume
-  <input type="range" min="0" max="100" value="60" />
+  <input type="range" min="0" max="100" value="60" style="--range-fill: 60%" />
 </label>
 {% endset %}
 {% set classes %}
 <label class="label">
   Volume
-  <input type="range" class="range" min="0" max="100" value="60" />
+  <input type="range" class="range" min="0" max="100" value="60" style="--range-fill: 60%" />
 </label>
 {% endset %}
-{{ m.demo("range-basic", classless, classes) }}
+{% set kobalte_markup %}
+<div class="slider" role="group">
+  <label>Volume</label>
+  <div class="slider-track">
+    <div class="slider-fill" style="left: 0%; right: 40%"></div>
+    <span role="slider" aria-valuenow="60" style="position: absolute; left: calc(60%); transform: translateX(-50%)"><input style="border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px" /></span>
+  </div>
+</div>
+{% endset %}
+{% set kobalte %}
+import { Slider } from "@kobalte/core/slider";
+
+<Slider class="slider" value={volume()} onChange={setVolume}>
+  <Slider.Label>Volume</Slider.Label>
+  <Slider.Track class="slider-track">
+    <Slider.Fill class="slider-fill" />
+    <Slider.Thumb>
+      <Slider.Input />
+    </Slider.Thumb>
+  </Slider.Track>
+</Slider>
+{% endset %}
+{{ m.demo("range-basic", classless, classes, kobalte, kobalte_markup) }}
+
+<h2>Keeping the fill in step</h2>
+<p>
+  Firefox draws the fill itself. Chrome and Safari have no pseudo-element for it,
+  so the fill reads <code>--range-fill</code>, which has to follow the value:
+</p>
+{% call m.snippet("range-fill", "html") %}
+<input
+  type="range"
+  class="range"
+  value="60"
+  style="--range-fill: 60%"
+  oninput="this.style.setProperty('--range-fill', this.value + '%')"
+/>
+{% endcall %}
+<p>
+  <small>
+    That assumes a 0 to 100 range. For any other <code>min</code> and
+    <code>max</code>, set it to <code>(value - min) / (max - min)</code> as a
+    percentage.
+  </small>
+</p>
+
+<h2>Disabled</h2>
+{% set classless %}
+<input type="range" value="60" style="--range-fill: 60%" disabled />
+{% endset %}
+{% set classes %}
+<input type="range" class="range" value="60" style="--range-fill: 60%" disabled />
+{% endset %}
+{% set kobalte_markup %}
+<div class="slider" role="group" data-disabled>
+  <div class="slider-track">
+    <div class="slider-fill" style="left: 0%; right: 40%"></div>
+    <span role="slider" aria-valuenow="60" aria-disabled="true" style="position: absolute; left: calc(60%); transform: translateX(-50%)"><input style="border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px" disabled /></span>
+  </div>
+</div>
+{% endset %}
+{% set kobalte %}
+<Slider class="slider" disabled value={[60]}>
+  <Slider.Track class="slider-track">
+    <Slider.Fill class="slider-fill" />
+    <Slider.Thumb>
+      <Slider.Input />
+    </Slider.Thumb>
+  </Slider.Track>
+</Slider>
+{% endset %}
+{{ m.demo("range-disabled", classless, classes, kobalte, kobalte_markup) }}
 {% endblock %}

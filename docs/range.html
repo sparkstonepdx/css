@@ -296,7 +296,7 @@
                   <a
                     href="./range.html"
                     aria-current="page"
-                    >Range</a
+                    >Range<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge" title="Alpha: the look can change in a minor release">alpha</span></a
                   >
                 </li>
               
@@ -407,9 +407,18 @@
         
 <h1>Range</h1>
 <p class="lede">
-  A native range on the shared control surface. The track and thumb stay native,
-  so the browser's own accent applies.
+  A native range, painted with the same rail, fill and thumb as the
+  <a href="./slider.html">slider</a>, so it matches
+  <a href="https://kobalte.dev/docs/core/components/slider" target="_blank" rel="noreferrer">Kobalte's Slider</a>.
 </p>
+
+
+<p class="alpha-note">
+  <span class="alpha-badge">alpha</span>
+  The class names and states here are stable. The look is not: these styles can
+  change in a minor release, without a major version bump.
+</p>
+
 
 
 <table class="class-table">
@@ -418,13 +427,15 @@
   </thead>
   <tbody>
     
-      <tr><td><code>range</code></td><td>Full-width range on the control surface</td></tr>
+      <tr><td><code>range</code></td><td>A native range with the slider&#39;s rail, fill and thumb</td></tr>
     
   </tbody>
 </table>
 
 
 <h2>Basic</h2>
+
+
 
 
 
@@ -437,6 +448,8 @@
         <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
         <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
         
+          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
+        
       </div>
     
     <button class="ghost copy-button" data-target="range-basic-classes">Copy</button>
@@ -444,14 +457,104 @@
   <div class="code-block">
     <pre><code id="range-basic-classes" data-variant="classes">&lt;label class=&quot;label&quot;&gt;
   Volume
-  &lt;input type=&quot;range&quot; class=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;60&quot; /&gt;
+  &lt;input type=&quot;range&quot; class=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;60&quot; style=&quot;--range-fill: 60%&quot; /&gt;
 &lt;/label&gt;</code></pre>
     
       <pre hidden><code id="range-basic-classless" data-variant="classless">&lt;label&gt;
   Volume
-  &lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;60&quot; /&gt;
+  &lt;input type=&quot;range&quot; min=&quot;0&quot; max=&quot;100&quot; value=&quot;60&quot; style=&quot;--range-fill: 60%&quot; /&gt;
 &lt;/label&gt;</code></pre>
     
+    
+      <pre hidden><code id="range-basic-kobalte" data-variant="kobalte">import { Slider } from &quot;@kobalte/core/slider&quot;;
+
+&lt;Slider class=&quot;slider&quot; value={volume()} onChange={setVolume}&gt;
+  &lt;Slider.Label&gt;Volume&lt;/Slider.Label&gt;
+  &lt;Slider.Track class=&quot;slider-track&quot;&gt;
+    &lt;Slider.Fill class=&quot;slider-fill&quot; /&gt;
+    &lt;Slider.Thumb&gt;
+      &lt;Slider.Input /&gt;
+    &lt;/Slider.Thumb&gt;
+  &lt;/Slider.Track&gt;
+&lt;/Slider&gt;</code></pre>
+      <pre hidden><code id="range-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div class=&quot;slider&quot; role=&quot;group&quot;&gt;
+  &lt;label&gt;Volume&lt;/label&gt;
+  &lt;div class=&quot;slider-track&quot;&gt;
+    &lt;div class=&quot;slider-fill&quot; style=&quot;left: 0%; right: 40%&quot;&gt;&lt;/div&gt;
+    &lt;span role=&quot;slider&quot; aria-valuenow=&quot;60&quot; style=&quot;position: absolute; left: calc(60%); transform: translateX(-50%)&quot;&gt;&lt;input style=&quot;border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px&quot; /&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+  </div>
+</div>
+
+
+<h2>Keeping the fill in step</h2>
+<p>
+  Firefox draws the fill itself. Chrome and Safari have no pseudo-element for it,
+  so the fill reads <code>--range-fill</code>, which has to follow the value:
+</p>
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="range-fill">Copy</button>
+  <pre><code id="range-fill" class="language-html">&lt;input
+  type=&quot;range&quot;
+  class=&quot;range&quot;
+  value=&quot;60&quot;
+  style=&quot;--range-fill: 60%&quot;
+  oninput=&quot;this.style.setProperty(&#39;--range-fill&#39;, this.value + &#39;%&#39;)&quot;
+/&gt;</code></pre>
+</div>
+
+<p>
+  <small>
+    That assumes a 0 to 100 range. For any other <code>min</code> and
+    <code>max</code>, set it to <code>(value - min) / (max - min)</code> as a
+    percentage.
+  </small>
+</p>
+
+<h2>Disabled</h2>
+
+
+
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <div class="variant-tabs" role="tablist" aria-label="Markup variant">
+        <button class="variant-tab" role="tab" type="button" data-variant="classes" aria-selected="true">Class</button>
+        <button class="variant-tab" role="tab" type="button" data-variant="classless" aria-selected="false">Classless</button>
+        
+          <button class="variant-tab" role="tab" type="button" data-variant="kobalte" aria-selected="false">Kobalte</button>
+        
+      </div>
+    
+    <button class="ghost copy-button" data-target="range-disabled-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="range-disabled-classes" data-variant="classes">&lt;input type=&quot;range&quot; class=&quot;range&quot; value=&quot;60&quot; style=&quot;--range-fill: 60%&quot; disabled /&gt;</code></pre>
+    
+      <pre hidden><code id="range-disabled-classless" data-variant="classless">&lt;input type=&quot;range&quot; value=&quot;60&quot; style=&quot;--range-fill: 60%&quot; disabled /&gt;</code></pre>
+    
+    
+      <pre hidden><code id="range-disabled-kobalte" data-variant="kobalte">&lt;Slider class=&quot;slider&quot; disabled value={[60]}&gt;
+  &lt;Slider.Track class=&quot;slider-track&quot;&gt;
+    &lt;Slider.Fill class=&quot;slider-fill&quot; /&gt;
+    &lt;Slider.Thumb&gt;
+      &lt;Slider.Input /&gt;
+    &lt;/Slider.Thumb&gt;
+  &lt;/Slider.Track&gt;
+&lt;/Slider&gt;</code></pre>
+      <pre hidden><code id="range-disabled-kobalte-markup" data-variant="kobalte-markup">&lt;div class=&quot;slider&quot; role=&quot;group&quot; data-disabled&gt;
+  &lt;div class=&quot;slider-track&quot;&gt;
+    &lt;div class=&quot;slider-fill&quot; style=&quot;left: 0%; right: 40%&quot;&gt;&lt;/div&gt;
+    &lt;span role=&quot;slider&quot; aria-valuenow=&quot;60&quot; aria-disabled=&quot;true&quot; style=&quot;position: absolute; left: calc(60%); transform: translateX(-50%)&quot;&gt;&lt;input style=&quot;border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px&quot; disabled /&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
     
   </div>
 </div>

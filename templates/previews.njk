@@ -43,7 +43,7 @@
 {%- elif slug == "radio" -%}
   <span class="label" style="font-size: 0.75rem"><input type="radio" class="radio" checked /> Chosen</span>
 {%- elif slug == "range" -%}
-  <input type="range" class="range" value="60" style="width: 7rem; margin: 0" />
+  <input type="range" class="range" value="60" style="width: 7rem; margin: 0; --range-fill: 60%" />
 {%- elif slug == "file-input" -%}
   <input type="file" class="file-input" style="width: 8rem; margin: 0; font-size: 0.6rem; height: auto; padding: 0.2rem" />
 {%- elif slug == "color-input" -%}
@@ -66,7 +66,7 @@
 {%- elif slug == "loading" -%}
   <span class="loading"></span>
 {%- elif slug == "slider" -%}
-  <span class="slider" style="width: 7rem; margin: 0"><span class="slider-track" style="display: block"><span class="slider-fill" style="width: 60%"></span><span class="slider-thumb" style="position: absolute; left: 60%"></span></span></span>
+  <span class="slider" style="width: 7rem; margin: 0"><span class="slider-track" style="display: block"><span class="slider-fill" style="left: 0%; right: 40%"></span><span class="slider-thumb" style="position: absolute; left: 60%; transform: translateX(-50%)"></span></span></span>
 {%- elif slug == "navbar" -%}
   <span class="navbar" style="font-size: 0.7rem; padding: 0.3rem 0.5rem; width: 9rem; gap: 0.4rem"><strong>Site</strong><span class="menu-item" style="padding: 0.1rem 0.3rem">File</span><span class="menu-item menu-active" style="padding: 0.1rem 0.3rem">Edit</span></span>
 {%- elif slug == "breadcrumbs" -%}
