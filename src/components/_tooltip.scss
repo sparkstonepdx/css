@@ -11,7 +11,7 @@
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
 
     border-radius: var(--border-radius);
-    background-color: var(--line);
+    background-color: var(--fg);
     color: var(--bg);
     font-size: 0.875rem;
 
@@ -19,6 +19,6 @@
   }
 
   .tooltip-arrow {
-    color: var(--line);
+    color: var(--fg);
   }
 }

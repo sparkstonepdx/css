@@ -92,14 +92,15 @@
   --fg-faint: #{tone(--neutral-base, 0.58, 0.185)};
   --bg: #{tone(--neutral-base, var(--l-bg), var(--c-bg))};
 
-  // Surfaces and rules: a tinted mid-tone at partial opacity, so they carry the
-  // theme's colour, stack when nested, and flip with the scheme for free. Never
-  // used for text. The opacities land on 2.x's surface stops: 30% over the page
-  // gives the old surface-2, 63% the old surface-3.
+  // Surfaces and rules: a tinted mid-tone mixed into the page colour, so they
+  // carry the theme's colour and flip with the scheme for free. Mixed rather
+  // than translucent, so they are solid: text on them has one contrast ratio
+  // that can be checked once, whatever sits underneath. 30% lands on 2.x's
+  // surface-2 and 63% on its surface-3.
   --tint: #{tone(--neutral-base, var(--l-tint), 0.17)};
-  --surface: oklch(from var(--tint) l c h / 30%);
-  --surface-strong: oklch(from var(--tint) l c h / 63%);
-  --divider: oklch(from var(--tint) l c h / 30%);
+  --surface: color-mix(in oklch, var(--tint) 30%, var(--bg));
+  --surface-strong: color-mix(in oklch, var(--tint) 63%, var(--bg));
+  --divider: color-mix(in oklch, var(--tint) 30%, var(--bg));
 
   // Brand. --line is for strokes and fills that must stay visible against the
   // page: input borders, focus rings, active underlines.

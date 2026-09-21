@@ -12,12 +12,12 @@ the input's hue and chroma and pin only the lightness.
 | Decision | Proposed | Note |
 | --- | --- | --- |
 | Lightness and chroma per role | taken from 2.x's scale stops, so a vivid brand looks as it did | the caps are per scheme, since the dark end of the scale carries more chroma |
-| Surfaces and rules | a tinted mid-tone (`--tint`) at 30% and 63% | lands on 2.x's surface stops. They stack when nested, so a badge in a card is darker than a badge on the page. **Questionable** if you want them flat |
+| Surfaces and rules | a tinted mid-tone (`--tint`) mixed into `--bg`, 30% and 63% | solid, not translucent, so text on them has one contrast ratio wherever they sit, over images included. Lands on 2.x's surface stops. Nested surfaces no longer stack |
 | `--line` | lightness 0.62 light, 0.54 dark | **Deliberate change from 2.x**: 0.695 failed WCAG 1.4.11 (3:1 for UI boundaries) at about 2.7 for every brand tested. Borders, focus rings, active underlines and fills are slightly darker |
 | Disabled | `--chroma: 0` plus `@extend .retheme` | replaces 29 re-bound variables per disabled selector, and a disabled element's own text now greys too |
 | `.retheme` | the boundary class, from sparkcss | re-derivation is opt-in: overriding a derived colour such as `--surface` reaches the whole subtree, and restyles are 8% faster than 2.x (median 38.2 against 41.5 ms over 5,000 elements) |
-| Surfaces over images | still translucent | **Open**: a card over a photo lets it show through. `color-mix()` into `--bg` would make them solid, at the cost of stacking |
-| Tooltip | not yet checked against the new tokens | it read `--surface-lc-5`, which now maps to `--line` |
+| Tooltip | `--fg` background, `--bg` text: a true inverse | the mid-tone it had measured 3.47:1 in the worst case (2.x's was similar); the inverse measures 18.37 |
+| Placeholder text | `--fg-muted` mixed 50% into the page | **Open**: 2.92:1 at worst, below 4.5. 2.x was translucent and similarly faint. Placeholders are faint by convention so they read as empty, but they are still text |
 | Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
 
 Measured across ten brand colours in both schemes (rebeccapurple, tomato,

@@ -15,7 +15,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
 
 
   &::placeholder {
-    color: color-mix(in oklch, var(--fg-muted), transparent 50%);
+    color: color-mix(in oklch, var(--fg-muted) 50%, var(--bg));
   }
 }
 

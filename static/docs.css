@@ -411,7 +411,7 @@ section {
   padding: 0 0.3rem;
   border-radius: calc(var(--border-radius) * 2);
   --primary: var(--error);
-  background-color: oklch(from var(--line) l c h / 25%);
+  background-color: color-mix(in oklch, var(--line) 25%, var(--bg));
   color: var(--primary-text);
   font-size: 0.6875rem;
   font-weight: bold;
@@ -423,7 +423,7 @@ section {
   margin-bottom: 2rem;
   --primary: var(--error);
   border-left: calc(var(--border-width) * 2) solid var(--line);
-  background-color: oklch(from var(--line) l c h / 8%);
+  background-color: color-mix(in oklch, var(--line) 8%, var(--bg));
   font-size: 0.9375rem;
 }
 

@@ -162,7 +162,7 @@
     outline-style: none;
   }
   .radio::placeholder, input:where([type=radio])::placeholder, .checkbox::placeholder, input:where([type=checkbox])::placeholder, .color-input::placeholder, input:where([type=color])::placeholder, .file-input::placeholder, input:where([type=file])::placeholder, .textarea::placeholder, textarea::placeholder, .select::placeholder, select::placeholder, .input::placeholder, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image]))::placeholder {
-    color: color-mix(in oklch, var(--fg-muted), transparent 50%);
+    color: color-mix(in oklch, var(--fg-muted) 50%, var(--bg));
   }
   .color-input, input:where([type=color]), .file-input, input:where([type=file]), .textarea, textarea, .select, select, .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
     margin-bottom: 1rem;
@@ -413,9 +413,9 @@
     --fg-faint: oklch(from var(--neutral-base) 0.58 calc(min(c, 0.185) * var(--chroma)) h);
     --bg: oklch(from var(--neutral-base) var(--l-bg) calc(min(c, var(--c-bg)) * var(--chroma)) h);
     --tint: oklch(from var(--neutral-base) var(--l-tint) calc(min(c, 0.17) * var(--chroma)) h);
-    --surface: oklch(from var(--tint) l c h / 30%);
-    --surface-strong: oklch(from var(--tint) l c h / 63%);
-    --divider: oklch(from var(--tint) l c h / 30%);
+    --surface: color-mix(in oklch, var(--tint) 30%, var(--bg));
+    --surface-strong: color-mix(in oklch, var(--tint) 63%, var(--bg));
+    --divider: color-mix(in oklch, var(--tint) 30%, var(--bg));
     --line: oklch(from var(--primary-base) var(--l-line) calc(min(c, 0.17) * var(--chroma)) h);
     --primary-text: oklch(from var(--primary-base) var(--l-accent-text) calc(min(c, 0.17) * var(--chroma)) h);
     --primary-fill: oklch(from var(--primary-base) 0.46 calc(min(c, 0.17) * var(--chroma)) h);
@@ -1082,13 +1082,13 @@
     max-width: 20rem;
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
     border-radius: var(--border-radius);
-    background-color: var(--line);
+    background-color: var(--fg);
     color: var(--bg);
     font-size: 0.875rem;
     z-index: 50;
   }
   .tooltip-arrow {
-    color: var(--line);
+    color: var(--fg);
   }
   .alert {
     display: flex;
