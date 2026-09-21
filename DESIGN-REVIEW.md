@@ -17,7 +17,7 @@ the input's hue and chroma and pin only the lightness.
 | Disabled | `--chroma: 0` plus `@extend .retheme` | replaces 29 re-bound variables per disabled selector, and a disabled element's own text now greys too |
 | `.retheme` | the boundary class, from sparkcss | re-derivation is opt-in: overriding a derived colour such as `--surface` reaches the whole subtree, and restyles are 8% faster than 2.x (median 38.2 against 41.5 ms over 5,000 elements) |
 | Tooltip | `--fg` background, `--bg` text: a true inverse | the mid-tone it had measured 3.47:1 in the worst case (2.x's was similar); the inverse measures 18.37 |
-| Placeholder text | `--fg-muted` mixed 50% into the page | **Open**: 2.92:1 at worst, below 4.5. 2.x was translucent and similarly faint. Placeholders are faint by convention so they read as empty, but they are still text |
+| Placeholder text | `--fg-muted` mixed 70% into the page | the smallest mix that passes 4.5:1 for every brand in both schemes (lowest 4.78); 50% measured 2.86. Still reads lighter than an entered value |
 | Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
 
 Measured across ten brand colours in both schemes (rebeccapurple, tomato,

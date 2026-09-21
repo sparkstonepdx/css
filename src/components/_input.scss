@@ -14,8 +14,10 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   outline-style: none;
 
 
+  // 70% is the smallest mix that clears 4.5:1 for every brand in both schemes
+  // (lowest 4.78), while still reading lighter than an entered value.
   &::placeholder {
-    color: color-mix(in oklch, var(--fg-muted) 50%, var(--bg));
+    color: color-mix(in oklch, var(--fg-muted) 70%, var(--bg));
   }
 }
 

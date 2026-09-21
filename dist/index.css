@@ -162,7 +162,7 @@
     outline-style: none;
   }
   .radio::placeholder, .checkbox::placeholder, .color-input::placeholder, .file-input::placeholder, .textarea::placeholder, .select::placeholder, .input::placeholder {
-    color: color-mix(in oklch, var(--fg-muted) 50%, var(--bg));
+    color: color-mix(in oklch, var(--fg-muted) 70%, var(--bg));
   }
   .color-input, .file-input, .textarea, .select, .input {
     margin-bottom: 1rem;

@@ -162,7 +162,7 @@
     outline-style: none;
   }
   .radio::placeholder, input:where([type=radio])::placeholder, .checkbox::placeholder, input:where([type=checkbox])::placeholder, .color-input::placeholder, input:where([type=color])::placeholder, .file-input::placeholder, input:where([type=file])::placeholder, .textarea::placeholder, textarea::placeholder, .select::placeholder, select::placeholder, .input::placeholder, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image]))::placeholder {
-    color: color-mix(in oklch, var(--fg-muted) 50%, var(--bg));
+    color: color-mix(in oklch, var(--fg-muted) 70%, var(--bg));
   }
   .color-input, input:where([type=color]), .file-input, input:where([type=file]), .textarea, textarea, .select, select, .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
     margin-bottom: 1rem;
