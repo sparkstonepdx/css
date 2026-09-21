@@ -1,6 +1,6 @@
 {
   "name": "@sparkstone/css",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A minimal CSS framework inspired by Pico.css, with OKLCH-powered theming, light/dark mode, and both class-based and classless builds.",
   "main": "dist/index.css",
   "style": "dist/index.css",
@@ -26,11 +26,7 @@
     "./package.json": "./package.json"
   },
   "type": "module",
-  "files": [
-    "dist/",
-    "src/",
-    "README.md"
-  ],
+  "files": ["dist/", "src/", "README.md"],
   "scripts": {
     "dev": "node dev.js",
     "build": "sass src/:dist/ && node build.js",
