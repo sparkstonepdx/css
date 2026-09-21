@@ -3,7 +3,7 @@
 // ---------------------------------------------------------------------------
 // v3 colour engine (PROPOSAL, nothing here is signed off)
 //
-// Three inputs you can set on any element, and the whole subtree re-themes:
+// Inputs you can set on any .retheme element, and its whole subtree re-themes:
 //   --primary    the brand colour. Its own hue and chroma are kept.
 //   --secondary  links and accents. Defaults to the primary rotated 180deg.
 //   --neutral    what text and surfaces are tinted with. Defaults to --primary.
@@ -11,10 +11,11 @@
 //   --chroma     1 normally, 0 inside anything disabled
 //   the scheme   a handful of lightness numbers, swapped for dark
 //
-// Every derived colour below is declared on *, so it is recomputed on each
-// element from whatever inputs that element inherits. That is what makes an
-// input work anywhere: a custom property declared once at the root is
-// substituted there, and a descendant changing the input would never reach it.
+// The derived colours below are declared at the root and on .retheme, never on
+// *. A custom property is substituted where it is declared, so an input changed
+// on a descendant only takes effect where the colours are derived again: that
+// is what .retheme marks. Everywhere else they are inherited as values, which
+// is cheaper and lets a derived colour be overridden for a subtree.
 //
 // Colours keep the input's hue and chroma and pin only the lightness, so a
 // brand colour survives. Chroma is capped per role with min(), because a vivid
@@ -71,18 +72,19 @@
   --icon-clock: #{map-get-icon(clock, dark)};
 }
 
-// Inputs and their defaults. Only ever declared at the root, so an override
-// on any element is inherited by its subtree.
+// Input defaults. --primary is deliberately never declared: the derivation
+// reads it with a fallback instead, so --primary, or 2.x's --color, works on
+// any .retheme boundary rather than only at the root.
 @mixin inputs {
-  --primary: var(--color, rebeccapurple);
   --error: maroon;
   --chroma: 1;
 }
 
-// Derived colours. Declared on * by the entry files.
+// Derived colours. Declared on :root, [data-color-scheme] and .retheme.
 @mixin derived {
-  --neutral-base: var(--neutral, var(--primary));
-  --secondary-base: var(--secondary, oklch(from var(--primary) l c calc(h + 180)));
+  --primary-base: var(--primary, var(--color, rebeccapurple));
+  --neutral-base: var(--neutral, var(--primary-base));
+  --secondary-base: var(--secondary, oklch(from var(--primary-base) l c calc(h + 180)));
 
   // Text: solid colours, so contrast never depends on what is behind them.
   --fg: #{tone(--neutral-base, var(--l-fg), var(--c-fg))};
@@ -101,9 +103,110 @@
 
   // Brand. --line is for strokes and fills that must stay visible against the
   // page: input borders, focus rings, active underlines.
-  --line: #{tone(--primary, var(--l-line), 0.17)};
-  --primary-text: #{tone(--primary, var(--l-accent-text), 0.17)};
-  --primary-fill: #{tone(--primary, 0.46, 0.17)};
-  --on-primary-fill: #{tone(--primary, 0.99, 0.018)};
+  --line: #{tone(--primary-base, var(--l-line), 0.17)};
+  --primary-text: #{tone(--primary-base, var(--l-accent-text), 0.17)};
+  --primary-fill: #{tone(--primary-base, 0.46, 0.17)};
+  --on-primary-fill: #{tone(--primary-base, 0.99, 0.018)};
   --link: #{tone(--secondary-base, var(--l-accent-text), 0.17)};
+}
+
+// Registering the derived colours as <color> makes each one resolve to a
+// finished colour where it is derived, and inherit as that colour. Unregistered,
+// a custom property holds text, so every use re-evaluated the whole nested
+// relative-colour expression it was built from.
+@mixin properties {
+@property --primary-base {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rebeccapurple;
+}
+@property --neutral-base {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --secondary-base {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --fg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: black;
+}
+
+@property --fg-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --fg-faint {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+
+@property --tint {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --surface-strong {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --divider {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --line {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --primary-text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --primary-fill {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --on-primary-fill {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --link {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
 }

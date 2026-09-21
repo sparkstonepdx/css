@@ -1,3 +1,83 @@
+@property --primary-base {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: rebeccapurple;
+}
+@property --neutral-base {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --secondary-base {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --fg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: black;
+}
+@property --fg-muted {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --fg-faint {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --bg {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+@property --tint {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --surface {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --surface-strong {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --divider {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --line {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --primary-text {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --primary-fill {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --on-primary-fill {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+@property --link {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
 @layer reset, theme;
 @layer reset {
   /* 1. Use a more-intuitive box-sizing model */
@@ -372,7 +452,6 @@
     --border-radius: 0.25rem;
     --padding: 1rem;
     --border-width: 0.1625rem;
-    --primary: var(--color, rebeccapurple);
     --error: maroon;
     --chroma: 1;
     --l-bg: 0.99;
@@ -409,9 +488,54 @@
       --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
     }
   }
-  * {
-    --neutral-base: var(--neutral, var(--primary));
-    --secondary-base: var(--secondary, oklch(from var(--primary) l c calc(h + 180)));
+  :root,
+  [data-color-scheme],
+  .retheme,
+  .slider:is([data-disabled]),
+  .alert-error,
+  .collapse-title:is([data-disabled], :disabled),
+  :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) > button:is([data-disabled], :disabled),
+  .toggle:is(:disabled, [data-disabled]),
+  .menu-disabled,
+  :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option])[data-disabled],
+  .tab-disabled,
+  [role=tab][data-disabled],
+  .text-error,
+  small.error,
+  .disabled,
+  .btn-disabled,
+  *:disabled,
+  .btn-neutral,
+  *:is(button,
+  [type=button],
+  [type=submit],
+  [type=reset],
+  [role=button]).contrast,
+  .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  .input[aria-invalid=true],
+  input[aria-invalid=true]:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])),
+  .select[aria-invalid=true],
+  button[aria-invalid=true][aria-haspopup=listbox],
+  select[aria-invalid=true],
+  .textarea[aria-invalid=true],
+  textarea[aria-invalid=true],
+  .range:disabled,
+  input:disabled:where([type=range]),
+  .file-input[aria-invalid=true],
+  input[aria-invalid=true]:where([type=file]),
+  .color-input[aria-invalid=true],
+  input[aria-invalid=true]:where([type=color]),
+  .checkbox[aria-invalid=true],
+  input[aria-invalid=true]:where([type=checkbox]),
+  .radio[aria-invalid=true],
+  input[aria-invalid=true]:where([type=radio]),
+  .input-error,
+  .select-error,
+  .textarea-error {
+    --primary-base: var(--primary, var(--color, rebeccapurple));
+    --neutral-base: var(--neutral, var(--primary-base));
+    --secondary-base: var(--secondary, oklch(from var(--primary-base) l c calc(h + 180)));
     --fg: oklch(from var(--neutral-base) var(--l-fg) calc(min(c, var(--c-fg)) * var(--chroma)) h);
     --fg-muted: oklch(from var(--neutral-base) var(--l-muted) calc(min(c, var(--c-muted)) * var(--chroma)) h);
     --fg-faint: oklch(from var(--neutral-base) 0.58 calc(min(c, 0.185) * var(--chroma)) h);
@@ -420,11 +544,22 @@
     --surface: oklch(from var(--tint) l c h / 30%);
     --surface-strong: oklch(from var(--tint) l c h / 63%);
     --divider: oklch(from var(--tint) l c h / 30%);
-    --line: oklch(from var(--primary) var(--l-line) calc(min(c, 0.17) * var(--chroma)) h);
-    --primary-text: oklch(from var(--primary) var(--l-accent-text) calc(min(c, 0.17) * var(--chroma)) h);
-    --primary-fill: oklch(from var(--primary) 0.46 calc(min(c, 0.17) * var(--chroma)) h);
-    --on-primary-fill: oklch(from var(--primary) 0.99 calc(min(c, 0.018) * var(--chroma)) h);
+    --line: oklch(from var(--primary-base) var(--l-line) calc(min(c, 0.17) * var(--chroma)) h);
+    --primary-text: oklch(from var(--primary-base) var(--l-accent-text) calc(min(c, 0.17) * var(--chroma)) h);
+    --primary-fill: oklch(from var(--primary-base) 0.46 calc(min(c, 0.17) * var(--chroma)) h);
+    --on-primary-fill: oklch(from var(--primary-base) 0.99 calc(min(c, 0.018) * var(--chroma)) h);
     --link: oklch(from var(--secondary-base) var(--l-accent-text) calc(min(c, 0.17) * var(--chroma)) h);
+  }
+  .retheme, .slider:is([data-disabled]), .alert-error, .collapse-title:is([data-disabled], :disabled), :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) > button:is([data-disabled], :disabled), .toggle:is(:disabled, [data-disabled]), .menu-disabled, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option])[data-disabled], .tab-disabled, [role=tab][data-disabled], .text-error, small.error, .disabled,
+  .btn-disabled,
+  *:disabled, .btn-neutral, *:is(button,
+  [type=button],
+  [type=submit],
+  [type=reset],
+  [role=button]).contrast, .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), .input[aria-invalid=true], input[aria-invalid=true]:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select[aria-invalid=true], button[aria-invalid=true][aria-haspopup=listbox], select[aria-invalid=true], .textarea[aria-invalid=true], textarea[aria-invalid=true], .range:disabled, input:disabled:where([type=range]), .file-input[aria-invalid=true], input[aria-invalid=true]:where([type=file]), .color-input[aria-invalid=true], input[aria-invalid=true]:where([type=color]), .checkbox[aria-invalid=true], input[aria-invalid=true]:where([type=checkbox]), .radio[aria-invalid=true], input[aria-invalid=true]:where([type=radio]), .input-error,
+  .select-error,
+  .textarea-error {
+    color: var(--fg);
   }
   body {
     scrollbar-width: thin;

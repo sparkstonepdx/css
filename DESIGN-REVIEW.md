@@ -2,17 +2,21 @@
 
 ## 3.0 colour engine (`src/vars.scss`) — not signed off
 
-The nine-step scale is gone. Four inputs, set on any element, re-theme its whole
-subtree: `--primary`, `--secondary`, `--neutral`, `--error`. Fourteen colours
-are derived from them on every element (`*`), which is what lets an input work
-anywhere. Colours keep the input's hue and chroma and pin only the lightness.
+The nine-step scale is gone. Four inputs, set on any `.retheme` element,
+re-theme its whole subtree: `--primary` (or 2.x's `--color`), `--secondary`,
+`--neutral`, `--error`. The derived colours are computed at the root and at each
+`.retheme` boundary, registered with `@property` so they inherit as finished
+colours; components that set an input themselves `@extend .retheme`. Colours keep
+the input's hue and chroma and pin only the lightness.
 
 | Decision | Proposed | Note |
 | --- | --- | --- |
 | Lightness and chroma per role | taken from 2.x's scale stops, so a vivid brand looks as it did | the caps are per scheme, since the dark end of the scale carries more chroma |
 | Surfaces and rules | a tinted mid-tone (`--tint`) at 30% and 63% | lands on 2.x's surface stops. They stack when nested, so a badge in a card is darker than a badge on the page. **Questionable** if you want them flat |
 | `--line` | lightness 0.62 light, 0.54 dark | **Deliberate change from 2.x**: 0.695 failed WCAG 1.4.11 (3:1 for UI boundaries) at about 2.7 for every brand tested. Borders, focus rings, active underlines and fills are slightly darker |
-| Disabled | one declaration, `--chroma: 0` | replaces 29 re-bound variables per disabled selector |
+| Disabled | `--chroma: 0` plus `@extend .retheme` | replaces 29 re-bound variables per disabled selector, and a disabled element's own text now greys too |
+| `.retheme` | the boundary class, from sparkcss | re-derivation is opt-in: overriding a derived colour such as `--surface` reaches the whole subtree, and restyles are 8% faster than 2.x (median 38.2 against 41.5 ms over 5,000 elements) |
+| Surfaces over images | still translucent | **Open**: a card over a photo lets it show through. `color-mix()` into `--bg` would make them solid, at the cost of stacking |
 | Tooltip | not yet checked against the new tokens | it read `--surface-lc-5`, which now maps to `--line` |
 | Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
 

@@ -80,7 +80,7 @@ for (const { cssVar, id, key, fallback } of pickers) {
   if (!input) continue;
   // Seed from what the page is actually using: the resolved colour of the
   // derived role, so an unset --secondary shows the link colour it produces.
-  const role = { '--primary': 'var(--primary)', '--secondary': 'var(--link)', '--error': 'var(--error)' }[cssVar];
+  const role = { '--primary': 'var(--primary-base)', '--secondary': 'var(--link)', '--error': 'var(--error)' }[cssVar];
   input.value = stored || toHex(role, fallback);
   input.addEventListener('input', () => {
     root.style.setProperty(cssVar, input.value);

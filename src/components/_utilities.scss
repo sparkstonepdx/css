@@ -21,10 +21,12 @@
   .btn-disabled,
   *:disabled {
     --chroma: 0;
+    @extend .retheme;
   }
 
   .text-error {
     --primary: var(--error);
+    @extend .retheme;
     color: var(--fg-muted);
   }
 }

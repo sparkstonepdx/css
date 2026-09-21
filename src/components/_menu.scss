@@ -97,6 +97,7 @@
   // strength, so it read as an ordinary row.
   .menu-disabled {
     --chroma: 0;
+    @extend .retheme;
     color: var(--fg-faint);
     pointer-events: none;
   }

@@ -47,6 +47,7 @@
 
     &:is([data-disabled]) {
       --chroma: 0;
+      @extend .retheme;
       pointer-events: none;
     }
   }

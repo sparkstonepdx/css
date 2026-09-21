@@ -31,12 +31,12 @@
 <p>Set <code>--secondary</code> on any ancestor to change links in that subtree.</p>
 {% set classless %}
 <div>
-  <p style="--secondary: teal">A <a href="#">teal link</a> inside a scoped block.</p>
+  <p class="retheme" style="--secondary: teal">A <a href="#">teal link</a> inside a scoped block.</p>
 </div>
 {% endset %}
 {% set classes %}
 <div class="prose">
-  <p style="--secondary: teal">A <a href="#" class="link">teal link</a> inside a scoped block.</p>
+  <p class="retheme" style="--secondary: teal">A <a href="#" class="link">teal link</a> inside a scoped block.</p>
 </div>
 {% endset %}
 {{ m.demo("link-scoped", classless, classes) }}

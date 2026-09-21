@@ -30,9 +30,21 @@
     }
   }
 
-  // Recomputed on every element, so an input set anywhere re-themes its subtree.
-  * {
+  // Colours are derived at the root and again at every .retheme boundary.
+  // Between boundaries they are inherited, which keeps restyles cheap and lets
+  // a derived colour set on an element reach its whole subtree. Set an input on
+  // an element and add .retheme to re-theme everything inside it. Components
+  // that set an input themselves, such as error fields and disabled states,
+  // @extend .retheme, so they share this one rule.
+  :root,
+  [data-color-scheme],
+  .retheme {
     @include derived;
+  }
+
+  // Inherited text arrives already resolved, so a boundary re-applies it.
+  .retheme {
+    color: var(--fg);
   }
 
   body {

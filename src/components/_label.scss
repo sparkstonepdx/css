@@ -88,6 +88,7 @@
     // label and its message agree.
     > p:has(+ :is(.input, .select, .textarea):is([aria-invalid="true"], .input-error, .select-error, .textarea-error)) {
       --primary: var(--error);
+      @extend .retheme;
       color: var(--fg-muted);
     }
 

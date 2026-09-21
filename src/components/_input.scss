@@ -15,6 +15,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
 
   &[aria-invalid="true"] {
     --primary: var(--error);
+    @extend .retheme;
   }
 
   &::placeholder {
@@ -159,6 +160,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
 
     &:disabled {
       --chroma: 0;
+      @extend .retheme;
       cursor: default;
     }
   }
@@ -258,5 +260,6 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
   .select-error,
   .textarea-error {
     --primary: var(--error);
+    @extend .retheme;
   }
 }

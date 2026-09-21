@@ -46,6 +46,7 @@
   // one. Lighter text marks it as unavailable without changing its shape.
   .tab-disabled {
     --chroma: 0;
+    @extend .retheme;
     color: var(--fg-faint);
     pointer-events: none;
   }

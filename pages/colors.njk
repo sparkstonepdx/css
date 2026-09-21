@@ -62,16 +62,18 @@
 
 <h2>Apply anywhere</h2>
 <p>
-  Every derived colour is recomputed on each element from the inputs it inherits,
-  so setting one on any element is enough. These are nested sections, each
-  setting a single input:
+  Set an input on any element and add <code>.retheme</code>, and everything inside
+  re-themes around it. The class marks where colours are derived again; between
+  boundaries they are simply inherited, so you can also override a single derived
+  colour, such as <code>--surface</code>, for a whole subtree. These are nested
+  sections, each setting a single input:
 </p>
 {% set classless %}
-<section class="card-border" style="--primary: tomato">
+<section class="card-border retheme" style="--primary: tomato">
   <p><code>--primary: tomato</code></p>
   <button class="btn">Save</button>
   <input class="input" placeholder="A field" style="margin: 0.75rem 0" />
-  <section class="card-border" style="--primary: #0a7d6b">
+  <section class="card-border retheme" style="--primary: #0a7d6b">
     <p><code>--primary: #0a7d6b</code>, one level down</p>
     <button class="btn btn-secondary">Cancel</button>
     <a href="#" class="link">A link</a>
@@ -94,7 +96,7 @@
 {% set classless %}
 <div class="flex" style="flex-wrap: wrap">
   {% for c in ["rebeccapurple", "#c2410c", "#6b7c59", "slategrey", "#1d4ed8"] %}
-    <div style="--primary: {{ c }}; display: flex; flex-direction: column; gap: 0.5rem; align-items: start">
+    <div class="retheme" style="--primary: {{ c }}; display: flex; flex-direction: column; gap: 0.5rem; align-items: start">
       <button class="btn">{{ c }}</button>
       <button class="btn btn-secondary">Secondary</button>
       <span class="badge">Badge</span>

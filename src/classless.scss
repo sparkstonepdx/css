@@ -11,6 +11,8 @@
 // Button-ish types are excluded: they are styled as buttons, not as fields.
 $text-input: 'input:where(:not([type="checkbox"], [type="radio"], [type="range"], [type="file"], [type="color"], [type="submit"], [type="reset"], [type="button"], [type="image"]))';
 
+@include properties;
+
 @layer reset, theme;
 
 @layer reset {
