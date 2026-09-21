@@ -1165,7 +1165,7 @@
     --surface-lc-9: var(--grey-surface-lc-9);
     --primary-surface-lc: var(--primary-grey-surface-lc);
     --primary-text-lc: var(--primary-grey-text-lc);
-    background-color: oklch(from var(--color) var(--surface-lc-2) h);
+    color: oklch(from var(--color) var(--text-lc-5) h);
     pointer-events: none;
   }
   .tab-content {

@@ -33,7 +33,7 @@ file.
 | `.tab-active` color | `--text-lc-1` | |
 | `.tab-active` | colour and underline, no weight change | bold was shifting the tab's width, which resized the Kobalte indicator on every switch |
 | `.tab-active` underline | inset box-shadow, `--border-width` in `--surface-lc-4` | box-shadow rather than a border so it does not shift the text |
-| `.tab-disabled` | `apply-greyscale()`, a `--surface-lc-2` background, `pointer-events: none` | the background is your call: greyscale alone left it looking like an unselected tab |
+| `.tab-disabled` | `apply-greyscale()`, text at `--text-lc-5`, `pointer-events: none` | lighter text rather than a background, your call. `--text-lc-5` is the midpoint of the scale, so it lands at the same lightness in light and dark |
 | `.tab-content` padding | `1rem 0` | horizontal padding left at 0 so panel text lines up with the page |
 
 ## Kobalte bindings (`src/components/_kobalte.scss`) — not signed off
