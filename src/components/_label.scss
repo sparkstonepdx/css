@@ -60,6 +60,12 @@
         border-color 0.2s,
         background 0.2s;
       margin-bottom: 1rem;
+
+      // A headless switch nests its own <label> in the row, which the
+      // classless build styles as a .label with a bottom margin of its own.
+      > label {
+        margin-bottom: 0;
+      }
     }
 
     &.block:has(> .radio) {

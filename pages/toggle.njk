@@ -35,23 +35,26 @@
 </label>
 {% endset %}
 {% set kobalte_markup %}
-<div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem">
+<div class="label" data-checked>
+  <input type="checkbox" role="switch" checked style="border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px" />
   <div class="toggle" data-checked><div class="toggle-thumb" data-checked></div></div>
   <label>Email me about releases</label>
 </div>
-<div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem">
+<div class="label">
+  <input type="checkbox" role="switch" style="border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px" />
   <div class="toggle"><div class="toggle-thumb"></div></div>
   <label>Email me about everything else</label>
 </div>
-<div style="display: flex; align-items: center; gap: 0.5rem">
-  <div class="toggle" data-disabled><div class="toggle-thumb"></div></div>
+<div class="label" data-disabled>
+  <input type="checkbox" role="switch" disabled style="border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px" />
+  <div class="toggle" data-disabled><div class="toggle-thumb" data-disabled></div></div>
   <label>Locked off</label>
 </div>
 {% endset %}
 {% set kobalte %}
 import { Switch } from "@kobalte/core/switch";
 
-<Switch checked={enabled()} onChange={setEnabled}>
+<Switch class="label" checked={enabled()} onChange={setEnabled}>
   <Switch.Input />
   <Switch.Control class="toggle">
     <Switch.Thumb class="toggle-thumb" />
@@ -62,10 +65,11 @@ import { Switch } from "@kobalte/core/switch";
 {{ m.demo("toggle-basic", classless, "", kobalte, kobalte_markup) }}
 <p>
   <small>
-    Switch is the one component here whose parts carry no role or attribute of
-    their own: Control, Thumb and the root are all divs with the same
-    <code>data-checked</code>. So the classes go on the parts by hand, and
-    <code>/classless/kobalte</code> only supplies the state.
+    Switch's parts carry no role or attribute of their own: Control, Thumb and
+    the root are all divs with the same <code>data-checked</code>. So the classes
+    go on the parts by hand, <code>.label</code> on the root included, which gives
+    it the same row as a checkbox in a label. The input Kobalte renders is
+    visually hidden with inline styles.
   </small>
 </p>
 {% endblock %}

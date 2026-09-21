@@ -844,6 +844,9 @@
     transition: border-color 0.2s, background 0.2s;
     margin-bottom: 1rem;
   }
+  .label:has(> .checkbox, > .toggle) > label {
+    margin-bottom: 0;
+  }
   .label.block:has(> .radio) {
     padding: 2rem;
     border: var(--border-width) solid oklch(from var(--color) var(--surface-lc-2) h);

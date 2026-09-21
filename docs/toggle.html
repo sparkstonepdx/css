@@ -486,23 +486,26 @@
     
       <pre hidden><code id="toggle-basic-kobalte" data-variant="kobalte">import { Switch } from &quot;@kobalte/core/switch&quot;;
 
-&lt;Switch checked={enabled()} onChange={setEnabled}&gt;
+&lt;Switch class=&quot;label&quot; checked={enabled()} onChange={setEnabled}&gt;
   &lt;Switch.Input /&gt;
   &lt;Switch.Control class=&quot;toggle&quot;&gt;
     &lt;Switch.Thumb class=&quot;toggle-thumb&quot; /&gt;
   &lt;/Switch.Control&gt;
   &lt;Switch.Label&gt;Email me about releases&lt;/Switch.Label&gt;
 &lt;/Switch&gt;</code></pre>
-      <pre hidden><code id="toggle-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div style=&quot;display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem&quot;&gt;
+      <pre hidden><code id="toggle-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div class=&quot;label&quot; data-checked&gt;
+  &lt;input type=&quot;checkbox&quot; role=&quot;switch&quot; checked style=&quot;border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px&quot; /&gt;
   &lt;div class=&quot;toggle&quot; data-checked&gt;&lt;div class=&quot;toggle-thumb&quot; data-checked&gt;&lt;/div&gt;&lt;/div&gt;
   &lt;label&gt;Email me about releases&lt;/label&gt;
 &lt;/div&gt;
-&lt;div style=&quot;display: flex; align-items: center; gap: 0.5rem; margin-bottom: 1rem&quot;&gt;
+&lt;div class=&quot;label&quot;&gt;
+  &lt;input type=&quot;checkbox&quot; role=&quot;switch&quot; style=&quot;border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px&quot; /&gt;
   &lt;div class=&quot;toggle&quot;&gt;&lt;div class=&quot;toggle-thumb&quot;&gt;&lt;/div&gt;&lt;/div&gt;
   &lt;label&gt;Email me about everything else&lt;/label&gt;
 &lt;/div&gt;
-&lt;div style=&quot;display: flex; align-items: center; gap: 0.5rem&quot;&gt;
-  &lt;div class=&quot;toggle&quot; data-disabled&gt;&lt;div class=&quot;toggle-thumb&quot;&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;div class=&quot;label&quot; data-disabled&gt;
+  &lt;input type=&quot;checkbox&quot; role=&quot;switch&quot; disabled style=&quot;border: 0; clip: rect(0 0 0 0); clip-path: inset(50%); height: 1px; margin: -1px; overflow: hidden; padding: 0; position: absolute; white-space: nowrap; width: 1px&quot; /&gt;
+  &lt;div class=&quot;toggle&quot; data-disabled&gt;&lt;div class=&quot;toggle-thumb&quot; data-disabled&gt;&lt;/div&gt;&lt;/div&gt;
   &lt;label&gt;Locked off&lt;/label&gt;
 &lt;/div&gt;</code></pre>
     
@@ -511,10 +514,11 @@
 
 <p>
   <small>
-    Switch is the one component here whose parts carry no role or attribute of
-    their own: Control, Thumb and the root are all divs with the same
-    <code>data-checked</code>. So the classes go on the parts by hand, and
-    <code>/classless/kobalte</code> only supplies the state.
+    Switch's parts carry no role or attribute of their own: Control, Thumb and
+    the root are all divs with the same <code>data-checked</code>. So the classes
+    go on the parts by hand, <code>.label</code> on the root included, which gives
+    it the same row as a checkbox in a label. The input Kobalte renders is
+    visually hidden with inline styles.
   </small>
 </p>
 
