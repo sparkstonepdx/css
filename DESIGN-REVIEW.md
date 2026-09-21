@@ -1,6 +1,12 @@
 # Design review
 
-Fixed since the last pass: `apply-greyscale()` now swaps `--surface-lc-*` as well
+Fixed since the last pass: a label's text never turned red when its control was
+invalid. The rule set `--color` on the label's `<p>`, but the `<p>` inherits an
+already-resolved colour from `body`, so nothing read it. It now sets its own
+colour, at `--text-lc-3` to match `.text-error` (your call: at `--text-lc-1` the
+error hue has too little chroma to read as red). This was broken in 1.x too.
+
+Also fixed: `apply-greyscale()` now swaps `--surface-lc-*` as well
 as `--swatch-lc-*` and `--text-lc-*`, so backgrounds inside a disabled subtree
 lose their chroma. They stayed fully saturated before, which is what the unused
 `--grey-surface-lc-*` scale was built for. One gap remains: text inherited from

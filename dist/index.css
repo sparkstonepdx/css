@@ -921,6 +921,7 @@
   }
   .label > p:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
     --color: var(--error-color);
+    color: oklch(from var(--color) var(--text-lc-3) h);
   }
   .label > :is(.input, .select, .textarea):has(+ small) {
     margin-bottom: 0 !important;

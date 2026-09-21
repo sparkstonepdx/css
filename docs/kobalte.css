@@ -974,6 +974,7 @@
   }
   .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
     --color: var(--error-color);
+    color: oklch(from var(--color) var(--text-lc-3) h);
   }
   .label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):has(+ small), label > :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):has(+ small) {
     margin-bottom: 0 !important;
