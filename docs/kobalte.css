@@ -312,6 +312,11 @@
     position: relative;
     cursor: pointer;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .checkbox, input:where([type=checkbox]) {
+      transition: background-color var(--duration-change), border-color var(--duration-change);
+    }
+  }
   .checkbox::after, input:where([type=checkbox])::after {
     content: "";
     position: absolute;
@@ -321,15 +326,21 @@
     height: 0.8rem;
     border: solid var(--bg);
     border-width: 0 var(--border-width) var(--border-width) 0;
-    transform: translate(-50%, -50%) rotate(45deg);
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.4);
     opacity: 0;
     transition: opacity var(--duration-change);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .checkbox::after, input:where([type=checkbox])::after {
+      transition: opacity var(--duration-change), transform var(--duration-change) cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
   }
   .checkbox:checked, input:checked:where([type=checkbox]) {
     background-color: var(--line);
   }
   .checkbox:checked::after, input:checked:where([type=checkbox])::after {
     opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
   }
   .radio, input:where([type=radio]) {
     cursor: pointer;
