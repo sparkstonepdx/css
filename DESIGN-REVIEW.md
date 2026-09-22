@@ -96,7 +96,7 @@ file.
 | `.dropdown-content` padding | `--padding / 4` | just enough that a highlighted row's corners clear the panel edge |
 | `.dropdown-content` z-index | `50` | **Questionable**: the framework's only other z-index is 999 on `.dialog`. Two magic numbers with nothing between them |
 | `.menu` gap | `--padding / 8` | |
-| `.menu-item` padding | `--padding / 3` and `--padding / 2` | tighter than `.btn`, since rows stack |
+| `.menu-item` padding | `--padding / 2` block, `--padding` inline | your values. Rows are 42px tall; menubar triggers use the same class, so they widen too |
 | `.menu-item` hover | `--surface-lc-2` | same hover surface as `.tab` |
 | `.menu-active` | `--surface-lc-2`, no colour change | **Questionable**: identical to hover, so a highlighted row and a hovered row are indistinguishable. Kobalte's own example inverts the row instead |
 | `.menu-disabled` | `apply-greyscale()`, text at `--text-lc-5`, `pointer-events: none` | matches `.tab-disabled`, your call |
