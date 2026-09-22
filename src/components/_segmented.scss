@@ -59,6 +59,6 @@
 
     border-radius: var(--border-radius);
     background-color: var(--bg);
-    transition: all 250ms;
+    transition: all var(--duration-change);
   }
 }

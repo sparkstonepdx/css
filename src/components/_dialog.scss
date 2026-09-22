@@ -56,7 +56,7 @@
     // rendered, and an animation restarts whenever its element starts rendering.
     // So it sits on the box itself, with no dialog[open] ancestor to extend.
     @media (prefers-reduced-motion: no-preference) {
-      animation: sparkstone-dialog-in 550ms forwards;
+      animation: sparkstone-dialog-in var(--duration-enter) forwards;
     }
 
     @media (min-width: 576px) {

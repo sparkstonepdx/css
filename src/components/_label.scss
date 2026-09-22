@@ -42,7 +42,7 @@
           background: var(--line);
           border-radius: 50%;
           opacity: 0;
-          transition: opacity 0.2s;
+          transition: opacity var(--duration-change);
         }
 
         &:checked::after {
@@ -57,8 +57,8 @@
       cursor: pointer;
       gap: 0.5em;
       transition:
-        border-color 0.2s,
-        background 0.2s;
+        border-color var(--duration-change),
+        background var(--duration-change);
       margin-bottom: 1rem;
 
       // A headless switch nests its own <label> in the row, which the

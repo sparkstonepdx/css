@@ -25,7 +25,7 @@
     color: var(--fg);
     cursor: pointer;
 
-    transition: background-color 150ms;
+    transition: background-color var(--duration-change);
 
     &:is(:checked, [data-checked]) {
       background-color: var(--line);
@@ -47,8 +47,8 @@
     );
     background-repeat: no-repeat;
     transition:
-      background-color 150ms,
-      background-position 150ms;
+      background-color var(--duration-change),
+      background-position var(--duration-change);
 
     &:checked {
       background-position: calc(var(--toggle-height) * 0.75) 0;
@@ -62,7 +62,7 @@
     border-radius: 999px;
     background-color: var(--bg);
 
-    transition: transform 150ms;
+    transition: transform var(--duration-change);
 
     &[data-checked] {
       transform: translateX(calc(var(--toggle-height) * 0.75));

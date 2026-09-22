@@ -323,7 +323,7 @@
     border-width: 0 var(--border-width) var(--border-width) 0;
     transform: translate(-50%, -50%) rotate(45deg);
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity var(--duration-change);
   }
   .checkbox:checked, input:checked:where([type=checkbox]) {
     background-color: var(--line);
@@ -338,6 +338,8 @@
     --border-radius: 0.25rem;
     --padding: 1rem;
     --border-width: 0.1625rem;
+    --duration-change: 200ms;
+    --duration-enter: 400ms;
     --error: maroon;
     --chroma: 1;
     --l-bg: 0.99;
@@ -679,7 +681,7 @@
     background: var(--line);
     border-radius: 50%;
     opacity: 0;
-    transition: opacity 0.2s;
+    transition: opacity var(--duration-change);
   }
   .label:has(> .radio, > input:where([type=radio])) .radio:checked::after, label:has(> .radio, > input:where([type=radio])) .radio:checked::after, .label:has(> .radio, > input:where([type=radio])) input:checked:where([type=radio])::after, label:has(> .radio, > input:where([type=radio])) input:checked:where([type=radio])::after {
     opacity: 1;
@@ -689,7 +691,7 @@
     align-items: center;
     cursor: pointer;
     gap: 0.5em;
-    transition: border-color 0.2s, background 0.2s;
+    transition: border-color var(--duration-change), background var(--duration-change);
     margin-bottom: 1rem;
   }
   .label:has(> .checkbox, > input:where([type=checkbox]), > .toggle) > label, label:has(> .checkbox, > input:where([type=checkbox]), > .toggle) > label {
@@ -846,7 +848,7 @@
   @media (prefers-reduced-motion: no-preference) {
     .dialog-box, dialog > article,
     dialog > form > article {
-      animation: sparkstone-dialog-in 550ms forwards;
+      animation: sparkstone-dialog-in var(--duration-enter) forwards;
     }
   }
   @media (min-width: 576px) {
@@ -1038,7 +1040,7 @@
     background-color: var(--surface);
     color: var(--fg);
     cursor: pointer;
-    transition: background-color 150ms;
+    transition: background-color var(--duration-change);
   }
   .toggle:is(:checked, [data-checked]) {
     background-color: var(--line);
@@ -1050,7 +1052,7 @@
     appearance: none;
     background-image: radial-gradient(circle at calc(var(--toggle-height) / 2 - var(--border-width)) 50%, var(--bg) calc(var(--toggle-height) / 2 - 0.3rem), transparent 0);
     background-repeat: no-repeat;
-    transition: background-color 150ms, background-position 150ms;
+    transition: background-color var(--duration-change), background-position var(--duration-change);
   }
   input.toggle:checked {
     background-position: calc(var(--toggle-height) * 0.75) 0;
@@ -1060,7 +1062,7 @@
     height: calc(var(--toggle-height) - var(--border-width) * 4);
     border-radius: 999px;
     background-color: var(--bg);
-    transition: transform 150ms;
+    transition: transform var(--duration-change);
   }
   .toggle-thumb[data-checked] {
     transform: translateX(calc(var(--toggle-height) * 0.75));
@@ -1387,7 +1389,7 @@
     bottom: calc(var(--padding) / 8);
     border-radius: var(--border-radius);
     background-color: var(--bg);
-    transition: all 250ms;
+    transition: all var(--duration-change);
   }
   .progress, progress {
     appearance: none;
@@ -1454,7 +1456,7 @@
 .tab-indicator {
   position: absolute;
   background-color: var(--line);
-  transition: all 250ms;
+  transition: all var(--duration-change);
   bottom: calc(var(--border-width) * -1);
   height: var(--border-width);
 }

@@ -18,7 +18,7 @@ the input's hue and chroma and pin only the lightness.
 | `.retheme` | the boundary class, from sparkcss | re-derivation is opt-in: overriding a derived colour such as `--surface` reaches the whole subtree, and restyles are 8% faster than 2.x (median 38.2 against 41.5 ms over 5,000 elements) |
 | Tooltip | `--fg` background, `--bg` text: a true inverse | the mid-tone it had measured 3.47:1 in the worst case (2.x's was similar); the inverse measures 18.37 |
 | Placeholder text | `--fg-muted` mixed 70% into the page | the smallest mix that passes 4.5:1 for every brand in both schemes (lowest 4.78); 50% measured 2.86. Still reads lighter than an entered value |
-| Dialog open animation | fades in from `scale(1.25)` over 550ms, off under reduced motion | your values, from your Pico project. The framework's motion is now 150ms (toggle), 250ms (indicators), 550ms (dialog), 0.7s (spinner) and 1.4s (skeleton), still with no shared scale |
+| Dialog open animation | fades in from `scale(1.25)` over `--duration-enter`, 400ms, off under reduced motion | your keyframes, from your Pico project. 400ms is Material 3's duration for an element entering the screen; it was 550ms. State changes use `--duration-change` (200ms, your 1.x value): toggles, ticks, radio dots, and tab and segmented indicators. Loops (spinner 0.7s, skeleton 1.4s) keep their own |
 | Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
 
 Measured across ten brand colours in both schemes (rebeccapurple, tomato,
@@ -75,7 +75,7 @@ file.
 | --- | --- | --- |
 | `.tab-indicator` colour | `--surface-lc-4` | same as the active underline it replaces |
 | `.tab-indicator` thickness | `--border-width` | |
-| `.tab-indicator` transition | `all 250ms` | taken from Kobalte's own docs example; the framework has no motion convention yet, and this is the first animated thing in it |
+| `.tab-indicator` transition | `all var(--duration-change)`, 200ms | shared with every other state change |
 | Indicator vs underline | when an indicator is present, the active tab drops its own underline | |
 | Vertical orientation | bottom rule becomes a right rule, indicator moves to the trailing edge | |
 
@@ -103,7 +103,7 @@ file.
 | Size | `--toggle-height: 1.5rem`, track 1.75x that | matches `.checkbox`'s 1.5rem box |
 | Track | `--surface-lc-2`, `--surface-lc-4` when on, border from `get-border-color()` | |
 | Knob | `--surface-lc-1` | |
-| Motion | `150ms` on background and on the knob's transform | **Questionable**: the tab indicator animates at 250ms. Two durations, no scale |
+| Motion | `var(--duration-change)`, 200ms | shared with every other state change; see the motion note under 3.0 |
 | One-element form | knob drawn as a radial gradient and slid with `background-position` | a checkbox has no child to move and no usable `::before`. **Questionable**: a gradient knob will not take a border or a shadow if the design ever wants one |
 
 ## Tooltip (`src/components/_tooltip.scss`) — not signed off
@@ -218,7 +218,7 @@ file.
 | Track | `--surface-lc-2` with a matching border, `--border-radius` | the inverse of `.tabs`, which has a rule rather than a fill |
 | Item | `--text-lc-3`, `--text-lc-1` when checked | no weight change, so the item does not shift under the indicator |
 | Checked fill | `--surface-lc-1`, from the indicator when one is present, otherwise from the item | same pattern as the tab indicator |
-| Indicator motion | `all 250ms` | matches the tab indicator, not the toggle's 150ms |
+| Indicator motion | `all var(--duration-change)`, 200ms | shared with every other state change |
 
 ## Range (`src/components/_input.scss`) — not signed off
 

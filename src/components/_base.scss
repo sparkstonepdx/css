@@ -9,6 +9,12 @@
 
   --border-width: 0.1625rem;
 
+  // How long a control takes to respond to a state change: a toggle flipping,
+  // a tick appearing, an indicator sliding to the new tab.
+  --duration-change: 200ms;
+  // How long something takes to arrive on screen, such as a dialog opening.
+  --duration-enter: 400ms;
+
   @include inputs;
   @include light-scheme;
 

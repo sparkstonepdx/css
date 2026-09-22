@@ -47,7 +47,7 @@
   .tab-indicator {
     position: absolute;
     background-color: var(--line);
-    transition: all 250ms;
+    transition: all var(--duration-change);
 
     bottom: calc(var(--border-width) * -1);
     height: var(--border-width);

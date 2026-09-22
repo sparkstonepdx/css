@@ -259,7 +259,7 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
       border-width: 0 var(--border-width) var(--border-width) 0;
       transform: translate(-50%, -50%) rotate(45deg);
       opacity: 0;
-      transition: opacity 0.2s;
+      transition: opacity var(--duration-change);
     }
 
     &:checked {
