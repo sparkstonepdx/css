@@ -680,7 +680,7 @@
   }
   @media (prefers-reduced-motion: no-preference) {
     .btn {
-      transition: background-color var(--duration-change), border-color var(--duration-change), color var(--duration-change), transform var(--duration-change);
+      transition: background-color var(--duration-change), border-color var(--duration-change), color var(--duration-change), transform var(--duration-change) cubic-bezier(0.2, 0, 0, 1);
     }
     .btn:active {
       transform: scale(1.02);

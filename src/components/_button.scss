@@ -26,7 +26,9 @@
         background-color var(--duration-change),
         border-color var(--duration-change),
         color var(--duration-change),
-        transform var(--duration-change);
+        // Fast start, soft landing, so the press answers the click at once.
+        // Material 3's standard curve; the default ease starts slowly.
+        transform var(--duration-change) cubic-bezier(0.2, 0, 0, 1);
 
       // Grows slightly while pressed, rising to meet the click rather than
       // sinking away from it.
