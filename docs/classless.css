@@ -1438,6 +1438,9 @@
   .breadcrumbs-separator {
     color: var(--fg-muted);
   }
+  .pagination {
+    --pagination-size: 2.25rem;
+  }
   .pagination ul {
     display: flex;
     flex-wrap: wrap;
@@ -1449,6 +1452,19 @@
   }
   .pagination li {
     margin: 0;
+  }
+  .pagination .btn, .pagination *:is(button,
+  [type=button],
+  [type=submit],
+  [type=reset],
+  [role=button]) {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: var(--pagination-size);
+    height: var(--pagination-size);
+    padding: 0 calc(var(--padding) * 0.75);
+    line-height: 1;
   }
   .pagination :is([aria-current], [data-current]) {
     background-color: var(--primary-fill);

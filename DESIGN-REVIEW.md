@@ -214,6 +214,7 @@ file.
 | Decision | Proposed | Note |
 | --- | --- | --- |
 | Row | `--padding / 4` gaps, wraps | |
+| Page buttons | 2.25rem tall (`--pagination-size`), `--padding * 0.75` either side, numbers at least as wide as they are tall | a full-size `.btn` made them 55px tall and single digits tall, narrow rectangles (46 by 55); they are now 38 by 36 |
 | Current page | applies the `btn-primary` block from `_button.scss` | so a row of `.btn-secondary` reads with one filled button, from one definition |
 | Ellipsis | `--text-lc-3` | |
 
