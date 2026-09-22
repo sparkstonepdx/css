@@ -8,6 +8,25 @@
 @mixin styles {
   .collapse {
     border-bottom: var(--border-width) solid var(--divider);
+
+    // A native <details> animates its height where the browser supports
+    // ::details-content and interpolate-size (Chromium today). Elsewhere the
+    // selector is unknown, the rule is dropped, and it opens instantly.
+    @media (prefers-reduced-motion: no-preference) {
+      interpolate-size: allow-keywords;
+
+      &::details-content {
+        block-size: 0;
+        overflow-y: clip;
+        transition:
+          block-size var(--duration-change),
+          content-visibility var(--duration-change) allow-discrete;
+      }
+
+      &[open]::details-content {
+        block-size: auto;
+      }
+    }
   }
 
   .collapse-title {
@@ -28,6 +47,10 @@
     text-align: left;
     cursor: pointer;
 
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: color var(--duration-change);
+    }
     &:hover {
       color: var(--fg-muted);
     }

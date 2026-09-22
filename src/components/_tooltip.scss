@@ -16,6 +16,11 @@
     font-size: 0.875rem;
 
     z-index: 50;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transform-origin: center;
+      animation: sparkstone-panel-in var(--duration-change) ease-out;
+    }
   }
 
   .tooltip-arrow {

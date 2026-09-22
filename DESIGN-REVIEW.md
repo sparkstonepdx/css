@@ -19,6 +19,11 @@ the input's hue and chroma and pin only the lightness.
 | Tooltip | `--fg` background, `--bg` text: a true inverse | the mid-tone it had measured 3.47:1 in the worst case (2.x's was similar); the inverse measures 18.37 |
 | Placeholder text | `--fg-muted` mixed 70% into the page | the smallest mix that passes 4.5:1 for every brand in both schemes (lowest 4.78); 50% measured 2.86. Still reads lighter than an entered value |
 | Dialog open animation | fades in from `scale(1.25)` over `--duration-enter`, 400ms, off under reduced motion | your keyframes, from your Pico project. 400ms is Material 3's duration for an element entering the screen; it was 550ms. State changes use `--duration-change` (200ms, your 1.x value): toggles, ticks, radio dots, and tab and segmented indicators. Loops (spinner 0.7s, skeleton 1.4s) keep their own |
+| Dialog backdrop and close | blur and backdrop fade in over `--duration-change`; closing fades the dialog out over the same | the exit needs `transition-behavior: allow-discrete` (Chrome 117+, Safari 17.5+, Firefox 129+); older browsers close instantly. Firefox lacks `overlay`, so its exit may cut short |
+| Panel entrance | dropdown, popover and tooltip fade in from `scale(0.96)` over `--duration-change`, from the top edge (tooltips from the centre) | plays whenever the panel starts rendering, so it works however it is shown. **Open**: panels arrive on screen, so arguably they belong on `--duration-enter`; at 400ms a dropdown felt heavy, so they use `--duration-change` |
+| Micro-interactions | `.btn` eases colour changes and presses to `scale(0.98)`; menu rows, tabs and collapse titles ease their hover | colour transitions also animate a scheme switch on those elements |
+| Toast entrance | each message rises `0.75rem` and fades in over `--duration-enter` | no swipe-to-dismiss without a component library |
+| Collapse height | a native `<details>` animates its height via `::details-content` and `interpolate-size` | Chromium only today; elsewhere the rule is dropped and it opens instantly |
 | Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
 
 Measured across ten brand colours in both schemes (rebeccapurple, tomato,

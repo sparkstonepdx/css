@@ -20,6 +20,18 @@
 
     background-color: var(--primary-fill);
     color: var(--on-primary-fill);
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        background-color var(--duration-change),
+        border-color var(--duration-change),
+        color var(--duration-change),
+        transform var(--duration-change);
+
+      &:active {
+        transform: scale(0.98);
+      }
+    }
   }
 
   .btn-secondary {

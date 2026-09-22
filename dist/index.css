@@ -667,6 +667,14 @@
     background-color: var(--primary-fill);
     color: var(--on-primary-fill);
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .btn {
+      transition: background-color var(--duration-change), border-color var(--duration-change), color var(--duration-change), transform var(--duration-change);
+    }
+    .btn:active {
+      transform: scale(0.98);
+    }
+  }
   .btn-secondary {
     border-color: var(--primary-text);
     color: var(--fg-muted);
@@ -736,7 +744,30 @@
   .dialog::backdrop {
     position: fixed;
     inset: 0;
-    background: rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+  }
+  .dialog[open]::backdrop {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .dialog {
+      transition: opacity var(--duration-change), backdrop-filter var(--duration-change), display var(--duration-change) allow-discrete, overlay var(--duration-change) allow-discrete;
+    }
+    .dialog::backdrop {
+      transition: background-color var(--duration-change), display var(--duration-change) allow-discrete, overlay var(--duration-change) allow-discrete;
+    }
+    .dialog:not([open]) {
+      opacity: 0;
+      backdrop-filter: blur(0);
+    }
+    @starting-style {
+      .dialog[open] {
+        backdrop-filter: blur(0);
+      }
+      .dialog[open]::backdrop {
+        background-color: transparent;
+      }
+    }
   }
   .dialog > form {
     width: 100%;
@@ -841,6 +872,11 @@
     text-align: center;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .tab {
+      transition: background-color var(--duration-change), color var(--duration-change);
+    }
+  }
   .tab:hover {
     background-color: var(--surface);
   }
@@ -866,6 +902,18 @@
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
     z-index: 50;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .dropdown-content {
+      transform-origin: top;
+      animation: sparkstone-panel-in var(--duration-change) ease-out;
+    }
+  }
+  @keyframes sparkstone-panel-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
   }
   .menu {
     display: flex;
@@ -893,6 +941,11 @@
     text-decoration: none;
     cursor: pointer;
     user-select: none;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .menu-item {
+      transition: background-color var(--duration-change);
+    }
   }
   .menu-item:hover {
     background-color: var(--surface);
@@ -971,6 +1024,19 @@
   .collapse {
     border-bottom: var(--border-width) solid var(--divider);
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .collapse {
+      interpolate-size: allow-keywords;
+    }
+    .collapse::details-content {
+      block-size: 0;
+      overflow-y: clip;
+      transition: block-size var(--duration-change), content-visibility var(--duration-change) allow-discrete;
+    }
+    .collapse[open]::details-content {
+      block-size: auto;
+    }
+  }
   .collapse-title {
     display: flex;
     align-items: center;
@@ -986,6 +1052,11 @@
     font-weight: bold;
     text-align: left;
     cursor: pointer;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .collapse-title {
+      transition: color var(--duration-change);
+    }
   }
   .collapse-title:hover {
     color: var(--fg-muted);
@@ -1004,6 +1075,12 @@
     color: var(--bg);
     font-size: 0.875rem;
     z-index: 50;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .tooltip-content {
+      transform-origin: center;
+      animation: sparkstone-panel-in var(--duration-change) ease-out;
+    }
   }
   .tooltip-arrow {
     color: var(--fg);
@@ -1028,6 +1105,12 @@
     box-shadow: var(--box-shadow);
     color: var(--fg);
     z-index: 50;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .popover-content {
+      transform-origin: top;
+      animation: sparkstone-panel-in var(--duration-change) ease-out;
+    }
   }
   .popover-title {
     font-size: 1rem;
@@ -1061,6 +1144,17 @@
   }
   .toast .alert {
     margin-bottom: 0;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .toast .alert {
+      animation: sparkstone-toast-in var(--duration-enter) ease-out;
+    }
+  }
+  @keyframes sparkstone-toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
+    }
   }
   .toast-title {
     font-weight: bold;

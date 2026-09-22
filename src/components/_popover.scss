@@ -17,6 +17,11 @@
     color: var(--fg);
 
     z-index: 50;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transform-origin: top;
+      animation: sparkstone-panel-in var(--duration-change) ease-out;
+    }
   }
 
   .popover-title {

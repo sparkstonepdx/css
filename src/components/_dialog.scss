@@ -35,7 +35,45 @@
     &::backdrop {
       position: fixed;
       inset: 0;
-      background: rgba(0, 0, 0, 0.1);
+      background-color: transparent;
+    }
+
+    &[open]::backdrop {
+      background-color: rgba(0, 0, 0, 0.1);
+    }
+
+    // Opening: the blur and the backdrop fade in while the box scales in.
+    // Closing: the dialog fades out, and allow-discrete keeps it displayed and
+    // in the top layer until it has. Browsers without allow-discrete close
+    // instantly, as before.
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        opacity var(--duration-change),
+        backdrop-filter var(--duration-change),
+        display var(--duration-change) allow-discrete,
+        overlay var(--duration-change) allow-discrete;
+
+      &::backdrop {
+        transition:
+          background-color var(--duration-change),
+          display var(--duration-change) allow-discrete,
+          overlay var(--duration-change) allow-discrete;
+      }
+
+      &:not([open]) {
+        opacity: 0;
+        backdrop-filter: blur(0);
+      }
+
+      @starting-style {
+        &[open] {
+          backdrop-filter: blur(0);
+        }
+
+        &[open]::backdrop {
+          background-color: transparent;
+        }
+      }
     }
 
     > form {

@@ -31,6 +31,10 @@
     text-align: center;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
 
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background-color var(--duration-change), color var(--duration-change);
+    }
     &:hover {
       background-color: var(--surface);
     }
