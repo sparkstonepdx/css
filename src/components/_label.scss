@@ -13,42 +13,13 @@
       margin-top: calc(1rem * 0.25);
     }
 
+    // A radio or checkbox in a label sits beside its text. The controls draw
+    // themselves in _checkbox.scss; these rules only lay out the row.
     &:has(> .radio) {
       display: flex;
       align-items: center;
       gap: 0.5rem;
       cursor: pointer;
-
-      .radio {
-        appearance: none;
-        width: 1rem;
-        height: 1rem;
-        border: var(--border-width) solid var(--line);
-        border-radius: 50%;
-        position: relative;
-        box-sizing: border-box;
-        display: inline-block;
-        margin: 0;
-
-        &::after {
-          content: "";
-          position: absolute;
-          width: 1rem;
-          height: 1rem;
-          top: 0;
-          left: 0;
-          border: var(--border-width) solid var(--bg);
-          box-sizing: border-box;
-          background: var(--line);
-          border-radius: 50%;
-          opacity: 0;
-          transition: opacity var(--duration-change);
-        }
-
-        &:checked::after {
-          opacity: 1;
-        }
-      }
     }
 
     &:has(> .checkbox, > .toggle) {

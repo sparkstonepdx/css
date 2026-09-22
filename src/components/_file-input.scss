@@ -1,0 +1,26 @@
+@use "../vars.scss" as *;
+
+// A file picker: the shared control box around the native button, restyled.
+@mixin styles {
+  .file-input {
+    color: var(--fg-muted);
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: auto;
+
+    &::file-selector-button {
+      border-radius: var(--border-radius);
+      border: var(--border-width) solid var(--divider);
+      top: 0;
+      bottom: 0;
+      padding: 0.75rem 1rem;
+      margin-right: 1rem;
+
+      background-color: var(--surface);
+      color: var(--fg-muted);
+      cursor: pointer;
+    }
+  }
+}

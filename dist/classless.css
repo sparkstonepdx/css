@@ -152,7 +152,19 @@
   }
 }
 @layer theme {
-  .radio, input:where([type=radio]), .checkbox, input:where([type=checkbox]), .color-input, input:where([type=color]), .file-input, input:where([type=file]), .textarea, textarea, .select, select, .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
+  .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])),
+  .select,
+  select,
+  .textarea,
+  textarea,
+  .file-input,
+  input:where([type=file]),
+  .color-input,
+  input:where([type=color]),
+  .checkbox,
+  input:where([type=checkbox]),
+  .radio,
+  input:where([type=radio]) {
     border: var(--border-width) solid var(--line);
     border-radius: var(--border-radius);
     padding: calc(var(--padding) / 2);
@@ -161,29 +173,55 @@
     outline-width: 0;
     outline-style: none;
   }
-  .radio::placeholder, input:where([type=radio])::placeholder, .checkbox::placeholder, input:where([type=checkbox])::placeholder, .color-input::placeholder, input:where([type=color])::placeholder, .file-input::placeholder, input:where([type=file])::placeholder, .textarea::placeholder, textarea::placeholder, .select::placeholder, select::placeholder, .input::placeholder, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image]))::placeholder {
+  .input::placeholder, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image]))::placeholder,
+  .select::placeholder,
+  select::placeholder,
+  .textarea::placeholder,
+  textarea::placeholder,
+  .file-input::placeholder,
+  input:where([type=file])::placeholder,
+  .color-input::placeholder,
+  input:where([type=color])::placeholder,
+  .checkbox::placeholder,
+  input:where([type=checkbox])::placeholder,
+  .radio::placeholder,
+  input:where([type=radio])::placeholder {
     color: color-mix(in oklch, var(--fg-muted) 70%, var(--bg));
   }
-  .color-input, input:where([type=color]), .file-input, input:where([type=file]), .textarea, textarea, .select, select, .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
+  .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])),
+  .select,
+  select,
+  .textarea,
+  textarea,
+  .file-input,
+  input:where([type=file]),
+  .color-input,
+  input:where([type=color]) {
     margin-bottom: 1rem;
     width: 100%;
   }
-  .textarea, textarea, .select, select, .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
+  .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])),
+  .select,
+  select,
+  .textarea,
+  textarea {
     appearance: none;
     padding: 0.75rem 1rem;
   }
-  .color-input, input:where([type=color]), .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
+  .input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])),
+  .color-input,
+  input:where([type=color]) {
     height: calc(3rem + var(--border-width) * 2);
   }
-  .select:not([multiple], [size]), select:not([multiple], [size]), .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]), input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]):where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
-    padding-inline-start: 1rem;
-    padding-inline-end: 2.5rem;
-    background-image: var(--icon-calendar);
-    background-position: center right 1.25rem;
-    background-size: 1rem auto;
-    background-repeat: no-repeat;
-  }
   @supports selector(::-webkit-calendar-picker-indicator) {
+    .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]), input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]):where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])) {
+      padding-inline-start: 1rem;
+      padding-inline-end: 2.5rem;
+      background-position: center right 1.25rem;
+      background-size: 1rem auto;
+      background-repeat: no-repeat;
+      background-image: var(--icon-calendar);
+    }
     .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week])::-webkit-calendar-picker-indicator, input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]):where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image]))::-webkit-calendar-picker-indicator {
       width: 1rem;
       margin-right: -1.25rem;
@@ -205,9 +243,12 @@
     text-overflow: ellipsis;
   }
   .select:not([multiple], [size]), select:not([multiple], [size]) {
-    background-image: var(--icon-chevron);
+    padding-inline-start: 1rem;
     padding-inline-end: 2.25rem;
     background-position: center right 0.75rem;
+    background-size: 1rem auto;
+    background-repeat: no-repeat;
+    background-image: var(--icon-chevron);
   }
   .select:is(:disabled, [data-disabled]), select:is(:disabled, [data-disabled]) {
     opacity: 0.7;
@@ -216,6 +257,113 @@
   .textarea, textarea {
     display: block;
     resize: vertical;
+  }
+  .checkbox, input:where([type=checkbox]) {
+    margin: 0;
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: calc(var(--border-radius) / 2);
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .checkbox, input:where([type=checkbox]) {
+      transition: background-color var(--duration-change), border-color var(--duration-change);
+    }
+  }
+  .checkbox::after, input:where([type=checkbox])::after {
+    content: "";
+    position: absolute;
+    top: 0.55rem;
+    left: 0.6rem;
+    width: 0.4rem;
+    height: 0.8rem;
+    border: solid var(--bg);
+    border-width: 0 var(--border-width) var(--border-width) 0;
+    transform: translate(-50%, -50%) rotate(45deg) scale(0.4);
+    opacity: 0;
+    transition: opacity var(--duration-change);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .checkbox::after, input:where([type=checkbox])::after {
+      transition: opacity var(--duration-change), transform var(--duration-change) cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+  }
+  .checkbox:checked, input:checked:where([type=checkbox]) {
+    background-color: var(--line);
+  }
+  .checkbox:checked::after, input:checked:where([type=checkbox])::after {
+    opacity: 1;
+    transform: translate(-50%, -50%) rotate(45deg) scale(1);
+  }
+  .radio, input:where([type=radio]) {
+    cursor: pointer;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: var(--border-width) solid var(--line);
+    border-radius: 50%;
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+  }
+  .radio::after, input:where([type=radio])::after {
+    content: "";
+    position: absolute;
+    width: 1rem;
+    height: 1rem;
+    top: 0;
+    left: 0;
+    border: var(--border-width) solid var(--bg);
+    box-sizing: border-box;
+    background: var(--line);
+    border-radius: 50%;
+    opacity: 0;
+    transition: opacity var(--duration-change);
+  }
+  .radio:checked::after, input:checked:where([type=radio])::after {
+    opacity: 1;
+  }
+  .file-input, input:where([type=file]) {
+    color: var(--fg-muted);
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    height: auto;
+  }
+  .file-input::file-selector-button, input:where([type=file])::file-selector-button {
+    border-radius: var(--border-radius);
+    border: var(--border-width) solid var(--divider);
+    top: 0;
+    bottom: 0;
+    padding: 0.75rem 1rem;
+    margin-right: 1rem;
+    background-color: var(--surface);
+    color: var(--fg-muted);
+    cursor: pointer;
+  }
+  .color-input, input:where([type=color]) {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+  }
+  .color-input::-webkit-color-swatch-wrapper, input:where([type=color])::-webkit-color-swatch-wrapper {
+    padding: 0;
+  }
+  .color-input::-webkit-color-swatch, input:where([type=color])::-webkit-color-swatch {
+    border-radius: var(--border-radius);
+    border: 0;
+  }
+  .color-input::-moz-color-swatch, input:where([type=color])::-moz-color-swatch {
+    border-radius: var(--border-radius);
+    border: 0;
   }
   .range, input:where([type=range]) {
     --slider-thumb: 1rem;
@@ -266,89 +414,6 @@
   }
   .range:disabled, input:disabled:where([type=range]) {
     cursor: default;
-  }
-  .file-input, input:where([type=file]) {
-    color: var(--fg-muted);
-    background-color: transparent;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    height: auto;
-  }
-  .file-input::file-selector-button, input:where([type=file])::file-selector-button {
-    border-radius: var(--border-radius);
-    border: var(--border-width) solid var(--divider);
-    top: 0;
-    bottom: 0;
-    padding: 0.75rem 1rem;
-    margin-right: 1rem;
-    background-color: var(--surface);
-    color: var(--fg-muted);
-    cursor: pointer;
-  }
-  .color-input, input:where([type=color]) {
-    appearance: none;
-    -webkit-appearance: none;
-    background: none;
-    padding: 0.25rem;
-    box-sizing: border-box;
-    cursor: pointer;
-    border: var(--border-width) solid var(--line);
-  }
-  .color-input::-webkit-color-swatch-wrapper, input:where([type=color])::-webkit-color-swatch-wrapper {
-    padding: 0;
-  }
-  .color-input::-webkit-color-swatch, input:where([type=color])::-webkit-color-swatch {
-    border-radius: var(--border-radius);
-    border: 0;
-  }
-  .color-input::-moz-color-swatch, input:where([type=color])::-moz-color-swatch {
-    border-radius: var(--border-radius);
-    border: 0;
-  }
-  .checkbox, input:where([type=checkbox]) {
-    margin: 0;
-    appearance: none;
-    width: 1.5rem;
-    height: 1.5rem;
-    border: var(--border-width) solid var(--line);
-    border-radius: calc(var(--border-radius) / 2);
-    display: inline-block;
-    position: relative;
-    cursor: pointer;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .checkbox, input:where([type=checkbox]) {
-      transition: background-color var(--duration-change), border-color var(--duration-change);
-    }
-  }
-  .checkbox::after, input:where([type=checkbox])::after {
-    content: "";
-    position: absolute;
-    top: 0.55rem;
-    left: 0.6rem;
-    width: 0.4rem;
-    height: 0.8rem;
-    border: solid var(--bg);
-    border-width: 0 var(--border-width) var(--border-width) 0;
-    transform: translate(-50%, -50%) rotate(45deg) scale(0.4);
-    opacity: 0;
-    transition: opacity var(--duration-change);
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .checkbox::after, input:where([type=checkbox])::after {
-      transition: opacity var(--duration-change), transform var(--duration-change) cubic-bezier(0.34, 1.56, 0.64, 1);
-    }
-  }
-  .checkbox:checked, input:checked:where([type=checkbox]) {
-    background-color: var(--line);
-  }
-  .checkbox:checked::after, input:checked:where([type=checkbox])::after {
-    opacity: 1;
-    transform: translate(-50%, -50%) rotate(45deg) scale(1);
-  }
-  .radio, input:where([type=radio]) {
-    cursor: pointer;
   }
   :root {
     --border-radius: 0.25rem;
@@ -653,34 +718,6 @@
     align-items: center;
     gap: 0.5rem;
     cursor: pointer;
-  }
-  .label:has(> .radio, > input:where([type=radio])) .radio, label:has(> .radio, > input:where([type=radio])) .radio, .label:has(> .radio, > input:where([type=radio])) input:where([type=radio]), label:has(> .radio, > input:where([type=radio])) input:where([type=radio]) {
-    appearance: none;
-    width: 1rem;
-    height: 1rem;
-    border: var(--border-width) solid var(--line);
-    border-radius: 50%;
-    position: relative;
-    box-sizing: border-box;
-    display: inline-block;
-    margin: 0;
-  }
-  .label:has(> .radio, > input:where([type=radio])) .radio::after, label:has(> .radio, > input:where([type=radio])) .radio::after, .label:has(> .radio, > input:where([type=radio])) input:where([type=radio])::after, label:has(> .radio, > input:where([type=radio])) input:where([type=radio])::after {
-    content: "";
-    position: absolute;
-    width: 1rem;
-    height: 1rem;
-    top: 0;
-    left: 0;
-    border: var(--border-width) solid var(--bg);
-    box-sizing: border-box;
-    background: var(--line);
-    border-radius: 50%;
-    opacity: 0;
-    transition: opacity var(--duration-change);
-  }
-  .label:has(> .radio, > input:where([type=radio])) .radio:checked::after, label:has(> .radio, > input:where([type=radio])) .radio:checked::after, .label:has(> .radio, > input:where([type=radio])) input:checked:where([type=radio])::after, label:has(> .radio, > input:where([type=radio])) input:checked:where([type=radio])::after {
-    opacity: 1;
   }
   .label:has(> .checkbox, > input:where([type=checkbox]), > .toggle), label:has(> .checkbox, > input:where([type=checkbox]), > .toggle) {
     display: flex;

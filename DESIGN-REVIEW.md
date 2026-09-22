@@ -230,7 +230,7 @@ file.
 | Checked fill | `--surface-lc-1`, from the indicator when one is present, otherwise from the item | same pattern as the tab indicator |
 | Indicator motion | `all var(--duration-change)`, 200ms | shared with every other state change |
 
-## Range (`src/components/_input.scss`) — not signed off
+## Range (`src/components/_range.scss`) — not signed off
 
 `.range` used to be a native range on the field surface: a bordered box with the
 browser's own track and thumb inside. It is now painted with the slider's rail,
