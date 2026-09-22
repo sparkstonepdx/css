@@ -9,13 +9,13 @@
     display: block;
     min-height: 1rem;
     border-radius: var(--border-radius);
-    background-color: cur-color(var(--surface-lc-2));
+    background-color: var(--surface);
 
     @media (prefers-reduced-motion: no-preference) {
       background-image: linear-gradient(
         90deg,
         transparent,
-        cur-color(var(--surface-lc-1)),
+        var(--bg),
         transparent
       );
       background-size: 60% 100%;
@@ -23,15 +23,6 @@
       animation: sparkstone-skeleton 1.4s ease-in-out infinite;
     }
 
-    // Kobalte's Skeleton hides the shimmer once the content is in.
-    &:not([data-animate]) {
-      animation: none;
-      background-image: none;
-    }
-
-    &:not([data-visible]) {
-      background-color: transparent;
-    }
   }
 
   @keyframes sparkstone-skeleton {

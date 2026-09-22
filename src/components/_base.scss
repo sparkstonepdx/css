@@ -7,19 +7,16 @@
   --border-radius: 0.25rem;
   --padding: 1rem;
 
-  @include lightSchemeVars();
-
   --border-width: 0.1625rem;
 
-  --fallback-color: white;
+  // How long a control takes to respond to a state change: a toggle flipping,
+  // a tick appearing, an indicator sliding to the new tab.
+  --duration-change: 200ms;
+  // How long something takes to arrive on screen, such as a dialog opening.
+  --duration-enter: 400ms;
 
-  --color: rebeccapurple;
-
-  --primary-color: blue;
-  --accent-color: oklch(from var(--color) l c calc(h + 180));
-  --error-color: maroon;
-  --icon-width: 1rem;
-  --icon-position: 0.75rem;
+  @include inputs;
+  @include light-scheme;
 
   --box-shadow:
     0.0145rem 0.029rem 0.174rem oklch(from #000 l c h / 0.01),
@@ -35,14 +32,34 @@
 
   @media (prefers-color-scheme: dark) {
     :root {
-      @include darkSchemeVars();
+      @include dark-scheme;
     }
+  }
+
+  // Colours are derived at the root and again at every .retheme boundary.
+  // Between boundaries they are inherited, which keeps restyles cheap and lets
+  // a derived colour set on an element reach its whole subtree. Set an input on
+  // an element and add .retheme to re-theme everything inside it. Components
+  // that set an input themselves, such as error fields and disabled states,
+  // @extend .retheme, so they share this one rule.
+  // One rule for every boundary. Components that set an input themselves
+  // @extend .retheme, which appends their selectors to this list rather than
+  // copying the block. Inherited text arrives already resolved, so a boundary
+  // re-applies it here too.
+  // :where() keeps this rule at zero specificity. Components extend .retheme,
+  // and in the classless build their extended selectors can be specific enough
+  // that this re-applied text colour beat their own: a classless .contrast
+  // button got dark text on its grey fill. At zero specificity, any colour a
+  // component sets wins, and this only fills in where none is set.
+  :where(:root, [data-color-scheme], .retheme) {
+    @include derived;
+    color: var(--fg);
   }
 
   body {
     scrollbar-width: thin;
-    scrollbar-color: cur-color(var(--surface-lc-4))
-      cur-color(var(--surface-lc-1)); /* thumb and track */
+    scrollbar-color: var(--line)
+      var(--bg); /* thumb and track */
   }
 
   ::-webkit-scrollbar-button {
@@ -54,19 +71,19 @@
 
 @mixin schemes {
   [data-color-scheme="dark"] {
-    @include darkSchemeVars();
-    background-color: cur-color(var(--surface-lc-1));
-    color: cur-color(var(--text-lc-1));
+    @include dark-scheme;
+    background-color: var(--bg);
+    color: var(--fg);
   }
 
   [data-color-scheme="light"] {
-    @include lightSchemeVars();
-    background-color: cur-color(var(--surface-lc-1));
-    color: cur-color(var(--text-lc-1));
+    @include light-scheme;
+    background-color: var(--bg);
+    color: var(--fg);
   }
 
   *:focus-visible {
-    outline: 0.15rem solid cur-color(var(--surface-lc-3));
+    outline: 0.15rem solid var(--line);
     border-radius: var(--border-radius);
   }
 
@@ -76,20 +93,20 @@
       sans-serif;
     font-size: 18px;
 
-    background-color: cur-color(var(--surface-lc-1));
+    background-color: var(--bg);
 
     min-height: 100vh;
 
-    color: cur-color(var(--text-lc-1));
+    color: var(--fg);
 
     * {
-      outline-color: cur-color(var(--surface-lc-3));
+      outline-color: var(--line);
     }
 
     *::selection {
       background-color: color-mix(
         in oklch,
-        cur-color(var(--surface-lc-3)),
+        var(--surface-strong),
         transparent 50%
       );
     }

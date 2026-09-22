@@ -14,13 +14,13 @@
     padding: calc(var(--padding) / 2) var(--padding);
     margin-bottom: 1rem;
 
-    border: var(--border-width) solid get-border-color();
+    border: var(--border-width) solid var(--line);
     border-radius: var(--border-radius);
-    background-color: cur-color(var(--surface-lc-2));
-    color: cur-color(var(--text-lc-1));
+    background-color: var(--surface);
+    color: var(--fg);
   }
 
   .alert-error {
-    --color: var(--error-color);
+    @extend .error;
   }
 }

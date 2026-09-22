@@ -8,6 +8,8 @@
 // the current one.
 @mixin styles {
   .pagination {
+    --pagination-size: 2.25rem;
+
     ul {
       display: flex;
       flex-wrap: wrap;
@@ -23,6 +25,18 @@
       margin: 0;
     }
 
+    // A full-size .btn is 55px tall, which made single-digit pages tall, narrow
+    // rectangles. Page buttons are compact, and a number is a square.
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: var(--pagination-size);
+      height: var(--pagination-size);
+      padding: 0 calc(var(--padding) * 0.75);
+      line-height: 1;
+    }
+
     :is([aria-current], [data-current]) {
       @include button.btn-primary;
     }
@@ -30,6 +44,6 @@
 
   .pagination-ellipsis {
     padding: 0 calc(var(--padding) / 4);
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 }

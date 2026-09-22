@@ -13,9 +13,9 @@
     gap: calc(var(--padding) / 8);
 
     padding: calc(var(--padding) / 8);
-    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border: var(--border-width) solid var(--divider);
     border-radius: var(--border-radius);
-    background-color: cur-color(var(--surface-lc-2));
+    background-color: var(--surface);
   }
 
   .segmented-item {
@@ -28,7 +28,7 @@
 
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
     border-radius: var(--border-radius);
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
     cursor: pointer;
 
     input {
@@ -39,15 +39,35 @@
       cursor: pointer;
     }
 
+    // An item is a <label> wrapping a radio, so in the classless build it also
+    // matches the label rules, which lay a radio out as a visible form row. These
+    // outrank them: the item keeps its own layout and no bottom margin, and the
+    // radio stays an invisible layer over the item instead of taking up space.
+    .segmented & {
+      display: inline-flex;
+      gap: calc(var(--padding) / 4);
+      margin: 0;
+
+      > input:is([type="radio"], .radio) {
+        position: absolute;
+        inset: 0;
+        width: auto;
+        height: auto;
+        margin: 0;
+        border: 0;
+        appearance: none;
+      }
+    }
+
     &:has(input:checked),
     &:is([data-checked], .segmented-item-active) {
-      color: cur-color(var(--text-lc-1));
+      color: var(--fg);
     }
 
     // Without an indicator element, the selected item paints its own background.
     .segmented:not(:has(.segmented-indicator))
       &:is(:has(input:checked), [data-checked], .segmented-item-active) {
-      background-color: cur-color(var(--surface-lc-1));
+      background-color: var(--bg);
     }
   }
 
@@ -58,7 +78,7 @@
     bottom: calc(var(--padding) / 8);
 
     border-radius: var(--border-radius);
-    background-color: cur-color(var(--surface-lc-1));
-    transition: all 250ms;
+    background-color: var(--bg);
+    transition: all var(--duration-change);
   }
 }

@@ -1,0 +1,88 @@
+@use "../vars.scss" as *;
+
+// Checkboxes and radios. Their box, border and colours come from the shared
+// control rule in _field.scss; these only shape them and draw the mark.
+@mixin styles {
+  .checkbox {
+    margin: 0;
+    appearance: none;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: calc(var(--border-radius) / 2);
+    display: inline-block;
+    position: relative;
+    cursor: pointer;
+
+    // The box fills in as it is checked, and the tick pops in from 40% with a
+    // slight overshoot, settling at its normal size. Checked, it rests exactly
+    // where it always has.
+    @media (prefers-reduced-motion: no-preference) {
+      transition:
+        background-color var(--duration-change),
+        border-color var(--duration-change);
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0.55rem;
+      left: 0.6rem;
+      width: 0.4rem;
+      height: 0.8rem;
+      border: solid var(--bg);
+      border-width: 0 var(--border-width) var(--border-width) 0;
+      transform: translate(-50%, -50%) rotate(45deg) scale(0.4);
+      opacity: 0;
+      transition: opacity var(--duration-change);
+
+      @media (prefers-reduced-motion: no-preference) {
+        transition:
+          opacity var(--duration-change),
+          transform var(--duration-change) cubic-bezier(0.34, 1.56, 0.64, 1);
+      }
+    }
+
+    &:checked {
+      background-color: var(--line);
+
+      &::after {
+        opacity: 1;
+        transform: translate(-50%, -50%) rotate(45deg) scale(1);
+      }
+    }
+  }
+
+  // Drawn here rather than inside .label, so a radio looks the same wherever it
+  // sits.
+  .radio {
+    cursor: pointer;
+    appearance: none;
+    width: 1rem;
+    height: 1rem;
+    border: var(--border-width) solid var(--line);
+    border-radius: 50%;
+    position: relative;
+    box-sizing: border-box;
+    display: inline-block;
+    margin: 0;
+
+    &::after {
+      content: "";
+      position: absolute;
+      width: 1rem;
+      height: 1rem;
+      top: 0;
+      left: 0;
+      border: var(--border-width) solid var(--bg);
+      box-sizing: border-box;
+      background: var(--line);
+      border-radius: 50%;
+      opacity: 0;
+      transition: opacity var(--duration-change);
+    }
+
+    &:checked::after {
+      opacity: 1;
+    }
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "@sparkstone/css",
-  "version": "2.1.0",
+  "version": "3.0.0-alpha.0",
   "description": "A minimal CSS framework inspired by Pico.css, with OKLCH-powered theming, light/dark mode, and both class-based and classless builds.",
   "main": "dist/index.css",
   "style": "dist/index.css",
@@ -30,6 +30,9 @@
   "scripts": {
     "dev": "node dev.js",
     "build": "sass src/:dist/ && node build.js",
+    "test": "pnpm run build && playwright test --project=unit",
+    "test:visual": "pnpm run build && playwright test --project=visual",
+    "test:update": "pnpm run build && playwright test --project=visual --update-snapshots",
     "prepublishOnly": "pnpm build"
   },
   "keywords": [
@@ -55,11 +58,14 @@
   "homepage": "https://github.com/Sparkstonepdx/css#readme",
   "packageManager": "pnpm@12.4.2",
   "devDependencies": {
+    "@playwright/test": "1.56.0",
     "chokidar": "^4.0.3",
     "fast-glob": "^3.3.3",
     "live-server": "^1.2.2",
     "nunjucks": "^3.2.4",
+    "pixelmatch": "^7.2.0",
     "pkg-pr-new": "^0.0.88",
+    "pngjs": "^7.0.0",
     "sass": "^1.104.1",
     "surge": "0.44.3",
     "vite": "^8.3.0"

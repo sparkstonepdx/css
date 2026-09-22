@@ -4,7 +4,11 @@
 @use "card";
 @use "dialog";
 @use "fieldset";
-@use "input";
+@use "field";
+@use "checkbox";
+@use "file-input";
+@use "color-input";
+@use "range";
 @use "label";
 @use "layout";
 @use "link";
@@ -40,7 +44,11 @@
 // $classless adds the bare-element typography rules at the point where .prose
 // sits, so both builds keep the same cascade order.
 @mixin styles($classless: false) {
-  @include input.styles;
+  @include field.styles;
+  @include checkbox.styles;
+  @include file-input.styles;
+  @include color-input.styles;
+  @include range.styles;
   @include base.root;
   @include base.schemes;
   @include link.styles;

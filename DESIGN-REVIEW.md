@@ -1,5 +1,40 @@
 # Design review
 
+## 3.0 colour engine (`src/vars.scss`) — not signed off
+
+The nine-step scale is gone. Four inputs, set on any `.retheme` element,
+re-theme its whole subtree: `--primary` (or 2.x's `--color`), `--secondary`,
+`--neutral`, `--error`. The derived colours are computed at the root and at each
+`.retheme` boundary, registered with `@property` so they inherit as finished
+colours; components that set an input themselves `@extend .retheme`. Colours keep
+the input's hue and chroma and pin only the lightness.
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Lightness and chroma per role | taken from 2.x's scale stops, so a vivid brand looks as it did | the caps are per scheme, since the dark end of the scale carries more chroma |
+| Surfaces and rules | a tinted mid-tone (`--tint`) mixed into `--bg`, 30% and 63% | solid, not translucent, so text on them has one contrast ratio wherever they sit, over images included. Lands on 2.x's surface stops. Nested surfaces no longer stack |
+| `--line` | lightness 0.62 light, 0.54 dark | **Deliberate change from 2.x**: 0.695 failed WCAG 1.4.11 (3:1 for UI boundaries) at about 2.7 for every brand tested. Borders, focus rings, active underlines and fills are slightly darker |
+| Disabled | `--chroma: 0` plus `@extend .retheme` | replaces 29 re-bound variables per disabled selector, and a disabled element's own text now greys too |
+| `.retheme` | the boundary class, from sparkcss | re-derivation is opt-in: overriding a derived colour such as `--surface` reaches the whole subtree, and restyles are 8% faster than 2.x (median 38.2 against 41.5 ms over 5,000 elements) |
+| Tooltip | `--fg` background, `--bg` text: a true inverse | the mid-tone it had measured 3.47:1 in the worst case (2.x's was similar); the inverse measures 18.37 |
+| Placeholder text | `--fg-muted` mixed 70% into the page | the smallest mix that passes 4.5:1 for every brand in both schemes (lowest 4.78); 50% measured 2.86. Still reads lighter than an entered value |
+| Dialog open animation | fades in from `scale(1.25)` over `--duration-enter`, 400ms, off under reduced motion | your keyframes, from your Pico project. 400ms is Material 3's duration for an element entering the screen; it was 550ms. State changes use `--duration-change` (200ms, your 1.x value): toggles, ticks, radio dots, and tab and segmented indicators. Loops (spinner 0.7s, skeleton 1.4s) keep their own |
+| Dialog backdrop and close | blur and backdrop fade in over `--duration-change`; closing fades the dialog out over the same | the exit needs `transition-behavior: allow-discrete` (Chrome 117+, Safari 17.5+, Firefox 129+); older browsers close instantly. Firefox lacks `overlay`, so its exit may cut short |
+| Panel entrance | dropdown, popover and tooltip fade in from `scale(0.96)` over `--duration-change`, from the top edge (tooltips from the centre) | plays whenever the panel starts rendering, so it works however it is shown. **Open**: panels arrive on screen, so arguably they belong on `--duration-enter`; at 400ms a dropdown felt heavy, so they use `--duration-change` |
+| Micro-interactions | `.btn` eases colour changes and grows to `scale(1.02)` while pressed, your call over the earlier shrink, on Material 3's standard curve `cubic-bezier(0.2, 0, 0, 1)`: 41% of the way there 25ms after the click, where the default `ease` managed 7%; menu rows, tabs and collapse titles ease their hover | colour transitions also animate a scheme switch on those elements |
+| Toast entrance | each message rises `0.75rem` and fades in over `--duration-enter` | no swipe-to-dismiss without a component library |
+| Collapse height | a native `<details>` animates its height via `::details-content` and `interpolate-size` | Chromium only today; elsewhere the rule is dropped and it opens instantly |
+| Checkbox | the box fills over `--duration-change`; the tick pops in from `scale(0.4)` with a slight overshoot, `cubic-bezier(0.34, 1.56, 0.64, 1)`, peaking at about 1.05 | the first easing curve in the framework other than the browser defaults. Checked, the tick rests exactly where it did |
+| Row state | `.menu-active` also matches `:focus` and `[data-highlighted]`; `.menu-selected` also matches `[aria-selected="true"]` and `[aria-checked="true"]` | the class build couldn't show a headless library's highlight at all, since none exposes which row is highlighted. Same generic-state approach as disabled and error |
+| Select text | one line with an ellipsis; chevron `0.75rem` from the right edge, `2.25rem` reserved for it | your values. Date and time inputs keep their own spacing for their picker button |
+| Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
+
+Measured across ten brand colours in both schemes (rebeccapurple, tomato,
+#c2410c, #6b7c59, slategrey, #1d4ed8, #ffd400, #00ff88, hotpink, black): every
+text pairing clears 4.5:1, the lowest being `--link` at 5.61, and `--line` clears
+3:1, the lowest being 3.25.
+
+
 Fixed since the last pass: a label's text never turned red when its control was
 invalid. The rule set `--color` on the label's `<p>`, but the `<p>` inherits an
 already-resolved colour from `body`, so nothing read it. It now sets its own
@@ -48,7 +83,7 @@ file.
 | --- | --- | --- |
 | `.tab-indicator` colour | `--surface-lc-4` | same as the active underline it replaces |
 | `.tab-indicator` thickness | `--border-width` | |
-| `.tab-indicator` transition | `all 250ms` | taken from Kobalte's own docs example; the framework has no motion convention yet, and this is the first animated thing in it |
+| `.tab-indicator` transition | `all var(--duration-change)`, 200ms | shared with every other state change |
 | Indicator vs underline | when an indicator is present, the active tab drops its own underline | |
 | Vertical orientation | bottom rule becomes a right rule, indicator moves to the trailing edge | |
 
@@ -61,7 +96,7 @@ file.
 | `.dropdown-content` padding | `--padding / 4` | just enough that a highlighted row's corners clear the panel edge |
 | `.dropdown-content` z-index | `50` | **Questionable**: the framework's only other z-index is 999 on `.dialog`. Two magic numbers with nothing between them |
 | `.menu` gap | `--padding / 8` | |
-| `.menu-item` padding | `--padding / 3` and `--padding / 2` | tighter than `.btn`, since rows stack |
+| `.menu-item` padding | `--padding / 2` block, `--padding` inline | your values. Rows are 42px tall; menubar triggers use the same class, so they widen too |
 | `.menu-item` hover | `--surface-lc-2` | same hover surface as `.tab` |
 | `.menu-active` | `--surface-lc-2`, no colour change | **Questionable**: identical to hover, so a highlighted row and a hovered row are indistinguishable. Kobalte's own example inverts the row instead |
 | `.menu-disabled` | `apply-greyscale()`, text at `--text-lc-5`, `pointer-events: none` | matches `.tab-disabled`, your call |
@@ -76,7 +111,7 @@ file.
 | Size | `--toggle-height: 1.5rem`, track 1.75x that | matches `.checkbox`'s 1.5rem box |
 | Track | `--surface-lc-2`, `--surface-lc-4` when on, border from `get-border-color()` | |
 | Knob | `--surface-lc-1` | |
-| Motion | `150ms` on background and on the knob's transform | **Questionable**: the tab indicator animates at 250ms. Two durations, no scale |
+| Motion | `var(--duration-change)`, 200ms | shared with every other state change; see the motion note under 3.0 |
 | One-element form | knob drawn as a radial gradient and slid with `background-position` | a checkbox has no child to move and no usable `::before`. **Questionable**: a gradient knob will not take a border or a shadow if the design ever wants one |
 
 ## Tooltip (`src/components/_tooltip.scss`) — not signed off
@@ -107,6 +142,7 @@ file.
 
 | Decision | Proposed | Note |
 | --- | --- | --- |
+| Menu row states | highlighted also on `:focus` and `[data-highlighted]`; selected also on `[aria-selected="true"]` and `[aria-checked="true"]` | the same generic-states approach as disabled and error: a headless library never exposes which row is highlighted, so the classes alone could not follow it |
 | `.menu-selected` | a detached pill in `--surface-lc-4`, inset to the middle half of the row | an inset shadow bent around the row's rounded corners. **Alternative**: a trailing check mark, which most native selects use |
 | Kobalte trigger | takes `.select`'s field styling, chevron included; `Select.Icon` is left out | it is a button that should read as a form control, and one chevron source means both builds match |
 | Disabled `.select` | `opacity: 0.7`, `cursor: default` | Chrome already fades a disabled native select to 0.7; pinning it makes a button trigger and other browsers match. **Questionable**: this is the only disabled field that fades, since `.input` and `.textarea` only lose chroma |
@@ -181,6 +217,7 @@ file.
 | Decision | Proposed | Note |
 | --- | --- | --- |
 | Row | `--padding / 4` gaps, wraps | |
+| Page buttons | 2.25rem tall (`--pagination-size`), `--padding * 0.75` either side, numbers at least as wide as they are tall | a full-size `.btn` made them 55px tall and single digits tall, narrow rectangles (46 by 55); they are now 38 by 36 |
 | Current page | applies the `btn-primary` block from `_button.scss` | so a row of `.btn-secondary` reads with one filled button, from one definition |
 | Ellipsis | `--text-lc-3` | |
 
@@ -191,9 +228,9 @@ file.
 | Track | `--surface-lc-2` with a matching border, `--border-radius` | the inverse of `.tabs`, which has a rule rather than a fill |
 | Item | `--text-lc-3`, `--text-lc-1` when checked | no weight change, so the item does not shift under the indicator |
 | Checked fill | `--surface-lc-1`, from the indicator when one is present, otherwise from the item | same pattern as the tab indicator |
-| Indicator motion | `all 250ms` | matches the tab indicator, not the toggle's 150ms |
+| Indicator motion | `all var(--duration-change)`, 200ms | shared with every other state change |
 
-## Range (`src/components/_input.scss`) — not signed off
+## Range (`src/components/_range.scss`) — not signed off
 
 `.range` used to be a native range on the field surface: a bordered box with the
 browser's own track and thumb inside. It is now painted with the slider's rail,
