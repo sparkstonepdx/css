@@ -117,10 +117,10 @@ $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="tim
     &:not([multiple], [size]) {
       @extend %field-icon;
       background-image: var(--icon-chevron);
-      // The chevron sits 1.25rem to 2.25rem from the right edge; 3rem keeps
-      // text 0.75rem clear of it. Date and time inputs keep 2.5rem, since their
-      // invisible picker button is positioned to it.
-      padding-inline-end: 3rem;
+      // The chevron sits 0.75rem from the right edge. Date and time inputs keep
+      // their own spacing, since their invisible picker button is positioned to it.
+      padding-inline-end: 2.25rem;
+      background-position: center right 0.75rem;
     }
 
     // Chrome fades a disabled native select to 0.7 in its own stylesheet and
