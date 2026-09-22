@@ -762,7 +762,7 @@
     [type=submit],
     [type=reset],
     [role=button]) {
-      transform: scale(0.98);
+      transform: scale(1.02);
     }
   }
   .btn-secondary, *:is(button,

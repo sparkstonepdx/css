@@ -683,7 +683,7 @@
       transition: background-color var(--duration-change), border-color var(--duration-change), color var(--duration-change), transform var(--duration-change);
     }
     .btn:active {
-      transform: scale(0.98);
+      transform: scale(1.02);
     }
   }
   .btn-secondary {

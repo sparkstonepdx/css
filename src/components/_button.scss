@@ -28,8 +28,10 @@
         color var(--duration-change),
         transform var(--duration-change);
 
+      // Grows slightly while pressed, rising to meet the click rather than
+      // sinking away from it.
       &:active {
-        transform: scale(0.98);
+        transform: scale(1.02);
       }
     }
   }
