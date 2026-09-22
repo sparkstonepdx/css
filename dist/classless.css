@@ -812,6 +812,7 @@
     border: 0;
     background: 0;
     color: var(--fg);
+    overflow-x: hidden;
   }
   .dialog hr, dialog hr {
     border-color: var(--divider);
@@ -840,6 +841,12 @@
     overflow: auto;
     color: var(--fg);
   }
+  @media (prefers-reduced-motion: no-preference) {
+    .dialog-box, dialog > article,
+    dialog > form > article {
+      animation: sparkstone-dialog-in 550ms forwards;
+    }
+  }
   @media (min-width: 576px) {
     .dialog-box, dialog > article,
     dialog > form > article {
@@ -850,6 +857,12 @@
     .dialog-box, dialog > article,
     dialog > form > article {
       max-width: 700px;
+    }
+  }
+  @keyframes sparkstone-dialog-in {
+    from {
+      opacity: 0;
+      transform: scale(1.25);
     }
   }
   .dialog-actions, dialog > article > footer,

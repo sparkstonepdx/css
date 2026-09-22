@@ -20,6 +20,8 @@
     border: 0;
     background: 0;
     color: var(--fg);
+    // The box scales in from 125%, which would otherwise scroll sideways.
+    overflow-x: hidden;
 
     hr {
       border-color: var(--divider);
@@ -50,12 +52,26 @@
     overflow: auto;
     color: var(--fg);
 
+    // Plays every time the dialog opens: a closed dialog's contents are not
+    // rendered, and an animation restarts whenever its element starts rendering.
+    // So it sits on the box itself, with no dialog[open] ancestor to extend.
+    @media (prefers-reduced-motion: no-preference) {
+      animation: sparkstone-dialog-in 550ms forwards;
+    }
+
     @media (min-width: 576px) {
       max-width: 510px;
     }
 
     @media (min-width: 768px) {
       max-width: 700px;
+    }
+  }
+
+  @keyframes sparkstone-dialog-in {
+    from {
+      opacity: 0;
+      transform: scale(1.25);
     }
   }
 
