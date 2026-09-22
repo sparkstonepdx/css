@@ -26,6 +26,7 @@ the input's hue and chroma and pin only the lightness.
 | Collapse height | a native `<details>` animates its height via `::details-content` and `interpolate-size` | Chromium only today; elsewhere the rule is dropped and it opens instantly |
 | Checkbox | the box fills over `--duration-change`; the tick pops in from `scale(0.4)` with a slight overshoot, `cubic-bezier(0.34, 1.56, 0.64, 1)`, peaking at about 1.05 | the first easing curve in the framework other than the browser defaults. Checked, the tick rests exactly where it did |
 | Row state | `.menu-active` also matches `:focus` and `[data-highlighted]`; `.menu-selected` also matches `[aria-selected="true"]` and `[aria-checked="true"]` | the class build couldn't show a headless library's highlight at all, since none exposes which row is highlighted. Same generic-state approach as disabled and error |
+| Select text | one line with an ellipsis; `3rem` reserved on the right, leaving `0.75rem` between text and chevron | the reserve was `2.5rem`, a 4px gap, so truncated text ran into the chevron; a `<button>` trigger also wrapped onto a second line. Date and time inputs keep `2.5rem` for their picker button |
 | Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
 
 Measured across ten brand colours in both schemes (rebeccapurple, tomato,
