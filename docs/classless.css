@@ -391,37 +391,19 @@
       --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
     }
   }
-  :root,
-  [data-color-scheme],
-  .retheme,
-  .error,
-  .alert-error,
-  .text-error,
-  small.error,
-  small.input-error,
+  :where(:root, [data-color-scheme], .retheme, .error, .alert-error, .text-error, small.error, small.input-error,
   small.select-error,
-  small.textarea-error,
-  small.text-error,
-  small.alert-error,
-  .input-error,
+  small.textarea-error, small.text-error, small.alert-error, .input-error,
   .select-error,
-  .textarea-error,
-  .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
-  label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
-  [aria-invalid=true],
-  .disabled,
-  .menu-disabled,
-  .tab-disabled,
-  .btn-disabled,
+  .textarea-error, .label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  [aria-invalid=true], .disabled, .menu-disabled, .tab-disabled, .btn-disabled,
   :disabled,
   [data-disabled],
-  [aria-disabled=true],
-  .btn-neutral,
-  *:is(button,
+  [aria-disabled=true], .btn-neutral, *:is(button,
   [type=button],
   [type=submit],
   [type=reset],
-  [role=button]).contrast {
+  [role=button]).contrast) {
     --primary-base: var(--primary, var(--color, rebeccapurple));
     --neutral-base: var(--neutral, var(--primary-base));
     --secondary-base: var(--secondary, oklch(from var(--primary-base) l c calc(h + 180)));

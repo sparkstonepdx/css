@@ -46,9 +46,12 @@
   // @extend .retheme, which appends their selectors to this list rather than
   // copying the block. Inherited text arrives already resolved, so a boundary
   // re-applies it here too.
-  :root,
-  [data-color-scheme],
-  .retheme {
+  // :where() keeps this rule at zero specificity. Components extend .retheme,
+  // and in the classless build their extended selectors can be specific enough
+  // that this re-applied text colour beat their own: a classless .contrast
+  // button got dark text on its grey fill. At zero specificity, any colour a
+  // component sets wins, and this only fills in where none is set.
+  :where(:root, [data-color-scheme], .retheme) {
     @include derived;
     color: var(--fg);
   }
