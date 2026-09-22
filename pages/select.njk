@@ -66,8 +66,9 @@
 <p>
   <a href="https://kobalte.dev/docs/core/components/select" target="_blank" rel="noreferrer">Kobalte's Select</a>
   is a button plus a listbox, not a native <code>&lt;select&gt;</code>. The Kobalte
-  layer gives the trigger the field styling above, and the listbox the dropdown
-  panel, so the same theme covers both.
+  layer gives the trigger the field styling above and styles the listbox and its
+  options. <code>Select.Content</code>, the panel around the listbox, has no role
+  of its own, so it takes <code>.dropdown-content</code> by hand.
 </p>
 {% set classless %}
 <select class="select">
@@ -80,11 +81,13 @@
   <button aria-haspopup="listbox" aria-expanded="true" data-expanded style="margin-bottom: 0.25rem">
     <span>Production</span>
   </button>
-  <ul role="listbox">
-    <li role="option">Development</li>
-    <li role="option" data-highlighted>Staging</li>
-    <li role="option" data-selected>Production</li>
-  </ul>
+  <div class="dropdown-content" data-expanded>
+    <ul role="listbox">
+      <li role="option">Development</li>
+      <li role="option" data-highlighted>Staging</li>
+      <li role="option" data-selected aria-selected="true">Production</li>
+    </ul>
+  </div>
 </div>
 {% endset %}
 {% set kobalte %}
@@ -104,7 +107,7 @@ import { Select } from "@kobalte/core/select";
     <Select.Value>{state => state.selectedOption()}</Select.Value>
   </Select.Trigger>
   <Select.Portal>
-    <Select.Content>
+    <Select.Content class="dropdown-content">
       <Select.Listbox />
     </Select.Content>
   </Select.Portal>
@@ -117,6 +120,40 @@ import { Select } from "@kobalte/core/select";
     one the native select gets.
   </small>
 </p>
+
+<h3>On the class-based build</h3>
+<p>
+  Put the classes on the parts yourself. The rows follow Kobalte's state without
+  any extra classes: a highlighted row matches <code>data-highlighted</code> and a
+  selected one <code>aria-selected</code>, which is also what Radix and Ark set.
+  For a compact trigger, such as a version switcher, use a button and keep
+  <code>Select.Icon</code>; for a form field, use <code>.select</code> and leave
+  it out, since the field draws its own chevron.
+</p>
+{% call m.snippet("select-class-build", "jsx") %}{% raw %}
+<Select
+  options={versions()}
+  optionValue="id"
+  optionTextValue="label"
+  value={current()}
+  onChange={setCurrent}
+  itemComponent={props => (
+    <Select.Item item={props.item} class="menu-item">
+      <Select.ItemLabel>{props.item.rawValue.label}</Select.ItemLabel>
+    </Select.Item>
+  )}
+>
+  <Select.Trigger class="btn btn-secondary" aria-label="Version">
+    <Select.Value>{state => state.selectedOption().label}</Select.Value>
+    <Select.Icon>▾</Select.Icon>
+  </Select.Trigger>
+  <Select.Portal>
+    <Select.Content class="dropdown-content">
+      <Select.Listbox class="menu" />
+    </Select.Content>
+  </Select.Portal>
+</Select>
+{% endraw %}{% endcall %}
 
 <h3>Disabled</h3>
 {% set classless %}

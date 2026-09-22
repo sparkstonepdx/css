@@ -519,8 +519,9 @@
 <p>
   <a href="https://kobalte.dev/docs/core/components/select" target="_blank" rel="noreferrer">Kobalte's Select</a>
   is a button plus a listbox, not a native <code>&lt;select&gt;</code>. The Kobalte
-  layer gives the trigger the field styling above, and the listbox the dropdown
-  panel, so the same theme covers both.
+  layer gives the trigger the field styling above and styles the listbox and its
+  options. <code>Select.Content</code>, the panel around the listbox, has no role
+  of its own, so it takes <code>.dropdown-content</code> by hand.
 </p>
 
 
@@ -569,7 +570,7 @@
     &lt;Select.Value&gt;{state =&gt; state.selectedOption()}&lt;/Select.Value&gt;
   &lt;/Select.Trigger&gt;
   &lt;Select.Portal&gt;
-    &lt;Select.Content&gt;
+    &lt;Select.Content class=&quot;dropdown-content&quot;&gt;
       &lt;Select.Listbox /&gt;
     &lt;/Select.Content&gt;
   &lt;/Select.Portal&gt;
@@ -578,11 +579,13 @@
   &lt;button aria-haspopup=&quot;listbox&quot; aria-expanded=&quot;true&quot; data-expanded style=&quot;margin-bottom: 0.25rem&quot;&gt;
     &lt;span&gt;Production&lt;/span&gt;
   &lt;/button&gt;
-  &lt;ul role=&quot;listbox&quot;&gt;
-    &lt;li role=&quot;option&quot;&gt;Development&lt;/li&gt;
-    &lt;li role=&quot;option&quot; data-highlighted&gt;Staging&lt;/li&gt;
-    &lt;li role=&quot;option&quot; data-selected&gt;Production&lt;/li&gt;
-  &lt;/ul&gt;
+  &lt;div class=&quot;dropdown-content&quot; data-expanded&gt;
+    &lt;ul role=&quot;listbox&quot;&gt;
+      &lt;li role=&quot;option&quot;&gt;Development&lt;/li&gt;
+      &lt;li role=&quot;option&quot; data-highlighted&gt;Staging&lt;/li&gt;
+      &lt;li role=&quot;option&quot; data-selected aria-selected=&quot;true&quot;&gt;Production&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/div&gt;
 &lt;/div&gt;</code></pre>
     
   </div>
@@ -594,6 +597,43 @@
     one the native select gets.
   </small>
 </p>
+
+<h3>On the class-based build</h3>
+<p>
+  Put the classes on the parts yourself. The rows follow Kobalte's state without
+  any extra classes: a highlighted row matches <code>data-highlighted</code> and a
+  selected one <code>aria-selected</code>, which is also what Radix and Ark set.
+  For a compact trigger, such as a version switcher, use a button and keep
+  <code>Select.Icon</code>; for a form field, use <code>.select</code> and leave
+  it out, since the field draws its own chevron.
+</p>
+
+<div class="code-block standalone">
+  <button class="ghost copy-button" data-target="select-class-build">Copy</button>
+  <pre><code id="select-class-build" class="language-jsx">&lt;Select
+  options={versions()}
+  optionValue=&quot;id&quot;
+  optionTextValue=&quot;label&quot;
+  value={current()}
+  onChange={setCurrent}
+  itemComponent={props =&gt; (
+    &lt;Select.Item item={props.item} class=&quot;menu-item&quot;&gt;
+      &lt;Select.ItemLabel&gt;{props.item.rawValue.label}&lt;/Select.ItemLabel&gt;
+    &lt;/Select.Item&gt;
+  )}
+&gt;
+  &lt;Select.Trigger class=&quot;btn btn-secondary&quot; aria-label=&quot;Version&quot;&gt;
+    &lt;Select.Value&gt;{state =&gt; state.selectedOption().label}&lt;/Select.Value&gt;
+    &lt;Select.Icon&gt;▾&lt;/Select.Icon&gt;
+  &lt;/Select.Trigger&gt;
+  &lt;Select.Portal&gt;
+    &lt;Select.Content class=&quot;dropdown-content&quot;&gt;
+      &lt;Select.Listbox class=&quot;menu&quot; /&gt;
+    &lt;/Select.Content&gt;
+  &lt;/Select.Portal&gt;
+&lt;/Select&gt;</code></pre>
+</div>
+
 
 <h3>Disabled</h3>
 

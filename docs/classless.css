@@ -1066,13 +1066,16 @@
   .menu-item:hover {
     background-color: var(--surface);
   }
-  .menu-active {
+  .menu-active,
+  .menu-item:is(:focus, [data-highlighted]) {
     background-color: var(--surface);
   }
-  .menu-selected {
+  .menu-selected,
+  .menu-item:is([aria-selected=true], [aria-checked=true]) {
     position: relative;
   }
-  .menu-selected::before {
+  .menu-selected::before,
+  .menu-item:is([aria-selected=true], [aria-checked=true])::before {
     content: "";
     position: absolute;
     inset-block: 25%;

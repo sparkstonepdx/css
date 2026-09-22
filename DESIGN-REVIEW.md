@@ -25,6 +25,7 @@ the input's hue and chroma and pin only the lightness.
 | Toast entrance | each message rises `0.75rem` and fades in over `--duration-enter` | no swipe-to-dismiss without a component library |
 | Collapse height | a native `<details>` animates its height via `::details-content` and `interpolate-size` | Chromium only today; elsewhere the rule is dropped and it opens instantly |
 | Checkbox | the box fills over `--duration-change`; the tick pops in from `scale(0.4)` with a slight overshoot, `cubic-bezier(0.34, 1.56, 0.64, 1)`, peaking at about 1.05 | the first easing curve in the framework other than the browser defaults. Checked, the tick rests exactly where it did |
+| Row state | `.menu-active` also matches `:focus` and `[data-highlighted]`; `.menu-selected` also matches `[aria-selected="true"]` and `[aria-checked="true"]` | the class build couldn't show a headless library's highlight at all, since none exposes which row is highlighted. Same generic-state approach as disabled and error |
 | Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
 
 Measured across ten brand colours in both schemes (rebeccapurple, tomato,
@@ -140,6 +141,7 @@ file.
 
 | Decision | Proposed | Note |
 | --- | --- | --- |
+| Menu row states | highlighted also on `:focus` and `[data-highlighted]`; selected also on `[aria-selected="true"]` and `[aria-checked="true"]` | the same generic-states approach as disabled and error: a headless library never exposes which row is highlighted, so the classes alone could not follow it |
 | `.menu-selected` | a detached pill in `--surface-lc-4`, inset to the middle half of the row | an inset shadow bent around the row's rounded corners. **Alternative**: a trailing check mark, which most native selects use |
 | Kobalte trigger | takes `.select`'s field styling, chevron included; `Select.Icon` is left out | it is a button that should read as a form control, and one chevron source means both builds match |
 | Disabled `.select` | `opacity: 0.7`, `cursor: default` | Chrome already fades a disabled native select to 0.7; pinning it makes a button trigger and other browsers match. **Questionable**: this is the only disabled field that fades, since `.input` and `.textarea` only lose chroma |

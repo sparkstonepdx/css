@@ -1012,7 +1012,7 @@
   .tab-content:focus-visible, [role=tabpanel]:focus-visible {
     border-radius: var(--border-radius);
   }
-  .dropdown-content, [role=menu], [role=listbox] {
+  .dropdown-content, [role=menu] {
     min-width: 12rem;
     padding: calc(var(--padding) / 4);
     background-color: var(--bg);
@@ -1022,7 +1022,7 @@
     z-index: 50;
   }
   @media (prefers-reduced-motion: no-preference) {
-    .dropdown-content, [role=menu], [role=listbox] {
+    .dropdown-content, [role=menu] {
       transform-origin: top;
       animation: sparkstone-panel-in var(--duration-change) ease-out;
     }
@@ -1068,13 +1068,19 @@
   .menu-item:hover, :hover:is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option]) {
     background-color: var(--surface);
   }
-  .menu-active, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option]):is([data-highlighted], [data-expanded]) {
+  .menu-active, :is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option]):is([data-highlighted], [data-expanded]),
+  .menu-item:is(:focus, [data-highlighted]),
+  :is(:focus, [data-highlighted]):is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option]) {
     background-color: var(--surface);
   }
-  .menu-selected, [role=option][data-selected] {
+  .menu-selected, [role=option][data-selected],
+  .menu-item:is([aria-selected=true], [aria-checked=true]),
+  :is([aria-selected=true], [aria-checked=true]):is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option]) {
     position: relative;
   }
-  .menu-selected::before, [role=option][data-selected]::before {
+  .menu-selected::before, [role=option][data-selected]::before,
+  .menu-item:is([aria-selected=true], [aria-checked=true])::before,
+  :is([aria-selected=true], [aria-checked=true]):is([role=menuitem], [role=menuitemcheckbox], [role=menuitemradio], .menu-item, [role=option])::before {
     content: "";
     position: absolute;
     inset-block: 25%;

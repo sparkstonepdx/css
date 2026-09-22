@@ -86,7 +86,12 @@
     }
   }
 
-  .menu-active {
+  // A row is highlighted however it is marked: the class, focus, or the
+  // data-highlighted attribute that Kobalte, Radix and Ark all set. A headless
+  // library never exposes which row is highlighted, so a class alone could not
+  // follow it.
+  .menu-active,
+  .menu-item:is(:focus, [data-highlighted]) {
     background-color: var(--surface);
   }
 
@@ -96,7 +101,9 @@
   // the row does not change width. The bar is its own rounded pill, inset from
   // the row's top and bottom, because an inset shadow bent around the row's
   // rounded corners.
-  .menu-selected {
+  // Likewise selected: the class, or the ARIA state any listbox or menu sets.
+  .menu-selected,
+  .menu-item:is([aria-selected="true"], [aria-checked="true"]) {
     position: relative;
 
     &::before {

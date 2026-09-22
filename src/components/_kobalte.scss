@@ -148,8 +148,10 @@
     @extend .select;
   }
 
+  // The panel is Select.Content, a div around the listbox with no role of its
+  // own, so it takes .dropdown-content by hand. Binding the panel to the
+  // listbox drew a second bordered panel inside the first.
   [role="listbox"] {
-    @extend .dropdown-content;
     @extend .menu;
   }
 
