@@ -141,6 +141,18 @@ const selectTab = tab => {
     indicator.style.left = tab.offsetLeft + 'px';
   }
 };
+const placeSegmented = root => {
+  const indicator = root.querySelector('.segmented-indicator');
+  const item = [...root.querySelectorAll('.segmented-item')].find(i => i.querySelector('input:checked'));
+  if (!indicator || !item) return;
+  for (const i of root.querySelectorAll('.segmented-item')) i.toggleAttribute('data-checked', i === item);
+  Object.assign(indicator.style, { left: item.offsetLeft + 'px', width: item.offsetWidth + 'px' });
+};
+document.addEventListener('change', e => {
+  const root = e.target.closest('.segmented');
+  if (root) placeSegmented(root);
+});
+addEventListener('load', () => document.querySelectorAll('.segmented').forEach(placeSegmented));
 document.addEventListener('click', e => {
   const tab = e.target.closest('[role="tab"]');
   if (tab && !tab.hasAttribute('data-disabled')) selectTab(tab);

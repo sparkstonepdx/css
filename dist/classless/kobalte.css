@@ -1505,6 +1505,20 @@
     margin: 0;
     cursor: pointer;
   }
+  .segmented .segmented-item {
+    display: inline-flex;
+    gap: calc(var(--padding) / 4);
+    margin: 0;
+  }
+  .segmented .segmented-item > input:is([type=radio], .radio, input:where([type=radio])) {
+    position: absolute;
+    inset: 0;
+    width: auto;
+    height: auto;
+    margin: 0;
+    border: 0;
+    appearance: none;
+  }
   .segmented-item:has(input:checked), .segmented-item:is([data-checked], .segmented-item-active) {
     color: var(--fg);
   }

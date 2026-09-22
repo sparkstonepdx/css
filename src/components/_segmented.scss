@@ -39,6 +39,26 @@
       cursor: pointer;
     }
 
+    // An item is a <label> wrapping a radio, so in the classless build it also
+    // matches the label rules, which lay a radio out as a visible form row. These
+    // outrank them: the item keeps its own layout and no bottom margin, and the
+    // radio stays an invisible layer over the item instead of taking up space.
+    .segmented & {
+      display: inline-flex;
+      gap: calc(var(--padding) / 4);
+      margin: 0;
+
+      > input:is([type="radio"], .radio) {
+        position: absolute;
+        inset: 0;
+        width: auto;
+        height: auto;
+        margin: 0;
+        border: 0;
+        appearance: none;
+      }
+    }
+
     &:has(input:checked),
     &:is([data-checked], .segmented-item-active) {
       color: var(--fg);
