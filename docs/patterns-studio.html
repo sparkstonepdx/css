@@ -436,18 +436,62 @@
         
 <h1>Studio site sections</h1>
 <p class="lede">
-  Sections from a small studio's marketing site, modelled on
-  <a href="https://sparkstonepdx.com" target="_blank" rel="noreferrer">sparkstonepdx.com</a>.
-  Each one is a few components and a layout, and the notes under it say which
-  piece is doing which job. The rules behind them are on
+  Sections from
+  <a href="https://sparkstonepdx.com" target="_blank" rel="noreferrer">sparkstonepdx.com</a>,
+  rebuilt in the class build with the site's own structure and copy. Images are
+  left out: where the site shows a photo, these show the same block the site
+  uses for a post with no image. The rules behind them are on
   <a href="./composition.html">Composition</a>.
 </p>
 
 <section id="header">
-  <h2>Header and hero</h2>
+  <h2>Header</h2>
   <p>
-    A <code>.navbar</code> for the site links, then a hero: one heading, one
-    supporting sentence, one filled button.
+    The logo on the left, the section links and the booking link on the right.
+    On the site the bar is sticky and blurs what scrolls under it; on a phone the
+    links hide and a ghost menu button takes their place.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-header-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-header-classes" data-variant="classes">&lt;header class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-start&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;semantic&quot; aria-label=&quot;Home&quot;&gt;&lt;strong&gt;Sparkstone&lt;/strong&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;nav class=&quot;navbar-end&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Case Studies&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Products&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Blog&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Open Source&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Book a call&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Layout:</strong> the site pushes the links right with an empty <code>flex-grow</code> spacer. <code>.navbar-start</code> and <code>.navbar-end</code> do the same with auto margins, so the spacer goes.</li>
+    <li><strong>Actions:</strong> "Book a call" is a plain link in the header, the same weight as its neighbours. The filled button is saved for the hero.</li>
+  </ul>
+</section>
+
+<section id="hero">
+  <h2>Hero</h2>
+  <p>
+    A heading, one paragraph, one button. The site sets the heading at
+    <code>1.5rem</code> in its muted text colour, so it reads as a lead-in to the
+    paragraph rather than a headline.
   </p>
   
   
@@ -461,28 +505,13 @@
     <button class="ghost copy-button" data-target="studio-hero-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="studio-hero-classes" data-variant="classes">&lt;header class=&quot;navbar&quot;&gt;
-  &lt;div class=&quot;navbar-start&quot;&gt;
-    &lt;strong&gt;Sparkstone&lt;/strong&gt;
-  &lt;/div&gt;
-  &lt;nav class=&quot;navbar-end&quot;&gt;
-    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Case Studies&lt;/a&gt;
-    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Products&lt;/a&gt;
-    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Blog&lt;/a&gt;
-    &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Book a call&lt;/a&gt;
-  &lt;/nav&gt;
-&lt;/header&gt;
-
-&lt;section class=&quot;prose&quot; style=&quot;max-width: 40rem; padding: calc(var(--padding) * 3) 0&quot;&gt;
-  &lt;h1&gt;Custom software and websites for medical practices, law firms, and specialty contractors in Portland.&lt;/h1&gt;
-  &lt;p class=&quot;text-secondary&quot;&gt;
-    I&#39;m Adam. I run Sparkstone, a one-person software studio. I build the
-    systems your business actually runs on.
-  &lt;/p&gt;
-  &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Book a call&lt;/a&gt;
-  &lt;p class=&quot;text-secondary&quot; style=&quot;margin-top: var(--padding)&quot;&gt;
-    &lt;small&gt;Featured on Behind the Creative Curtain, NarwhalPod, and CreativeMornings&lt;/small&gt;
-  &lt;/p&gt;
+    <pre><code id="studio-hero-classes" data-variant="classes">&lt;section class=&quot;container prose&quot; style=&quot;max-width: 80ch&quot;&gt;
+  &lt;h1 class=&quot;text-secondary&quot; style=&quot;font-size: 1.5rem&quot;&gt;Custom software and websites for medical practices, law firms, and specialty contractors in Portland.&lt;/h1&gt;
+  &lt;p&gt;I&#39;m Adam. I run Sparkstone, a one-person software studio. I build the systems your business actually runs on: intake, scheduling, referral portals, client dashboards, and the sites that feed them. I work on a monthly retainer, so the person who built your systems is the one keeping them running.&lt;/p&gt;
+  &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn&quot;&gt;Book a call&lt;/a&gt;
+&lt;/section&gt;
+&lt;section class=&quot;container prose&quot; style=&quot;max-width: 80ch&quot;&gt;
+  &lt;p&gt;Featured on &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Behind the Creative Curtain&lt;/a&gt;, &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;NarwhalPod&lt;/a&gt;, and &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Creative Mornings&lt;/a&gt;&lt;/p&gt;
 &lt;/section&gt;</code></pre>
     
     
@@ -490,17 +519,16 @@
 </div>
 
   <ul>
-    <li><strong>Layout:</strong> <code>.navbar-start</code> and <code>.navbar-end</code> push apart. The links and the button share the end group's gap, so they line up with no extra classes.</li>
-    <li><strong>Actions:</strong> the header's call to action and the hero's are the same <code>.btn</code>. Nothing else on screen is filled, so the eye has one place to go.</li>
-    <li><strong>Text:</strong> <code>.prose</code> sits on the hero column, not the page, so it spaces the heading, lede and button without touching the navbar.</li>
+    <li><strong>Layout:</strong> every section on the site is its own <code>.container</code> capped at <code>80ch</code>, the reading measure, so sections stack with nothing wrapping them.</li>
+    <li><strong>Text:</strong> <code>.prose</code> sits on each container. It spaces the heading, paragraph and button, and gives each container a bottom margin to the next.</li>
   </ul>
 </section>
 
 <section id="services">
   <h2>Services</h2>
   <p>
-    Several offers of equal weight. They sit on <code>.card-border</code> so none
-    looks featured over the others.
+    Four services as cards in a wrapping row, then a card that sends anyone
+    still unsure to a call.
   </p>
   
   
@@ -516,19 +544,69 @@
   <div class="code-block">
     <pre><code id="studio-services-classes" data-variant="classes">&lt;section class=&quot;prose&quot;&gt;
   &lt;h2&gt;Services&lt;/h2&gt;
-  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: var(--padding)&quot;&gt;
-    &lt;div class=&quot;card-border&quot;&gt;
-      &lt;h3&gt;Custom applications&lt;/h3&gt;
-      &lt;p class=&quot;text-secondary&quot;&gt;The internal tool or portal you can&#39;t buy off the shelf.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;card-border&quot;&gt;
+  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 1rem; margin-bottom: 1rem&quot;&gt;
+    &lt;article class=&quot;card&quot;&gt;
+      &lt;h3&gt;Custom Applications&lt;/h3&gt;
+      &lt;p&gt;the internal tool or portal you can&#39;t buy off the shelf&lt;/p&gt;
+    &lt;/article&gt;
+    &lt;article class=&quot;card&quot;&gt;
       &lt;h3&gt;Project rescue&lt;/h3&gt;
-      &lt;p class=&quot;text-secondary&quot;&gt;Take over a build that stalled, or clean up after one.&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;card-border&quot;&gt;
-      &lt;h3&gt;Websites&lt;/h3&gt;
-      &lt;p class=&quot;text-secondary&quot;&gt;A site your staff can edit themselves, on a monthly retainer.&lt;/p&gt;
-    &lt;/div&gt;
+      &lt;p&gt;take over a build that stalled, or clean up after a vendor&lt;/p&gt;
+    &lt;/article&gt;
+    &lt;article class=&quot;card&quot;&gt;
+      &lt;h3&gt;Fractional CTO&lt;/h3&gt;
+      &lt;p&gt;support for teams that need direction, architecture, or product leadership without full-time overhead.&lt;/p&gt;
+    &lt;/article&gt;
+    &lt;article class=&quot;card&quot;&gt;
+      &lt;h3&gt;Technical review&lt;/h3&gt;
+      &lt;p&gt;a paid second opinion on a vendor&#39;s proposal before you sign&lt;/p&gt;
+    &lt;/article&gt;
+  &lt;/div&gt;
+  &lt;article class=&quot;card&quot; style=&quot;text-align: center; padding: 2rem&quot;&gt;
+    &lt;p&gt;Not sure which one fits? Let&#39;s talk it through&lt;/p&gt;
+    &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn&quot;&gt;Book a consultation&lt;/a&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Layout:</strong> a grid of columns at least <code>20rem</code> wide, so the four cards sit two by two inside the <code>80ch</code> measure and stack on a phone. <code>min(100%, 20rem)</code> stops a column overflowing a screen narrower than <code>20rem</code>.</li>
+    <li><strong>Surface:</strong> the call to action is the same <code>.card</code> as the services, centred, with double padding. The site also lays a faint radial highlight over it, left out here.</li>
+    <li><strong>Spacing:</strong> the grid is a <code>div</code>, which <code>.prose</code> does not space, so it carries its own <code>1rem</code> bottom margin, as on the site.</li>
+  </ul>
+</section>
+
+<section id="testimonials">
+  <h2>Testimonials</h2>
+  <p>
+    Quotes side by side, each attributed under its text.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-testimonials-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-testimonials-classes" data-variant="classes">&lt;section class=&quot;prose&quot;&gt;
+  &lt;h2&gt;Testimonials&lt;/h2&gt;
+  &lt;div class=&quot;flex flip&quot;&gt;
+    &lt;blockquote style=&quot;flex: 1&quot;&gt;
+      &lt;p&gt;I am forever grateful to liveframe for giving us the opportunity to see our big day from the perspective of our loved ones.&lt;/p&gt;
+      &amp;mdash; &lt;i&gt;Allie, A Liveframe User&lt;/i&gt;
+    &lt;/blockquote&gt;
+    &lt;blockquote style=&quot;flex: 1&quot;&gt;
+      &lt;p&gt;We are a tiny team with big dreams of making zines more accessible for everyone. Adam showed sincere interest in our project, listened to our ramblings, asked great questions, and helped us build a website beyond what we&#39;d hoped for. He was extremely creative, organized, and responsive throughout the process, which made him a great collaborator.&lt;/p&gt;
+      &amp;mdash; &lt;i&gt;Wendy Shih, Little Zine Revolution&lt;/i&gt;
+    &lt;/blockquote&gt;
   &lt;/div&gt;
 &lt;/section&gt;</code></pre>
     
@@ -537,16 +615,17 @@
 </div>
 
   <ul>
-    <li><strong>Text:</strong> one <code>.prose</code> on the section spaces the section heading and every card's heading and paragraph. The grid is a plain <code>div</code>, and <code>.prose</code> does not space a <code>div</code>, so the columns stay tight.</li>
-    <li><strong>Surface:</strong> <code>.card-border</code> takes <code>--padding</code> for its inside, so setting <code>--padding</code> on the section resizes all three cards together.</li>
+    <li><strong>Text:</strong> the quotes are prose, not cards. <code>.prose</code> gives each <code>blockquote</code> its <code>--line</code> rule and padding, and spaces the paragraph inside it.</li>
+    <li><strong>Layout:</strong> <code>.flex</code> aligns the row's items to the top by default, so a short quote beside a long one stays at the top rather than stretching its rule.</li>
   </ul>
 </section>
 
-<section id="case-studies">
-  <h2>Case study cards</h2>
+<section id="post-list">
+  <h2>Post list</h2>
   <p>
-    Each card is one link, so the anchor is the card. A badge says what kind of
-    work it was, and a <code>.link</code> span at the bottom says what clicking does.
+    Case studies, products and blog posts share one list: each entry is a link
+    wrapping an image and its title and summary. A post with no image shows its
+    title in a tinted block instead, which is what these use.
   </p>
   
   
@@ -557,27 +636,27 @@
     
       <span class="demo-note"><small>Same markup in both builds</small></span>
     
-    <button class="ghost copy-button" data-target="studio-case-studies-classes">Copy</button>
+    <button class="ghost copy-button" data-target="studio-post-list-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="studio-case-studies-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--padding)&quot;&gt;
-  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
-    &lt;span class=&quot;badge&quot;&gt;Open source&lt;/span&gt;
-    &lt;h3 style=&quot;margin-top: var(--padding)&quot;&gt;The Map I Never Meant to Build&lt;/h3&gt;
-    &lt;p class=&quot;text-secondary&quot;&gt;Sixty thousand views, three neighborhoods asking to borrow it, and a little map that got better every spring.&lt;/p&gt;
-    &lt;span class=&quot;link&quot;&gt;Read the case study&lt;/span&gt;
+    <pre><code id="studio-post-list-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: 1fr; gap: var(--padding)&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic&quot;&gt;
+    &lt;article class=&quot;flex flip&quot;&gt;
+      &lt;div style=&quot;flex: 1 1 30%; aspect-ratio: 1.5; display: flex; align-items: center; justify-content: center; padding: var(--padding); border-radius: var(--border-radius); background: var(--surface-strong); color: var(--primary-text); font-size: 1.5rem; font-weight: bold&quot;&gt;The Map I Never Meant to Build&lt;/div&gt;
+      &lt;div class=&quot;prose&quot; style=&quot;flex: 1 1 70%&quot;&gt;
+        &lt;h3 class=&quot;text-secondary&quot;&gt;The Map I Never Meant to Build&lt;/h3&gt;
+        &lt;p&gt;Sixty thousand views, three neighborhoods asking to borrow it, and a little map that got a bit better every spring until it turned into something anyone can run.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
   &lt;/a&gt;
-  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
-    &lt;span class=&quot;badge&quot;&gt;Website&lt;/span&gt;
-    &lt;h3 style=&quot;margin-top: var(--padding)&quot;&gt;A Library That Fits in a Free Little Library&lt;/h3&gt;
-    &lt;p class=&quot;text-secondary&quot;&gt;A zine catalog, a printing guide, and an events page, built from a pile of draft copy.&lt;/p&gt;
-    &lt;span class=&quot;link&quot;&gt;Read the case study&lt;/span&gt;
-  &lt;/a&gt;
-  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
-    &lt;span class=&quot;badge&quot;&gt;Product&lt;/span&gt;
-    &lt;h3 style=&quot;margin-top: var(--padding)&quot;&gt;Liveframe&lt;/h3&gt;
-    &lt;p class=&quot;text-secondary&quot;&gt;Guests scan a QR code to share photos, messages and polls in real time, with no app to install.&lt;/p&gt;
-    &lt;span class=&quot;link&quot;&gt;See the product&lt;/span&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic&quot;&gt;
+    &lt;article class=&quot;flex flip&quot;&gt;
+      &lt;div style=&quot;flex: 1 1 30%; aspect-ratio: 1.5; display: flex; align-items: center; justify-content: center; padding: var(--padding); border-radius: var(--border-radius); background: var(--surface-strong); color: var(--primary-text); font-size: 1.5rem; font-weight: bold&quot;&gt;A Library That Fits in a Free Little Library&lt;/div&gt;
+      &lt;div class=&quot;prose&quot; style=&quot;flex: 1 1 70%&quot;&gt;
+        &lt;h3 class=&quot;text-secondary&quot;&gt;A Library That Fits in a Free Little Library&lt;/h3&gt;
+        &lt;p&gt;A zine catalog, a printing guide, and an events page, built from a pile of draft copy in about two weeks.&lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/article&gt;
   &lt;/a&gt;
 &lt;/div&gt;</code></pre>
     
@@ -586,17 +665,17 @@
 </div>
 
   <ul>
-    <li><strong>Actions:</strong> <code>.semantic</code> removes the link's own styling and <code>.card</code>, later in the cascade, puts the surface back. The grid lays each anchor out as a block, so it needs no <code>display</code>.</li>
-    <li><strong>Spacing:</strong> nothing has a top margin, so the heading under a badge needs one. It uses <code>var(--padding)</code> so it moves with the card's padding.</li>
-    <li><strong>Text:</strong> the <code>.link</code> span is styled text, not a second link. Nested anchors are invalid, and one target per card is what makes it a card.</li>
+    <li><strong>Actions:</strong> the whole entry is one <code>a.semantic</code>, which strips the link styling. The title is in the muted text colour, as on the site.</li>
+    <li><strong>Surface:</strong> on the site each entry is an <code>article</code>, which the classless build turns into a card. In the class build the article has no class, so the entries sit on the page, as here.</li>
+    <li><strong>Boundary:</strong> the site tints the no-image block with its accent colour. In v3 that is a <code>.retheme</code> with <code>--primary</code> set to the accent around the block, if you want it to differ from the title.</li>
   </ul>
 </section>
 
-<section id="testimonial">
-  <h2>Testimonial</h2>
+<section id="link-previews">
+  <h2>Link previews</h2>
   <p>
-    A quote is prose: <code>.prose</code> gives the <code>blockquote</code> its
-    rule and padding. The attribution is supporting text.
+    The free tools page: each tool is an outside link, shown with an image, its
+    name, a sentence, and the address it goes to. The images are placeholders.
   </p>
   
   
@@ -607,32 +686,100 @@
     
       <span class="demo-note"><small>Same markup in both builds</small></span>
     
-    <button class="ghost copy-button" data-target="studio-testimonial-classes">Copy</button>
+    <button class="ghost copy-button" data-target="studio-link-previews-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="studio-testimonial-classes" data-variant="classes">&lt;figure class=&quot;card prose&quot;&gt;
-  &lt;blockquote&gt;
-    We are a tiny team with big dreams of making zines more accessible for
-    everyone. Adam showed sincere interest in our project and listened to our
-    ideas.
-  &lt;/blockquote&gt;
-  &lt;figcaption class=&quot;text-secondary&quot;&gt;Little Zine Revolution&lt;/figcaption&gt;
-&lt;/figure&gt;</code></pre>
+    <pre><code id="studio-link-previews-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
+  &lt;h1&gt;Free Tools&lt;/h1&gt;
+  &lt;p&gt;Some things I build for my own projects turn out to be useful on their own. These are free to use, need no account, and don&#39;t hold your data hostage.&lt;/p&gt;
+&lt;/div&gt;
+&lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;semantic&quot; style=&quot;display: block; margin-bottom: 1rem&quot;&gt;
+  &lt;article class=&quot;card&quot; style=&quot;display: flex; padding: 0; overflow: hidden&quot;&gt;
+    &lt;div style=&quot;flex: none; width: 8rem; height: 8rem; background: var(--surface-strong)&quot; role=&quot;img&quot; aria-label=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; margin: 1rem&quot;&gt;
+      &lt;strong&gt;QR Code &amp;amp; Table Tent Generator&lt;/strong&gt;
+      &lt;p&gt;Make a styled QR code for any link, then print foldable table tents for events, counters, or waiting rooms.&lt;/p&gt;
+      &lt;small class=&quot;text-secondary&quot; style=&quot;overflow: hidden; text-overflow: ellipsis; white-space: nowrap&quot;&gt;https://liveframe.app/promo/qr-table&lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/a&gt;
+&lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;semantic&quot; style=&quot;display: block; margin-bottom: 1rem&quot;&gt;
+  &lt;article class=&quot;card&quot; style=&quot;display: flex; padding: 0; overflow: hidden&quot;&gt;
+    &lt;div style=&quot;display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; margin: 1rem&quot;&gt;
+      &lt;strong&gt;Background Remover&lt;/strong&gt;
+      &lt;p&gt;Remove the background from a photo right in your browser. Your images never leave your computer.&lt;/p&gt;
+      &lt;small class=&quot;text-secondary&quot; style=&quot;overflow: hidden; text-overflow: ellipsis; white-space: nowrap&quot;&gt;https://sparkstonepdx.github.io/bgremove/&lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/a&gt;
+&lt;a href=&quot;#&quot; target=&quot;_blank&quot; class=&quot;semantic&quot; style=&quot;display: block; margin-bottom: 1rem&quot;&gt;
+  &lt;article class=&quot;card&quot; style=&quot;display: flex; padding: 0; overflow: hidden&quot;&gt;
+    &lt;div style=&quot;flex: none; width: 8rem; height: 8rem; background: var(--surface-strong)&quot; role=&quot;img&quot; aria-label=&quot;&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;display: flex; flex-direction: column; gap: 0.25rem; min-width: 0; margin: 1rem&quot;&gt;
+      &lt;strong&gt;AnimLab&lt;/strong&gt;
+      &lt;p&gt;Pick out elements of a drawing and animate them. Runs from your browser&#39;s devtools, so it&#39;s best for the curious and technical.&lt;/p&gt;
+      &lt;small class=&quot;text-secondary&quot; style=&quot;overflow: hidden; text-overflow: ellipsis; white-space: nowrap&quot;&gt;https://github.com/sparkstonepdx/animlab&lt;/small&gt;
+    &lt;/div&gt;
+  &lt;/article&gt;
+&lt;/a&gt;</code></pre>
     
     
   </div>
 </div>
 
   <ul>
-    <li><strong>Surface:</strong> a <code>.card</code> rather than a bordered box, because a testimonial is meant to be looked at. The quote's <code>--line</code> rule reads against <code>--surface</code> as well as against the page.</li>
+    <li><strong>Actions:</strong> the anchor wraps the card and is set to <code>display: block</code>, because <code>.semantic</code> unsets it to inline.</li>
+    <li><strong>Surface:</strong> the card drops its padding and clips its corners so the image runs to the edge; the text column puts the padding back as a margin. A tool with no image, like the background remover, simply has no image column.</li>
+    <li><strong>Text:</strong> the address is <code>.text-secondary</code> so it reads as a footnote to the description, not as a second link.</li>
+  </ul>
+</section>
+
+<section id="about">
+  <h2>About block</h2>
+  <p>
+    A photo beside a name, a role, and one line, with a link to the full page.
+    The photo is a placeholder here.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-about-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-about-classes" data-variant="classes">&lt;section class=&quot;prose&quot;&gt;
+  &lt;h2&gt;About Sparkstone&lt;/h2&gt;
+  &lt;div class=&quot;flex flip&quot;&gt;
+    &lt;div style=&quot;width: 8rem; aspect-ratio: 1; flex-shrink: 0; border: 2px solid var(--line); border-radius: 1rem; background: var(--surface-strong)&quot; role=&quot;img&quot; aria-label=&quot;photo of Adam Sparks&quot;&gt;&lt;/div&gt;
+    &lt;div style=&quot;max-width: 25rem&quot;&gt;
+      &lt;h3 style=&quot;margin: 0&quot;&gt;Adam Sparks&lt;/h3&gt;
+      &lt;i class=&quot;text-secondary&quot; style=&quot;display: block&quot;&gt;Founder&lt;/i&gt;
+      &lt;p&gt;Everyone should have the freedom to build software they’re proud of without sacrificing joy, balance, or humanity.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;About Sparkstone&lt;/a&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Layout:</strong> <code>.flex .flip</code> puts the photo above the text on a phone. <code>flex-shrink: 0</code> stops the text squeezing the photo on a narrow screen.</li>
+    <li><strong>Text:</strong> the role is <code>.text-secondary</code> and set to block so it sits on its own line under the name.</li>
   </ul>
 </section>
 
 <section id="newsletter">
-  <h2>Newsletter band</h2>
+  <h2>Newsletter</h2>
   <p>
-    An input and a button side by side. The input keeps its own bottom margin,
-    so the row aligns them to the end of the label rather than the middle.
+    A heading, a sentence, one labelled field and a secondary button. It is a
+    secondary button because the page's main action is booking a call.
   </p>
   
   
@@ -646,35 +793,31 @@
     <button class="ghost copy-button" data-target="studio-newsletter-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="studio-newsletter-classes" data-variant="classes">&lt;section class=&quot;card&quot; data-color-scheme=&quot;dark&quot;&gt;
-  &lt;div class=&quot;prose&quot;&gt;
-    &lt;h2&gt;Newsletter&lt;/h2&gt;
-    &lt;p class=&quot;text-secondary&quot;&gt;Subscribe to be the first to hear about what I do next.&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;form class=&quot;flex flip&quot; style=&quot;align-items: end; row-gap: 0&quot;&gt;
-    &lt;label class=&quot;label&quot; style=&quot;flex: 1&quot;&gt;
-      &lt;p&gt;Email&lt;/p&gt;
-      &lt;input class=&quot;input&quot; type=&quot;email&quot; placeholder=&quot;you@example.com&quot; /&gt;
-    &lt;/label&gt;
-    &lt;button class=&quot;btn&quot; style=&quot;margin-bottom: 1rem&quot;&gt;Subscribe&lt;/button&gt;
-  &lt;/form&gt;
-&lt;/section&gt;</code></pre>
+    <pre><code id="studio-newsletter-classes" data-variant="classes">&lt;form class=&quot;prose&quot;&gt;
+  &lt;h2&gt;Newsletter&lt;/h2&gt;
+  &lt;p&gt;Subscribe to my newsletter to be the first to hear about what I do next&lt;/p&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;p&gt;Email&lt;/p&gt;
+    &lt;input class=&quot;input&quot; type=&quot;email&quot; placeholder=&quot;Email&quot; autocomplete=&quot;email&quot; required style=&quot;max-width: 30rem&quot; /&gt;
+  &lt;/label&gt;
+  &lt;button class=&quot;btn btn-secondary&quot;&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;</code></pre>
     
     
   </div>
 </div>
 
   <ul>
-    <li><strong>Boundary:</strong> <code>data-color-scheme="dark"</code> on the card turns this one band dark on a light page. The input, button and muted text all follow, because they read derived colours.</li>
-    <li><strong>Spacing:</strong> the label and input carry their bottom margins into the row. Giving the button the same <code>1rem</code> lines its bottom edge up with the input's. <code>.flip</code> stacks them on a phone, and <code>row-gap: 0</code> leaves the stacked spacing to those margins.</li>
+    <li><strong>Controls:</strong> the <code>.label</code> spaces its text and field, and the field's own bottom margin spaces the button, so the form needs no layout of its own.</li>
+    <li><strong>States:</strong> when the address fails, set <code>aria-invalid="true"</code> on the input and add a <code>&lt;small&gt;</code> after it. The label text and field turn to the error colour together.</li>
   </ul>
 </section>
 
-<section id="contact">
-  <h2>Contact form</h2>
+<section id="closing-cta">
+  <h2>Closing call to action</h2>
   <p>
-    A form is a stack of labels. Fieldsets group them, and
-    <code>.card-actions</code> closes the card with the submit button.
+    The end of every case study: a heading that names the reader's problem, one
+    sentence, and the booking button.
   </p>
   
   
@@ -685,57 +828,27 @@
     
       <span class="demo-note"><small>Same markup in both builds</small></span>
     
-    <button class="ghost copy-button" data-target="studio-contact-classes">Copy</button>
+    <button class="ghost copy-button" data-target="studio-closing-cta-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="studio-contact-classes" data-variant="classes">&lt;form class=&quot;card&quot;&gt;
-  &lt;div class=&quot;prose&quot;&gt;
-    &lt;h2&gt;Book a call&lt;/h2&gt;
-    &lt;p class=&quot;text-secondary&quot;&gt;Tell me a little about the project.&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;flex flip&quot; style=&quot;row-gap: 0&quot;&gt;
-    &lt;label class=&quot;label&quot; style=&quot;flex: 1&quot;&gt;
-      &lt;p&gt;Name&lt;/p&gt;
-      &lt;input class=&quot;input&quot; autocomplete=&quot;name&quot; /&gt;
-    &lt;/label&gt;
-    &lt;label class=&quot;label&quot; style=&quot;flex: 1&quot;&gt;
-      &lt;p&gt;Email&lt;/p&gt;
-      &lt;input class=&quot;input&quot; type=&quot;email&quot; autocomplete=&quot;email&quot; /&gt;
-    &lt;/label&gt;
-  &lt;/div&gt;
-  &lt;label class=&quot;label&quot;&gt;
-    &lt;p&gt;What kind of business?&lt;/p&gt;
-    &lt;select class=&quot;select&quot;&gt;
-      &lt;option&gt;Medical practice&lt;/option&gt;
-      &lt;option&gt;Law firm&lt;/option&gt;
-      &lt;option&gt;Specialty contractor&lt;/option&gt;
-      &lt;option&gt;Something else&lt;/option&gt;
-    &lt;/select&gt;
-  &lt;/label&gt;
-  &lt;label class=&quot;label&quot;&gt;
-    &lt;p&gt;What do you need?&lt;/p&gt;
-    &lt;textarea class=&quot;textarea&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;
-    &lt;small&gt;A few sentences is plenty.&lt;/small&gt;
-  &lt;/label&gt;
-  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
-    &lt;button class=&quot;btn&quot;&gt;Send&lt;/button&gt;
-  &lt;/footer&gt;
-&lt;/form&gt;</code></pre>
+    <pre><code id="studio-closing-cta-classes" data-variant="classes">&lt;section class=&quot;prose&quot;&gt;
+  &lt;h2&gt;Need a site that does one job well?&lt;/h2&gt;
+  &lt;p&gt;If you&#39;ve got the words and none of the time, that&#39;s the version of this work I do most often.&lt;/p&gt;
+  &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn&quot;&gt;Book a call&lt;/a&gt;
+&lt;/section&gt;</code></pre>
     
     
   </div>
 </div>
 
-  <ul>
-    <li><strong>Layout:</strong> two short fields share a <code>.flex .flip</code> row and stack on phones. Each label takes <code>flex: 1</code>; the controls inside are already full width. <code>row-gap: 0</code> keeps the stacked labels from getting the row's gap on top of their own bottom margin.</li>
-    <li><strong>Controls:</strong> every label spaces its own text, control and help, so the form needs no wrapper between fields.</li>
-  </ul>
 </section>
 
 <section id="footer">
-  <h2>Site footer</h2>
+  <h2>Footer</h2>
   <p>
-    Columns of links and a tagline, divided from the page by a rule.
+    A rule, then two groups: the logo, tagline and social links, and the full
+    list of site links. The site uses icons for the social links; these use
+    their names.
   </p>
   
   
@@ -751,20 +864,27 @@
   <div class="code-block">
     <pre><code id="studio-footer-classes" data-variant="classes">&lt;footer&gt;
   &lt;hr class=&quot;divider&quot; /&gt;
-  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--padding)&quot;&gt;
-    &lt;div&gt;
+  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 20rem), 1fr)); gap: 1rem&quot;&gt;
+    &lt;section&gt;
       &lt;strong&gt;Sparkstone&lt;/strong&gt;
-      &lt;p class=&quot;text-secondary&quot;&gt;&lt;small&gt;Where technology sparks innovation&lt;/small&gt;&lt;/p&gt;
-    &lt;/div&gt;
-    &lt;nav class=&quot;flex&quot; style=&quot;flex-direction: column; gap: calc(var(--padding) / 4)&quot;&gt;
+      &lt;p&gt;Where Technology Sparks Innovation&lt;/p&gt;
+      &lt;div class=&quot;flex&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;YouTube&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;LinkedIn&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Bluesky&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;GitHub&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/section&gt;
+    &lt;nav class=&quot;flex&quot; style=&quot;flex-direction: column; align-items: end&quot;&gt;
       &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Case Studies&lt;/a&gt;
       &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Products&lt;/a&gt;
       &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Blog&lt;/a&gt;
-    &lt;/nav&gt;
-    &lt;nav class=&quot;flex&quot; style=&quot;flex-direction: column; gap: calc(var(--padding) / 4)&quot;&gt;
-      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Free Tools&lt;/a&gt;
-      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;About&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Open Source&lt;/a&gt;
       &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Book a call&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Free Tools&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Mentions&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Alignment&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;About&lt;/a&gt;
     &lt;/nav&gt;
   &lt;/div&gt;
 &lt;/footer&gt;</code></pre>
@@ -774,8 +894,8 @@
 </div>
 
   <ul>
-    <li><strong>Layout:</strong> link columns are <code>.flex</code> turned on its side, with the gap brought down to a quarter of <code>--padding</code> so the links read as one list.</li>
-    <li><strong>Surface:</strong> <code>.divider</code> is the same <code>--divider</code> rule as a card's border, so the footer belongs to the same family without being boxed in.</li>
+    <li><strong>Surface:</strong> <code>.divider</code> draws the same <code>--divider</code> rule a <code>.card-border</code> uses, so the footer is separated without being boxed in.</li>
+    <li><strong>Layout:</strong> two columns at least <code>20rem</code> wide. The links are <code>.flex</code> turned on its side and aligned to the end, so they hug the right edge. On a phone the site switches them to align at the start; that needs a media query of your own.</li>
   </ul>
 </section>
 

@@ -513,6 +513,11 @@
     drops back to the page colour, or split the card with a
     <code>.divider</code> or <code>.card-actions</code>.
   </p>
+  <p>
+    Below: text on the page, a service from sparkstonepdx.com on a
+    <code>.card</code>, and an item from lzr.life's community kit on a
+    <code>.card-border</code>.
+  </p>
   
   
 
@@ -525,26 +530,27 @@
     <button class="ghost copy-button" data-target="comp-surfaces-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="comp-surfaces-classes" data-variant="classes">&lt;article class=&quot;card prose&quot;&gt;
-  &lt;h3&gt;Order summary&lt;/h3&gt;
-  &lt;p&gt;A raised card on --surface.&lt;/p&gt;
-  &lt;div class=&quot;card-border&quot;&gt;
-    &lt;p&gt;&lt;strong&gt;Retainer, monthly&lt;/strong&gt;&lt;/p&gt;
-    &lt;p class=&quot;text-secondary&quot;&gt;A bordered block inside it drops back to --bg.&lt;/p&gt;
-  &lt;/div&gt;
-  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
-    &lt;button class=&quot;btn btn-secondary&quot;&gt;Back&lt;/button&gt;
-    &lt;button class=&quot;btn&quot;&gt;Confirm&lt;/button&gt;
-  &lt;/footer&gt;
-&lt;/article&gt;</code></pre>
+    <pre><code id="comp-surfaces-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
+  &lt;p&gt;On the page: I build the systems your business actually runs on.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--padding)&quot;&gt;
+  &lt;article class=&quot;card prose&quot;&gt;
+    &lt;h3&gt;Project rescue&lt;/h3&gt;
+    &lt;p&gt;take over a build that stalled, or clean up after a vendor&lt;/p&gt;
+  &lt;/article&gt;
+  &lt;article class=&quot;card-border prose&quot;&gt;
+    &lt;h3&gt;QR Codes&lt;/h3&gt;
+    &lt;p class=&quot;flex&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;PNG&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;SVG&lt;/a&gt;&lt;/p&gt;
+  &lt;/article&gt;
+&lt;/div&gt;</code></pre>
     
     
   </div>
 </div>
 
   <ul>
-    <li>Use <code>.card</code> for the thing you want looked at: a featured item, a form, a summary.</li>
-    <li>Use <code>.card-border</code> for many items of equal weight, such as a grid of services, where a shadow on each would be noise.</li>
+    <li>Use <code>.card</code> for the thing you want looked at: a service you sell, a call to action.</li>
+    <li>Use <code>.card-border</code> for many items of equal weight, such as a grid of downloads, where a shadow on each would be noise.</li>
     <li>A surface sets padding and nothing else outside itself. Space between surfaces comes from the layout around them.</li>
   </ul>
 </section>
@@ -675,7 +681,7 @@
     When a whole card is the link, make the card the anchor:
     <code>&lt;a class="semantic card"&gt;</code>. <code>.semantic</code> strips the
     link styling and <code>.card</code> comes later in the cascade, so the surface
-    wins. Then mark the words that read as the link with
+    wins. Then mark the words that read as the link, here the title, with
     <code>.link</code> so the card still looks clickable. Inside a grid or flex
     row the anchor is laid out as a block, so it needs nothing else.
   </p>
@@ -693,14 +699,12 @@
   <div class="code-block">
     <pre><code id="comp-card-link-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--padding)&quot;&gt;
   &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
-    &lt;h3&gt;The Map I Never Meant to Build&lt;/h3&gt;
-    &lt;p class=&quot;text-secondary&quot;&gt;Sixty thousand views and three neighborhoods asking to borrow it.&lt;/p&gt;
-    &lt;span class=&quot;link&quot;&gt;Read the case study&lt;/span&gt;
+    &lt;h3 class=&quot;link&quot;&gt;The Map I Never Meant to Build&lt;/h3&gt;
+    &lt;p&gt;Sixty thousand views, three neighborhoods asking to borrow it, and a little map that got a bit better every spring until it turned into something anyone can run.&lt;/p&gt;
   &lt;/a&gt;
   &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
-    &lt;h3&gt;A Library That Fits in a Free Little Library&lt;/h3&gt;
-    &lt;p class=&quot;text-secondary&quot;&gt;A zine catalog, a printing guide, and an events page.&lt;/p&gt;
-    &lt;span class=&quot;link&quot;&gt;Read the case study&lt;/span&gt;
+    &lt;h3 class=&quot;link&quot;&gt;A Library That Fits in a Free Little Library&lt;/h3&gt;
+    &lt;p&gt;A zine catalog, a printing guide, and an events page, built from a pile of draft copy in about two weeks.&lt;/p&gt;
   &lt;/a&gt;
 &lt;/div&gt;</code></pre>
     
@@ -720,11 +724,20 @@
     <code>.fieldset</code> with a <code>.fieldset-legend</code>.
   </p>
   <p>
+    The <code>&lt;small&gt;</code> is <code>inline-block</code>, so after a field
+    narrowed with <code>max-width</code> it sits beside the field instead of under
+    it. Give it <code>display: block</code>, as the newsletter form below does.
+  </p>
+  <p>
     States are generic. <code>aria-invalid="true"</code> or <code>.error</code> on
     a control turns it, and the label text above it, to the error colour.
     Disabling a <code>&lt;fieldset&gt;</code> greys everything inside it, because a
     disabled element is a boundary that sets <code>--chroma: 0</code> for its
     subtree.
+  </p>
+  <p>
+    Below: sparkstonepdx.com's newsletter form with a bad address entered, and
+    lzr.life's topic filters.
   </p>
   
   
@@ -738,26 +751,25 @@
     <button class="ghost copy-button" data-target="comp-forms-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="comp-forms-classes" data-variant="classes">&lt;form class=&quot;card&quot;&gt;
+    <pre><code id="comp-forms-classes" data-variant="classes">&lt;form class=&quot;prose&quot;&gt;
+  &lt;h2&gt;Newsletter&lt;/h2&gt;
+  &lt;p&gt;Subscribe to my newsletter to be the first to hear about what I do next&lt;/p&gt;
   &lt;label class=&quot;label&quot;&gt;
     &lt;p&gt;Email&lt;/p&gt;
-    &lt;input class=&quot;input&quot; type=&quot;email&quot; value=&quot;adam@&quot; aria-invalid=&quot;true&quot; /&gt;
-    &lt;small&gt;Enter a full email address.&lt;/small&gt;
+    &lt;input class=&quot;input&quot; type=&quot;email&quot; value=&quot;adam@&quot; aria-invalid=&quot;true&quot; style=&quot;max-width: 30rem&quot; /&gt;
+    &lt;small style=&quot;display: block&quot;&gt;Enter a full email address.&lt;/small&gt;
   &lt;/label&gt;
-  &lt;label class=&quot;label&quot;&gt;
-    &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt;
-    Send me the newsletter
-  &lt;/label&gt;
-  &lt;fieldset class=&quot;fieldset&quot; disabled&gt;
-    &lt;legend class=&quot;fieldset-legend&quot;&gt;Billing, after the first call&lt;/legend&gt;
-    &lt;label class=&quot;label&quot;&gt;
-      &lt;p&gt;Plan&lt;/p&gt;
-      &lt;select class=&quot;select&quot;&gt;&lt;option&gt;Monthly retainer&lt;/option&gt;&lt;/select&gt;
-    &lt;/label&gt;
+  &lt;button class=&quot;btn btn-secondary&quot;&gt;Subscribe&lt;/button&gt;
+&lt;/form&gt;
+&lt;form style=&quot;margin-top: var(--padding)&quot;&gt;
+  &lt;fieldset class=&quot;fieldset&quot;&gt;
+    &lt;legend class=&quot;fieldset-legend&quot;&gt;Topics&lt;/legend&gt;
+    &lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap&quot;&gt;
+      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; single sided&lt;/label&gt;
+      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; trifold&lt;/label&gt;
+      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; quarters&lt;/label&gt;
+    &lt;/div&gt;
   &lt;/fieldset&gt;
-  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
-    &lt;button class=&quot;btn&quot;&gt;Send&lt;/button&gt;
-  &lt;/footer&gt;
 &lt;/form&gt;</code></pre>
     
     
@@ -775,7 +787,7 @@
   <ul>
     <li>
       <code>.retheme</code> with an input such as <code>--primary</code> re-themes
-      a subtree: a sponsor's block in their colour, or an error region.
+      a subtree: the studio's credit block on a client's site, or an error region.
     </li>
     <li>
       <code>data-color-scheme="dark"</code> or <code>"light"</code> flips a
@@ -787,6 +799,11 @@
     A boundary draws nothing on its own, so put it on the element that already
     exists for layout, such as the section or the card, rather than adding a
     wrapper.
+  </p>
+  <p>
+    Below: a section of lzr.life, in a red that stands in for its own colour,
+    with the studio's credit block inside it in the studio's. Boundaries nest,
+    and each one reaches only its own subtree.
   </p>
   
   
@@ -800,20 +817,17 @@
     <button class="ghost copy-button" data-target="comp-boundaries-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="comp-boundaries-classes" data-variant="classes">&lt;section class=&quot;card-border&quot; style=&quot;display: grid; gap: var(--padding)&quot;&gt;
+    <pre><code id="comp-boundaries-classes" data-variant="classes">&lt;section class=&quot;retheme&quot; style=&quot;--primary: #a33b2b; display: grid; gap: var(--padding)&quot;&gt;
   &lt;div class=&quot;prose&quot;&gt;
-    &lt;h3&gt;On the page scheme&lt;/h3&gt;
-    &lt;p&gt;Everything here uses the root theme.&lt;/p&gt;
+    &lt;h3&gt;Little Zine Revolution&lt;/h3&gt;
+    &lt;p&gt;Little actions have ripple effects.&lt;/p&gt;
+    &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn&quot;&gt;Explore the Zine Catalog&lt;/a&gt;
   &lt;/div&gt;
-  &lt;div data-color-scheme=&quot;dark&quot; class=&quot;card prose&quot;&gt;
-    &lt;h3&gt;A dark band&lt;/h3&gt;
-    &lt;p class=&quot;text-secondary&quot;&gt;Same markup, flipped scheme.&lt;/p&gt;
-    &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Book a call&lt;/a&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;card-border retheme prose&quot; style=&quot;--primary: #0a7d6b&quot;&gt;
-    &lt;p&gt;&lt;strong&gt;A sponsor block&lt;/strong&gt; in their own colour.&lt;/p&gt;
-    &lt;a href=&quot;#&quot; class=&quot;btn btn-secondary&quot;&gt;Visit sponsor&lt;/a&gt;
-  &lt;/div&gt;
+  &lt;aside class=&quot;card-border retheme prose&quot; style=&quot;--primary: rebeccapurple&quot;&gt;
+    &lt;h3&gt;Want a site like this?&lt;/h3&gt;
+    &lt;p&gt;We build accessible, performant sites your users will love.&lt;/p&gt;
+    &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn&quot;&gt;Book a free call&lt;/a&gt;
+  &lt;/aside&gt;
 &lt;/section&gt;</code></pre>
     
     

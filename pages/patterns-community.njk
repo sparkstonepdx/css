@@ -6,235 +6,321 @@
 {% block content %}
 <h1>Community site sections</h1>
 <p class="lede">
-  Sections from a volunteer group's site, modelled on
-  <a href="https://lzr.life" target="_blank" rel="noreferrer">lzr.life</a>:
-  a catalog to browse, a how-to, and events. These lean on the content and form
-  components more than the studio sections do. The rules behind them are on
-  <a href="./composition.html">Composition</a>.
+  Sections from
+  <a href="https://lzr.life" target="_blank" rel="noreferrer">lzr.life</a>,
+  a volunteer group's zine library, rebuilt in the class build. The sections,
+  headings, labels and links are the site's. Longer body text is shortened, and
+  the layout inside each section is a plain arrangement of framework pieces
+  rather than a copy of the site's styling. Images are placeholders. The rules
+  behind them are on <a href="./composition.html">Composition</a>.
 </p>
 
-<section id="hero">
-  <h2>Welcome with a quote</h2>
+<section id="nav">
+  <h2>Navigation</h2>
   <p>
-    The whole site is re-themed from one input on the root element. Here it is
-    on the section instead, so you can see it next to the default theme.
+    A home link and the five sections of the site.
   </p>
   {% set classless %}
-<section class="retheme prose" style="--primary: #a33b2b; --neutral: #6b6150; max-width: 40rem">
-  <h1>Little Zine Revolution</h1>
-  <p>We curate and distribute anti-colonial zines. Little actions have ripple effects.</p>
+<nav class="navbar">
+  <div class="navbar-start">
+    <a href="#" class="semantic" aria-label="Home"><strong>LZR</strong></a>
+  </div>
+  <div class="navbar-end" style="flex-wrap: wrap">
+    <a href="#" class="link">Zines</a>
+    <a href="#" class="link">How To</a>
+    <a href="#" class="link">Events</a>
+    <a href="#" class="link">LZR in the Wild</a>
+    <a href="#" class="link">Get in Touch</a>
+  </div>
+</nav>
+  {% endset %}
+  {{ m.demo("community-nav", classless) }}
+  <ul>
+    <li><strong>Layout:</strong> <code>.navbar-end</code> is a flex row, so with five links it needs <code>flex-wrap: wrap</code> to survive a phone.</li>
+  </ul>
+</section>
+
+<section id="welcome">
+  <h2>Welcome</h2>
+  <p>
+    The home page opens with the group's name, a few short lines, a quote, and
+    one button into the catalog.
+  </p>
+  {% set classless %}
+<section class="prose">
+  <h2>Little Zine Revolution</h2>
+  <p>Welcome!</p>
+  <p>Here at the Little Zine Revolution, we curate and distribute anti-colonial zines.</p>
+  <p>Little actions have ripple effects.</p>
+  <p>Zines are like little love notes.</p>
+  <p>Revolution is love.</p>
   <blockquote>
-    You have to act as if it were possible to radically transform the world. And
-    you have to do it all the time.
-    <footer class="text-secondary"><small>Angela Davis</small></footer>
+    <p>You have to act as if it were possible to radically transform the world. And you have to do it all the time.</p>
+    <small class="text-secondary">Angela Davis</small>
   </blockquote>
-  <a href="#" class="btn">Explore the zine catalog</a>
+  <a href="#" role="button" class="btn">Explore the Zine Catalog</a>
 </section>
   {% endset %}
-  {{ m.demo("community-hero", classless) }}
+  {{ m.demo("community-welcome", classless) }}
   <ul>
-    <li><strong>Boundary:</strong> <code>--primary</code> sets the button and the quote's rule. <code>--neutral</code> sets what text and surfaces are tinted with, so the page reads warm and muted while the brand colour stays saturated.</li>
-    <li><strong>Text:</strong> the attribution sits inside the <code>blockquote</code> so the quote's rule runs the full height of both.</li>
+    <li><strong>Text:</strong> one <code>.prose</code> spaces the short lines, the quote and the button. Each line is its own paragraph, so each gets the same <code>1rem</code> beat.</li>
   </ul>
 </section>
 
 <section id="how-to-help">
-  <h2>Steps</h2>
+  <h2>How to help</h2>
   <p>
-    Three equal steps, each linking deeper into a guide. Numbering is part of the
-    heading, so it needs no counter styles.
+    On the home page, a short version of the how-to guide: three headed
+    paragraphs, each linking to its part of the full guide.
   </p>
   {% set classless %}
 <section class="prose">
-  <h2>Print! Fold! Distribute!</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--padding)">
-    <div class="card-border">
-      <h3>1. Printing</h3>
-      <p class="text-secondary">Pick a zine from the catalog and print it at home or at a library.</p>
-      <a href="#" class="link">Printing tips</a>
-    </div>
-    <div class="card-border">
-      <h3>2. Folding</h3>
-      <p class="text-secondary">Join a folding event, or follow the guide on your own.</p>
-      <a href="#" class="link">Folding instructions</a>
-    </div>
-    <div class="card-border">
-      <h3>3. Distribution</h3>
-      <p class="text-secondary">Leave copies in a little free library near you.</p>
-      <a href="#" class="link">Distribution guide</a>
-    </div>
-  </div>
+  <h2>How to Help</h2>
+  <p>Print! Fold! Distribute! <a href="#" class="link">Read the how-to guide</a>.</p>
+  <h3>Printing</h3>
+  <p>Find a zine in the <a href="#" class="link">zine catalog</a>, then see the <a href="#" class="link">printing tips</a>.</p>
+  <h3>Folding</h3>
+  <p>Come to an event, or fold on your own with the <a href="#" class="link">folding instructions</a>.</p>
+  <h3>Distribution</h3>
+  <p>Leave them where people will find them. See the <a href="#" class="link">distribution guide</a>.</p>
 </section>
   {% endset %}
-  {{ m.demo("community-steps", classless) }}
+  {{ m.demo("community-how-to-help", classless) }}
   <ul>
-    <li><strong>Actions:</strong> each card holds a real link rather than being one, because the card has a sentence worth reading on its own. Compare the <a href="./patterns-studio.html#case-studies">case study cards</a>, where the card is the link.</li>
+    <li><strong>Text:</strong> this is all prose: headings and paragraphs with inline links. The links point at anchors on the how-to page, so the full guide has the same three headings.</li>
   </ul>
 </section>
 
 <section id="catalog">
-  <h2>Catalog with filters</h2>
+  <h2>Zine catalog</h2>
   <p>
-    A search field, a segmented control for the one exclusive choice, checkboxes
-    for the ones that combine, and a grid of results.
+    A search field, the topics to filter by, and the zines as linked titles with
+    their cover images. Topics combine, so they are checkboxes here.
   </p>
   {% set classless %}
-<form class="card-border">
+<form>
   <label class="label">
     <p>Search</p>
-    <input class="input" type="search" placeholder="Title or topic" />
+    <input class="input" type="search" />
   </label>
-  <div class="flex" style="flex-wrap: wrap; align-items: center">
-    <div class="segmented" role="radiogroup" aria-label="Fold">
-      <label class="segmented-item"><input type="radio" name="fold" checked /> Any fold</label>
-      <label class="segmented-item"><input type="radio" name="fold" /> Quarters</label>
-      <label class="segmented-item"><input type="radio" name="fold" /> Trifold</label>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend">Topics</legend>
+    <div class="flex" style="flex-wrap: wrap">
+      <label class="label"><input type="checkbox" class="checkbox" /> color</label>
+      <label class="label"><input type="checkbox" class="checkbox" /> double sided</label>
+      <label class="label"><input type="checkbox" class="checkbox" checked /> single sided</label>
+      <label class="label"><input type="checkbox" class="checkbox" /> trifold</label>
+      <label class="label"><input type="checkbox" class="checkbox" /> quarters</label>
     </div>
-    <label class="label" style="margin: 0">
-      <input type="checkbox" class="checkbox" /> Colour
-    </label>
-    <label class="label" style="margin: 0">
-      <input type="checkbox" class="checkbox" checked /> Double sided
-    </label>
-  </div>
+  </fieldset>
 </form>
 
-<p class="text-secondary" style="margin: var(--padding) 0"><small>3 of 62 zines</small></p>
-
 <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: var(--padding)">
-  <a href="#" class="semantic card">
+  <a href="#" class="semantic">
     <div style="aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
-    <strong>For the Love of Bread</strong>
-    <p><span class="badge">Quarters</span></p>
+    <span class="link">18mr for the Love of Bread</span>
   </a>
-  <a href="#" class="semantic card">
+  <a href="#" class="semantic">
     <div style="aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
-    <strong>Anarchist Compass</strong>
-    <p><span class="badge">Trifold</span></p>
+    <span class="link">Anarchist Compass</span>
   </a>
-  <a href="#" class="semantic card">
+  <a href="#" class="semantic">
     <div style="aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
-    <strong>Butterfly</strong>
-    <p><span class="badge">Quarters</span></p>
+    <span class="link">Butterfly</span>
+  </a>
+  <a href="#" class="semantic">
+    <div style="aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <span class="link">Cointelpro</span>
   </a>
 </div>
   {% endset %}
   {{ m.demo("community-catalog", classless) }}
   <ul>
-    <li><strong>Controls:</strong> a checkbox inside <code>.label</code> lays itself out as a row. In a row of filters its <code>1rem</code> bottom margin would push it off the centre line, so it is set to <code>0</code> here.</li>
-    <li><strong>Surfaces:</strong> the filter form is a flat <code>.card-border</code> and each result a raised <code>.card</code>, so the results read as the things to pick up. The cover placeholder uses <code>--surface-strong</code>, the one step darker than the card; a real cover image goes in its place.</li>
-    <li><strong>Text:</strong> the count is <code>.text-secondary</code>, between the two surfaces, so it belongs to neither.</li>
+    <li><strong>Controls:</strong> each checkbox is a <code>.label</code> row, and the <code>.fieldset</code> names the group once with its legend. The labels keep their bottom margin, which also spaces them when the row wraps.</li>
+    <li><strong>Actions:</strong> each zine is one link. <code>.semantic</code> strips the anchor and the title inside is marked <code>.link</code>, so the cover and title click as one target.</li>
+  </ul>
+</section>
+
+<section id="zine">
+  <h2>Zine page</h2>
+  <p>
+    One zine: its cover, what kind of zine it is, its tag, and the PDF to preview
+    or download. Beside it on the site sits the studio's credit card, shown
+    further down this page.
+  </p>
+  {% set classless %}
+<article class="flex flip">
+  <div style="flex: 0 0 12rem; aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius)" role="img" aria-label="Butterfly cover"></div>
+  <div class="prose" style="flex: 1">
+    <h2>Butterfly</h2>
+    <p class="text-secondary">Single-sided, 8-page mini zine · Inspiration</p>
+    <p><span class="badge">Single Sided</span></p>
+    <div class="flex" style="flex-wrap: wrap">
+      <a href="#" role="button" class="btn">Download PDF</a>
+      <a href="#" role="button" class="btn btn-secondary">Preview</a>
+    </div>
+  </div>
+</article>
+  {% endset %}
+  {{ m.demo("community-zine", classless) }}
+  <ul>
+    <li><strong>Text:</strong> the format and category are <code>.text-secondary</code>; the tag is a <code>.badge</code>, the same tag the catalog filters on.</li>
+    <li><strong>Actions:</strong> download is the filled button because it is why the visitor came; preview is secondary.</li>
   </ul>
 </section>
 
 <section id="events">
-  <h2>Event list</h2>
+  <h2>Events and calendar subscription</h2>
   <p>
-    Each event is a row: the date, what and where, and an add-to-calendar menu.
-    The menu is a native <code>&lt;details&gt;</code>, so it needs no script.
+    The events page lists upcoming events in date order and offers the whole
+    calendar as a subscription. There were no upcoming events when this was
+    written, so only the subscription block is shown.
   </p>
   {% set classless %}
-<ul style="list-style: none; padding: 0; display: grid; gap: var(--padding)">
-  <li class="card-border flex flip" style="align-items: center">
-    <div style="text-align: center; min-width: 4rem">
-      <small class="text-secondary">NOV</small>
-      <div><strong style="font-size: 1.5rem">14</strong></div>
-    </div>
-    <div style="flex: 1">
-      <strong>Folding party</strong>
-      <p class="text-secondary"><small>Saturday, 2 to 4 pm · Belmont Library</small></p>
-    </div>
-    <details style="position: relative">
-      <summary class="btn btn-secondary">Add to calendar</summary>
-      <ul class="dropdown-content menu" style="position: absolute; right: 0; margin-top: calc(var(--padding) / 4); list-style: none">
-        <li><a href="#" class="semantic menu-item">Google Calendar</a></li>
-        <li><a href="#" class="semantic menu-item">Apple / Outlook (.ics)</a></li>
-      </ul>
-    </details>
-  </li>
-  <li class="card-border flex flip disabled" style="align-items: center">
-    <div style="text-align: center; min-width: 4rem">
-      <small class="text-secondary">OCT</small>
-      <div><strong style="font-size: 1.5rem">03</strong></div>
-    </div>
-    <div style="flex: 1">
-      <strong>Zine swap</strong>
-      <p class="text-secondary"><small>Past event · Community center</small></p>
-    </div>
-  </li>
-</ul>
+<section class="prose">
+  <h2>Events</h2>
+  <p>Check out the upcoming events below, or subscribe to get every event, including future ones.</p>
+  <div class="flex" style="flex-wrap: wrap">
+    <a href="#" class="link">Apple / Outlook</a>
+    <a href="#" class="link">Google Calendar</a>
+    <a href="#" class="link">Download ICS file</a>
+  </div>
+</section>
   {% endset %}
   {{ m.demo("community-events", classless) }}
   <ul>
-    <li><strong>Layout:</strong> the list is a grid for its gap, and each row is <code>.flex .flip</code>, so on a phone the date, details and button stack.</li>
-    <li><strong>Surfaces:</strong> <code>.dropdown-content</code> only paints. Where it opens is the caller's job: a relative <code>&lt;details&gt;</code> and an absolute panel.</li>
-    <li><strong>Boundary:</strong> a past event takes <code>.disabled</code>, which sets <code>--chroma: 0</code> on the row. Everything in it loses its colour together, with no per-element overrides.</li>
+    <li><strong>Actions:</strong> three equal choices, so they are links in a <code>.flex</code> row rather than buttons competing for attention.</li>
   </ul>
 </section>
 
-<section id="faq">
-  <h2>Guide sections</h2>
+<section id="community-kit">
+  <h2>Community kit</h2>
   <p>
-    Long how-to content folds into collapses, one per question. Each body is
-    prose.
+    Downloadable branding, so anyone starting their own little zine revolution
+    can match it. Each item is a picture and its file links.
   </p>
   {% set classless %}
-<details class="collapse" open>
-  <summary class="collapse-title">How do I fold a quarter-page zine? <span>−</span></summary>
-  <div class="collapse-content prose">
-    <ol>
-      <li>Fold the sheet in half along the long edge.</li>
-      <li>Fold it in half again.</li>
-      <li>Crease well and trim the top fold.</li>
-    </ol>
-  </div>
-</details>
-<details class="collapse">
-  <summary class="collapse-title">Can I print double sided at home? <span>+</span></summary>
-  <div class="collapse-content prose">
-    <p>Yes. Flip on the short edge so the back pages are not upside down.</p>
-  </div>
-</details>
+<section class="prose">
+  <h2>Community Kit</h2>
+  <p>Share the love!</p>
+</section>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(12rem, 1fr)); gap: var(--padding)">
+  <article class="card-border">
+    <div style="aspect-ratio: 1; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong>QR Codes</strong>
+    <p class="flex"><a href="#" class="link">PNG</a> <a href="#" class="link">SVG</a></p>
+  </article>
+  <article class="card-border">
+    <div style="aspect-ratio: 1; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong>Logos</strong>
+    <p class="flex"><a href="#" class="link">Logo</a> <a href="#" class="link">Dark</a> <a href="#" class="link">B&amp;W</a></p>
+  </article>
+  <article class="card-border">
+    <div style="aspect-ratio: 1; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong>Tags</strong>
+    <p class="flex"><a href="#" class="link">PDF</a> <a href="#" class="link">SVG</a> <a href="#" class="link">Page PDF</a></p>
+  </article>
+  <article class="card-border">
+    <div style="aspect-ratio: 1; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong>Signs</strong>
+    <p class="flex"><a href="#" class="link">PDF</a> <a href="#" class="link">SVG</a> <a href="#" class="link">Page PDF</a></p>
+  </article>
+  <article class="card-border">
+    <div style="aspect-ratio: 1; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong>Quartersheet Flyers</strong>
+    <p class="flex"><a href="#" class="link">SVG</a> <a href="#" class="link">PDF</a></p>
+  </article>
+  <article class="card-border">
+    <div style="aspect-ratio: 1; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong>Lazers</strong>
+    <p class="flex"><a href="#" class="link">Favicon SVG</a></p>
+  </article>
+</div>
   {% endset %}
-  {{ m.demo("community-faq", classless) }}
+  {{ m.demo("community-kit", classless) }}
   <ul>
-    <li><strong>Text:</strong> <code>.prose</code> goes on <code>.collapse-content</code>, not on the stack, so the titles keep their own size and spacing.</li>
+    <li><strong>Surface:</strong> six items of equal weight, so <code>.card-border</code> rather than raised cards.</li>
+    <li><strong>Layout:</strong> the file links in each item are a <code>.flex</code> row; the <code>1rem</code> gap keeps short labels like PDF and SVG from running together.</li>
   </ul>
 </section>
 
-<section id="cta">
-  <h2>Credit band</h2>
+<section id="gallery">
+  <h2>LZR in the Wild</h2>
   <p>
-    A small block that belongs to someone else, in their colour, at the foot of
-    the page.
+    Photos of zine displays out in coffee shops, bookstores and little free
+    libraries. A plain grid of images.
   </p>
   {% set classless %}
-<aside class="card-border retheme flex flip" style="--primary: rebeccapurple; align-items: center; justify-content: space-between">
-  <div class="prose">
-    <h3>Want a site like this?</h3>
-    <p class="text-secondary">Built by a one-person studio in Portland.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(10rem, 1fr)); gap: calc(var(--padding) / 2)">
+  {% for alt in ["Zine bin at a coffee shop", "Display at a bookstore", "Little free library", "Free pantry shelf", "Convenience store counter", "Anime cafe display"] %}
+  <div style="aspect-ratio: 1; background: var(--surface-strong); border-radius: var(--border-radius)" role="img" aria-label="{{ alt }}"></div>
+  {% endfor %}
+</div>
+  {% endset %}
+  {{ m.demo("community-gallery", classless) }}
+  <ul>
+    <li><strong>Layout:</strong> a tighter gap than the rest of the site, half of <code>--padding</code>, so the photos read as one wall rather than as separate items.</li>
+  </ul>
+</section>
+
+<section id="get-in-touch">
+  <h2>Get in touch</h2>
+  <p>
+    No form: a line setting expectations and two ways to reach the group.
+  </p>
+  {% set classless %}
+<section class="prose">
+  <h2>Get in Touch</h2>
+  <p>Please be patient. We are a tiny team!</p>
+  <div class="flex" style="flex-wrap: wrap">
+    <a href="#" class="link">Follow us on Instagram</a>
+    <a href="#" class="link">Send us an email</a>
   </div>
-  <a href="#" class="btn">Book a free call</a>
+</section>
+  {% endset %}
+  {{ m.demo("community-get-in-touch", classless) }}
+</section>
+
+<section id="credit">
+  <h2>"Want a site like this?"</h2>
+  <p>
+    The studio's credit, at the foot of most pages and beside each zine. It is
+    the only block on the site in someone else's colours.
+  </p>
+  {% set classless %}
+<aside class="card-border retheme prose" style="--primary: rebeccapurple">
+  <h3>Want a site like this?</h3>
+  <p>We build accessible, performant sites your users will love.</p>
+  <a href="#" role="button" class="btn">Book a free call</a>
 </aside>
   {% endset %}
-  {{ m.demo("community-cta", classless) }}
+  {{ m.demo("community-credit", classless) }}
   <ul>
-    <li><strong>Boundary:</strong> <code>.retheme</code> with the studio's own <code>--primary</code> marks the block as separate from the group's theme without a single extra rule.</li>
-    <li><strong>Spacing:</strong> the prose column keeps its bottom margins; <code>align-items: center</code> on the row centres the button against the whole block.</li>
+    <li><strong>Boundary:</strong> <code>.retheme</code> with the studio's <code>--primary</code> recolours the button, border and text inside the block and nothing outside it.</li>
   </ul>
 </section>
 
 <section id="footer">
-  <h2>Footer with a disclaimer</h2>
+  <h2>Footer</h2>
+  <p>
+    Contact links, the full site map, and the disclaimer.
+  </p>
   {% set classless %}
 <footer>
   <hr class="divider" />
-  <nav class="flex" style="flex-wrap: wrap; gap: calc(var(--padding) / 2) var(--padding)">
-    <a href="#" class="link">Zine Catalog</a>
+  <div class="flex" style="flex-wrap: wrap">
+    <a href="#" class="link">Follow us on Instagram</a>
+    <a href="#" class="link">Send us an email</a>
+  </div>
+  <nav class="flex" style="flex-wrap: wrap; margin-top: var(--padding)">
+    <a href="#" class="link">Home</a>
     <a href="#" class="link">How to Help</a>
+    <a href="#" class="link">Zine Catalog</a>
     <a href="#" class="link">Events</a>
+    <a href="#" class="link">LZR in the Wild</a>
     <a href="#" class="link">Community Kit</a>
     <a href="#" class="link">Get in Touch</a>
+    <a href="#" class="link">Sites that inspire us</a>
   </nav>
   <p class="text-secondary" style="margin-top: var(--padding)">
     <small>This is a platform for independent voices. Zines are the responsibility of their creators and are not endorsed by this site.</small>
@@ -243,7 +329,7 @@
   {% endset %}
   {{ m.demo("community-footer", classless) }}
   <ul>
-    <li><strong>Layout:</strong> one wrapping <code>.flex</code> row with a smaller row gap than column gap, so wrapped links read as one list rather than as stacked rows.</li>
+    <li><strong>Spacing:</strong> nothing here is in <code>.prose</code>, so the groups are spaced with <code>margin-top: var(--padding)</code>, top margins being the one thing the framework never sets.</li>
   </ul>
 </section>
 {% endblock %}
