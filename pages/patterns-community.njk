@@ -95,7 +95,7 @@
   <h2>Zine catalog</h2>
   <p>
     A search field, the topics to filter by, and the zines as linked titles with
-    their cover images. Topics combine, so they are checkboxes here.
+    their cover images. A zine has one fold, so the fold topics are a single choice; the rest combine, so they are checkboxes.
   </p>
   {% set classless %}
 <form>
@@ -105,12 +105,15 @@
   </label>
   <fieldset class="fieldset">
     <legend class="fieldset-legend">Topics</legend>
-    <div class="flex" style="flex-wrap: wrap">
+    <div class="flex" style="flex-wrap: wrap; align-items: center">
+      <div class="segmented" role="radiogroup" aria-label="Fold" style="margin-bottom: 1rem">
+        <label class="segmented-item"><input type="radio" name="fold" checked /> any fold</label>
+        <label class="segmented-item"><input type="radio" name="fold" /> trifold</label>
+        <label class="segmented-item"><input type="radio" name="fold" /> quarters</label>
+      </div>
       <label class="label"><input type="checkbox" class="checkbox" /> color</label>
       <label class="label"><input type="checkbox" class="checkbox" /> double sided</label>
       <label class="label"><input type="checkbox" class="checkbox" checked /> single sided</label>
-      <label class="label"><input type="checkbox" class="checkbox" /> trifold</label>
-      <label class="label"><input type="checkbox" class="checkbox" /> quarters</label>
     </div>
   </fieldset>
 </form>
@@ -136,7 +139,8 @@
   {% endset %}
   {{ m.demo("community-catalog", classless) }}
   <ul>
-    <li><strong>Controls:</strong> each checkbox is a <code>.label</code> row, and the <code>.fieldset</code> names the group once with its legend. The labels keep their bottom margin, which also spaces them when the row wraps.</li>
+    <li><strong>Controls:</strong> the fold is a <code>.segmented</code> control, which is a radio group underneath, so picking one clears the other. Each checkbox is a <code>.label</code> row, and the <code>.fieldset</code> names the whole group once with its legend.</li>
+    <li><strong>Spacing:</strong> the checkbox labels keep their <code>1rem</code> bottom margin, which also spaces them when the row wraps. The segmented control has no margin of its own, so it gets the same <code>1rem</code> to share their centre line.</li>
     <li><strong>Actions:</strong> each zine is one link. <code>.semantic</code> strips the anchor and the title inside is marked <code>.link</code>, so the cover and title click as one target.</li>
   </ul>
 </section>

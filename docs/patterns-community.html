@@ -567,7 +567,7 @@
   <h2>Zine catalog</h2>
   <p>
     A search field, the topics to filter by, and the zines as linked titles with
-    their cover images. Topics combine, so they are checkboxes here.
+    their cover images. A zine has one fold, so the fold topics are a single choice; the rest combine, so they are checkboxes.
   </p>
   
   
@@ -588,12 +588,15 @@
   &lt;/label&gt;
   &lt;fieldset class=&quot;fieldset&quot;&gt;
     &lt;legend class=&quot;fieldset-legend&quot;&gt;Topics&lt;/legend&gt;
-    &lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap&quot;&gt;
+    &lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap; align-items: center&quot;&gt;
+      &lt;div class=&quot;segmented&quot; role=&quot;radiogroup&quot; aria-label=&quot;Fold&quot; style=&quot;margin-bottom: 1rem&quot;&gt;
+        &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;fold&quot; checked /&gt; any fold&lt;/label&gt;
+        &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;fold&quot; /&gt; trifold&lt;/label&gt;
+        &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;fold&quot; /&gt; quarters&lt;/label&gt;
+      &lt;/div&gt;
       &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; color&lt;/label&gt;
       &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; double sided&lt;/label&gt;
       &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; single sided&lt;/label&gt;
-      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; trifold&lt;/label&gt;
-      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; quarters&lt;/label&gt;
     &lt;/div&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;
@@ -622,7 +625,8 @@
 </div>
 
   <ul>
-    <li><strong>Controls:</strong> each checkbox is a <code>.label</code> row, and the <code>.fieldset</code> names the group once with its legend. The labels keep their bottom margin, which also spaces them when the row wraps.</li>
+    <li><strong>Controls:</strong> the fold is a <code>.segmented</code> control, which is a radio group underneath, so picking one clears the other. Each checkbox is a <code>.label</code> row, and the <code>.fieldset</code> names the whole group once with its legend.</li>
+    <li><strong>Spacing:</strong> the checkbox labels keep their <code>1rem</code> bottom margin, which also spaces them when the row wraps. The segmented control has no margin of its own, so it gets the same <code>1rem</code> to share their centre line.</li>
     <li><strong>Actions:</strong> each zine is one link. <code>.semantic</code> strips the anchor and the title inside is marked <code>.link</code>, so the cover and title click as one target.</li>
   </ul>
 </section>
