@@ -1,0 +1,253 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Studio site sections" %}
+{% set slug = "patterns-studio" %}
+
+{% block content %}
+<h1>Studio site sections</h1>
+<p class="lede">
+  Sections from a small studio's marketing site, modelled on
+  <a href="https://sparkstonepdx.com" target="_blank" rel="noreferrer">sparkstonepdx.com</a>.
+  Each one is a few components and a layout, and the notes under it say which
+  piece is doing which job. The rules behind them are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<section id="header">
+  <h2>Header and hero</h2>
+  <p>
+    A <code>.navbar</code> for the site links, then a hero: one heading, one
+    supporting sentence, one filled button.
+  </p>
+  {% set classless %}
+<header class="navbar">
+  <div class="navbar-start">
+    <strong>Sparkstone</strong>
+  </div>
+  <nav class="navbar-end">
+    <a href="#" class="link">Case Studies</a>
+    <a href="#" class="link">Products</a>
+    <a href="#" class="link">Blog</a>
+    <a href="#" class="btn">Book a call</a>
+  </nav>
+</header>
+
+<section class="prose" style="max-width: 40rem; padding: calc(var(--padding) * 3) 0">
+  <h1>Custom software and websites for medical practices, law firms, and specialty contractors in Portland.</h1>
+  <p class="text-secondary">
+    I'm Adam. I run Sparkstone, a one-person software studio. I build the
+    systems your business actually runs on.
+  </p>
+  <a href="#" class="btn">Book a call</a>
+  <p class="text-secondary" style="margin-top: var(--padding)">
+    <small>Featured on Behind the Creative Curtain, NarwhalPod, and CreativeMornings</small>
+  </p>
+</section>
+  {% endset %}
+  {{ m.demo("studio-hero", classless) }}
+  <ul>
+    <li><strong>Layout:</strong> <code>.navbar-start</code> and <code>.navbar-end</code> push apart. The links and the button share the end group's gap, so they line up with no extra classes.</li>
+    <li><strong>Actions:</strong> the header's call to action and the hero's are the same <code>.btn</code>. Nothing else on screen is filled, so the eye has one place to go.</li>
+    <li><strong>Text:</strong> <code>.prose</code> sits on the hero column, not the page, so it spaces the heading, lede and button without touching the navbar.</li>
+  </ul>
+</section>
+
+<section id="services">
+  <h2>Services</h2>
+  <p>
+    Several offers of equal weight. They sit on <code>.card-border</code> so none
+    looks featured over the others.
+  </p>
+  {% set classless %}
+<section class="prose">
+  <h2>Services</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: var(--padding)">
+    <div class="card-border">
+      <h3>Custom applications</h3>
+      <p class="text-secondary">The internal tool or portal you can't buy off the shelf.</p>
+    </div>
+    <div class="card-border">
+      <h3>Project rescue</h3>
+      <p class="text-secondary">Take over a build that stalled, or clean up after one.</p>
+    </div>
+    <div class="card-border">
+      <h3>Websites</h3>
+      <p class="text-secondary">A site your staff can edit themselves, on a monthly retainer.</p>
+    </div>
+  </div>
+</section>
+  {% endset %}
+  {{ m.demo("studio-services", classless) }}
+  <ul>
+    <li><strong>Text:</strong> one <code>.prose</code> on the section spaces the section heading and every card's heading and paragraph. The grid is a plain <code>div</code>, and <code>.prose</code> does not space a <code>div</code>, so the columns stay tight.</li>
+    <li><strong>Surface:</strong> <code>.card-border</code> takes <code>--padding</code> for its inside, so setting <code>--padding</code> on the section resizes all three cards together.</li>
+  </ul>
+</section>
+
+<section id="case-studies">
+  <h2>Case study cards</h2>
+  <p>
+    Each card is one link, so the anchor is the card. A badge says what kind of
+    work it was, and a <code>.link</code> span at the bottom says what clicking does.
+  </p>
+  {% set classless %}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--padding)">
+  <a href="#" class="semantic card prose">
+    <span class="badge">Open source</span>
+    <h3 style="margin-top: var(--padding)">The Map I Never Meant to Build</h3>
+    <p class="text-secondary">Sixty thousand views, three neighborhoods asking to borrow it, and a little map that got better every spring.</p>
+    <span class="link">Read the case study</span>
+  </a>
+  <a href="#" class="semantic card prose">
+    <span class="badge">Website</span>
+    <h3 style="margin-top: var(--padding)">A Library That Fits in a Free Little Library</h3>
+    <p class="text-secondary">A zine catalog, a printing guide, and an events page, built from a pile of draft copy.</p>
+    <span class="link">Read the case study</span>
+  </a>
+  <a href="#" class="semantic card prose">
+    <span class="badge">Product</span>
+    <h3 style="margin-top: var(--padding)">Liveframe</h3>
+    <p class="text-secondary">Guests scan a QR code to share photos, messages and polls in real time, with no app to install.</p>
+    <span class="link">See the product</span>
+  </a>
+</div>
+  {% endset %}
+  {{ m.demo("studio-case-studies", classless) }}
+  <ul>
+    <li><strong>Actions:</strong> <code>.semantic</code> removes the link's own styling and <code>.card</code>, later in the cascade, puts the surface back. The grid lays each anchor out as a block, so it needs no <code>display</code>.</li>
+    <li><strong>Spacing:</strong> nothing has a top margin, so the heading under a badge needs one. It uses <code>var(--padding)</code> so it moves with the card's padding.</li>
+    <li><strong>Text:</strong> the <code>.link</code> span is styled text, not a second link. Nested anchors are invalid, and one target per card is what makes it a card.</li>
+  </ul>
+</section>
+
+<section id="testimonial">
+  <h2>Testimonial</h2>
+  <p>
+    A quote is prose: <code>.prose</code> gives the <code>blockquote</code> its
+    rule and padding. The attribution is supporting text.
+  </p>
+  {% set classless %}
+<figure class="card prose">
+  <blockquote>
+    We are a tiny team with big dreams of making zines more accessible for
+    everyone. Adam showed sincere interest in our project and listened to our
+    ideas.
+  </blockquote>
+  <figcaption class="text-secondary">Little Zine Revolution</figcaption>
+</figure>
+  {% endset %}
+  {{ m.demo("studio-testimonial", classless) }}
+  <ul>
+    <li><strong>Surface:</strong> a <code>.card</code> rather than a bordered box, because a testimonial is meant to be looked at. The quote's <code>--line</code> rule reads against <code>--surface</code> as well as against the page.</li>
+  </ul>
+</section>
+
+<section id="newsletter">
+  <h2>Newsletter band</h2>
+  <p>
+    An input and a button side by side. The input keeps its own bottom margin,
+    so the row aligns them to the end of the label rather than the middle.
+  </p>
+  {% set classless %}
+<section class="card" data-color-scheme="dark">
+  <div class="prose">
+    <h2>Newsletter</h2>
+    <p class="text-secondary">Subscribe to be the first to hear about what I do next.</p>
+  </div>
+  <form class="flex flip" style="align-items: end; row-gap: 0">
+    <label class="label" style="flex: 1">
+      <p>Email</p>
+      <input class="input" type="email" placeholder="you@example.com" />
+    </label>
+    <button class="btn" style="margin-bottom: 1rem">Subscribe</button>
+  </form>
+</section>
+  {% endset %}
+  {{ m.demo("studio-newsletter", classless) }}
+  <ul>
+    <li><strong>Boundary:</strong> <code>data-color-scheme="dark"</code> on the card turns this one band dark on a light page. The input, button and muted text all follow, because they read derived colours.</li>
+    <li><strong>Spacing:</strong> the label and input carry their bottom margins into the row. Giving the button the same <code>1rem</code> lines its bottom edge up with the input's. <code>.flip</code> stacks them on a phone, and <code>row-gap: 0</code> leaves the stacked spacing to those margins.</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact form</h2>
+  <p>
+    A form is a stack of labels. Fieldsets group them, and
+    <code>.card-actions</code> closes the card with the submit button.
+  </p>
+  {% set classless %}
+<form class="card">
+  <div class="prose">
+    <h2>Book a call</h2>
+    <p class="text-secondary">Tell me a little about the project.</p>
+  </div>
+  <div class="flex flip" style="row-gap: 0">
+    <label class="label" style="flex: 1">
+      <p>Name</p>
+      <input class="input" autocomplete="name" />
+    </label>
+    <label class="label" style="flex: 1">
+      <p>Email</p>
+      <input class="input" type="email" autocomplete="email" />
+    </label>
+  </div>
+  <label class="label">
+    <p>What kind of business?</p>
+    <select class="select">
+      <option>Medical practice</option>
+      <option>Law firm</option>
+      <option>Specialty contractor</option>
+      <option>Something else</option>
+    </select>
+  </label>
+  <label class="label">
+    <p>What do you need?</p>
+    <textarea class="textarea" rows="4"></textarea>
+    <small>A few sentences is plenty.</small>
+  </label>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn">Send</button>
+  </footer>
+</form>
+  {% endset %}
+  {{ m.demo("studio-contact", classless) }}
+  <ul>
+    <li><strong>Layout:</strong> two short fields share a <code>.flex .flip</code> row and stack on phones. Each label takes <code>flex: 1</code>; the controls inside are already full width. <code>row-gap: 0</code> keeps the stacked labels from getting the row's gap on top of their own bottom margin.</li>
+    <li><strong>Controls:</strong> every label spaces its own text, control and help, so the form needs no wrapper between fields.</li>
+  </ul>
+</section>
+
+<section id="footer">
+  <h2>Site footer</h2>
+  <p>
+    Columns of links and a tagline, divided from the page by a rule.
+  </p>
+  {% set classless %}
+<footer>
+  <hr class="divider" />
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--padding)">
+    <div>
+      <strong>Sparkstone</strong>
+      <p class="text-secondary"><small>Where technology sparks innovation</small></p>
+    </div>
+    <nav class="flex" style="flex-direction: column; gap: calc(var(--padding) / 4)">
+      <a href="#" class="link">Case Studies</a>
+      <a href="#" class="link">Products</a>
+      <a href="#" class="link">Blog</a>
+    </nav>
+    <nav class="flex" style="flex-direction: column; gap: calc(var(--padding) / 4)">
+      <a href="#" class="link">Free Tools</a>
+      <a href="#" class="link">About</a>
+      <a href="#" class="link">Book a call</a>
+    </nav>
+  </div>
+</footer>
+  {% endset %}
+  {{ m.demo("studio-footer", classless) }}
+  <ul>
+    <li><strong>Layout:</strong> link columns are <code>.flex</code> turned on its side, with the gap brought down to a quarter of <code>--padding</code> so the links read as one list.</li>
+    <li><strong>Surface:</strong> <code>.divider</code> is the same <code>--divider</code> rule as a card's border, so the footer belongs to the same family without being boxed in.</li>
+  </ul>
+</section>
+{% endblock %}

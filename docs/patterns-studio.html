@@ -1,0 +1,798 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Studio site sections · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./components.html"
+                    
+                    >All components</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Composition</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./composition.html"
+                    
+                    >How pieces fit</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./patterns-studio.html"
+                    aria-current="page"
+                    >Studio site sections</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./patterns-community.html"
+                    
+                    >Community site sections</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Navigation</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./tabs.html"
+                    
+                    >Tabs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./dropdown.html"
+                    
+                    >Dropdown<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./navbar.html"
+                    
+                    >Navbar<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./breadcrumbs.html"
+                    
+                    >Breadcrumbs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./pagination.html"
+                    
+                    >Pagination<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./alert.html"
+                    
+                    >Alert<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./collapse.html"
+                    
+                    >Collapse<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./skeleton.html"
+                    
+                    >Skeleton<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toggle.html"
+                    
+                    >Toggle<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./slider.html"
+                    
+                    >Slider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./segmented.html"
+                    
+                    >Segmented control<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./tooltip.html"
+                    
+                    >Tooltip<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./popover.html"
+                    
+                    >Popover<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toast.html"
+                    
+                    >Toast<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Layout</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./divider.html"
+                    
+                    >Divider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./loading.html"
+                    
+                    >Loading<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Studio site sections</h1>
+<p class="lede">
+  Sections from a small studio's marketing site, modelled on
+  <a href="https://sparkstonepdx.com" target="_blank" rel="noreferrer">sparkstonepdx.com</a>.
+  Each one is a few components and a layout, and the notes under it say which
+  piece is doing which job. The rules behind them are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<section id="header">
+  <h2>Header and hero</h2>
+  <p>
+    A <code>.navbar</code> for the site links, then a hero: one heading, one
+    supporting sentence, one filled button.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-hero-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-hero-classes" data-variant="classes">&lt;header class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-start&quot;&gt;
+    &lt;strong&gt;Sparkstone&lt;/strong&gt;
+  &lt;/div&gt;
+  &lt;nav class=&quot;navbar-end&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Case Studies&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Products&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Blog&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Book a call&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;
+
+&lt;section class=&quot;prose&quot; style=&quot;max-width: 40rem; padding: calc(var(--padding) * 3) 0&quot;&gt;
+  &lt;h1&gt;Custom software and websites for medical practices, law firms, and specialty contractors in Portland.&lt;/h1&gt;
+  &lt;p class=&quot;text-secondary&quot;&gt;
+    I&#39;m Adam. I run Sparkstone, a one-person software studio. I build the
+    systems your business actually runs on.
+  &lt;/p&gt;
+  &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Book a call&lt;/a&gt;
+  &lt;p class=&quot;text-secondary&quot; style=&quot;margin-top: var(--padding)&quot;&gt;
+    &lt;small&gt;Featured on Behind the Creative Curtain, NarwhalPod, and CreativeMornings&lt;/small&gt;
+  &lt;/p&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Layout:</strong> <code>.navbar-start</code> and <code>.navbar-end</code> push apart. The links and the button share the end group's gap, so they line up with no extra classes.</li>
+    <li><strong>Actions:</strong> the header's call to action and the hero's are the same <code>.btn</code>. Nothing else on screen is filled, so the eye has one place to go.</li>
+    <li><strong>Text:</strong> <code>.prose</code> sits on the hero column, not the page, so it spaces the heading, lede and button without touching the navbar.</li>
+  </ul>
+</section>
+
+<section id="services">
+  <h2>Services</h2>
+  <p>
+    Several offers of equal weight. They sit on <code>.card-border</code> so none
+    looks featured over the others.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-services-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-services-classes" data-variant="classes">&lt;section class=&quot;prose&quot;&gt;
+  &lt;h2&gt;Services&lt;/h2&gt;
+  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: var(--padding)&quot;&gt;
+    &lt;div class=&quot;card-border&quot;&gt;
+      &lt;h3&gt;Custom applications&lt;/h3&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;The internal tool or portal you can&#39;t buy off the shelf.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card-border&quot;&gt;
+      &lt;h3&gt;Project rescue&lt;/h3&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;Take over a build that stalled, or clean up after one.&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card-border&quot;&gt;
+      &lt;h3&gt;Websites&lt;/h3&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;A site your staff can edit themselves, on a monthly retainer.&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Text:</strong> one <code>.prose</code> on the section spaces the section heading and every card's heading and paragraph. The grid is a plain <code>div</code>, and <code>.prose</code> does not space a <code>div</code>, so the columns stay tight.</li>
+    <li><strong>Surface:</strong> <code>.card-border</code> takes <code>--padding</code> for its inside, so setting <code>--padding</code> on the section resizes all three cards together.</li>
+  </ul>
+</section>
+
+<section id="case-studies">
+  <h2>Case study cards</h2>
+  <p>
+    Each card is one link, so the anchor is the card. A badge says what kind of
+    work it was, and a <code>.link</code> span at the bottom says what clicking does.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-case-studies-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-case-studies-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr)); gap: var(--padding)&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;Open source&lt;/span&gt;
+    &lt;h3 style=&quot;margin-top: var(--padding)&quot;&gt;The Map I Never Meant to Build&lt;/h3&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;Sixty thousand views, three neighborhoods asking to borrow it, and a little map that got better every spring.&lt;/p&gt;
+    &lt;span class=&quot;link&quot;&gt;Read the case study&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;Website&lt;/span&gt;
+    &lt;h3 style=&quot;margin-top: var(--padding)&quot;&gt;A Library That Fits in a Free Little Library&lt;/h3&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;A zine catalog, a printing guide, and an events page, built from a pile of draft copy.&lt;/p&gt;
+    &lt;span class=&quot;link&quot;&gt;Read the case study&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;Product&lt;/span&gt;
+    &lt;h3 style=&quot;margin-top: var(--padding)&quot;&gt;Liveframe&lt;/h3&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;Guests scan a QR code to share photos, messages and polls in real time, with no app to install.&lt;/p&gt;
+    &lt;span class=&quot;link&quot;&gt;See the product&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Actions:</strong> <code>.semantic</code> removes the link's own styling and <code>.card</code>, later in the cascade, puts the surface back. The grid lays each anchor out as a block, so it needs no <code>display</code>.</li>
+    <li><strong>Spacing:</strong> nothing has a top margin, so the heading under a badge needs one. It uses <code>var(--padding)</code> so it moves with the card's padding.</li>
+    <li><strong>Text:</strong> the <code>.link</code> span is styled text, not a second link. Nested anchors are invalid, and one target per card is what makes it a card.</li>
+  </ul>
+</section>
+
+<section id="testimonial">
+  <h2>Testimonial</h2>
+  <p>
+    A quote is prose: <code>.prose</code> gives the <code>blockquote</code> its
+    rule and padding. The attribution is supporting text.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-testimonial-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-testimonial-classes" data-variant="classes">&lt;figure class=&quot;card prose&quot;&gt;
+  &lt;blockquote&gt;
+    We are a tiny team with big dreams of making zines more accessible for
+    everyone. Adam showed sincere interest in our project and listened to our
+    ideas.
+  &lt;/blockquote&gt;
+  &lt;figcaption class=&quot;text-secondary&quot;&gt;Little Zine Revolution&lt;/figcaption&gt;
+&lt;/figure&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Surface:</strong> a <code>.card</code> rather than a bordered box, because a testimonial is meant to be looked at. The quote's <code>--line</code> rule reads against <code>--surface</code> as well as against the page.</li>
+  </ul>
+</section>
+
+<section id="newsletter">
+  <h2>Newsletter band</h2>
+  <p>
+    An input and a button side by side. The input keeps its own bottom margin,
+    so the row aligns them to the end of the label rather than the middle.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-newsletter-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-newsletter-classes" data-variant="classes">&lt;section class=&quot;card&quot; data-color-scheme=&quot;dark&quot;&gt;
+  &lt;div class=&quot;prose&quot;&gt;
+    &lt;h2&gt;Newsletter&lt;/h2&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;Subscribe to be the first to hear about what I do next.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;form class=&quot;flex flip&quot; style=&quot;align-items: end; row-gap: 0&quot;&gt;
+    &lt;label class=&quot;label&quot; style=&quot;flex: 1&quot;&gt;
+      &lt;p&gt;Email&lt;/p&gt;
+      &lt;input class=&quot;input&quot; type=&quot;email&quot; placeholder=&quot;you@example.com&quot; /&gt;
+    &lt;/label&gt;
+    &lt;button class=&quot;btn&quot; style=&quot;margin-bottom: 1rem&quot;&gt;Subscribe&lt;/button&gt;
+  &lt;/form&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Boundary:</strong> <code>data-color-scheme="dark"</code> on the card turns this one band dark on a light page. The input, button and muted text all follow, because they read derived colours.</li>
+    <li><strong>Spacing:</strong> the label and input carry their bottom margins into the row. Giving the button the same <code>1rem</code> lines its bottom edge up with the input's. <code>.flip</code> stacks them on a phone, and <code>row-gap: 0</code> leaves the stacked spacing to those margins.</li>
+  </ul>
+</section>
+
+<section id="contact">
+  <h2>Contact form</h2>
+  <p>
+    A form is a stack of labels. Fieldsets group them, and
+    <code>.card-actions</code> closes the card with the submit button.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-contact-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-contact-classes" data-variant="classes">&lt;form class=&quot;card&quot;&gt;
+  &lt;div class=&quot;prose&quot;&gt;
+    &lt;h2&gt;Book a call&lt;/h2&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;Tell me a little about the project.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;flex flip&quot; style=&quot;row-gap: 0&quot;&gt;
+    &lt;label class=&quot;label&quot; style=&quot;flex: 1&quot;&gt;
+      &lt;p&gt;Name&lt;/p&gt;
+      &lt;input class=&quot;input&quot; autocomplete=&quot;name&quot; /&gt;
+    &lt;/label&gt;
+    &lt;label class=&quot;label&quot; style=&quot;flex: 1&quot;&gt;
+      &lt;p&gt;Email&lt;/p&gt;
+      &lt;input class=&quot;input&quot; type=&quot;email&quot; autocomplete=&quot;email&quot; /&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;p&gt;What kind of business?&lt;/p&gt;
+    &lt;select class=&quot;select&quot;&gt;
+      &lt;option&gt;Medical practice&lt;/option&gt;
+      &lt;option&gt;Law firm&lt;/option&gt;
+      &lt;option&gt;Specialty contractor&lt;/option&gt;
+      &lt;option&gt;Something else&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;p&gt;What do you need?&lt;/p&gt;
+    &lt;textarea class=&quot;textarea&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;
+    &lt;small&gt;A few sentences is plenty.&lt;/small&gt;
+  &lt;/label&gt;
+  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
+    &lt;button class=&quot;btn&quot;&gt;Send&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/form&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Layout:</strong> two short fields share a <code>.flex .flip</code> row and stack on phones. Each label takes <code>flex: 1</code>; the controls inside are already full width. <code>row-gap: 0</code> keeps the stacked labels from getting the row's gap on top of their own bottom margin.</li>
+    <li><strong>Controls:</strong> every label spaces its own text, control and help, so the form needs no wrapper between fields.</li>
+  </ul>
+</section>
+
+<section id="footer">
+  <h2>Site footer</h2>
+  <p>
+    Columns of links and a tagline, divided from the page by a rule.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="studio-footer-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="studio-footer-classes" data-variant="classes">&lt;footer&gt;
+  &lt;hr class=&quot;divider&quot; /&gt;
+  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr)); gap: var(--padding)&quot;&gt;
+    &lt;div&gt;
+      &lt;strong&gt;Sparkstone&lt;/strong&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;&lt;small&gt;Where technology sparks innovation&lt;/small&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;nav class=&quot;flex&quot; style=&quot;flex-direction: column; gap: calc(var(--padding) / 4)&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Case Studies&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Products&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Blog&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;nav class=&quot;flex&quot; style=&quot;flex-direction: column; gap: calc(var(--padding) / 4)&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Free Tools&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;About&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Book a call&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Layout:</strong> link columns are <code>.flex</code> turned on its side, with the gap brought down to a quarter of <code>--padding</code> so the links read as one list.</li>
+    <li><strong>Surface:</strong> <code>.divider</code> is the same <code>--divider</code> rule as a card's border, so the footer belongs to the same family without being boxed in.</li>
+  </ul>
+</section>
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

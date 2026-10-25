@@ -55,7 +55,7 @@
 </p>
 
 {% for group in nav.navGroups %}
-  {% if group[0] != "Getting started" %}
+  {% if group[0] not in ["Getting started", "Composition"] %}
     <h2>{{ group[0] }}</h2>
     <div class="component-grid">
       {% for item in group[1] %}

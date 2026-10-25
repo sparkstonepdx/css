@@ -1,0 +1,867 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Composition · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./components.html"
+                    
+                    >All components</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Composition</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./composition.html"
+                    aria-current="page"
+                    >How pieces fit</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./patterns-studio.html"
+                    
+                    >Studio site sections</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./patterns-community.html"
+                    
+                    >Community site sections</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Navigation</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./tabs.html"
+                    
+                    >Tabs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./dropdown.html"
+                    
+                    >Dropdown<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./navbar.html"
+                    
+                    >Navbar<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./breadcrumbs.html"
+                    
+                    >Breadcrumbs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./pagination.html"
+                    
+                    >Pagination<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./alert.html"
+                    
+                    >Alert<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./collapse.html"
+                    
+                    >Collapse<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./skeleton.html"
+                    
+                    >Skeleton<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toggle.html"
+                    
+                    >Toggle<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./slider.html"
+                    
+                    >Slider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./segmented.html"
+                    
+                    >Segmented control<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./tooltip.html"
+                    
+                    >Tooltip<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./popover.html"
+                    
+                    >Popover<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toast.html"
+                    
+                    >Toast<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Layout</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./divider.html"
+                    
+                    >Divider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./loading.html"
+                    
+                    >Loading<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Composition</h1>
+<p class="lede">
+  The component pages show each piece on its own. This page is about how they
+  fit together: which piece owns colour, which owns spacing, which owns text,
+  and where the seams between them are. The
+  <a href="./patterns-studio.html">studio</a> and
+  <a href="./patterns-community.html">community</a> pages put these rules to
+  work on real page sections.
+</p>
+
+<p>
+  <small>
+    Examples on this page and the section pages use the class build. Layout that
+    the framework leaves to you, such as a grid, is written inline so you can see
+    it.
+  </small>
+</p>
+
+<section id="layers">
+  <h2>Who owns what</h2>
+  <p>
+    Every piece of markup plays one of five roles. Most mistakes come from asking
+    one piece to do another's job, such as giving a grid wrapper
+    <code>.prose</code>, or a card a margin.
+  </p>
+  <table class="class-table">
+    <thead>
+      <tr><th>Role</th><th>Pieces</th><th>Owns</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Layout</td>
+        <td><code>.container</code>, <code>.flex</code>, <code>.navbar</code>, CSS grid</td>
+        <td>Width, columns, and the gap between siblings. No colour, no text spacing.</td>
+      </tr>
+      <tr>
+        <td>Surface</td>
+        <td><code>.card</code>, <code>.card-border</code>, <code>.dialog-box</code>, <code>.dropdown-content</code></td>
+        <td>A background, a border or shadow, and inner padding. Nothing outside its edge.</td>
+      </tr>
+      <tr>
+        <td>Text</td>
+        <td><code>.prose</code>, <code>.text-secondary</code>, <code>.link</code>, <code>.badge</code></td>
+        <td>Vertical rhythm between headings, paragraphs and lists, and the colour of words.</td>
+      </tr>
+      <tr>
+        <td>Control</td>
+        <td><code>.label</code>, <code>.input</code>, <code>.btn</code>, <code>.fieldset</code></td>
+        <td>Its own box, its own bottom margin, and its states.</td>
+      </tr>
+      <tr>
+        <td>Boundary</td>
+        <td><code>.retheme</code>, <code>data-color-scheme</code>, <code>.disabled</code>, <code>.error</code></td>
+        <td>The colour of everything inside it. Draws nothing itself.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    A section of a page is usually one of each, nested in that order: a layout
+    places surfaces, a surface holds text and controls, and a boundary can wrap
+    any of them.
+  </p>
+</section>
+
+<section id="surfaces">
+  <h2>Surfaces</h2>
+  <p>
+    There are three colours to stand on. <code>--bg</code> is the page.
+    <code>.card</code> raises a block onto <code>--surface</code> with a shadow.
+    <code>.card-border</code> stays on <code>--bg</code> and draws a
+    <code>--divider</code> border instead.
+  </p>
+  <p>
+    Surfaces are solid colours, mixed into the page rather than laid over it, so a
+    card inside a card is the same colour as its parent and does not darken. To
+    separate something inside a card, put it on a <code>.card-border</code>, which
+    drops back to the page colour, or split the card with a
+    <code>.divider</code> or <code>.card-actions</code>.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="comp-surfaces-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="comp-surfaces-classes" data-variant="classes">&lt;article class=&quot;card prose&quot;&gt;
+  &lt;h3&gt;Order summary&lt;/h3&gt;
+  &lt;p&gt;A raised card on --surface.&lt;/p&gt;
+  &lt;div class=&quot;card-border&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;Retainer, monthly&lt;/strong&gt;&lt;/p&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;A bordered block inside it drops back to --bg.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
+    &lt;button class=&quot;btn btn-secondary&quot;&gt;Back&lt;/button&gt;
+    &lt;button class=&quot;btn&quot;&gt;Confirm&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li>Use <code>.card</code> for the thing you want looked at: a featured item, a form, a summary.</li>
+    <li>Use <code>.card-border</code> for many items of equal weight, such as a grid of services, where a shadow on each would be noise.</li>
+    <li>A surface sets padding and nothing else outside itself. Space between surfaces comes from the layout around them.</li>
+  </ul>
+</section>
+
+<section id="spacing">
+  <h2>Spacing</h2>
+  <p>
+    Spacing comes from two places, and they do not overlap.
+  </p>
+  <ul>
+    <li>
+      <strong>Between siblings in a layout:</strong> the gap. <code>.flex</code>
+      has a <code>1rem</code> gap; a grid should use <code>gap: var(--padding)</code>.
+    </li>
+    <li>
+      <strong>Down a column of content:</strong> bottom margins. Form controls,
+      labels, alerts and every block inside <code>.prose</code> carry a
+      <code>1rem</code> bottom margin, so a stack of them spaces itself with no
+      wrapper.
+    </li>
+  </ul>
+  <p>
+    Nothing carries a top margin, so the first child of any box sits flush with
+    its padding. The last child keeps its bottom margin, which is why
+    <code>.card-actions</code> exists: a footer row gives the end of a card its
+    own rule and spacing.
+  </p>
+  <p>
+    The two meet in one place: a <code>.flex .flip</code> row of form fields. Side
+    by side, the gap separates them. Stacked on a phone, the gap lands on top of
+    each label's own bottom margin and doubles the space. Set
+    <code>row-gap: 0</code> on such a row and let the margins do the stacking.
+  </p>
+  <p>
+    <code>--padding</code> sizes the inside of many components: badges,
+    alerts, menus, the navbar, segmented controls and <code>.card-border</code>.
+    Set it on a section to tighten or loosen those insides together. The
+    <code>1rem</code> margins between blocks stay as they are.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="comp-spacing-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="comp-spacing-classes" data-variant="classes">&lt;div class=&quot;flex flip&quot;&gt;
+  &lt;div class=&quot;card-border&quot; style=&quot;flex: 1&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;default&lt;/span&gt;
+    &lt;p class=&quot;text-secondary&quot; style=&quot;margin-top: 0.5rem&quot;&gt;--padding: 1rem&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-border&quot; style=&quot;flex: 1; --padding: 0.5rem&quot;&gt;
+    &lt;span class=&quot;badge&quot;&gt;tight&lt;/span&gt;
+    &lt;p class=&quot;text-secondary&quot; style=&quot;margin-top: 0.5rem&quot;&gt;--padding: 0.5rem on the card&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+</section>
+
+<section id="text">
+  <h2>Text</h2>
+  <p>
+    The reset removes every margin, and the class build does not style bare
+    elements. Headings, paragraphs and lists stack with no space between them
+    until something inside <code>.prose</code> spaces them.
+  </p>
+  <p>
+    Put <code>.prose</code> on the box that holds the words: a card, a section's
+    text column, an article body. Do not put it on a layout wrapper.
+    <code>.prose</code> also spaces <code>section</code>, <code>ul</code> and
+    <code>pre</code>, so on a grid it would add margins between your columns.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="comp-text-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="comp-text-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--padding)&quot;&gt;
+  &lt;div class=&quot;card-border&quot;&gt;
+    &lt;h3&gt;No prose&lt;/h3&gt;
+    &lt;p&gt;Heading and paragraph touch.&lt;/p&gt;
+    &lt;p&gt;So do paragraphs.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-border prose&quot;&gt;
+    &lt;h3&gt;With prose&lt;/h3&gt;
+    &lt;p&gt;The card spaces its own text.&lt;/p&gt;
+    &lt;p&gt;The grid around it is untouched.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <p>
+    Three classes colour words without spacing them. <code>.text-secondary</code>
+    is for supporting text: a lede, a date, a caption. <code>.link</code> is for
+    words that navigate. <code>.badge</code> is for a short label attached to
+    something else, such as a tag or a count.
+  </p>
+</section>
+
+<section id="actions">
+  <h2>Actions</h2>
+  <p>
+    Buttons come in three weights, and a region should have one filled button.
+    <code>.btn</code> is the primary action, <code>.btn-secondary</code> the
+    alternative, <code>.btn-ghost</code> anything that should recede, such as a
+    menu toggle in a header. Links navigate; buttons do things.
+  </p>
+  <p>
+    When a whole card is the link, make the card the anchor:
+    <code>&lt;a class="semantic card"&gt;</code>. <code>.semantic</code> strips the
+    link styling and <code>.card</code> comes later in the cascade, so the surface
+    wins. Then mark the words that read as the link with
+    <code>.link</code> so the card still looks clickable. Inside a grid or flex
+    row the anchor is laid out as a block, so it needs nothing else.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="comp-card-link-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="comp-card-link-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--padding)&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
+    &lt;h3&gt;The Map I Never Meant to Build&lt;/h3&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;Sixty thousand views and three neighborhoods asking to borrow it.&lt;/p&gt;
+    &lt;span class=&quot;link&quot;&gt;Read the case study&lt;/span&gt;
+  &lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
+    &lt;h3&gt;A Library That Fits in a Free Little Library&lt;/h3&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;A zine catalog, a printing guide, and an events page.&lt;/p&gt;
+    &lt;span class=&quot;link&quot;&gt;Read the case study&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+</section>
+
+<section id="forms">
+  <h2>Forms</h2>
+  <p>
+    A <code>.label</code> is the unit of a form. It wraps a <code>&lt;p&gt;</code>
+    for the label text, the control, and an optional <code>&lt;small&gt;</code>
+    for help or an error, and it spaces all three. Put a checkbox or toggle inside
+    a <code>.label</code> and it becomes a row instead. Group related labels in a
+    <code>.fieldset</code> with a <code>.fieldset-legend</code>.
+  </p>
+  <p>
+    States are generic. <code>aria-invalid="true"</code> or <code>.error</code> on
+    a control turns it, and the label text above it, to the error colour.
+    Disabling a <code>&lt;fieldset&gt;</code> greys everything inside it, because a
+    disabled element is a boundary that sets <code>--chroma: 0</code> for its
+    subtree.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="comp-forms-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="comp-forms-classes" data-variant="classes">&lt;form class=&quot;card&quot;&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;p&gt;Email&lt;/p&gt;
+    &lt;input class=&quot;input&quot; type=&quot;email&quot; value=&quot;adam@&quot; aria-invalid=&quot;true&quot; /&gt;
+    &lt;small&gt;Enter a full email address.&lt;/small&gt;
+  &lt;/label&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt;
+    Send me the newsletter
+  &lt;/label&gt;
+  &lt;fieldset class=&quot;fieldset&quot; disabled&gt;
+    &lt;legend class=&quot;fieldset-legend&quot;&gt;Billing, after the first call&lt;/legend&gt;
+    &lt;label class=&quot;label&quot;&gt;
+      &lt;p&gt;Plan&lt;/p&gt;
+      &lt;select class=&quot;select&quot;&gt;&lt;option&gt;Monthly retainer&lt;/option&gt;&lt;/select&gt;
+    &lt;/label&gt;
+  &lt;/fieldset&gt;
+  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
+    &lt;button class=&quot;btn&quot;&gt;Send&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/form&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+</section>
+
+<section id="boundaries">
+  <h2>Colour boundaries</h2>
+  <p>
+    Colour is never set on a component. It is set on a region, and everything in
+    the region derives from it. Two attributes draw those regions.
+  </p>
+  <ul>
+    <li>
+      <code>.retheme</code> with an input such as <code>--primary</code> re-themes
+      a subtree: a sponsor's block in their colour, or an error region.
+    </li>
+    <li>
+      <code>data-color-scheme="dark"</code> or <code>"light"</code> flips a
+      subtree's scheme and paints its background, so a band can sit dark on a
+      light page with no extra classes.
+    </li>
+  </ul>
+  <p>
+    A boundary draws nothing on its own, so put it on the element that already
+    exists for layout, such as the section or the card, rather than adding a
+    wrapper.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="comp-boundaries-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="comp-boundaries-classes" data-variant="classes">&lt;section class=&quot;card-border&quot; style=&quot;display: grid; gap: var(--padding)&quot;&gt;
+  &lt;div class=&quot;prose&quot;&gt;
+    &lt;h3&gt;On the page scheme&lt;/h3&gt;
+    &lt;p&gt;Everything here uses the root theme.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div data-color-scheme=&quot;dark&quot; class=&quot;card prose&quot;&gt;
+    &lt;h3&gt;A dark band&lt;/h3&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;Same markup, flipped scheme.&lt;/p&gt;
+    &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Book a call&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card-border retheme prose&quot; style=&quot;--primary: #0a7d6b&quot;&gt;
+    &lt;p&gt;&lt;strong&gt;A sponsor block&lt;/strong&gt; in their own colour.&lt;/p&gt;
+    &lt;a href=&quot;#&quot; class=&quot;btn btn-secondary&quot;&gt;Visit sponsor&lt;/a&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+</section>
+
+<section id="layout">
+  <h2>Layout</h2>
+  <p>
+    The framework gives you a page width, a row, and a bar. Everything else is
+    CSS grid with <code>var(--padding)</code> as the gap.
+  </p>
+  <table class="class-table">
+    <thead>
+      <tr><th>Need</th><th>Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A page column</td><td><code>.container</code>, once per page, around the main content</td></tr>
+      <tr><td>A full-width band with padded content</td><td><code>.container-fluid</code></td></tr>
+      <tr><td>A row that stacks on phones</td><td><code>.flex .flip</code>; add <code>.reverse</code> to put the second item first</td></tr>
+      <tr><td>A header</td><td><code>.navbar</code> with <code>.navbar-start</code> and <code>.navbar-end</code></td></tr>
+      <tr><td>A grid of cards</td><td><code>grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr))</code></td></tr>
+    </tbody>
+  </table>
+  <p>
+    See <a href="./layout.html">Layout</a> for the breakpoints, and the
+    <a href="./patterns-studio.html">studio</a> and
+    <a href="./patterns-community.html">community</a> pages for whole sections
+    built from these rules.
+  </p>
+</section>
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

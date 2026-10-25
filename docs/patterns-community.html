@@ -1,0 +1,794 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Community site sections · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./components.html"
+                    
+                    >All components</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Composition</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./composition.html"
+                    
+                    >How pieces fit</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./patterns-studio.html"
+                    
+                    >Studio site sections</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./patterns-community.html"
+                    aria-current="page"
+                    >Community site sections</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Navigation</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./tabs.html"
+                    
+                    >Tabs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./dropdown.html"
+                    
+                    >Dropdown<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./navbar.html"
+                    
+                    >Navbar<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./breadcrumbs.html"
+                    
+                    >Breadcrumbs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./pagination.html"
+                    
+                    >Pagination<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./alert.html"
+                    
+                    >Alert<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./collapse.html"
+                    
+                    >Collapse<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./skeleton.html"
+                    
+                    >Skeleton<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toggle.html"
+                    
+                    >Toggle<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./slider.html"
+                    
+                    >Slider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./segmented.html"
+                    
+                    >Segmented control<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./tooltip.html"
+                    
+                    >Tooltip<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./popover.html"
+                    
+                    >Popover<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toast.html"
+                    
+                    >Toast<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Layout</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./divider.html"
+                    
+                    >Divider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./loading.html"
+                    
+                    >Loading<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Community site sections</h1>
+<p class="lede">
+  Sections from a volunteer group's site, modelled on
+  <a href="https://lzr.life" target="_blank" rel="noreferrer">lzr.life</a>:
+  a catalog to browse, a how-to, and events. These lean on the content and form
+  components more than the studio sections do. The rules behind them are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<section id="hero">
+  <h2>Welcome with a quote</h2>
+  <p>
+    The whole site is re-themed from one input on the root element. Here it is
+    on the section instead, so you can see it next to the default theme.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="community-hero-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="community-hero-classes" data-variant="classes">&lt;section class=&quot;retheme prose&quot; style=&quot;--primary: #a33b2b; --neutral: #6b6150; max-width: 40rem&quot;&gt;
+  &lt;h1&gt;Little Zine Revolution&lt;/h1&gt;
+  &lt;p&gt;We curate and distribute anti-colonial zines. Little actions have ripple effects.&lt;/p&gt;
+  &lt;blockquote&gt;
+    You have to act as if it were possible to radically transform the world. And
+    you have to do it all the time.
+    &lt;footer class=&quot;text-secondary&quot;&gt;&lt;small&gt;Angela Davis&lt;/small&gt;&lt;/footer&gt;
+  &lt;/blockquote&gt;
+  &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Explore the zine catalog&lt;/a&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Boundary:</strong> <code>--primary</code> sets the button and the quote's rule. <code>--neutral</code> sets what text and surfaces are tinted with, so the page reads warm and muted while the brand colour stays saturated.</li>
+    <li><strong>Text:</strong> the attribution sits inside the <code>blockquote</code> so the quote's rule runs the full height of both.</li>
+  </ul>
+</section>
+
+<section id="how-to-help">
+  <h2>Steps</h2>
+  <p>
+    Three equal steps, each linking deeper into a guide. Numbering is part of the
+    heading, so it needs no counter styles.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="community-steps-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="community-steps-classes" data-variant="classes">&lt;section class=&quot;prose&quot;&gt;
+  &lt;h2&gt;Print! Fold! Distribute!&lt;/h2&gt;
+  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--padding)&quot;&gt;
+    &lt;div class=&quot;card-border&quot;&gt;
+      &lt;h3&gt;1. Printing&lt;/h3&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;Pick a zine from the catalog and print it at home or at a library.&lt;/p&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Printing tips&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card-border&quot;&gt;
+      &lt;h3&gt;2. Folding&lt;/h3&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;Join a folding event, or follow the guide on your own.&lt;/p&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Folding instructions&lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;card-border&quot;&gt;
+      &lt;h3&gt;3. Distribution&lt;/h3&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;Leave copies in a little free library near you.&lt;/p&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Distribution guide&lt;/a&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Actions:</strong> each card holds a real link rather than being one, because the card has a sentence worth reading on its own. Compare the <a href="./patterns-studio.html#case-studies">case study cards</a>, where the card is the link.</li>
+  </ul>
+</section>
+
+<section id="catalog">
+  <h2>Catalog with filters</h2>
+  <p>
+    A search field, a segmented control for the one exclusive choice, checkboxes
+    for the ones that combine, and a grid of results.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="community-catalog-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="community-catalog-classes" data-variant="classes">&lt;form class=&quot;card-border&quot;&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;p&gt;Search&lt;/p&gt;
+    &lt;input class=&quot;input&quot; type=&quot;search&quot; placeholder=&quot;Title or topic&quot; /&gt;
+  &lt;/label&gt;
+  &lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap; align-items: center&quot;&gt;
+    &lt;div class=&quot;segmented&quot; role=&quot;radiogroup&quot; aria-label=&quot;Fold&quot;&gt;
+      &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;fold&quot; checked /&gt; Any fold&lt;/label&gt;
+      &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;fold&quot; /&gt; Quarters&lt;/label&gt;
+      &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;fold&quot; /&gt; Trifold&lt;/label&gt;
+    &lt;/div&gt;
+    &lt;label class=&quot;label&quot; style=&quot;margin: 0&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; Colour
+    &lt;/label&gt;
+    &lt;label class=&quot;label&quot; style=&quot;margin: 0&quot;&gt;
+      &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; Double sided
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/form&gt;
+
+&lt;p class=&quot;text-secondary&quot; style=&quot;margin: var(--padding) 0&quot;&gt;&lt;small&gt;3 of 62 zines&lt;/small&gt;&lt;/p&gt;
+
+&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fill, minmax(9rem, 1fr)); gap: var(--padding)&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card&quot;&gt;
+    &lt;div style=&quot;aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)&quot;&gt;&lt;/div&gt;
+    &lt;strong&gt;For the Love of Bread&lt;/strong&gt;
+    &lt;p&gt;&lt;span class=&quot;badge&quot;&gt;Quarters&lt;/span&gt;&lt;/p&gt;
+  &lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card&quot;&gt;
+    &lt;div style=&quot;aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)&quot;&gt;&lt;/div&gt;
+    &lt;strong&gt;Anarchist Compass&lt;/strong&gt;
+    &lt;p&gt;&lt;span class=&quot;badge&quot;&gt;Trifold&lt;/span&gt;&lt;/p&gt;
+  &lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card&quot;&gt;
+    &lt;div style=&quot;aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)&quot;&gt;&lt;/div&gt;
+    &lt;strong&gt;Butterfly&lt;/strong&gt;
+    &lt;p&gt;&lt;span class=&quot;badge&quot;&gt;Quarters&lt;/span&gt;&lt;/p&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Controls:</strong> a checkbox inside <code>.label</code> lays itself out as a row. In a row of filters its <code>1rem</code> bottom margin would push it off the centre line, so it is set to <code>0</code> here.</li>
+    <li><strong>Surfaces:</strong> the filter form is a flat <code>.card-border</code> and each result a raised <code>.card</code>, so the results read as the things to pick up. The cover placeholder uses <code>--surface-strong</code>, the one step darker than the card; a real cover image goes in its place.</li>
+    <li><strong>Text:</strong> the count is <code>.text-secondary</code>, between the two surfaces, so it belongs to neither.</li>
+  </ul>
+</section>
+
+<section id="events">
+  <h2>Event list</h2>
+  <p>
+    Each event is a row: the date, what and where, and an add-to-calendar menu.
+    The menu is a native <code>&lt;details&gt;</code>, so it needs no script.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="community-events-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="community-events-classes" data-variant="classes">&lt;ul style=&quot;list-style: none; padding: 0; display: grid; gap: var(--padding)&quot;&gt;
+  &lt;li class=&quot;card-border flex flip&quot; style=&quot;align-items: center&quot;&gt;
+    &lt;div style=&quot;text-align: center; min-width: 4rem&quot;&gt;
+      &lt;small class=&quot;text-secondary&quot;&gt;NOV&lt;/small&gt;
+      &lt;div&gt;&lt;strong style=&quot;font-size: 1.5rem&quot;&gt;14&lt;/strong&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;flex: 1&quot;&gt;
+      &lt;strong&gt;Folding party&lt;/strong&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;&lt;small&gt;Saturday, 2 to 4 pm · Belmont Library&lt;/small&gt;&lt;/p&gt;
+    &lt;/div&gt;
+    &lt;details style=&quot;position: relative&quot;&gt;
+      &lt;summary class=&quot;btn btn-secondary&quot;&gt;Add to calendar&lt;/summary&gt;
+      &lt;ul class=&quot;dropdown-content menu&quot; style=&quot;position: absolute; right: 0; margin-top: calc(var(--padding) / 4); list-style: none&quot;&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;semantic menu-item&quot;&gt;Google Calendar&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;semantic menu-item&quot;&gt;Apple / Outlook (.ics)&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/details&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;card-border flex flip disabled&quot; style=&quot;align-items: center&quot;&gt;
+    &lt;div style=&quot;text-align: center; min-width: 4rem&quot;&gt;
+      &lt;small class=&quot;text-secondary&quot;&gt;OCT&lt;/small&gt;
+      &lt;div&gt;&lt;strong style=&quot;font-size: 1.5rem&quot;&gt;03&lt;/strong&gt;&lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div style=&quot;flex: 1&quot;&gt;
+      &lt;strong&gt;Zine swap&lt;/strong&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;&lt;small&gt;Past event · Community center&lt;/small&gt;&lt;/p&gt;
+    &lt;/div&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Layout:</strong> the list is a grid for its gap, and each row is <code>.flex .flip</code>, so on a phone the date, details and button stack.</li>
+    <li><strong>Surfaces:</strong> <code>.dropdown-content</code> only paints. Where it opens is the caller's job: a relative <code>&lt;details&gt;</code> and an absolute panel.</li>
+    <li><strong>Boundary:</strong> a past event takes <code>.disabled</code>, which sets <code>--chroma: 0</code> on the row. Everything in it loses its colour together, with no per-element overrides.</li>
+  </ul>
+</section>
+
+<section id="faq">
+  <h2>Guide sections</h2>
+  <p>
+    Long how-to content folds into collapses, one per question. Each body is
+    prose.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="community-faq-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="community-faq-classes" data-variant="classes">&lt;details class=&quot;collapse&quot; open&gt;
+  &lt;summary class=&quot;collapse-title&quot;&gt;How do I fold a quarter-page zine? &lt;span&gt;−&lt;/span&gt;&lt;/summary&gt;
+  &lt;div class=&quot;collapse-content prose&quot;&gt;
+    &lt;ol&gt;
+      &lt;li&gt;Fold the sheet in half along the long edge.&lt;/li&gt;
+      &lt;li&gt;Fold it in half again.&lt;/li&gt;
+      &lt;li&gt;Crease well and trim the top fold.&lt;/li&gt;
+    &lt;/ol&gt;
+  &lt;/div&gt;
+&lt;/details&gt;
+&lt;details class=&quot;collapse&quot;&gt;
+  &lt;summary class=&quot;collapse-title&quot;&gt;Can I print double sided at home? &lt;span&gt;+&lt;/span&gt;&lt;/summary&gt;
+  &lt;div class=&quot;collapse-content prose&quot;&gt;
+    &lt;p&gt;Yes. Flip on the short edge so the back pages are not upside down.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/details&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Text:</strong> <code>.prose</code> goes on <code>.collapse-content</code>, not on the stack, so the titles keep their own size and spacing.</li>
+  </ul>
+</section>
+
+<section id="cta">
+  <h2>Credit band</h2>
+  <p>
+    A small block that belongs to someone else, in their colour, at the foot of
+    the page.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="community-cta-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="community-cta-classes" data-variant="classes">&lt;aside class=&quot;card-border retheme flex flip&quot; style=&quot;--primary: rebeccapurple; align-items: center; justify-content: space-between&quot;&gt;
+  &lt;div class=&quot;prose&quot;&gt;
+    &lt;h3&gt;Want a site like this?&lt;/h3&gt;
+    &lt;p class=&quot;text-secondary&quot;&gt;Built by a one-person studio in Portland.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Book a free call&lt;/a&gt;
+&lt;/aside&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Boundary:</strong> <code>.retheme</code> with the studio's own <code>--primary</code> marks the block as separate from the group's theme without a single extra rule.</li>
+    <li><strong>Spacing:</strong> the prose column keeps its bottom margins; <code>align-items: center</code> on the row centres the button against the whole block.</li>
+  </ul>
+</section>
+
+<section id="footer">
+  <h2>Footer with a disclaimer</h2>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="community-footer-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="community-footer-classes" data-variant="classes">&lt;footer&gt;
+  &lt;hr class=&quot;divider&quot; /&gt;
+  &lt;nav class=&quot;flex&quot; style=&quot;flex-wrap: wrap; gap: calc(var(--padding) / 2) var(--padding)&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Zine Catalog&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;How to Help&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Events&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Community Kit&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Get in Touch&lt;/a&gt;
+  &lt;/nav&gt;
+  &lt;p class=&quot;text-secondary&quot; style=&quot;margin-top: var(--padding)&quot;&gt;
+    &lt;small&gt;This is a platform for independent voices. Zines are the responsibility of their creators and are not endorsed by this site.&lt;/small&gt;
+  &lt;/p&gt;
+&lt;/footer&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+  <ul>
+    <li><strong>Layout:</strong> one wrapping <code>.flex</code> row with a smaller row gap than column gap, so wrapped links read as one list rather than as stacked rows.</li>
+  </ul>
+</section>
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>
