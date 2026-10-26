@@ -18,9 +18,9 @@
     <tr><th>Token</th><th>Purpose</th></tr>
   </thead>
   <tbody>
-    <tr><td><code>--color</code></td><td>Base hue for the whole scale</td></tr>
-    <tr><td><code>--accent-color</code></td><td>Links</td></tr>
-    <tr><td><code>--error-color</code></td><td>Invalid inputs</td></tr>
+    <tr><td><code>--primary</code></td><td>The brand colour</td></tr>
+    <tr><td><code>--secondary</code></td><td>Links</td></tr>
+    <tr><td><code>--error</code></td><td>Invalid inputs</td></tr>
   </tbody>
 </table>
 {% endset %}
@@ -30,11 +30,59 @@
     <tr><th>Token</th><th>Purpose</th></tr>
   </thead>
   <tbody>
-    <tr><td><code>--color</code></td><td>Base hue for the whole scale</td></tr>
-    <tr><td><code>--accent-color</code></td><td>Links</td></tr>
-    <tr><td><code>--error-color</code></td><td>Invalid inputs</td></tr>
+    <tr><td><code>--primary</code></td><td>The brand colour</td></tr>
+    <tr><td><code>--secondary</code></td><td>Links</td></tr>
+    <tr><td><code>--error</code></td><td>Invalid inputs</td></tr>
   </tbody>
 </table>
 {% endset %}
 {{ m.demo("table-basic", classless, classes) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A table with a heading and status badges</h3>
+<p>A bordered block holds the heading and the table, and a badge marks each row's state.</p>
+{% set classless %}
+<section class="card-border">
+  <div class="prose"><h3>Invoices</h3></div>
+  <table class="table">
+    <thead><tr><th>Month</th><th>Amount</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>September</td><td>$1,200</td><td><span class="badge">Paid</span></td></tr>
+      <tr><td>October</td><td>$1,200</td><td><span class="badge">Due</span></td></tr>
+    </tbody>
+  </table>
+</section>
+{% endset %}
+{{ m.demo("table-comp-1", classless) }}
+<ul>
+  <li><strong>Surface:</strong> a flat <code>.card-border</code> rather than a raised card, because a table is read, not picked up.</li>
+  <li><strong>Text:</strong> <code>.prose</code> sits on the heading only, so it does not add margins inside the table.</li>
+</ul>
+
+<h3>Details in a card</h3>
+<p>Labels down the left, values on the right, closing with an action.</p>
+{% set classless %}
+<article class="card">
+  <div class="prose"><h3>Order details</h3></div>
+  <table class="table">
+    <tbody>
+      <tr><th>Placed</th><td>October 3</td></tr>
+      <tr><th>Items</th><td>2</td></tr>
+      <tr><th>Total</th><td>$48.00</td></tr>
+    </tbody>
+  </table>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn btn-secondary">Download receipt</button>
+  </footer>
+</article>
+{% endset %}
+{{ m.demo("table-comp-2", classless) }}
+<ul>
+  <li><strong>Text:</strong> row headings are <code>th</code> in the body, so each label is tied to its value for screen readers.</li>
+</ul>
 {% endblock %}

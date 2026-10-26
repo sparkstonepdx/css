@@ -1,0 +1,27 @@
+@use "../vars.scss" as *;
+
+// A colour picker: the shared control box, one text line tall, around the native swatch.
+@mixin styles {
+  .color-input {
+    appearance: none;
+    -webkit-appearance: none;
+    background: none;
+    padding: 0.25rem;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    &::-webkit-color-swatch-wrapper {
+      padding: 0;
+    }
+
+    &::-webkit-color-swatch {
+      border-radius: var(--border-radius);
+      border: 0;
+    }
+
+    &::-moz-color-swatch {
+      border-radius: var(--border-radius);
+      border: 0;
+    }
+  }
+}

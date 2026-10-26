@@ -32,6 +32,17 @@
 
     .alert {
       margin-bottom: 0;
+
+      @media (prefers-reduced-motion: no-preference) {
+        animation: sparkstone-toast-in var(--duration-enter) ease-out;
+      }
+    }
+  }
+
+  @keyframes sparkstone-toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem);
     }
   }
 
@@ -40,6 +51,6 @@
   }
 
   .toast-description {
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 }

@@ -82,4 +82,72 @@ console.log(theme);</code></pre>
 </div>
 {% endset %}
 {{ m.demo("prose-code", classless, classes) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Article page</h3>
+<p>A long-form page: a heading, a one-line summary under it, body copy with a pull quote, and a closing call to action. One <code>.prose</code> on the article spaces all of it.</p>
+{% set classless %}
+<article class="prose" style="max-width: 80ch">
+  <h1>How we rebuilt the booking flow</h1>
+  <p class="text-secondary">Three weeks, one form, and half the drop-off.</p>
+  <p>The old flow asked for everything up front. Most people left at the second screen.</p>
+  <blockquote>We stopped asking for anything we could find out later.</blockquote>
+  <h2>What changed</h2>
+  <ul>
+    <li>One screen instead of four</li>
+    <li>Optional fields moved after the booking</li>
+  </ul>
+  <h2>Have a form like this?</h2>
+  <p>A short call is the quickest way to find out what to cut.</p>
+  <a href="#" class="btn">Book a call</a>
+</article>
+{% endset %}
+{{ m.demo("prose-comp-1", classless) }}
+<ul>
+  <li><strong>Text:</strong> the summary is <code>.text-secondary</code>, so it reads as a lead-in rather than a second heading.</li>
+  <li><strong>Actions:</strong> the button is the only filled thing on the page, at the end, where a reader who finished is ready to act.</li>
+</ul>
+
+<h3>Text beside an image</h3>
+<p>A photo or illustration beside a heading, a paragraph and a link. On a phone the image goes above.</p>
+{% set classless %}
+<section class="flex flip" style="align-items: center">
+  <div style="width: 12rem; flex-shrink: 0; aspect-ratio: 1; border-radius: var(--border-radius); background: var(--surface-strong)" role="img" aria-label="Portrait"></div>
+  <div class="prose" style="flex: 1">
+    <h2>About the studio</h2>
+    <p>One person, building and looking after the software small businesses run on.</p>
+    <a href="#" class="link">More about the studio</a>
+  </div>
+</section>
+{% endset %}
+{{ m.demo("prose-comp-2", classless) }}
+<ul>
+  <li><strong>Text:</strong> <code>.prose</code> sits on the text column, not the row, so the image gets no margins.</li>
+  <li><strong>Layout:</strong> the image takes a <code>width</code> and <code>flex-shrink: 0</code> rather than a flex basis. Under <code>.flip</code> the row becomes a column on a phone, and a basis would turn into a height.</li>
+</ul>
+
+<h3>Above a page heading</h3>
+<p>The trail sits directly above the heading of the page it ends at.</p>
+{% set classless %}
+<nav class="breadcrumbs" aria-label="Breadcrumbs">
+  <ol>
+    <li><a href="#" class="link">Home</a> <span class="breadcrumbs-separator" aria-hidden="true">/</span></li>
+    <li><a href="#" class="link">Catalog</a> <span class="breadcrumbs-separator" aria-hidden="true">/</span></li>
+    <li><span aria-current="page">Item name</span></li>
+  </ol>
+</nav>
+<div class="prose">
+  <h1>Item name</h1>
+  <p class="text-secondary">A line about the item.</p>
+</div>
+{% endset %}
+{{ m.demo("prose-comp-3", classless) }}
+<ul>
+  <li><strong>Text:</strong> the current page is plain text with <code>aria-current</code>; it matches the heading below, so the trail and the page agree.</li>
+</ul>
 {% endblock %}

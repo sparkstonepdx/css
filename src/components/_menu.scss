@@ -19,12 +19,26 @@
     min-width: 12rem;
     padding: calc(var(--padding) / 4);
 
-    background-color: cur-color(var(--surface-lc-1));
-    border: var(--border-width) solid cur-color(var(--surface-lc-2));
+    background-color: var(--bg);
+    border: var(--border-width) solid var(--divider);
     border-radius: var(--border-radius);
     box-shadow: var(--box-shadow);
 
     z-index: 50;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transform-origin: top;
+      animation: sparkstone-panel-in var(--duration-change) ease-out;
+    }
+  }
+
+  // A panel arriving: plays whenever it starts rendering, so it works however
+  // the panel is shown (details, popover, hidden, or a component library).
+  @keyframes sparkstone-panel-in {
+    from {
+      opacity: 0;
+      transform: scale(0.96);
+    }
   }
 
   .menu {
@@ -46,7 +60,7 @@
     hr {
       margin: calc(var(--padding) / 4) 0;
       border: 0;
-      border-top: var(--border-width) solid cur-color(var(--surface-lc-2));
+      border-top: var(--border-width) solid var(--divider);
     }
   }
 
@@ -55,21 +69,30 @@
     align-items: center;
     gap: calc(var(--padding) / 2);
 
-    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    padding: calc(var(--padding) / 2) var(--padding);
     border-radius: var(--border-radius);
 
-    color: cur-color(var(--text-lc-1));
+    color: var(--fg);
     text-decoration: none;
     cursor: pointer;
     user-select: none;
 
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background-color var(--duration-change);
+    }
     &:hover {
-      background-color: cur-color(var(--surface-lc-2));
+      background-color: var(--surface);
     }
   }
 
-  .menu-active {
-    background-color: cur-color(var(--surface-lc-2));
+  // A row is highlighted however it is marked: the class, focus, or the
+  // data-highlighted attribute that Kobalte, Radix and Ark all set. A headless
+  // library never exposes which row is highlighted, so a class alone could not
+  // follow it.
+  .menu-active,
+  .menu-item:is(:focus, [data-highlighted]) {
+    background-color: var(--surface);
   }
 
   // A selected row, as opposed to the highlighted one: a select keeps one row
@@ -78,7 +101,9 @@
   // the row does not change width. The bar is its own rounded pill, inset from
   // the row's top and bottom, because an inset shadow bent around the row's
   // rounded corners.
-  .menu-selected {
+  // Likewise selected: the class, or the ARIA state any listbox or menu sets.
+  .menu-selected,
+  .menu-item:is([aria-selected="true"], [aria-checked="true"]) {
     position: relative;
 
     &::before {
@@ -89,29 +114,29 @@
       width: calc(var(--border-width) * 1.5);
 
       border-radius: 999px;
-      background-color: cur-color(var(--surface-lc-4));
+      background-color: var(--line);
     }
   }
 
   // Same treatment as .tab-disabled: greyscale alone left a disabled row at full
   // strength, so it read as an ordinary row.
   .menu-disabled {
-    @include apply-greyscale();
-    color: cur-color(var(--text-lc-5));
+    @extend .disabled;
+    color: var(--fg-faint);
     pointer-events: none;
   }
 
   .menu-title {
     display: block;
-    padding: calc(var(--padding) / 3) calc(var(--padding) / 2);
+    padding: calc(var(--padding) / 2) var(--padding);
     font-size: 0.875rem;
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 
   .menu-shortcut {
     margin-left: auto;
     padding-left: var(--padding);
     font-size: 0.875rem;
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 }

@@ -111,6 +111,20 @@ button { @extend .btn; }   // compiles to: .btn, button { ... }
 
 One rule serves both builds, so they cannot drift apart, and the classless build carries the class names too if you want to mix the two. When changing styles, edit the class in `src/components/`, not the entry files.
 
+### Migrating from 2.x
+
+3.0 replaces the colour engine. The nine-step scale is gone, and colours come
+from four inputs you can set on any element:
+
+| 2.x | 3.0 |
+| --- | --- |
+| `--color` | `--primary` (`--color` is still read at the root) |
+| `--accent-color` | `--secondary` |
+| `--error-color` | `--error` |
+| `--surface-lc-N`, `--text-lc-N` | `--bg`, `--fg`, `--surface`, `--line` and the rest of the derived colours |
+| `cur-color()`, `get-border-color()` | `var(--…)` of a derived colour, or `tone()` |
+| `@include apply-greyscale()` | `--chroma: 0` |
+
 ### Migrating from 1.x
 
 1.x's theme is now the classless build. Replace `@sparkstone/css/src/theme.scss` with `@sparkstone/css/src/classless.scss` (or `pkg:@sparkstone/css/classless`), and `dist/theme.css` with `dist/classless.css`. Importing the package root now gives you the class-based build.

@@ -8,6 +8,8 @@
 @use "./vars.scss" as *;
 @use "./components" as c;
 
+@include properties;
+
 @layer reset, theme;
 
 @layer reset {

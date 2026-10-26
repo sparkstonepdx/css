@@ -1,0 +1,8 @@
+{
+  "collapse/collapse-basic": {
+    "kobalte-markup": "Open question: Kobalte's Accordion.Header takes .collapse, so the rule sits under each heading rather than under each whole section. Accordion.Item has no role to bind to."
+  },
+  "select/select-kobalte": {
+    "kobalte-markup": "By design: the Class and Classless tabs show a closed native <select>, the Kobalte tab an open listbox."
+  }
+}

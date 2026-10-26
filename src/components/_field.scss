@@ -1,0 +1,150 @@
+@use "../vars.scss" as *;
+
+// Form fields: text inputs, date and time inputs, selects and textareas, and the
+// box every form control shares.
+//
+// The first rules are grouped by what controls have in common, and each lists
+// its members, so finding a control in those selector lists tells you everything
+// it inherits. Each control's own rule, further down, only adds or overrides.
+//
+// Checkboxes and radios are in _checkbox.scss, and the file, colour and range
+// inputs have a file each.
+
+$date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"]';
+
+// Inner spacing of the text controls. Their one-line height is derived from it.
+$pad-block: 0.75rem;
+$pad-inline: 1rem;
+
+// The icon at the end of a field: a calendar or clock on date and time inputs,
+// a chevron on selects. `inset` is the icon's distance from the right edge and
+// `gutter` the space reserved for it. Date and time inputs lay an invisible
+// native picker button over their icon, positioned from these same numbers, so
+// change them together.
+$icon-size: 1rem;
+$date-icon-inset: 1.25rem;
+$date-icon-gutter: 2.5rem;
+$select-icon-inset: 0.75rem;
+$select-icon-gutter: 2.25rem;
+
+@mixin end-icon($inset, $gutter) {
+  padding-inline-start: $pad-inline;
+  padding-inline-end: $gutter;
+  background-position: center right $inset;
+  background-size: $icon-size auto;
+  background-repeat: no-repeat;
+}
+
+@mixin styles {
+  // Every form control draws the same box.
+  .input,
+  .select,
+  .textarea,
+  .file-input,
+  .color-input,
+  .checkbox,
+  .radio {
+    border: var(--border-width) solid var(--line);
+    border-radius: var(--border-radius);
+    padding: calc(var(--padding) / 2);
+    background-color: var(--bg);
+    color: var(--fg);
+    outline-width: 0;
+    outline-style: none;
+
+    // 70% is the smallest mix that clears 4.5:1 for every brand in both schemes
+    // (lowest 4.78), while still reading lighter than an entered value.
+    &::placeholder {
+      color: color-mix(in oklch, var(--fg-muted) 70%, var(--bg));
+    }
+  }
+
+  // Controls that fill the row and space the form below them.
+  .input,
+  .select,
+  .textarea,
+  .file-input,
+  .color-input {
+    margin-bottom: 1rem;
+    width: 100%;
+  }
+
+  // Controls you type or choose text in.
+  .input,
+  .select,
+  .textarea {
+    appearance: none;
+    padding: $pad-block $pad-inline;
+  }
+
+  // One text line tall. The colour input matches, so the two line up in a row.
+  .input,
+  .color-input {
+    height: calc(1rem * 1.5 + $pad-block * 2 + var(--border-width) * 2);
+  }
+
+  .input {
+    // Only Chromium and WebKit can hide their native picker button, so only
+    // they get our icon and the room for it. Firefox has no such pseudo-element
+    // and keeps drawing its own icon, unpadded.
+    @supports selector(::-webkit-calendar-picker-indicator) {
+      &:is(#{$date-types}) {
+        @include end-icon($date-icon-inset, $date-icon-gutter);
+        background-image: var(--icon-calendar);
+
+        // The native button, made invisible and pulled over our icon so it
+        // still opens the picker.
+        &::-webkit-calendar-picker-indicator {
+          width: $icon-size;
+          margin-right: calc($date-icon-inset * -1);
+          margin-left: $date-icon-inset;
+          cursor: pointer;
+          opacity: 0;
+        }
+      }
+
+      &[type="time"] {
+        background-image: var(--icon-clock);
+      }
+    }
+
+    [dir="rtl"] &:is(#{$date-types}) {
+      text-align: right;
+    }
+  }
+
+  .select {
+    // A headless select's trigger is a <button>, which centres its text.
+    text-align: start;
+
+    // One line, cut off with an ellipsis, as a native select does; a <button>
+    // trigger would otherwise wrap and grow.
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:not([multiple], [size]) {
+      @include end-icon($select-icon-inset, $select-icon-gutter);
+      background-image: var(--icon-chevron);
+    }
+
+    // Chrome fades a disabled native select to 0.7 in its own stylesheet and
+    // nothing else does, so a button trigger or another browser looked enabled.
+    // Pinned here so every select disables the same way.
+    &:is(:disabled, [data-disabled]) {
+      opacity: 0.7;
+      cursor: default;
+    }
+  }
+
+  .textarea {
+    display: block;
+    resize: vertical;
+  }
+
+  .input-error,
+  .select-error,
+  .textarea-error {
+    @extend .error;
+  }
+}

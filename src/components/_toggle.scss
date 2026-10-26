@@ -19,20 +19,19 @@
     height: var(--toggle-height);
     padding: var(--border-width);
 
-    border: var(--border-width) solid get-border-color();
+    border: var(--border-width) solid var(--line);
     border-radius: 999px;
-    background-color: cur-color(var(--surface-lc-2));
-    color: cur-color(var(--text-lc-1));
+    background-color: var(--surface);
+    color: var(--fg);
     cursor: pointer;
 
-    transition: background-color 150ms;
+    transition: background-color var(--duration-change);
 
     &:is(:checked, [data-checked]) {
-      background-color: cur-color(var(--surface-lc-4));
+      background-color: var(--line);
     }
 
     &:is(:disabled, [data-disabled]) {
-      @include apply-greyscale();
       pointer-events: none;
     }
   }
@@ -43,13 +42,13 @@
     appearance: none;
     background-image: radial-gradient(
       circle at calc(var(--toggle-height) / 2 - var(--border-width)) 50%,
-      cur-color(var(--surface-lc-1)) calc(var(--toggle-height) / 2 - 0.3rem),
+      var(--bg) calc(var(--toggle-height) / 2 - 0.3rem),
       transparent 0
     );
     background-repeat: no-repeat;
     transition:
-      background-color 150ms,
-      background-position 150ms;
+      background-color var(--duration-change),
+      background-position var(--duration-change);
 
     &:checked {
       background-position: calc(var(--toggle-height) * 0.75) 0;
@@ -61,9 +60,9 @@
     height: calc(var(--toggle-height) - var(--border-width) * 4);
 
     border-radius: 999px;
-    background-color: cur-color(var(--surface-lc-1));
+    background-color: var(--bg);
 
-    transition: transform 150ms;
+    transition: transform var(--duration-change);
 
     &[data-checked] {
       transform: translateX(calc(var(--toggle-height) * 0.75));

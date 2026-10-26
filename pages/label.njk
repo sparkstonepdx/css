@@ -66,4 +66,67 @@
 {% endset %}
 {{ m.demo("label-invalid", classless, classes) }}
 {{ m.classless_note("<code>aria-invalid=\"true\"</code> drives the error color on its own. <code>.input-error</code> is there for when you cannot set the attribute.") }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A field with help and an error</h3>
+<p>Label text, the field, and a line under it. When the value is wrong, the same line becomes the error.</p>
+{% set classless %}
+<form style="max-width: 30rem">
+  <label class="label">
+    <p>Website</p>
+    <input class="input" type="url" placeholder="https://" />
+    <small>Where people can see your work.</small>
+  </label>
+  <label class="label">
+    <p>Email</p>
+    <input class="input" type="email" value="name@" aria-invalid="true" />
+    <small>Enter a full email address.</small>
+  </label>
+  <label class="label">
+    <input type="checkbox" class="checkbox" />
+    Send me a copy
+  </label>
+  <button class="btn">Send</button>
+</form>
+{% endset %}
+{{ m.demo("label-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> the label wraps all three parts and spaces them; the form needs no wrapper between fields.</li>
+  <li><strong>States:</strong> <code>aria-invalid</code> on the field turns it and the label text above it to the error colour.</li>
+  <li><strong>Layout:</strong> a checkbox inside a label lays out as a row instead of a stack.</li>
+</ul>
+
+<h3>A message form</h3>
+<p>Two short fields side by side, a message box, consent, and a send button closing the card.</p>
+{% set classless %}
+<form class="card">
+  <div class="flex flip" style="row-gap: 0">
+    <label class="label" style="flex: 1"><p>Name</p><input class="input" autocomplete="name" /></label>
+    <label class="label" style="flex: 1"><p>Email</p><input class="input" type="email" autocomplete="email" /></label>
+  </div>
+  <label class="label">
+    <p>Message</p>
+    <textarea class="textarea" rows="4"></textarea>
+    <small>A few sentences is plenty.</small>
+  </label>
+  <label class="label">
+    <input type="checkbox" class="checkbox" required />
+    I agree to be contacted about this request
+  </label>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn">Send</button>
+  </footer>
+</form>
+{% endset %}
+{{ m.demo("label-comp-2", classless) }}
+<ul>
+  <li><strong>Layout:</strong> two short fields share a <code>.flex .flip</code> row; <code>row-gap: 0</code> keeps them from double-spacing when they stack on a phone.</li>
+  <li><strong>Controls:</strong> the consent checkbox sits right above the action it gates.</li>
+  <li><strong>Surface:</strong> <code>.card-actions</code> closes the card with its own rule, which also absorbs the last field's bottom margin.</li>
+</ul>
 {% endblock %}

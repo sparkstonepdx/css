@@ -7,7 +7,7 @@
 <h1>Link</h1>
 <p class="lede">
   Links use the accent color, which is the theme color rotated 180 degrees in
-  <code>oklch</code> unless you set <code>--accent-color</code> yourself.
+  <code>oklch</code> unless you set <code>--secondary</code> yourself.
 </p>
 
 {{ m.classes([
@@ -28,15 +28,15 @@
 {{ m.demo("link-basic", classless, classes) }}
 
 <h2>Recoloring</h2>
-<p>Set <code>--accent-color</code> on any ancestor to change links in that subtree.</p>
+<p>Set <code>--secondary</code> on any ancestor to change links in that subtree.</p>
 {% set classless %}
 <div>
-  <p style="--accent-color: teal">A <a href="#">teal link</a> inside a scoped block.</p>
+  <p class="retheme" style="--secondary: teal">A <a href="#">teal link</a> inside a scoped block.</p>
 </div>
 {% endset %}
 {% set classes %}
 <div class="prose">
-  <p style="--accent-color: teal">A <a href="#" class="link">teal link</a> inside a scoped block.</p>
+  <p class="retheme" style="--secondary: teal">A <a href="#" class="link">teal link</a> inside a scoped block.</p>
 </div>
 {% endset %}
 {{ m.demo("link-scoped", classless, classes) }}
@@ -55,4 +55,59 @@
     including the focus ring, so leave it off anything the keyboard needs to reach.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Links in a footer</h3>
+<p>A column of site links, and a line of contact links. Links navigate, so there is no button here.</p>
+{% set classless %}
+<footer>
+  <hr class="divider" />
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--padding)">
+    <div>
+      <strong>Studio name</strong>
+      <p class="text-secondary">A short line about what you do.</p>
+      <div class="flex">
+        <a href="#" class="link">Email</a>
+        <a href="#" class="link">Social</a>
+      </div>
+    </div>
+    <nav class="flex" style="flex-direction: column; gap: calc(var(--padding) / 4)">
+      <a href="#" class="link">Work</a>
+      <a href="#" class="link">Writing</a>
+      <a href="#" class="link">About</a>
+      <a href="#" class="link">Contact</a>
+    </nav>
+  </div>
+</footer>
+{% endset %}
+{{ m.demo("link-comp-1", classless) }}
+<ul>
+  <li><strong>Layout:</strong> a column of links is <code>.flex</code> turned on its side, with the gap cut to a quarter of <code>--padding</code> so it reads as one list.</li>
+  <li><strong>Surface:</strong> a <code>.divider</code> separates the footer without boxing it in.</li>
+</ul>
+
+<h3>A whole card as a link</h3>
+<p>When a card has one destination, the card is the link. <code>.semantic</code> strips the anchor's own styling, and the title takes <code>.link</code> so the card still looks clickable.</p>
+{% set classless %}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--padding)">
+  <a href="#" class="semantic card prose">
+    <h3 class="link">Project one</h3>
+    <p>What it was, in a sentence.</p>
+  </a>
+  <a href="#" class="semantic card prose">
+    <h3 class="link">Project two</h3>
+    <p>What it was, in a sentence.</p>
+  </a>
+</div>
+{% endset %}
+{{ m.demo("link-comp-2", classless) }}
+<ul>
+  <li><strong>Actions:</strong> one anchor per card. A second link inside it would be a nested anchor, which HTML does not allow.</li>
+  <li><strong>Layout:</strong> a grid lays each anchor out as a block. Outside a grid or flex row, give the anchor <code>display: block</code>, because <code>.semantic</code> unsets it to inline.</li>
+</ul>
 {% endblock %}

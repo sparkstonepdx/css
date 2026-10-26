@@ -181,4 +181,76 @@ import { DropdownMenu } from "@kobalte/core/dropdown-menu";
 </DropdownMenu.Sub>
 {% endset %}
 {{ m.demo("dropdown-sub", classless, "", kobalte, kobalte_markup) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>An action menu in a list row</h3>
+<p>Each row has a menu of secondary actions. A native <code>&lt;details&gt;</code> opens it with no script.</p>
+{% set classless %}
+<ul style="list-style: none; padding: 0; display: grid; gap: var(--padding)">
+  <li class="card-border flex flip" style="align-items: center">
+    <div style="flex: 1">
+      <strong>Monthly report</strong>
+      <p class="text-secondary"><small>Updated today</small></p>
+    </div>
+    <details style="position: relative">
+      <summary class="btn btn-secondary">Export</summary>
+      <ul class="dropdown-content menu" style="position: absolute; right: 0; margin-top: calc(var(--padding) / 4)">
+        <li><a href="#" class="semantic menu-item">PDF</a></li>
+        <li><a href="#" class="semantic menu-item">Spreadsheet</a></li>
+        <li class="menu-item menu-disabled">Print</li>
+      </ul>
+    </details>
+  </li>
+</ul>
+{% endset %}
+{{ m.demo("dropdown-comp-1", classless) }}
+<ul>
+  <li><strong>Surface:</strong> <code>.dropdown-content</code> only paints. Positioning is the caller's: a relative <code>&lt;details&gt;</code> and an absolute panel.</li>
+  <li><strong>Actions:</strong> a row's action is <code>.btn-secondary</code>, so a list of rows does not become a list of filled buttons.</li>
+</ul>
+
+<h3>An account menu in a header</h3>
+<p>A ghost button at the end of the bar opens a menu with a title, the main items, and a separated sign-out.</p>
+{% set classless %}
+<header class="navbar" style="margin-bottom: 11rem">
+  <div class="navbar-start"><strong>App</strong></div>
+  <div class="navbar-end">
+    <details style="position: relative" open>
+      <summary class="btn btn-ghost">Account</summary>
+      <ul class="dropdown-content menu" style="position: absolute; right: 0; margin-top: calc(var(--padding) / 4)">
+        <li class="menu-title">name@example.com</li>
+        <li><a href="#" class="semantic menu-item">Settings</a></li>
+        <li><a href="#" class="semantic menu-item">Billing</a></li>
+        <li><hr /></li>
+        <li><a href="#" class="semantic menu-item">Sign out</a></li>
+      </ul>
+    </details>
+  </div>
+</header>
+{% endset %}
+{{ m.demo("dropdown-comp-2", classless) }}
+<ul>
+  <li><strong>Layout:</strong> <code>right: 0</code> anchors the panel to the trigger's right edge, so it opens inward from the end of the bar.</li>
+  <li><strong>Text:</strong> <code>.menu-title</code> labels the menu without being a row you can pick; an <code>hr</code> inside a menu draws a tighter rule than a prose <code>hr</code>.</li>
+</ul>
+
+<h3>Shortcuts in a menu</h3>
+<p>Each row shows the key that does the same thing.</p>
+{% set classless %}
+<ul class="dropdown-content menu">
+  <li class="menu-item">Copy link <span class="menu-shortcut"><kbd class="kbd">C</kbd></span></li>
+  <li class="menu-item">Archive <span class="menu-shortcut"><kbd class="kbd">E</kbd></span></li>
+  <li class="menu-item menu-disabled">Delete <span class="menu-shortcut"><kbd class="kbd">#</kbd></span></li>
+</ul>
+{% endset %}
+{{ m.demo("dropdown-comp-3", classless) }}
+<ul>
+  <li><strong>Text:</strong> <code>.menu-shortcut</code> pushes the key to the end of the row; the <code>.kbd</code> inside it marks it as a key.</li>
+  <li><strong>Boundary:</strong> <code>.menu-disabled</code> greys the whole row, key included.</li>
+</ul>
 {% endblock %}

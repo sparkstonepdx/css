@@ -35,7 +35,7 @@
     flex-direction: column;
     align-items: stretch;
     border-bottom: 0;
-    border-right: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-right: var(--border-width) solid var(--divider);
   }
 
   // Tabs.Indicator has no class of its own. Kobalte positions it inline, and it
@@ -46,8 +46,8 @@
 
   .tab-indicator {
     position: absolute;
-    background-color: cur-color(var(--surface-lc-4));
-    transition: all 250ms;
+    background-color: var(--line);
+    transition: all var(--duration-change);
 
     bottom: calc(var(--border-width) * -1);
     height: var(--border-width);
@@ -148,8 +148,10 @@
     @extend .select;
   }
 
+  // The panel is Select.Content, a div around the listbox with no role of its
+  // own, so it takes .dropdown-content by hand. Binding the panel to the
+  // listbox drew a second bordered panel inside the first.
   [role="listbox"] {
-    @extend .dropdown-content;
     @extend .menu;
   }
 
@@ -218,6 +220,23 @@
   }
 }
 
+// Skeleton has no role of its own to bind to, so it takes .skeleton by hand; its
+// root is role="group", and Kobalte sets data-animate and data-visible while
+// they are on. Only a Kobalte skeleton turns them off, so the class and
+// classless markup, which never carries them, keeps animating.
+@mixin skeleton {
+  .skeleton[role="group"] {
+    &:not([data-animate]) {
+      animation: none;
+      background-image: none;
+    }
+
+    &:not([data-visible]) {
+      background-color: transparent;
+    }
+  }
+}
+
 @mixin bindings {
   @include tabs;
   @include dropdown-menu;
@@ -230,4 +249,5 @@
   @include toast;
   @include slider;
   @include menubar;
+  @include skeleton;
 }

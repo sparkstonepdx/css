@@ -18,35 +18,39 @@
     display: flex;
     align-items: center;
 
-    border-bottom: var(--border-width) solid cur-color(var(--surface-lc-2));
+    border-bottom: var(--border-width) solid var(--divider);
   }
 
   .tab {
     display: inline-block;
     border: 0;
     background-color: transparent;
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
     cursor: pointer;
     padding: 0.75rem 1rem;
     text-align: center;
     border-radius: var(--border-radius) var(--border-radius) 0 0;
 
+
+    @media (prefers-reduced-motion: no-preference) {
+      transition: background-color var(--duration-change), color var(--duration-change);
+    }
     &:hover {
-      background-color: cur-color(var(--surface-lc-2));
+      background-color: var(--surface);
     }
   }
 
   .tab-active {
-    color: cur-color(var(--text-lc-1));
+    color: var(--fg);
     box-shadow: inset 0 calc(var(--border-width) * -1) 0
-      cur-color(var(--surface-lc-4));
+      var(--line);
   }
 
   // Greyscale alone left a disabled tab at the same strength as an unselected
   // one. Lighter text marks it as unavailable without changing its shape.
   .tab-disabled {
-    @include apply-greyscale();
-    color: cur-color(var(--text-lc-5));
+    @extend .disabled;
+    color: var(--fg-faint);
     pointer-events: none;
   }
 

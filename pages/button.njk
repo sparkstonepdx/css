@@ -94,4 +94,88 @@
     width and carried a bottom margin.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>One primary action per region</h3>
+<p>A hero with one filled button, and a confirm row where the safe choice is secondary.</p>
+{% set classless %}
+<div style="display: grid; gap: var(--padding)">
+<section class="prose" style="max-width: 40rem">
+  <h1>Software your business actually runs on</h1>
+  <p>Intake, scheduling and the site that feeds them, built and looked after by one person.</p>
+  <a href="#" class="btn">Book a call</a>
+  <a href="#" class="btn btn-ghost">See the work</a>
+</section>
+<article class="card prose">
+  <h3>Cancel this booking?</h3>
+  <p>The time goes back on the calendar for someone else.</p>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn btn-secondary">Keep it</button>
+    <button class="btn">Cancel booking</button>
+  </footer>
+</article>
+</div>
+{% endset %}
+{{ m.demo("button-comp-1", classless) }}
+<ul>
+  <li><strong>Actions:</strong> one <code>.btn</code> per region; the alternative is <code>.btn-ghost</code> or <code>.btn-secondary</code> so the eye has one place to land.</li>
+  <li><strong>Layout:</strong> nothing has a margin outside its own box, so the two regions are spaced by the grid that holds them.</li>
+  <li><strong>Surface:</strong> <code>.card-actions</code> gives the card's buttons their own rule and spacing at the end of the card.</li>
+</ul>
+
+<h3>Equal choices</h3>
+<p>When no option is the main one, none of them is filled.</p>
+{% set classless %}
+<div class="prose">
+  <h3>Add to your calendar</h3>
+</div>
+<div class="flex" style="flex-wrap: wrap">
+  <a href="#" class="btn btn-secondary">Google</a>
+  <a href="#" class="btn btn-secondary">Apple / Outlook</a>
+  <a href="#" class="btn btn-ghost">Download .ics</a>
+</div>
+{% endset %}
+{{ m.demo("button-comp-2", classless) }}
+<ul>
+  <li><strong>Layout:</strong> a wrapping <code>.flex</code> row, so on a phone the buttons fall to a second line instead of shrinking.</li>
+</ul>
+
+<h3>Busy</h3>
+<p>While a form submits, its button keeps the label, gains a spinner, and is disabled until the work is done.</p>
+{% set classless %}
+<form class="card" style="max-width: 24rem">
+  <label class="label"><p>Email</p><input class="input" type="email" value="name@example.com" /></label>
+  <button class="btn" disabled aria-busy="true"><span class="loading" style="vertical-align: middle"></span> Sending</button>
+</form>
+{% endset %}
+{{ m.demo("button-comp-3", classless) }}
+<ul>
+  <li><strong>Controls:</strong> the spinner draws in <code>currentColor</code>, so it takes the button's text colour in any variant.</li>
+  <li><strong>Boundary:</strong> <code>disabled</code> greys the button, spinner included, with no extra class.</li>
+</ul>
+
+<h3>A toolbar</h3>
+<p>Ghost buttons in groups, split by a vertical divider, with a tooltip naming the one under the pointer.</p>
+{% set classless %}
+<div class="flex" style="align-items: center; gap: calc(var(--padding) / 4)">
+  <button class="btn btn-ghost">Undo</button>
+  <button class="btn btn-ghost">Redo</button>
+  <div class="divider divider-vertical" style="height: 1.5rem; margin: 0 calc(var(--padding) / 2)"></div>
+  <span style="position: relative; display: inline-block">
+    <button class="btn btn-ghost" aria-describedby="ctip">Link</button>
+    <span class="tooltip-content" role="tooltip" id="ctip" style="position: absolute; left: 50%; top: 100%; transform: translateX(-50%); margin-top: 0.25rem; white-space: nowrap">Add a link (Ctrl K)</span>
+  </span>
+  <button class="btn btn-secondary" style="margin-left: auto">Share</button>
+</div>
+{% endset %}
+{{ m.demo("button-comp-4", classless) }}
+<ul>
+  <li><strong>Actions:</strong> tools are <code>.btn-ghost</code> so a row of them stays quiet; the one action that leaves the editor is <code>.btn-secondary</code>, pushed to the end with an auto margin.</li>
+  <li><strong>Layout:</strong> a vertical divider takes its height from you; give it about a line of text. <code>.tooltip-content</code> only paints, so where it sits is up to whatever shows it.</li>
+</ul>
 {% endblock %}

@@ -11,14 +11,19 @@
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
 
     border-radius: var(--border-radius);
-    background-color: cur-color(var(--surface-lc-5));
-    color: cur-color(var(--surface-lc-1));
+    background-color: var(--fg);
+    color: var(--bg);
     font-size: 0.875rem;
 
     z-index: 50;
+
+    @media (prefers-reduced-motion: no-preference) {
+      transform-origin: center;
+      animation: sparkstone-panel-in var(--duration-change) ease-out;
+    }
   }
 
   .tooltip-arrow {
-    color: cur-color(var(--surface-lc-5));
+    color: var(--fg);
   }
 }
