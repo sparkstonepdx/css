@@ -100,4 +100,33 @@
   <li><strong>States:</strong> <code>aria-invalid</code> on the field turns it and the label text above it to the error colour.</li>
   <li><strong>Layout:</strong> a checkbox inside a label lays out as a row instead of a stack.</li>
 </ul>
+
+<h3>A message form</h3>
+<p>Two short fields side by side, a message box, consent, and a send button closing the card.</p>
+{% set classless %}
+<form class="card">
+  <div class="flex flip" style="row-gap: 0">
+    <label class="label" style="flex: 1"><p>Name</p><input class="input" autocomplete="name" /></label>
+    <label class="label" style="flex: 1"><p>Email</p><input class="input" type="email" autocomplete="email" /></label>
+  </div>
+  <label class="label">
+    <p>Message</p>
+    <textarea class="textarea" rows="4"></textarea>
+    <small>A few sentences is plenty.</small>
+  </label>
+  <label class="label">
+    <input type="checkbox" class="checkbox" required />
+    I agree to be contacted about this request
+  </label>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn">Send</button>
+  </footer>
+</form>
+{% endset %}
+{{ m.demo("label-comp-2", classless) }}
+<ul>
+  <li><strong>Layout:</strong> two short fields share a <code>.flex .flip</code> row; <code>row-gap: 0</code> keeps them from double-spacing when they stack on a phone.</li>
+  <li><strong>Controls:</strong> the consent checkbox sits right above the action it gates.</li>
+  <li><strong>Surface:</strong> <code>.card-actions</code> closes the card with its own rule, which also absorbs the last field's bottom margin.</li>
+</ul>
 {% endblock %}

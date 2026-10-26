@@ -568,44 +568,6 @@
 </div>
 
 
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>A filter with its value shown</h3>
-<p>A range in a filter group, with the current value in the label text.</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <span class="demo-note"><small>Same markup in both builds</small></span>
-    
-    <button class="ghost copy-button" data-target="range-comp-1-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="range-comp-1-classes" data-variant="classes">&lt;fieldset class=&quot;fieldset&quot;&gt;
-  &lt;legend class=&quot;fieldset-legend&quot;&gt;Filter&lt;/legend&gt;
-  &lt;label class=&quot;label&quot;&gt;
-    &lt;p class=&quot;flex&quot; style=&quot;justify-content: space-between&quot;&gt;&lt;span&gt;Distance&lt;/span&gt;&lt;span class=&quot;text-secondary&quot;&gt;5 miles&lt;/span&gt;&lt;/p&gt;
-    &lt;input type=&quot;range&quot; class=&quot;range&quot; min=&quot;1&quot; max=&quot;20&quot; value=&quot;5&quot; style=&quot;--range-fill: 21%&quot; /&gt;
-  &lt;/label&gt;
-  &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; Open now&lt;/label&gt;
-&lt;/fieldset&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
-<ul>
-  <li><strong>Controls:</strong> the value sits in the label's <code>&lt;p&gt;</code>, pushed to the end, so label and value read as one line above the rail.</li>
-  <li><strong>Text:</strong> the value is <code>.text-secondary</code> so the name leads.</li>
-</ul>
-
 
         <footer class="site-footer">
           <hr />

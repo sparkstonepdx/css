@@ -71,33 +71,4 @@ import { Slider } from "@kobalte/core/slider";
     root, track and fill have none, so they take theirs by hand.
   </small>
 </p>
-{# composition #}
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>In a filter panel</h3>
-<p>A slider with its label and value, in the same group as other filters.</p>
-{% set classless %}
-<fieldset class="fieldset" style="max-width: 24rem">
-  <legend class="fieldset-legend">Price</legend>
-  <div class="slider">
-    <div class="flex" style="justify-content: space-between; gap: 0.5rem">
-      <span class="slider-label">Up to</span>
-      <span class="slider-value">$40</span>
-    </div>
-    <div class="slider-track">
-      <div class="slider-fill" style="left: 0%; right: 60%"></div>
-      <span class="slider-thumb" style="position: absolute; left: 40%; transform: translateX(-50%)"></span>
-    </div>
-  </div>
-  <label class="label" style="margin-top: var(--padding)"><input type="checkbox" class="checkbox" /> On sale</label>
-</fieldset>
-{% endset %}
-{{ m.demo("slider-comp-1", classless) }}
-<ul>
-  <li><strong>Spacing:</strong> nothing sets a top margin, so the next control takes <code>margin-top: var(--padding)</code> to clear the slider.</li>
-</ul>
 {% endblock %}

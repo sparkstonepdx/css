@@ -657,6 +657,45 @@
   <li><strong>Spacing:</strong> <code>.tab-content</code> has no side padding, so panel text lines up with the page edge under the first tab.</li>
 </ul>
 
+<h3>Tabs inside a card</h3>
+<p>A card whose content splits into views. The tab row runs across the top of the card.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="tabs-comp-2-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="tabs-comp-2-classes" data-variant="classes">&lt;article class=&quot;card&quot;&gt;
+  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;tab tab-active&quot; role=&quot;tab&quot; id=&quot;ct2-details&quot; aria-controls=&quot;cp2-details&quot; data-selected&gt;Details&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;ct2-access&quot; aria-controls=&quot;cp2-access&quot;&gt;Access&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;cp2-details&quot; aria-labelledby=&quot;ct2-details&quot;&gt;
+    &lt;label class=&quot;label&quot;&gt;&lt;p&gt;Project name&lt;/p&gt;&lt;input class=&quot;input&quot; value=&quot;Website&quot; /&gt;&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-content&quot; role=&quot;tabpanel&quot; id=&quot;cp2-access&quot; aria-labelledby=&quot;ct2-access&quot; hidden&gt;
+    &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; Anyone with the link can view&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
+    &lt;button class=&quot;btn&quot;&gt;Save&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Surface:</strong> the tab rule and the active underline are drawn in <code>--divider</code> and <code>--line</code>, so they read on the card's surface as well as on the page.</li>
+  <li><strong>Actions:</strong> one save button in <code>.card-actions</code> covers every tab, so switching tabs never loses an edit.</li>
+</ul>
+
 
         <footer class="site-footer">
           <hr />

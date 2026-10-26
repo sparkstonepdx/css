@@ -465,46 +465,6 @@
 </div>
 
 
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>Attachments in a form</h3>
-<p>A file field with a note on what it accepts, among the other fields of a card.</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <span class="demo-note"><small>Same markup in both builds</small></span>
-    
-    <button class="ghost copy-button" data-target="file-input-comp-1-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="file-input-comp-1-classes" data-variant="classes">&lt;form class=&quot;card&quot; style=&quot;max-width: 32rem&quot;&gt;
-  &lt;label class=&quot;label&quot;&gt;&lt;p&gt;Title&lt;/p&gt;&lt;input class=&quot;input&quot; /&gt;&lt;/label&gt;
-  &lt;label class=&quot;label&quot;&gt;
-    &lt;p&gt;Cover image&lt;/p&gt;
-    &lt;input type=&quot;file&quot; class=&quot;file-input&quot; accept=&quot;image/*&quot; /&gt;
-    &lt;small&gt;JPG or PNG, up to 5 MB.&lt;/small&gt;
-  &lt;/label&gt;
-  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
-    &lt;button class=&quot;btn&quot;&gt;Upload&lt;/button&gt;
-  &lt;/footer&gt;
-&lt;/form&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
-<ul>
-  <li><strong>Controls:</strong> the file input is full width and carries the same bottom margin as a text field, so it stacks into the form like any other field.</li>
-</ul>
-
 
         <footer class="site-footer">
           <hr />

@@ -746,6 +746,74 @@
   <li><strong>Actions:</strong> a row's action is <code>.btn-secondary</code>, so a list of rows does not become a list of filled buttons.</li>
 </ul>
 
+<h3>An account menu in a header</h3>
+<p>A ghost button at the end of the bar opens a menu with a title, the main items, and a separated sign-out.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="dropdown-comp-2-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="dropdown-comp-2-classes" data-variant="classes">&lt;header class=&quot;navbar&quot; style=&quot;margin-bottom: 11rem&quot;&gt;
+  &lt;div class=&quot;navbar-start&quot;&gt;&lt;strong&gt;App&lt;/strong&gt;&lt;/div&gt;
+  &lt;div class=&quot;navbar-end&quot;&gt;
+    &lt;details style=&quot;position: relative&quot; open&gt;
+      &lt;summary class=&quot;btn btn-ghost&quot;&gt;Account&lt;/summary&gt;
+      &lt;ul class=&quot;dropdown-content menu&quot; style=&quot;position: absolute; right: 0; margin-top: calc(var(--padding) / 4)&quot;&gt;
+        &lt;li class=&quot;menu-title&quot;&gt;name@example.com&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;semantic menu-item&quot;&gt;Settings&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;semantic menu-item&quot;&gt;Billing&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;hr /&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;a href=&quot;#&quot; class=&quot;semantic menu-item&quot;&gt;Sign out&lt;/a&gt;&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/details&gt;
+  &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Layout:</strong> <code>right: 0</code> anchors the panel to the trigger's right edge, so it opens inward from the end of the bar.</li>
+  <li><strong>Text:</strong> <code>.menu-title</code> labels the menu without being a row you can pick; an <code>hr</code> inside a menu draws a tighter rule than a prose <code>hr</code>.</li>
+</ul>
+
+<h3>Shortcuts in a menu</h3>
+<p>Each row shows the key that does the same thing.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="dropdown-comp-3-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="dropdown-comp-3-classes" data-variant="classes">&lt;ul class=&quot;dropdown-content menu&quot;&gt;
+  &lt;li class=&quot;menu-item&quot;&gt;Copy link &lt;span class=&quot;menu-shortcut&quot;&gt;&lt;kbd class=&quot;kbd&quot;&gt;C&lt;/kbd&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class=&quot;menu-item&quot;&gt;Archive &lt;span class=&quot;menu-shortcut&quot;&gt;&lt;kbd class=&quot;kbd&quot;&gt;E&lt;/kbd&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class=&quot;menu-item menu-disabled&quot;&gt;Delete &lt;span class=&quot;menu-shortcut&quot;&gt;&lt;kbd class=&quot;kbd&quot;&gt;#&lt;/kbd&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Text:</strong> <code>.menu-shortcut</code> pushes the key to the end of the row; the <code>.kbd</code> inside it marks it as a key.</li>
+  <li><strong>Boundary:</strong> <code>.menu-disabled</code> greys the whole row, key included.</li>
+</ul>
+
 
         <footer class="site-footer">
           <hr />

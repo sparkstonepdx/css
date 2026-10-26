@@ -63,4 +63,26 @@
   <li><strong>Surface:</strong> a flat <code>.card-border</code> rather than a raised card, because a table is read, not picked up.</li>
   <li><strong>Text:</strong> <code>.prose</code> sits on the heading only, so it does not add margins inside the table.</li>
 </ul>
+
+<h3>Details in a card</h3>
+<p>Labels down the left, values on the right, closing with an action.</p>
+{% set classless %}
+<article class="card">
+  <div class="prose"><h3>Order details</h3></div>
+  <table class="table">
+    <tbody>
+      <tr><th>Placed</th><td>October 3</td></tr>
+      <tr><th>Items</th><td>2</td></tr>
+      <tr><th>Total</th><td>$48.00</td></tr>
+    </tbody>
+  </table>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn btn-secondary">Download receipt</button>
+  </footer>
+</article>
+{% endset %}
+{{ m.demo("table-comp-2", classless) }}
+<ul>
+  <li><strong>Text:</strong> row headings are <code>th</code> in the body, so each label is tied to its value for screen readers.</li>
+</ul>
 {% endblock %}

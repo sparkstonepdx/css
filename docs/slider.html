@@ -531,49 +531,6 @@
   </small>
 </p>
 
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>In a filter panel</h3>
-<p>A slider with its label and value, in the same group as other filters.</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <span class="demo-note"><small>Same markup in both builds</small></span>
-    
-    <button class="ghost copy-button" data-target="slider-comp-1-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="slider-comp-1-classes" data-variant="classes">&lt;fieldset class=&quot;fieldset&quot; style=&quot;max-width: 24rem&quot;&gt;
-  &lt;legend class=&quot;fieldset-legend&quot;&gt;Price&lt;/legend&gt;
-  &lt;div class=&quot;slider&quot;&gt;
-    &lt;div class=&quot;flex&quot; style=&quot;justify-content: space-between; gap: 0.5rem&quot;&gt;
-      &lt;span class=&quot;slider-label&quot;&gt;Up to&lt;/span&gt;
-      &lt;span class=&quot;slider-value&quot;&gt;$40&lt;/span&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;slider-track&quot;&gt;
-      &lt;div class=&quot;slider-fill&quot; style=&quot;left: 0%; right: 60%&quot;&gt;&lt;/div&gt;
-      &lt;span class=&quot;slider-thumb&quot; style=&quot;position: absolute; left: 40%; transform: translateX(-50%)&quot;&gt;&lt;/span&gt;
-    &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;label class=&quot;label&quot; style=&quot;margin-top: var(--padding)&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; On sale&lt;/label&gt;
-&lt;/fieldset&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
-<ul>
-  <li><strong>Spacing:</strong> nothing sets a top margin, so the next control takes <code>margin-top: var(--padding)</code> to clear the slider.</li>
-</ul>
-
 
         <footer class="site-footer">
           <hr />

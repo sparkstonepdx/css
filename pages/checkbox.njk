@@ -52,29 +52,4 @@
 </label>
 {% endset %}
 {{ m.demo("checkbox-disabled", classless, classes) }}
-{# composition #}
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>Consent above a submit button</h3>
-<p>A checkbox row at the end of a form, right before the action it gates.</p>
-{% set classless %}
-<form class="card" style="max-width: 30rem">
-  <label class="label"><p>Email</p><input class="input" type="email" /></label>
-  <label class="label">
-    <input type="checkbox" class="checkbox" required />
-    I agree to be contacted about this request
-  </label>
-  <footer class="card-actions flex" style="justify-content: end">
-    <button class="btn">Send</button>
-  </footer>
-</form>
-{% endset %}
-{{ m.demo("checkbox-comp-1", classless) }}
-<ul>
-  <li><strong>Controls:</strong> the checkbox goes inside its <code>.label</code>, which lays it out as a row and makes the whole line clickable.</li>
-</ul>
 {% endblock %}

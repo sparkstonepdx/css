@@ -497,44 +497,6 @@
   </small>
 </p>
 
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>Labelling an icon button</h3>
-<p>A toolbar of short buttons, with the tooltip naming the one under the pointer.</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <span class="demo-note"><small>Same markup in both builds</small></span>
-    
-    <button class="ghost copy-button" data-target="tooltip-comp-1-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="tooltip-comp-1-classes" data-variant="classes">&lt;div class=&quot;flex&quot; style=&quot;align-items: center; gap: calc(var(--padding) / 4)&quot;&gt;
-  &lt;button class=&quot;btn btn-ghost&quot; aria-label=&quot;Bold&quot;&gt;&lt;strong&gt;B&lt;/strong&gt;&lt;/button&gt;
-  &lt;button class=&quot;btn btn-ghost&quot; aria-label=&quot;Italic&quot;&gt;&lt;i&gt;I&lt;/i&gt;&lt;/button&gt;
-  &lt;span style=&quot;position: relative; display: inline-block&quot;&gt;
-    &lt;button class=&quot;btn btn-ghost&quot; aria-label=&quot;Link&quot; aria-describedby=&quot;ctip&quot;&gt;Link&lt;/button&gt;
-    &lt;span class=&quot;tooltip-content&quot; role=&quot;tooltip&quot; id=&quot;ctip&quot; style=&quot;position: absolute; left: 50%; top: 100%; transform: translateX(-50%); margin-top: 0.25rem; white-space: nowrap&quot;&gt;Add a link (Ctrl K)&lt;/span&gt;
-  &lt;/span&gt;
-&lt;/div&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
-<ul>
-  <li><strong>Surface:</strong> the tooltip is the inverse of the page, so it reads over any surface it lands on.</li>
-  <li><strong>Layout:</strong> <code>.tooltip-content</code> only paints; where it sits is up to whatever shows it.</li>
-</ul>
-
 
         <footer class="site-footer">
           <hr />

@@ -26,34 +26,4 @@
 </label>
 {% endset %}
 {{ m.demo("textarea-basic", classless, classes) }}
-{# composition #}
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>Message form in a card</h3>
-<p>Two short fields side by side, a message box, and a send button closing the card.</p>
-{% set classless %}
-<form class="card">
-  <div class="flex flip" style="row-gap: 0">
-    <label class="label" style="flex: 1"><p>Name</p><input class="input" autocomplete="name" /></label>
-    <label class="label" style="flex: 1"><p>Email</p><input class="input" type="email" autocomplete="email" /></label>
-  </div>
-  <label class="label">
-    <p>Message</p>
-    <textarea class="textarea" rows="4"></textarea>
-    <small>A few sentences is plenty.</small>
-  </label>
-  <footer class="card-actions flex" style="justify-content: end">
-    <button class="btn">Send</button>
-  </footer>
-</form>
-{% endset %}
-{{ m.demo("textarea-comp-1", classless) }}
-<ul>
-  <li><strong>Layout:</strong> two short fields share a <code>.flex .flip</code> row; <code>row-gap: 0</code> keeps them from double-spacing when they stack.</li>
-  <li><strong>Surface:</strong> <code>.card-actions</code> closes the card with its own rule, which also absorbs the last field's bottom margin.</li>
-</ul>
 {% endblock %}

@@ -144,4 +144,38 @@
 <ul>
   <li><strong>Layout:</strong> a wrapping <code>.flex</code> row, so on a phone the buttons fall to a second line instead of shrinking.</li>
 </ul>
+
+<h3>Busy</h3>
+<p>While a form submits, its button keeps the label, gains a spinner, and is disabled until the work is done.</p>
+{% set classless %}
+<form class="card" style="max-width: 24rem">
+  <label class="label"><p>Email</p><input class="input" type="email" value="name@example.com" /></label>
+  <button class="btn" disabled aria-busy="true"><span class="loading" style="vertical-align: middle"></span> Sending</button>
+</form>
+{% endset %}
+{{ m.demo("button-comp-3", classless) }}
+<ul>
+  <li><strong>Controls:</strong> the spinner draws in <code>currentColor</code>, so it takes the button's text colour in any variant.</li>
+  <li><strong>Boundary:</strong> <code>disabled</code> greys the button, spinner included, with no extra class.</li>
+</ul>
+
+<h3>A toolbar</h3>
+<p>Ghost buttons in groups, split by a vertical divider, with a tooltip naming the one under the pointer.</p>
+{% set classless %}
+<div class="flex" style="align-items: center; gap: calc(var(--padding) / 4)">
+  <button class="btn btn-ghost">Undo</button>
+  <button class="btn btn-ghost">Redo</button>
+  <div class="divider divider-vertical" style="height: 1.5rem; margin: 0 calc(var(--padding) / 2)"></div>
+  <span style="position: relative; display: inline-block">
+    <button class="btn btn-ghost" aria-describedby="ctip">Link</button>
+    <span class="tooltip-content" role="tooltip" id="ctip" style="position: absolute; left: 50%; top: 100%; transform: translateX(-50%); margin-top: 0.25rem; white-space: nowrap">Add a link (Ctrl K)</span>
+  </span>
+  <button class="btn btn-secondary" style="margin-left: auto">Share</button>
+</div>
+{% endset %}
+{{ m.demo("button-comp-4", classless) }}
+<ul>
+  <li><strong>Actions:</strong> tools are <code>.btn-ghost</code> so a row of them stays quiet; the one action that leaves the editor is <code>.btn-secondary</code>, pushed to the end with an auto margin.</li>
+  <li><strong>Layout:</strong> a vertical divider takes its height from you; give it about a line of text. <code>.tooltip-content</code> only paints, so where it sits is up to whatever shows it.</li>
+</ul>
 {% endblock %}

@@ -144,4 +144,28 @@
   <li><strong>Surface:</strong> <code>.dialog-box</code> is a card, and <code>.dialog-actions</code> is <code>.card-actions</code> aligned right, so a dialog composes like any card.</li>
   <li><strong>Text:</strong> <code>.prose</code> goes on the header only; the fields space themselves.</li>
 </ul>
+
+<h3>Confirming a destructive action</h3>
+<p>The dialog names what will be lost, the safe choice is secondary, and the destructive one takes the error colour.</p>
+{% set classless %}
+<button class="btn btn-secondary" data-dialog="comp-confirm">Delete project</button>
+
+<dialog id="comp-confirm" class="dialog">
+  <form method="dialog">
+    <article class="dialog-box prose">
+      <h3>Delete this project?</h3>
+      <p>Its files and history go with it. This cannot be undone.</p>
+      <footer class="dialog-actions">
+        <button value="cancel" class="btn btn-secondary">Keep it</button>
+        <button value="ok" class="btn error">Delete</button>
+      </footer>
+    </article>
+  </form>
+</dialog>
+{% endset %}
+{{ m.demo("dialog-comp-2", classless) }}
+<ul>
+  <li><strong>Boundary:</strong> <code>.error</code> works on any element, so the delete button becomes an error button with no button-specific class.</li>
+  <li><strong>Actions:</strong> the button that opens it is <code>.btn-secondary</code>; a destructive action should not be the loudest thing on the page.</li>
+</ul>
 {% endblock %}

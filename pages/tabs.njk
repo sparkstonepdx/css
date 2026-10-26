@@ -167,4 +167,29 @@ const [tab, setTab] = createSignal("week");
   <li><strong>Text:</strong> <code>.prose</code> goes on each <code>.tab-content</code>, not on the wrapper, so it spaces the panel's text without touching the tab row.</li>
   <li><strong>Spacing:</strong> <code>.tab-content</code> has no side padding, so panel text lines up with the page edge under the first tab.</li>
 </ul>
+
+<h3>Tabs inside a card</h3>
+<p>A card whose content splits into views. The tab row runs across the top of the card.</p>
+{% set classless %}
+<article class="card">
+  <div class="tabs" role="tablist">
+    <button class="tab tab-active" role="tab" id="ct2-details" aria-controls="cp2-details" data-selected>Details</button>
+    <button class="tab" role="tab" id="ct2-access" aria-controls="cp2-access">Access</button>
+  </div>
+  <div class="tab-content" role="tabpanel" id="cp2-details" aria-labelledby="ct2-details">
+    <label class="label"><p>Project name</p><input class="input" value="Website" /></label>
+  </div>
+  <div class="tab-content" role="tabpanel" id="cp2-access" aria-labelledby="ct2-access" hidden>
+    <label class="label"><input type="checkbox" class="checkbox" checked /> Anyone with the link can view</label>
+  </div>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn">Save</button>
+  </footer>
+</article>
+{% endset %}
+{{ m.demo("tabs-comp-2", classless) }}
+<ul>
+  <li><strong>Surface:</strong> the tab rule and the active underline are drawn in <code>--divider</code> and <code>--line</code>, so they read on the card's surface as well as on the page.</li>
+  <li><strong>Actions:</strong> one save button in <code>.card-actions</code> covers every tab, so switching tabs never loses an edit.</li>
+</ul>
 {% endblock %}

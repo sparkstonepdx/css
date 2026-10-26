@@ -75,6 +75,24 @@
   <li><strong>Spacing:</strong> the checkbox labels keep their <code>1rem</code> bottom margin, so the segmented control gets the same to share their centre line.</li>
 </ul>
 
+<h3>A filter with a range</h3>
+<p>A range in a filter group, with the current value in the label text.</p>
+{% set classless %}
+<fieldset class="fieldset">
+  <legend class="fieldset-legend">Filter</legend>
+  <label class="label">
+    <p class="flex" style="justify-content: space-between"><span>Distance</span><span class="text-secondary">5 miles</span></p>
+    <input type="range" class="range" min="1" max="20" value="5" style="--range-fill: 21%" />
+  </label>
+  <label class="label"><input type="checkbox" class="checkbox" /> Open now</label>
+</fieldset>
+{% endset %}
+{{ m.demo("fieldset-comp-2", classless) }}
+<ul>
+  <li><strong>Controls:</strong> the value sits in the label's <code>&lt;p&gt;</code>, pushed to the end, so label and value read as one line above the rail.</li>
+  <li><strong>Text:</strong> the value is <code>.text-secondary</code> so the name leads.</li>
+</ul>
+
 <h3>Disabling a group</h3>
 <p>Disabling the fieldset disables, and greys, everything inside it.</p>
 {% set classless %}
@@ -90,7 +108,7 @@
   </fieldset>
 </form>
 {% endset %}
-{{ m.demo("fieldset-comp-2", classless) }}
+{{ m.demo("fieldset-comp-3", classless) }}
 <ul>
   <li><strong>Boundary:</strong> a disabled element sets <code>--chroma: 0</code> for its subtree, so the legend, labels and fields lose colour together.</li>
 </ul>

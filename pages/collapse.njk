@@ -102,4 +102,26 @@ import { Accordion } from "@kobalte/core/accordion";
   <li><strong>Text:</strong> <code>.prose</code> goes on <code>.collapse-content</code>, not on the stack, so the titles keep their own size and spacing.</li>
   <li><strong>Surface:</strong> the stack has a rule under each item and no box, so it reads as a list rather than a pile of cards.</li>
 </ul>
+
+<h3>Advanced options in a form</h3>
+<p>Settings most people never need fold away under the ones they do.</p>
+{% set classless %}
+<form class="card">
+  <label class="label"><p>Site name</p><input class="input" /></label>
+  <details class="collapse" open>
+    <summary class="collapse-title">Advanced options <span>−</span></summary>
+    <div class="collapse-content">
+      <label class="label"><p>Custom domain</p><input class="input" placeholder="www.example.com" /></label>
+    </div>
+  </details>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn">Save</button>
+  </footer>
+</form>
+{% endset %}
+{{ m.demo("collapse-comp-2", classless) }}
+<ul>
+  <li><strong>Controls:</strong> fields inside the collapse are ordinary labels, so they space themselves the same as the fields above.</li>
+  <li><strong>Actions:</strong> the save button stays outside the collapse, so it is there whether the section is open or not.</li>
+</ul>
 {% endblock %}

@@ -523,49 +523,6 @@
 </div>
 
 
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>Under a list</h3>
-<p>A list of entries, then the page row, centred under it.</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <span class="demo-note"><small>Same markup in both builds</small></span>
-    
-    <button class="ghost copy-button" data-target="pagination-comp-1-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="pagination-comp-1-classes" data-variant="classes">&lt;div style=&quot;display: grid; gap: var(--padding)&quot;&gt;
-  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;&lt;h3 class=&quot;link&quot;&gt;Entry one&lt;/h3&gt;&lt;p&gt;A sentence about it.&lt;/p&gt;&lt;/a&gt;
-  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;&lt;h3 class=&quot;link&quot;&gt;Entry two&lt;/h3&gt;&lt;p&gt;A sentence about it.&lt;/p&gt;&lt;/a&gt;
-&lt;/div&gt;
-&lt;nav class=&quot;pagination&quot; aria-label=&quot;Pages&quot; style=&quot;display: flex; justify-content: center; margin-top: var(--padding)&quot;&gt;
-  &lt;ul&gt;
-    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;Previous&lt;/button&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;1&lt;/button&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot; aria-current=&quot;page&quot;&gt;2&lt;/button&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;3&lt;/button&gt;&lt;/li&gt;
-    &lt;li&gt;&lt;button class=&quot;btn btn-secondary&quot;&gt;Next&lt;/button&gt;&lt;/li&gt;
-  &lt;/ul&gt;
-&lt;/nav&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
-<ul>
-  <li><strong>Spacing:</strong> nothing sets a top margin, so the row takes <code>margin-top: var(--padding)</code> to clear the list.</li>
-  <li><strong>Actions:</strong> every page is <code>.btn-secondary</code>; the current one is filled, so the row has exactly one filled button.</li>
-</ul>
-
 
         <footer class="site-footer">
           <hr />

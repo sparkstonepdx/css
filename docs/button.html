@@ -688,6 +688,68 @@
   <li><strong>Layout:</strong> a wrapping <code>.flex</code> row, so on a phone the buttons fall to a second line instead of shrinking.</li>
 </ul>
 
+<h3>Busy</h3>
+<p>While a form submits, its button keeps the label, gains a spinner, and is disabled until the work is done.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="button-comp-3-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="button-comp-3-classes" data-variant="classes">&lt;form class=&quot;card&quot; style=&quot;max-width: 24rem&quot;&gt;
+  &lt;label class=&quot;label&quot;&gt;&lt;p&gt;Email&lt;/p&gt;&lt;input class=&quot;input&quot; type=&quot;email&quot; value=&quot;name@example.com&quot; /&gt;&lt;/label&gt;
+  &lt;button class=&quot;btn&quot; disabled aria-busy=&quot;true&quot;&gt;&lt;span class=&quot;loading&quot; style=&quot;vertical-align: middle&quot;&gt;&lt;/span&gt; Sending&lt;/button&gt;
+&lt;/form&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Controls:</strong> the spinner draws in <code>currentColor</code>, so it takes the button's text colour in any variant.</li>
+  <li><strong>Boundary:</strong> <code>disabled</code> greys the button, spinner included, with no extra class.</li>
+</ul>
+
+<h3>A toolbar</h3>
+<p>Ghost buttons in groups, split by a vertical divider, with a tooltip naming the one under the pointer.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="button-comp-4-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="button-comp-4-classes" data-variant="classes">&lt;div class=&quot;flex&quot; style=&quot;align-items: center; gap: calc(var(--padding) / 4)&quot;&gt;
+  &lt;button class=&quot;btn btn-ghost&quot;&gt;Undo&lt;/button&gt;
+  &lt;button class=&quot;btn btn-ghost&quot;&gt;Redo&lt;/button&gt;
+  &lt;div class=&quot;divider divider-vertical&quot; style=&quot;height: 1.5rem; margin: 0 calc(var(--padding) / 2)&quot;&gt;&lt;/div&gt;
+  &lt;span style=&quot;position: relative; display: inline-block&quot;&gt;
+    &lt;button class=&quot;btn btn-ghost&quot; aria-describedby=&quot;ctip&quot;&gt;Link&lt;/button&gt;
+    &lt;span class=&quot;tooltip-content&quot; role=&quot;tooltip&quot; id=&quot;ctip&quot; style=&quot;position: absolute; left: 50%; top: 100%; transform: translateX(-50%); margin-top: 0.25rem; white-space: nowrap&quot;&gt;Add a link (Ctrl K)&lt;/span&gt;
+  &lt;/span&gt;
+  &lt;button class=&quot;btn btn-secondary&quot; style=&quot;margin-left: auto&quot;&gt;Share&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Actions:</strong> tools are <code>.btn-ghost</code> so a row of them stays quiet; the one action that leaves the editor is <code>.btn-secondary</code>, pushed to the end with an auto margin.</li>
+  <li><strong>Layout:</strong> a vertical divider takes its height from you; give it about a line of text. <code>.tooltip-content</code> only paints, so where it sits is up to whatever shows it.</li>
+</ul>
+
 
         <footer class="site-footer">
           <hr />

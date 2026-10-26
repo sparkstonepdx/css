@@ -514,6 +514,42 @@
   <li><strong>Text:</strong> <code>.prose</code> sits on the heading only, so it does not add margins inside the table.</li>
 </ul>
 
+<h3>Details in a card</h3>
+<p>Labels down the left, values on the right, closing with an action.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="table-comp-2-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="table-comp-2-classes" data-variant="classes">&lt;article class=&quot;card&quot;&gt;
+  &lt;div class=&quot;prose&quot;&gt;&lt;h3&gt;Order details&lt;/h3&gt;&lt;/div&gt;
+  &lt;table class=&quot;table&quot;&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;th&gt;Placed&lt;/th&gt;&lt;td&gt;October 3&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th&gt;Items&lt;/th&gt;&lt;td&gt;2&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;th&gt;Total&lt;/th&gt;&lt;td&gt;$48.00&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
+    &lt;button class=&quot;btn btn-secondary&quot;&gt;Download receipt&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/article&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Text:</strong> row headings are <code>th</code> in the body, so each label is tied to its value for screen readers.</li>
+</ul>
+
 
         <footer class="site-footer">
           <hr />

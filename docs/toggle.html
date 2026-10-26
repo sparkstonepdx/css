@@ -530,48 +530,6 @@
   </small>
 </p>
 
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>A settings list</h3>
-<p>Each setting is a row: the toggle, its name, and a line on what it does.</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <span class="demo-note"><small>Same markup in both builds</small></span>
-    
-    <button class="ghost copy-button" data-target="toggle-comp-1-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="toggle-comp-1-classes" data-variant="classes">&lt;section class=&quot;card-border&quot;&gt;
-  &lt;div class=&quot;prose&quot;&gt;&lt;h3&gt;Notifications&lt;/h3&gt;&lt;/div&gt;
-  &lt;label class=&quot;label&quot;&gt;
-    &lt;input type=&quot;checkbox&quot; class=&quot;toggle&quot; checked /&gt;
-    &lt;span&gt;New bookings&lt;br /&gt;&lt;small class=&quot;text-secondary&quot;&gt;An email when someone books a time.&lt;/small&gt;&lt;/span&gt;
-  &lt;/label&gt;
-  &lt;hr class=&quot;divider&quot; /&gt;
-  &lt;label class=&quot;label&quot;&gt;
-    &lt;input type=&quot;checkbox&quot; class=&quot;toggle&quot; /&gt;
-    &lt;span&gt;Weekly summary&lt;br /&gt;&lt;small class=&quot;text-secondary&quot;&gt;One email every Monday.&lt;/small&gt;&lt;/span&gt;
-  &lt;/label&gt;
-&lt;/section&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
-<ul>
-  <li><strong>Controls:</strong> a toggle inside a <code>.label</code> lays out as a row, the same as a checkbox. A toggle is for a setting that takes effect at once; use a checkbox when the form has a submit button.</li>
-  <li><strong>Surface:</strong> a <code>.divider</code> between rows keeps a long list scannable. It is drawn in <code>--divider</code>, the same colour as <code>--surface</code>, so it shows on <code>.card-border</code> and on the page but disappears on a <code>.card</code>.</li>
-</ul>
-
 
         <footer class="site-footer">
           <hr />

@@ -618,6 +618,44 @@
   <li><strong>Text:</strong> <code>.prose</code> goes on the header only; the fields space themselves.</li>
 </ul>
 
+<h3>Confirming a destructive action</h3>
+<p>The dialog names what will be lost, the safe choice is secondary, and the destructive one takes the error colour.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="dialog-comp-2-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="dialog-comp-2-classes" data-variant="classes">&lt;button class=&quot;btn btn-secondary&quot; data-dialog=&quot;comp-confirm&quot;&gt;Delete project&lt;/button&gt;
+
+&lt;dialog id=&quot;comp-confirm&quot; class=&quot;dialog&quot;&gt;
+  &lt;form method=&quot;dialog&quot;&gt;
+    &lt;article class=&quot;dialog-box prose&quot;&gt;
+      &lt;h3&gt;Delete this project?&lt;/h3&gt;
+      &lt;p&gt;Its files and history go with it. This cannot be undone.&lt;/p&gt;
+      &lt;footer class=&quot;dialog-actions&quot;&gt;
+        &lt;button value=&quot;cancel&quot; class=&quot;btn btn-secondary&quot;&gt;Keep it&lt;/button&gt;
+        &lt;button value=&quot;ok&quot; class=&quot;btn error&quot;&gt;Delete&lt;/button&gt;
+      &lt;/footer&gt;
+    &lt;/article&gt;
+  &lt;/form&gt;
+&lt;/dialog&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Boundary:</strong> <code>.error</code> works on any element, so the delete button becomes an error button with no button-specific class.</li>
+  <li><strong>Actions:</strong> the button that opens it is <code>.btn-secondary</code>; a destructive action should not be the loudest thing on the page.</li>
+</ul>
+
 
         <footer class="site-footer">
           <hr />

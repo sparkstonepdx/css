@@ -23,30 +23,4 @@
 <progress class="progress"></progress>
 {% endset %}
 {{ m.demo("progress-basic", classless, classes) }}
-{# composition #}
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>Upload in a card</h3>
-<p>A labelled bar with the count beside the label, and a way out.</p>
-{% set classless %}
-<article class="card">
-  <div class="flex" style="justify-content: space-between">
-    <strong>Uploading photos</strong>
-    <span class="text-secondary">7 of 12</span>
-  </div>
-  <progress class="progress" value="7" max="12" style="margin: calc(var(--padding) / 2) 0"></progress>
-  <footer class="card-actions flex" style="justify-content: end">
-    <button class="btn btn-secondary">Cancel</button>
-  </footer>
-</article>
-{% endset %}
-{{ m.demo("progress-comp-1", classless) }}
-<ul>
-  <li><strong>Text:</strong> the count is <code>.text-secondary</code> so the label leads.</li>
-  <li><strong>Actions:</strong> the only action while it runs is a way out, so it is secondary.</li>
-</ul>
 {% endblock %}

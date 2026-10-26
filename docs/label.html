@@ -590,6 +590,49 @@
   <li><strong>Layout:</strong> a checkbox inside a label lays out as a row instead of a stack.</li>
 </ul>
 
+<h3>A message form</h3>
+<p>Two short fields side by side, a message box, consent, and a send button closing the card.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="label-comp-2-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="label-comp-2-classes" data-variant="classes">&lt;form class=&quot;card&quot;&gt;
+  &lt;div class=&quot;flex flip&quot; style=&quot;row-gap: 0&quot;&gt;
+    &lt;label class=&quot;label&quot; style=&quot;flex: 1&quot;&gt;&lt;p&gt;Name&lt;/p&gt;&lt;input class=&quot;input&quot; autocomplete=&quot;name&quot; /&gt;&lt;/label&gt;
+    &lt;label class=&quot;label&quot; style=&quot;flex: 1&quot;&gt;&lt;p&gt;Email&lt;/p&gt;&lt;input class=&quot;input&quot; type=&quot;email&quot; autocomplete=&quot;email&quot; /&gt;&lt;/label&gt;
+  &lt;/div&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;p&gt;Message&lt;/p&gt;
+    &lt;textarea class=&quot;textarea&quot; rows=&quot;4&quot;&gt;&lt;/textarea&gt;
+    &lt;small&gt;A few sentences is plenty.&lt;/small&gt;
+  &lt;/label&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; required /&gt;
+    I agree to be contacted about this request
+  &lt;/label&gt;
+  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
+    &lt;button class=&quot;btn&quot;&gt;Send&lt;/button&gt;
+  &lt;/footer&gt;
+&lt;/form&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Layout:</strong> two short fields share a <code>.flex .flip</code> row; <code>row-gap: 0</code> keeps them from double-spacing when they stack on a phone.</li>
+  <li><strong>Controls:</strong> the consent checkbox sits right above the action it gates.</li>
+  <li><strong>Surface:</strong> <code>.card-actions</code> closes the card with its own rule, which also absorbs the last field's bottom margin.</li>
+</ul>
+
 
         <footer class="site-footer">
           <hr />

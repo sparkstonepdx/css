@@ -49,28 +49,4 @@ import { Tooltip } from "@kobalte/core/tooltip";
     is open if you want to animate it.
   </small>
 </p>
-{# composition #}
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>Labelling an icon button</h3>
-<p>A toolbar of short buttons, with the tooltip naming the one under the pointer.</p>
-{% set classless %}
-<div class="flex" style="align-items: center; gap: calc(var(--padding) / 4)">
-  <button class="btn btn-ghost" aria-label="Bold"><strong>B</strong></button>
-  <button class="btn btn-ghost" aria-label="Italic"><i>I</i></button>
-  <span style="position: relative; display: inline-block">
-    <button class="btn btn-ghost" aria-label="Link" aria-describedby="ctip">Link</button>
-    <span class="tooltip-content" role="tooltip" id="ctip" style="position: absolute; left: 50%; top: 100%; transform: translateX(-50%); margin-top: 0.25rem; white-space: nowrap">Add a link (Ctrl K)</span>
-  </span>
-</div>
-{% endset %}
-{{ m.demo("tooltip-comp-1", classless) }}
-<ul>
-  <li><strong>Surface:</strong> the tooltip is the inverse of the page, so it reads over any surface it lands on.</li>
-  <li><strong>Layout:</strong> <code>.tooltip-content</code> only paints; where it sits is up to whatever shows it.</li>
-</ul>
 {% endblock %}

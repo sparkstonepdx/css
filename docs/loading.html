@@ -471,40 +471,6 @@
   </small>
 </p>
 
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>Inside a button while it works</h3>
-<p>The button keeps its label and gains a spinner, and is disabled until the work is done.</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <span class="demo-note"><small>Same markup in both builds</small></span>
-    
-    <button class="ghost copy-button" data-target="loading-comp-1-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="loading-comp-1-classes" data-variant="classes">&lt;form class=&quot;card&quot; style=&quot;max-width: 24rem&quot;&gt;
-  &lt;label class=&quot;label&quot;&gt;&lt;p&gt;Email&lt;/p&gt;&lt;input class=&quot;input&quot; type=&quot;email&quot; value=&quot;name@example.com&quot; /&gt;&lt;/label&gt;
-  &lt;button class=&quot;btn&quot; disabled aria-busy=&quot;true&quot;&gt;&lt;span class=&quot;loading&quot; style=&quot;vertical-align: middle&quot;&gt;&lt;/span&gt; Sending&lt;/button&gt;
-&lt;/form&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
-<ul>
-  <li><strong>Controls:</strong> the spinner draws in <code>currentColor</code>, so it takes the button's text colour in any variant.</li>
-  <li><strong>Boundary:</strong> <code>disabled</code> greys the button, spinner included, with no extra class.</li>
-</ul>
-
 
         <footer class="site-footer">
           <hr />

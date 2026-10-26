@@ -508,45 +508,6 @@
 </div>
 
 
-<h2 id="composition">Composition</h2>
-<p>
-  Common ways to put this together with other components. The general rules are on
-  <a href="./composition.html">Composition</a>.
-</p>
-
-<h3>Consent above a submit button</h3>
-<p>A checkbox row at the end of a form, right before the action it gates.</p>
-
-
-
-<div class="demo" data-demo>
-  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
-  <div class="demo-bar">
-    
-      <span class="demo-note"><small>Same markup in both builds</small></span>
-    
-    <button class="ghost copy-button" data-target="checkbox-comp-1-classes">Copy</button>
-  </div>
-  <div class="code-block">
-    <pre><code id="checkbox-comp-1-classes" data-variant="classes">&lt;form class=&quot;card&quot; style=&quot;max-width: 30rem&quot;&gt;
-  &lt;label class=&quot;label&quot;&gt;&lt;p&gt;Email&lt;/p&gt;&lt;input class=&quot;input&quot; type=&quot;email&quot; /&gt;&lt;/label&gt;
-  &lt;label class=&quot;label&quot;&gt;
-    &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; required /&gt;
-    I agree to be contacted about this request
-  &lt;/label&gt;
-  &lt;footer class=&quot;card-actions flex&quot; style=&quot;justify-content: end&quot;&gt;
-    &lt;button class=&quot;btn&quot;&gt;Send&lt;/button&gt;
-  &lt;/footer&gt;
-&lt;/form&gt;</code></pre>
-    
-    
-  </div>
-</div>
-
-<ul>
-  <li><strong>Controls:</strong> the checkbox goes inside its <code>.label</code>, which lays it out as a row and makes the whole line clickable.</li>
-</ul>
-
 
         <footer class="site-footer">
           <hr />
