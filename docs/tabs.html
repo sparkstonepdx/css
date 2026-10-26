@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -630,6 +609,53 @@
 &lt;/Tabs&gt;</code></pre>
 </div>
 
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Tabs over a card</h3>
+<p>Tabs switch what one card shows. The tab row sits on the page and the panel holds prose.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="tabs-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="tabs-comp-1-classes" data-variant="classes">&lt;div&gt;
+  &lt;div class=&quot;tabs&quot; role=&quot;tablist&quot;&gt;
+    &lt;button class=&quot;tab tab-active&quot; role=&quot;tab&quot; id=&quot;ct-overview&quot; aria-controls=&quot;cp-overview&quot; data-selected&gt;Overview&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;ct-pricing&quot; aria-controls=&quot;cp-pricing&quot;&gt;Pricing&lt;/button&gt;
+    &lt;button class=&quot;tab&quot; role=&quot;tab&quot; id=&quot;ct-faq&quot; aria-controls=&quot;cp-faq&quot;&gt;Questions&lt;/button&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-content prose&quot; role=&quot;tabpanel&quot; id=&quot;cp-overview&quot; aria-labelledby=&quot;ct-overview&quot;&gt;
+    &lt;p&gt;What the service is and who it is for.&lt;/p&gt;
+    &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Get started&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-content prose&quot; role=&quot;tabpanel&quot; id=&quot;cp-pricing&quot; aria-labelledby=&quot;ct-pricing&quot; hidden&gt;
+    &lt;p&gt;A monthly retainer, scoped in writing before anything is built.&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;tab-content prose&quot; role=&quot;tabpanel&quot; id=&quot;cp-faq&quot; aria-labelledby=&quot;ct-faq&quot; hidden&gt;
+    &lt;p&gt;Answers to the questions people ask first.&lt;/p&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Text:</strong> <code>.prose</code> goes on each <code>.tab-content</code>, not on the wrapper, so it spaces the panel's text without touching the tab row.</li>
+  <li><strong>Spacing:</strong> <code>.tab-content</code> has no side padding, so panel text lines up with the page edge under the first tab.</li>
+</ul>
 
 
         <footer class="site-footer">

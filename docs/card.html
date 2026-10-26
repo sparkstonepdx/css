@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -571,6 +550,78 @@
     <code>.card-border</code>.
   </small>
 </p>
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A grid of equal cards and a call to action</h3>
+<p>Several offers of equal weight, then one card that asks for the next step.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="card-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="card-comp-1-classes" data-variant="classes">&lt;section class=&quot;prose&quot;&gt;
+  &lt;h2&gt;Services&lt;/h2&gt;
+  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: var(--padding); margin-bottom: 1rem&quot;&gt;
+    &lt;article class=&quot;card&quot;&gt;&lt;h3&gt;First service&lt;/h3&gt;&lt;p&gt;What it is, in a line.&lt;/p&gt;&lt;/article&gt;
+    &lt;article class=&quot;card&quot;&gt;&lt;h3&gt;Second service&lt;/h3&gt;&lt;p&gt;What it is, in a line.&lt;/p&gt;&lt;/article&gt;
+    &lt;article class=&quot;card&quot;&gt;&lt;h3&gt;Third service&lt;/h3&gt;&lt;p&gt;What it is, in a line.&lt;/p&gt;&lt;/article&gt;
+  &lt;/div&gt;
+  &lt;article class=&quot;card&quot; style=&quot;text-align: center&quot;&gt;
+    &lt;p&gt;Not sure which fits?&lt;/p&gt;
+    &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Talk it through&lt;/a&gt;
+  &lt;/article&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Layout:</strong> a grid with <code>min(100%, 16rem)</code> columns: as many as fit, one on a phone, and never wider than the screen.</li>
+  <li><strong>Spacing:</strong> <code>.prose</code> does not space a <code>div</code>, so the grid carries its own <code>1rem</code> bottom margin before the call to action.</li>
+</ul>
+
+<h3>Bordered items in a raised card</h3>
+<p>A card holding a few bordered blocks: the blocks drop back to the page colour, which separates them without a second shadow.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="card-comp-2-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="card-comp-2-classes" data-variant="classes">&lt;article class=&quot;card prose&quot;&gt;
+  &lt;h3&gt;Downloads&lt;/h3&gt;
+  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: var(--padding)&quot;&gt;
+    &lt;div class=&quot;card-border&quot;&gt;&lt;strong&gt;Logo&lt;/strong&gt;&lt;p class=&quot;flex&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;SVG&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;PNG&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+    &lt;div class=&quot;card-border&quot;&gt;&lt;strong&gt;Flyer&lt;/strong&gt;&lt;p class=&quot;flex&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;PDF&lt;/a&gt;&lt;/p&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/article&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Surface:</strong> surfaces are solid, so a <code>.card</code> inside a <code>.card</code> would be invisible. <code>.card-border</code> is the nested surface.</li>
+</ul>
 
 
         <footer class="site-footer">

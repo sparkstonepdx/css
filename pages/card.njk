@@ -76,4 +76,48 @@
     <code>.card-border</code>.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A grid of equal cards and a call to action</h3>
+<p>Several offers of equal weight, then one card that asks for the next step.</p>
+{% set classless %}
+<section class="prose">
+  <h2>Services</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: var(--padding); margin-bottom: 1rem">
+    <article class="card"><h3>First service</h3><p>What it is, in a line.</p></article>
+    <article class="card"><h3>Second service</h3><p>What it is, in a line.</p></article>
+    <article class="card"><h3>Third service</h3><p>What it is, in a line.</p></article>
+  </div>
+  <article class="card" style="text-align: center">
+    <p>Not sure which fits?</p>
+    <a href="#" class="btn">Talk it through</a>
+  </article>
+</section>
+{% endset %}
+{{ m.demo("card-comp-1", classless) }}
+<ul>
+  <li><strong>Layout:</strong> a grid with <code>min(100%, 16rem)</code> columns: as many as fit, one on a phone, and never wider than the screen.</li>
+  <li><strong>Spacing:</strong> <code>.prose</code> does not space a <code>div</code>, so the grid carries its own <code>1rem</code> bottom margin before the call to action.</li>
+</ul>
+
+<h3>Bordered items in a raised card</h3>
+<p>A card holding a few bordered blocks: the blocks drop back to the page colour, which separates them without a second shadow.</p>
+{% set classless %}
+<article class="card prose">
+  <h3>Downloads</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: var(--padding)">
+    <div class="card-border"><strong>Logo</strong><p class="flex"><a href="#" class="link">SVG</a> <a href="#" class="link">PNG</a></p></div>
+    <div class="card-border"><strong>Flyer</strong><p class="flex"><a href="#" class="link">PDF</a></p></div>
+  </div>
+</article>
+{% endset %}
+{{ m.demo("card-comp-2", classless) }}
+<ul>
+  <li><strong>Surface:</strong> surfaces are solid, so a <code>.card</code> inside a <code>.card</code> would be invisible. <code>.card-border</code> is the nested surface.</li>
+</ul>
 {% endblock %}

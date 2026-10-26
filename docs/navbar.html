@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -635,6 +614,75 @@
 &lt;/ContextMenu&gt;</code></pre>
 </div>
 
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Site header</h3>
+<p>A name on the left, links and one call to action on the right.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="navbar-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="navbar-comp-1-classes" data-variant="classes">&lt;header class=&quot;navbar&quot;&gt;
+  &lt;div class=&quot;navbar-start&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;semantic&quot;&gt;&lt;strong&gt;Studio name&lt;/strong&gt;&lt;/a&gt;
+  &lt;/div&gt;
+  &lt;nav class=&quot;navbar-end&quot; style=&quot;flex-wrap: wrap&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Work&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Writing&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;About&lt;/a&gt;
+    &lt;a href=&quot;#&quot; class=&quot;btn&quot;&gt;Book a call&lt;/a&gt;
+  &lt;/nav&gt;
+&lt;/header&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Layout:</strong> <code>.navbar-start</code> and <code>.navbar-end</code> push apart with auto margins, so no spacer element is needed. <code>flex-wrap</code> keeps the links on screen on a phone.</li>
+  <li><strong>Actions:</strong> one filled button in the bar; the rest are links.</li>
+</ul>
+
+<h3>Header with search</h3>
+<p>An app bar: a name, a search field that takes the spare width, and an account button.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="navbar-comp-2-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="navbar-comp-2-classes" data-variant="classes">&lt;header class=&quot;navbar&quot;&gt;
+  &lt;strong&gt;App&lt;/strong&gt;
+  &lt;input class=&quot;input&quot; type=&quot;search&quot; placeholder=&quot;Search&quot; style=&quot;flex: 1; margin: 0&quot; /&gt;
+  &lt;button class=&quot;btn btn-ghost&quot;&gt;Account&lt;/button&gt;
+&lt;/header&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Controls:</strong> a field in a bar drops its <code>1rem</code> bottom margin, which would otherwise push it off the bar's centre line.</li>
+</ul>
 
 
         <footer class="site-footer">

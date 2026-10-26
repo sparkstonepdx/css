@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -517,6 +496,48 @@
   </div>
 </div>
 
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Tags on an item</h3>
+<p>Short labels attached to a title, in a list of items.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="badge-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="badge-comp-1-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr)); gap: var(--padding)&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card&quot;&gt;
+    &lt;div style=&quot;aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)&quot;&gt;&lt;/div&gt;
+    &lt;strong class=&quot;link&quot;&gt;Item one&lt;/strong&gt;
+    &lt;p class=&quot;flex&quot; style=&quot;gap: calc(var(--padding) / 4); margin-top: calc(var(--padding) / 4)&quot;&gt;&lt;span class=&quot;badge&quot;&gt;Tag&lt;/span&gt;&lt;span class=&quot;badge&quot;&gt;Another&lt;/span&gt;&lt;/p&gt;
+  &lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card&quot;&gt;
+    &lt;div style=&quot;aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)&quot;&gt;&lt;/div&gt;
+    &lt;strong class=&quot;link&quot;&gt;Item two&lt;/strong&gt;
+    &lt;p class=&quot;flex&quot; style=&quot;gap: calc(var(--padding) / 4); margin-top: calc(var(--padding) / 4)&quot;&gt;&lt;span class=&quot;badge&quot;&gt;Tag&lt;/span&gt;&lt;/p&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Text:</strong> a badge sits on <code>--surface-strong</code>, one step darker than a card, so it reads on a card as well as on the page.</li>
+  <li><strong>Layout:</strong> badges in a row need a gap of their own; a quarter of <code>--padding</code> keeps them grouped.</li>
+</ul>
 
 
         <footer class="site-footer">

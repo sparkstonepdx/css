@@ -40,4 +40,32 @@
 </div>
 {% endset %}
 {{ m.demo("badge-text", classless, classes) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Tags on an item</h3>
+<p>Short labels attached to a title, in a list of items.</p>
+{% set classless %}
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr)); gap: var(--padding)">
+  <a href="#" class="semantic card">
+    <div style="aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong class="link">Item one</strong>
+    <p class="flex" style="gap: calc(var(--padding) / 4); margin-top: calc(var(--padding) / 4)"><span class="badge">Tag</span><span class="badge">Another</span></p>
+  </a>
+  <a href="#" class="semantic card">
+    <div style="aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong class="link">Item two</strong>
+    <p class="flex" style="gap: calc(var(--padding) / 4); margin-top: calc(var(--padding) / 4)"><span class="badge">Tag</span></p>
+  </a>
+</div>
+{% endset %}
+{{ m.demo("badge-comp-1", classless) }}
+<ul>
+  <li><strong>Text:</strong> a badge sits on <code>--surface-strong</code>, one step darker than a card, so it reads on a card as well as on the page.</li>
+  <li><strong>Layout:</strong> badges in a row need a gap of their own; a quarter of <code>--padding</code> keeps them grouped.</li>
+</ul>
 {% endblock %}

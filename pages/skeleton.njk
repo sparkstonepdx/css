@@ -49,4 +49,32 @@ import { Skeleton } from "@kobalte/core/skeleton";
     by hand.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Placeholders shaped like the content</h3>
+<p>While a grid of cards loads, each card shows blocks where its image, title and line will be.</p>
+{% set classless %}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--padding)" aria-busy="true">
+  <div class="card">
+    <div class="skeleton" style="aspect-ratio: 1.5; margin-bottom: calc(var(--padding) / 2)"></div>
+    <div class="skeleton" style="height: 1.2rem; width: 70%; margin-bottom: calc(var(--padding) / 4)"></div>
+    <div class="skeleton" style="height: 1rem"></div>
+  </div>
+  <div class="card">
+    <div class="skeleton" style="aspect-ratio: 1.5; margin-bottom: calc(var(--padding) / 2)"></div>
+    <div class="skeleton" style="height: 1.2rem; width: 55%; margin-bottom: calc(var(--padding) / 4)"></div>
+    <div class="skeleton" style="height: 1rem"></div>
+  </div>
+</div>
+{% endset %}
+{{ m.demo("skeleton-comp-1", classless) }}
+<ul>
+  <li><strong>Surface:</strong> the skeletons sit inside the same <code>.card</code> the loaded content will use, so nothing jumps when it arrives.</li>
+  <li><strong>Layout:</strong> skeletons have no size of their own; give them the size of what they stand in for.</li>
+</ul>
 {% endblock %}

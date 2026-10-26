@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -494,6 +473,46 @@
   </div>
 </div>
 
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A table with a heading and status badges</h3>
+<p>A bordered block holds the heading and the table, and a badge marks each row's state.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="table-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="table-comp-1-classes" data-variant="classes">&lt;section class=&quot;card-border&quot;&gt;
+  &lt;div class=&quot;prose&quot;&gt;&lt;h3&gt;Invoices&lt;/h3&gt;&lt;/div&gt;
+  &lt;table class=&quot;table&quot;&gt;
+    &lt;thead&gt;&lt;tr&gt;&lt;th&gt;Month&lt;/th&gt;&lt;th&gt;Amount&lt;/th&gt;&lt;th&gt;Status&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;
+    &lt;tbody&gt;
+      &lt;tr&gt;&lt;td&gt;September&lt;/td&gt;&lt;td&gt;$1,200&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;badge&quot;&gt;Paid&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+      &lt;tr&gt;&lt;td&gt;October&lt;/td&gt;&lt;td&gt;$1,200&lt;/td&gt;&lt;td&gt;&lt;span class=&quot;badge&quot;&gt;Due&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+    &lt;/tbody&gt;
+  &lt;/table&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Surface:</strong> a flat <code>.card-border</code> rather than a raised card, because a table is read, not picked up.</li>
+  <li><strong>Text:</strong> <code>.prose</code> sits on the heading only, so it does not add margins inside the table.</li>
+</ul>
 
 
         <footer class="site-footer">

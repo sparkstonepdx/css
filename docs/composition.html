@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     aria-current="page"
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -438,15 +417,14 @@
 <p class="lede">
   The component pages show each piece on its own. This page is about how they
   fit together: which piece owns colour, which owns spacing, which owns text,
-  and where the seams between them are. The
-  <a href="./patterns-studio.html">studio</a> and
-  <a href="./patterns-community.html">community</a> pages put these rules to
-  work on real page sections.
+  and where the seams between them are. Each component page ends with a
+  Composition section showing that component in common combinations.
 </p>
 
 <p>
   <small>
-    Examples on this page and the section pages use the class build. Layout that
+    Examples on this page and in each component's Composition section use the
+    class build. Layout that
     the framework leaves to you, such as a grid, is written inline so you can see
     it.
   </small>
@@ -514,9 +492,8 @@
     <code>.divider</code> or <code>.card-actions</code>.
   </p>
   <p>
-    Below: text on the page, a service from sparkstonepdx.com on a
-    <code>.card</code>, and an item from lzr.life's community kit on a
-    <code>.card-border</code>.
+    Below: text on the page, a service on a <code>.card</code>, and a download on
+    a <code>.card-border</code>.
   </p>
   
   
@@ -531,15 +508,15 @@
   </div>
   <div class="code-block">
     <pre><code id="comp-surfaces-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
-  &lt;p&gt;On the page: I build the systems your business actually runs on.&lt;/p&gt;
+  &lt;p&gt;Text on the page sits on &lt;code&gt;--bg&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--padding)&quot;&gt;
   &lt;article class=&quot;card prose&quot;&gt;
-    &lt;h3&gt;Project rescue&lt;/h3&gt;
-    &lt;p&gt;take over a build that stalled, or clean up after a vendor&lt;/p&gt;
+    &lt;h3&gt;A service&lt;/h3&gt;
+    &lt;p&gt;What it is, in a line.&lt;/p&gt;
   &lt;/article&gt;
   &lt;article class=&quot;card-border prose&quot;&gt;
-    &lt;h3&gt;QR Codes&lt;/h3&gt;
+    &lt;h3&gt;A download&lt;/h3&gt;
     &lt;p class=&quot;flex&quot;&gt;&lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;PNG&lt;/a&gt; &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;SVG&lt;/a&gt;&lt;/p&gt;
   &lt;/article&gt;
 &lt;/div&gt;</code></pre>
@@ -699,12 +676,12 @@
   <div class="code-block">
     <pre><code id="comp-card-link-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--padding)&quot;&gt;
   &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
-    &lt;h3 class=&quot;link&quot;&gt;The Map I Never Meant to Build&lt;/h3&gt;
-    &lt;p&gt;Sixty thousand views, three neighborhoods asking to borrow it, and a little map that got a bit better every spring until it turned into something anyone can run.&lt;/p&gt;
+    &lt;h3 class=&quot;link&quot;&gt;Project one&lt;/h3&gt;
+    &lt;p&gt;What it was and how it turned out, in a sentence or two.&lt;/p&gt;
   &lt;/a&gt;
   &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
-    &lt;h3 class=&quot;link&quot;&gt;A Library That Fits in a Free Little Library&lt;/h3&gt;
-    &lt;p&gt;A zine catalog, a printing guide, and an events page, built from a pile of draft copy in about two weeks.&lt;/p&gt;
+    &lt;h3 class=&quot;link&quot;&gt;Project two&lt;/h3&gt;
+    &lt;p&gt;What it was and how it turned out, in a sentence or two.&lt;/p&gt;
   &lt;/a&gt;
 &lt;/div&gt;</code></pre>
     
@@ -736,8 +713,7 @@
     subtree.
   </p>
   <p>
-    Below: sparkstonepdx.com's newsletter form with a bad address entered, and
-    lzr.life's topic filters.
+    Below: a sign-up form with a bad address entered, and a group of filters.
   </p>
   
   
@@ -753,21 +729,21 @@
   <div class="code-block">
     <pre><code id="comp-forms-classes" data-variant="classes">&lt;form class=&quot;prose&quot;&gt;
   &lt;h2&gt;Newsletter&lt;/h2&gt;
-  &lt;p&gt;Subscribe to my newsletter to be the first to hear about what I do next&lt;/p&gt;
+  &lt;p&gt;A short note when there is something new.&lt;/p&gt;
   &lt;label class=&quot;label&quot;&gt;
     &lt;p&gt;Email&lt;/p&gt;
-    &lt;input class=&quot;input&quot; type=&quot;email&quot; value=&quot;adam@&quot; aria-invalid=&quot;true&quot; style=&quot;max-width: 30rem&quot; /&gt;
+    &lt;input class=&quot;input&quot; type=&quot;email&quot; value=&quot;name@&quot; aria-invalid=&quot;true&quot; style=&quot;max-width: 30rem&quot; /&gt;
     &lt;small style=&quot;display: block&quot;&gt;Enter a full email address.&lt;/small&gt;
   &lt;/label&gt;
   &lt;button class=&quot;btn btn-secondary&quot;&gt;Subscribe&lt;/button&gt;
 &lt;/form&gt;
 &lt;form style=&quot;margin-top: var(--padding)&quot;&gt;
   &lt;fieldset class=&quot;fieldset&quot;&gt;
-    &lt;legend class=&quot;fieldset-legend&quot;&gt;Topics&lt;/legend&gt;
+    &lt;legend class=&quot;fieldset-legend&quot;&gt;Filter&lt;/legend&gt;
     &lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap&quot;&gt;
-      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; single sided&lt;/label&gt;
-      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; trifold&lt;/label&gt;
-      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; quarters&lt;/label&gt;
+      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; In stock&lt;/label&gt;
+      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; Free&lt;/label&gt;
+      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; On sale&lt;/label&gt;
     &lt;/div&gt;
   &lt;/fieldset&gt;
 &lt;/form&gt;</code></pre>
@@ -787,7 +763,7 @@
   <ul>
     <li>
       <code>.retheme</code> with an input such as <code>--primary</code> re-themes
-      a subtree: the studio's credit block on a client's site, or an error region.
+      a subtree: a partner's block in their colours, or an error region.
     </li>
     <li>
       <code>data-color-scheme="dark"</code> or <code>"light"</code> flips a
@@ -801,9 +777,8 @@
     wrapper.
   </p>
   <p>
-    Below: a section of lzr.life, in a red that stands in for its own colour,
-    with the studio's credit block inside it in the studio's. Boundaries nest,
-    and each one reaches only its own subtree.
+    Below: a section in one brand colour, with a credit block inside it in
+    another. Boundaries nest, and each one reaches only its own subtree.
   </p>
   
   
@@ -819,14 +794,14 @@
   <div class="code-block">
     <pre><code id="comp-boundaries-classes" data-variant="classes">&lt;section class=&quot;retheme&quot; style=&quot;--primary: #a33b2b; display: grid; gap: var(--padding)&quot;&gt;
   &lt;div class=&quot;prose&quot;&gt;
-    &lt;h3&gt;Little Zine Revolution&lt;/h3&gt;
-    &lt;p&gt;Little actions have ripple effects.&lt;/p&gt;
-    &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn&quot;&gt;Explore the Zine Catalog&lt;/a&gt;
+    &lt;h3&gt;The site&#39;s own section&lt;/h3&gt;
+    &lt;p&gt;Everything here takes the section&#39;s colour.&lt;/p&gt;
+    &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn&quot;&gt;Browse the catalog&lt;/a&gt;
   &lt;/div&gt;
   &lt;aside class=&quot;card-border retheme prose&quot; style=&quot;--primary: rebeccapurple&quot;&gt;
-    &lt;h3&gt;Want a site like this?&lt;/h3&gt;
-    &lt;p&gt;We build accessible, performant sites your users will love.&lt;/p&gt;
-    &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn&quot;&gt;Book a free call&lt;/a&gt;
+    &lt;h3&gt;Built by a partner&lt;/h3&gt;
+    &lt;p&gt;This block takes the partner&#39;s colour instead.&lt;/p&gt;
+    &lt;a href=&quot;#&quot; role=&quot;button&quot; class=&quot;btn&quot;&gt;Visit the partner&lt;/a&gt;
   &lt;/aside&gt;
 &lt;/section&gt;</code></pre>
     
@@ -856,9 +831,8 @@
   </table>
   <p>
     See <a href="./layout.html">Layout</a> for the breakpoints, and the
-    <a href="./patterns-studio.html">studio</a> and
-    <a href="./patterns-community.html">community</a> pages for whole sections
-    built from these rules.
+    Composition section at the end of each component page for these rules at
+    work.
   </p>
 </section>
 

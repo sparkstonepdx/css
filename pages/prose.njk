@@ -82,4 +82,34 @@ console.log(theme);</code></pre>
 </div>
 {% endset %}
 {{ m.demo("prose-code", classless, classes) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Article page</h3>
+<p>A long-form page: a heading, a one-line summary under it, body copy with a pull quote, and a closing call to action. One <code>.prose</code> on the article spaces all of it.</p>
+{% set classless %}
+<article class="prose" style="max-width: 80ch">
+  <h1>How we rebuilt the booking flow</h1>
+  <p class="text-secondary">Three weeks, one form, and half the drop-off.</p>
+  <p>The old flow asked for everything up front. Most people left at the second screen.</p>
+  <blockquote>We stopped asking for anything we could find out later.</blockquote>
+  <h2>What changed</h2>
+  <ul>
+    <li>One screen instead of four</li>
+    <li>Optional fields moved after the booking</li>
+  </ul>
+  <h2>Have a form like this?</h2>
+  <p>A short call is the quickest way to find out what to cut.</p>
+  <a href="#" class="btn">Book a call</a>
+</article>
+{% endset %}
+{{ m.demo("prose-comp-1", classless) }}
+<ul>
+  <li><strong>Text:</strong> the summary is <code>.text-secondary</code>, so it reads as a lead-in rather than a second heading.</li>
+  <li><strong>Actions:</strong> the button is the only filled thing on the page, at the end, where a reader who finished is ready to act.</li>
+</ul>
 {% endblock %}

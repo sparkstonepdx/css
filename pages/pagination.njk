@@ -67,4 +67,33 @@ import { Pagination } from "@kobalte/core/pagination";
 </Pagination>
 {% endset %}
 {{ m.demo("pagination-basic", classless, "", kobalte, kobalte_markup) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Under a list</h3>
+<p>A list of entries, then the page row, centred under it.</p>
+{% set classless %}
+<div style="display: grid; gap: var(--padding)">
+  <a href="#" class="semantic card prose"><h3 class="link">Entry one</h3><p>A sentence about it.</p></a>
+  <a href="#" class="semantic card prose"><h3 class="link">Entry two</h3><p>A sentence about it.</p></a>
+</div>
+<nav class="pagination" aria-label="Pages" style="display: flex; justify-content: center; margin-top: var(--padding)">
+  <ul>
+    <li><button class="btn btn-secondary">Previous</button></li>
+    <li><button class="btn btn-secondary">1</button></li>
+    <li><button class="btn btn-secondary" aria-current="page">2</button></li>
+    <li><button class="btn btn-secondary">3</button></li>
+    <li><button class="btn btn-secondary">Next</button></li>
+  </ul>
+</nav>
+{% endset %}
+{{ m.demo("pagination-comp-1", classless) }}
+<ul>
+  <li><strong>Spacing:</strong> nothing sets a top margin, so the row takes <code>margin-top: var(--padding)</code> to clear the list.</li>
+  <li><strong>Actions:</strong> every page is <code>.btn-secondary</code>; the current one is filled, so the row has exactly one filled button.</li>
+</ul>
 {% endblock %}

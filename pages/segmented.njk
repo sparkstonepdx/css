@@ -58,4 +58,26 @@ import { SegmentedControl } from "@kobalte/core/segmented-control";
     <code>data-checked</code>, or <code>.segmented-item-active</code>.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A view switch above results</h3>
+<p>The switch sits at the end of the row that holds the result count.</p>
+{% set classless %}
+<div class="flex" style="justify-content: space-between; align-items: center; flex-wrap: wrap">
+  <span class="text-secondary">24 items</span>
+  <div class="segmented" role="radiogroup" aria-label="View">
+    <label class="segmented-item"><input type="radio" name="cview" checked /> Grid</label>
+    <label class="segmented-item"><input type="radio" name="cview" /> List</label>
+  </div>
+</div>
+{% endset %}
+{{ m.demo("segmented-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> a segmented control is for a choice that changes the view at once. A choice that is submitted with a form belongs in radios or a select.</li>
+</ul>
 {% endblock %}

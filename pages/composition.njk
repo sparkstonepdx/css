@@ -8,15 +8,14 @@
 <p class="lede">
   The component pages show each piece on its own. This page is about how they
   fit together: which piece owns colour, which owns spacing, which owns text,
-  and where the seams between them are. The
-  <a href="./patterns-studio.html">studio</a> and
-  <a href="./patterns-community.html">community</a> pages put these rules to
-  work on real page sections.
+  and where the seams between them are. Each component page ends with a
+  Composition section showing that component in common combinations.
 </p>
 
 <p>
   <small>
-    Examples on this page and the section pages use the class build. Layout that
+    Examples on this page and in each component's Composition section use the
+    class build. Layout that
     the framework leaves to you, such as a grid, is written inline so you can see
     it.
   </small>
@@ -84,21 +83,20 @@
     <code>.divider</code> or <code>.card-actions</code>.
   </p>
   <p>
-    Below: text on the page, a service from sparkstonepdx.com on a
-    <code>.card</code>, and an item from lzr.life's community kit on a
-    <code>.card-border</code>.
+    Below: text on the page, a service on a <code>.card</code>, and a download on
+    a <code>.card-border</code>.
   </p>
   {% set classless %}
 <div class="prose">
-  <p>On the page: I build the systems your business actually runs on.</p>
+  <p>Text on the page sits on <code>--bg</code>.</p>
 </div>
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--padding)">
   <article class="card prose">
-    <h3>Project rescue</h3>
-    <p>take over a build that stalled, or clean up after a vendor</p>
+    <h3>A service</h3>
+    <p>What it is, in a line.</p>
   </article>
   <article class="card-border prose">
-    <h3>QR Codes</h3>
+    <h3>A download</h3>
     <p class="flex"><a href="#" class="link">PNG</a> <a href="#" class="link">SVG</a></p>
   </article>
 </div>
@@ -216,12 +214,12 @@
   {% set classless %}
 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--padding)">
   <a href="#" class="semantic card prose">
-    <h3 class="link">The Map I Never Meant to Build</h3>
-    <p>Sixty thousand views, three neighborhoods asking to borrow it, and a little map that got a bit better every spring until it turned into something anyone can run.</p>
+    <h3 class="link">Project one</h3>
+    <p>What it was and how it turned out, in a sentence or two.</p>
   </a>
   <a href="#" class="semantic card prose">
-    <h3 class="link">A Library That Fits in a Free Little Library</h3>
-    <p>A zine catalog, a printing guide, and an events page, built from a pile of draft copy in about two weeks.</p>
+    <h3 class="link">Project two</h3>
+    <p>What it was and how it turned out, in a sentence or two.</p>
   </a>
 </div>
   {% endset %}
@@ -250,27 +248,26 @@
     subtree.
   </p>
   <p>
-    Below: sparkstonepdx.com's newsletter form with a bad address entered, and
-    lzr.life's topic filters.
+    Below: a sign-up form with a bad address entered, and a group of filters.
   </p>
   {% set classless %}
 <form class="prose">
   <h2>Newsletter</h2>
-  <p>Subscribe to my newsletter to be the first to hear about what I do next</p>
+  <p>A short note when there is something new.</p>
   <label class="label">
     <p>Email</p>
-    <input class="input" type="email" value="adam@" aria-invalid="true" style="max-width: 30rem" />
+    <input class="input" type="email" value="name@" aria-invalid="true" style="max-width: 30rem" />
     <small style="display: block">Enter a full email address.</small>
   </label>
   <button class="btn btn-secondary">Subscribe</button>
 </form>
 <form style="margin-top: var(--padding)">
   <fieldset class="fieldset">
-    <legend class="fieldset-legend">Topics</legend>
+    <legend class="fieldset-legend">Filter</legend>
     <div class="flex" style="flex-wrap: wrap">
-      <label class="label"><input type="checkbox" class="checkbox" checked /> single sided</label>
-      <label class="label"><input type="checkbox" class="checkbox" /> trifold</label>
-      <label class="label"><input type="checkbox" class="checkbox" /> quarters</label>
+      <label class="label"><input type="checkbox" class="checkbox" checked /> In stock</label>
+      <label class="label"><input type="checkbox" class="checkbox" /> Free</label>
+      <label class="label"><input type="checkbox" class="checkbox" /> On sale</label>
     </div>
   </fieldset>
 </form>
@@ -287,7 +284,7 @@
   <ul>
     <li>
       <code>.retheme</code> with an input such as <code>--primary</code> re-themes
-      a subtree: the studio's credit block on a client's site, or an error region.
+      a subtree: a partner's block in their colours, or an error region.
     </li>
     <li>
       <code>data-color-scheme="dark"</code> or <code>"light"</code> flips a
@@ -301,21 +298,20 @@
     wrapper.
   </p>
   <p>
-    Below: a section of lzr.life, in a red that stands in for its own colour,
-    with the studio's credit block inside it in the studio's. Boundaries nest,
-    and each one reaches only its own subtree.
+    Below: a section in one brand colour, with a credit block inside it in
+    another. Boundaries nest, and each one reaches only its own subtree.
   </p>
   {% set classless %}
 <section class="retheme" style="--primary: #a33b2b; display: grid; gap: var(--padding)">
   <div class="prose">
-    <h3>Little Zine Revolution</h3>
-    <p>Little actions have ripple effects.</p>
-    <a href="#" role="button" class="btn">Explore the Zine Catalog</a>
+    <h3>The site's own section</h3>
+    <p>Everything here takes the section's colour.</p>
+    <a href="#" role="button" class="btn">Browse the catalog</a>
   </div>
   <aside class="card-border retheme prose" style="--primary: rebeccapurple">
-    <h3>Want a site like this?</h3>
-    <p>We build accessible, performant sites your users will love.</p>
-    <a href="#" role="button" class="btn">Book a free call</a>
+    <h3>Built by a partner</h3>
+    <p>This block takes the partner's colour instead.</p>
+    <a href="#" role="button" class="btn">Visit the partner</a>
   </aside>
 </section>
   {% endset %}
@@ -342,9 +338,8 @@
   </table>
   <p>
     See <a href="./layout.html">Layout</a> for the breakpoints, and the
-    <a href="./patterns-studio.html">studio</a> and
-    <a href="./patterns-community.html">community</a> pages for whole sections
-    built from these rules.
+    Composition section at the end of each component page for these rules at
+    work.
   </p>
 </section>
 {% endblock %}

@@ -54,4 +54,40 @@ import { Separator } from "@kobalte/core/separator";
     <code>.divider</code> is the standalone one.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Between groups in a toolbar</h3>
+<p>A vertical divider splits a row of actions into groups.</p>
+{% set classless %}
+<div class="flex" style="align-items: center; gap: calc(var(--padding) / 4)">
+  <button class="btn btn-ghost">Undo</button>
+  <button class="btn btn-ghost">Redo</button>
+  <div class="divider divider-vertical" style="height: 1.5rem; margin: 0 calc(var(--padding) / 2)"></div>
+  <button class="btn btn-ghost">Share</button>
+  <button class="btn btn-secondary">Export</button>
+</div>
+{% endset %}
+{{ m.demo("divider-comp-1", classless) }}
+<ul>
+  <li><strong>Layout:</strong> a vertical divider takes its height from you; give it about a line of text.</li>
+</ul>
+
+<h3>Between a page and its footer</h3>
+<p>A horizontal divider starts the footer without boxing it.</p>
+{% set classless %}
+<p>The last paragraph of the page.</p>
+<footer>
+  <hr class="divider" />
+  <p class="text-secondary"><small>A short line of small print.</small></p>
+</footer>
+{% endset %}
+{{ m.demo("divider-comp-2", classless) }}
+<ul>
+  <li><strong>Surface:</strong> <code>.divider</code> is the same colour as a <code>.card-border</code> border, so it belongs to the same family.</li>
+</ul>
 {% endblock %}

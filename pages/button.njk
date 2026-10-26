@@ -94,4 +94,54 @@
     width and carried a bottom margin.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>One primary action per region</h3>
+<p>A hero with one filled button, and a confirm row where the safe choice is secondary.</p>
+{% set classless %}
+<div style="display: grid; gap: var(--padding)">
+<section class="prose" style="max-width: 40rem">
+  <h1>Software your business actually runs on</h1>
+  <p>Intake, scheduling and the site that feeds them, built and looked after by one person.</p>
+  <a href="#" class="btn">Book a call</a>
+  <a href="#" class="btn btn-ghost">See the work</a>
+</section>
+<article class="card prose">
+  <h3>Cancel this booking?</h3>
+  <p>The time goes back on the calendar for someone else.</p>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn btn-secondary">Keep it</button>
+    <button class="btn">Cancel booking</button>
+  </footer>
+</article>
+</div>
+{% endset %}
+{{ m.demo("button-comp-1", classless) }}
+<ul>
+  <li><strong>Actions:</strong> one <code>.btn</code> per region; the alternative is <code>.btn-ghost</code> or <code>.btn-secondary</code> so the eye has one place to land.</li>
+  <li><strong>Layout:</strong> nothing has a margin outside its own box, so the two regions are spaced by the grid that holds them.</li>
+  <li><strong>Surface:</strong> <code>.card-actions</code> gives the card's buttons their own rule and spacing at the end of the card.</li>
+</ul>
+
+<h3>Equal choices</h3>
+<p>When no option is the main one, none of them is filled.</p>
+{% set classless %}
+<div class="prose">
+  <h3>Add to your calendar</h3>
+</div>
+<div class="flex" style="flex-wrap: wrap">
+  <a href="#" class="btn btn-secondary">Google</a>
+  <a href="#" class="btn btn-secondary">Apple / Outlook</a>
+  <a href="#" class="btn btn-ghost">Download .ics</a>
+</div>
+{% endset %}
+{{ m.demo("button-comp-2", classless) }}
+<ul>
+  <li><strong>Layout:</strong> a wrapping <code>.flex</code> row, so on a phone the buttons fall to a second line instead of shrinking.</li>
+</ul>
 {% endblock %}

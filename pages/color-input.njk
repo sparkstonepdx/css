@@ -28,4 +28,29 @@
 </label>
 {% endset %}
 {{ m.demo("color-input-basic", classless, classes) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Colour beside its value</h3>
+<p>A colour input next to a text field holding the same value, for people who want to paste a code.</p>
+{% set classless %}
+<div class="flex" style="align-items: end; max-width: 24rem">
+  <label class="label" style="flex: 0 0 4rem">
+    <p>Brand</p>
+    <input type="color" class="color-input" value="#663399" />
+  </label>
+  <label class="label" style="flex: 1">
+    <p class="text-secondary">Hex</p>
+    <input class="input" value="#663399" />
+  </label>
+</div>
+{% endset %}
+{{ m.demo("color-input-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> the colour input is one text line tall, so it lines up with the text field beside it without adjusting either.</li>
+</ul>
 {% endblock %}

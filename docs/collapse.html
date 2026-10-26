@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -547,6 +526,50 @@
     That is the most positional selector in the Kobalte layer.
   </small>
 </p>
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Questions and answers</h3>
+<p>A stack of questions under a heading; each answer is prose.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="collapse-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="collapse-comp-1-classes" data-variant="classes">&lt;section&gt;
+  &lt;div class=&quot;prose&quot;&gt;&lt;h2&gt;Questions&lt;/h2&gt;&lt;/div&gt;
+  &lt;details class=&quot;collapse&quot; open&gt;
+    &lt;summary class=&quot;collapse-title&quot;&gt;How long does it take? &lt;span&gt;−&lt;/span&gt;&lt;/summary&gt;
+    &lt;div class=&quot;collapse-content prose&quot;&gt;
+      &lt;p&gt;Most projects launch in two to six weeks.&lt;/p&gt;
+      &lt;ul&gt;&lt;li&gt;One call to scope it&lt;/li&gt;&lt;li&gt;A demo before launch&lt;/li&gt;&lt;/ul&gt;
+    &lt;/div&gt;
+  &lt;/details&gt;
+  &lt;details class=&quot;collapse&quot;&gt;
+    &lt;summary class=&quot;collapse-title&quot;&gt;Can my team edit it? &lt;span&gt;+&lt;/span&gt;&lt;/summary&gt;
+    &lt;div class=&quot;collapse-content prose&quot;&gt;&lt;p&gt;Yes, from a browser, with no code.&lt;/p&gt;&lt;/div&gt;
+  &lt;/details&gt;
+&lt;/section&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Text:</strong> <code>.prose</code> goes on <code>.collapse-content</code>, not on the stack, so the titles keep their own size and spacing.</li>
+  <li><strong>Surface:</strong> the stack has a rule under each item and no box, so it reads as a list rather than a pile of cards.</li>
+</ul>
 
 
         <footer class="site-footer">

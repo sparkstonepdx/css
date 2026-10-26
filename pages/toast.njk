@@ -83,4 +83,29 @@ toaster.show(props => (
     The messages inside it need no classes.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>After a form is sent</h3>
+<p>The form clears and a toast confirms it, out of the way of the next thing the visitor does.</p>
+{% set classless %}
+<form class="card" style="max-width: 24rem">
+  <label class="label"><p>Email</p><input class="input" type="email" /></label>
+  <button class="btn">Subscribe</button>
+</form>
+<ul class="toast" style="position: static; max-width: 22rem; margin-top: var(--padding)">
+  <li class="alert" role="status">
+    <span><span class="toast-title">Subscribed</span><br /><span class="toast-description">Check your inbox to confirm.</span></span>
+  </li>
+</ul>
+{% endset %}
+{{ m.demo("toast-comp-1", classless) }}
+<ul>
+  <li><strong>Surface:</strong> each message is an <code>.alert</code>, so a failure is <code>.alert-error</code> with no toast-specific class.</li>
+  <li><strong>Layout:</strong> <code>.toast</code> is fixed to the corner; it is static here so it shows in the preview.</li>
+</ul>
 {% endblock %}

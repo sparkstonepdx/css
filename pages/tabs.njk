@@ -134,4 +134,37 @@ const [tab, setTab] = createSignal("week");
   </Tabs.List>
 </Tabs>
 {% endraw %}{% endcall %}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Tabs over a card</h3>
+<p>Tabs switch what one card shows. The tab row sits on the page and the panel holds prose.</p>
+{% set classless %}
+<div>
+  <div class="tabs" role="tablist">
+    <button class="tab tab-active" role="tab" id="ct-overview" aria-controls="cp-overview" data-selected>Overview</button>
+    <button class="tab" role="tab" id="ct-pricing" aria-controls="cp-pricing">Pricing</button>
+    <button class="tab" role="tab" id="ct-faq" aria-controls="cp-faq">Questions</button>
+  </div>
+  <div class="tab-content prose" role="tabpanel" id="cp-overview" aria-labelledby="ct-overview">
+    <p>What the service is and who it is for.</p>
+    <a href="#" class="btn">Get started</a>
+  </div>
+  <div class="tab-content prose" role="tabpanel" id="cp-pricing" aria-labelledby="ct-pricing" hidden>
+    <p>A monthly retainer, scoped in writing before anything is built.</p>
+  </div>
+  <div class="tab-content prose" role="tabpanel" id="cp-faq" aria-labelledby="ct-faq" hidden>
+    <p>Answers to the questions people ask first.</p>
+  </div>
+</div>
+{% endset %}
+{{ m.demo("tabs-comp-1", classless) }}
+<ul>
+  <li><strong>Text:</strong> <code>.prose</code> goes on each <code>.tab-content</code>, not on the wrapper, so it spaces the panel's text without touching the tab row.</li>
+  <li><strong>Spacing:</strong> <code>.tab-content</code> has no side padding, so panel text lines up with the page edge under the first tab.</li>
+</ul>
 {% endblock %}

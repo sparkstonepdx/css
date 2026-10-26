@@ -61,4 +61,33 @@
 </label>
 {% endset %}
 {{ m.demo("radio-block", classless, classes) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Choice cards</h3>
+<p>Each option is a bordered block with a title and a line; the chosen one is highlighted.</p>
+{% set classless %}
+<fieldset class="fieldset">
+  <legend class="fieldset-legend">Plan</legend>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--padding)">
+    <label class="label block">
+      <input type="radio" name="cplan" class="radio" checked />
+      <span><strong>Monthly</strong><br /><small class="text-secondary">Pay as you go, cancel any time</small></span>
+    </label>
+    <label class="label block">
+      <input type="radio" name="cplan" class="radio" />
+      <span><strong>Yearly</strong><br /><small class="text-secondary">Two months free</small></span>
+    </label>
+  </div>
+</fieldset>
+{% endset %}
+{{ m.demo("radio-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> <code>.label.block</code> draws the border and fills the checked option with <code>--surface</code>; the radio still does the work.</li>
+  <li><strong>Layout:</strong> a grid makes the options equal widths and stacks them on a phone.</li>
+</ul>
 {% endblock %}

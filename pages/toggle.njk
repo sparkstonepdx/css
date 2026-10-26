@@ -72,4 +72,32 @@ import { Switch } from "@kobalte/core/switch";
     visually hidden with inline styles.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A settings list</h3>
+<p>Each setting is a row: the toggle, its name, and a line on what it does.</p>
+{% set classless %}
+<section class="card-border">
+  <div class="prose"><h3>Notifications</h3></div>
+  <label class="label">
+    <input type="checkbox" class="toggle" checked />
+    <span>New bookings<br /><small class="text-secondary">An email when someone books a time.</small></span>
+  </label>
+  <hr class="divider" />
+  <label class="label">
+    <input type="checkbox" class="toggle" />
+    <span>Weekly summary<br /><small class="text-secondary">One email every Monday.</small></span>
+  </label>
+</section>
+{% endset %}
+{{ m.demo("toggle-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> a toggle inside a <code>.label</code> lays out as a row, the same as a checkbox. A toggle is for a setting that takes effect at once; use a checkbox when the form has a submit button.</li>
+  <li><strong>Surface:</strong> a <code>.divider</code> between rows keeps a long list scannable. It is drawn in <code>--divider</code>, the same colour as <code>--surface</code>, so it shows on <code>.card-border</code> and on the page but disappears on a <code>.card</code>.</li>
+</ul>
 {% endblock %}

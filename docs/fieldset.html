@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -498,6 +477,88 @@
   </div>
 </div>
 
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Grouping filters</h3>
+<p>One group of filters: a single choice and some that combine, named once by the legend.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="fieldset-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="fieldset-comp-1-classes" data-variant="classes">&lt;form&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;p&gt;Search&lt;/p&gt;
+    &lt;input class=&quot;input&quot; type=&quot;search&quot; /&gt;
+  &lt;/label&gt;
+  &lt;fieldset class=&quot;fieldset&quot;&gt;
+    &lt;legend class=&quot;fieldset-legend&quot;&gt;Filter&lt;/legend&gt;
+    &lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap; align-items: center&quot;&gt;
+      &lt;div class=&quot;segmented&quot; role=&quot;radiogroup&quot; aria-label=&quot;Format&quot; style=&quot;margin-bottom: 1rem&quot;&gt;
+        &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;cfmt&quot; checked /&gt; Any&lt;/label&gt;
+        &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;cfmt&quot; /&gt; Print&lt;/label&gt;
+        &lt;label class=&quot;segmented-item&quot;&gt;&lt;input type=&quot;radio&quot; name=&quot;cfmt&quot; /&gt; Digital&lt;/label&gt;
+      &lt;/div&gt;
+      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt; Free&lt;/label&gt;
+      &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; In stock&lt;/label&gt;
+    &lt;/div&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Controls:</strong> an exclusive choice is a <code>.segmented</code> control; choices that combine are checkboxes. The fieldset holds both.</li>
+  <li><strong>Spacing:</strong> the checkbox labels keep their <code>1rem</code> bottom margin, so the segmented control gets the same to share their centre line.</li>
+</ul>
+
+<h3>Disabling a group</h3>
+<p>Disabling the fieldset disables, and greys, everything inside it.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="fieldset-comp-2-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="fieldset-comp-2-classes" data-variant="classes">&lt;form class=&quot;card&quot;&gt;
+  &lt;label class=&quot;label&quot;&gt;
+    &lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; /&gt;
+    Ship to a different address
+  &lt;/label&gt;
+  &lt;fieldset class=&quot;fieldset&quot; disabled&gt;
+    &lt;legend class=&quot;fieldset-legend&quot;&gt;Shipping address&lt;/legend&gt;
+    &lt;label class=&quot;label&quot;&gt;&lt;p&gt;Street&lt;/p&gt;&lt;input class=&quot;input&quot; /&gt;&lt;/label&gt;
+    &lt;label class=&quot;label&quot;&gt;&lt;p&gt;City&lt;/p&gt;&lt;input class=&quot;input&quot; /&gt;&lt;/label&gt;
+  &lt;/fieldset&gt;
+&lt;/form&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Boundary:</strong> a disabled element sets <code>--chroma: 0</code> for its subtree, so the legend, labels and fields lose colour together.</li>
+</ul>
 
 
         <footer class="site-footer">

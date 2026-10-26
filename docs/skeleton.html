@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -519,6 +498,48 @@
     by hand.
   </small>
 </p>
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Placeholders shaped like the content</h3>
+<p>While a grid of cards loads, each card shows blocks where its image, title and line will be.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="skeleton-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="skeleton-comp-1-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--padding)&quot; aria-busy=&quot;true&quot;&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;skeleton&quot; style=&quot;aspect-ratio: 1.5; margin-bottom: calc(var(--padding) / 2)&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;skeleton&quot; style=&quot;height: 1.2rem; width: 70%; margin-bottom: calc(var(--padding) / 4)&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;skeleton&quot; style=&quot;height: 1rem&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;card&quot;&gt;
+    &lt;div class=&quot;skeleton&quot; style=&quot;aspect-ratio: 1.5; margin-bottom: calc(var(--padding) / 2)&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;skeleton&quot; style=&quot;height: 1.2rem; width: 55%; margin-bottom: calc(var(--padding) / 4)&quot;&gt;&lt;/div&gt;
+    &lt;div class=&quot;skeleton&quot; style=&quot;height: 1rem&quot;&gt;&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Surface:</strong> the skeletons sit inside the same <code>.card</code> the loaded content will use, so nothing jumps when it arrives.</li>
+  <li><strong>Layout:</strong> skeletons have no size of their own; give them the size of what they stand in for.</li>
+</ul>
 
 
         <footer class="site-footer">

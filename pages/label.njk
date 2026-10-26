@@ -66,4 +66,38 @@
 {% endset %}
 {{ m.demo("label-invalid", classless, classes) }}
 {{ m.classless_note("<code>aria-invalid=\"true\"</code> drives the error color on its own. <code>.input-error</code> is there for when you cannot set the attribute.") }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A field with help and an error</h3>
+<p>Label text, the field, and a line under it. When the value is wrong, the same line becomes the error.</p>
+{% set classless %}
+<form style="max-width: 30rem">
+  <label class="label">
+    <p>Website</p>
+    <input class="input" type="url" placeholder="https://" />
+    <small>Where people can see your work.</small>
+  </label>
+  <label class="label">
+    <p>Email</p>
+    <input class="input" type="email" value="name@" aria-invalid="true" />
+    <small>Enter a full email address.</small>
+  </label>
+  <label class="label">
+    <input type="checkbox" class="checkbox" />
+    Send me a copy
+  </label>
+  <button class="btn">Send</button>
+</form>
+{% endset %}
+{{ m.demo("label-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> the label wraps all three parts and spaces them; the form needs no wrapper between fields.</li>
+  <li><strong>States:</strong> <code>aria-invalid</code> on the field turns it and the label text above it to the error colour.</li>
+  <li><strong>Layout:</strong> a checkbox inside a label lays out as a row instead of a stack.</li>
+</ul>
 {% endblock %}

@@ -24,4 +24,29 @@
 {% endset %}
 {{ m.demo("kbd-basic", classless, classes) }}
 {{ m.classless_note("<code>kbd</code> is styled everywhere. With classes, <code>.kbd</code> works on its own, and <code>kbd</code> inside <code>.prose</code> is styled without it.") }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Shortcut hints</h3>
+<p>Keys in help text, and a key beside the menu row it triggers.</p>
+{% set classless %}
+<label class="label">
+  <p>Search</p>
+  <input class="input" type="search" />
+  <small>Press <kbd class="kbd">/</kbd> to jump here from anywhere.</small>
+</label>
+<ul class="dropdown-content menu">
+  <li class="menu-item">Copy link <span class="menu-shortcut"><kbd class="kbd">C</kbd></span></li>
+  <li class="menu-item">Archive <span class="menu-shortcut"><kbd class="kbd">E</kbd></span></li>
+</ul>
+{% endset %}
+{{ m.demo("kbd-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> help under a field goes in the label's <code>&lt;small&gt;</code>, so the key sits in the same muted line as the rest of the help.</li>
+  <li><strong>Text:</strong> <code>.menu-shortcut</code> pushes the key to the end of the row; the <code>.kbd</code> inside it marks it as a key.</li>
+</ul>
 {% endblock %}

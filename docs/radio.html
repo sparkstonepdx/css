@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -538,6 +517,49 @@
   </div>
 </div>
 
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Choice cards</h3>
+<p>Each option is a bordered block with a title and a line; the chosen one is highlighted.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="radio-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="radio-comp-1-classes" data-variant="classes">&lt;fieldset class=&quot;fieldset&quot;&gt;
+  &lt;legend class=&quot;fieldset-legend&quot;&gt;Plan&lt;/legend&gt;
+  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--padding)&quot;&gt;
+    &lt;label class=&quot;label block&quot;&gt;
+      &lt;input type=&quot;radio&quot; name=&quot;cplan&quot; class=&quot;radio&quot; checked /&gt;
+      &lt;span&gt;&lt;strong&gt;Monthly&lt;/strong&gt;&lt;br /&gt;&lt;small class=&quot;text-secondary&quot;&gt;Pay as you go, cancel any time&lt;/small&gt;&lt;/span&gt;
+    &lt;/label&gt;
+    &lt;label class=&quot;label block&quot;&gt;
+      &lt;input type=&quot;radio&quot; name=&quot;cplan&quot; class=&quot;radio&quot; /&gt;
+      &lt;span&gt;&lt;strong&gt;Yearly&lt;/strong&gt;&lt;br /&gt;&lt;small class=&quot;text-secondary&quot;&gt;Two months free&lt;/small&gt;&lt;/span&gt;
+    &lt;/label&gt;
+  &lt;/div&gt;
+&lt;/fieldset&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Controls:</strong> <code>.label.block</code> draws the border and fills the checked option with <code>--surface</code>; the radio still does the work.</li>
+  <li><strong>Layout:</strong> a grid makes the options equal widths and stacks them on a phone.</li>
+</ul>
 
 
         <footer class="site-footer">

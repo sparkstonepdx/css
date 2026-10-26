@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -721,6 +700,50 @@
     <code>.menu-selected</code> and <code>.menu-active</code>.
   </small>
 </p>
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Sort beside search</h3>
+<p>A search field that takes the width, and a sort select beside it.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="select-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="select-comp-1-classes" data-variant="classes">&lt;div class=&quot;flex&quot; style=&quot;flex-wrap: wrap; align-items: end; row-gap: 0&quot;&gt;
+  &lt;label class=&quot;label&quot; style=&quot;flex: 1 1 16rem&quot;&gt;
+    &lt;p&gt;Search&lt;/p&gt;
+    &lt;input class=&quot;input&quot; type=&quot;search&quot; /&gt;
+  &lt;/label&gt;
+  &lt;label class=&quot;label&quot; style=&quot;flex: 0 1 12rem&quot;&gt;
+    &lt;p&gt;Sort&lt;/p&gt;
+    &lt;select class=&quot;select&quot;&gt;
+      &lt;option&gt;Newest&lt;/option&gt;
+      &lt;option&gt;Oldest&lt;/option&gt;
+      &lt;option&gt;A to Z&lt;/option&gt;
+    &lt;/select&gt;
+  &lt;/label&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Layout:</strong> both are labels in one wrapping row, so their label text and fields line up without extra rules. The search grows from <code>16rem</code> and the select stays near <code>12rem</code>; on a phone the select wraps under the search at the left edge. <code>.flip</code> is the wrong tool here: in a column, a flex basis becomes a height.</li>
+  <li><strong>Controls:</strong> a select is full width by default, so its width comes from its label in the row.</li>
+</ul>
 
 
         <footer class="site-footer">

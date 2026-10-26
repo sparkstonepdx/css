@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -548,6 +527,89 @@
     including the focus ring, so leave it off anything the keyboard needs to reach.
   </small>
 </p>
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Links in a footer</h3>
+<p>A column of site links, and a line of contact links. Links navigate, so there is no button here.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="link-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="link-comp-1-classes" data-variant="classes">&lt;footer&gt;
+  &lt;hr class=&quot;divider&quot; /&gt;
+  &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--padding)&quot;&gt;
+    &lt;div&gt;
+      &lt;strong&gt;Studio name&lt;/strong&gt;
+      &lt;p class=&quot;text-secondary&quot;&gt;A short line about what you do.&lt;/p&gt;
+      &lt;div class=&quot;flex&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Email&lt;/a&gt;
+        &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Social&lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;nav class=&quot;flex&quot; style=&quot;flex-direction: column; gap: calc(var(--padding) / 4)&quot;&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Work&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Writing&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;About&lt;/a&gt;
+      &lt;a href=&quot;#&quot; class=&quot;link&quot;&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+  &lt;/div&gt;
+&lt;/footer&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Layout:</strong> a column of links is <code>.flex</code> turned on its side, with the gap cut to a quarter of <code>--padding</code> so it reads as one list.</li>
+  <li><strong>Surface:</strong> a <code>.divider</code> separates the footer without boxing it in.</li>
+</ul>
+
+<h3>A whole card as a link</h3>
+<p>When a card has one destination, the card is the link. <code>.semantic</code> strips the anchor's own styling, and the title takes <code>.link</code> so the card still looks clickable.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="link-comp-2-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="link-comp-2-classes" data-variant="classes">&lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr)); gap: var(--padding)&quot;&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
+    &lt;h3 class=&quot;link&quot;&gt;Project one&lt;/h3&gt;
+    &lt;p&gt;What it was, in a sentence.&lt;/p&gt;
+  &lt;/a&gt;
+  &lt;a href=&quot;#&quot; class=&quot;semantic card prose&quot;&gt;
+    &lt;h3 class=&quot;link&quot;&gt;Project two&lt;/h3&gt;
+    &lt;p&gt;What it was, in a sentence.&lt;/p&gt;
+  &lt;/a&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Actions:</strong> one anchor per card. A second link inside it would be a nested anchor, which HTML does not allow.</li>
+  <li><strong>Layout:</strong> a grid lays each anchor out as a block. Outside a grid or flex row, give the anchor <code>display: block</code>, because <code>.semantic</code> unsets it to inline.</li>
+</ul>
 
 
         <footer class="site-footer">

@@ -40,4 +40,58 @@
 </fieldset>
 {% endset %}
 {{ m.demo("fieldset-basic", classless, classes) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Grouping filters</h3>
+<p>One group of filters: a single choice and some that combine, named once by the legend.</p>
+{% set classless %}
+<form>
+  <label class="label">
+    <p>Search</p>
+    <input class="input" type="search" />
+  </label>
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend">Filter</legend>
+    <div class="flex" style="flex-wrap: wrap; align-items: center">
+      <div class="segmented" role="radiogroup" aria-label="Format" style="margin-bottom: 1rem">
+        <label class="segmented-item"><input type="radio" name="cfmt" checked /> Any</label>
+        <label class="segmented-item"><input type="radio" name="cfmt" /> Print</label>
+        <label class="segmented-item"><input type="radio" name="cfmt" /> Digital</label>
+      </div>
+      <label class="label"><input type="checkbox" class="checkbox" /> Free</label>
+      <label class="label"><input type="checkbox" class="checkbox" checked /> In stock</label>
+    </div>
+  </fieldset>
+</form>
+{% endset %}
+{{ m.demo("fieldset-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> an exclusive choice is a <code>.segmented</code> control; choices that combine are checkboxes. The fieldset holds both.</li>
+  <li><strong>Spacing:</strong> the checkbox labels keep their <code>1rem</code> bottom margin, so the segmented control gets the same to share their centre line.</li>
+</ul>
+
+<h3>Disabling a group</h3>
+<p>Disabling the fieldset disables, and greys, everything inside it.</p>
+{% set classless %}
+<form class="card">
+  <label class="label">
+    <input type="checkbox" class="checkbox" />
+    Ship to a different address
+  </label>
+  <fieldset class="fieldset" disabled>
+    <legend class="fieldset-legend">Shipping address</legend>
+    <label class="label"><p>Street</p><input class="input" /></label>
+    <label class="label"><p>City</p><input class="input" /></label>
+  </fieldset>
+</form>
+{% endset %}
+{{ m.demo("fieldset-comp-2", classless) }}
+<ul>
+  <li><strong>Boundary:</strong> a disabled element sets <code>--chroma: 0</code> for its subtree, so the legend, labels and fields lose colour together.</li>
+</ul>
 {% endblock %}

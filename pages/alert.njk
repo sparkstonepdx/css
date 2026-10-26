@@ -42,4 +42,30 @@ import { Alert } from "@kobalte/core/alert";
     those variants need tokens it does not have.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>At the top of a form</h3>
+<p>A form-level error goes above the fields, inside the card, so it is read before the fields are.</p>
+{% set classless %}
+<form class="card">
+  <div class="alert alert-error" role="alert">We could not send your message. Try again in a minute.</div>
+  <label class="label">
+    <p>Email</p>
+    <input class="input" type="email" />
+  </label>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn">Send</button>
+  </footer>
+</form>
+{% endset %}
+{{ m.demo("alert-comp-1", classless) }}
+<ul>
+  <li><strong>Boundary:</strong> <code>.alert-error</code> is an error boundary, so its border, surface and text all take the error colour from one class.</li>
+  <li><strong>Spacing:</strong> the alert carries a <code>1rem</code> bottom margin like a field, so it stacks into the form with no wrapper.</li>
+</ul>
 {% endblock %}

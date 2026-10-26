@@ -62,4 +62,30 @@ import { Breadcrumbs } from "@kobalte/core/breadcrumbs";
     hand. Everything below it, including the current page, styles itself.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Above a page heading</h3>
+<p>The trail sits directly above the heading of the page it ends at.</p>
+{% set classless %}
+<nav class="breadcrumbs" aria-label="Breadcrumbs">
+  <ol>
+    <li><a href="#" class="link">Home</a> <span class="breadcrumbs-separator" aria-hidden="true">/</span></li>
+    <li><a href="#" class="link">Catalog</a> <span class="breadcrumbs-separator" aria-hidden="true">/</span></li>
+    <li><span aria-current="page">Item name</span></li>
+  </ol>
+</nav>
+<div class="prose">
+  <h1>Item name</h1>
+  <p class="text-secondary">A line about the item.</p>
+</div>
+{% endset %}
+{{ m.demo("breadcrumbs-comp-1", classless) }}
+<ul>
+  <li><strong>Text:</strong> the current page is plain text with <code>aria-current</code>; it matches the heading below, so the trail and the page agree.</li>
+</ul>
 {% endblock %}

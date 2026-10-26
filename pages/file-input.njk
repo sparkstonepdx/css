@@ -28,4 +28,30 @@
 </label>
 {% endset %}
 {{ m.demo("file-input-basic", classless, classes) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Attachments in a form</h3>
+<p>A file field with a note on what it accepts, among the other fields of a card.</p>
+{% set classless %}
+<form class="card" style="max-width: 32rem">
+  <label class="label"><p>Title</p><input class="input" /></label>
+  <label class="label">
+    <p>Cover image</p>
+    <input type="file" class="file-input" accept="image/*" />
+    <small>JPG or PNG, up to 5 MB.</small>
+  </label>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn">Upload</button>
+  </footer>
+</form>
+{% endset %}
+{{ m.demo("file-input-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> the file input is full width and carries the same bottom margin as a text field, so it stacks into the form like any other field.</li>
+</ul>
 {% endblock %}

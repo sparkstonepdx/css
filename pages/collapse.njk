@@ -72,4 +72,34 @@ import { Accordion } from "@kobalte/core/accordion";
     That is the most positional selector in the Kobalte layer.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Questions and answers</h3>
+<p>A stack of questions under a heading; each answer is prose.</p>
+{% set classless %}
+<section>
+  <div class="prose"><h2>Questions</h2></div>
+  <details class="collapse" open>
+    <summary class="collapse-title">How long does it take? <span>−</span></summary>
+    <div class="collapse-content prose">
+      <p>Most projects launch in two to six weeks.</p>
+      <ul><li>One call to scope it</li><li>A demo before launch</li></ul>
+    </div>
+  </details>
+  <details class="collapse">
+    <summary class="collapse-title">Can my team edit it? <span>+</span></summary>
+    <div class="collapse-content prose"><p>Yes, from a browser, with no code.</p></div>
+  </details>
+</section>
+{% endset %}
+{{ m.demo("collapse-comp-1", classless) }}
+<ul>
+  <li><strong>Text:</strong> <code>.prose</code> goes on <code>.collapse-content</code>, not on the stack, so the titles keep their own size and spacing.</li>
+  <li><strong>Surface:</strong> the stack has a rule under each item and no box, so it reads as a list rather than a pile of cards.</li>
+</ul>
 {% endblock %}

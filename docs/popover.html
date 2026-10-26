@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -528,6 +507,43 @@
     <code>.dialog-box</code> to it if you want the modal sizing as well.
   </small>
 </p>
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Share with a field</h3>
+<p>A popover holding a title, a line, and a field with a copy button.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="popover-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="popover-comp-1-classes" data-variant="classes">&lt;div class=&quot;popover-content&quot; style=&quot;max-width: 22rem&quot;&gt;
+  &lt;h2 class=&quot;popover-title&quot;&gt;Share this page&lt;/h2&gt;
+  &lt;p class=&quot;popover-description&quot;&gt;Anyone with the link can read it.&lt;/p&gt;
+  &lt;div class=&quot;flex&quot; style=&quot;align-items: end; margin-top: calc(var(--padding) / 2)&quot;&gt;
+    &lt;input class=&quot;input&quot; value=&quot;https://example.com/page&quot; readonly style=&quot;flex: 1; margin: 0&quot; /&gt;
+    &lt;button class=&quot;btn btn-secondary&quot;&gt;Copy&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Controls:</strong> a field in a popover drops its bottom margin; the panel's padding is the spacing.</li>
+</ul>
 
 
         <footer class="site-footer">

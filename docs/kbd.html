@@ -83,32 +83,11 @@
                   >
                 </li>
               
-            </ul>
-          
-            <p class="sidebar-group">Composition</p>
-            <ul>
-              
                 <li>
                   <a
                     href="./composition.html"
                     
-                    >How pieces fit</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-studio.html"
-                    
-                    >Studio site sections</a
-                  >
-                </li>
-              
-                <li>
-                  <a
-                    href="./patterns-community.html"
-                    
-                    >Community site sections</a
+                    >Composition</a
                   >
                 </li>
               
@@ -483,6 +462,45 @@
 
 <p class="classless-note"><small><strong>Classless:</strong> &lt;code&gt;kbd&lt;/code&gt; is styled everywhere. With classes, &lt;code&gt;.kbd&lt;/code&gt; works on its own, and &lt;code&gt;kbd&lt;/code&gt; inside &lt;code&gt;.prose&lt;/code&gt; is styled without it.</small></p>
 
+
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Shortcut hints</h3>
+<p>Keys in help text, and a key beside the menu row it triggers.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="kbd-comp-1-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="kbd-comp-1-classes" data-variant="classes">&lt;label class=&quot;label&quot;&gt;
+  &lt;p&gt;Search&lt;/p&gt;
+  &lt;input class=&quot;input&quot; type=&quot;search&quot; /&gt;
+  &lt;small&gt;Press &lt;kbd class=&quot;kbd&quot;&gt;/&lt;/kbd&gt; to jump here from anywhere.&lt;/small&gt;
+&lt;/label&gt;
+&lt;ul class=&quot;dropdown-content menu&quot;&gt;
+  &lt;li class=&quot;menu-item&quot;&gt;Copy link &lt;span class=&quot;menu-shortcut&quot;&gt;&lt;kbd class=&quot;kbd&quot;&gt;C&lt;/kbd&gt;&lt;/span&gt;&lt;/li&gt;
+  &lt;li class=&quot;menu-item&quot;&gt;Archive &lt;span class=&quot;menu-shortcut&quot;&gt;&lt;kbd class=&quot;kbd&quot;&gt;E&lt;/kbd&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+<ul>
+  <li><strong>Controls:</strong> help under a field goes in the label's <code>&lt;small&gt;</code>, so the key sits in the same muted line as the rest of the help.</li>
+  <li><strong>Text:</strong> <code>.menu-shortcut</code> pushes the key to the end of the row; the <code>.kbd</code> inside it marks it as a key.</li>
+</ul>
 
 
         <footer class="site-footer">

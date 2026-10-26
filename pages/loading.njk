@@ -32,4 +32,24 @@
     hidden text, since the element itself says nothing.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Inside a button while it works</h3>
+<p>The button keeps its label and gains a spinner, and is disabled until the work is done.</p>
+{% set classless %}
+<form class="card" style="max-width: 24rem">
+  <label class="label"><p>Email</p><input class="input" type="email" value="name@example.com" /></label>
+  <button class="btn" disabled aria-busy="true"><span class="loading" style="vertical-align: middle"></span> Sending</button>
+</form>
+{% endset %}
+{{ m.demo("loading-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> the spinner draws in <code>currentColor</code>, so it takes the button's text colour in any variant.</li>
+  <li><strong>Boundary:</strong> <code>disabled</code> greys the button, spinner included, with no extra class.</li>
+</ul>
 {% endblock %}

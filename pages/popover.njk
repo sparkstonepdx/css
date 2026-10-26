@@ -57,4 +57,27 @@ import { Popover } from "@kobalte/core/popover";
     <code>.dialog-box</code> to it if you want the modal sizing as well.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Share with a field</h3>
+<p>A popover holding a title, a line, and a field with a copy button.</p>
+{% set classless %}
+<div class="popover-content" style="max-width: 22rem">
+  <h2 class="popover-title">Share this page</h2>
+  <p class="popover-description">Anyone with the link can read it.</p>
+  <div class="flex" style="align-items: end; margin-top: calc(var(--padding) / 2)">
+    <input class="input" value="https://example.com/page" readonly style="flex: 1; margin: 0" />
+    <button class="btn btn-secondary">Copy</button>
+  </div>
+</div>
+{% endset %}
+{{ m.demo("popover-comp-1", classless) }}
+<ul>
+  <li><strong>Controls:</strong> a field in a popover drops its bottom margin; the panel's padding is the spacing.</li>
+</ul>
 {% endblock %}
