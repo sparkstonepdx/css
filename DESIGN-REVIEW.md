@@ -71,8 +71,7 @@ for pixel on the theme preview page).
 | --- | --- | --- |
 | Boxes | card, card-border, card-actions corners, dialog-box, alert (and toast), dropdown panel, popover, fieldset, `.label.block`, skeleton, progress | daisyUI puts progress here too |
 | Fields | button, input, select, textarea, file and colour inputs (and their inner button and swatch), tab top corners, menu row, segmented track, item and indicator | the segmented control counts as one control, so all three parts take the field radius |
-| Selectors | checkbox, badge | unset, the checkbox keeps `--border-radius / 2` and the badge `--border-radius * 2`, so each stays as it was; set, both take the one value |
-| Toggle | left out, stays a pill | **Open question**: daisyUI rounds its toggle with the selector radius, but the one-element toggle draws its knob as a radial gradient, which stays a circle on a square track |
+| Selectors | checkbox, badge, toggle | unset, the checkbox keeps `--border-radius / 2`, the badge `--border-radius * 2` and the toggle stays a pill, so each looks as it did; set, all three take the one value. The toggle's knob takes the selector radius less twice the border width, so it stays concentric with the track |
 | Left alone | radio (circle), slider and range rails (pills), spinner, prose `code` and `kbd` (fixed `0.25rem`), focus rings | |
 
 ## Tabs (`src/components/_tabs.scss`) — not signed off
@@ -126,7 +125,7 @@ for pixel on the theme preview page).
 | Track | `--surface-lc-2`, `--surface-lc-4` when on, border from `get-border-color()` | |
 | Knob | `--surface-lc-1` | |
 | Motion | `var(--duration-change)`, 200ms | shared with every other state change; see the motion note under 3.0 |
-| One-element form | knob drawn as a radial gradient and slid with `background-position` | a checkbox has no child to move and no usable `::before`. **Questionable**: a gradient knob will not take a border or a shadow if the design ever wants one |
+| One-element form | knob drawn as `::before`, the same box as `.toggle-thumb`, slid with `transform` | was a radial gradient, which could not take the selector radius. `::before` rather than `::after`, because the classless build also gives every checkbox `.checkbox`, whose tick is its `::after` |
 
 ## Tooltip (`src/components/_tooltip.scss`) — not signed off
 

@@ -7,6 +7,19 @@
 // differently:
 //   <input type="checkbox" class="toggle">          one element
 //   <div class="toggle"><div class="toggle-thumb">  Kobalte: Control + Thumb
+// The knob. Its corners follow the track's, less the border and padding
+// between them, so the two stay concentric at any radius.
+@mixin thumb {
+  flex: none;
+  width: calc(var(--toggle-height) - var(--border-width) * 4);
+  height: calc(var(--toggle-height) - var(--border-width) * 4);
+
+  border-radius: max(0px, calc(var(--radius-selector, 999px) - var(--border-width) * 2));
+  background-color: var(--bg);
+
+  transition: transform var(--duration-change);
+}
+
 @mixin styles {
   .toggle {
     --toggle-height: 1.5rem;
@@ -20,7 +33,7 @@
     padding: var(--border-width);
 
     border: var(--border-width) solid var(--line);
-    border-radius: 999px;
+    border-radius: var(--radius-selector, 999px);
     background-color: var(--surface);
     color: var(--fg);
     cursor: pointer;
@@ -36,33 +49,29 @@
     }
   }
 
-  // The one-element form has no child to move, so the knob is drawn on the
-  // track itself and slid with background-position.
+  // The one-element form draws its knob as ::before, the same box as
+  // .toggle-thumb, so both forms match and the knob takes the track's corners.
+  // ::before because .checkbox, which the classless build also puts on every
+  // checkbox, draws its tick with ::after.
   input.toggle {
     appearance: none;
-    background-image: radial-gradient(
-      circle at calc(var(--toggle-height) / 2 - var(--border-width)) 50%,
-      var(--bg) calc(var(--toggle-height) / 2 - 0.3rem),
-      transparent 0
-    );
-    background-repeat: no-repeat;
-    transition:
-      background-color var(--duration-change),
-      background-position var(--duration-change);
 
-    &:checked {
-      background-position: calc(var(--toggle-height) * 0.75) 0;
+    &::before {
+      content: "";
+      @include thumb;
+    }
+
+    &:checked::before {
+      transform: translateX(calc(var(--toggle-height) * 0.75));
+    }
+
+    &::after {
+      content: none;
     }
   }
 
   .toggle-thumb {
-    width: calc(var(--toggle-height) - var(--border-width) * 4);
-    height: calc(var(--toggle-height) - var(--border-width) * 4);
-
-    border-radius: 999px;
-    background-color: var(--bg);
-
-    transition: transform var(--duration-change);
+    @include thumb;
 
     &[data-checked] {
       transform: translateX(calc(var(--toggle-height) * 0.75));

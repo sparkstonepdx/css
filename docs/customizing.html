@@ -442,7 +442,7 @@
       <tr><td><code>--border-radius</code></td><td><code>0.25rem</code></td><td>Base corner radius; the fallback for the three below</td></tr>
       <tr><td><code>--radius-box</code></td><td><code>--border-radius</code></td><td>Surfaces: card, dialog, alert, dropdown panel, popover, fieldset, skeleton, progress</td></tr>
       <tr><td><code>--radius-field</code></td><td><code>--border-radius</code></td><td>Controls: button, input, select, textarea, tab, menu row, segmented control, tooltip</td></tr>
-      <tr><td><code>--radius-selector</code></td><td>per component</td><td>Small marks: checkbox (half the base radius when unset) and badge (double it)</td></tr>
+      <tr><td><code>--radius-selector</code></td><td>per component</td><td>Small marks: checkbox (half the base radius when unset), badge (double it) and toggle (a pill)</td></tr>
       <tr><td><code>--border-width</code></td><td><code>0.1625rem</code></td><td>Borders and rules</td></tr>
       <tr><td><code>--padding</code></td><td><code>1rem</code></td><td>Base spacing unit</td></tr>
       <tr><td><code>--box-shadow</code></td><td>four-layer shadow</td><td>Articles and dialogs</td></tr>
@@ -514,11 +514,12 @@
     <button class="ghost copy-button" data-target="custom-radius-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="custom-radius-classes" data-variant="classes">&lt;div class=&quot;flex flip&quot; style=&quot;--radius-box: 1.25rem; --radius-field: 0; --radius-selector: 1rem&quot;&gt;
+    <pre><code id="custom-radius-classes" data-variant="classes">&lt;div class=&quot;flex flip&quot; style=&quot;--radius-box: 1.25rem; --radius-field: 0; --radius-selector: 0.375rem&quot;&gt;
   &lt;article class=&quot;card prose&quot; style=&quot;flex: 1&quot;&gt;
     &lt;h3&gt;Round boxes&lt;/h3&gt;
-    &lt;p&gt;&lt;span class=&quot;badge&quot;&gt;Round badge&lt;/span&gt;&lt;/p&gt;
-    &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; Round checkbox&lt;/label&gt;
+    &lt;p&gt;&lt;span class=&quot;badge&quot;&gt;Soft badge&lt;/span&gt;&lt;/p&gt;
+    &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; Soft checkbox&lt;/label&gt;
+    &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;toggle&quot; checked /&gt; Soft toggle&lt;/label&gt;
   &lt;/article&gt;
   &lt;div style=&quot;flex: 1&quot;&gt;
     &lt;label class=&quot;label&quot;&gt;&lt;p&gt;Square field&lt;/p&gt;&lt;input class=&quot;input&quot; /&gt;&lt;/label&gt;

@@ -12,8 +12,9 @@
   //                      popover, fieldset, skeleton, progress
   //   --radius-field     controls: button, input, select, textarea, tab,
   //                      menu row, segmented control, tooltip
-  //   --radius-selector  small marks: checkbox, badge. Unset, the checkbox
-  //                      keeps half the base radius and the badge double it.
+  //   --radius-selector  small marks: checkbox, badge, toggle. Unset, the
+  //                      checkbox keeps half the base radius, the badge double
+  //                      it, and the toggle stays a pill.
   --padding: 1rem;
 
   --border-width: 0.1625rem;

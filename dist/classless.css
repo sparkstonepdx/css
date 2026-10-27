@@ -1133,7 +1133,7 @@
     height: var(--toggle-height);
     padding: var(--border-width);
     border: var(--border-width) solid var(--line);
-    border-radius: 999px;
+    border-radius: var(--radius-selector, 999px);
     background-color: var(--surface);
     color: var(--fg);
     cursor: pointer;
@@ -1147,17 +1147,27 @@
   }
   input.toggle {
     appearance: none;
-    background-image: radial-gradient(circle at calc(var(--toggle-height) / 2 - var(--border-width)) 50%, var(--bg) calc(var(--toggle-height) / 2 - 0.3rem), transparent 0);
-    background-repeat: no-repeat;
-    transition: background-color var(--duration-change), background-position var(--duration-change);
   }
-  input.toggle:checked {
-    background-position: calc(var(--toggle-height) * 0.75) 0;
-  }
-  .toggle-thumb {
+  input.toggle::before {
+    content: "";
+    flex: none;
     width: calc(var(--toggle-height) - var(--border-width) * 4);
     height: calc(var(--toggle-height) - var(--border-width) * 4);
-    border-radius: 999px;
+    border-radius: max(0px, var(--radius-selector, 999px) - var(--border-width) * 2);
+    background-color: var(--bg);
+    transition: transform var(--duration-change);
+  }
+  input.toggle:checked::before {
+    transform: translateX(calc(var(--toggle-height) * 0.75));
+  }
+  input.toggle::after {
+    content: none;
+  }
+  .toggle-thumb {
+    flex: none;
+    width: calc(var(--toggle-height) - var(--border-width) * 4);
+    height: calc(var(--toggle-height) - var(--border-width) * 4);
+    border-radius: max(0px, var(--radius-selector, 999px) - var(--border-width) * 2);
     background-color: var(--bg);
     transition: transform var(--duration-change);
   }
