@@ -439,7 +439,10 @@
       <tr><td><code>--neutral</code></td><td>the primary</td><td>What text and surfaces are tinted with</td></tr>
       <tr><td><code>--error</code></td><td><code>maroon</code></td><td>Invalid inputs, <code>.text-error</code></td></tr>
       <tr><td><code>--fallback-color</code></td><td><code>white</code></td><td>Used by <code>.contrast</code></td></tr>
-      <tr><td><code>--border-radius</code></td><td><code>0.25rem</code></td><td>Corners on every surface</td></tr>
+      <tr><td><code>--border-radius</code></td><td><code>0.25rem</code></td><td>Base corner radius; the fallback for the three below</td></tr>
+      <tr><td><code>--radius-box</code></td><td><code>--border-radius</code></td><td>Surfaces: card, dialog, alert, dropdown panel, popover, fieldset, skeleton, progress</td></tr>
+      <tr><td><code>--radius-field</code></td><td><code>--border-radius</code></td><td>Controls: button, input, select, textarea, tab, menu row, segmented control, tooltip</td></tr>
+      <tr><td><code>--radius-selector</code></td><td>per component</td><td>Small marks: checkbox (half the base radius when unset) and badge (double it)</td></tr>
       <tr><td><code>--border-width</code></td><td><code>0.1625rem</code></td><td>Borders and rules</td></tr>
       <tr><td><code>--padding</code></td><td><code>1rem</code></td><td>Base spacing unit</td></tr>
       <tr><td><code>--box-shadow</code></td><td>four-layer shadow</td><td>Articles and dialogs</td></tr>
@@ -486,6 +489,44 @@
   &lt;p&gt;Different hue, different radius, same markup.&lt;/p&gt;
   &lt;button&gt;Themed button&lt;/button&gt;
 &lt;/article&gt;</code></pre>
+  </div>
+</div>
+
+</section>
+
+<section id="radius">
+  <h2>Corners</h2>
+  <p>
+    Three variables split the corners by kind of component. None is declared:
+    each falls back to <code>--border-radius</code> where it is used, so
+    <code>.rounded</code> or any <code>--border-radius</code> you set on a
+    subtree still reaches all of them. Set one to change only that kind.
+  </p>
+  
+  
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="custom-radius-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="custom-radius-classes" data-variant="classes">&lt;div class=&quot;flex flip&quot; style=&quot;--radius-box: 1.25rem; --radius-field: 0; --radius-selector: 1rem&quot;&gt;
+  &lt;article class=&quot;card prose&quot; style=&quot;flex: 1&quot;&gt;
+    &lt;h3&gt;Round boxes&lt;/h3&gt;
+    &lt;p&gt;&lt;span class=&quot;badge&quot;&gt;Round badge&lt;/span&gt;&lt;/p&gt;
+    &lt;label class=&quot;label&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;checkbox&quot; checked /&gt; Round checkbox&lt;/label&gt;
+  &lt;/article&gt;
+  &lt;div style=&quot;flex: 1&quot;&gt;
+    &lt;label class=&quot;label&quot;&gt;&lt;p&gt;Square field&lt;/p&gt;&lt;input class=&quot;input&quot; /&gt;&lt;/label&gt;
+    &lt;button class=&quot;btn&quot;&gt;Square button&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    
   </div>
 </div>
 

@@ -14,7 +14,7 @@
 
     padding: calc(var(--padding) / 8);
     border: var(--border-width) solid var(--divider);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     background-color: var(--surface);
   }
 
@@ -27,7 +27,7 @@
     gap: calc(var(--padding) / 4);
 
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     color: var(--fg-muted);
     cursor: pointer;
 
@@ -77,7 +77,7 @@
     top: calc(var(--padding) / 8);
     bottom: calc(var(--padding) / 8);
 
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     background-color: var(--bg);
     transition: all var(--duration-change);
   }

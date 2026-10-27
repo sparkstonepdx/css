@@ -22,7 +22,10 @@
       <tr><td><code>--neutral</code></td><td>the primary</td><td>What text and surfaces are tinted with</td></tr>
       <tr><td><code>--error</code></td><td><code>maroon</code></td><td>Invalid inputs, <code>.text-error</code></td></tr>
       <tr><td><code>--fallback-color</code></td><td><code>white</code></td><td>Used by <code>.contrast</code></td></tr>
-      <tr><td><code>--border-radius</code></td><td><code>0.25rem</code></td><td>Corners on every surface</td></tr>
+      <tr><td><code>--border-radius</code></td><td><code>0.25rem</code></td><td>Base corner radius; the fallback for the three below</td></tr>
+      <tr><td><code>--radius-box</code></td><td><code>--border-radius</code></td><td>Surfaces: card, dialog, alert, dropdown panel, popover, fieldset, skeleton, progress</td></tr>
+      <tr><td><code>--radius-field</code></td><td><code>--border-radius</code></td><td>Controls: button, input, select, textarea, tab, menu row, segmented control, tooltip</td></tr>
+      <tr><td><code>--radius-selector</code></td><td>per component</td><td>Small marks: checkbox (half the base radius when unset) and badge (double it)</td></tr>
       <tr><td><code>--border-width</code></td><td><code>0.1625rem</code></td><td>Borders and rules</td></tr>
       <tr><td><code>--padding</code></td><td><code>1rem</code></td><td>Base spacing unit</td></tr>
       <tr><td><code>--box-shadow</code></td><td>four-layer shadow</td><td>Articles and dialogs</td></tr>
@@ -55,6 +58,30 @@
   <button>Themed button</button>
 </article>
   {% endcall %}
+</section>
+
+<section id="radius">
+  <h2>Corners</h2>
+  <p>
+    Three variables split the corners by kind of component. None is declared:
+    each falls back to <code>--border-radius</code> where it is used, so
+    <code>.rounded</code> or any <code>--border-radius</code> you set on a
+    subtree still reaches all of them. Set one to change only that kind.
+  </p>
+  {% set classless %}
+<div class="flex flip" style="--radius-box: 1.25rem; --radius-field: 0; --radius-selector: 1rem">
+  <article class="card prose" style="flex: 1">
+    <h3>Round boxes</h3>
+    <p><span class="badge">Round badge</span></p>
+    <label class="label"><input type="checkbox" class="checkbox" checked /> Round checkbox</label>
+  </article>
+  <div style="flex: 1">
+    <label class="label"><p>Square field</p><input class="input" /></label>
+    <button class="btn">Square button</button>
+  </div>
+</div>
+  {% endset %}
+  {{ m.demo("custom-radius", classless) }}
 </section>
 
 <section id="scheme">

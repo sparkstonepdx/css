@@ -10,7 +10,7 @@
     max-width: 20rem;
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
 
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     background-color: var(--fg);
     color: var(--bg);
     font-size: 0.875rem;

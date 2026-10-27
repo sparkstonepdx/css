@@ -11,7 +11,7 @@
     height: auto;
 
     &::file-selector-button {
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-field, var(--border-radius));
       border: var(--border-width) solid var(--divider);
       top: 0;
       bottom: 0;

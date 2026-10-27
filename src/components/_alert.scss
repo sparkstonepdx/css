@@ -15,7 +15,7 @@
     margin-bottom: 1rem;
 
     border: var(--border-width) solid var(--line);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     background-color: var(--surface);
     color: var(--fg);
   }

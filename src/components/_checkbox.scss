@@ -8,7 +8,7 @@
     appearance: none;
     width: 1.5rem;
     height: 1.5rem;
-    border-radius: calc(var(--border-radius) / 2);
+    border-radius: var(--radius-selector, calc(var(--border-radius) / 2));
     display: inline-block;
     position: relative;
     cursor: pointer;

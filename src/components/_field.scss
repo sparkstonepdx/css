@@ -45,7 +45,7 @@ $select-icon-gutter: 2.25rem;
   .checkbox,
   .radio {
     border: var(--border-width) solid var(--line);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     padding: calc(var(--padding) / 2);
     background-color: var(--bg);
     color: var(--fg);

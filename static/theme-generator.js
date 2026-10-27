@@ -10,7 +10,9 @@ const DEFAULTS = {
   secondary: null, // null: the primary rotated 180deg
   neutral: null, // null: the primary
   error: '#800000', // maroon
-  radius: 0.25,
+  radiusBox: 0.25,
+  radiusField: 0.25,
+  radiusSelector: null, // null: each selector keeps its own default
   border: 0.1625,
   padding: 1,
   shadow: true,
@@ -64,7 +66,7 @@ const isHex = v => /^#[0-9a-f]{6}$/i.test(v);
 
 /* ---------- state in and out ---------- */
 
-const KEYS = { primary: 'p', secondary: 's', neutral: 'n', error: 'e', radius: 'r', border: 'b', padding: 'g', shadow: 'sh', name: 'name' };
+const KEYS = { primary: 'p', secondary: 's', neutral: 'n', error: 'e', radiusBox: 'rb', radiusField: 'rf', radiusSelector: 'rs', border: 'b', padding: 'g', shadow: 'sh', name: 'name' };
 
 const toHash = s => {
   const q = new URLSearchParams();
@@ -83,7 +85,7 @@ const fromHash = hash => {
     const v = q.get(short);
     if (k === 'shadow') s[k] = v === '1';
     else if (k === 'name') s[k] = v.replace(/[^a-z0-9-]/g, '') || DEFAULTS.name;
-    else if (typeof DEFAULTS[k] === 'number') s[k] = Number(v) || DEFAULTS[k];
+    else if (k === 'radiusSelector' || typeof DEFAULTS[k] === 'number') s[k] = Number.isFinite(Number(v)) ? Number(v) : DEFAULTS[k];
     else if (isHex('#' + v)) s[k] = '#' + v.toLowerCase();
   }
   return s;
@@ -97,7 +99,9 @@ const declarations = (s, { all = false } = {}) => {
   if (s.secondary) out.push(['--secondary', s.secondary]);
   if (s.neutral) out.push(['--neutral', s.neutral]);
   out.push(['--error', s.error]);
-  if (all || s.radius !== DEFAULTS.radius) out.push(['--border-radius', rem(s.radius)]);
+  if (all || s.radiusBox !== DEFAULTS.radiusBox) out.push(['--radius-box', rem(s.radiusBox)]);
+  if (all || s.radiusField !== DEFAULTS.radiusField) out.push(['--radius-field', rem(s.radiusField)]);
+  if (s.radiusSelector !== null) out.push(['--radius-selector', rem(s.radiusSelector)]);
   if (all || s.border !== DEFAULTS.border) out.push(['--border-width', rem(s.border)]);
   if (all || s.padding !== DEFAULTS.padding) out.push(['--padding', rem(s.padding)]);
   if (!s.shadow) out.push(['--box-shadow', 'none']);
@@ -176,7 +180,7 @@ const frameRoot = () => frame.contentDocument?.documentElement;
 const applyToFrame = () => {
   const root = frameRoot();
   if (!root) return;
-  for (const p of ['--primary', '--secondary', '--neutral', '--error', '--border-radius', '--border-width', '--padding', '--box-shadow'])
+  for (const p of ['--primary', '--secondary', '--neutral', '--error', '--radius-box', '--radius-field', '--radius-selector', '--border-width', '--padding', '--box-shadow'])
     root.style.removeProperty(p);
   for (const [p, v] of declarations(state, { all: true })) root.style.setProperty(p, v);
   root.setAttribute('data-color-scheme', scheme);
@@ -247,9 +251,10 @@ const renderControls = () => {
     const follow = $(`input[data-follow="${key}"]`);
     if (follow) follow.checked = follows;
   }
-  for (const key of ['radius', 'border', 'padding']) {
-    $(`input[data-key="${key}"]`).value = state[key];
-    $(`output[data-out="${key}"]`).textContent = rem(state[key]);
+  for (const key of ['radiusBox', 'radiusField', 'radiusSelector', 'border', 'padding']) {
+    const unset = state[key] === null;
+    $(`input[data-key="${key}"]`).value = unset ? 0.25 : state[key];
+    $(`output[data-out="${key}"]`).textContent = unset ? 'default' : rem(state[key]);
   }
   $('input[data-key="shadow"]').checked = state.shadow;
 };
@@ -328,7 +333,10 @@ $('#tg-random').addEventListener('click', () => {
     primary: toHex(`oklch(${l} ${c} ${h})`),
     secondary: null,
     neutral: null,
-    radius: [0, 0.25, 0.5, 1, 2][Math.floor(Math.random() * 5)],
+    ...(() => {
+      const pick = () => [0, 0.25, 0.5, 1, 2][Math.floor(Math.random() * 5)];
+      return { radiusBox: pick(), radiusField: pick(), radiusSelector: pick() };
+    })(),
     shadow: Math.random() > 0.3,
   });
 });

@@ -15,12 +15,12 @@
     }
 
     &::-webkit-color-swatch {
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-field, var(--border-radius));
       border: 0;
     }
 
     &::-moz-color-swatch {
-      border-radius: var(--border-radius);
+      border-radius: var(--radius-field, var(--border-radius));
       border: 0;
     }
   }

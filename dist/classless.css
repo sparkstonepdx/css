@@ -166,7 +166,7 @@
   .radio,
   input:where([type=radio]) {
     border: var(--border-width) solid var(--line);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     padding: calc(var(--padding) / 2);
     background-color: var(--bg);
     color: var(--fg);
@@ -263,7 +263,7 @@
     appearance: none;
     width: 1.5rem;
     height: 1.5rem;
-    border-radius: calc(var(--border-radius) / 2);
+    border-radius: var(--radius-selector, calc(var(--border-radius) / 2));
     display: inline-block;
     position: relative;
     cursor: pointer;
@@ -336,7 +336,7 @@
     height: auto;
   }
   .file-input::file-selector-button, input:where([type=file])::file-selector-button {
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     border: var(--border-width) solid var(--divider);
     top: 0;
     bottom: 0;
@@ -358,11 +358,11 @@
     padding: 0;
   }
   .color-input::-webkit-color-swatch, input:where([type=color])::-webkit-color-swatch {
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     border: 0;
   }
   .color-input::-moz-color-swatch, input:where([type=color])::-moz-color-swatch {
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     border: 0;
   }
   .range, input:where([type=range]) {
@@ -733,7 +733,7 @@
   .label.block:has(> .radio, > input:where([type=radio])), label.block:has(> .radio, > input:where([type=radio])) {
     padding: 2rem;
     border: var(--border-width) solid var(--divider);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
   }
   .label.block:has(> .radio, > input:where([type=radio])):has(.radio:checked, input:checked:where([type=radio])), label.block:has(> .radio, > input:where([type=radio])):has(.radio:checked, input:checked:where([type=radio])) {
     border-color: var(--line);
@@ -764,7 +764,7 @@
     border: var(--border-width) solid var(--primary-fill);
     display: inline-block;
     text-decoration: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     cursor: pointer;
     padding: 0.75rem 1rem;
     text-align: center;
@@ -908,7 +908,7 @@
   .dialog-box, dialog > article,
   dialog > form > article {
     padding: 1rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     background-color: var(--surface);
     box-shadow: var(--box-shadow);
     width: 100%;
@@ -947,34 +947,34 @@
   dialog > form > article > form > footer {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-bottom-right-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--radius-box, var(--border-radius));
+    border-bottom-left-radius: var(--radius-box, var(--border-radius));
     border-top: var(--border-width) solid var(--line);
     text-align: right;
     justify-content: end;
   }
   .card, article {
     padding: 1rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     background-color: var(--surface);
     box-shadow: var(--box-shadow);
   }
   .card-actions, :is(article > footer, article > form > footer) {
     margin-top: 1rem;
     padding-top: 1rem;
-    border-bottom-right-radius: var(--border-radius);
-    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--radius-box, var(--border-radius));
+    border-bottom-left-radius: var(--radius-box, var(--border-radius));
     border-top: var(--border-width) solid var(--line);
   }
   .card-border {
     border: var(--border-width) solid var(--divider);
     background-color: var(--bg);
     padding: var(--padding);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
   }
   .fieldset, fieldset {
     border: var(--border-width) solid var(--divider);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     padding: 1rem 1rem;
     margin-bottom: 1rem;
   }
@@ -1010,7 +1010,7 @@
     cursor: pointer;
     padding: 0.75rem 1rem;
     text-align: center;
-    border-radius: var(--border-radius) var(--border-radius) 0 0;
+    border-radius: var(--radius-field, var(--border-radius)) var(--radius-field, var(--border-radius)) 0 0;
   }
   @media (prefers-reduced-motion: no-preference) {
     .tab {
@@ -1039,7 +1039,7 @@
     padding: calc(var(--padding) / 4);
     background-color: var(--bg);
     border: var(--border-width) solid var(--divider);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     box-shadow: var(--box-shadow);
     z-index: 50;
   }
@@ -1076,7 +1076,7 @@
     align-items: center;
     gap: calc(var(--padding) / 2);
     padding: calc(var(--padding) / 2) var(--padding);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     color: var(--fg);
     text-decoration: none;
     cursor: pointer;
@@ -1213,7 +1213,7 @@
   .tooltip-content {
     max-width: 20rem;
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     background-color: var(--fg);
     color: var(--bg);
     font-size: 0.875rem;
@@ -1235,7 +1235,7 @@
     padding: calc(var(--padding) / 2) var(--padding);
     margin-bottom: 1rem;
     border: var(--border-width) solid var(--line);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     background-color: var(--surface);
     color: var(--fg);
   }
@@ -1244,7 +1244,7 @@
     padding: var(--padding);
     background-color: var(--bg);
     border: var(--border-width) solid var(--divider);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     box-shadow: var(--box-shadow);
     color: var(--fg);
     z-index: 50;
@@ -1319,7 +1319,7 @@
   .skeleton {
     display: block;
     min-height: 1rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     background-color: var(--surface);
   }
   @media (prefers-reduced-motion: no-preference) {
@@ -1509,7 +1509,7 @@
     gap: calc(var(--padding) / 8);
     padding: calc(var(--padding) / 8);
     border: var(--border-width) solid var(--divider);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     background-color: var(--surface);
   }
   .segmented-item {
@@ -1519,7 +1519,7 @@
     align-items: center;
     gap: calc(var(--padding) / 4);
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     color: var(--fg-muted);
     cursor: pointer;
   }
@@ -1555,7 +1555,7 @@
     z-index: 0;
     top: calc(var(--padding) / 8);
     bottom: calc(var(--padding) / 8);
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-field, var(--border-radius));
     background-color: var(--bg);
     transition: all var(--duration-change);
   }
@@ -1566,7 +1566,7 @@
     margin-bottom: 0.5rem;
     background-color: var(--on-primary-fill);
     border: none;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     overflow: hidden;
     height: 0.5rem;
   }
@@ -1592,7 +1592,7 @@
     }
   }
   .badge, small.chip {
-    border-radius: calc(var(--border-radius) * 2);
+    border-radius: var(--radius-selector, calc(var(--border-radius) * 2));
     background-color: var(--surface-strong);
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
     color: var(--fg-muted);

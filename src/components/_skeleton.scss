@@ -8,7 +8,7 @@
   .skeleton {
     display: block;
     min-height: 1rem;
-    border-radius: var(--border-radius);
+    border-radius: var(--radius-box, var(--border-radius));
     background-color: var(--surface);
 
     @media (prefers-reduced-motion: no-preference) {

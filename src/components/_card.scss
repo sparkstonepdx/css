@@ -3,7 +3,7 @@
 // Declaration blocks, so .dialog-box and .dialog-actions can reuse them.
 @mixin card {
   padding: 1rem;
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-box, var(--border-radius));
   background-color: var(--surface);
 
   box-shadow: var(--box-shadow);
@@ -12,8 +12,8 @@
 @mixin card-actions {
   margin-top: 1rem;
   padding-top: 1rem;
-  border-bottom-right-radius: var(--border-radius);
-  border-bottom-left-radius: var(--border-radius);
+  border-bottom-right-radius: var(--radius-box, var(--border-radius));
+  border-bottom-left-radius: var(--radius-box, var(--border-radius));
   border-top: var(--border-width) solid var(--line);
 }
 
@@ -21,7 +21,7 @@
   border: var(--border-width) solid var(--divider);
   background-color: var(--bg);
   padding: var(--padding);
-  border-radius: var(--border-radius);
+  border-radius: var(--radius-box, var(--border-radius));
 }
 
 @mixin styles {

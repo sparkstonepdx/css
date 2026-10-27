@@ -5,6 +5,15 @@
 
 @mixin tokens {
   --border-radius: 0.25rem;
+  // Corners by kind of component. Like --primary, these are never declared:
+  // each rule reads them with --border-radius as the fallback, so setting
+  // --border-radius on any element, as .rounded does, still reaches all three.
+  //   --radius-box       surfaces: card, dialog, alert, dropdown panel,
+  //                      popover, fieldset, skeleton, progress
+  //   --radius-field     controls: button, input, select, textarea, tab,
+  //                      menu row, segmented control, tooltip
+  //   --radius-selector  small marks: checkbox, badge. Unset, the checkbox
+  //                      keeps half the base radius and the badge double it.
   --padding: 1rem;
 
   --border-width: 0.1625rem;

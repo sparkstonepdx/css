@@ -61,6 +61,20 @@ here, drop the `alpha` flag from its entry in `templates/nav.njk`, remove the
 `{{ m.alpha() }}` call from its page, and drop the ALPHA header from its source
 file.
 
+## Corner radius tokens (`--radius-box`, `--radius-field`, `--radius-selector`) — not signed off
+
+Split from `--border-radius` the way daisyUI does, for the theme generator.
+Nothing is declared, so every default renders exactly as before (checked pixel
+for pixel on the theme preview page).
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Boxes | card, card-border, card-actions corners, dialog-box, alert (and toast), dropdown panel, popover, fieldset, `.label.block`, skeleton, progress | daisyUI puts progress here too |
+| Fields | button, input, select, textarea, file and colour inputs (and their inner button and swatch), tab top corners, menu row, segmented track, item and indicator | the segmented control counts as one control, so all three parts take the field radius |
+| Selectors | checkbox, badge | unset, the checkbox keeps `--border-radius / 2` and the badge `--border-radius * 2`, so each stays as it was; set, both take the one value |
+| Toggle | left out, stays a pill | **Open question**: daisyUI rounds its toggle with the selector radius, but the one-element toggle draws its knob as a radial gradient, which stays a circle on a square track |
+| Left alone | radio (circle), slider and range rails (pills), spinner, prose `code` and `kbd` (fixed `0.25rem`), focus rings | |
+
 ## Tabs (`src/components/_tabs.scss`) — not signed off
 
 | Decision | Proposed | Note |
