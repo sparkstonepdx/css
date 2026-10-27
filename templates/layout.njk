@@ -48,7 +48,7 @@
         </nav>
       </aside>
 
-      <main class="site-main">
+      <main class="site-main{% if mainClass %} {{ mainClass }}{% endif %}">
         {% block content %}{% endblock %}
 
         <footer class="site-footer">

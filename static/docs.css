@@ -446,3 +446,146 @@ section {
   border-radius: var(--border-radius);
   border: 1px solid var(--divider);
 }
+
+/* Theme generator */
+.site-main-wide {
+  max-width: none;
+}
+
+.tg {
+  display: grid;
+  grid-template-columns: 19rem minmax(0, 1fr);
+  gap: 2rem;
+  align-items: start;
+}
+
+@media (max-width: 1100px) {
+  .tg {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
+.tg-controls {
+  position: sticky;
+  top: 1rem;
+  max-height: calc(100vh - 2rem);
+  overflow-y: auto;
+  padding-right: 0.25rem;
+}
+
+@media (max-width: 1100px) {
+  .tg-controls {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+}
+
+.tg-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.375rem;
+  margin-bottom: 0.75rem;
+}
+
+.tg-swatch {
+  width: 1.75rem;
+  height: 1.75rem;
+  border-radius: var(--border-radius);
+  background: var(--sw);
+  border: var(--border-width) solid var(--divider);
+  cursor: pointer;
+}
+
+.tg-swatch:focus-visible {
+  outline: 0.15rem solid var(--line);
+  outline-offset: 0.1rem;
+}
+
+.tg-subhead {
+  margin: 0 0 0.375rem;
+  color: var(--fg-muted);
+}
+
+.tg-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.375rem;
+}
+
+.tg-remove {
+  color: var(--fg-muted);
+  padding: 0 0.25rem;
+}
+
+.tg-actions {
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tg-actions button {
+  padding: 0.375rem 0.75rem;
+}
+
+.tg-color {
+  display: flex;
+  align-items: end;
+  gap: 0.5rem;
+}
+
+.tg-color > label {
+  flex: 0 0 6.5rem;
+  min-width: 0;
+}
+
+.tg-color > input {
+  flex: 1;
+}
+
+.tg-range-label {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tg-range-label output {
+  color: var(--fg-muted);
+}
+
+.tg-preview-bar,
+.tg-export-bar {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-bottom: 0.75rem;
+}
+
+.tg-frame {
+  display: block;
+  width: 100%;
+  min-height: 30rem;
+  border: var(--border-width) solid var(--divider);
+  border-radius: var(--border-radius);
+  margin-bottom: 2rem;
+}
+
+.tg-contrast {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.tg-contrast td:nth-child(n + 3) {
+  white-space: nowrap;
+}
+
+.tg-chip-swatch {
+  display: inline-block;
+  padding: 0 0.3rem;
+  border-radius: 0.2rem;
+  font-weight: bold;
+  border: 1px solid var(--divider);
+}
+
+.tg-fail {
+  --primary: var(--error);
+  color: var(--primary-text);
+}

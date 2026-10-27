@@ -1,0 +1,112 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Theme generator" %}
+{% set slug = "theme-generator" %}
+{% set mainClass = "site-main-wide" %}
+
+{% block content %}
+<h1>Theme generator</h1>
+<p class="lede">
+  Pick a few inputs and every component re-derives from them, in light and dark.
+  The contrast table checks the result as you go. Copy the CSS when you are done.
+</p>
+
+<div class="tg">
+  <form class="tg-controls" id="tg-form" autocomplete="off">
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Themes</legend>
+      <div class="tg-swatches" id="tg-presets" aria-label="Presets"></div>
+      <p class="tg-subhead" id="tg-mine-label" hidden><small>My themes</small></p>
+      <div class="tg-swatches" id="tg-mine" aria-label="My themes"></div>
+      <div class="flex tg-actions">
+        <button type="button" class="secondary" id="tg-random">Random</button>
+        <button type="button" class="secondary" id="tg-save">Save</button>
+        <button type="button" class="ghost" id="tg-reset">Reset</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Colours</legend>
+      <label>
+        <p>Name</p>
+        <input id="tg-name" value="my-theme" pattern="[a-z][a-z0-9-]*" />
+      </label>
+      <div class="tg-color">
+        <label><p>Primary</p><input type="color" data-key="primary" /></label>
+        <input data-hex="primary" aria-label="Primary hex" />
+      </div>
+      <div class="tg-color">
+        <label><p>Secondary</p><input type="color" data-key="secondary" /></label>
+        <input data-hex="secondary" aria-label="Secondary hex" />
+      </div>
+      <label><input type="checkbox" data-follow="secondary" checked /> Primary rotated 180°</label>
+      <div class="tg-color">
+        <label><p>Neutral</p><input type="color" data-key="neutral" /></label>
+        <input data-hex="neutral" aria-label="Neutral hex" />
+      </div>
+      <label><input type="checkbox" data-follow="neutral" checked /> Same as primary</label>
+      <div class="tg-color">
+        <label><p>Error</p><input type="color" data-key="error" /></label>
+        <input data-hex="error" aria-label="Error hex" />
+      </div>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Shape</legend>
+      <label>
+        <p class="tg-range-label"><span>Radius</span><output data-out="radius"></output></p>
+        <input type="range" data-key="radius" min="0" max="2" step="0.125" />
+      </label>
+      <label>
+        <p class="tg-range-label"><span>Border width</span><output data-out="border"></output></p>
+        <input type="range" data-key="border" min="0.0625" max="0.25" step="0.0125" />
+      </label>
+      <label>
+        <p class="tg-range-label"><span>Spacing</span><output data-out="padding"></output></p>
+        <input type="range" data-key="padding" min="0.5" max="1.5" step="0.125" />
+      </label>
+      <label><input type="checkbox" data-key="shadow" /> Shadows</label>
+    </fieldset>
+  </form>
+
+  <div class="tg-output">
+    <div class="flex tg-preview-bar">
+      <div class="segmented" role="radiogroup" aria-label="Preview scheme">
+        <label class="segmented-item"><input type="radio" name="tg-scheme" value="light" checked /> Light</label>
+        <label class="segmented-item"><input type="radio" name="tg-scheme" value="dark" /> Dark</label>
+      </div>
+      <button type="button" class="ghost" id="tg-share">Copy share link</button>
+    </div>
+    <iframe class="tg-frame" id="tg-frame" title="Theme preview" src="./theme-preview.html"></iframe>
+
+    <h2>Contrast</h2>
+    <p>
+      <small>
+        Measured from the colours the browser renders, in both schemes. Text needs
+        4.5:1; borders and focus rings need 3:1.
+      </small>
+    </p>
+    <table class="tg-contrast" id="tg-contrast">
+      <thead><tr><th>Pair</th><th>Needs</th><th>Light</th><th>Dark</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>CSS</h2>
+    <div class="flex tg-export-bar">
+      <div class="segmented" role="radiogroup" aria-label="Scope">
+        <label class="segmented-item"><input type="radio" name="tg-scope" value="root" checked /> Whole page</label>
+        <label class="segmented-item"><input type="radio" name="tg-scope" value="class" /> One section</label>
+      </div>
+    </div>
+    <p id="tg-scope-note"><small></small></p>
+    <div class="code-block standalone">
+      <button class="ghost copy-button" type="button" data-target="tg-css">Copy</button>
+      <pre><code id="tg-css" class="language-css"></code></pre>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="./theme-generator.js" type="module"></script>
+{% endblock %}
