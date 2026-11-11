@@ -121,7 +121,7 @@ from four inputs you can set on any element:
 | `--color` | `--primary` (`--color` is still read at the root) |
 | `--accent-color` | `--secondary` |
 | `--error-color` | `--error` |
-| `--surface-lc-N`, `--text-lc-N` | `--bg`, `--fg`, `--surface`, `--line` and the rest of the derived colours |
+| `--surface-lc-N`, `--text-lc-N` | `--surface`, `--ink`, `--fill`, `--edge` and the rest of the derived colours |
 | `cur-color()`, `get-border-color()` | `var(--…)` of a derived colour, or `tone()` |
 | `@include apply-greyscale()` | `--chroma: 0` |
 

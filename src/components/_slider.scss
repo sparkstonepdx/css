@@ -10,12 +10,12 @@
 @mixin rail {
   height: calc(var(--slider-thumb) / 2);
   border-radius: 999px;
-  background-color: var(--surface);
+  background-color: var(--fill);
 }
 
 @mixin fill {
   border-radius: 999px;
-  background-color: var(--line);
+  background-color: var(--edge);
 }
 
 @mixin thumb {
@@ -23,9 +23,9 @@
   width: var(--slider-thumb);
   height: var(--slider-thumb);
 
-  border: var(--border-width) solid var(--line);
+  border: var(--border-width) solid var(--edge);
   border-radius: 999px;
-  background-color: var(--bg);
+  background-color: var(--surface);
 }
 
 @mixin styles {
@@ -95,6 +95,6 @@
   .slider-label,
   .slider-value {
     font-size: 0.875rem;
-    color: var(--fg-muted);
+    color: var(--muted);
   }
 }

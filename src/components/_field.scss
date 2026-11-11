@@ -44,18 +44,18 @@ $select-icon-gutter: 2.25rem;
   .color-input,
   .checkbox,
   .radio {
-    border: var(--border-width) solid var(--line);
+    border: var(--border-width) solid var(--edge);
     border-radius: var(--radius-field, var(--border-radius));
     padding: calc(var(--padding) / 2);
-    background-color: var(--bg);
-    color: var(--fg);
+    background-color: var(--surface);
+    color: var(--ink);
     outline-width: 0;
     outline-style: none;
 
     // 70% is the smallest mix that clears 4.5:1 for every brand in both schemes
     // (lowest 4.78), while still reading lighter than an entered value.
     &::placeholder {
-      color: color-mix(in oklch, var(--fg-muted) 70%, var(--bg));
+      color: color-mix(in oklch, var(--muted) 70%, var(--surface));
     }
   }
 

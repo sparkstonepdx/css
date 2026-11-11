@@ -519,10 +519,10 @@
 <section id="surfaces">
   <h2>Surfaces</h2>
   <p>
-    There are three colours to stand on. <code>--bg</code> is the page.
-    <code>.card</code> raises a block onto <code>--surface</code> with a shadow.
-    <code>.card-border</code> stays on <code>--bg</code> and draws a
-    <code>--divider</code> border instead.
+    There are three colours to stand on. <code>--surface</code> is the page.
+    <code>.card</code> raises a block onto <code>--fill</code> with a shadow.
+    <code>.card-border</code> stays on <code>--surface</code> and draws a
+    <code>--line</code> border instead.
   </p>
   <p>
     Surfaces are solid colours, mixed into the page rather than laid over it, so a
@@ -548,7 +548,7 @@
   </div>
   <div class="code-block">
     <pre><code id="comp-surfaces-classes" data-variant="classes">&lt;div class=&quot;prose&quot;&gt;
-  &lt;p&gt;Text on the page sits on &lt;code&gt;--bg&lt;/code&gt;.&lt;/p&gt;
+  &lt;p&gt;Text on the page sits on &lt;code&gt;--surface&lt;/code&gt;.&lt;/p&gt;
 &lt;/div&gt;
 &lt;div style=&quot;display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--padding)&quot;&gt;
   &lt;article class=&quot;card prose&quot;&gt;

@@ -15,7 +15,7 @@
   height: calc(var(--toggle-height) - var(--border-width) * 4);
 
   border-radius: max(0px, calc(var(--radius-selector, 999px) - var(--border-width) * 2));
-  background-color: var(--bg);
+  background-color: var(--surface);
 
   transition: transform var(--duration-change);
 }
@@ -32,16 +32,16 @@
     height: var(--toggle-height);
     padding: var(--border-width);
 
-    border: var(--border-width) solid var(--line);
+    border: var(--border-width) solid var(--edge);
     border-radius: var(--radius-selector, 999px);
-    background-color: var(--surface);
-    color: var(--fg);
+    background-color: var(--fill);
+    color: var(--ink);
     cursor: pointer;
 
     transition: background-color var(--duration-change);
 
     &:is(:checked, [data-checked]) {
-      background-color: var(--line);
+      background-color: var(--edge);
     }
 
     &:is(:disabled, [data-disabled]) {

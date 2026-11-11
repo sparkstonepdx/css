@@ -28,10 +28,10 @@
     width: 100%;
     max-width: 420px;
     padding: var(--space-md) var(--space-lg);
-    border: var(--border-width) solid var(--divider);
+    border: var(--border-width) solid var(--line);
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: var(--raised);
-    color: var(--fg);
+    background-color: var(--surface);
+    color: var(--ink);
     box-shadow: 0 6px 20px oklch(0 0 0 / 0.14);
     pointer-events: auto;
 
@@ -61,8 +61,8 @@
     width: 2.5rem;
     height: 2.5rem;
     border-radius: 999px;
-    background-color: var(--primary-fill);
-    color: var(--on-primary-fill);
+    background-color: var(--accent);
+    color: var(--accent-ink);
   }
 
   .notice-text {
@@ -74,7 +74,7 @@
     }
 
     > small {
-      color: var(--fg-muted);
+      color: var(--muted);
     }
   }
 

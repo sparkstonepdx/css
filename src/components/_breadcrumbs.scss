@@ -26,12 +26,12 @@
     // The current page is text, not a link.
     // Links carry the accent colour, so the current page reads as plain text.
     :is([aria-current], [data-current]) {
-      color: var(--fg);
+      color: var(--ink);
       text-decoration: none;
     }
   }
 
   .breadcrumbs-separator {
-    color: var(--fg-muted);
+    color: var(--muted);
   }
 }

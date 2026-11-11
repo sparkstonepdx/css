@@ -28,7 +28,7 @@
       @include slider.rail;
       background-image: linear-gradient(
         to right,
-        var(--line) var(--range-fill),
+        var(--edge) var(--range-fill),
         transparent var(--range-fill)
       );
     }

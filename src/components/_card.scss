@@ -6,9 +6,9 @@
 // card as between cards, so a list of them reads as one grid.
 @mixin card {
   padding: var(--card-pad);
-  border: var(--border-width) solid var(--divider);
+  border: var(--border-width) solid var(--line);
   border-radius: var(--radius-box, var(--border-radius));
-  background-color: var(--raised);
+  background-color: var(--surface);
   box-shadow: var(--card-shadow);
 }
 
@@ -19,11 +19,11 @@
   justify-content: flex-end;
   margin-top: var(--card-pad);
   padding-top: var(--card-pad);
-  border-top: var(--border-width) solid var(--divider);
+  border-top: var(--border-width) solid var(--line);
 }
 
 @mixin card-border {
-  border: var(--border-width) solid var(--divider);
+  border: var(--border-width) solid var(--line);
   background-color: transparent;
   padding: var(--card-pad);
   border-radius: var(--radius-box, var(--border-radius));
@@ -52,9 +52,9 @@
     margin: 0;
     padding: 0;
     list-style: none;
-    border: var(--border-width) solid var(--divider);
+    border: var(--border-width) solid var(--line);
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: var(--raised);
+    background-color: var(--surface);
     box-shadow: var(--card-shadow);
     overflow: hidden;
   }
@@ -69,7 +69,7 @@
     text-decoration: none;
 
     & + & {
-      border-top: var(--border-width) solid var(--divider);
+      border-top: var(--border-width) solid var(--line);
     }
   }
 
@@ -83,7 +83,7 @@
     cursor: pointer;
 
     &:hover {
-      background-color: var(--surface);
+      background-color: var(--fill);
     }
   }
 
@@ -102,7 +102,7 @@
     }
 
     > small {
-      color: var(--fg-muted);
+      color: var(--muted);
       font-size: var(--text-sm);
     }
   }
@@ -112,6 +112,6 @@
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    color: var(--fg-muted);
+    color: var(--muted);
   }
 }

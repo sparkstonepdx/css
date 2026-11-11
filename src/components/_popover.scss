@@ -10,11 +10,11 @@
     max-width: 20rem;
     padding: var(--padding);
 
-    background-color: var(--bg);
-    border: var(--border-width) solid var(--divider);
+    background-color: var(--surface);
+    border: var(--border-width) solid var(--line);
     border-radius: var(--radius-box, var(--border-radius));
     box-shadow: var(--box-shadow);
-    color: var(--fg);
+    color: var(--ink);
 
     z-index: 50;
 
@@ -31,7 +31,7 @@
   }
 
   .popover-description {
-    color: var(--fg-muted);
+    color: var(--muted);
     margin-bottom: 0;
   }
 }

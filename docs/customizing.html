@@ -480,7 +480,7 @@
       <tr><td><code>--box-shadow</code></td><td>four-layer shadow</td><td>Articles and dialogs</td></tr>
       <tr><td><code>--icon-width</code></td><td><code>1rem</code></td><td>Size of input icons</td></tr>
       <tr><td><code>--icon-position</code></td><td><code>0.75rem</code></td><td>Inset of input icons</td></tr>
-      <tr><td><code>--bg</code>, <code>--fg</code>, <code>--line</code>…</td><td>derived</td><td>See <a href="./colors.html">Colors</a>. Read them; set the inputs instead</td></tr>
+      <tr><td><code>--surface</code>, <code>--ink</code>, <code>--edge</code>…</td><td>derived</td><td>See <a href="./colors.html">Colors</a>. Read them; set the inputs instead</td></tr>
       <tr><td><code>--primary-surface-lc</code></td><td>stop 6</td><td>Primary button background</td></tr>
       <tr><td><code>--primary-text-lc</code></td><td>stop 1</td><td>Primary button text</td></tr>
       <tr><td><code>--grey-surface-lc-*</code></td><td>derived</td><td>Chroma-free equivalents, used by disabled states</td></tr>
@@ -489,7 +489,7 @@
   <p>
     <small>
       <code>--primary-color</code> is declared on <code>:root</code> but is not read by any rule.
-      Primary buttons use <code>--primary-fill</code> with <code>--on-primary-fill</code> for their text.
+      Primary buttons use <code>--accent</code> with <code>--accent-ink</code> for their text.
     </small>
   </p>
 </section>
@@ -634,8 +634,8 @@
 .alert {
   --primary: var(--error);
 
-  background-color: var(--surface);
-  color: var(--fg);
+  background-color: var(--fill);
+  color: var(--ink);
   border: var(--border-width) solid get-border-color();
   border-radius: var(--border-radius);
   padding: var(--padding);

@@ -3,9 +3,9 @@
 // The primary fill, as a block, so other components can apply it rather than
 // repeating it. .pagination uses it for the current page.
 @mixin btn-primary {
-  background-color: var(--primary-fill);
-  color: var(--on-primary-fill);
-  border-color: var(--primary-fill);
+  background-color: var(--accent);
+  color: var(--accent-ink);
+  border-color: var(--accent);
 }
 
 @mixin styles {
@@ -19,10 +19,10 @@
     gap: var(--space-sm);
     min-height: var(--tap);
     padding: var(--space-sm) var(--space-lg);
-    border: var(--border-width) solid var(--primary-fill);
+    border: var(--border-width) solid var(--accent);
     border-radius: var(--radius-field, var(--border-radius));
-    background-color: var(--primary-fill);
-    color: var(--on-primary-fill);
+    background-color: var(--accent);
+    color: var(--accent-ink);
     font: inherit;
     font-weight: 650;
     line-height: 1.2;
@@ -45,25 +45,25 @@
   }
 
   .btn-secondary {
-    border-color: var(--divider);
-    background-color: var(--raised);
-    color: var(--fg);
+    border-color: var(--line);
+    background-color: var(--surface);
+    color: var(--ink);
     font-weight: 500;
 
     &:hover {
-      border-color: var(--line);
+      border-color: var(--edge);
     }
   }
 
   .btn-ghost {
     border-color: transparent;
     background-color: transparent;
-    color: var(--fg-muted);
+    color: var(--muted);
     font-weight: 500;
 
     &:hover {
-      color: var(--fg);
-      background-color: var(--surface);
+      color: var(--ink);
+      background-color: var(--fill);
     }
   }
 
@@ -97,15 +97,15 @@
     padding: 0;
     border: 0;
     background: transparent;
-    color: var(--fg-muted);
+    color: var(--muted);
     font-size: var(--text-icon);
     line-height: 1;
     cursor: pointer;
     border-radius: var(--radius-field, var(--border-radius));
 
     &:hover {
-      color: var(--fg);
-      background-color: var(--surface);
+      color: var(--ink);
+      background-color: var(--fill);
     }
   }
 }

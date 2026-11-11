@@ -20,8 +20,9 @@ Why: UIs built on 3.x without a design direction came out lavender with olive li
 | `.sheet` | bottom-anchored, 520px (720 wide), 88dvh, a `--divider` rule round its edge (a shadow doesn't show in dark), grip 36 by 4, slides up 340ms on `--ease-settle`; centred with all corners rounded from 700px | the look of Wordbag's drawer; behaviour lives in @sparkstone/kit |
 | `.notice` | stack above `--dock-h`, cards up to 420px, rise over `--duration-enter` on `--ease-spring`, a 2.5rem coin for the thing it's about | replaces the corner `.toast` on phones |
 | Buttons | `.btn-sm`, `.btn-lg`, `.icon-btn` (44 by 44, `--text-icon`) | |
+| Token names | the apps' names: `--bg` (page), `--surface` (raised), `--fill`, `--fill-strong`, `--line` (hairline), `--edge` (3:1 boundary), `--ink`, `--muted`, `--faint`, `--accent`, `--accent-ink`, `--accent-text`, `--link`, and new `--good`, `--warn`, `--bad` | **Breaking.** Decided by Adam; the migration table is in the 4.0 changeset |
 | Reference knobs | `--font`, `--display`, `--display-weight` (750), `--card-shadow`, `--card-pad`, `--card-gap`, with the radii and `--border-width` | what an app sets from its physical reference; the PR shows four references set this way |
-| Page and raised | `--page` (light 0.955, dark 0.15) behind everything; `--raised` (light 0.995, dark 0.215) for cards, rows, sheets, notices | **Breaking.** 3.x cards were darker than the page, so they read as wells |
+| Page and raised | `--bg` (light 0.955, dark 0.15) behind everything; `--surface` (light 0.995, dark 0.215) for cards, rows, sheets, fields, notices | **Breaking.** 3.x cards were darker than the page, so they read as wells |
 | `.btn` | inline-flex, `--tap` tall, `--space-sm` by `--space-lg`, weight 650; press shrinks to 0.97 | `.btn-secondary` is the raised fill with a hairline (Wordbag's quiet button), `.btn-ghost` text only |
 | `.card` | raised fill, hairline, `--card-shadow`, `--card-pad` | `.card-border` is the hairline alone |
 | `.list` / `.row` | one raised block, rows split by hairlines, at least `--tap` + 12px tall | new |
@@ -58,7 +59,7 @@ the input's hue and chroma and pin only the lightness.
 | Checkbox | the box fills over `--duration-change`; the tick pops in from `scale(0.4)` with a slight overshoot, `cubic-bezier(0.34, 1.56, 0.64, 1)`, peaking at about 1.05 | the first easing curve in the framework other than the browser defaults. Checked, the tick rests exactly where it did |
 | Row state | `.menu-active` also matches `:focus` and `[data-highlighted]`; `.menu-selected` also matches `[aria-selected="true"]` and `[aria-checked="true"]` | the class build couldn't show a headless library's highlight at all, since none exposes which row is highlighted. Same generic-state approach as disabled and error |
 | Select text | one line with an ellipsis; chevron `0.75rem` from the right edge, `2.25rem` reserved for it | your values. Date and time inputs keep their own spacing for their picker button |
-| Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
+| Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | renamed to the apps' names in 4.0 (see the 4.0 section) |
 
 Measured across ten brand colours in both schemes (rebeccapurple, tomato,
 #c2410c, #6b7c59, slategrey, #1d4ed8, #ffd400, #00ff88, hotpink, black): every

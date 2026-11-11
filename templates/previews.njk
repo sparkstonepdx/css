@@ -72,12 +72,12 @@
 {%- elif slug == "breadcrumbs" -%}
   <span class="breadcrumbs" style="font-size: 0.7rem"><span class="link">Docs</span> <span class="breadcrumbs-separator">/</span> <span aria-current="page">Here</span></span>
 {%- elif slug == "pagination" -%}
-  <span class="flex" style="gap: 0.2rem"><span class="btn btn-secondary" style="padding: 0.15rem 0.4rem; font-size: 0.7rem">1</span><span class="btn btn-secondary" aria-current="page" style="padding: 0.15rem 0.4rem; font-size: 0.7rem; background-color: var(--primary-fill); color: var(--on-primary-fill)">2</span><span class="btn btn-secondary" style="padding: 0.15rem 0.4rem; font-size: 0.7rem">3</span></span>
+  <span class="flex" style="gap: 0.2rem"><span class="btn btn-secondary" style="padding: 0.15rem 0.4rem; font-size: 0.7rem">1</span><span class="btn btn-secondary" aria-current="page" style="padding: 0.15rem 0.4rem; font-size: 0.7rem; background-color: var(--accent); color: var(--accent-ink)">2</span><span class="btn btn-secondary" style="padding: 0.15rem 0.4rem; font-size: 0.7rem">3</span></span>
 {%- elif slug == "segmented" -%}
   <span class="segmented" style="font-size: 0.7rem"><span class="segmented-item segmented-item-active" style="padding: 0.15rem 0.4rem">List</span><span class="segmented-item" style="padding: 0.15rem 0.4rem">Board</span></span>
 {%- elif slug == "colors" -%}
   <span style="display: flex; gap: 0.2rem">
-    {% for t in ["--bg", "--surface-strong", "--line", "--primary-fill", "--fg"] %}<span style="width: 1rem; height: 1.6rem; border-radius: var(--border-radius); border: 1px solid var(--divider); background: var({{ t }})"></span>{% endfor %}
+    {% for t in ["--surface", "--fill-strong", "--edge", "--accent", "--ink"] %}<span style="width: 1rem; height: 1.6rem; border-radius: var(--border-radius); border: 1px solid var(--line); background: var({{ t }})"></span>{% endfor %}
   </span>
 {%- elif slug == "customizing" -%}
   <code style="font-size: 0.7rem">--primary: teal</code>

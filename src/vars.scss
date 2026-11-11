@@ -42,11 +42,10 @@
 
 // Lightness, and the chroma cap that goes with it, per role and scheme.
 @mixin light-scheme {
-  --l-bg: 0.99;
   // 4.0 (PROPOSAL): the page sits a step below the cards, so cards lift off it
   // rather than sinking into it (3.x's surfaces were darker than the page).
-  --l-page: 0.955;
-  --l-raised: 0.995;
+  --l-bg: 0.955;
+  --l-surface: 0.995;
   --l-fg: 0.17;
   --l-muted: 0.34;
   --c-bg: 0.018;
@@ -63,9 +62,8 @@
 }
 
 @mixin dark-scheme {
-  --l-bg: 0.17;
-  --l-page: 0.15;
-  --l-raised: 0.215;
+  --l-bg: 0.15;
+  --l-surface: 0.215;
   --l-fg: 0.99;
   --l-muted: 0.805;
   --c-bg: 0.055;
@@ -103,14 +101,13 @@
   --secondary-base: var(--secondary, var(--primary-base));
 
   // Text: solid colours, so contrast never depends on what is behind them.
-  --fg: #{tone(--neutral-base, var(--l-fg), var(--c-fg))};
-  --fg-muted: #{tone(--neutral-base, var(--l-muted), var(--c-muted))};
-  --fg-faint: #{tone(--neutral-base, 0.58, 0.185)};
+  --ink: #{tone(--neutral-base, var(--l-fg), var(--c-fg))};
+  --muted: #{tone(--neutral-base, var(--l-muted), var(--c-muted))};
+  --faint: #{tone(--neutral-base, 0.58, 0.185)};
+  // 4.0 (PROPOSAL): the apps' names. --bg is the page behind everything;
+  // --surface fills what's raised off it: cards, rows, sheets, fields, notices.
   --bg: #{tone(--neutral-base, var(--l-bg), var(--c-bg))};
-  // 4.0 (PROPOSAL): the page behind everything, and the fill of a card, row or
-  // sheet raised off it.
-  --page: #{tone(--neutral-base, var(--l-page), var(--c-bg))};
-  --raised: #{tone(--neutral-base, var(--l-raised), var(--c-bg))};
+  --surface: #{tone(--neutral-base, var(--l-surface), var(--c-bg))};
 
   // Surfaces and rules: a tinted mid-tone mixed into the page colour, so they
   // carry the theme's colour and flip with the scheme for free. Mixed rather
@@ -118,17 +115,23 @@
   // that can be checked once, whatever sits underneath. 30% lands on 2.x's
   // surface-2 and 63% on its surface-3.
   --tint: #{tone(--neutral-base, var(--l-tint), 0.17)};
-  --surface: color-mix(in oklch, var(--tint) 30%, var(--bg));
-  --surface-strong: color-mix(in oklch, var(--tint) 63%, var(--bg));
-  --divider: color-mix(in oklch, var(--tint) 30%, var(--bg));
+  --fill: color-mix(in oklch, var(--tint) 30%, var(--surface));
+  --fill-strong: color-mix(in oklch, var(--tint) 63%, var(--surface));
+  --line: color-mix(in oklch, var(--tint) 30%, var(--surface));
 
-  // Brand. --line is for strokes and fills that must stay visible against the
+  // Brand. --edge is for strokes and fills that must stay visible against the
   // page: input borders, focus rings, active underlines.
-  --line: #{tone(--primary-base, var(--l-line), 0.17)};
-  --primary-text: #{tone(--primary-base, var(--l-accent-text), 0.17)};
-  --primary-fill: #{tone(--primary-base, 0.46, 0.17)};
-  --on-primary-fill: #{tone(--primary-base, 0.99, 0.018)};
+  --edge: #{tone(--primary-base, var(--l-line), 0.17)};
+  --accent-text: #{tone(--primary-base, var(--l-accent-text), 0.17)};
+  --accent: #{tone(--primary-base, 0.46, 0.17)};
+  --accent-ink: #{tone(--primary-base, 0.99, 0.018)};
   --link: #{tone(--secondary-base, var(--l-accent-text), 0.17)};
+
+  // 4.0 (PROPOSAL): status as text, at the same lightness as --accent-text, so
+  // each reads on --bg and --surface in both schemes.
+  --good: #{tone(--success, var(--l-accent-text), 0.17)};
+  --warn: #{tone(--warning, var(--l-accent-text), 0.17)};
+  --bad: #{tone(--error, var(--l-accent-text), 0.17)};
 }
 
 // Registering the derived colours as <color> makes each one resolve to a
@@ -153,19 +156,25 @@
   initial-value: transparent;
 }
 
-@property --fg {
+@property --ink {
   syntax: "<color>";
   inherits: true;
   initial-value: black;
 }
 
-@property --fg-muted {
+@property --muted {
   syntax: "<color>";
   inherits: true;
   initial-value: transparent;
 }
 
-@property --fg-faint {
+@property --faint {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --tint {
   syntax: "<color>";
   inherits: true;
   initial-value: transparent;
@@ -177,37 +186,19 @@
   initial-value: white;
 }
 
-@property --tint {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: transparent;
-}
-
-@property --page {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: white;
-}
-
-@property --raised {
-  syntax: "<color>";
-  inherits: true;
-  initial-value: white;
-}
-
 @property --surface {
   syntax: "<color>";
   inherits: true;
-  initial-value: transparent;
+  initial-value: white;
 }
 
-@property --surface-strong {
+@property --fill {
   syntax: "<color>";
   inherits: true;
   initial-value: transparent;
 }
 
-@property --divider {
+@property --fill-strong {
   syntax: "<color>";
   inherits: true;
   initial-value: transparent;
@@ -219,19 +210,25 @@
   initial-value: transparent;
 }
 
-@property --primary-text {
+@property --edge {
   syntax: "<color>";
   inherits: true;
   initial-value: transparent;
 }
 
-@property --primary-fill {
+@property --accent-text {
   syntax: "<color>";
   inherits: true;
   initial-value: transparent;
 }
 
-@property --on-primary-fill {
+@property --accent {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: transparent;
+}
+
+@property --accent-ink {
   syntax: "<color>";
   inherits: true;
   initial-value: transparent;

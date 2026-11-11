@@ -33,13 +33,13 @@
     width: 100%;
     max-width: 520px;
     max-height: 88dvh;
-    background-color: var(--bg);
-    color: var(--fg);
+    background-color: var(--surface);
+    color: var(--ink);
     border-radius: var(--radius-box, var(--border-radius)) var(--radius-box, var(--border-radius)) 0 0;
     box-shadow: var(--box-shadow);
     // A rule round its top edge, since a shadow doesn't show in dark mode and
     // the sheet is the page's own colour.
-    border: var(--border-width) solid var(--divider);
+    border: var(--border-width) solid var(--line);
     border-bottom: 0;
     padding-bottom: env(safe-area-inset-bottom, 0px);
     overflow: hidden;
@@ -50,7 +50,7 @@
 
     @media (min-width: 700px) {
       border-radius: var(--radius-box, var(--border-radius));
-      border-bottom: var(--border-width) solid var(--divider);
+      border-bottom: var(--border-width) solid var(--line);
       padding-bottom: 0;
     }
   }
@@ -76,7 +76,7 @@
     height: 4px;
     margin-top: var(--space-sm);
     border-radius: 999px;
-    background-color: var(--surface-strong);
+    background-color: var(--fill-strong);
 
     @media (min-width: 700px) {
       display: none;
@@ -109,7 +109,7 @@
     gap: var(--space-sm);
     justify-content: flex-end;
     padding: var(--space-md) var(--space-lg);
-    border-top: var(--border-width) solid var(--divider);
+    border-top: var(--border-width) solid var(--line);
 
     > .btn {
       min-height: var(--tap);

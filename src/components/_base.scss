@@ -117,13 +117,13 @@
   // component sets wins, and this only fills in where none is set.
   :where(:root, [data-color-scheme], .retheme) {
     @include derived;
-    color: var(--fg);
+    color: var(--ink);
   }
 
   body {
     scrollbar-width: thin;
-    scrollbar-color: var(--line)
-      var(--bg); /* thumb and track */
+    scrollbar-color: var(--edge)
+      var(--surface); /* thumb and track */
   }
 
   ::-webkit-scrollbar-button {
@@ -136,14 +136,14 @@
 @mixin schemes {
   [data-color-scheme="dark"] {
     @include dark-scheme;
-    background-color: var(--page);
-    color: var(--fg);
+    background-color: var(--bg);
+    color: var(--ink);
   }
 
   [data-color-scheme="light"] {
     @include light-scheme;
-    background-color: var(--page);
-    color: var(--fg);
+    background-color: var(--bg);
+    color: var(--ink);
   }
 
   // Headings in the display face, balanced.
@@ -155,7 +155,7 @@
   }
 
   *:focus-visible {
-    outline: 0.15rem solid var(--line);
+    outline: 0.15rem solid var(--edge);
     border-radius: var(--border-radius);
   }
 
@@ -164,20 +164,20 @@
     // 4.0 (PROPOSAL): 16px body (was 18px), on the type scale.
     font-size: var(--text);
 
-    background-color: var(--page);
+    background-color: var(--bg);
 
     min-height: 100vh;
 
-    color: var(--fg);
+    color: var(--ink);
 
     * {
-      outline-color: var(--line);
+      outline-color: var(--edge);
     }
 
     *::selection {
       background-color: color-mix(
         in oklch,
-        var(--surface-strong),
+        var(--fill-strong),
         transparent 50%
       );
     }

@@ -24,9 +24,9 @@
     padding: var(--space-md) max(var(--space-lg), env(safe-area-inset-right, 0px))
       calc(env(safe-area-inset-bottom, 0px) + var(--space-md))
       max(var(--space-lg), env(safe-area-inset-left, 0px));
-    background-color: color-mix(in oklch, var(--bg) 94%, transparent);
+    background-color: color-mix(in oklch, var(--surface) 94%, transparent);
     backdrop-filter: blur(8px);
-    border-top: var(--border-width) solid var(--divider);
+    border-top: var(--border-width) solid var(--line);
   }
 
   // Room under page content for a dock.

@@ -19,12 +19,12 @@
     padding: 0;
     border: 0;
     background: 0;
-    color: var(--fg);
+    color: var(--ink);
     // The box scales in from 125%, which would otherwise scroll sideways.
     overflow-x: hidden;
 
     hr {
-      border-color: var(--divider);
+      border-color: var(--line);
     }
 
     &:not([open]),
@@ -88,7 +88,7 @@
     max-height: calc(100lvh - 2rem);
     margin: 1rem auto;
     overflow: auto;
-    color: var(--fg);
+    color: var(--ink);
 
     // Plays every time the dialog opens: a closed dialog's contents are not
     // rendered, and an animation restarts whenever its element starts rendering.

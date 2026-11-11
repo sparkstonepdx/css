@@ -205,17 +205,17 @@ const probe = (vars, schemeName, extraClass = '') => {
 };
 
 const PAIRS = [
-  ['Text on the page', 'var(--fg)', 'var(--bg)', 4.5],
-  ['Secondary text on the page', 'var(--fg-muted)', 'var(--bg)', 4.5],
-  ['Text on a card', 'var(--fg)', 'var(--surface)', 4.5],
-  ['Secondary text on a card', 'var(--fg-muted)', 'var(--surface)', 4.5],
-  ['Badge text', 'var(--fg-muted)', 'var(--surface-strong)', 4.5],
-  ['Links', 'var(--link)', 'var(--bg)', 4.5],
-  ['Brand text', 'var(--primary-text)', 'var(--bg)', 4.5],
-  ['Button text', 'var(--on-primary-fill)', 'var(--primary-fill)', 4.5],
-  ['Placeholder text', 'color-mix(in oklch, var(--fg-muted) 70%, var(--bg))', 'var(--bg)', 4.5],
-  ['Error text', 'var(--fg-muted)', 'var(--bg)', 4.5, 'error'],
-  ['Borders and focus rings', 'var(--line)', 'var(--bg)', 3],
+  ['Text on the page', 'var(--ink)', 'var(--surface)', 4.5],
+  ['Secondary text on the page', 'var(--muted)', 'var(--surface)', 4.5],
+  ['Text on a card', 'var(--ink)', 'var(--fill)', 4.5],
+  ['Secondary text on a card', 'var(--muted)', 'var(--fill)', 4.5],
+  ['Badge text', 'var(--muted)', 'var(--fill-strong)', 4.5],
+  ['Links', 'var(--link)', 'var(--surface)', 4.5],
+  ['Brand text', 'var(--accent-text)', 'var(--surface)', 4.5],
+  ['Button text', 'var(--accent-ink)', 'var(--accent)', 4.5],
+  ['Placeholder text', 'color-mix(in oklch, var(--muted) 70%, var(--surface))', 'var(--surface)', 4.5],
+  ['Error text', 'var(--muted)', 'var(--surface)', 4.5, 'error'],
+  ['Borders and focus rings', 'var(--edge)', 'var(--surface)', 3],
 ];
 
 const renderContrast = () => {

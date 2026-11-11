@@ -8,9 +8,9 @@
     align-items: center;
     gap: var(--space-xs);
     border-radius: var(--radius-selector, 999px);
-    background-color: var(--surface);
+    background-color: var(--fill);
     padding: var(--space-2xs) var(--space-sm);
-    color: var(--fg-muted);
+    color: var(--muted);
     font-size: var(--text-sm);
     font-weight: 650;
     line-height: 1.4;

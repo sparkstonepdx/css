@@ -7,7 +7,7 @@
 // section, .collapse-title on the trigger, .collapse-content on the panel.
 @mixin styles {
   .collapse {
-    border-bottom: var(--border-width) solid var(--divider);
+    border-bottom: var(--border-width) solid var(--line);
 
     // A native <details> animates its height where the browser supports
     // ::details-content and interpolate-size (Chromium today). Elsewhere the
@@ -40,7 +40,7 @@
     border: 0;
     border-radius: 0;
     background-color: transparent;
-    color: var(--fg);
+    color: var(--ink);
     // Kobalte puts the trigger inside a heading, which would otherwise size it.
     font-size: 1rem;
     font-weight: bold;
@@ -52,7 +52,7 @@
       transition: color var(--duration-change);
     }
     &:hover {
-      color: var(--fg-muted);
+      color: var(--muted);
     }
 
     &:is([data-disabled], :disabled) {

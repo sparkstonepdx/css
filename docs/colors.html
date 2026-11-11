@@ -508,9 +508,11 @@
 <h2>Derived colours</h2>
 <p>
   Components read these, never the inputs. Text colours are solid, so their
-  contrast never depends on what sits behind them. Surfaces and rules are a tinted
-  mid-tone at partial opacity, so they carry the theme's colour, stack when
-  nested, and flip with the scheme on their own.
+  contrast never depends on what sits behind them. The page (<code>--bg</code>) sits a step
+  below what's raised off it (<code>--surface</code>); soft fills and hairlines
+  are a tinted mid-tone mixed in, so they carry the theme's colour and flip with
+  the scheme on their own. The names are the ones the apps built on this library
+  already use.
 </p>
 <div class="token-grid">
   
@@ -523,67 +525,91 @@
     <div class="token">
       <span class="token-swatch" style="background: var(--surface)"></span>
       <code>--surface</code>
-      <small>Raised, 30%</small>
+      <small>Cards, rows, sheets, fields</small>
     </div>
   
     <div class="token">
-      <span class="token-swatch" style="background: var(--surface-strong)"></span>
-      <code>--surface-strong</code>
-      <small>Raised, 63%</small>
+      <span class="token-swatch" style="background: var(--fill)"></span>
+      <code>--fill</code>
+      <small>Soft fill, 30%</small>
     </div>
   
     <div class="token">
-      <span class="token-swatch" style="background: var(--divider)"></span>
-      <code>--divider</code>
-      <small>Rules, 30%</small>
-    </div>
-  
-    <div class="token">
-      <span class="token-swatch" style="background: var(--fg)"></span>
-      <code>--fg</code>
-      <small>Text</small>
-    </div>
-  
-    <div class="token">
-      <span class="token-swatch" style="background: var(--fg-muted)"></span>
-      <code>--fg-muted</code>
-      <small>Secondary text</small>
-    </div>
-  
-    <div class="token">
-      <span class="token-swatch" style="background: var(--fg-faint)"></span>
-      <code>--fg-faint</code>
-      <small>Disabled text</small>
+      <span class="token-swatch" style="background: var(--fill-strong)"></span>
+      <code>--fill-strong</code>
+      <small>Soft fill, 63%</small>
     </div>
   
     <div class="token">
       <span class="token-swatch" style="background: var(--line)"></span>
       <code>--line</code>
-      <small>Borders, focus, fills</small>
+      <small>Hairlines</small>
     </div>
   
     <div class="token">
-      <span class="token-swatch" style="background: var(--primary-text)"></span>
-      <code>--primary-text</code>
-      <small>Brand text</small>
+      <span class="token-swatch" style="background: var(--edge)"></span>
+      <code>--edge</code>
+      <small>Borders that must show: fields, focus</small>
     </div>
   
     <div class="token">
-      <span class="token-swatch" style="background: var(--primary-fill)"></span>
-      <code>--primary-fill</code>
+      <span class="token-swatch" style="background: var(--ink)"></span>
+      <code>--ink</code>
+      <small>Text</small>
+    </div>
+  
+    <div class="token">
+      <span class="token-swatch" style="background: var(--muted)"></span>
+      <code>--muted</code>
+      <small>Secondary text</small>
+    </div>
+  
+    <div class="token">
+      <span class="token-swatch" style="background: var(--faint)"></span>
+      <code>--faint</code>
+      <small>Disabled text</small>
+    </div>
+  
+    <div class="token">
+      <span class="token-swatch" style="background: var(--accent)"></span>
+      <code>--accent</code>
       <small>Filled button</small>
     </div>
   
     <div class="token">
-      <span class="token-swatch" style="background: var(--on-primary-fill)"></span>
-      <code>--on-primary-fill</code>
+      <span class="token-swatch" style="background: var(--accent-ink)"></span>
+      <code>--accent-ink</code>
       <small>Text on it</small>
+    </div>
+  
+    <div class="token">
+      <span class="token-swatch" style="background: var(--accent-text)"></span>
+      <code>--accent-text</code>
+      <small>Brand text</small>
     </div>
   
     <div class="token">
       <span class="token-swatch" style="background: var(--link)"></span>
       <code>--link</code>
       <small>Links</small>
+    </div>
+  
+    <div class="token">
+      <span class="token-swatch" style="background: var(--good)"></span>
+      <code>--good</code>
+      <small>Success text</small>
+    </div>
+  
+    <div class="token">
+      <span class="token-swatch" style="background: var(--warn)"></span>
+      <code>--warn</code>
+      <small>Warning text</small>
+    </div>
+  
+    <div class="token">
+      <span class="token-swatch" style="background: var(--bad)"></span>
+      <code>--bad</code>
+      <small>Error text</small>
     </div>
   
 </div>
@@ -593,7 +619,7 @@
   Set an input on any element and add <code>.retheme</code>, and everything inside
   re-themes around it. The class marks where colours are derived again; between
   boundaries they are simply inherited, so you can also override a single derived
-  colour, such as <code>--surface</code>, for a whole subtree. These are nested
+  colour, such as <code>--fill</code>, for a whole subtree. These are nested
   sections, each setting a single input:
 </p>
 

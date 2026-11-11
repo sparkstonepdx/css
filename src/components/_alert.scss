@@ -13,10 +13,10 @@
     padding: calc(var(--padding) / 2) var(--padding);
     margin-bottom: 1rem;
 
-    border: var(--border-width) solid var(--divider);
+    border: var(--border-width) solid var(--line);
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: var(--raised);
-    color: var(--fg);
+    background-color: var(--surface);
+    color: var(--ink);
   }
 
   .alert-error {
