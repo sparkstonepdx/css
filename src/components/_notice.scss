@@ -28,11 +28,11 @@
     width: 100%;
     max-width: 420px;
     padding: var(--space-md) var(--space-lg);
-    border: var(--border-width) solid var(--line);
+    border: var(--border-width) solid var(--divider);
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: var(--surface);
+    background-color: var(--raised);
     color: var(--fg);
-    box-shadow: var(--box-shadow);
+    box-shadow: 0 6px 20px oklch(0 0 0 / 0.14);
     pointer-events: auto;
 
     @media (prefers-reduced-motion: no-preference) {

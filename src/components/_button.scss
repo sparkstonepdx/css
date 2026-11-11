@@ -9,17 +9,26 @@
 }
 
 @mixin styles {
+  // 4.0 (PROPOSAL): the look from Wordbag's buttons. A filled button for the
+  // one main action; a quiet one (raised fill, hairline) for the rest; ghost
+  // for actions in a row of text. All reach --tap tall.
   .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-sm);
+    min-height: var(--tap);
+    padding: var(--space-sm) var(--space-lg);
     border: var(--border-width) solid var(--primary-fill);
-    display: inline-block;
-    text-decoration: none;
     border-radius: var(--radius-field, var(--border-radius));
-    cursor: pointer;
-    padding: 0.75rem 1rem;
-    text-align: center;
-
     background-color: var(--primary-fill);
     color: var(--on-primary-fill);
+    font: inherit;
+    font-weight: 650;
+    line-height: 1.2;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
 
     @media (prefers-reduced-motion: no-preference) {
       transition:
@@ -27,27 +36,35 @@
         border-color var(--duration-change),
         color var(--duration-change),
         // Fast start, soft landing, so the press answers the click at once.
-        // Material 3's standard curve; the default ease starts slowly.
         transform var(--duration-change) cubic-bezier(0.2, 0, 0, 1);
 
-      // Grows slightly while pressed, rising to meet the click rather than
-      // sinking away from it.
       &:active {
-        transform: scale(1.02);
+        transform: scale(0.97);
       }
     }
   }
 
   .btn-secondary {
-    border-color: var(--primary-text);
-    color: var(--fg-muted);
-    background: transparent;
+    border-color: var(--divider);
+    background-color: var(--raised);
+    color: var(--fg);
+    font-weight: 500;
+
+    &:hover {
+      border-color: var(--line);
+    }
   }
 
   .btn-ghost {
-    color: var(--fg-muted);
-    background-color: transparent;
     border-color: transparent;
+    background-color: transparent;
+    color: var(--fg-muted);
+    font-weight: 500;
+
+    &:hover {
+      color: var(--fg);
+      background-color: var(--surface);
+    }
   }
 
   .btn-neutral {
@@ -60,7 +77,9 @@
   }
 
   // 4.0 (PROPOSAL): sizes, and a button that is only a glyph (×, ≡, ‹ ›).
+  // Smaller to look at, still --tap to hit where there's room (add .tap).
   .btn-sm {
+    min-height: 2rem;
     padding: var(--space-xs) var(--space-md);
     font-size: var(--text-sm);
   }

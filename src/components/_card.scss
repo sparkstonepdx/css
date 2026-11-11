@@ -1,26 +1,31 @@
 @use "../vars.scss" as *;
 
 // Declaration blocks, so .dialog-box and .dialog-actions can reuse them.
+// 4.0 (PROPOSAL): a card is raised off the page: a lighter fill, a hairline and
+// a slight lift (--card-shadow), not a darker well. The same padding inside a
+// card as between cards, so a list of them reads as one grid.
 @mixin card {
-  padding: 1rem;
+  padding: var(--card-pad);
+  border: var(--border-width) solid var(--divider);
   border-radius: var(--radius-box, var(--border-radius));
-  background-color: var(--surface);
-
-  box-shadow: var(--box-shadow);
+  background-color: var(--raised);
+  box-shadow: var(--card-shadow);
 }
 
 @mixin card-actions {
-  margin-top: 1rem;
-  padding-top: 1rem;
-  border-bottom-right-radius: var(--radius-box, var(--border-radius));
-  border-bottom-left-radius: var(--radius-box, var(--border-radius));
-  border-top: var(--border-width) solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  justify-content: flex-end;
+  margin-top: var(--card-pad);
+  padding-top: var(--card-pad);
+  border-top: var(--border-width) solid var(--divider);
 }
 
 @mixin card-border {
   border: var(--border-width) solid var(--divider);
-  background-color: var(--bg);
-  padding: var(--padding);
+  background-color: transparent;
+  padding: var(--card-pad);
   border-radius: var(--radius-box, var(--border-radius));
 }
 
@@ -35,5 +40,78 @@
 
   .card-border {
     @include card-border;
+  }
+
+  // 4.0 (PROPOSAL): a list of named things (games, apps, people, sites), one
+  // per row: art or a status at the start, a title and a detail line, and one
+  // action or a › at the end. Rows sit together in one raised block, split by
+  // hairlines, rather than as a stack of separate cards.
+  .list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    border: var(--border-width) solid var(--divider);
+    border-radius: var(--radius-box, var(--border-radius));
+    background-color: var(--raised);
+    box-shadow: var(--card-shadow);
+    overflow: hidden;
+  }
+
+  .row {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    min-height: calc(var(--tap) + var(--space-md));
+    padding: var(--space-sm) var(--card-pad);
+    color: inherit;
+    text-decoration: none;
+
+    & + & {
+      border-top: var(--border-width) solid var(--divider);
+    }
+  }
+
+  a.row,
+  button.row {
+    width: 100%;
+    border: 0;
+    background: none;
+    font: inherit;
+    text-align: start;
+    cursor: pointer;
+
+    &:hover {
+      background-color: var(--surface);
+    }
+  }
+
+  .row-main {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+
+    > :first-child {
+      font-weight: 600;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    > small {
+      color: var(--fg-muted);
+      font-size: var(--text-sm);
+    }
+  }
+
+  .row-end {
+    flex: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    color: var(--fg-muted);
   }
 }

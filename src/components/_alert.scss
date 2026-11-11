@@ -13,9 +13,9 @@
     padding: calc(var(--padding) / 2) var(--padding);
     margin-bottom: 1rem;
 
-    border: var(--border-width) solid var(--line);
+    border: var(--border-width) solid var(--divider);
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: var(--surface);
+    background-color: var(--raised);
     color: var(--fg);
   }
 

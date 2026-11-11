@@ -1,11 +1,19 @@
 @use "../vars.scss" as *;
 
 @mixin styles {
+  // 4.0 (PROPOSAL): Wordbag's pill. Small and bold on a soft fill, so it reads
+  // as a label, not a button.
   .badge {
-    border-radius: var(--radius-selector, calc(var(--border-radius) * 2));
-    background-color: var(--surface-strong);
-    padding: var(--space-xs) var(--space-sm);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    border-radius: var(--radius-selector, 999px);
+    background-color: var(--surface);
+    padding: var(--space-2xs) var(--space-sm);
     color: var(--fg-muted);
+    font-size: var(--text-sm);
+    font-weight: 650;
+    line-height: 1.4;
     white-space: nowrap;
   }
 

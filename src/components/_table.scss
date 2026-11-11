@@ -1,20 +1,29 @@
 @use "../vars.scss" as *;
 
 @mixin styles {
+  // 4.0 (PROPOSAL): compact rows, hairline rules, quiet headers, numbers lined
+  // up. A table is read, so it doesn't need card padding in every cell.
   .table {
     border-collapse: collapse;
     width: 100%;
-
-    th {
-      --specific-border-width: calc(var(--border-width) * 2);
-    }
+    font-variant-numeric: tabular-nums;
 
     td,
     th {
-      border-bottom: var(--specific-border-width, var(--border-width)) solid
-        var(--divider);
+      border-bottom: var(--border-width) solid var(--divider);
       text-align: left;
-      padding: calc(1rem / 2) 1rem;
+      padding: var(--space-sm) var(--space-md);
+      vertical-align: middle;
+    }
+
+    th {
+      color: var(--fg-muted);
+      font-size: var(--text-sm);
+      font-weight: 600;
+    }
+
+    tr:last-child td {
+      border-bottom: 0;
     }
   }
 }
