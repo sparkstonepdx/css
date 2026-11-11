@@ -34,6 +34,21 @@
     @extend .retheme;
   }
 
+  // 4.0 (PROPOSAL): success and warning, as a pair to .error. Text and fills
+  // take the status colour; surfaces take a tint of it, so a badge or alert
+  // reads as ok or careful at a glance, not just by its words.
+  .success {
+    --primary: var(--success);
+    --neutral: var(--success);
+    @extend .retheme;
+  }
+
+  .warning {
+    --primary: var(--warning);
+    --neutral: var(--warning);
+    @extend .retheme;
+  }
+
   .btn-disabled {
     @extend .disabled;
   }

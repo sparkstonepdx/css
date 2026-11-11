@@ -4,8 +4,23 @@
   .badge {
     border-radius: var(--radius-selector, calc(var(--border-radius) * 2));
     background-color: var(--surface-strong);
-    padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
+    padding: var(--space-xs) var(--space-sm);
     color: var(--fg-muted);
     white-space: nowrap;
+  }
+
+  // 4.0 (PROPOSAL): status badges. Surface and text both take the status
+  // colour, so the badge is tinted, not just its words.
+  .badge-success {
+    @extend .success;
+  }
+
+  .badge-warning {
+    @extend .warning;
+  }
+
+  .badge-error {
+    --neutral: var(--error);
+    @extend .error;
   }
 }

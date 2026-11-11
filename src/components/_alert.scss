@@ -3,8 +3,7 @@
 // ALPHA: the class names and states are stable, the look is not. These styles
 // can change in a minor release. Every value is listed in DESIGN-REVIEW.md.
 //
-// A short, important message. Only the error variant exists: the framework has
-// no tokens for info, success or warning. See DESIGN-REVIEW.md.
+// A short, important message, plain or with a status: error, success, warning.
 @mixin styles {
   .alert {
     display: flex;
@@ -21,6 +20,15 @@
   }
 
   .alert-error {
+    --neutral: var(--error);
     @extend .error;
+  }
+
+  .alert-success {
+    @extend .success;
+  }
+
+  .alert-warning {
+    @extend .warning;
   }
 }
