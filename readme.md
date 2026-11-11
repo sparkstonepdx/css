@@ -231,3 +231,7 @@ docs/       # Output static site for GitHub Pages
 ## 💬 License
 
 MIT © [Sparkstone LLC](https://sparkstonepdx.com)
+
+## Releasing
+
+Every pull request that changes the package adds a changeset: run `pnpm changeset`, pick patch, minor or major, and write one line for the changelog. On `main`, the Release workflow keeps a "Version Packages" pull request open with the pending changesets; merging it bumps the version, writes `CHANGELOG.md`, publishes to npm and tags the release. Every commit is still installable from pkg.pr.new.

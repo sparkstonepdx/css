@@ -1,0 +1,49 @@
+name: 🚀 Release
+
+# On every push to main, opens or updates a "Version Packages" pull request from
+# the changesets in .changeset/. Merging that pull request bumps package.json,
+# writes CHANGELOG.md, publishes to npm and tags the release.
+#
+# Publishes with npm trusted publishing (OIDC): no token secret. Set it up once
+# on npmjs.com under the package's settings, for this repository and release.yml.
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: write
+  pull-requests: write
+  id-token: write
+
+concurrency: release-${{ github.ref }}
+
+jobs:
+  release:
+    name: "🚀 Version or publish"
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: pnpm/action-setup@v4
+
+      - name: Use Node.js 24
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: "pnpm"
+          registry-url: "https://registry.npmjs.org"
+
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
+
+      - name: Version or publish
+        uses: changesets/action@v1
+        with:
+          publish: pnpm release
+          title: "Version Packages"
+          commit: "Version Packages"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
