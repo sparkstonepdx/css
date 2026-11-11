@@ -58,4 +58,35 @@
   .btn-primary {
     @include btn-primary;
   }
+
+  // 4.0 (PROPOSAL): sizes, and a button that is only a glyph (×, ≡, ‹ ›).
+  .btn-sm {
+    padding: var(--space-xs) var(--space-md);
+    font-size: var(--text-sm);
+  }
+
+  .btn-lg {
+    padding: var(--space-lg) var(--space-xl);
+    font-size: var(--text-lg);
+  }
+
+  .icon-btn {
+    display: inline-grid;
+    place-items: center;
+    min-width: var(--tap);
+    min-height: var(--tap);
+    padding: 0;
+    border: 0;
+    background: transparent;
+    color: var(--fg-muted);
+    font-size: var(--text-icon);
+    line-height: 1;
+    cursor: pointer;
+    border-radius: var(--radius-field, var(--border-radius));
+
+    &:hover {
+      color: var(--fg);
+      background-color: var(--surface);
+    }
+  }
 }

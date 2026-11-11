@@ -1,0 +1,130 @@
+@use "../vars.scss" as *;
+
+// ALPHA (4.0 PROPOSAL): a sheet, the phone's dialog. It slides up from the
+// bottom over what you were doing, within thumb reach: a grip, a header with a
+// title and a close button, a body that is the only part that scrolls, and an
+// optional footer for actions. From 700px wide it floats in the middle with all
+// corners rounded. Swipe to close, Back to close and snap points need
+// JavaScript (@sparkstone/kit's Sheet); this is the look. Every value is listed
+// in DESIGN-REVIEW.md.
+@mixin styles {
+  .sheet-backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: var(--z-sheet);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    background-color: oklch(0 0 0 / 0.35);
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: sparkstone-fade-in var(--duration-change) ease-out;
+    }
+
+    @media (min-width: 700px) {
+      align-items: center;
+      padding: var(--space-xl);
+    }
+  }
+
+  .sheet {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 520px;
+    max-height: 88dvh;
+    background-color: var(--bg);
+    color: var(--fg);
+    border-radius: var(--radius-box, var(--border-radius)) var(--radius-box, var(--border-radius)) 0 0;
+    box-shadow: var(--box-shadow);
+    // A rule round its top edge, since a shadow doesn't show in dark mode and
+    // the sheet is the page's own colour.
+    border: var(--border-width) solid var(--divider);
+    border-bottom: 0;
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+    overflow: hidden;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: sparkstone-sheet-up 340ms var(--ease-settle);
+    }
+
+    @media (min-width: 700px) {
+      border-radius: var(--radius-box, var(--border-radius));
+      border-bottom: var(--border-width) solid var(--divider);
+      padding-bottom: 0;
+    }
+  }
+
+  // Lists of pictures and long tables.
+  .sheet-wide {
+    max-width: 720px;
+  }
+
+  // Grown to the whole screen once someone scrolls in to read.
+  .sheet-full {
+    @media (max-width: 699px) {
+      max-height: 100dvh;
+      height: 100dvh;
+      border-radius: 0;
+      padding-top: env(safe-area-inset-top, 0px);
+    }
+  }
+
+  .sheet-grip {
+    align-self: center;
+    width: 36px;
+    height: 4px;
+    margin-top: var(--space-sm);
+    border-radius: 999px;
+    background-color: var(--surface-strong);
+
+    @media (min-width: 700px) {
+      display: none;
+    }
+  }
+
+  .sheet-header {
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+    padding: var(--space-md) var(--space-lg) 0;
+
+    > :first-child {
+      flex: 1;
+      margin: 0;
+      font-size: var(--text-lg);
+    }
+  }
+
+  .sheet-body {
+    flex: 1;
+    min-height: 0;
+    overflow-y: auto;
+    overscroll-behavior-y: contain;
+    padding: var(--space-md) var(--space-lg) var(--space-lg);
+  }
+
+  .sheet-footer {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: flex-end;
+    padding: var(--space-md) var(--space-lg);
+    border-top: var(--border-width) solid var(--divider);
+
+    > .btn {
+      min-height: var(--tap);
+    }
+  }
+
+  @keyframes sparkstone-sheet-up {
+    from {
+      transform: translateY(100%);
+    }
+  }
+
+  @keyframes sparkstone-fade-in {
+    from {
+      opacity: 0;
+    }
+  }
+}
