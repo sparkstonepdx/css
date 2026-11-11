@@ -39,6 +39,10 @@ jobs:
       - name: Install dependencies
         run: pnpm install --frozen-lockfile
 
+      # Trusted publishing (OIDC) needs npm 11.5.1 or later; Node's bundled npm can be older.
+      - name: Use an npm that can publish with OIDC
+        run: npm install -g npm@latest
+
       - name: Version or publish
         uses: changesets/action@v1
         with:
