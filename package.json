@@ -56,12 +56,12 @@
   "license": "ISC",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sparkstonepdx/css.git"
+    "url": "https://github.com/sparkstonepdx/css.git"
   },
   "bugs": {
-    "url": "https://github.com/Sparkstonepdx/css/issues"
+    "url": "https://github.com/sparkstonepdx/css/issues"
   },
-  "homepage": "https://github.com/Sparkstonepdx/css#readme",
+  "homepage": "https://github.com/sparkstonepdx/css#readme",
   "packageManager": "pnpm@12.15.0",
   "devDependencies": {
     "@changesets/changelog-github": "^1.0.1",
