@@ -2,7 +2,7 @@
 
 @mixin styles {
   .fieldset {
-    border: var(--border-width) solid var(--divider);
+    border: var(--border-width) solid var(--line);
     border-radius: var(--radius-box, var(--border-radius));
     padding: 1rem 1rem;
     margin-bottom: 1rem;

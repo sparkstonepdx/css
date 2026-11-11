@@ -26,6 +26,9 @@
 @use "navbar";
 @use "pagination";
 @use "segmented";
+@use "phone";
+@use "sheet";
+@use "notice";
 @use "menu";
 @use "progress";
 @use "prose";
@@ -84,4 +87,7 @@
   @include progress.styles;
   @include layout.flex-styles;
   @include badge.styles;
+  @include phone.styles;
+  @include sheet.styles;
+  @include notice.styles;
 }

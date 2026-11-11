@@ -14,7 +14,53 @@
   }
 
   .text-secondary {
-    color: var(--fg-muted);
+    color: var(--muted);
+  }
+
+  // 4.0 (PROPOSAL): the head of a page: the title, a muted detail beside it,
+  // and its actions pushed to the end. Wraps on a phone.
+  .page-head {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm) var(--space-md);
+    margin-bottom: var(--space-xl);
+
+    > :where(h1, h2) {
+      margin: 0;
+      font-size: var(--text-xl);
+    }
+  }
+
+  .page-actions {
+    display: flex;
+    gap: var(--space-sm);
+    margin-inline-start: auto;
+  }
+
+  // A small label over a heading or a section.
+  .eyebrow {
+    margin: 0;
+    color: var(--muted);
+    font-size: var(--text-xs);
+    font-weight: 650;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+
+  // A stack of sections, a section's own stack, and the space a heading leaves.
+  .stack {
+    display: flex;
+    flex-direction: column;
+    gap: var(--card-gap);
+  }
+
+  .section + .section {
+    margin-top: var(--space-2xl);
+  }
+
+  .section > :where(h2, h3, .eyebrow):first-child {
+    margin: 0 0 var(--space-md);
   }
 
   // The two generic states. Anything disabled or invalid, however it says so,
@@ -34,12 +80,27 @@
     @extend .retheme;
   }
 
+  // 4.0 (PROPOSAL): success and warning, as a pair to .error. Text and fills
+  // take the status colour; surfaces take a tint of it, so a badge or alert
+  // reads as ok or careful at a glance, not just by its words.
+  .success {
+    --primary: var(--success);
+    --neutral: var(--success);
+    @extend .retheme;
+  }
+
+  .warning {
+    --primary: var(--warning);
+    --neutral: var(--warning);
+    @extend .retheme;
+  }
+
   .btn-disabled {
     @extend .disabled;
   }
 
   .text-error {
     @extend .error;
-    color: var(--fg-muted);
+    color: var(--muted);
   }
 }

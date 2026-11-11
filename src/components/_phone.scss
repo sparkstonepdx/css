@@ -1,0 +1,79 @@
+@use "../vars.scss" as *;
+
+// ALPHA (4.0 PROPOSAL): the phone layer. Apps built on this library live at the
+// bottom of a phone, in one hand: a dock for what you do most, bars clear of the
+// home gesture, safe areas, and targets a thumb can hit. Every value is listed
+// in DESIGN-REVIEW.md.
+@mixin styles {
+  // The bottom edge. Anything pinned to it sits this far up: at least 16px of
+  // safe area, plus 28px so reaching for it never lands on the home-gesture
+  // strip of a phone without a home button.
+  :root {
+    --safe-bottom: max(env(safe-area-inset-bottom, 0px), 16px);
+    --gesture-clear: calc(var(--safe-bottom) + 28px);
+  }
+
+  // A bar fixed to the bottom for what's done most: actions, quick logs, the
+  // main input. Content scrolls above it. Set --dock-h on :root from its
+  // measured height (the kit does) so notices and padding can sit above it.
+  .dock {
+    position: fixed;
+    inset-inline: 0;
+    bottom: 0;
+    z-index: var(--z-dock);
+    padding: var(--space-md) max(var(--space-lg), env(safe-area-inset-right, 0px))
+      calc(env(safe-area-inset-bottom, 0px) + var(--space-md))
+      max(var(--space-lg), env(safe-area-inset-left, 0px));
+    background-color: color-mix(in oklch, var(--surface) 94%, transparent);
+    backdrop-filter: blur(8px);
+    border-top: var(--border-width) solid var(--line);
+  }
+
+  // Room under page content for a dock.
+  .dock-space {
+    padding-bottom: calc(var(--dock-h, 0px) + var(--space-xl));
+  }
+
+  // Short-lived bars at the bottom: "A new version is ready", "Install".
+  .bottom-bars {
+    position: fixed;
+    inset-inline: 0;
+    bottom: calc(var(--dock-h, 0px) + var(--gesture-clear));
+    z-index: var(--z-bar);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-inline: var(--space-md);
+    pointer-events: none;
+
+    > * {
+      pointer-events: auto;
+    }
+  }
+
+  // A control drawn small reaches --tap with an invisible hit area, where it
+  // has room around it. Where controls sit close, give them a real
+  // min-height instead, or the reaches overlap.
+  .tap {
+    position: relative;
+
+    &::after {
+      content: "";
+      position: absolute;
+      inset: min(0px, calc((100% - var(--tap)) / 2));
+    }
+  }
+
+  // Phone niceties: no double-tap zoom on controls, and iPhone doesn't zoom
+  // into a field whose text is under 16px.
+  :where(a, button, input, label, select, textarea, summary, [role="button"], .btn) {
+    touch-action: manipulation;
+  }
+
+  @supports (-webkit-touch-callout: none) {
+    :where(input, select, textarea) {
+      font-size: max(16px, 1em);
+    }
+  }
+}

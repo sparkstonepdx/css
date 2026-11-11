@@ -1,0 +1,93 @@
+@use "../vars.scss" as *;
+
+// ALPHA (4.0 PROPOSAL): notices, the phone's toasts. They open low, just above
+// the dock (or the bottom edge), where the thumb and the eyes already are, and
+// stack upward. A notice about a thing shows that thing in a coin at its start.
+// How long each stays up, and showing one at a time, need JavaScript
+// (@sparkstone/kit's say and sayEach). Every value is listed in DESIGN-REVIEW.md.
+@mixin styles {
+  .notices {
+    position: fixed;
+    inset-inline: 0;
+    bottom: calc(var(--dock-h, 0px) + var(--space-sm) + env(safe-area-inset-bottom, 0px));
+    z-index: var(--z-notice);
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: var(--space-sm);
+    padding-inline: var(--space-md);
+    margin: 0;
+    list-style: none;
+    pointer-events: none;
+  }
+
+  .notice {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    width: 100%;
+    max-width: 420px;
+    padding: var(--space-md) var(--space-lg);
+    border: var(--border-width) solid var(--line);
+    border-radius: var(--radius-box, var(--border-radius));
+    background-color: var(--surface);
+    color: var(--ink);
+    box-shadow: 0 6px 20px oklch(0 0 0 / 0.14);
+    pointer-events: auto;
+
+    @media (prefers-reduced-motion: no-preference) {
+      animation: sparkstone-rise var(--duration-enter) var(--ease-spring);
+    }
+  }
+
+  .notice-error {
+    --neutral: var(--error);
+    @extend .error;
+  }
+
+  .notice-success {
+    @extend .success;
+  }
+
+  .notice-warning {
+    @extend .warning;
+  }
+
+  // The thing the notice is about: an icon or picture in a coin.
+  .notice-art {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999px;
+    background-color: var(--accent);
+    color: var(--accent-ink);
+  }
+
+  .notice-text {
+    flex: 1;
+    min-width: 0;
+
+    > strong {
+      display: block;
+    }
+
+    > small {
+      color: var(--muted);
+    }
+  }
+
+  .notice-actions {
+    display: flex;
+    gap: var(--space-sm);
+    flex: none;
+  }
+
+  @keyframes sparkstone-rise {
+    from {
+      opacity: 0;
+      transform: translateY(0.75rem) scale(0.98);
+    }
+  }
+}

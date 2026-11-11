@@ -18,7 +18,6 @@
     display: block;
     width: 100%;
     height: var(--slider-thumb);
-    margin-bottom: 1rem;
     padding: 0;
     border: 0;
     background: transparent;
@@ -28,7 +27,7 @@
       @include slider.rail;
       background-image: linear-gradient(
         to right,
-        var(--line) var(--range-fill),
+        var(--edge) var(--range-fill),
         transparent var(--range-fill)
       );
     }

@@ -217,6 +217,14 @@
               
                 <li>
                   <a
+                    href="./list.html"
+                    
+                    >List and row<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
                     href="./progress.html"
                     
                     >Progress</a
@@ -393,6 +401,22 @@
                   >
                 </li>
               
+                <li>
+                  <a
+                    href="./sheet.html"
+                    
+                    >Sheet<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./notice.html"
+                    
+                    >Notice<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
             </ul>
           
             <p class="sidebar-group">Layout</p>
@@ -411,6 +435,14 @@
                     href="./loading.html"
                     
                     >Loading<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./phone.html"
+                    
+                    >Phone layer<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
                   >
                 </li>
               
@@ -447,21 +479,21 @@
         <p>Name</p>
         <input id="tg-name" value="my-theme" pattern="[a-z][a-z0-9-]*" />
       </label>
-      <div class="tg-color">
+      <div class="tg-color field-row">
         <label><p>Primary</p><input type="color" data-key="primary" /></label>
         <input data-hex="primary" aria-label="Primary hex" />
       </div>
-      <div class="tg-color">
+      <div class="tg-color field-row">
         <label><p>Secondary</p><input type="color" data-key="secondary" /></label>
         <input data-hex="secondary" aria-label="Secondary hex" />
       </div>
-      <label><input type="checkbox" data-follow="secondary" checked /> Primary rotated 180°</label>
-      <div class="tg-color">
+      <label><input type="checkbox" data-follow="secondary" checked /> Same as primary</label>
+      <div class="tg-color field-row">
         <label><p>Neutral</p><input type="color" data-key="neutral" /></label>
         <input data-hex="neutral" aria-label="Neutral hex" />
       </div>
-      <label><input type="checkbox" data-follow="neutral" checked /> Same as primary</label>
-      <div class="tg-color">
+      <label><input type="checkbox" data-follow="neutral" checked /> A grey on the primary's hue</label>
+      <div class="tg-color field-row">
         <label><p>Error</p><input type="color" data-key="error" /></label>
         <input data-hex="error" aria-label="Error hex" />
       </div>

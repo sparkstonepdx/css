@@ -6,22 +6,22 @@
     display: inline-block;
     width: 100%;
     margin-bottom: 0.5rem;
-    background-color: var(--on-primary-fill);
+    background-color: var(--accent-ink);
     border: none;
     border-radius: var(--radius-box, var(--border-radius));
     overflow: hidden;
     height: 0.5rem;
 
     &::-webkit-progress-bar {
-      background-color: var(--surface);
+      background-color: var(--fill);
     }
 
     &::-webkit-progress-value {
-      background-color: var(--line);
+      background-color: var(--edge);
     }
 
     &::-moz-progress-bar {
-      background-color: var(--line);
+      background-color: var(--edge);
     }
   }
 }

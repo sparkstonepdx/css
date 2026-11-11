@@ -1,5 +1,39 @@
 # Design review
 
+## 4.0 (`v4` branch) — not signed off
+
+Why: UIs built on 3.x without a design direction came out lavender with olive links and heavy outlines (the Nook dashboard), and none of the phone apps used the library because it had no dock, sheet, safe areas or tap minimum. These are the changes; every value is a proposal.
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| `--neutral` default | `oklch(from primary l 0.02 h)`: a near-grey on the brand's hue | **Breaking.** 3.x used the primary itself, so the page, surfaces and text took the brand's full colour. `--neutral: var(--primary)` restores it |
+| `--secondary` default | the primary | **Breaking.** 3.x rotated it 180deg: purple brands got olive links |
+| `--border-width` | `1px` | **Breaking.** 3.x was `0.1625rem` (2.6px) |
+| Body text | `var(--text)`, 16px | **Breaking.** 3.x was 18px |
+| Status colours | `--success` `oklch(0.55 0.13 150)`, `--warning` `oklch(0.7 0.15 75)`; `.success`, `.warning` beside `.error`; `.badge-*` and `.alert-*` for all three, and `.notice-*` | a status sets `--neutral` as well as `--primary`, so the surface takes a tint of it, not just the text |
+| Type scale | `--text-xs` 0.75, `--text-sm` 0.875, `--text` 1, `--text-lg` 1.25, `--text-xl` 1.75, `--text-icon` 1.5 rem | from Wordbag; components still use their own sizes until moved over |
+| Space scale | `--space-2xs` 0.125 to `--space-3xl` 3rem, eight steps | from Wordbag; same note |
+| Layers | `--z-dock` 10, `--z-sheet` 20, `--z-notice` 30, `--z-popover` 35, `--z-drag` 40, `--z-fx` 45, `--z-bar` 60 | `.dialog` is still 999 and the dropdown 50 |
+| `--tap` | 44px | WCAG 2.2 2.5.5 |
+| Easing | `--ease-pop`, `--ease-spring`, `--ease-out`, `--ease-in-out`, `--ease-settle` | Word Summit's curves and Wordbag's sheet curve |
+| Phone layer (`_phone.scss`) | `.dock`, `.dock-space`, `.bottom-bars` (28px above a 16px-minimum safe area), `.tap` reach, `touch-action: manipulation` on controls, 16px inputs on iOS | |
+| `.sheet` | bottom-anchored, 520px (720 wide), 88dvh, a `--divider` rule round its edge (a shadow doesn't show in dark), grip 36 by 4, slides up 340ms on `--ease-settle`; centred with all corners rounded from 700px | the look of Wordbag's drawer; behaviour lives in @sparkstone/kit |
+| `.notice` | stack above `--dock-h`, cards up to 420px, rise over `--duration-enter` on `--ease-spring`, a 2.5rem coin for the thing it's about | replaces the corner `.toast` on phones |
+| Buttons | `.btn-sm`, `.btn-lg`, `.icon-btn` (44 by 44, `--text-icon`) | |
+| Token names | the apps' names: `--bg` (page), `--surface` (raised), `--fill`, `--fill-strong`, `--line` (hairline), `--edge` (3:1 boundary), `--ink`, `--muted`, `--faint`, `--accent`, `--accent-ink`, `--accent-text`, `--link`, and new `--good`, `--warn`, `--bad` | **Breaking.** Decided by Adam; the migration table is in the 4.0 changeset |
+| Controls line up | every one-line control is `--control-h` (2.75rem) tall: fields, colour inputs, buttons, tabs; selects reach it by padding. Controls carry no outer margin; `.label` spaces a form (1rem) and rows zero it. New `.field-row` lines controls up on their bottom edge | **Breaking:** bare controls lose their 1rem bottom margin. `tests/alignment.spec.ts` fails if controls side by side differ in height or bottom edge on any docs page |
+| `.navbar` | follows `--radius-box` with a hairline all round, so the radius controls reach it; `.navbar-flush` for a bar that runs edge to edge (square, a rule under it only) | **Breaking** for a bar at the page's top edge: add `.navbar-flush` to keep 3.x's look |
+| Reference knobs | `--font`, `--display`, `--display-weight` (750), `--card-shadow`, `--card-pad`, `--card-gap`, with the radii and `--border-width` | what an app sets from its physical reference; the PR shows four references set this way |
+| Page and raised | `--bg` (light 0.955, dark 0.15) behind everything; `--surface` (light 0.995, dark 0.215) for cards, rows, sheets, fields, notices | **Breaking.** 3.x cards were darker than the page, so they read as wells |
+| `.btn` | inline-flex, `--tap` tall, `--space-sm` by `--space-lg`, weight 650; press shrinks to 0.97 | `.btn-secondary` is the raised fill with a hairline (Wordbag's quiet button), `.btn-ghost` text only |
+| `.card` | raised fill, hairline, `--card-shadow`, `--card-pad` | `.card-border` is the hairline alone |
+| `.list` / `.row` | one raised block, rows split by hairlines, at least `--tap` + 12px tall | new |
+| `.badge` | Wordbag's pill: `--text-sm`, weight 650, pill corners, `--surface` fill | |
+| `.table` | `--space-sm` by `--space-md` cells, muted small headers, tabular numbers, no rule under the last row | |
+| Headings | `--display` at `--display-weight`, line-height 1.15, balanced | |
+| `.page-head`, `.page-actions`, `.eyebrow`, `.stack`, `.section` | | new |
+| `.alert`, `.notice` | raised fill and hairline (the notice adds a soft drop shadow) instead of the brand's tint and line | |
+
 ## 3.0 colour engine (`src/vars.scss`) — not signed off
 
 The nine-step scale is gone. Four inputs, set on any `.retheme` element,
@@ -23,11 +57,11 @@ the input's hue and chroma and pin only the lightness.
 | Panel entrance | dropdown, popover and tooltip fade in from `scale(0.96)` over `--duration-change`, from the top edge (tooltips from the centre) | plays whenever the panel starts rendering, so it works however it is shown. **Open**: panels arrive on screen, so arguably they belong on `--duration-enter`; at 400ms a dropdown felt heavy, so they use `--duration-change` |
 | Micro-interactions | `.btn` eases colour changes and grows to `scale(1.02)` while pressed, your call over the earlier shrink, on Material 3's standard curve `cubic-bezier(0.2, 0, 0, 1)`: 41% of the way there 25ms after the click, where the default `ease` managed 7%; menu rows, tabs and collapse titles ease their hover | colour transitions also animate a scheme switch on those elements |
 | Toast entrance | each message rises `0.75rem` and fades in over `--duration-enter` | no swipe-to-dismiss without a component library |
-| Collapse height | a native `<details>` animates its height via `::details-content` and `interpolate-size` | Chromium only today; elsewhere the rule is dropped and it opens instantly |
+| Collapse open and close | the content's visibility (`<details>`) or `display` (`[hidden]`) flips with `allow-discrete`, so it stays until it has closed; height animates with `interpolate-size`, opacity fades alongside; Kobalte's Accordion.Content gets keyframes on `--kb-accordion-content-height` | 4.0: height animates in Chromium; Safari and Firefox fade at full height; browsers without `::details-content` open instantly |
 | Checkbox | the box fills over `--duration-change`; the tick pops in from `scale(0.4)` with a slight overshoot, `cubic-bezier(0.34, 1.56, 0.64, 1)`, peaking at about 1.05 | the first easing curve in the framework other than the browser defaults. Checked, the tick rests exactly where it did |
 | Row state | `.menu-active` also matches `:focus` and `[data-highlighted]`; `.menu-selected` also matches `[aria-selected="true"]` and `[aria-checked="true"]` | the class build couldn't show a headless library's highlight at all, since none exposes which row is highlighted. Same generic-state approach as disabled and error |
 | Select text | one line with an ellipsis; chevron `0.75rem` from the right edge, `2.25rem` reserved for it | your values. Date and time inputs keep their own spacing for their picker button |
-| Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | all yours to rename |
+| Names | `--bg`, `--fg`, `--fg-muted`, `--fg-faint`, `--surface`, `--surface-strong`, `--divider`, `--line`, `--primary-text`, `--primary-fill`, `--on-primary-fill`, `--link` | renamed to the apps' names in 4.0 (see the 4.0 section) |
 
 Measured across ten brand colours in both schemes (rebeccapurple, tomato,
 #c2410c, #6b7c59, slategrey, #1d4ed8, #ffd400, #00ff88, hotpink, black): every

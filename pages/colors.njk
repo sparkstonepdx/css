@@ -16,14 +16,14 @@
 <h2>Inputs</h2>
 {{ m.classes([
   ["--primary", "The brand colour. Its own hue and chroma are kept; only the lightness is pinned per role"],
-  ["--secondary", "Links. Defaults to the primary rotated 180 degrees"],
-  ["--neutral", "What text and surfaces are tinted with. Defaults to the primary"],
+  ["--secondary", "Links. Defaults to the primary"],
+  ["--neutral", "What text and surfaces are tinted with. Defaults to a near-grey on the primary's hue"],
   ["--error", "Invalid fields, error text, error alerts"]
 ]) }}
 
 <h2>Live preview</h2>
 <p>Change these and every page on this site updates. Values persist for the session.</p>
-<form class="flex" style="flex-wrap: wrap; align-items: end">
+<form class="field-row" style="flex-wrap: wrap">
   <label>
     <p>Primary</p>
     <input type="color" id="base-color-picker" />
@@ -41,16 +41,19 @@
 <h2>Derived colours</h2>
 <p>
   Components read these, never the inputs. Text colours are solid, so their
-  contrast never depends on what sits behind them. Surfaces and rules are a tinted
-  mid-tone at partial opacity, so they carry the theme's colour, stack when
-  nested, and flip with the scheme on their own.
+  contrast never depends on what sits behind them. The page (<code>--bg</code>) sits a step
+  below what's raised off it (<code>--surface</code>); soft fills and hairlines
+  are a tinted mid-tone mixed in, so they carry the theme's colour and flip with
+  the scheme on their own. The names are the ones the apps built on this library
+  already use.
 </p>
 <div class="token-grid">
   {% for t in [
-    ["--bg", "Page"], ["--surface", "Raised, 30%"], ["--surface-strong", "Raised, 63%"], ["--divider", "Rules, 30%"],
-    ["--fg", "Text"], ["--fg-muted", "Secondary text"], ["--fg-faint", "Disabled text"],
-    ["--line", "Borders, focus, fills"], ["--primary-text", "Brand text"], ["--primary-fill", "Filled button"],
-    ["--on-primary-fill", "Text on it"], ["--link", "Links"]
+    ["--bg", "Page"], ["--surface", "Cards, rows, sheets, fields"], ["--fill", "Soft fill, 30%"], ["--fill-strong", "Soft fill, 63%"],
+    ["--line", "Hairlines"], ["--edge", "Borders that must show: fields, focus"],
+    ["--ink", "Text"], ["--muted", "Secondary text"], ["--faint", "Disabled text"],
+    ["--accent", "Filled button"], ["--accent-ink", "Text on it"], ["--accent-text", "Brand text"], ["--link", "Links"],
+    ["--good", "Success text"], ["--warn", "Warning text"], ["--bad", "Error text"]
   ] %}
     <div class="token">
       <span class="token-swatch" style="background: var({{ t[0] }})"></span>
@@ -65,7 +68,7 @@
   Set an input on any element and add <code>.retheme</code>, and everything inside
   re-themes around it. The class marks where colours are derived again; between
   boundaries they are simply inherited, so you can also override a single derived
-  colour, such as <code>--surface</code>, for a whole subtree. These are nested
+  colour, such as <code>--fill</code>, for a whole subtree. These are nested
   sections, each setting a single input:
 </p>
 {% set classless %}

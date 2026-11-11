@@ -1,0 +1,47 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Phone layer" %}
+{% set slug = "phone" %}
+
+{% block content %}
+<h1>Phone layer</h1>
+<p class="lede">
+  For apps that live at the bottom of a phone, in one hand: a dock for what's done most, bars clear of the home
+  gesture, and targets a thumb can hit.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["dock", "Fixed to the bottom, with the safe area; content scrolls above it"],
+  ["dock-space", "Room under page content for the dock (reads --dock-h)"],
+  ["bottom-bars", "Short-lived bars, 28px clear of the home gesture"],
+  ["tap", "An invisible hit area that reaches --tap (44px) around a small control"],
+  ["icon-btn", "A glyph button (×, ≡) at least 44 by 44"]
+]) }}
+
+<h2>Dock</h2>
+<p>Shown in place here; on a page, <code>.dock</code> is fixed to the bottom.</p>
+{% set classless %}
+<div class="dock" style="position: static">
+  <div class="flex" style="gap: var(--space-sm)">
+    <button class="btn btn-secondary">Shuffle</button>
+    <button class="btn btn-secondary">Discard</button>
+    <span style="flex: 1"></span>
+    <button class="btn">Play</button>
+  </div>
+</div>
+{% endset %}
+{{ m.demo("phone-dock", classless) }}
+
+<h2>Status badges</h2>
+{% set classless %}
+<p class="flex" style="gap: var(--space-sm)">
+  <span class="badge">web</span>
+  <span class="badge badge-success">active</span>
+  <span class="badge badge-warning">restarting</span>
+  <span class="badge badge-error">failed</span>
+</p>
+{% endset %}
+{{ m.demo("phone-status", classless) }}
+{% endblock %}

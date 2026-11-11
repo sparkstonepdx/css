@@ -1,11 +1,34 @@
 @use "../vars.scss" as *;
 
 @mixin styles {
+  // 4.0 (PROPOSAL): Wordbag's pill. Small and bold on a soft fill, so it reads
+  // as a label, not a button.
   .badge {
-    border-radius: var(--radius-selector, calc(var(--border-radius) * 2));
-    background-color: var(--surface-strong);
-    padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
-    color: var(--fg-muted);
+    display: inline-flex;
+    align-items: center;
+    gap: var(--space-xs);
+    border-radius: var(--radius-selector, 999px);
+    background-color: var(--fill);
+    padding: var(--space-2xs) var(--space-sm);
+    color: var(--muted);
+    font-size: var(--text-sm);
+    font-weight: 650;
+    line-height: 1.4;
     white-space: nowrap;
+  }
+
+  // 4.0 (PROPOSAL): status badges. Surface and text both take the status
+  // colour, so the badge is tinted, not just its words.
+  .badge-success {
+    @extend .success;
+  }
+
+  .badge-warning {
+    @extend .warning;
+  }
+
+  .badge-error {
+    --neutral: var(--error);
+    @extend .error;
   }
 }

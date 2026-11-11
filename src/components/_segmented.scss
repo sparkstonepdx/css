@@ -13,9 +13,9 @@
     gap: calc(var(--padding) / 8);
 
     padding: calc(var(--padding) / 8);
-    border: var(--border-width) solid var(--divider);
+    border: var(--border-width) solid var(--line);
     border-radius: var(--radius-field, var(--border-radius));
-    background-color: var(--surface);
+    background-color: var(--fill);
   }
 
   .segmented-item {
@@ -28,7 +28,7 @@
 
     padding: calc(var(--padding) / 4) calc(var(--padding) / 2);
     border-radius: var(--radius-field, var(--border-radius));
-    color: var(--fg-muted);
+    color: var(--muted);
     cursor: pointer;
 
     input {
@@ -61,13 +61,13 @@
 
     &:has(input:checked),
     &:is([data-checked], .segmented-item-active) {
-      color: var(--fg);
+      color: var(--ink);
     }
 
     // Without an indicator element, the selected item paints its own background.
     .segmented:not(:has(.segmented-indicator))
       &:is(:has(input:checked), [data-checked], .segmented-item-active) {
-      background-color: var(--bg);
+      background-color: var(--surface);
     }
   }
 
@@ -78,7 +78,7 @@
     bottom: calc(var(--padding) / 8);
 
     border-radius: var(--radius-field, var(--border-radius));
-    background-color: var(--bg);
+    background-color: var(--surface);
     transition: all var(--duration-change);
   }
 }

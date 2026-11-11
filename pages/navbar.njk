@@ -13,7 +13,8 @@
 {{ m.alpha() }}
 
 {{ m.classes([
-  ["navbar", "The bar: a padded row with a rule under it"],
+  ["navbar", "The bar: a raised row with the box radius and a hairline round it"],
+  ["navbar-flush", "Edge to edge across the top of the page: square, a rule under it only"],
   ["navbar-start", "Left group, pushes the rest to the end"],
   ["navbar-end", "Right group"],
   ["menubar", "A row of menu triggers, for Kobalte's Menubar"]
@@ -166,7 +167,7 @@ import { Menubar } from "@kobalte/core/menubar";
 {% set classless %}
 <header class="navbar">
   <strong>App</strong>
-  <input class="input" type="search" placeholder="Search" style="flex: 1; margin: 0" />
+  <input class="input" type="search" placeholder="Search" style="flex: 1" />
   <button class="btn btn-ghost">Account</button>
 </header>
 {% endset %}

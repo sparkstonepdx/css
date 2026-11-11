@@ -9,13 +9,13 @@
     display: block;
     min-height: 1rem;
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: var(--surface);
+    background-color: var(--fill);
 
     @media (prefers-reduced-motion: no-preference) {
       background-image: linear-gradient(
         90deg,
         transparent,
-        var(--bg),
+        var(--surface),
         transparent
       );
       background-size: 60% 100%;

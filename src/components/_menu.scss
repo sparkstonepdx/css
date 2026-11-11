@@ -19,8 +19,8 @@
     min-width: 12rem;
     padding: calc(var(--padding) / 4);
 
-    background-color: var(--bg);
-    border: var(--border-width) solid var(--divider);
+    background-color: var(--surface);
+    border: var(--border-width) solid var(--line);
     border-radius: var(--radius-box, var(--border-radius));
     box-shadow: var(--box-shadow);
 
@@ -60,7 +60,7 @@
     hr {
       margin: calc(var(--padding) / 4) 0;
       border: 0;
-      border-top: var(--border-width) solid var(--divider);
+      border-top: var(--border-width) solid var(--line);
     }
   }
 
@@ -72,7 +72,7 @@
     padding: calc(var(--padding) / 2) var(--padding);
     border-radius: var(--radius-field, var(--border-radius));
 
-    color: var(--fg);
+    color: var(--ink);
     text-decoration: none;
     cursor: pointer;
     user-select: none;
@@ -82,7 +82,7 @@
       transition: background-color var(--duration-change);
     }
     &:hover {
-      background-color: var(--surface);
+      background-color: var(--fill);
     }
   }
 
@@ -92,7 +92,7 @@
   // follow it.
   .menu-active,
   .menu-item:is(:focus, [data-highlighted]) {
-    background-color: var(--surface);
+    background-color: var(--fill);
   }
 
   // A selected row, as opposed to the highlighted one: a select keeps one row
@@ -114,7 +114,7 @@
       width: calc(var(--border-width) * 1.5);
 
       border-radius: 999px;
-      background-color: var(--line);
+      background-color: var(--edge);
     }
   }
 
@@ -122,7 +122,7 @@
   // strength, so it read as an ordinary row.
   .menu-disabled {
     @extend .disabled;
-    color: var(--fg-faint);
+    color: var(--faint);
     pointer-events: none;
   }
 
@@ -130,13 +130,13 @@
     display: block;
     padding: calc(var(--padding) / 2) var(--padding);
     font-size: 0.875rem;
-    color: var(--fg-muted);
+    color: var(--muted);
   }
 
   .menu-shortcut {
     margin-left: auto;
     padding-left: var(--padding);
     font-size: 0.875rem;
-    color: var(--fg-muted);
+    color: var(--muted);
   }
 }

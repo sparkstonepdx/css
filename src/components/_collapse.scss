@@ -7,24 +7,29 @@
 // section, .collapse-title on the trigger, .collapse-content on the panel.
 @mixin styles {
   .collapse {
-    border-bottom: var(--border-width) solid var(--divider);
+    border-bottom: var(--border-width) solid var(--line);
 
-    // A native <details> animates its height where the browser supports
-    // ::details-content and interpolate-size (Chromium today). Elsewhere the
-    // selector is unknown, the rule is dropped, and it opens instantly.
+    // A native <details> animates its content open and closed. The content's
+    // visibility flips discretely (allow-discrete), so it stays shown until the
+    // closing animation ends instead of vanishing at the start. Height
+    // animates where interpolate-size is supported (Chromium); elsewhere the
+    // content fades in and out at its full height.
     @media (prefers-reduced-motion: no-preference) {
       interpolate-size: allow-keywords;
 
       &::details-content {
         block-size: 0;
+        opacity: 0;
         overflow-y: clip;
         transition:
-          block-size var(--duration-change),
+          block-size var(--duration-change) var(--ease-out),
+          opacity var(--duration-change) var(--ease-out),
           content-visibility var(--duration-change) allow-discrete;
       }
 
       &[open]::details-content {
         block-size: auto;
+        opacity: 1;
       }
     }
   }
@@ -40,7 +45,7 @@
     border: 0;
     border-radius: 0;
     background-color: transparent;
-    color: var(--fg);
+    color: var(--ink);
     // Kobalte puts the trigger inside a heading, which would otherwise size it.
     font-size: 1rem;
     font-weight: bold;
@@ -52,7 +57,7 @@
       transition: color var(--duration-change);
     }
     &:hover {
-      color: var(--fg-muted);
+      color: var(--muted);
     }
 
     &:is([data-disabled], :disabled) {
@@ -62,5 +67,63 @@
 
   .collapse-content {
     padding-bottom: calc(var(--padding) / 2);
+
+    // A panel shown and hidden by script, with the hidden attribute (or
+    // Kobalte's Accordion.Content, which unmounts after its exit animation).
+    // display flips discretely, so the panel stays until it has faded and
+    // folded away; @starting-style gives it a closed state to open from.
+    @media (prefers-reduced-motion: no-preference) {
+      interpolate-size: allow-keywords;
+      overflow-y: clip;
+      transition:
+        block-size var(--duration-change) var(--ease-out),
+        opacity var(--duration-change) var(--ease-out),
+        display var(--duration-change) allow-discrete;
+
+      &[hidden] {
+        display: none;
+        block-size: 0;
+        opacity: 0;
+      }
+
+      @starting-style {
+        &:not([hidden]) {
+          block-size: 0;
+          opacity: 0;
+        }
+      }
+
+      // Kobalte measures the panel for us; its keyframes run on mount and
+      // before it unmounts, which a transition can't see.
+      &[data-expanded] {
+        animation: sparkstone-collapse-open var(--duration-change) var(--ease-out);
+      }
+
+      &[data-closed] {
+        animation: sparkstone-collapse-close var(--duration-change) var(--ease-out);
+      }
+    }
+  }
+
+  @keyframes sparkstone-collapse-open {
+    from {
+      block-size: 0;
+      opacity: 0;
+    }
+    to {
+      block-size: var(--kb-accordion-content-height, var(--kb-collapsible-content-height, auto));
+      opacity: 1;
+    }
+  }
+
+  @keyframes sparkstone-collapse-close {
+    from {
+      block-size: var(--kb-accordion-content-height, var(--kb-collapsible-content-height, auto));
+      opacity: 1;
+    }
+    to {
+      block-size: 0;
+      opacity: 0;
+    }
   }
 }

@@ -12,8 +12,18 @@
     gap: var(--padding);
 
     padding: calc(var(--padding) / 2) var(--padding);
-    background-color: var(--bg);
-    border-bottom: var(--border-width) solid var(--divider);
+    background-color: var(--surface);
+    // 4.0 (PROPOSAL): a bar set inside the page is a raised box like a card, so
+    // it follows the box radius and has a hairline all round.
+    border: var(--border-width) solid var(--line);
+    border-radius: var(--radius-box, var(--border-radius));
+  }
+
+  // A bar that runs edge to edge across the top of the page: square, with a
+  // rule underneath only.
+  .navbar-flush {
+    border-width: 0 0 var(--border-width);
+    border-radius: 0;
   }
 
   .navbar-start {

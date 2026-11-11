@@ -1,0 +1,30 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "List and row" %}
+{% set slug = "list" %}
+
+{% block content %}
+<h1>List and row</h1>
+<p class="lede">A list of named things, one per row: a status or picture at the start, a title and a detail, and one action or a › at the end.</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["list", "One raised block holding the rows, split by hairlines"],
+  ["row", "A row: an a or button row is tappable as a whole"],
+  ["row-main", "The title, and a muted detail in <small>"],
+  ["row-end", "One action, a badge, or a ›"],
+  ["page-head", "A page's title, a detail, and its actions at the end"],
+  ["page-actions", "The actions in a page head"],
+  ["eyebrow", "A small label over a heading or section"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<ul class="list">
+  <li><a class="row" href="#"><span class="badge badge-success">Your turn</span><span class="row-main"><span>Battle of the Bag</span><small>Ana, Ben · round 4</small></span><span class="row-end">›</span></a></li>
+  <li class="row"><span class="badge">Solo</span><span class="row-main"><span>Solo run</span><small>round 7 · best 1,240</small></span><span class="row-end"><button class="btn btn-secondary btn-sm">Open</button></span></li>
+</ul>
+{% endset %}
+{{ m.demo("list-basic", classless) }}
+{% endblock %}

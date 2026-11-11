@@ -1,0 +1,47 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Notice" %}
+{% set slug = "notice" %}
+
+{% block content %}
+<h1>Notice</h1>
+<p class="lede">
+  The phone's toast. Notices open low, just above the dock, where the thumb and the eyes already are, and stack upward.
+  How long each stays and showing one at a time come from @sparkstone/kit.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["notices", "The stack, fixed above the dock (reads --dock-h)"],
+  ["notice", "One message: an edged card on a tint"],
+  ["notice-success", "Something worked"],
+  ["notice-warning", "Something to be careful about"],
+  ["notice-error", "Something went wrong"],
+  ["notice-art", "The thing it's about, in a coin"],
+  ["notice-text", "A bold line and an optional detail in <small>"],
+  ["notice-actions", "Undo, Edit"]
+]) }}
+
+<h2>Basic</h2>
+<p>The stack is shown in place here rather than fixed to the bottom.</p>
+{% set classless %}
+<ul class="notices" style="position: static; padding: 0">
+  <li class="notice">
+    <span class="notice-art" aria-hidden="true">🍼</span>
+    <span class="notice-text"><strong>Logged bottle 90 ml</strong><small>Use by 12:11 PM</small></span>
+    <span class="notice-actions"><button class="btn btn-sm">Undo</button></span>
+  </li>
+  <li class="notice notice-success">
+    <span class="notice-text"><strong>Invite link copied</strong></span>
+  </li>
+  <li class="notice notice-warning">
+    <span class="notice-text"><strong>Syncing…</strong><small>Your changes are saved on this phone.</small></span>
+  </li>
+  <li class="notice notice-error">
+    <span class="notice-text"><strong>The server isn't answering.</strong><small>Your moves go through once it's back.</small></span>
+  </li>
+</ul>
+{% endset %}
+{{ m.demo("notice-basic", classless) }}
+{% endblock %}

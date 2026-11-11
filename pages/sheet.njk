@@ -1,0 +1,48 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Sheet" %}
+{% set slug = "sheet" %}
+
+{% block content %}
+<h1>Sheet</h1>
+<p class="lede">
+  The phone's dialog: a panel that slides up from the bottom over what you were doing, within thumb reach.
+  From 700px wide it floats in the middle. Swipe, Back and backdrop to close come from @sparkstone/kit; this is the look.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["sheet-backdrop", "The dimmed layer the sheet sits on, anchored to the bottom"],
+  ["sheet", "The panel: up to 520px wide and 88% of the screen tall"],
+  ["sheet-wide", "Up to 720px, for lists of pictures and long tables"],
+  ["sheet-full", "The whole screen on a phone, once someone scrolls in to read"],
+  ["sheet-grip", "The bar that says it can be pulled down"],
+  ["sheet-header", "Title and close button"],
+  ["sheet-body", "The only part that scrolls"],
+  ["sheet-footer", "Actions, pinned to the bottom edge"]
+]) }}
+
+<h2>Basic</h2>
+<p>Shown in place here; on a page, <code>.sheet-backdrop</code> is fixed to the screen.</p>
+{% set classless %}
+<div class="sheet-backdrop" style="position: relative; min-height: 22rem">
+  <div class="sheet" role="dialog" aria-labelledby="sheet-demo-title">
+    <div class="sheet-grip"></div>
+    <div class="sheet-header">
+      <h2 id="sheet-demo-title">Your bag</h2>
+      <button class="icon-btn" aria-label="Close">×</button>
+    </div>
+    <div class="sheet-body">
+      <p>51 tiles left. The next ones come from here.</p>
+      <p class="text-secondary">Used tiles are dimmed.</p>
+    </div>
+    <div class="sheet-footer">
+      <button class="btn btn-secondary">Cancel</button>
+      <button class="btn">Save</button>
+    </div>
+  </div>
+</div>
+{% endset %}
+{{ m.demo("sheet-basic", classless) }}
+{% endblock %}

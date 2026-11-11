@@ -5,11 +5,16 @@
 // every combination of those, so `label:has(> input[type="radio"])` comes out
 // of the same rule.
 @mixin styles {
+  // 4.0 (PROPOSAL): the label is the unit a form is spaced by; the controls
+  // inside it carry no margin of their own.
   .label {
     display: block;
-    margin-bottom: calc(1rem * 0.375);
+    margin-bottom: 1rem;
 
+    // Block, so the label's line box doesn't add a sliver under the control
+    // and nudge it off the line of a control beside the label.
     > :where(.input, .select, .textarea, .range, .file-input, .color-input) {
+      display: block;
       margin-top: calc(1rem * 0.25);
     }
 
@@ -41,12 +46,12 @@
 
     &.block:has(> .radio) {
       padding: 2rem;
-      border: var(--border-width) solid var(--divider);
+      border: var(--border-width) solid var(--line);
       border-radius: var(--radius-box, var(--border-radius));
 
       &:has(.radio:checked) {
-        border-color: var(--line);
-        background-color: var(--surface);
+        border-color: var(--edge);
+        background-color: var(--fill);
       }
     }
 
@@ -55,11 +60,11 @@
     }
 
     // The <p> sets its own colour so it picks up the error hue; an inherited
-    // colour arrives already resolved. --fg-muted matches .text-error, so the
+    // colour arrives already resolved. --muted matches .text-error, so the
     // label and its message agree.
     > p:has(+ :is(.input, .select, .textarea):is([aria-invalid="true"], .input-error, .select-error, .textarea-error)) {
       @extend .error;
-      color: var(--fg-muted);
+      color: var(--muted);
     }
 
     > :is(.input, .select, .textarea):has(+ small) {
@@ -69,7 +74,7 @@
     > :is(.input, .select, .textarea) ~ small {
       display: inline-block;
       margin-bottom: 1rem;
-      color: var(--fg-muted);
+      color: var(--muted);
     }
   }
 }
