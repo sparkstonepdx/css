@@ -110,4 +110,62 @@
 {% endset %}
 {{ m.demo("dialog-form", classless, classes) }}
 {{ m.classless_note("the panel is an <code>article</code>, so it picks up the card styling automatically. With classes, <code>.dialog-box</code> includes it.") }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A form in a dialog</h3>
+<p>A short form that opens over the page, with its actions at the foot of the box.</p>
+{% set classless %}
+<button class="btn" data-dialog="comp-dialog">Book a call</button>
+
+<dialog id="comp-dialog" class="dialog">
+  <form method="dialog">
+    <article class="dialog-box">
+      <header class="dialog-header prose"><h3>Book a call</h3><p class="text-secondary">Pick a time and we will confirm by email.</p></header>
+      <label class="label"><p>Email</p><input class="input" type="email" /></label>
+      <label class="label">
+        <p>Time</p>
+        <select class="select"><option>Tuesday morning</option><option>Thursday afternoon</option></select>
+      </label>
+      <footer class="dialog-actions">
+        <button value="cancel" class="btn btn-secondary">Cancel</button>
+        <button value="ok" class="btn">Book</button>
+      </footer>
+    </article>
+  </form>
+</dialog>
+{% endset %}
+{{ m.demo("dialog-comp-1", classless) }}
+<ul>
+  <li><strong>Surface:</strong> <code>.dialog-box</code> is a card, and <code>.dialog-actions</code> is <code>.card-actions</code> aligned right, so a dialog composes like any card.</li>
+  <li><strong>Text:</strong> <code>.prose</code> goes on the header only; the fields space themselves.</li>
+</ul>
+
+<h3>Confirming a destructive action</h3>
+<p>The dialog names what will be lost, the safe choice is secondary, and the destructive one takes the error colour.</p>
+{% set classless %}
+<button class="btn btn-secondary" data-dialog="comp-confirm">Delete project</button>
+
+<dialog id="comp-confirm" class="dialog">
+  <form method="dialog">
+    <article class="dialog-box prose">
+      <h3>Delete this project?</h3>
+      <p>Its files and history go with it. This cannot be undone.</p>
+      <footer class="dialog-actions">
+        <button value="cancel" class="btn btn-secondary">Keep it</button>
+        <button value="ok" class="btn error">Delete</button>
+      </footer>
+    </article>
+  </form>
+</dialog>
+{% endset %}
+{{ m.demo("dialog-comp-2", classless) }}
+<ul>
+  <li><strong>Boundary:</strong> <code>.error</code> works on any element, so the delete button becomes an error button with no button-specific class.</li>
+  <li><strong>Actions:</strong> the button that opens it is <code>.btn-secondary</code>; a destructive action should not be the loudest thing on the page.</li>
+</ul>
 {% endblock %}

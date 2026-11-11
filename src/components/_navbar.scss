@@ -12,8 +12,8 @@
     gap: var(--padding);
 
     padding: calc(var(--padding) / 2) var(--padding);
-    background-color: cur-color(var(--surface-lc-1));
-    border-bottom: var(--border-width) solid cur-color(var(--surface-lc-2));
+    background-color: var(--bg);
+    border-bottom: var(--border-width) solid var(--divider);
   }
 
   .navbar-start {

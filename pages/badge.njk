@@ -40,4 +40,65 @@
 </div>
 {% endset %}
 {{ m.demo("badge-text", classless, classes) }}
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Tags on an item</h3>
+<p>Short labels attached to a title, in a list of items.</p>
+{% set classless %}
+<div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 12rem), 1fr)); gap: var(--padding)">
+  <a href="#" class="semantic card">
+    <div style="aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong class="link">Item one</strong>
+    <p class="flex" style="gap: calc(var(--padding) / 4); margin-top: calc(var(--padding) / 4)"><span class="badge">Tag</span><span class="badge">Another</span></p>
+  </a>
+  <a href="#" class="semantic card">
+    <div style="aspect-ratio: 3 / 4; background: var(--surface-strong); border-radius: var(--border-radius); margin-bottom: calc(var(--padding) / 2)"></div>
+    <strong class="link">Item two</strong>
+    <p class="flex" style="gap: calc(var(--padding) / 4); margin-top: calc(var(--padding) / 4)"><span class="badge">Tag</span></p>
+  </a>
+</div>
+{% endset %}
+{{ m.demo("badge-comp-1", classless) }}
+<ul>
+  <li><strong>Text:</strong> a badge sits on <code>--surface-strong</code>, one step darker than a card, so it reads on a card as well as on the page.</li>
+  <li><strong>Layout:</strong> badges in a row need a gap of their own; a quarter of <code>--padding</code> keeps them grouped.</li>
+</ul>
+
+<h3>Counts on tabs</h3>
+<p>A count beside each tab label says what is waiting behind it.</p>
+{% set classless %}
+<div class="tabs" role="tablist">
+  <button class="tab tab-active" role="tab" data-selected>Open <span class="badge">3</span></button>
+  <button class="tab" role="tab">Done <span class="badge">12</span></button>
+</div>
+{% endset %}
+{{ m.demo("badge-comp-2", classless) }}
+<ul>
+  <li><strong>Text:</strong> a badge inherits the tab's font size, so it scales with whatever it sits in.</li>
+</ul>
+
+<h3>A table with a heading and status badges</h3>
+<p>A bordered block holds the heading and the table, and a badge marks each row's state.</p>
+{% set classless %}
+<section class="card-border">
+  <div class="prose"><h3>Invoices</h3></div>
+  <table class="table">
+    <thead><tr><th>Month</th><th>Amount</th><th>Status</th></tr></thead>
+    <tbody>
+      <tr><td>September</td><td>$1,200</td><td><span class="badge">Paid</span></td></tr>
+      <tr><td>October</td><td>$1,200</td><td><span class="badge">Due</span></td></tr>
+    </tbody>
+  </table>
+</section>
+{% endset %}
+{{ m.demo("badge-comp-3", classless) }}
+<ul>
+  <li><strong>Surface:</strong> a flat <code>.card-border</code> rather than a raised card, because a table is read, not picked up.</li>
+  <li><strong>Text:</strong> <code>.prose</code> sits on the heading only, so it does not add margins inside the table.</li>
+</ul>
 {% endblock %}

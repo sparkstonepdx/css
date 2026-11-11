@@ -26,11 +26,20 @@
     "./package.json": "./package.json"
   },
   "type": "module",
-  "files": ["dist/", "src/", "README.md"],
+  "files": [
+    "dist/",
+    "src/",
+    "README.md"
+  ],
   "scripts": {
     "dev": "node dev.js",
     "build": "sass src/:dist/ && node build.js",
-    "prepublishOnly": "pnpm build"
+    "test": "pnpm run build && playwright test --project=unit",
+    "test:visual": "pnpm run build && playwright test --project=visual",
+    "test:update": "pnpm run build && playwright test --project=visual --update-snapshots",
+    "prepublishOnly": "pnpm build",
+    "changeset": "changeset",
+    "release": "pnpm build && changeset publish"
   },
   "keywords": [
     "css",
@@ -53,15 +62,24 @@
     "url": "https://github.com/Sparkstonepdx/css/issues"
   },
   "homepage": "https://github.com/Sparkstonepdx/css#readme",
-  "packageManager": "pnpm@12.4.2",
+  "packageManager": "pnpm@12.15.0",
   "devDependencies": {
+    "@changesets/changelog-github": "^1.0.1",
+    "@changesets/cli": "^3.0.3",
+    "@playwright/test": "1.56.0",
     "chokidar": "^4.0.3",
     "fast-glob": "^3.3.3",
     "live-server": "^1.2.2",
     "nunjucks": "^3.2.4",
+    "pixelmatch": "^7.2.0",
     "pkg-pr-new": "^0.0.88",
+    "pngjs": "^7.0.0",
     "sass": "^1.104.1",
     "surge": "0.44.3",
     "vite": "^8.3.0"
+  },
+  "publishConfig": {
+    "access": "public",
+    "provenance": true
   }
 }

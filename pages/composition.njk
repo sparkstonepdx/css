@@ -1,0 +1,345 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Composition" %}
+{% set slug = "composition" %}
+
+{% block content %}
+<h1>Composition</h1>
+<p class="lede">
+  The component pages show each piece on its own. This page is about how they
+  fit together: which piece owns colour, which owns spacing, which owns text,
+  and where the seams between them are. Each component page ends with a
+  Composition section showing that component in common combinations.
+</p>
+
+<p>
+  <small>
+    Examples on this page and in each component's Composition section use the
+    class build. Layout that
+    the framework leaves to you, such as a grid, is written inline so you can see
+    it.
+  </small>
+</p>
+
+<section id="layers">
+  <h2>Who owns what</h2>
+  <p>
+    Every piece of markup plays one of five roles. Most mistakes come from asking
+    one piece to do another's job, such as giving a grid wrapper
+    <code>.prose</code>, or a card a margin.
+  </p>
+  <table class="class-table">
+    <thead>
+      <tr><th>Role</th><th>Pieces</th><th>Owns</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Layout</td>
+        <td><code>.container</code>, <code>.flex</code>, <code>.navbar</code>, CSS grid</td>
+        <td>Width, columns, and the gap between siblings. No colour, no text spacing.</td>
+      </tr>
+      <tr>
+        <td>Surface</td>
+        <td><code>.card</code>, <code>.card-border</code>, <code>.dialog-box</code>, <code>.dropdown-content</code></td>
+        <td>A background, a border or shadow, and inner padding. Nothing outside its edge.</td>
+      </tr>
+      <tr>
+        <td>Text</td>
+        <td><code>.prose</code>, <code>.text-secondary</code>, <code>.link</code>, <code>.badge</code></td>
+        <td>Vertical rhythm between headings, paragraphs and lists, and the colour of words.</td>
+      </tr>
+      <tr>
+        <td>Control</td>
+        <td><code>.label</code>, <code>.input</code>, <code>.btn</code>, <code>.fieldset</code></td>
+        <td>Its own box, its own bottom margin, and its states.</td>
+      </tr>
+      <tr>
+        <td>Boundary</td>
+        <td><code>.retheme</code>, <code>data-color-scheme</code>, <code>.disabled</code>, <code>.error</code></td>
+        <td>The colour of everything inside it. Draws nothing itself.</td>
+      </tr>
+    </tbody>
+  </table>
+  <p>
+    A section of a page is usually one of each, nested in that order: a layout
+    places surfaces, a surface holds text and controls, and a boundary can wrap
+    any of them.
+  </p>
+</section>
+
+<section id="surfaces">
+  <h2>Surfaces</h2>
+  <p>
+    There are three colours to stand on. <code>--bg</code> is the page.
+    <code>.card</code> raises a block onto <code>--surface</code> with a shadow.
+    <code>.card-border</code> stays on <code>--bg</code> and draws a
+    <code>--divider</code> border instead.
+  </p>
+  <p>
+    Surfaces are solid colours, mixed into the page rather than laid over it, so a
+    card inside a card is the same colour as its parent and does not darken. To
+    separate something inside a card, put it on a <code>.card-border</code>, which
+    drops back to the page colour, or split the card with a
+    <code>.divider</code> or <code>.card-actions</code>.
+  </p>
+  <p>
+    Below: text on the page, a service on a <code>.card</code>, and a download on
+    a <code>.card-border</code>.
+  </p>
+  {% set classless %}
+<div class="prose">
+  <p>Text on the page sits on <code>--bg</code>.</p>
+</div>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--padding)">
+  <article class="card prose">
+    <h3>A service</h3>
+    <p>What it is, in a line.</p>
+  </article>
+  <article class="card-border prose">
+    <h3>A download</h3>
+    <p class="flex"><a href="#" class="link">PNG</a> <a href="#" class="link">SVG</a></p>
+  </article>
+</div>
+  {% endset %}
+  {{ m.demo("comp-surfaces", classless) }}
+  <ul>
+    <li>Use <code>.card</code> for the thing you want looked at: a service you sell, a call to action.</li>
+    <li>Use <code>.card-border</code> for many items of equal weight, such as a grid of downloads, where a shadow on each would be noise.</li>
+    <li>A surface sets padding and nothing else outside itself. Space between surfaces comes from the layout around them.</li>
+  </ul>
+</section>
+
+<section id="spacing">
+  <h2>Spacing</h2>
+  <p>
+    Spacing comes from two places, and they do not overlap.
+  </p>
+  <ul>
+    <li>
+      <strong>Between siblings in a layout:</strong> the gap. <code>.flex</code>
+      has a <code>1rem</code> gap; a grid should use <code>gap: var(--padding)</code>.
+    </li>
+    <li>
+      <strong>Down a column of content:</strong> bottom margins. Form controls,
+      labels, alerts and every block inside <code>.prose</code> carry a
+      <code>1rem</code> bottom margin, so a stack of them spaces itself with no
+      wrapper.
+    </li>
+  </ul>
+  <p>
+    Nothing carries a top margin, so the first child of any box sits flush with
+    its padding. The last child keeps its bottom margin, which is why
+    <code>.card-actions</code> exists: a footer row gives the end of a card its
+    own rule and spacing.
+  </p>
+  <p>
+    The two meet in one place: a <code>.flex .flip</code> row of form fields. Side
+    by side, the gap separates them. Stacked on a phone, the gap lands on top of
+    each label's own bottom margin and doubles the space. Set
+    <code>row-gap: 0</code> on such a row and let the margins do the stacking.
+  </p>
+  <p>
+    <code>--padding</code> sizes the inside of many components: badges,
+    alerts, menus, the navbar, segmented controls and <code>.card-border</code>.
+    Set it on a section to tighten or loosen those insides together. The
+    <code>1rem</code> margins between blocks stay as they are.
+  </p>
+  {% set classless %}
+<div class="flex flip">
+  <div class="card-border" style="flex: 1">
+    <span class="badge">default</span>
+    <p class="text-secondary" style="margin-top: 0.5rem">--padding: 1rem</p>
+  </div>
+  <div class="card-border" style="flex: 1; --padding: 0.5rem">
+    <span class="badge">tight</span>
+    <p class="text-secondary" style="margin-top: 0.5rem">--padding: 0.5rem on the card</p>
+  </div>
+</div>
+  {% endset %}
+  {{ m.demo("comp-spacing", classless) }}
+</section>
+
+<section id="text">
+  <h2>Text</h2>
+  <p>
+    The reset removes every margin, and the class build does not style bare
+    elements. Headings, paragraphs and lists stack with no space between them
+    until something inside <code>.prose</code> spaces them.
+  </p>
+  <p>
+    Put <code>.prose</code> on the box that holds the words: a card, a section's
+    text column, an article body. Do not put it on a layout wrapper.
+    <code>.prose</code> also spaces <code>section</code>, <code>ul</code> and
+    <code>pre</code>, so on a grid it would add margins between your columns.
+  </p>
+  {% set classless %}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: var(--padding)">
+  <div class="card-border">
+    <h3>No prose</h3>
+    <p>Heading and paragraph touch.</p>
+    <p>So do paragraphs.</p>
+  </div>
+  <div class="card-border prose">
+    <h3>With prose</h3>
+    <p>The card spaces its own text.</p>
+    <p>The grid around it is untouched.</p>
+  </div>
+</div>
+  {% endset %}
+  {{ m.demo("comp-text", classless) }}
+  <p>
+    Three classes colour words without spacing them. <code>.text-secondary</code>
+    is for supporting text: a lede, a date, a caption. <code>.link</code> is for
+    words that navigate. <code>.badge</code> is for a short label attached to
+    something else, such as a tag or a count.
+  </p>
+</section>
+
+<section id="actions">
+  <h2>Actions</h2>
+  <p>
+    Buttons come in three weights, and a region should have one filled button.
+    <code>.btn</code> is the primary action, <code>.btn-secondary</code> the
+    alternative, <code>.btn-ghost</code> anything that should recede, such as a
+    menu toggle in a header. Links navigate; buttons do things.
+  </p>
+  <p>
+    When a whole card is the link, make the card the anchor:
+    <code>&lt;a class="semantic card"&gt;</code>. <code>.semantic</code> strips the
+    link styling and <code>.card</code> comes later in the cascade, so the surface
+    wins. Then mark the words that read as the link, here the title, with
+    <code>.link</code> so the card still looks clickable. Inside a grid or flex
+    row the anchor is laid out as a block, so it needs nothing else.
+  </p>
+  {% set classless %}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: var(--padding)">
+  <a href="#" class="semantic card prose">
+    <h3 class="link">Project one</h3>
+    <p>What it was and how it turned out, in a sentence or two.</p>
+  </a>
+  <a href="#" class="semantic card prose">
+    <h3 class="link">Project two</h3>
+    <p>What it was and how it turned out, in a sentence or two.</p>
+  </a>
+</div>
+  {% endset %}
+  {{ m.demo("comp-card-link", classless) }}
+</section>
+
+<section id="forms">
+  <h2>Forms</h2>
+  <p>
+    A <code>.label</code> is the unit of a form. It wraps a <code>&lt;p&gt;</code>
+    for the label text, the control, and an optional <code>&lt;small&gt;</code>
+    for help or an error, and it spaces all three. Put a checkbox or toggle inside
+    a <code>.label</code> and it becomes a row instead. Group related labels in a
+    <code>.fieldset</code> with a <code>.fieldset-legend</code>.
+  </p>
+  <p>
+    The <code>&lt;small&gt;</code> is <code>inline-block</code>, so after a field
+    narrowed with <code>max-width</code> it sits beside the field instead of under
+    it. Give it <code>display: block</code>, as the newsletter form below does.
+  </p>
+  <p>
+    States are generic. <code>aria-invalid="true"</code> or <code>.error</code> on
+    a control turns it, and the label text above it, to the error colour.
+    Disabling a <code>&lt;fieldset&gt;</code> greys everything inside it, because a
+    disabled element is a boundary that sets <code>--chroma: 0</code> for its
+    subtree.
+  </p>
+  <p>
+    Below: a sign-up form with a bad address entered, and a group of filters.
+  </p>
+  {% set classless %}
+<form class="prose">
+  <h2>Newsletter</h2>
+  <p>A short note when there is something new.</p>
+  <label class="label">
+    <p>Email</p>
+    <input class="input" type="email" value="name@" aria-invalid="true" style="max-width: 30rem" />
+    <small style="display: block">Enter a full email address.</small>
+  </label>
+  <button class="btn btn-secondary">Subscribe</button>
+</form>
+<form style="margin-top: var(--padding)">
+  <fieldset class="fieldset">
+    <legend class="fieldset-legend">Filter</legend>
+    <div class="flex" style="flex-wrap: wrap">
+      <label class="label"><input type="checkbox" class="checkbox" checked /> In stock</label>
+      <label class="label"><input type="checkbox" class="checkbox" /> Free</label>
+      <label class="label"><input type="checkbox" class="checkbox" /> On sale</label>
+    </div>
+  </fieldset>
+</form>
+  {% endset %}
+  {{ m.demo("comp-forms", classless) }}
+</section>
+
+<section id="boundaries">
+  <h2>Colour boundaries</h2>
+  <p>
+    Colour is never set on a component. It is set on a region, and everything in
+    the region derives from it. Two attributes draw those regions.
+  </p>
+  <ul>
+    <li>
+      <code>.retheme</code> with an input such as <code>--primary</code> re-themes
+      a subtree: a partner's block in their colours, or an error region.
+    </li>
+    <li>
+      <code>data-color-scheme="dark"</code> or <code>"light"</code> flips a
+      subtree's scheme and paints its background, so a band can sit dark on a
+      light page with no extra classes.
+    </li>
+  </ul>
+  <p>
+    A boundary draws nothing on its own, so put it on the element that already
+    exists for layout, such as the section or the card, rather than adding a
+    wrapper.
+  </p>
+  <p>
+    Below: a section in one brand colour, with a credit block inside it in
+    another. Boundaries nest, and each one reaches only its own subtree.
+  </p>
+  {% set classless %}
+<section class="retheme" style="--primary: #a33b2b; display: grid; gap: var(--padding)">
+  <div class="prose">
+    <h3>The site's own section</h3>
+    <p>Everything here takes the section's colour.</p>
+    <a href="#" role="button" class="btn">Browse the catalog</a>
+  </div>
+  <aside class="card-border retheme prose" style="--primary: rebeccapurple">
+    <h3>Built by a partner</h3>
+    <p>This block takes the partner's colour instead.</p>
+    <a href="#" role="button" class="btn">Visit the partner</a>
+  </aside>
+</section>
+  {% endset %}
+  {{ m.demo("comp-boundaries", classless) }}
+</section>
+
+<section id="layout">
+  <h2>Layout</h2>
+  <p>
+    The framework gives you a page width, a row, and a bar. Everything else is
+    CSS grid with <code>var(--padding)</code> as the gap.
+  </p>
+  <table class="class-table">
+    <thead>
+      <tr><th>Need</th><th>Use</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>A page column</td><td><code>.container</code>, once per page, around the main content</td></tr>
+      <tr><td>A full-width band with padded content</td><td><code>.container-fluid</code></td></tr>
+      <tr><td>A row that stacks on phones</td><td><code>.flex .flip</code>; add <code>.reverse</code> to put the second item first</td></tr>
+      <tr><td>A header</td><td><code>.navbar</code> with <code>.navbar-start</code> and <code>.navbar-end</code></td></tr>
+      <tr><td>A grid of cards</td><td><code>grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr))</code></td></tr>
+    </tbody>
+  </table>
+  <p>
+    See <a href="./layout.html">Layout</a> for the breakpoints, and the
+    Composition section at the end of each component page for these rules at
+    work.
+  </p>
+</section>
+{% endblock %}

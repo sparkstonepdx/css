@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en" data-color-scheme="light">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Theme preview</title>
+<link rel="stylesheet" href="./index.css" />
+<style>
+  /* Preview page layout only. Not part of @sparkstone/css. */
+  body { margin: 0; padding: var(--padding); min-height: 0; }
+  .tp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: var(--padding); }
+  .tp-stack { display: grid; gap: var(--padding); }
+  .tp-section { margin-bottom: calc(var(--padding) * 2); }
+</style>
+</head>
+<body>
+<header class="navbar tp-section">
+  <div class="navbar-start"><strong>Studio name</strong></div>
+  <nav class="navbar-end" style="flex-wrap: wrap">
+    <a href="#" class="link">Work</a>
+    <a href="#" class="link">About</a>
+    <a href="#" class="btn">Book a call</a>
+  </nav>
+</header>
+
+<section class="prose tp-section" style="max-width: 40rem">
+  <h1>Software your business runs on</h1>
+  <p class="text-secondary">Built and looked after by one person, on a monthly retainer.</p>
+  <a href="#" class="btn">Book a call</a>
+  <a href="#" class="btn btn-secondary">See the work</a>
+  <a href="#" class="btn btn-ghost">Pricing</a>
+</section>
+
+<div class="tp-grid tp-section">
+  <article class="card prose">
+    <span class="badge">New</span>
+    <h3 style="margin-top: calc(var(--padding) / 2)">A service</h3>
+    <p>What it is, in a line or two.</p>
+    <a href="#" class="link">Read more</a>
+  </article>
+  <article class="card-border prose">
+    <h3>Downloads</h3>
+    <p class="flex"><a href="#" class="link">PDF</a> <a href="#" class="link">SVG</a></p>
+    <blockquote>A short quote on a bordered block.</blockquote>
+  </article>
+  <article class="card">
+    <div class="flex" style="justify-content: space-between"><strong>Uploading</strong><span class="text-secondary">7 of 12</span></div>
+    <progress class="progress" value="7" max="12" style="margin: calc(var(--padding) / 2) 0"></progress>
+    <div class="alert" role="status">Saved a moment ago.</div>
+    <div class="alert alert-error" role="alert" style="margin: 0">One file failed.</div>
+  </article>
+</div>
+
+<div class="tp-grid tp-section">
+  <form class="card" onsubmit="return false">
+    <label class="label"><p>Name</p><input class="input" value="Sam" /></label>
+    <label class="label">
+      <p>Email</p>
+      <input class="input" type="email" value="sam@" aria-invalid="true" />
+      <small>Enter a full email address.</small>
+    </label>
+    <label class="label">
+      <p>Plan</p>
+      <select class="select"><option>Monthly</option><option>Yearly</option></select>
+    </label>
+    <label class="label"><input type="checkbox" class="checkbox" checked /> Send me updates</label>
+    <label class="label"><input type="checkbox" class="toggle" checked /> Weekly summary</label>
+    <footer class="card-actions flex" style="justify-content: end">
+      <button class="btn btn-secondary" type="button">Cancel</button>
+      <button class="btn">Save</button>
+    </footer>
+  </form>
+
+  <div class="tp-stack" style="align-content: start">
+    <div>
+      <div class="tabs" role="tablist">
+        <button class="tab tab-active" role="tab">Open <span class="badge">3</span></button>
+        <button class="tab" role="tab">Done <span class="badge">12</span></button>
+        <button class="tab tab-disabled" role="tab">Archived</button>
+      </div>
+      <table class="table">
+        <thead><tr><th>Item</th><th>Status</th></tr></thead>
+        <tbody>
+          <tr><td>Website</td><td><span class="badge">Live</span></td></tr>
+          <tr><td>Booking form</td><td><span class="badge">Draft</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="segmented" role="radiogroup" aria-label="View">
+      <label class="segmented-item"><input type="radio" name="tpv" checked /> Grid</label>
+      <label class="segmented-item"><input type="radio" name="tpv" /> List</label>
+    </div>
+    <label class="label"><p>Distance</p><input type="range" class="range" value="40" style="--range-fill: 40%" /></label>
+    <ul class="dropdown-content menu" style="animation: none">
+      <li class="menu-title">Account</li>
+      <li class="menu-item">Settings <span class="menu-shortcut"><kbd class="kbd">S</kbd></span></li>
+      <li class="menu-item menu-active">Billing</li>
+      <li class="menu-item menu-disabled">Sign out</li>
+    </ul>
+  </div>
+</div>
+
+<div class="tp-grid">
+  <article class="dialog-box prose" style="margin: 0; animation: none">
+    <h3>Delete this project?</h3>
+    <p>Its files and history go with it.</p>
+    <footer class="dialog-actions">
+      <button class="btn btn-secondary">Keep it</button>
+      <button class="btn error">Delete</button>
+    </footer>
+  </article>
+  <section class="card-border disabled prose">
+    <h3>Disabled section</h3>
+    <p>Everything here loses its colour.</p>
+    <button class="btn">Save</button>
+    <span class="badge">Badge</span>
+  </section>
+</div>
+</body>
+</html>

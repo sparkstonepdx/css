@@ -1,0 +1,554 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Theme generator · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./components.html"
+                    
+                    >All components</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./composition.html"
+                    
+                    >Composition</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./theme-generator.html"
+                    aria-current="page"
+                    >Theme generator</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Navigation</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./tabs.html"
+                    
+                    >Tabs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./dropdown.html"
+                    
+                    >Dropdown<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./navbar.html"
+                    
+                    >Navbar<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./breadcrumbs.html"
+                    
+                    >Breadcrumbs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./pagination.html"
+                    
+                    >Pagination<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./alert.html"
+                    
+                    >Alert<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./collapse.html"
+                    
+                    >Collapse<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./skeleton.html"
+                    
+                    >Skeleton<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toggle.html"
+                    
+                    >Toggle<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./slider.html"
+                    
+                    >Slider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./segmented.html"
+                    
+                    >Segmented control<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./tooltip.html"
+                    
+                    >Tooltip<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./popover.html"
+                    
+                    >Popover<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toast.html"
+                    
+                    >Toast<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Layout</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./divider.html"
+                    
+                    >Divider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./loading.html"
+                    
+                    >Loading<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main site-main-wide">
+        
+<h1>Theme generator</h1>
+<p class="lede">
+  Pick a few inputs and every component re-derives from them, in light and dark.
+  The contrast table checks the result as you go. Copy the CSS when you are done.
+</p>
+
+<div class="tg">
+  <form class="tg-controls" id="tg-form" autocomplete="off">
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Themes</legend>
+      <div class="tg-swatches" id="tg-presets" aria-label="Presets"></div>
+      <p class="tg-subhead" id="tg-mine-label" hidden><small>My themes</small></p>
+      <div class="tg-swatches" id="tg-mine" aria-label="My themes"></div>
+      <div class="flex tg-actions">
+        <button type="button" class="secondary" id="tg-random">Random</button>
+        <button type="button" class="secondary" id="tg-save">Save</button>
+        <button type="button" class="ghost" id="tg-reset">Reset</button>
+      </div>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Colours</legend>
+      <label>
+        <p>Name</p>
+        <input id="tg-name" value="my-theme" pattern="[a-z][a-z0-9-]*" />
+      </label>
+      <div class="tg-color">
+        <label><p>Primary</p><input type="color" data-key="primary" /></label>
+        <input data-hex="primary" aria-label="Primary hex" />
+      </div>
+      <div class="tg-color">
+        <label><p>Secondary</p><input type="color" data-key="secondary" /></label>
+        <input data-hex="secondary" aria-label="Secondary hex" />
+      </div>
+      <label><input type="checkbox" data-follow="secondary" checked /> Primary rotated 180°</label>
+      <div class="tg-color">
+        <label><p>Neutral</p><input type="color" data-key="neutral" /></label>
+        <input data-hex="neutral" aria-label="Neutral hex" />
+      </div>
+      <label><input type="checkbox" data-follow="neutral" checked /> Same as primary</label>
+      <div class="tg-color">
+        <label><p>Error</p><input type="color" data-key="error" /></label>
+        <input data-hex="error" aria-label="Error hex" />
+      </div>
+    </fieldset>
+
+    <fieldset class="fieldset">
+      <legend class="fieldset-legend">Shape</legend>
+      <label>
+        <p class="tg-range-label"><span>Boxes</span><output data-out="radiusBox"></output></p>
+        <input type="range" data-key="radiusBox" min="0" max="2" step="0.125" />
+        <small>Cards, dialogs, alerts, panels</small>
+      </label>
+      <label>
+        <p class="tg-range-label"><span>Fields</span><output data-out="radiusField"></output></p>
+        <input type="range" data-key="radiusField" min="0" max="2" step="0.125" />
+        <small>Buttons, inputs, selects, tabs</small>
+      </label>
+      <label>
+        <p class="tg-range-label"><span>Selectors</span><output data-out="radiusSelector"></output></p>
+        <input type="range" data-key="radiusSelector" min="0" max="2" step="0.125" />
+        <small>Checkboxes, badges, toggles</small>
+      </label>
+      <label>
+        <p class="tg-range-label"><span>Border width</span><output data-out="border"></output></p>
+        <input type="range" data-key="border" min="0.0625" max="0.25" step="0.0125" />
+      </label>
+      <label>
+        <p class="tg-range-label"><span>Spacing</span><output data-out="padding"></output></p>
+        <input type="range" data-key="padding" min="0.5" max="1.5" step="0.125" />
+      </label>
+      <label><input type="checkbox" data-key="shadow" /> Shadows</label>
+    </fieldset>
+  </form>
+
+  <div class="tg-output">
+    <div class="flex tg-preview-bar">
+      <div class="segmented" role="radiogroup" aria-label="Preview scheme">
+        <label class="segmented-item"><input type="radio" name="tg-scheme" value="light" checked /> Light</label>
+        <label class="segmented-item"><input type="radio" name="tg-scheme" value="dark" /> Dark</label>
+      </div>
+      <button type="button" class="ghost" id="tg-share">Copy share link</button>
+    </div>
+    <iframe class="tg-frame" id="tg-frame" title="Theme preview" src="./theme-preview.html"></iframe>
+
+    <h2>Contrast</h2>
+    <p>
+      <small>
+        Measured from the colours the browser renders, in both schemes. Text needs
+        4.5:1; borders and focus rings need 3:1.
+      </small>
+    </p>
+    <table class="tg-contrast" id="tg-contrast">
+      <thead><tr><th>Pair</th><th>Needs</th><th>Light</th><th>Dark</th></tr></thead>
+      <tbody></tbody>
+    </table>
+
+    <h2>CSS</h2>
+    <div class="flex tg-export-bar">
+      <div class="segmented" role="radiogroup" aria-label="Scope">
+        <label class="segmented-item"><input type="radio" name="tg-scope" value="root" checked /> Whole page</label>
+        <label class="segmented-item"><input type="radio" name="tg-scope" value="class" /> One section</label>
+      </div>
+    </div>
+    <p id="tg-scope-note"><small></small></p>
+    <div class="code-block standalone">
+      <button class="ghost copy-button" type="button" data-target="tg-css">Copy</button>
+      <pre><code id="tg-css" class="language-css"></code></pre>
+    </div>
+  </div>
+</div>
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+<script src="./theme-generator.js" type="module"></script>
+
+  </body>
+</html>

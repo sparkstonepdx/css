@@ -76,4 +76,110 @@
     <code>.card-border</code>.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>A grid of equal cards and a call to action</h3>
+<p>Several offers of equal weight, then one card that asks for the next step.</p>
+{% set classless %}
+<section class="prose">
+  <h2>Services</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); gap: var(--padding); margin-bottom: 1rem">
+    <article class="card"><h3>First service</h3><p>What it is, in a line.</p></article>
+    <article class="card"><h3>Second service</h3><p>What it is, in a line.</p></article>
+    <article class="card"><h3>Third service</h3><p>What it is, in a line.</p></article>
+  </div>
+  <article class="card" style="text-align: center">
+    <p>Not sure which fits?</p>
+    <a href="#" class="btn">Talk it through</a>
+  </article>
+</section>
+{% endset %}
+{{ m.demo("card-comp-1", classless) }}
+<ul>
+  <li><strong>Layout:</strong> a grid with <code>min(100%, 16rem)</code> columns: as many as fit, one on a phone, and never wider than the screen.</li>
+  <li><strong>Spacing:</strong> <code>.prose</code> does not space a <code>div</code>, so the grid carries its own <code>1rem</code> bottom margin before the call to action.</li>
+</ul>
+
+<h3>Bordered items in a raised card</h3>
+<p>A card holding a few bordered blocks: the blocks drop back to the page colour, which separates them without a second shadow.</p>
+{% set classless %}
+<article class="card prose">
+  <h3>Downloads</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 10rem), 1fr)); gap: var(--padding)">
+    <div class="card-border"><strong>Logo</strong><p class="flex"><a href="#" class="link">SVG</a> <a href="#" class="link">PNG</a></p></div>
+    <div class="card-border"><strong>Flyer</strong><p class="flex"><a href="#" class="link">PDF</a></p></div>
+  </div>
+</article>
+{% endset %}
+{{ m.demo("card-comp-2", classless) }}
+<ul>
+  <li><strong>Surface:</strong> surfaces are solid, so a <code>.card</code> inside a <code>.card</code> would be invisible. <code>.card-border</code> is the nested surface.</li>
+</ul>
+
+<h3>A list of linked entries</h3>
+<p>Each entry is one link: an image beside its title and a sentence.</p>
+{% set classless %}
+<div style="display: grid; gap: var(--padding)">
+  <a href="#" class="semantic card flex flip" style="align-items: center">
+    <div style="width: 10rem; flex-shrink: 0; aspect-ratio: 1.5; border-radius: var(--border-radius); background: var(--surface-strong)"></div>
+    <div class="prose"><h3 class="link">Entry title</h3><p>A sentence or two about it.</p></div>
+  </a>
+  <a href="#" class="semantic card flex flip" style="align-items: center">
+    <div style="width: 10rem; flex-shrink: 0; aspect-ratio: 1.5; border-radius: var(--border-radius); background: var(--surface-strong)"></div>
+    <div class="prose"><h3 class="link">Another entry</h3><p>A sentence or two about it.</p></div>
+  </a>
+</div>
+{% endset %}
+{{ m.demo("card-comp-3", classless) }}
+<ul>
+  <li><strong>Actions:</strong> the anchor is the card: <code>.card</code> and <code>.flex</code> come after <code>.semantic</code> in the cascade, so the surface and the row survive its reset.</li>
+  <li><strong>Layout:</strong> on a phone <code>.flip</code> puts the image above the text.</li>
+</ul>
+
+<h3>Work in progress</h3>
+<p>A card that reports progress, with a way out.</p>
+{% set classless %}
+<article class="card">
+  <div class="flex" style="justify-content: space-between">
+    <strong>Uploading photos</strong>
+    <span class="text-secondary">7 of 12</span>
+  </div>
+  <progress class="progress" value="7" max="12" style="margin: calc(var(--padding) / 2) 0"></progress>
+  <footer class="card-actions flex" style="justify-content: end">
+    <button class="btn btn-secondary">Cancel</button>
+  </footer>
+</article>
+{% endset %}
+{{ m.demo("card-comp-4", classless) }}
+<ul>
+  <li><strong>Text:</strong> the count is <code>.text-secondary</code> so the label leads.</li>
+  <li><strong>Actions:</strong> the only action while it runs is a way out, so it is secondary.</li>
+</ul>
+
+<h3>Loading</h3>
+<p>While a grid of cards loads, each card shows blocks where its content will be.</p>
+{% set classless %}
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 12rem), 1fr)); gap: var(--padding)" aria-busy="true">
+  <div class="card">
+    <div class="skeleton" style="aspect-ratio: 1.5; margin-bottom: calc(var(--padding) / 2)"></div>
+    <div class="skeleton" style="height: 1.2rem; width: 70%; margin-bottom: calc(var(--padding) / 4)"></div>
+    <div class="skeleton" style="height: 1rem"></div>
+  </div>
+  <div class="card">
+    <div class="skeleton" style="aspect-ratio: 1.5; margin-bottom: calc(var(--padding) / 2)"></div>
+    <div class="skeleton" style="height: 1.2rem; width: 55%; margin-bottom: calc(var(--padding) / 4)"></div>
+    <div class="skeleton" style="height: 1rem"></div>
+  </div>
+</div>
+{% endset %}
+{{ m.demo("card-comp-5", classless) }}
+<ul>
+  <li><strong>Surface:</strong> the skeletons sit inside the same <code>.card</code> the loaded content will use, so nothing jumps when it arrives.</li>
+  <li><strong>Layout:</strong> skeletons have no size of their own; give them the size of what they stand in for.</li>
+</ul>
 {% endblock %}

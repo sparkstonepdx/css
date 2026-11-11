@@ -14,17 +14,32 @@
   }
 
   .text-secondary {
-    color: cur-color(var(--text-lc-3));
+    color: var(--fg-muted);
   }
 
+  // The two generic states. Anything disabled or invalid, however it says so,
+  // lands in one of these rules and becomes a re-theming boundary; components
+  // with their own state class @extend these rather than setting inputs.
   .disabled,
-  .btn-disabled,
-  *:disabled {
-    @include apply-greyscale();
+  :disabled,
+  [data-disabled],
+  [aria-disabled="true"] {
+    --chroma: 0;
+    @extend .retheme;
+  }
+
+  .error,
+  [aria-invalid="true"] {
+    --primary: var(--error);
+    @extend .retheme;
+  }
+
+  .btn-disabled {
+    @extend .disabled;
   }
 
   .text-error {
-    --color: var(--error-color);
-    color: cur-color(var(--text-lc-3));
+    @extend .error;
+    color: var(--fg-muted);
   }
 }

@@ -3,3 +3,4 @@
 # @parcel/watcher compiles a native binding, used by the docs watcher in dev.js.
 allowBuilds:
   "@parcel/watcher": true
+  fsevents: set this to true or false

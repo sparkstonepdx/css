@@ -66,8 +66,9 @@
 <p>
   <a href="https://kobalte.dev/docs/core/components/select" target="_blank" rel="noreferrer">Kobalte's Select</a>
   is a button plus a listbox, not a native <code>&lt;select&gt;</code>. The Kobalte
-  layer gives the trigger the field styling above, and the listbox the dropdown
-  panel, so the same theme covers both.
+  layer gives the trigger the field styling above and styles the listbox and its
+  options. <code>Select.Content</code>, the panel around the listbox, has no role
+  of its own, so it takes <code>.dropdown-content</code> by hand.
 </p>
 {% set classless %}
 <select class="select">
@@ -80,11 +81,13 @@
   <button aria-haspopup="listbox" aria-expanded="true" data-expanded style="margin-bottom: 0.25rem">
     <span>Production</span>
   </button>
-  <ul role="listbox">
-    <li role="option">Development</li>
-    <li role="option" data-highlighted>Staging</li>
-    <li role="option" data-selected>Production</li>
-  </ul>
+  <div class="dropdown-content" data-expanded>
+    <ul role="listbox">
+      <li role="option">Development</li>
+      <li role="option" data-highlighted>Staging</li>
+      <li role="option" data-selected aria-selected="true">Production</li>
+    </ul>
+  </div>
 </div>
 {% endset %}
 {% set kobalte %}
@@ -104,7 +107,7 @@ import { Select } from "@kobalte/core/select";
     <Select.Value>{state => state.selectedOption()}</Select.Value>
   </Select.Trigger>
   <Select.Portal>
-    <Select.Content>
+    <Select.Content class="dropdown-content">
       <Select.Listbox />
     </Select.Content>
   </Select.Portal>
@@ -117,6 +120,40 @@ import { Select } from "@kobalte/core/select";
     one the native select gets.
   </small>
 </p>
+
+<h3>On the class-based build</h3>
+<p>
+  Put the classes on the parts yourself. The rows follow Kobalte's state without
+  any extra classes: a highlighted row matches <code>data-highlighted</code> and a
+  selected one <code>aria-selected</code>, which is also what Radix and Ark set.
+  For a compact trigger, such as a version switcher, use a button and keep
+  <code>Select.Icon</code>; for a form field, use <code>.select</code> and leave
+  it out, since the field draws its own chevron.
+</p>
+{% call m.snippet("select-class-build", "jsx") %}{% raw %}
+<Select
+  options={versions()}
+  optionValue="id"
+  optionTextValue="label"
+  value={current()}
+  onChange={setCurrent}
+  itemComponent={props => (
+    <Select.Item item={props.item} class="menu-item">
+      <Select.ItemLabel>{props.item.rawValue.label}</Select.ItemLabel>
+    </Select.Item>
+  )}
+>
+  <Select.Trigger class="btn btn-secondary" aria-label="Version">
+    <Select.Value>{state => state.selectedOption().label}</Select.Value>
+    <Select.Icon>▾</Select.Icon>
+  </Select.Trigger>
+  <Select.Portal>
+    <Select.Content class="dropdown-content">
+      <Select.Listbox class="menu" />
+    </Select.Content>
+  </Select.Portal>
+</Select>
+{% endraw %}{% endcall %}
 
 <h3>Disabled</h3>
 {% set classless %}
@@ -152,4 +189,34 @@ import { Select } from "@kobalte/core/select";
     <code>.menu-selected</code> and <code>.menu-active</code>.
   </small>
 </p>
+{# composition #}
+<h2 id="composition">Composition</h2>
+<p>
+  Common ways to put this together with other components. The general rules are on
+  <a href="./composition.html">Composition</a>.
+</p>
+
+<h3>Sort beside search</h3>
+<p>A search field that takes the width, and a sort select beside it.</p>
+{% set classless %}
+<div class="flex" style="flex-wrap: wrap; align-items: end; row-gap: 0">
+  <label class="label" style="flex: 1 1 16rem">
+    <p>Search</p>
+    <input class="input" type="search" />
+  </label>
+  <label class="label" style="flex: 0 1 12rem">
+    <p>Sort</p>
+    <select class="select">
+      <option>Newest</option>
+      <option>Oldest</option>
+      <option>A to Z</option>
+    </select>
+  </label>
+</div>
+{% endset %}
+{{ m.demo("select-comp-1", classless) }}
+<ul>
+  <li><strong>Layout:</strong> both are labels in one wrapping row, so their label text and fields line up without extra rules. The search grows from <code>16rem</code> and the select stays near <code>12rem</code>; on a phone the select wraps under the search at the left edge. <code>.flip</code> is the wrong tool here: in a column, a flex basis becomes a height.</li>
+  <li><strong>Controls:</strong> a select is full width by default, so its width comes from its label in the row.</li>
+</ul>
 {% endblock %}

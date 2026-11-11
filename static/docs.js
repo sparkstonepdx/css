@@ -42,30 +42,46 @@ for (const btn of document.querySelectorAll('.copy-button')) {
 /* ---------- live theme pickers ---------- */
 
 const pickers = [
-  { cssVar: '--color', id: 'base-color-picker', key: 'sparkstone-base-color', fallback: 'rebeccapurple' },
-  { cssVar: '--accent-color', id: 'accent-color-picker', key: 'sparkstone-accent-color', fallback: '#425e00' },
-  { cssVar: '--error-color', id: 'error-color-picker', key: 'sparkstone-error-color', fallback: 'maroon' },
+  { cssVar: '--primary', id: 'base-color-picker', key: 'sparkstone-primary', fallback: 'rebeccapurple' },
+  { cssVar: '--secondary', id: 'accent-color-picker', key: 'sparkstone-secondary', fallback: '#425e00' },
+  { cssVar: '--error', id: 'error-color-picker', key: 'sparkstone-error', fallback: 'maroon' },
 ];
 
-const toHex = (value, fallback) => {
+// A colour input needs #rrggbb. Custom properties can hold relative-colour
+// expressions that nothing parses, so resolve them through a real element's
+// computed colour, then read the pixel back.
+const toHex = (cssColor, fallback) => {
   try {
-    const ctx = document.createElement('canvas').getContext('2d');
-    ctx.fillStyle = fallback;
-    ctx.fillStyle = value;
-    return ctx.fillStyle;
+    const probe = document.createElement('span');
+    probe.style.color = cssColor;
+    document.body.append(probe);
+    const resolved = getComputedStyle(probe).color;
+    probe.remove();
+    const canvas = document.createElement('canvas');
+    canvas.width = canvas.height = 1;
+    const ctx = canvas.getContext('2d', { willReadFrequently: true });
+    ctx.fillStyle = resolved;
+    ctx.fillRect(0, 0, 1, 1);
+    const [r, g, b] = ctx.getImageData(0, 0, 1, 1).data;
+    return '#' + [r, g, b].map(v => v.toString(16).padStart(2, '0')).join('');
   } catch {
     return fallback;
   }
 };
 
 for (const { cssVar, id, key, fallback } of pickers) {
-  const computed = getComputedStyle(root).getPropertyValue(cssVar).trim();
-  const initial = sessionStorage.getItem(key) || toHex(computed, fallback);
-  root.style.setProperty(cssVar, initial);
+  // Only write an input the reader actually chose. Writing the default would pin
+  // it at the root, and an unset input is what lets --secondary follow --primary
+  // wherever --primary is changed.
+  const stored = sessionStorage.getItem(key);
+  if (stored) root.style.setProperty(cssVar, stored);
 
   const input = document.getElementById(id);
   if (!input) continue;
-  input.value = initial;
+  // Seed from what the page is actually using: the resolved colour of the
+  // derived role, so an unset --secondary shows the link colour it produces.
+  const role = { '--primary': 'var(--primary-base)', '--secondary': 'var(--link)', '--error': 'var(--error)' }[cssVar];
+  input.value = stored || toHex(role, fallback);
   input.addEventListener('input', () => {
     root.style.setProperty(cssVar, input.value);
     sessionStorage.setItem(key, input.value);
@@ -125,6 +141,18 @@ const selectTab = tab => {
     indicator.style.left = tab.offsetLeft + 'px';
   }
 };
+const placeSegmented = root => {
+  const indicator = root.querySelector('.segmented-indicator');
+  const item = [...root.querySelectorAll('.segmented-item')].find(i => i.querySelector('input:checked'));
+  if (!indicator || !item) return;
+  for (const i of root.querySelectorAll('.segmented-item')) i.toggleAttribute('data-checked', i === item);
+  Object.assign(indicator.style, { left: item.offsetLeft + 'px', width: item.offsetWidth + 'px' });
+};
+document.addEventListener('change', e => {
+  const root = e.target.closest('.segmented');
+  if (root) placeSegmented(root);
+});
+addEventListener('load', () => document.querySelectorAll('.segmented').forEach(placeSegmented));
 document.addEventListener('click', e => {
   const tab = e.target.closest('[role="tab"]');
   if (tab && !tab.hasAttribute('data-disabled')) selectTab(tab);
@@ -146,7 +174,7 @@ for (const dialog of document.querySelectorAll('dialog')) {
 }
 <\/scr` + `ipt>`;
 
-const themeVars = ['--color', '--accent-color', '--error-color'];
+const themeVars = ['--primary', '--secondary', '--error'];
 
 const frameDoc = (markup, variant, id) => {
   const scheme = root.getAttribute('data-color-scheme') || 'light';
