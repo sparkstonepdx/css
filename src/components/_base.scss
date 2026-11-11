@@ -49,6 +49,9 @@
   --z-bar: 60;
   // Everything you tap is at least this big, or reaches it (WCAG 2.2 2.5.5).
   --tap: 44px;
+  // The height of every one-line control: fields, selects, colour inputs,
+  // buttons. One number, so controls side by side always line up.
+  --control-h: 2.75rem;
   // Motion curves: popping in, landing with a spring, easing out, both ways,
   // and settling (sheets).
   --ease-pop: cubic-bezier(0.3, 1.5, 0.5, 1);

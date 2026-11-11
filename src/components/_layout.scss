@@ -62,6 +62,24 @@
     gap: 1rem;
   }
 
+  // 4.0 (PROPOSAL): controls side by side, lined up on their bottom edge, so a
+  // labelled field, a bare one and a button sit on one line.
+  .field-row {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-sm);
+
+    > :where(.input, .select, .color-input, .file-input) {
+      flex: 1;
+    }
+  }
+
+  // In a row, a label's form spacing would lift it off the line of what sits
+  // beside it.
+  :where(.flex, .field-row, .page-head, .page-actions, .card-actions, .sheet-footer, .notice-actions, .dock) > .label {
+    margin-bottom: 0;
+  }
+
   @media only screen and (max-width: 600px) {
     .flex.flip {
       flex-direction: column;

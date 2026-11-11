@@ -167,6 +167,7 @@
     border: var(--border-width) solid var(--edge);
     border-radius: var(--radius-field, var(--border-radius));
     padding: calc(var(--padding) / 2);
+    font: inherit;
     background-color: var(--surface);
     color: var(--ink);
     outline-width: 0;
@@ -186,18 +187,21 @@
   .textarea,
   .file-input,
   .color-input {
-    margin-bottom: 1rem;
     width: 100%;
   }
   .input,
   .select,
   .textarea {
     appearance: none;
-    padding: 0.75rem 1rem;
+    padding: calc((var(--control-h) - 1.5rem - var(--border-width) * 2) / 2) 1rem;
+  }
+  .select {
+    display: block;
+    text-align: start;
   }
   .input,
   .color-input {
-    height: calc(3rem + var(--border-width) * 2);
+    height: var(--control-h);
   }
   @supports selector(::-webkit-calendar-picker-indicator) {
     .input:is([type=date], [type=datetime-local], [type=month], [type=time], [type=week]) {
@@ -358,7 +362,6 @@
     display: block;
     width: 100%;
     height: var(--slider-thumb);
-    margin-bottom: 1rem;
     padding: 0;
     border: 0;
     background: transparent;
@@ -427,6 +430,7 @@
     --z-fx: 45;
     --z-bar: 60;
     --tap: 44px;
+    --control-h: 2.75rem;
     --ease-pop: cubic-bezier(0.3, 1.5, 0.5, 1);
     --ease-spring: cubic-bezier(0.2, 0.9, 0.3, 1.3);
     --ease-out: cubic-bezier(0.2, 0.9, 0.3, 1);
@@ -684,9 +688,10 @@
   }
   .label {
     display: block;
-    margin-bottom: 0.375rem;
+    margin-bottom: 1rem;
   }
   .label > :where(.input, .select, .textarea, .range, .file-input, .color-input) {
+    display: block;
     margin-top: 0.25rem;
   }
   .label:has(> .radio) {
@@ -736,8 +741,8 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-sm);
-    min-height: var(--tap);
+    gap: 0.25em;
+    min-height: var(--control-h);
     padding: var(--space-sm) var(--space-lg);
     border: var(--border-width) solid var(--accent);
     border-radius: var(--radius-field, var(--border-radius));
@@ -1099,12 +1104,18 @@
     border-bottom: var(--border-width) solid var(--line);
   }
   .tab {
-    display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs);
+    min-height: var(--control-h);
+    white-space: nowrap;
+    font: inherit;
     border: 0;
     background-color: transparent;
     color: var(--muted);
     cursor: pointer;
-    padding: 0.75rem 1rem;
+    padding: var(--space-sm) var(--space-lg);
     text-align: center;
     border-radius: var(--radius-field, var(--border-radius)) var(--radius-field, var(--border-radius)) 0 0;
   }
@@ -1517,7 +1528,11 @@
     display: flex;
     flex-direction: column;
     gap: 0.25rem;
+  }
+  .slider:has(> label) {
     margin-bottom: 1rem;
+  }
+  .slider {
     position: relative;
   }
   .slider > label {
@@ -1733,6 +1748,17 @@
   .flex {
     display: flex;
     gap: 1rem;
+  }
+  .field-row {
+    display: flex;
+    align-items: flex-end;
+    gap: var(--space-sm);
+  }
+  .field-row > :where(.input, .select, .color-input, .file-input) {
+    flex: 1;
+  }
+  :where(.flex, .field-row, .page-head, .page-actions, .card-actions, .sheet-footer, .notice-actions, .dock) > .label {
+    margin-bottom: 0;
   }
   @media only screen and (max-width: 600px) {
     .flex.flip {

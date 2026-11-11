@@ -36,7 +36,12 @@
     flex-direction: column;
     // Matches the margin a label puts above a native .range.
     gap: calc(1rem * 0.25);
-    margin-bottom: 1rem;
+
+    // 4.0: with its own label it's a form row, spaced like .label; without one
+    // it's a bare control with no outer margin, like a bare .range.
+    &:has(> label) {
+      margin-bottom: 1rem;
+    }
     position: relative;
 
     // A headless slider nests its own <label>, which the classless build styles

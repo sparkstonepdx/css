@@ -12,8 +12,10 @@
 
 $date-types: '[type="date"], [type="datetime-local"], [type="month"], [type="time"], [type="week"]';
 
-// Inner spacing of the text controls. Their one-line height is derived from it.
-$pad-block: 0.75rem;
+// 4.0 (PROPOSAL): every one-line control is --control-h tall (fields, selects,
+// colour inputs and buttons alike), so anything set side by side lines up.
+// The block padding is what's left after the text line and the borders.
+$pad-block: calc((var(--control-h) - 1rem * 1.5 - var(--border-width) * 2) / 2);
 $pad-inline: 1rem;
 
 // The icon at the end of a field: a calendar or clock on date and time inputs,
@@ -47,6 +49,9 @@ $select-icon-gutter: 2.25rem;
     border: var(--border-width) solid var(--edge);
     border-radius: var(--radius-field, var(--border-radius));
     padding: calc(var(--padding) / 2);
+    // A <button> standing in for a field (a headless select's trigger) also
+    // takes .btn in the classless build; fields read as text, not buttons.
+    font: inherit;
     background-color: var(--surface);
     color: var(--ink);
     outline-width: 0;
@@ -59,13 +64,14 @@ $select-icon-gutter: 2.25rem;
     }
   }
 
-  // Controls that fill the row and space the form below them.
+  // Controls that fill the row. 4.0 (PROPOSAL): no outer margin. A control's
+  // own margin is what pushed it off the line of whatever sat beside it; the
+  // space between form rows now comes from .label, and rows zero that.
   .input,
   .select,
   .textarea,
   .file-input,
   .color-input {
-    margin-bottom: 1rem;
     width: 100%;
   }
 
@@ -77,10 +83,19 @@ $select-icon-gutter: 2.25rem;
     padding: $pad-block $pad-inline;
   }
 
-  // One text line tall. The colour input matches, so the two line up in a row.
+  // A select is a block of text read from the start, whatever draws it: a
+  // <select>, or a <button> standing in for one (which would otherwise centre).
+  .select {
+    display: block;
+    text-align: start;
+  }
+
+  // One control tall: fields and colour inputs, and buttons too. A select
+  // gets there from its padding, so a button standing in for one (a headless
+  // select's trigger) comes out the same.
   .input,
   .color-input {
-    height: calc(1rem * 1.5 + $pad-block * 2 + var(--border-width) * 2);
+    height: var(--control-h);
   }
 
   .input {

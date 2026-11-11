@@ -5,11 +5,16 @@
 // every combination of those, so `label:has(> input[type="radio"])` comes out
 // of the same rule.
 @mixin styles {
+  // 4.0 (PROPOSAL): the label is the unit a form is spaced by; the controls
+  // inside it carry no margin of their own.
   .label {
     display: block;
-    margin-bottom: calc(1rem * 0.375);
+    margin-bottom: 1rem;
 
+    // Block, so the label's line box doesn't add a sliver under the control
+    // and nudge it off the line of a control beside the label.
     > :where(.input, .select, .textarea, .range, .file-input, .color-input) {
+      display: block;
       margin-top: calc(1rem * 0.25);
     }
 

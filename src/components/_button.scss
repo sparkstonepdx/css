@@ -16,8 +16,10 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: var(--space-sm);
-    min-height: var(--tap);
+    // About a space wide, so a label and an icon sit as they would in a line
+    // of text.
+    gap: 0.25em;
+    min-height: var(--control-h);
     padding: var(--space-sm) var(--space-lg);
     border: var(--border-width) solid var(--accent);
     border-radius: var(--radius-field, var(--border-radius));
