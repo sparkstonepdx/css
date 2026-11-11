@@ -20,6 +20,16 @@ Why: UIs built on 3.x without a design direction came out lavender with olive li
 | `.sheet` | bottom-anchored, 520px (720 wide), 88dvh, a `--divider` rule round its edge (a shadow doesn't show in dark), grip 36 by 4, slides up 340ms on `--ease-settle`; centred with all corners rounded from 700px | the look of Wordbag's drawer; behaviour lives in @sparkstone/kit |
 | `.notice` | stack above `--dock-h`, cards up to 420px, rise over `--duration-enter` on `--ease-spring`, a 2.5rem coin for the thing it's about | replaces the corner `.toast` on phones |
 | Buttons | `.btn-sm`, `.btn-lg`, `.icon-btn` (44 by 44, `--text-icon`) | |
+| Reference knobs | `--font`, `--display`, `--display-weight` (750), `--card-shadow`, `--card-pad`, `--card-gap`, with the radii and `--border-width` | what an app sets from its physical reference; the PR shows four references set this way |
+| Page and raised | `--page` (light 0.955, dark 0.15) behind everything; `--raised` (light 0.995, dark 0.215) for cards, rows, sheets, notices | **Breaking.** 3.x cards were darker than the page, so they read as wells |
+| `.btn` | inline-flex, `--tap` tall, `--space-sm` by `--space-lg`, weight 650; press shrinks to 0.97 | `.btn-secondary` is the raised fill with a hairline (Wordbag's quiet button), `.btn-ghost` text only |
+| `.card` | raised fill, hairline, `--card-shadow`, `--card-pad` | `.card-border` is the hairline alone |
+| `.list` / `.row` | one raised block, rows split by hairlines, at least `--tap` + 12px tall | new |
+| `.badge` | Wordbag's pill: `--text-sm`, weight 650, pill corners, `--surface` fill | |
+| `.table` | `--space-sm` by `--space-md` cells, muted small headers, tabular numbers, no rule under the last row | |
+| Headings | `--display` at `--display-weight`, line-height 1.15, balanced | |
+| `.page-head`, `.page-actions`, `.eyebrow`, `.stack`, `.section` | | new |
+| `.alert`, `.notice` | raised fill and hairline (the notice adds a soft drop shadow) instead of the brand's tint and line | |
 
 ## 3.0 colour engine (`src/vars.scss`) — not signed off
 
