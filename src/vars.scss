@@ -5,8 +5,9 @@
 //
 // Inputs you can set on any .retheme element, and its whole subtree re-themes:
 //   --primary    the brand colour. Its own hue and chroma are kept.
-//   --secondary  links and accents. Defaults to the primary rotated 180deg.
-//   --neutral    what text and surfaces are tinted with. Defaults to --primary.
+//   --secondary  links and accents. Defaults to the primary (4.0).
+//   --neutral    what text and surfaces are tinted with. Defaults to a near-grey
+//                on the primary's hue (4.0).
 // plus --error, and two switches the framework sets itself:
 //   --chroma     1 normally, 0 inside anything disabled
 //   the scheme   a handful of lightness numbers, swapped for dark
@@ -77,14 +78,23 @@
 // any .retheme boundary rather than only at the root.
 @mixin inputs {
   --error: maroon;
+  // 4.0 (PROPOSAL): status colours, re-themed like --error. Only the hue and
+  // chroma are used; the lightness is pinned per role, as for every input.
+  --success: oklch(0.55 0.13 150);
+  --warning: oklch(0.7 0.15 75);
   --chroma: 1;
 }
 
 // Derived colours. Declared on :root, [data-color-scheme] and .retheme.
 @mixin derived {
   --primary-base: var(--primary, var(--color, rebeccapurple));
-  --neutral-base: var(--neutral, var(--primary-base));
-  --secondary-base: var(--secondary, oklch(from var(--primary-base) l c calc(h + 180)));
+  // 4.0 (PROPOSAL): the neutral is a near-grey on the primary's hue, not the
+  // primary itself, so surfaces and text no longer take the brand's full colour.
+  // Set --neutral: var(--primary) for 3.x's tinted look.
+  --neutral-base: var(--neutral, oklch(from var(--primary-base) l 0.02 h));
+  // 4.0 (PROPOSAL): links and accents default to the primary. 3.x rotated it
+  // 180 degrees, which gave rebeccapurple olive-green links.
+  --secondary-base: var(--secondary, var(--primary-base));
 
   // Text: solid colours, so contrast never depends on what is behind them.
   --fg: #{tone(--neutral-base, var(--l-fg), var(--c-fg))};
