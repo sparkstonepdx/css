@@ -63,6 +63,22 @@
   // How long something takes to arrive on screen, such as a dialog opening.
   --duration-enter: 400ms;
 
+  // 4.0 (PROPOSAL): the knobs an app sets from its physical reference (a felt
+  // card table, warm paper, an ink print), on top of the colour inputs. Every
+  // component reads them, so one block of these restyles the whole app.
+  //   --font, --display          body and heading faces
+  //   --display-weight           how heavy headings are
+  //   --radius-box/field/selector  corners (see above)
+  //   --border-width             0 for a reference with no outlines
+  //   --card-shadow              how far cards lift: none for flat references
+  //   --card-pad, --card-gap     inside and between cards
+  --font: Inter, Roboto, "Helvetica Neue", system-ui, sans-serif;
+  --display: var(--font);
+  --display-weight: 750;
+  --card-shadow: 0 1px 2px oklch(0 0 0 / 0.06);
+  --card-pad: var(--space-lg);
+  --card-gap: var(--space-md);
+
   @include inputs;
   @include light-scheme;
 
@@ -120,14 +136,22 @@
 @mixin schemes {
   [data-color-scheme="dark"] {
     @include dark-scheme;
-    background-color: var(--bg);
+    background-color: var(--page);
     color: var(--fg);
   }
 
   [data-color-scheme="light"] {
     @include light-scheme;
-    background-color: var(--bg);
+    background-color: var(--page);
     color: var(--fg);
+  }
+
+  // Headings in the display face, balanced.
+  :where(h1, h2, h3) {
+    font-family: var(--display);
+    font-weight: var(--display-weight);
+    line-height: 1.15;
+    text-wrap: balance;
   }
 
   *:focus-visible {
@@ -136,13 +160,11 @@
   }
 
   body {
-    font-family:
-      Gordita, Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
-      sans-serif;
+    font-family: var(--font);
     // 4.0 (PROPOSAL): 16px body (was 18px), on the type scale.
     font-size: var(--text);
 
-    background-color: var(--bg);
+    background-color: var(--page);
 
     min-height: 100vh;
 

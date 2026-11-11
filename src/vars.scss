@@ -43,6 +43,10 @@
 // Lightness, and the chroma cap that goes with it, per role and scheme.
 @mixin light-scheme {
   --l-bg: 0.99;
+  // 4.0 (PROPOSAL): the page sits a step below the cards, so cards lift off it
+  // rather than sinking into it (3.x's surfaces were darker than the page).
+  --l-page: 0.955;
+  --l-raised: 0.995;
   --l-fg: 0.17;
   --l-muted: 0.34;
   --c-bg: 0.018;
@@ -60,6 +64,8 @@
 
 @mixin dark-scheme {
   --l-bg: 0.17;
+  --l-page: 0.15;
+  --l-raised: 0.215;
   --l-fg: 0.99;
   --l-muted: 0.805;
   --c-bg: 0.055;
@@ -101,6 +107,10 @@
   --fg-muted: #{tone(--neutral-base, var(--l-muted), var(--c-muted))};
   --fg-faint: #{tone(--neutral-base, 0.58, 0.185)};
   --bg: #{tone(--neutral-base, var(--l-bg), var(--c-bg))};
+  // 4.0 (PROPOSAL): the page behind everything, and the fill of a card, row or
+  // sheet raised off it.
+  --page: #{tone(--neutral-base, var(--l-page), var(--c-bg))};
+  --raised: #{tone(--neutral-base, var(--l-raised), var(--c-bg))};
 
   // Surfaces and rules: a tinted mid-tone mixed into the page colour, so they
   // carry the theme's colour and flip with the scheme for free. Mixed rather
@@ -171,6 +181,18 @@
   syntax: "<color>";
   inherits: true;
   initial-value: transparent;
+}
+
+@property --page {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
+}
+
+@property --raised {
+  syntax: "<color>";
+  inherits: true;
+  initial-value: white;
 }
 
 @property --surface {
