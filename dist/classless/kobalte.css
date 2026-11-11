@@ -1412,11 +1412,13 @@
     }
     .collapse::details-content, :is(h1, h2, h3, h4, h5, h6):has(+ [role=region])::details-content {
       block-size: 0;
+      opacity: 0;
       overflow-y: clip;
-      transition: block-size var(--duration-change), content-visibility var(--duration-change) allow-discrete;
+      transition: block-size var(--duration-change) var(--ease-out), opacity var(--duration-change) var(--ease-out), content-visibility var(--duration-change) allow-discrete;
     }
     .collapse[open]::details-content, [open]:is(h1, h2, h3, h4, h5, h6):has(+ [role=region])::details-content {
       block-size: auto;
+      opacity: 1;
     }
   }
   .collapse-title, :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) > button {
@@ -1448,6 +1450,50 @@
   }
   .collapse-content, :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) + [role=region] {
     padding-bottom: calc(var(--padding) / 2);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .collapse-content, :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) + [role=region] {
+      interpolate-size: allow-keywords;
+      overflow-y: clip;
+      transition: block-size var(--duration-change) var(--ease-out), opacity var(--duration-change) var(--ease-out), display var(--duration-change) allow-discrete;
+    }
+    .collapse-content[hidden], :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) + [hidden][role=region] {
+      display: none;
+      block-size: 0;
+      opacity: 0;
+    }
+    @starting-style {
+      .collapse-content:not([hidden]), :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) + [role=region]:not([hidden]) {
+        block-size: 0;
+        opacity: 0;
+      }
+    }
+    .collapse-content[data-expanded], :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) + [data-expanded][role=region] {
+      animation: sparkstone-collapse-open var(--duration-change) var(--ease-out);
+    }
+    .collapse-content[data-closed], :is(h1, h2, h3, h4, h5, h6):has(+ [role=region]) + [data-closed][role=region] {
+      animation: sparkstone-collapse-close var(--duration-change) var(--ease-out);
+    }
+  }
+  @keyframes sparkstone-collapse-open {
+    from {
+      block-size: 0;
+      opacity: 0;
+    }
+    to {
+      block-size: var(--kb-accordion-content-height, var(--kb-collapsible-content-height, auto));
+      opacity: 1;
+    }
+  }
+  @keyframes sparkstone-collapse-close {
+    from {
+      block-size: var(--kb-accordion-content-height, var(--kb-collapsible-content-height, auto));
+      opacity: 1;
+    }
+    to {
+      block-size: 0;
+      opacity: 0;
+    }
   }
   .tooltip-content, [role=tooltip] {
     max-width: 20rem;

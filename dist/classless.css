@@ -1405,11 +1405,13 @@
     }
     .collapse::details-content {
       block-size: 0;
+      opacity: 0;
       overflow-y: clip;
-      transition: block-size var(--duration-change), content-visibility var(--duration-change) allow-discrete;
+      transition: block-size var(--duration-change) var(--ease-out), opacity var(--duration-change) var(--ease-out), content-visibility var(--duration-change) allow-discrete;
     }
     .collapse[open]::details-content {
       block-size: auto;
+      opacity: 1;
     }
   }
   .collapse-title {
@@ -1441,6 +1443,50 @@
   }
   .collapse-content {
     padding-bottom: calc(var(--padding) / 2);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .collapse-content {
+      interpolate-size: allow-keywords;
+      overflow-y: clip;
+      transition: block-size var(--duration-change) var(--ease-out), opacity var(--duration-change) var(--ease-out), display var(--duration-change) allow-discrete;
+    }
+    .collapse-content[hidden] {
+      display: none;
+      block-size: 0;
+      opacity: 0;
+    }
+    @starting-style {
+      .collapse-content:not([hidden]) {
+        block-size: 0;
+        opacity: 0;
+      }
+    }
+    .collapse-content[data-expanded] {
+      animation: sparkstone-collapse-open var(--duration-change) var(--ease-out);
+    }
+    .collapse-content[data-closed] {
+      animation: sparkstone-collapse-close var(--duration-change) var(--ease-out);
+    }
+  }
+  @keyframes sparkstone-collapse-open {
+    from {
+      block-size: 0;
+      opacity: 0;
+    }
+    to {
+      block-size: var(--kb-accordion-content-height, var(--kb-collapsible-content-height, auto));
+      opacity: 1;
+    }
+  }
+  @keyframes sparkstone-collapse-close {
+    from {
+      block-size: var(--kb-accordion-content-height, var(--kb-collapsible-content-height, auto));
+      opacity: 1;
+    }
+    to {
+      block-size: 0;
+      opacity: 0;
+    }
   }
   .tooltip-content {
     max-width: 20rem;
