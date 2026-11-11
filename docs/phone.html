@@ -1,0 +1,552 @@
+
+
+<!DOCTYPE html>
+<html lang="en" data-color-scheme="light">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Phone layer · @sparkstone/css</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./classless.css" />
+    <link rel="stylesheet" href="./docs.css" />
+    <script src="./docs.js" type="module"></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <button
+        id="sidebar-toggle"
+        class="ghost"
+        aria-controls="site-sidebar"
+        aria-expanded="false"
+      >
+        Menu
+      </button>
+      <strong><a href="./index.html" class="semantic">@sparkstone/css</a></strong>
+      <nav class="flex site-links">
+        <a href="https://github.com/sparkstonepdx/css">GitHub</a>
+        <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a>
+        <button id="theme-toggle" class="ghost" aria-label="Toggle color scheme">Dark</button>
+      </nav>
+    </header>
+
+    <div class="site-body">
+      <aside class="site-sidebar" id="site-sidebar">
+        <nav aria-label="Documentation">
+          
+            <p class="sidebar-group">Getting started</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./index.html"
+                    
+                    >Overview</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./quickstart.html"
+                    
+                    >Quickstart</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./components.html"
+                    
+                    >All components</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./colors.html"
+                    
+                    >Colors</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./customizing.html"
+                    
+                    >Customizing</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./layout.html"
+                    
+                    >Layout</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./composition.html"
+                    
+                    >Composition</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./theme-generator.html"
+                    
+                    >Theme generator</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Typography</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./prose.html"
+                    
+                    >Prose</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./link.html"
+                    
+                    >Link</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./kbd.html"
+                    
+                    >Kbd</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Actions</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./button.html"
+                    
+                    >Button</a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Navigation</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./tabs.html"
+                    
+                    >Tabs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./dropdown.html"
+                    
+                    >Dropdown<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./navbar.html"
+                    
+                    >Navbar<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./breadcrumbs.html"
+                    
+                    >Breadcrumbs<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./pagination.html"
+                    
+                    >Pagination<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Data display</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./alert.html"
+                    
+                    >Alert<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./badge.html"
+                    
+                    >Badge</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./card.html"
+                    
+                    >Card</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./progress.html"
+                    
+                    >Progress</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./table.html"
+                    
+                    >Table</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./collapse.html"
+                    
+                    >Collapse<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./skeleton.html"
+                    
+                    >Skeleton<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Forms</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./label.html"
+                    
+                    >Label</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./fieldset.html"
+                    
+                    >Fieldset</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./input.html"
+                    
+                    >Input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./textarea.html"
+                    
+                    >Textarea</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./select.html"
+                    
+                    >Select<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./checkbox.html"
+                    
+                    >Checkbox</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./radio.html"
+                    
+                    >Radio</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./range.html"
+                    
+                    >Range<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./file-input.html"
+                    
+                    >File input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./color-input.html"
+                    
+                    >Color input</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toggle.html"
+                    
+                    >Toggle<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./slider.html"
+                    
+                    >Slider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./segmented.html"
+                    
+                    >Segmented control<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Overlay</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./dialog.html"
+                    
+                    >Dialog</a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./tooltip.html"
+                    
+                    >Tooltip<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./popover.html"
+                    
+                    >Popover<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./toast.html"
+                    
+                    >Toast<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./sheet.html"
+                    
+                    >Sheet<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./notice.html"
+                    
+                    >Notice<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+            <p class="sidebar-group">Layout</p>
+            <ul>
+              
+                <li>
+                  <a
+                    href="./divider.html"
+                    
+                    >Divider<span class="kobalte-badge" title="Covered by the Kobalte layer">K</span><span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./loading.html"
+                    
+                    >Loading<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+                <li>
+                  <a
+                    href="./phone.html"
+                    aria-current="page"
+                    >Phone layer<span class="alpha-badge retheme" title="Alpha: the look can change in a minor release">alpha</span></a
+                  >
+                </li>
+              
+            </ul>
+          
+        </nav>
+      </aside>
+
+      <main class="site-main">
+        
+<h1>Phone layer</h1>
+<p class="lede">
+  For apps that live at the bottom of a phone, in one hand: a dock for what's done most, bars clear of the home
+  gesture, and targets a thumb can hit.
+</p>
+
+
+<p class="alpha-note retheme">
+  <span class="alpha-badge retheme">alpha</span>
+  The class names and states here are stable. The look is not: these styles can
+  change in a minor release, without a major version bump.
+</p>
+
+
+
+<table class="class-table">
+  <thead>
+    <tr><th>Class</th><th>Does what</th></tr>
+  </thead>
+  <tbody>
+    
+      <tr><td><code>dock</code></td><td>Fixed to the bottom, with the safe area; content scrolls above it</td></tr>
+    
+      <tr><td><code>dock-space</code></td><td>Room under page content for the dock (reads --dock-h)</td></tr>
+    
+      <tr><td><code>bottom-bars</code></td><td>Short-lived bars, 28px clear of the home gesture</td></tr>
+    
+      <tr><td><code>tap</code></td><td>An invisible hit area that reaches --tap (44px) around a small control</td></tr>
+    
+      <tr><td><code>icon-btn</code></td><td>A glyph button (×, ≡) at least 44 by 44</td></tr>
+    
+  </tbody>
+</table>
+
+
+<h2>Dock</h2>
+<p>Shown in place here; on a page, <code>.dock</code> is fixed to the bottom.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="phone-dock-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="phone-dock-classes" data-variant="classes">&lt;div class=&quot;dock&quot; style=&quot;position: static&quot;&gt;
+  &lt;div class=&quot;flex&quot; style=&quot;gap: var(--space-sm)&quot;&gt;
+    &lt;button class=&quot;btn btn-secondary&quot;&gt;Shuffle&lt;/button&gt;
+    &lt;button class=&quot;btn btn-secondary&quot;&gt;Discard&lt;/button&gt;
+    &lt;span style=&quot;flex: 1&quot;&gt;&lt;/span&gt;
+    &lt;button class=&quot;btn&quot;&gt;Play&lt;/button&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+
+<h2>Status badges</h2>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="phone-status-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="phone-status-classes" data-variant="classes">&lt;p class=&quot;flex&quot; style=&quot;gap: var(--space-sm)&quot;&gt;
+  &lt;span class=&quot;badge&quot;&gt;web&lt;/span&gt;
+  &lt;span class=&quot;badge badge-success&quot;&gt;active&lt;/span&gt;
+  &lt;span class=&quot;badge badge-warning&quot;&gt;restarting&lt;/span&gt;
+  &lt;span class=&quot;badge badge-error&quot;&gt;failed&lt;/span&gt;
+&lt;/p&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+
+
+        <footer class="site-footer">
+          <hr />
+          <p>
+            <small>
+              <a href="https://www.npmjs.com/package/@sparkstone/css">npm</a> ·
+              <a href="https://github.com/sparkstonepdx/css">GitHub</a> ·
+              MIT
+            </small>
+          </p>
+        </footer>
+      </main>
+    </div>
+
+    
+  </body>
+</html>

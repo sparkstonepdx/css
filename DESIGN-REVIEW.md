@@ -1,5 +1,26 @@
 # Design review
 
+## 4.0 (`v4` branch) — not signed off
+
+Why: UIs built on 3.x without a design direction came out lavender with olive links and heavy outlines (the Nook dashboard), and none of the phone apps used the library because it had no dock, sheet, safe areas or tap minimum. These are the changes; every value is a proposal.
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| `--neutral` default | `oklch(from primary l 0.02 h)`: a near-grey on the brand's hue | **Breaking.** 3.x used the primary itself, so the page, surfaces and text took the brand's full colour. `--neutral: var(--primary)` restores it |
+| `--secondary` default | the primary | **Breaking.** 3.x rotated it 180deg: purple brands got olive links |
+| `--border-width` | `1px` | **Breaking.** 3.x was `0.1625rem` (2.6px) |
+| Body text | `var(--text)`, 16px | **Breaking.** 3.x was 18px |
+| Status colours | `--success` `oklch(0.55 0.13 150)`, `--warning` `oklch(0.7 0.15 75)`; `.success`, `.warning` beside `.error`; `.badge-*` and `.alert-*` for all three, and `.notice-*` | a status sets `--neutral` as well as `--primary`, so the surface takes a tint of it, not just the text |
+| Type scale | `--text-xs` 0.75, `--text-sm` 0.875, `--text` 1, `--text-lg` 1.25, `--text-xl` 1.75, `--text-icon` 1.5 rem | from Wordbag; components still use their own sizes until moved over |
+| Space scale | `--space-2xs` 0.125 to `--space-3xl` 3rem, eight steps | from Wordbag; same note |
+| Layers | `--z-dock` 10, `--z-sheet` 20, `--z-notice` 30, `--z-popover` 35, `--z-drag` 40, `--z-fx` 45, `--z-bar` 60 | `.dialog` is still 999 and the dropdown 50 |
+| `--tap` | 44px | WCAG 2.2 2.5.5 |
+| Easing | `--ease-pop`, `--ease-spring`, `--ease-out`, `--ease-in-out`, `--ease-settle` | Word Summit's curves and Wordbag's sheet curve |
+| Phone layer (`_phone.scss`) | `.dock`, `.dock-space`, `.bottom-bars` (28px above a 16px-minimum safe area), `.tap` reach, `touch-action: manipulation` on controls, 16px inputs on iOS | |
+| `.sheet` | bottom-anchored, 520px (720 wide), 88dvh, a `--divider` rule round its edge (a shadow doesn't show in dark), grip 36 by 4, slides up 340ms on `--ease-settle`; centred with all corners rounded from 700px | the look of Wordbag's drawer; behaviour lives in @sparkstone/kit |
+| `.notice` | stack above `--dock-h`, cards up to 420px, rise over `--duration-enter` on `--ease-spring`, a 2.5rem coin for the thing it's about | replaces the corner `.toast` on phones |
+| Buttons | `.btn-sm`, `.btn-lg`, `.icon-btn` (44 by 44, `--text-icon`) | |
+
 ## 3.0 colour engine (`src/vars.scss`) — not signed off
 
 The nine-step scale is gone. Four inputs, set on any `.retheme` element,
