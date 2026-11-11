@@ -2050,7 +2050,7 @@
     gap: var(--space-sm);
     padding: var(--space-md) var(--space-lg) 0;
   }
-  .sheet-header > :first-child {
+  .sheet-header > :where(h1, h2, h3) {
     flex: 1;
     margin: 0;
     font-size: var(--text-lg);

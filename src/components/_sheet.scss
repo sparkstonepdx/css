@@ -89,7 +89,9 @@
     gap: var(--space-sm);
     padding: var(--space-md) var(--space-lg) 0;
 
-    > :first-child {
+    // The title takes the room, so the close button sits at the end, whatever
+    // else is in the header (a grip, an icon).
+    > :where(h1, h2, h3) {
       flex: 1;
       margin: 0;
       font-size: var(--text-lg);
