@@ -14,7 +14,8 @@ on:
 jobs:
   cross-build:
     name: "🧪 Cross-build"
-    runs-on: ubuntu-latest
+    # Pinned: ubuntu-latest moved to 26.04, which this Playwright doesn't support.
+    runs-on: ubuntu-24.04
 
     steps:
       - uses: actions/checkout@v4
