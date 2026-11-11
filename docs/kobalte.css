@@ -1726,7 +1726,12 @@
     gap: var(--padding);
     padding: calc(var(--padding) / 2) var(--padding);
     background-color: var(--surface);
-    border-bottom: var(--border-width) solid var(--line);
+    border: var(--border-width) solid var(--line);
+    border-radius: var(--radius-box, var(--border-radius));
+  }
+  .navbar-flush {
+    border-width: 0 0 var(--border-width);
+    border-radius: 0;
   }
   .navbar-start {
     display: flex;

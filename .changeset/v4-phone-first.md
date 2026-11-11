@@ -18,6 +18,7 @@
 
 - **Defaults:** the neutral is a near-grey on the brand's hue and links use the brand colour (set `--neutral: var(--primary)` and `--secondary` for 3.x's look); cards are raised off a page a step darker; borders are 1px; body text is 16px.
 - **Reference knobs:** `--font`, `--display`, `--display-weight`, `--card-shadow`, `--card-pad`, `--card-gap`, with the radii and `--border-width`.
+- **Navbar:** follows the box radius with a hairline all round; add `.navbar-flush` to a bar that runs edge to edge across the top of the page.
 - **Components:** new looks for `.btn`, `.card`, `.badge`, `.table` and headings; new `.list` / `.row`, `.page-head`, `.eyebrow`, `.stack`, `.section`, `.sheet`, `.notice`, `.btn-sm`, `.btn-lg`, `.icon-btn`.
 - **Status:** `--success`, `--warning` and `.success`, `.warning` beside `.error`, with `.badge-*`, `.alert-*` and `.notice-*` variants.
 - **Tokens:** `--text-*`, `--space-*`, `--z-*`, `--tap`, `--ease-*`.
