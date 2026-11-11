@@ -43,11 +43,13 @@ jobs:
       - name: Use an npm that can publish with OIDC
         run: npm install -g npm@latest
 
+      # changesets/action v2 goes with the changesets CLI v3 this repo uses. v1 reads the CLI v2's
+      # "New tag:" output to find what was published, so with CLI v3 it published but made no git
+      # tag or GitHub release.
       - name: Version or publish
-        uses: changesets/action@v1
+        uses: changesets/action@v2
         with:
-          publish: pnpm release
-          title: "Version Packages"
-          commit: "Version Packages"
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          publish-script: pnpm release
+          pr-title: "Version Packages"
+          commit-message: "Version Packages"
+          github-token: ${{ secrets.GITHUB_TOKEN }}
