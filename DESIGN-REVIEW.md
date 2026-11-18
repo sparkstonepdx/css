@@ -1,5 +1,15 @@
 # Design review
 
+## 4.1 notice links (`src/components/_notice.scss`) — not signed off
+
+From Wordbag's `.toast-link` ("Your turn in another game ›", WB#512), for @sparkstone/kit's `Notice` `href`.
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| `.notice-link` | the link sits on the text and is stretched over the whole notice; buttons in it stay on top | one tap target, the notice's own size |
+| `.notice-go` | a › at the end, 1.25em, `--accent-text` | Wordbag uses its gold; apps without one get their accent |
+| Focus | the notice gets a 2px `--accent` outline, offset 2px | |
+
 ## 4.0 (`v4` branch) — not signed off
 
 Why: UIs built on 3.x without a design direction came out lavender with olive links and heavy outlines (the Nook dashboard), and none of the phone apps used the library because it had no dock, sheet, safe areas or tap minimum. These are the changes; every value is a proposal.
