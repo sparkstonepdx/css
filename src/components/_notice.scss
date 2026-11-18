@@ -84,6 +84,46 @@
     flex: none;
   }
 
+  // ALPHA (4.x PROPOSAL): a notice that's a link ("Your turn in another game ›",
+  // Wordbag's toast-link). The link is on the text and stretched over the whole
+  // notice, so the notice reads as one tap; buttons in it stay on top.
+  .notice-link {
+    position: relative;
+
+    .notice-text a {
+      color: inherit;
+      text-decoration: none;
+
+      &::after {
+        content: "";
+        position: absolute;
+        inset: 0;
+        border-radius: inherit;
+      }
+
+      &:focus-visible {
+        outline: none;
+      }
+    }
+
+    &:has(a:focus-visible) {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    .notice-actions {
+      position: relative;
+      z-index: 1;
+    }
+  }
+
+  .notice-go {
+    flex: none;
+    font-size: 1.25em;
+    line-height: 1;
+    color: var(--accent-text, var(--accent));
+  }
+
   @keyframes sparkstone-rise {
     from {
       opacity: 0;

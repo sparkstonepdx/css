@@ -2152,6 +2152,36 @@
     gap: var(--space-sm);
     flex: none;
   }
+  .notice-link {
+    position: relative;
+  }
+  .notice-link .notice-text a {
+    color: inherit;
+    text-decoration: none;
+  }
+  .notice-link .notice-text a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+  .notice-link .notice-text a:focus-visible {
+    outline: none;
+  }
+  .notice-link:has(a:focus-visible) {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+  }
+  .notice-link .notice-actions {
+    position: relative;
+    z-index: 1;
+  }
+  .notice-go {
+    flex: none;
+    font-size: 1.25em;
+    line-height: 1;
+    color: var(--accent-text, var(--accent));
+  }
   @keyframes sparkstone-rise {
     from {
       opacity: 0;
