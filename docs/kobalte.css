@@ -1535,6 +1535,18 @@
     background-color: var(--surface);
     color: var(--ink);
   }
+  .alert.error, li.error[role=status], .alert.notice-error, .notice-error[role=alert], li.notice-error[role=status], .alert.badge-error, .badge-error[role=alert], li.badge-error[role=status], .alert.alert-error, .alert-error[role=alert], li.alert-error[role=status], .alert.input-error, .input-error[role=alert], li.input-error[role=status],
+  .alert.select-error,
+  .select-error[role=alert],
+  li.select-error[role=status],
+  .alert.textarea-error,
+  .textarea-error[role=alert],
+  li.textarea-error[role=status], .label > p.alert:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), .label > p[role=alert]:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p.alert:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p[role=alert]:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), .alert.text-error, .text-error[role=alert], li.text-error[role=status],
+  [role=alert].error,
+  .label > p[role=alert]:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  label > p[role=alert]:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)) {
+    --neutral: var(--error);
+  }
   .alert-error {
     --neutral: var(--error);
   }
@@ -1922,6 +1934,13 @@
     font-weight: 650;
     line-height: 1.4;
     white-space: nowrap;
+  }
+  .badge.error, small.error.chip, .badge.notice-error, small.notice-error.chip, .badge.badge-error, small.badge-error.chip, .badge.input-error, small.input-error.chip,
+  .badge.select-error,
+  small.select-error.chip,
+  .badge.textarea-error,
+  small.textarea-error.chip, .label > p.badge:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p.badge:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, button[aria-haspopup=listbox], select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), .badge.text-error, small.text-error.chip, .badge.alert-error, small.alert-error.chip {
+    --neutral: var(--error);
   }
   .badge-error {
     --neutral: var(--error);

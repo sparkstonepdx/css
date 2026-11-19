@@ -478,11 +478,11 @@
     
       <tr><td><code>notice</code></td><td>One message: an edged card on a tint</td></tr>
     
-      <tr><td><code>notice-success</code></td><td>Something worked</td></tr>
+      <tr><td><code>success</code></td><td>Something worked (on a notice; .notice-success is deprecated)</td></tr>
     
-      <tr><td><code>notice-warning</code></td><td>Something to be careful about</td></tr>
+      <tr><td><code>warning</code></td><td>Something to be careful about</td></tr>
     
-      <tr><td><code>notice-error</code></td><td>Something went wrong</td></tr>
+      <tr><td><code>error</code></td><td>Something went wrong</td></tr>
     
       <tr><td><code>notice-art</code></td><td>The thing it&#39;s about, in a coin</td></tr>
     
@@ -518,13 +518,13 @@
     &lt;span class=&quot;notice-text&quot;&gt;&lt;strong&gt;Logged bottle 90 ml&lt;/strong&gt;&lt;small&gt;Use by 12:11 PM&lt;/small&gt;&lt;/span&gt;
     &lt;span class=&quot;notice-actions&quot;&gt;&lt;button class=&quot;btn btn-sm&quot;&gt;Undo&lt;/button&gt;&lt;/span&gt;
   &lt;/li&gt;
-  &lt;li class=&quot;notice notice-success&quot;&gt;
+  &lt;li class=&quot;notice success&quot;&gt;
     &lt;span class=&quot;notice-text&quot;&gt;&lt;strong&gt;Invite link copied&lt;/strong&gt;&lt;/span&gt;
   &lt;/li&gt;
-  &lt;li class=&quot;notice notice-warning&quot;&gt;
+  &lt;li class=&quot;notice warning&quot;&gt;
     &lt;span class=&quot;notice-text&quot;&gt;&lt;strong&gt;Syncing…&lt;/strong&gt;&lt;small&gt;Your changes are saved on this phone.&lt;/small&gt;&lt;/span&gt;
   &lt;/li&gt;
-  &lt;li class=&quot;notice notice-error&quot;&gt;
+  &lt;li class=&quot;notice error&quot;&gt;
     &lt;span class=&quot;notice-text&quot;&gt;&lt;strong&gt;The server isn&#39;t answering.&lt;/strong&gt;&lt;small&gt;Your moves go through once it&#39;s back.&lt;/small&gt;&lt;/span&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
@@ -570,7 +570,7 @@
   A notice takes the app's colours: its edge and tint are the accent, from <code>--primary</code>. Each notice is a
   re-theme boundary, so setting <code>--primary</code> on <code>.notice</code> recolours all of them, the same way as
   anywhere else in the library. The library's statuses work the same way: <code>.success</code>, <code>.warning</code>
-  and <code>.error</code> on a notice (or <code>.notice-success</code> and the rest, which are the same). Anything more, override from the app's own stylesheet: the library sits in a cascade
+  and <code>.error</code> on a notice (<code>.notice-success</code> and the rest are deprecated aliases). Anything more, override from the app's own stylesheet: the library sits in a cascade
   layer, so the app's rules win.
 </p>
 

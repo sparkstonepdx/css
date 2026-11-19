@@ -17,8 +17,14 @@
     white-space: nowrap;
   }
 
-  // 4.0 (PROPOSAL): status badges. Surface and text both take the status
-  // colour, so the badge is tinted, not just its words.
+  // 4.0 (PROPOSAL): status badges. The library's statuses re-theme a badge
+  // like anything else: .success, .warning, .error on it. Surface and text
+  // both take the status colour, so an error badge tints its surface too.
+  .badge.error {
+    --neutral: var(--error);
+  }
+
+  // Deprecated, removed in 5.0: the same as .badge.success and the rest.
   .badge-success {
     @extend .success;
   }

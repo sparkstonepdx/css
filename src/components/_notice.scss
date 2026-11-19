@@ -52,8 +52,8 @@
     width: 100%;
   }
 
-  // A status re-themes a notice like anything else: .success, .warning and
-  // .error on the notice, or these, which are the same.
+  // The library's statuses re-theme a notice like anything else: .success,
+  // .warning, .error on it. Deprecated, removed in 5.0: these, the same.
   .notice-error {
     @extend .error;
   }

@@ -478,7 +478,7 @@
     
       <tr><td><code>alert</code></td><td>The message box</td></tr>
     
-      <tr><td><code>alert-error</code></td><td>Recolours it with --error</td></tr>
+      <tr><td><code>error</code></td><td>Recolours it with --error (also .success, .warning); .alert-error is deprecated</td></tr>
     
   </tbody>
 </table>
@@ -506,27 +506,26 @@
   </div>
   <div class="code-block">
     <pre><code id="alert-basic-classes" data-variant="classes">&lt;div class=&quot;alert&quot; role=&quot;alert&quot;&gt;Your changes have been saved.&lt;/div&gt;
-&lt;div class=&quot;alert alert-error&quot; role=&quot;alert&quot;&gt;We could not reach the server.&lt;/div&gt;</code></pre>
+&lt;div class=&quot;alert error&quot; role=&quot;alert&quot;&gt;We could not reach the server.&lt;/div&gt;</code></pre>
     
       <pre hidden><code id="alert-basic-classless" data-variant="classless">&lt;div class=&quot;alert&quot; role=&quot;alert&quot;&gt;Your changes have been saved.&lt;/div&gt;
-&lt;div class=&quot;alert alert-error&quot; role=&quot;alert&quot;&gt;We could not reach the server.&lt;/div&gt;</code></pre>
+&lt;div class=&quot;alert error&quot; role=&quot;alert&quot;&gt;We could not reach the server.&lt;/div&gt;</code></pre>
     
     
       <pre hidden><code id="alert-basic-kobalte" data-variant="kobalte">import { Alert } from &quot;@kobalte/core/alert&quot;;
 
 &lt;Alert&gt;Your changes have been saved.&lt;/Alert&gt;
-&lt;Alert class=&quot;alert-error&quot;&gt;We could not reach the server.&lt;/Alert&gt;</code></pre>
+&lt;Alert class=&quot;error&quot;&gt;We could not reach the server.&lt;/Alert&gt;</code></pre>
       <pre hidden><code id="alert-basic-kobalte-markup" data-variant="kobalte-markup">&lt;div role=&quot;alert&quot;&gt;Your changes have been saved.&lt;/div&gt;
-&lt;div role=&quot;alert&quot; class=&quot;alert-error&quot;&gt;We could not reach the server.&lt;/div&gt;</code></pre>
+&lt;div role=&quot;alert&quot; class=&quot;error&quot;&gt;We could not reach the server.&lt;/div&gt;</code></pre>
     
   </div>
 </div>
 
 <p>
   <small>
-    There is no info, success or warning variant yet. The framework derives
-    everything from one <code>--primary</code> plus <code>--error</code>, and
-    those variants need tokens it does not have.
+    The library's statuses work on any alert: <code>.success</code>, <code>.warning</code>
+    and <code>.error</code>. They re-theme it the same way they re-theme anything else.
   </small>
 </p>
 
@@ -551,7 +550,7 @@
   </div>
   <div class="code-block">
     <pre><code id="alert-comp-1-classes" data-variant="classes">&lt;form class=&quot;card&quot;&gt;
-  &lt;div class=&quot;alert alert-error&quot; role=&quot;alert&quot;&gt;We could not send your message. Try again in a minute.&lt;/div&gt;
+  &lt;div class=&quot;alert error&quot; role=&quot;alert&quot;&gt;We could not send your message. Try again in a minute.&lt;/div&gt;
   &lt;label class=&quot;label&quot;&gt;
     &lt;p&gt;Email&lt;/p&gt;
     &lt;input class=&quot;input&quot; type=&quot;email&quot; /&gt;
@@ -566,7 +565,7 @@
 </div>
 
 <ul>
-  <li><strong>Boundary:</strong> <code>.alert-error</code> is an error boundary, so its border, surface and text all take the error colour from one class.</li>
+  <li><strong>Boundary:</strong> <code>.error</code> on an alert is an error boundary, so its border, surface and text all take the error colour from one class.</li>
   <li><strong>Spacing:</strong> the alert carries a <code>1rem</code> bottom margin like a field, so it stacks into the form with no wrapper.</li>
 </ul>
 
@@ -599,7 +598,7 @@
 </div>
 
 <ul>
-  <li><strong>Surface:</strong> each message is an <code>.alert</code>, so a failure is <code>.alert-error</code> with no toast-specific class.</li>
+  <li><strong>Surface:</strong> each message is an <code>.alert</code>, so a failure is <code>.alert.error</code> with no toast-specific class.</li>
   <li><strong>Layout:</strong> <code>.toast</code> is fixed to the corner; it is static here so it shows in the preview.</li>
 </ul>
 

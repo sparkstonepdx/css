@@ -1,5 +1,11 @@
 # Design review
 
+## 4.1 statuses are the general classes — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Statuses on components | `.success`, `.warning`, `.error` on a badge, alert or notice re-theme it, as they do anything else; the docs use these | `.badge-*`, `.alert-*`, `.notice-*` stay as deprecated aliases, removed in 5.0 |
+
 ## 4.1 notice links (`src/components/_notice.scss`) — not signed off
 
 From Wordbag's `.toast-link` ("Your turn in another game ›", WB#512), for @sparkstone/kit's `Notice` `href`.

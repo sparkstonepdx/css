@@ -1402,6 +1402,20 @@
     background-color: var(--surface);
     color: var(--ink);
   }
+  .alert.error, .alert.notice-error, .alert.badge-error, .alert.alert-error, .alert.input-error,
+  .alert.select-error,
+  .alert.textarea-error, .label > p.alert:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), .alert.text-error,
+  [role=alert].error,
+  [role=alert].notice-error,
+  [role=alert].badge-error,
+  [role=alert].alert-error,
+  [role=alert].input-error,
+  [role=alert].select-error,
+  [role=alert].textarea-error,
+  .label > p[role=alert]:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  [role=alert].text-error {
+    --neutral: var(--error);
+  }
   .alert-error {
     --neutral: var(--error);
   }
@@ -1785,6 +1799,11 @@
     font-weight: 650;
     line-height: 1.4;
     white-space: nowrap;
+  }
+  .badge.error, .badge.notice-error, .badge.badge-error, .badge.input-error,
+  .badge.select-error,
+  .badge.textarea-error, .label > p.badge:has(+ :is(.input, .select, .textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), .badge.text-error, .badge.alert-error {
+    --neutral: var(--error);
   }
   .badge-error {
     --neutral: var(--error);
