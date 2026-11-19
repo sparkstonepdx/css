@@ -461,7 +461,14 @@
   <p>
     <code>.container</code> centers content and steps its max width at each breakpoint.
     <code>.container-fluid</code> keeps the padding but spans the full width, which is what you want
-    for a header or a full-bleed section.
+    for a full-bleed section.
+  </p>
+  <p>
+    The widths and the side room are tokens: <code>--page-max</code> (the content column) and
+    <code>--page-pad</code> (the least room at the sides, 1rem on phones). <code>.navbar-flush</code> runs
+    edge to edge but lines its contents up with them, so a full-width header's title sits over the
+    content's left edge and its last button over the right edge. An app with its own column sets the two
+    tokens once and the header follows.
   </p>
   <table>
     <thead>

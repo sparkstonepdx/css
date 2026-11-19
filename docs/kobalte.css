@@ -612,46 +612,52 @@
     color: var(--link);
     cursor: pointer;
   }
+  :root {
+    --page-max: 80ch;
+    --page-pad: 1rem;
+  }
+  @media (min-width: 576px) {
+    :root {
+      --page-max: 510px;
+      --page-pad: 0px;
+    }
+  }
+  @media (min-width: 768px) {
+    :root {
+      --page-max: 700px;
+    }
+  }
+  @media (min-width: 1024px) {
+    :root {
+      --page-max: 950px;
+    }
+  }
+  @media (min-width: 1280px) {
+    :root {
+      --page-max: 1200px;
+    }
+  }
+  @media (min-width: 1536px) {
+    :root {
+      --page-max: 1450px;
+    }
+  }
   .container {
-    max-width: 80ch;
+    max-width: var(--page-max);
     margin: auto;
-    padding: 1rem;
-    padding-bottom: 4rem;
+    padding: 1rem var(--page-pad) 4rem;
   }
   .container,
   .container-fluid {
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    padding-right: var(--page-pad);
+    padding-left: var(--page-pad);
+  }
+  .container-fluid {
     padding-right: 1rem;
     padding-left: 1rem;
-  }
-  @media (min-width: 576px) {
-    .container {
-      max-width: 510px;
-      padding-right: 0;
-      padding-left: 0;
-    }
-  }
-  @media (min-width: 768px) {
-    .container {
-      max-width: 700px;
-    }
-  }
-  @media (min-width: 1024px) {
-    .container {
-      max-width: 950px;
-    }
-  }
-  @media (min-width: 1280px) {
-    .container {
-      max-width: 1200px;
-    }
-  }
-  @media (min-width: 1536px) {
-    .container {
-      max-width: 1450px;
-    }
   }
   .prose p {
     margin-bottom: 1rem;
@@ -1732,6 +1738,8 @@
   .navbar-flush {
     border-width: 0 0 var(--border-width);
     border-radius: 0;
+    padding-left: max(var(--page-pad, 0px) + env(safe-area-inset-left, 0px), (100% - var(--page-max, 100%)) / 2);
+    padding-right: max(var(--page-pad, 0px) + env(safe-area-inset-right, 0px), (100% - var(--page-max, 100%)) / 2);
   }
   .navbar-start {
     display: flex;

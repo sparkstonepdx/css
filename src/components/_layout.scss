@@ -1,11 +1,50 @@
 // Layout classes. These were already classes in 1.x, so both builds emit them as-is.
 
 @mixin container-styles {
+  // The page's side margins as tokens, so anything edge to edge (a full-width
+  // header, a footer) can line its contents up with the page's: `--page-max` is
+  // the content column's width and `--page-pad` the least room at the sides.
+  // An app with its own column width sets these once and everything follows.
+  :root {
+    --page-max: 80ch;
+    --page-pad: 1rem;
+  }
+
+  @media (min-width: 576px) {
+    :root {
+      --page-max: 510px;
+      --page-pad: 0px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    :root {
+      --page-max: 700px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    :root {
+      --page-max: 950px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    :root {
+      --page-max: 1200px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    :root {
+      --page-max: 1450px;
+    }
+  }
+
   .container {
-    max-width: 80ch;
+    max-width: var(--page-max);
     margin: auto;
-    padding: 1rem;
-    padding-bottom: 4rem;
+    padding: 1rem var(--page-pad) 4rem;
   }
 
   .container,
@@ -13,40 +52,13 @@
     width: 100%;
     margin-right: auto;
     margin-left: auto;
+    padding-right: var(--page-pad);
+    padding-left: var(--page-pad);
+  }
+
+  .container-fluid {
     padding-right: 1rem;
     padding-left: 1rem;
-  }
-
-  @media (min-width: 576px) {
-    .container {
-      max-width: 510px;
-      padding-right: 0;
-      padding-left: 0;
-    }
-  }
-
-  @media (min-width: 768px) {
-    .container {
-      max-width: 700px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container {
-      max-width: 950px;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    .container {
-      max-width: 1200px;
-    }
-  }
-
-  @media (min-width: 1536px) {
-    .container {
-      max-width: 1450px;
-    }
   }
 }
 
