@@ -1,0 +1,26 @@
+{% extends "layout.njk" %}
+{% import "macros.njk" as m %}
+{% set title = "Test banner" %}
+{% set slug = "test-banner" %}
+
+{% block content %}
+<h1>Test banner</h1>
+<p class="lede">
+  Says that what you're looking at isn't real: sample data, a payment provider's test mode, a build that records
+  actions without doing them. Caution tape across the top of the page, in the page's flow so it never covers the dock
+  or a sheet. Tapping it says more (@sparkstone/kit's <code>TestBanner</code>). Show it whenever data or money isn't
+  real, and say so again on the screen where acting on it would matter.
+</p>
+
+{{ m.alpha() }}
+
+{{ m.classes([
+  ["test-banner", "The strip: one line, 44px tall, the words straight on the tape"]
+]) }}
+
+<h2>Basic</h2>
+{% set classless %}
+<button type="button" class="test-banner">Test data · sample data · no real charges</button>
+{% endset %}
+{{ m.demo("test-banner-basic", classless) }}
+{% endblock %}

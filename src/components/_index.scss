@@ -29,6 +29,7 @@
 @use "phone";
 @use "sheet";
 @use "notice";
+@use "test-banner";
 @use "menu";
 @use "progress";
 @use "prose";
@@ -90,4 +91,5 @@
   @include phone.styles;
   @include sheet.styles;
   @include notice.styles;
+  @include test-banner.styles;
 }

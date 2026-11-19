@@ -2158,6 +2158,31 @@
       transform: translateY(0.75rem) scale(0.98);
     }
   }
+  .test-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs, 0.25rem);
+    width: 100%;
+    min-height: var(--tap, 44px);
+    padding: 0 max(var(--space-md), env(safe-area-inset-right, 0px)) 0 max(var(--space-md), env(safe-area-inset-left, 0px));
+    border: 0;
+    font: inherit;
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    -webkit-text-stroke: 3px oklch(15% 0 0deg);
+    paint-order: stroke fill;
+    background: repeating-linear-gradient(-45deg, var(--test-banner-a, oklch(80% 0.16 85deg)) 0 14px, var(--test-banner-b, oklch(20% 0.02 85deg)) 14px 28px);
+    cursor: pointer;
+  }
+  .test-banner:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -4px;
+  }
   html:has(dialog[open]) {
     overflow: hidden;
   }

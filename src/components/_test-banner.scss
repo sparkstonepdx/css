@@ -1,0 +1,40 @@
+@use "../vars.scss" as *;
+
+// ALPHA (4.x PROPOSAL): "what you're looking at isn't real": sample data, a
+// payment provider's test mode, a build that records actions without doing
+// them (build-docs #17, from Lotvot). Caution tape across the top of the page,
+// in the page's flow so it never covers the dock or a sheet; the words sit
+// straight on the tape, white with a dark outline, no pill behind them.
+// @sparkstone/kit's TestBanner renders it and says more when it's tapped.
+@mixin styles {
+  .test-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-xs, 0.25rem);
+    width: 100%;
+    min-height: var(--tap, 44px);
+    padding: 0 max(var(--space-md), env(safe-area-inset-right, 0px)) 0 max(var(--space-md), env(safe-area-inset-left, 0px));
+    border: 0;
+    font: inherit;
+    font-size: var(--text-sm, 0.875rem);
+    font-weight: 700;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: white;
+    -webkit-text-stroke: 3px oklch(0.15 0 0);
+    paint-order: stroke fill;
+    background: repeating-linear-gradient(
+      -45deg,
+      var(--test-banner-a, oklch(0.8 0.16 85)) 0 14px,
+      var(--test-banner-b, oklch(0.2 0.02 85)) 14px 28px
+    );
+    cursor: pointer;
+  }
+
+  .test-banner:focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: -4px;
+  }
+}

@@ -1,5 +1,14 @@
 # Design review
 
+## 4.x test banner (`_test-banner.scss`) — not signed off
+
+From Lotvot's `TestBanner` (lotvot#10, build-docs #17).
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| `.test-banner` | caution tape at -45°, 14px stripes of `--test-banner-a` (amber, `oklch(0.8 0.16 85)`) and `--test-banner-b` (near-black); 44px tall, one line, ellipsis if it doesn't fit | in the page's flow at the top, never fixed |
+| Words | 0.875rem bold white with a 3px dark outline, straight on the tape | Adam: no rounded pill behind them |
+
 ## 4.0 (`v4` branch) — not signed off
 
 Why: UIs built on 3.x without a design direction came out lavender with olive links and heavy outlines (the Nook dashboard), and none of the phone apps used the library because it had no dock, sheet, safe areas or tap minimum. These are the changes; every value is a proposal.
