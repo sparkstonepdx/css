@@ -20,7 +20,9 @@
   ["notice-error", "Something went wrong"],
   ["notice-art", "The thing it's about, in a coin"],
   ["notice-text", "A bold line and an optional detail in <small>"],
-  ["notice-actions", "Undo, Edit"]
+  ["notice-actions", "Undo, Edit"],
+  ["notice-link", "The whole notice is one link, on its text"],
+  ["notice-go", "The › at the end of a link"]
 ]) }}
 
 <h2>Basic</h2>
@@ -44,4 +46,21 @@
 </ul>
 {% endset %}
 {{ m.demo("notice-basic", classless) }}
+
+<h2>Link</h2>
+<p>A notice that goes somewhere: the link sits on its text and covers the whole notice, with a › at the end. Buttons in it still take their own taps.</p>
+{% set classless %}
+<ul class="notices" style="position: static; padding: 0">
+  <li class="notice notice-link">
+    <span class="notice-text"><a href="#"><strong>Your turn in another game</strong></a></span>
+    <span class="notice-go" aria-hidden="true">›</span>
+  </li>
+  <li class="notice notice-link">
+    <span class="notice-art" aria-hidden="true">🏔️</span>
+    <span class="notice-text"><a href="#"><strong>Sam reached the summit</strong></a><small>See the climb</small></span>
+    <span class="notice-go" aria-hidden="true">›</span>
+  </li>
+</ul>
+{% endset %}
+{{ m.demo("notice-link", classless) }}
 {% endblock %}

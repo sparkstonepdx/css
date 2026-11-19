@@ -490,6 +490,10 @@
     
       <tr><td><code>notice-actions</code></td><td>Undo, Edit</td></tr>
     
+      <tr><td><code>notice-link</code></td><td>The whole notice is one link, on its text</td></tr>
+    
+      <tr><td><code>notice-go</code></td><td>The › at the end of a link</td></tr>
+    
   </tbody>
 </table>
 
@@ -522,6 +526,37 @@
   &lt;/li&gt;
   &lt;li class=&quot;notice notice-error&quot;&gt;
     &lt;span class=&quot;notice-text&quot;&gt;&lt;strong&gt;The server isn&#39;t answering.&lt;/strong&gt;&lt;small&gt;Your moves go through once it&#39;s back.&lt;/small&gt;&lt;/span&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+
+<h2>Link</h2>
+<p>A notice that goes somewhere: the link sits on its text and covers the whole notice, with a › at the end. Buttons in it still take their own taps.</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="notice-link-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="notice-link-classes" data-variant="classes">&lt;ul class=&quot;notices&quot; style=&quot;position: static; padding: 0&quot;&gt;
+  &lt;li class=&quot;notice notice-link&quot;&gt;
+    &lt;span class=&quot;notice-text&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;strong&gt;Your turn in another game&lt;/strong&gt;&lt;/a&gt;&lt;/span&gt;
+    &lt;span class=&quot;notice-go&quot; aria-hidden=&quot;true&quot;&gt;›&lt;/span&gt;
+  &lt;/li&gt;
+  &lt;li class=&quot;notice notice-link&quot;&gt;
+    &lt;span class=&quot;notice-art&quot; aria-hidden=&quot;true&quot;&gt;🏔️&lt;/span&gt;
+    &lt;span class=&quot;notice-text&quot;&gt;&lt;a href=&quot;#&quot;&gt;&lt;strong&gt;Sam reached the summit&lt;/strong&gt;&lt;/a&gt;&lt;small&gt;See the climb&lt;/small&gt;&lt;/span&gt;
+    &lt;span class=&quot;notice-go&quot; aria-hidden=&quot;true&quot;&gt;›&lt;/span&gt;
   &lt;/li&gt;
 &lt;/ul&gt;</code></pre>
     
