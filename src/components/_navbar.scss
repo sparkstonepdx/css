@@ -21,9 +21,20 @@
 
   // A bar that runs edge to edge across the top of the page: square, with a
   // rule underneath only.
+  // 4.1 (PROPOSAL): its contents line up with the page's side margins, so
+  // the title sits over the content's left edge and the last button over its
+  // right edge, at every width, and clear of a notch (safe areas).
   .navbar-flush {
     border-width: 0 0 var(--border-width);
     border-radius: 0;
+    padding-left: max(
+      var(--page-pad, 0px) + env(safe-area-inset-left, 0px),
+      (100% - var(--page-max, 100%)) / 2
+    );
+    padding-right: max(
+      var(--page-pad, 0px) + env(safe-area-inset-right, 0px),
+      (100% - var(--page-max, 100%)) / 2
+    );
   }
 
   .navbar-start {

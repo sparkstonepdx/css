@@ -1,5 +1,12 @@
 # Design review
 
+## 4.1 full-width header margins (`_navbar.scss`, `_layout.scss`) — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| `--page-max`, `--page-pad` | the page column's width and its least side room, as tokens: 80ch and 1rem under 576px, then 510, 700, 950, 1200, 1450px with no padding | the same values `.container` had; it now reads them |
+| `.navbar-flush` | runs edge to edge; its contents line up with the page's side margins at every width, clear of a notch | before, its contents sat `--padding` from the screen edge, off the content's edges on every width but one |
+
 ## 4.0 (`v4` branch) — not signed off
 
 Why: UIs built on 3.x without a design direction came out lavender with olive links and heavy outlines (the Nook dashboard), and none of the phone apps used the library because it had no dock, sheet, safe areas or tap minimum. These are the changes; every value is a proposal.
