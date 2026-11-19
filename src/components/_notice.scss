@@ -21,16 +21,20 @@
     pointer-events: none;
   }
 
+  // 4.1 (PROPOSAL): Wordbag's look, the standard (build-docs DECISIONS
+  // 2026-11-12): as wide as its words, not the whole column; an edge in
+  // --notice-edge on a 14% tint of it; the words at their normal weight.
+  // An app sets --notice-edge to its reward colour (Wordbag's gold).
   .notice {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
-    width: 100%;
-    max-width: 420px;
-    padding: var(--space-md) var(--space-lg);
-    border: var(--border-width) solid var(--line);
+    gap: var(--space-sm);
+    width: max-content;
+    max-width: min(420px, 100%);
+    padding: var(--space-sm) var(--space-lg);
+    border: var(--border-width) solid var(--notice-edge, var(--accent));
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: var(--surface);
+    background-color: color-mix(in srgb, var(--notice-edge, var(--accent)) 14%, var(--bg));
     color: var(--ink);
     box-shadow: 0 6px 20px oklch(0 0 0 / 0.14);
     pointer-events: auto;
@@ -40,8 +44,14 @@
     }
   }
 
+  // with buttons or a detail line it's a small card: the column's width
+  .notice:has(.notice-actions, .notice-text > small) {
+    width: 100%;
+  }
+
   .notice-error {
     --neutral: var(--error);
+    --notice-edge: var(--bad);
     @extend .error;
   }
 
@@ -53,24 +63,30 @@
     @extend .warning;
   }
 
-  // The thing the notice is about: an icon or picture in a coin.
+  // The thing the notice is about: an icon or picture at text size, in the
+  // edge's colour (Wordbag's poke). Pass a bigger picture and it keeps its size.
   .notice-art {
     flex: none;
     display: grid;
     place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 999px;
-    background-color: var(--accent);
-    color: var(--accent-ink);
+    min-width: 1.375rem;
+    min-height: 1.375rem;
+    color: var(--notice-edge, var(--accent));
+
+    > svg {
+      width: 1.375rem;
+      height: 1.375rem;
+    }
   }
 
   .notice-text {
     flex: 1;
     min-width: 0;
 
-    > strong {
+    > strong,
+    > a > strong {
       display: block;
+      font-weight: inherit;
     }
 
     > small {
