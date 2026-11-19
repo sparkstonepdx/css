@@ -68,7 +68,8 @@
 <p>
   A notice takes the app's colours: its edge and tint are the accent, from <code>--primary</code>. Each notice is a
   re-theme boundary, so setting <code>--primary</code> on <code>.notice</code> recolours all of them, the same way as
-  anywhere else in the library. Anything more, override from the app's own stylesheet: the library sits in a cascade
+  anywhere else in the library. The library's statuses work the same way: <code>.success</code>, <code>.warning</code>
+  and <code>.error</code> on a notice (or <code>.notice-success</code> and the rest, which are the same). Anything more, override from the app's own stylesheet: the library sits in a cascade
   layer, so the app's rules win.
 </p>
 {% set classless %}

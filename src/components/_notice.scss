@@ -52,8 +52,9 @@
     width: 100%;
   }
 
+  // A status re-themes a notice like anything else: .success, .warning and
+  // .error on the notice, or these, which are the same.
   .notice-error {
-    --neutral: var(--error);
     @extend .error;
   }
 

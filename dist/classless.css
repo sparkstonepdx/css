@@ -2120,9 +2120,6 @@
   .notice:has(.notice-actions, .notice-text > small, .notice-text > a > small) {
     width: 100%;
   }
-  .notice-error {
-    --neutral: var(--error);
-  }
   .notice-art {
     flex: none;
     display: grid;
