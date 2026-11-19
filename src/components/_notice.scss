@@ -21,22 +21,34 @@
     pointer-events: none;
   }
 
-  // 4.1 (PROPOSAL): Wordbag's look, the standard (build-docs DECISIONS
-  // 2026-11-12): as wide as its words, not the whole column; an edge in
-  // --notice-edge on a 14% tint of it; the words at their normal weight.
-  // An app sets --notice-edge to its reward colour (Wordbag's gold).
+  // 4.1 (PROPOSAL): every part of a notice's look is a token, so each app
+  // styles its notices to fit (Wordbag's gold-edged card, Kinlog's plain one)
+  // without overriding the rules. The defaults are Wordbag's shape, the
+  // standard (build-docs DECISIONS 2026-11-12), in the app's accent:
+  //   --notice-edge     the border, and what the fill is tinted with
+  //   --notice-bg       the fill (a 14% tint of the edge on the page)
+  //   --notice-ink      the words
+  //   --notice-muted    a detail line (<small>)
+  //   --notice-weight   the words' weight (normal; 700 for bold)
+  //   --notice-width    max-content (as wide as the words) or 100%
+  //   --notice-pad      the padding
+  //   --notice-radius   the corners
+  //   --notice-shadow   the drop shadow
+  //   --notice-art-size the picture's size (text size; 2.5rem for a coin)
+  //   --notice-art-bg   behind the picture (none; the edge for a coin)
+  //   --notice-art-ink  the picture's colour (the edge)
   .notice {
     display: flex;
     align-items: center;
     gap: var(--space-sm);
-    width: max-content;
+    width: var(--notice-width, max-content);
     max-width: min(420px, 100%);
-    padding: var(--space-sm) var(--space-lg);
+    padding: var(--notice-pad, var(--space-sm) var(--space-lg));
     border: var(--border-width) solid var(--notice-edge, var(--accent));
-    border-radius: var(--radius-box, var(--border-radius));
-    background-color: color-mix(in srgb, var(--notice-edge, var(--accent)) 14%, var(--bg));
-    color: var(--ink);
-    box-shadow: 0 6px 20px oklch(0 0 0 / 0.14);
+    border-radius: var(--notice-radius, var(--radius-box, var(--border-radius)));
+    background-color: var(--notice-bg, color-mix(in srgb, var(--notice-edge, var(--accent)) 14%, var(--bg)));
+    color: var(--notice-ink, var(--ink));
+    box-shadow: var(--notice-shadow, 0 6px 20px oklch(0 0 0 / 0.14));
     pointer-events: auto;
 
     @media (prefers-reduced-motion: no-preference) {
@@ -45,7 +57,7 @@
   }
 
   // with buttons or a detail line it's a small card: the column's width
-  .notice:has(.notice-actions, .notice-text > small) {
+  .notice:has(.notice-actions, .notice-text > small, .notice-text > a > small) {
     width: 100%;
   }
 
@@ -63,15 +75,18 @@
     @extend .warning;
   }
 
-  // The thing the notice is about: an icon or picture at text size, in the
-  // edge's colour (Wordbag's poke). Pass a bigger picture and it keeps its size.
+  // The thing the notice is about: an icon or picture. At text size in the
+  // edge's colour by default (Wordbag's poke); set --notice-art-size and
+  // --notice-art-bg for a coin.
   .notice-art {
     flex: none;
     display: grid;
     place-items: center;
-    min-width: 1.375rem;
-    min-height: 1.375rem;
-    color: var(--notice-edge, var(--accent));
+    width: var(--notice-art-size, 1.375rem);
+    height: var(--notice-art-size, 1.375rem);
+    border-radius: 999px;
+    background: var(--notice-art-bg, none);
+    color: var(--notice-art-ink, var(--notice-edge, var(--accent)));
 
     > svg {
       width: 1.375rem;
@@ -86,11 +101,12 @@
     > strong,
     > a > strong {
       display: block;
-      font-weight: inherit;
+      font-weight: var(--notice-weight, normal);
     }
 
-    > small {
-      color: var(--muted);
+    > small,
+    > a > small {
+      color: var(--notice-muted, var(--muted));
     }
   }
 

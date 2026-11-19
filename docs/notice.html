@@ -565,6 +565,38 @@
 </div>
 
 
+<h2>Styling to fit the app</h2>
+<p>
+  Every part of a notice's look is a token, so an app sets a few on <code>:root</code> instead of overriding rules:
+  <code>--notice-edge</code>, <code>--notice-bg</code>, <code>--notice-ink</code>, <code>--notice-muted</code>, <code>--notice-weight</code>,
+  <code>--notice-width</code>, <code>--notice-pad</code>, <code>--notice-radius</code>, <code>--notice-shadow</code>,
+  <code>--notice-art-size</code>, <code>--notice-art-bg</code>, <code>--notice-art-ink</code>.
+  The default is a card as wide as its words, edged in the accent on a tint of it.
+</p>
+
+
+
+<div class="demo" data-demo>
+  <iframe class="demo-frame" title="Preview" data-demo-frame loading="lazy"></iframe>
+  <div class="demo-bar">
+    
+      <span class="demo-note"><small>Same markup in both builds</small></span>
+    
+    <button class="ghost copy-button" data-target="notice-styling-classes">Copy</button>
+  </div>
+  <div class="code-block">
+    <pre><code id="notice-styling-classes" data-variant="classes">&lt;ul class=&quot;notices&quot; style=&quot;position: static; padding: 0; --notice-edge: oklch(0.72 0.14 80)&quot;&gt;
+  &lt;li class=&quot;notice&quot;&gt;&lt;span class=&quot;notice-text&quot;&gt;&lt;strong&gt;A gold edge (Wordbag): --notice-edge&lt;/strong&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;ul class=&quot;notices&quot; style=&quot;position: static; padding: 0; margin-top: 1rem; --notice-edge: var(--line); --notice-bg: var(--surface); --notice-weight: 700; --notice-width: 100%; --notice-art-size: 2.5rem; --notice-art-bg: var(--accent); --notice-art-ink: var(--accent-ink)&quot;&gt;
+  &lt;li class=&quot;notice&quot;&gt;&lt;span class=&quot;notice-art&quot; aria-hidden=&quot;true&quot;&gt;🍼&lt;/span&gt;&lt;span class=&quot;notice-text&quot;&gt;&lt;strong&gt;A plain card, full width, bold, with a coin&lt;/strong&gt;&lt;small&gt;--notice-edge, -bg, -weight, -width, -art-size, -art-bg&lt;/small&gt;&lt;/span&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+    
+    
+  </div>
+</div>
+
+
 
         <footer class="site-footer">
           <hr />
