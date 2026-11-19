@@ -22,20 +22,22 @@
   }
 
   // 4.1 (PROPOSAL): Wordbag's look, the standard (build-docs DECISIONS
-  // 2026-11-12): as wide as its words, edged in one colour on a 14% tint of
-  // it, the words at normal weight. That colour is the one thing an app sets:
-  // --notice-tint (the accent by default; Wordbag's gold). Corners follow the
-  // app's --radius-box.
+  // 2026-11-12): as wide as its words, edged in the accent on a 14% tint of
+  // it, the words at normal weight. A notice is a .retheme boundary, so an app
+  // colours its notices the way it colours anything else: set --primary on
+  // .notice (Wordbag: its gold), or override the rules from its own
+  // stylesheet, which wins over the library's layer.
   .notice {
+    @extend .retheme;
     display: flex;
     align-items: center;
     gap: var(--space-sm);
     width: max-content;
     max-width: min(420px, 100%);
     padding: var(--space-sm) var(--space-lg);
-    border: var(--border-width) solid var(--notice-tint, var(--accent));
+    border: var(--border-width) solid var(--accent);
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: color-mix(in srgb, var(--notice-tint, var(--accent)) 14%, var(--bg));
+    background-color: color-mix(in srgb, var(--accent) 14%, var(--bg));
     color: var(--ink);
     box-shadow: 0 6px 20px oklch(0 0 0 / 0.14);
     pointer-events: auto;
@@ -52,7 +54,6 @@
 
   .notice-error {
     --neutral: var(--error);
-    --notice-tint: var(--bad);
     @extend .error;
   }
 
@@ -65,14 +66,14 @@
   }
 
   // The thing the notice is about: an icon or picture at text size, in the
-  // tint (Wordbag's poke). A bigger picture keeps its own size.
+  // accent (Wordbag's poke). A bigger picture keeps its own size.
   .notice-art {
     flex: none;
     display: grid;
     place-items: center;
     min-width: 1.375rem;
     min-height: 1.375rem;
-    color: var(--notice-tint, var(--accent));
+    color: var(--accent);
 
     > svg {
       width: 1.375rem;

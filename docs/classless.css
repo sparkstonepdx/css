@@ -503,7 +503,7 @@
       --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
     }
   }
-  :where(:root, [data-color-scheme], .retheme, .warning, .notice-warning, .badge-warning, .alert-warning, .success, .notice-success, .badge-success, .alert-success, .error, .notice-error, .badge-error, .alert-error, .text-error, small.error, small.input-error,
+  :where(:root, [data-color-scheme], .retheme, .notice, .warning, .notice-warning, .badge-warning, .alert-warning, .success, .notice-success, .badge-success, .alert-success, .error, .notice-error, .badge-error, .alert-error, .text-error, small.error, small.input-error,
   small.select-error,
   small.textarea-error, small.text-error, small.alert-error, small.badge-error, small.notice-error, .input-error,
   .select-error,
@@ -2105,9 +2105,9 @@
     width: max-content;
     max-width: min(420px, 100%);
     padding: var(--space-sm) var(--space-lg);
-    border: var(--border-width) solid var(--notice-tint, var(--accent));
+    border: var(--border-width) solid var(--accent);
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: color-mix(in srgb, var(--notice-tint, var(--accent)) 14%, var(--bg));
+    background-color: color-mix(in srgb, var(--accent) 14%, var(--bg));
     color: var(--ink);
     box-shadow: 0 6px 20px oklch(0% 0 0deg / 0.14);
     pointer-events: auto;
@@ -2122,7 +2122,6 @@
   }
   .notice-error {
     --neutral: var(--error);
-    --notice-tint: var(--bad);
   }
   .notice-art {
     flex: none;
@@ -2130,7 +2129,7 @@
     place-items: center;
     min-width: 1.375rem;
     min-height: 1.375rem;
-    color: var(--notice-tint, var(--accent));
+    color: var(--accent);
   }
   .notice-art > svg {
     width: 1.375rem;

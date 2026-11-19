@@ -567,8 +567,10 @@
 
 <h2>Fitting the app</h2>
 <p>
-  One colour: <code>--notice-tint</code> edges the notice and tints its fill and its picture. It's the accent unless
-  the app sets it (Wordbag sets its gold). Corners follow the app's <code>--radius-box</code>.
+  A notice takes the app's colours: its edge and tint are the accent, from <code>--primary</code>. Each notice is a
+  re-theme boundary, so setting <code>--primary</code> on <code>.notice</code> recolours all of them, the same way as
+  anywhere else in the library. Anything more, override from the app's own stylesheet: the library sits in a cascade
+  layer, so the app's rules win.
 </p>
 
 
@@ -582,8 +584,8 @@
     <button class="ghost copy-button" data-target="notice-styling-classes">Copy</button>
   </div>
   <div class="code-block">
-    <pre><code id="notice-styling-classes" data-variant="classes">&lt;ul class=&quot;notices&quot; style=&quot;position: static; padding: 0; --notice-tint: oklch(0.72 0.14 80)&quot;&gt;
-  &lt;li class=&quot;notice&quot;&gt;&lt;span class=&quot;notice-text&quot;&gt;&lt;strong&gt;Huge play! You keep your turn.&lt;/strong&gt;&lt;/span&gt;&lt;/li&gt;
+    <pre><code id="notice-styling-classes" data-variant="classes">&lt;ul class=&quot;notices&quot; style=&quot;position: static; padding: 0&quot;&gt;
+  &lt;li class=&quot;notice&quot; style=&quot;--primary: oklch(0.72 0.14 80)&quot;&gt;&lt;span class=&quot;notice-text&quot;&gt;&lt;strong&gt;.notice { --primary: gold }&lt;/strong&gt;&lt;/span&gt;&lt;/li&gt;
 &lt;/ul&gt;</code></pre>
     
     
