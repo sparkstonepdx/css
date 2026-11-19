@@ -1,5 +1,11 @@
 # Design review
 
+## 4.1 statuses are the general classes — not signed off
+
+| Decision | Proposed | Note |
+| --- | --- | --- |
+| Statuses on components | `.success`, `.warning`, `.error` on a badge, alert or notice re-theme it, as they do anything else; the docs use these | `.badge-*`, `.alert-*`, `.notice-*` stay as deprecated aliases, removed in 5.0 |
+
 ## 4.1 notice links (`src/components/_notice.scss`) — not signed off
 
 From Wordbag's `.toast-link` ("Your turn in another game ›", WB#512), for @sparkstone/kit's `Notice` `href`.
@@ -9,6 +15,9 @@ From Wordbag's `.toast-link` ("Your turn in another game ›", WB#512), for @spa
 | `.notice-link` | the link sits on the text and is stretched over the whole notice; buttons in it stay on top | one tap target, the notice's own size |
 | `.notice-go` | a › at the end, 1.25em, `--accent-text` | Wordbag uses its gold; apps without one get their accent |
 | Focus | the notice gets a 2px `--accent` outline, offset 2px | |
+| `.notice` look | Wordbag's toast, the standard: as wide as its words (max 420px), an accent edge on a 14% tint of it (srgb mix with `--bg`), words at normal weight, `--space-sm` `--space-lg` padding; full width only with buttons or a detail line | 4.0 had every notice full width, bold, on `--surface` with a hairline |
+| Colour | the accent, as edge and 14% tint; `.notice` is a `.retheme` boundary, so an app sets `--primary` on `.notice` (Wordbag: its gold) or overrides from its own stylesheet; errors re-theme with `.error` | no notice-only tokens |
+| `.notice-art` | the picture at text size (22px) in the edge's colour, not a 2.5rem filled coin | Wordbag's poke icon |
 
 ## 4.0 (`v4` branch) — not signed off
 

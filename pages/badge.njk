@@ -9,6 +9,7 @@
 
 {{ m.classes([
   ["badge", "Rounded pill on a raised surface"],
+  ["success, warning, error", "On a badge, re-theme it with the status (.badge-success and the rest are deprecated)"],
   ["text-error", "Error-colored text, for validation messages"],
   ["text-secondary", "Muted text"]
 ]) }}
@@ -25,6 +26,12 @@
 </div>
 {% endset %}
 {{ m.demo("badge-basic", classless, classes) }}
+
+<h2>Statuses</h2>
+{% set classless %}
+<p><small class="badge success">active</small> <small class="badge warning">restarting</small> <small class="badge error">failed</small></p>
+{% endset %}
+{{ m.demo("badge-status", classless) }}
 
 <h2>Muted and error text</h2>
 {% set classless %}

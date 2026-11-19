@@ -503,7 +503,7 @@
       --icon-clock: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmZmZmYiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1jbG9jay1pY29uIGx1Y2lkZS1jbG9jayI+PGNpcmNsZSBjeD0iMTIiIGN5PSIxMiIgcj0iMTAiLz48cG9seWxpbmUgcG9pbnRzPSIxMiA2IDEyIDEyIDE2IDE0Ii8+PC9zdmc+");
     }
   }
-  :where(:root, [data-color-scheme], .retheme, .warning, .notice-warning, .badge-warning, .alert-warning, .success, .notice-success, .badge-success, .alert-success, .error, .notice-error, .badge-error, .alert-error, .text-error, small.error, small.input-error,
+  :where(:root, [data-color-scheme], .retheme, .notice, .warning, .notice-warning, .badge-warning, .alert-warning, .success, .notice-success, .badge-success, .alert-success, .error, .notice-error, .badge-error, .alert-error, .text-error, small.error, small.input-error,
   small.select-error,
   small.textarea-error, small.text-error, small.alert-error, small.badge-error, small.notice-error, .input-error,
   .select-error,
@@ -1528,6 +1528,21 @@
     background-color: var(--surface);
     color: var(--ink);
   }
+  .alert.error, .alert.notice-error, .alert.badge-error, .alert.alert-error, .alert.input-error,
+  .alert.select-error,
+  .alert.textarea-error, .label > p.alert:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p.alert:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), .alert.text-error,
+  [role=alert].error,
+  [role=alert].notice-error,
+  [role=alert].badge-error,
+  [role=alert].alert-error,
+  [role=alert].input-error,
+  [role=alert].select-error,
+  [role=alert].textarea-error,
+  .label > p[role=alert]:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  label > p[role=alert]:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)),
+  [role=alert].text-error {
+    --neutral: var(--error);
+  }
   .alert-error {
     --neutral: var(--error);
   }
@@ -1916,6 +1931,13 @@
     line-height: 1.4;
     white-space: nowrap;
   }
+  .badge.error, small.error.chip, .badge.notice-error, small.notice-error.chip, .badge.badge-error, small.badge-error.chip, .badge.input-error, small.input-error.chip,
+  .badge.select-error,
+  small.select-error.chip,
+  .badge.textarea-error,
+  small.textarea-error.chip, .label > p.badge:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), label > p.badge:has(+ :is(.input, input:where(:not([type=checkbox], [type=radio], [type=range], [type=file], [type=color], [type=submit], [type=reset], [type=button], [type=image])), .select, select, .textarea, textarea):is([aria-invalid=true], .input-error, .select-error, .textarea-error)), .badge.text-error, small.text-error.chip, .badge.alert-error, small.alert-error.chip {
+    --neutral: var(--error);
+  }
   .badge-error {
     --neutral: var(--error);
   }
@@ -2101,13 +2123,13 @@
   .notice {
     display: flex;
     align-items: center;
-    gap: var(--space-md);
-    width: 100%;
-    max-width: 420px;
-    padding: var(--space-md) var(--space-lg);
-    border: var(--border-width) solid var(--line);
+    gap: var(--space-sm);
+    width: max-content;
+    max-width: min(420px, 100%);
+    padding: var(--space-sm) var(--space-lg);
+    border: var(--border-width) solid var(--accent);
     border-radius: var(--radius-box, var(--border-radius));
-    background-color: var(--surface);
+    background-color: color-mix(in srgb, var(--accent) 14%, var(--bg));
     color: var(--ink);
     box-shadow: 0 6px 20px oklch(0% 0 0deg / 0.14);
     pointer-events: auto;
@@ -2117,27 +2139,32 @@
       animation: sparkstone-rise var(--duration-enter) var(--ease-spring);
     }
   }
-  .notice-error {
-    --neutral: var(--error);
+  .notice:has(.notice-actions, .notice-text > small, .notice-text > a > small) {
+    width: 100%;
   }
   .notice-art {
     flex: none;
     display: grid;
     place-items: center;
-    width: 2.5rem;
-    height: 2.5rem;
-    border-radius: 999px;
-    background-color: var(--accent);
-    color: var(--accent-ink);
+    min-width: 1.375rem;
+    min-height: 1.375rem;
+    color: var(--accent);
+  }
+  .notice-art > svg {
+    width: 1.375rem;
+    height: 1.375rem;
   }
   .notice-text {
     flex: 1;
     min-width: 0;
   }
-  .notice-text > strong {
+  .notice-text > strong,
+  .notice-text > a > strong {
     display: block;
+    font-weight: normal;
   }
-  .notice-text > small {
+  .notice-text > small,
+  .notice-text > a > small {
     color: var(--muted);
   }
   .notice-actions {

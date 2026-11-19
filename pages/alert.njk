@@ -16,30 +16,29 @@
 
 {{ m.classes([
   ["alert", "The message box"],
-  ["alert-error", "Recolours it with --error"]
+  ["error", "Recolours it with --error (also .success, .warning); .alert-error is deprecated"]
 ]) }}
 
 <h2>Basic</h2>
 {% set classless %}
 <div class="alert" role="alert">Your changes have been saved.</div>
-<div class="alert alert-error" role="alert">We could not reach the server.</div>
+<div class="alert error" role="alert">We could not reach the server.</div>
 {% endset %}
 {% set kobalte_markup %}
 <div role="alert">Your changes have been saved.</div>
-<div role="alert" class="alert-error">We could not reach the server.</div>
+<div role="alert" class="error">We could not reach the server.</div>
 {% endset %}
 {% set kobalte %}
 import { Alert } from "@kobalte/core/alert";
 
 <Alert>Your changes have been saved.</Alert>
-<Alert class="alert-error">We could not reach the server.</Alert>
+<Alert class="error">We could not reach the server.</Alert>
 {% endset %}
 {{ m.demo("alert-basic", classless, "", kobalte, kobalte_markup) }}
 <p>
   <small>
-    There is no info, success or warning variant yet. The framework derives
-    everything from one <code>--primary</code> plus <code>--error</code>, and
-    those variants need tokens it does not have.
+    The library's statuses work on any alert: <code>.success</code>, <code>.warning</code>
+    and <code>.error</code>. They re-theme it the same way they re-theme anything else.
   </small>
 </p>
 {# composition #}
@@ -53,7 +52,7 @@ import { Alert } from "@kobalte/core/alert";
 <p>A form-level error goes above the fields, inside the card, so it is read before the fields are.</p>
 {% set classless %}
 <form class="card">
-  <div class="alert alert-error" role="alert">We could not send your message. Try again in a minute.</div>
+  <div class="alert error" role="alert">We could not send your message. Try again in a minute.</div>
   <label class="label">
     <p>Email</p>
     <input class="input" type="email" />
@@ -65,7 +64,7 @@ import { Alert } from "@kobalte/core/alert";
 {% endset %}
 {{ m.demo("alert-comp-1", classless) }}
 <ul>
-  <li><strong>Boundary:</strong> <code>.alert-error</code> is an error boundary, so its border, surface and text all take the error colour from one class.</li>
+  <li><strong>Boundary:</strong> <code>.error</code> on an alert is an error boundary, so its border, surface and text all take the error colour from one class.</li>
   <li><strong>Spacing:</strong> the alert carries a <code>1rem</code> bottom margin like a field, so it stacks into the form with no wrapper.</li>
 </ul>
 
@@ -84,7 +83,7 @@ import { Alert } from "@kobalte/core/alert";
 {% endset %}
 {{ m.demo("alert-comp-2", classless) }}
 <ul>
-  <li><strong>Surface:</strong> each message is an <code>.alert</code>, so a failure is <code>.alert-error</code> with no toast-specific class.</li>
+  <li><strong>Surface:</strong> each message is an <code>.alert</code>, so a failure is <code>.alert.error</code> with no toast-specific class.</li>
   <li><strong>Layout:</strong> <code>.toast</code> is fixed to the corner; it is static here so it shows in the preview.</li>
 </ul>
 {% endblock %}

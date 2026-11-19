@@ -19,6 +19,14 @@
     color: var(--ink);
   }
 
+  // The library's statuses re-theme an alert like anything else: .success,
+  // .warning, .error on it. An error alert tints its surface too.
+  .alert.error,
+  [role="alert"].error {
+    --neutral: var(--error);
+  }
+
+  // Deprecated, removed in 5.0: the same as .alert.error and the rest.
   .alert-error {
     --neutral: var(--error);
     @extend .error;
